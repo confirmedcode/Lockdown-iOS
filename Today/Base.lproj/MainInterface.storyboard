@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zg-2c-ybZ" customClass="TKTransitionSubmitButton" customModule="Today" customModuleProvider="target">
+                                <rect key="frame" x="26" y="23.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="VKK-BY-oNo"/>
+                                    <constraint firstAttribute="height" constant="60" id="a5B-QH-T2s"/>
+                                </constraints>
+                                <state key="normal" image="power_button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleVPNButtonWithSender:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="QNN-d0-vuY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJH-bI-G1N">
+                                <rect key="frame" x="114" y="24" width="153" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Lee-t3-UEq"/>
+                                    <constraint firstAttribute="width" constant="153" id="ZcX-ez-f0q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IP: Finding..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgn-9l-eoa">
+                                <rect key="frame" x="114" y="47.5" width="153" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="4iF-l1-LU2"/>
+                                    <constraint firstAttribute="height" constant="16" id="ylM-I8-PgP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apy-GL-W9N">
+                                <rect key="frame" x="114" y="63.5" width="153" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="A7N-Rz-r4B"/>
+                                    <constraint firstAttribute="height" constant="16" id="vxL-eH-zLa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Speed: Tap to test">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startSpeedTestWithSender:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="gdV-Bo-Mwd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlw-t0-1Mi">
+                                <rect key="frame" x="80" y="111.5" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="0.14428367077464793" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="XNW-zx-IqW"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZYV-jU-MiX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Change VPN Region">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changeCountryWithSender:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="uFD-PT-nRA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Zgn-9l-eoa" firstAttribute="leading" secondItem="XJH-bI-G1N" secondAttribute="leading" id="3eL-ex-0lQ"/>
+                            <constraint firstItem="Zgn-9l-eoa" firstAttribute="top" secondItem="XJH-bI-G1N" secondAttribute="bottom" constant="3.5" id="BTn-TK-6uY"/>
+                            <constraint firstItem="Nlw-t0-1Mi" firstAttribute="centerX" secondItem="ssy-KU-ocm" secondAttribute="centerX" id="Hap-yf-IBU"/>
+                            <constraint firstItem="Apy-GL-W9N" firstAttribute="top" secondItem="Zgn-9l-eoa" secondAttribute="bottom" id="UbD-Bp-ydS"/>
+                            <constraint firstItem="XJH-bI-G1N" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="24" id="WgQ-om-HWx"/>
+                            <constraint firstItem="XJH-bI-G1N" firstAttribute="leading" secondItem="2zg-2c-ybZ" secondAttribute="trailing" constant="28" id="YDV-Hb-e6h"/>
+                            <constraint firstItem="2zg-2c-ybZ" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="23.5" id="Yq9-09-peM"/>
+                            <constraint firstItem="Nlw-t0-1Mi" firstAttribute="top" secondItem="Apy-GL-W9N" secondAttribute="bottom" constant="32" id="mAb-LZ-1Pp"/>
+                            <constraint firstItem="Apy-GL-W9N" firstAttribute="leading" secondItem="Zgn-9l-eoa" secondAttribute="leading" id="rzy-zf-Rdl"/>
+                            <constraint firstItem="Nlw-t0-1Mi" firstAttribute="leading" secondItem="2zg-2c-ybZ" secondAttribute="trailing" constant="-6" id="s6F-ZY-fvV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="170"/>
+                    <connections>
+                        <outlet property="ipAddress" destination="Zgn-9l-eoa" id="hXJ-fu-lv5"/>
+                        <outlet property="speedTestButton" destination="Apy-GL-W9N" id="rX3-h0-yT1"/>
+                        <outlet property="toggleVPN" destination="2zg-2c-ybZ" id="dth-Ae-rIu"/>
+                        <outlet property="vpnStatusLabel" destination="XJH-bI-G1N" id="Neu-8N-nNF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.80000000000001" y="133.13343328335833"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="power_button" width="200" height="200"/>
+    </resources>
+</document>

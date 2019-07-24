@@ -1,0 +1,306 @@
+
+/* Class = "UILabel"; text = "*.hulu.com"; ObjectID = "0Ij-sV-FOr"; */
+"0Ij-sV-FOr.text" = "*.hulu.com";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "0Xb-62-FB6"; */
+"0Xb-62-FB6.normalTitle" = "個人情報保護方針";
+
+/* Class = "UILabel"; text = "Up to three of your iPhones and iPads for only $4.99 per month."; ObjectID = "0gF-hr-Rzj"; */
+"0gF-hr-Rzj.text" = "Up to three of your iPhones and iPads for only $4.99 per month.";
+
+/* Class = "UIButton"; normalTitle = "Sign Out"; ObjectID = "2rP-4I-yso"; */
+"2rP-4I-yso.normalTitle" = "Sign Out";
+
+/* Class = "UILabel"; text = "IP Address Hidden"; ObjectID = "37I-9Y-wgf"; */
+"37I-9Y-wgf.text" = "IP Address Hidden";
+
+/* Class = "UILabel"; text = "Unknown error."; ObjectID = "3mc-rm-zyi"; */
+"3mc-rm-zyi.text" = "Unknown error.";
+
+/* Class = "UILabel"; text = "Add E-Mail"; ObjectID = "41J-yY-nDE"; */
+"41J-yY-nDE.text" = "Add E-Mail";
+
+/* Class = "UILabel"; text = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. "; ObjectID = "42e-yG-VLg"; */
+"42e-yG-VLg.text" = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. ";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "5aF-Mo-YV9"; */
+"5aF-Mo-YV9.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Plan"; ObjectID = "5en-s8-3Z6"; */
+"5en-s8-3Z6.text" = "プラン";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "6QS-8R-9Zb"; */
+"6QS-8R-9Zb.normalTitle" = "Sign In";
+
+/* Class = "UITextField"; placeholder = "Add domain (i.e. netflix.com)"; ObjectID = "7bS-tB-jYh"; */
+"7bS-tB-jYh.placeholder" = "ドメインを追加する (例：netflix.com)";
+
+/* Class = "UIButton"; normalTitle = "Get Two Months Free"; ObjectID = "8ng-qK-etN"; */
+"8ng-qK-etN.normalTitle" = "２ヶ月間の無料体験に申し込む";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "8x7-vO-xGo"; */
+"8x7-vO-xGo.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Whitelisted"; ObjectID = "9tn-2p-xi9"; */
+"9tn-2p-xi9.text" = "Whitelisted";
+
+/* Class = "UILabel"; text = "Try the most trusted way to browse securely and privately."; ObjectID = "Cxt-QW-V1N"; */
+"Cxt-QW-V1N.text" = "最も優れた安全性と匿名性をお試しください。";
+
+/* Class = "UILabel"; text = "IP Address Hidden"; ObjectID = "Dbh-wh-0gV"; */
+"Dbh-wh-0gV.text" = "IP Address Hidden";
+
+/* Class = "UILabel"; text = "Confirmed includes a Content Blocker that protects your privacy and increases performance in Safari by blocking invasive code."; ObjectID = "EAR-ME-6mT"; */
+"EAR-ME-6mT.text" = "コンテンツブロッカーは貴方のプライバシーを守りSafariの動作を向上させる為に侵略的なコードをブロックします。";
+
+/* Class = "UILabel"; text = "All Devices"; ObjectID = "ELD-E3-Yae"; */
+"ELD-E3-Yae.text" = "マルチデバイス版";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "Edz-d7-Ygb"; */
+"Edz-d7-Ygb.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Egx-w0-cwP"; */
+"Egx-w0-cwP.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "iOS Only"; ObjectID = "FCU-Ip-FHE"; */
+"FCU-Ip-FHE.text" = "iOS版";
+
+/* Class = "UILabel"; text = "Confirmed VPN is different: our Privacy Policy explicitly and legally prohibits us from logging any personal data or information."; ObjectID = "FGo-KU-kDG"; */
+"FGo-KU-kDG.text" = "Confirmed VPNの個人情報保護方針は、私たちがあなたの通信を追跡、記録しない事を明示しています。";
+
+/* Class = "UILabel"; text = "Plan"; ObjectID = "Fnz-ZP-M8f"; */
+"Fnz-ZP-M8f.text" = "プラン";
+
+/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "GCK-Lf-jdj"; */
+"GCK-Lf-jdj.normalTitle" = "もっと詳しく知る";
+
+/* Class = "UILabel"; text = "Plan"; ObjectID = "GoC-c8-4Ib"; */
+"GoC-c8-4Ib.text" = "プラン";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "HDP-bQ-VFf"; */
+"HDP-bQ-VFf.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "HbQ-tP-FHd"; */
+"HbQ-tP-FHd.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "Ilb-j2-Evl"; */
+"Ilb-j2-Evl.text" = "個人情報保護方針";
+
+/* Class = "UIButton"; normalTitle = "Get Secure"; ObjectID = "Ju2-He-5w7"; */
+"Ju2-He-5w7.normalTitle" = "安全性を手に入れる";
+
+/* Class = "UIButton"; normalTitle = "Upgrade To All Devices"; ObjectID = "JzC-HQ-N0r"; */
+"JzC-HQ-N0r.normalTitle" = "マルチデバイス版にアップグレード";
+
+/* Class = "UILabel"; text = "Please add an e-mail and password to sign in on other devices."; ObjectID = "Kuw-Uq-3Pb"; */
+"Kuw-Uq-3Pb.text" = "他のデバイスからサインインする為には、Emailアドレスとパスワードの設定が必要となります。";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "LfX-F3-M2C"; */
+"LfX-F3-M2C.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "Certain websites don't operate well with a VPN or specifically block a VPN's use. For the most seamless experience, we recommend not sending this small percentage of traffic through a VPN. This is configurable and you can add or remove sites as you would like."; ObjectID = "NEL-fV-wRa"; */
+"NEL-fV-wRa.text" = "ウェブサイトによってはVPNの使用中には正常に動作しない場合が考えられます。ホワイトリストに追加する事でそのウェブサイトに限りVPNを使用しない通信を行う事が出来ます。";
+
+/* Class = "UILabel"; text = "team@confirmedvpn.com"; ObjectID = "NYs-1f-By4"; */
+"NYs-1f-By4.text" = "team@confirmedvpn.com";
+
+/* Class = "UIButton"; normalTitle = "Create Sign In"; ObjectID = "P58-dx-7zu"; */
+"P58-dx-7zu.normalTitle" = "アカウントを設定する";
+
+/* Class = "UILabel"; text = "Protect Your Data"; ObjectID = "PGC-jx-bKV"; */
+"PGC-jx-bKV.text" = "プロテクション";
+
+/* Class = "UILabel"; text = "Plan"; ObjectID = "PIq-cK-jjA"; */
+"PIq-cK-jjA.text" = "プラン";
+
+/* Class = "UILabel"; text = "DISCONNECTED"; ObjectID = "QT0-vo-fNN"; */
+"QT0-vo-fNN.text" = "DISCONNECTED";
+
+/* Class = "UILabel"; text = "Our privacy policy is focused on protecting the user and ensuring he or she understands our company and product. To learn more, please tap the link below."; ObjectID = "Uve-eR-XXB"; */
+"Uve-eR-XXB.text" = "私達のプライバシーポリシーはユーザーを保護し彼らが私達と製品に対する理解を深める事を目的としています。私達が貴方の個人情報をどのように守り、扱うかをより詳しく知りたい場合は以下のボタンをタップしてください。";
+
+/* Class = "UILabel"; text = "Add Widget"; ObjectID = "VDZ-qq-YQO"; */
+"VDZ-qq-YQO.text" = "ウィジェットを追加する";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "VIN-ck-6sP"; */
+"VIN-ck-6sP.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Get Confirmed on Mac, PC, and Android too for only $9.99 a month"; ObjectID = "VNP-CM-Axq"; */
+"VNP-CM-Axq.text" = "月額$9.99でMac、PC、AndroidでもConfirmedをお使い頂けます。";
+
+/* Class = "UILabel"; text = "Confirmed VPN"; ObjectID = "Ve6-h6-unZ"; */
+"Ve6-h6-unZ.text" = "Confirmed VPN";
+
+/* Class = "UILabel"; text = "Let's set up Confirmed to get the best possible experience."; ObjectID = "ViV-f2-U7q"; */
+"ViV-f2-U7q.text" = "Confirmed VPNを使って最高の安全性を手に入れましょう。";
+
+/* Class = "UIButton"; normalTitle = "United States - West"; ObjectID = "VmW-aE-Qnf"; */
+"VmW-aE-Qnf.normalTitle" = "United States - West";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "VuN-rN-BWG"; */
+"VuN-rN-BWG.normalTitle" = "以前にご購入された方";
+
+/* Class = "UILabel"; text = "Confirmed VPN uses bank-level encryption to stop ISPs, hackers, and snoopers from accessing your personal data."; ObjectID = "Wdy-uC-C21"; */
+"Wdy-uC-C21.text" = "Confirmed VPNは金融機関等と同レベルの暗号化技術を使用しており、インターネットサービスプロバイダーや悪質なハッカー等からのアクセスをブロックします。";
+
+/* Class = "UILabel"; text = "Open"; ObjectID = "WjY-1n-JrX"; */
+"WjY-1n-JrX.text" = "Open";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "Wtx-yP-jGA"; */
+"Wtx-yP-jGA.text" = "Email";
+
+/* Class = "UILabel"; text = "Sign up for essential updates from Confirmed, including security updates, new features, and ways to protect yourself on the Internet."; ObjectID = "Xoa-mx-q7J"; */
+"Xoa-mx-q7J.text" = "Confirmedのアップデートに登録しましょう。セキュリティのアップデート、新機能、インターネット上で貴方も守る様々な手段が含まれています。";
+
+/* Class = "UILabel"; text = "To enable, go to Settings > Safari > Content Blocker"; ObjectID = "Y5p-7G-DfK"; */
+"Y5p-7G-DfK.text" = "To enable, go to Settings > Safari > Content Blocker";
+
+/* Class = "UILabel"; text = "Content Blocker"; ObjectID = "Yrd-Bw-bAW"; */
+"Yrd-Bw-bAW.text" = "コンテンツブロッカー";
+
+/* Class = "UILabel"; text = "Confirmed VPN is a service to gain unlimited data for our VPN service. Confirmed subscriptions have a free one week trial, after which you will be charged to your credit card through your iTunes account. Price may vary by location. Your subscription will automatically renew unless canceled at least 24 hours before the end of the current period. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication. Manage Confirmed in Account Settings after the optional upgrade."; ObjectID = "ZIU-Xd-vDj"; */
+"ZIU-Xd-vDj.text" = "Confirmed VPNはVPN接続のための無制限のデータ容量を提供します。アプリの購読料は1週間の無料期間を経た後にiTunesアカウントにご登録のクレジットカードからお支払い頂く形になり、地域によって価格が変動します。ご購読中のプランは満期となる２４時間前までにキャンセルされない限り自動的に更新されますのでご注意ください。また、プランを購入された時点で無料体験期間は終了となりますのでご了承頂ければ幸いです。ご購入後の設定変更等はiOSのアカウント設定画面から行う事が出来ます。";
+
+/* Class = "UIButton"; normalTitle = "Terms & Conditions"; ObjectID = "ZRi-ok-YKh"; */
+"ZRi-ok-YKh.normalTitle" = "利用規約";
+
+/* Class = "UILabel"; text = "Secure your data now with Confirmed, the openly operated VPN audited by countless security professionals. "; ObjectID = "aB1-BA-j8K"; */
+"aB1-BA-j8K.text" = "Confirmedを起動してあなたのデータを守りましょう。";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "adI-JY-P95"; */
+"adI-JY-P95.text" = "Label";
+
+/* Class = "UILabel"; text = "Whitelist"; ObjectID = "agz-pH-D2H"; */
+"agz-pH-D2H.text" = "ホワイトリスト";
+
+/* Class = "UILabel"; text = "Confirmed VPN"; ObjectID = "ari-H5-3gJ"; */
+"ari-H5-3gJ.text" = "Confirmed VPN";
+
+/* Class = "UILabel"; text = "Confirmed is the only Openly Operated VPN. Our servers are available for public audit, and countless security professionals have verified the security and integrity of our company."; ObjectID = "b81-0P-0Mt"; */
+"b81-0P-0Mt.text" = "Confirmed is the only Openly Operated VPN. Our servers are available for public audit, and countless security professionals have verified the security and integrity of our company.";
+
+/* Class = "UILabel"; text = "Mac, Windows, iOS, and Android for $9.99 per month"; ObjectID = "ch7-UR-ecd"; */
+"ch7-UR-ecd.text" = "Mac, Windows, iOS, and Android for $9.99 per month";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "dDl-UE-3ud"; */
+"dDl-UE-3ud.normalTitle" = "Sign In";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password"; ObjectID = "e9e-xo-AtR"; */
+"e9e-xo-AtR.normalTitle" = "パスワードを忘れた";
+
+/* Class = "UIButton"; normalTitle = "Later"; ObjectID = "eM1-ht-UL1"; */
+"eM1-ht-UL1.normalTitle" = "あとで";
+
+/* Class = "UIButton"; normalTitle = "Add Email"; ObjectID = "f2i-dV-64I"; */
+"f2i-dV-64I.normalTitle" = "Emailアドレスを追加";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchases"; ObjectID = "f2x-Fr-Ead"; */
+"f2x-Fr-Ead.normalTitle" = "以前にご購入された方";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fDL-ho-Zgm"; */
+"fDL-ho-Zgm.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Start 1 Week Trial"; ObjectID = "fEA-js-9LV"; */
+"fEA-js-9LV.normalTitle" = "無料体験を開始する。";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "fPM-ls-bhY"; */
+"fPM-ls-bhY.text" = "Loading...";
+
+/* Class = "UILabel"; text = "191.23.142.142"; ObjectID = "fhx-Lb-Pnf"; */
+"fhx-Lb-Pnf.text" = "191.23.142.142";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "g85-ac-fK4"; */
+"g85-ac-fK4.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "gRJ-Rg-jAz"; */
+"gRJ-Rg-jAz.text" = "1";
+
+/* Class = "UILabel"; text = "Confirmed VPN"; ObjectID = "geO-1A-pWS"; */
+"geO-1A-pWS.text" = "Confirmed VPN";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "gqH-fl-SDW"; */
+"gqH-fl-SDW.text" = "1.0";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "gvN-v9-bsD"; */
+"gvN-v9-bsD.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "42.4 Mbps"; ObjectID = "hdu-lb-4qp"; */
+"hdu-lb-4qp.text" = "42.4 Mbps";
+
+/* Class = "UILabel"; text = "Swipe to learn why Confirmed is the only VPN you can trust."; ObjectID = "i4b-sZ-Gy4"; */
+"i4b-sZ-Gy4.text" = "Confirm VPNの信頼性をご説明致します。";
+
+/* Class = "UILabel"; text = "Safe"; ObjectID = "jdh-lO-T7i"; */
+"jdh-lO-T7i.text" = "安全性";
+
+/* Class = "UILabel"; text = "We want our privacy policy to be simple and readable. We are focused on protecting all of our users data and not distributing it with other companies for profit."; ObjectID = "kK5-2Y-8jv"; */
+"kK5-2Y-8jv.text" = "私たちは簡潔で読みやすいプライバシーポリシーの提供を心がけています。私たちは貴方のデータを守り、それを第三者に漏らす事はありません。";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "kcn-RM-c89"; */
+"kcn-RM-c89.text" = "2";
+
+/* Class = "UIButton"; normalTitle = "Later"; ObjectID = "lvj-gp-owd"; */
+"lvj-gp-owd.normalTitle" = "あとで";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "pp8-VE-IM6"; */
+"pp8-VE-IM6.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "IP Address Hidden"; ObjectID = "pzg-XH-kRa"; */
+"pzg-XH-kRa.text" = "IP Address Hidden";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "qG4-8Z-FpB"; */
+"qG4-8Z-FpB.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "Block ads"; ObjectID = "qsd-L2-6zG"; */
+"qsd-L2-6zG.text" = "広告をブロック";
+
+/* Class = "UILabel"; text = "We do not log, share, or sell any of your website traffic."; ObjectID = "rg7-oq-8EX"; */
+"rg7-oq-8EX.text" = "貴方の通信を追跡、記録しそれを売り渡す事はありません。";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "rhT-XQ-ffo"; */
+"rhT-XQ-ffo.placeholder" = "”パスワード”";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "tdt-TT-gDW"; */
+"tdt-TT-gDW.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "Updates"; ObjectID = "two-nE-LPa"; */
+"two-nE-LPa.text" = "アップデート";
+
+/* Class = "UILabel"; text = "Get Started"; ObjectID = "uJo-T5-FIB"; */
+"uJo-T5-FIB.text" = "Get Started";
+
+/* Class = "UILabel"; text = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. "; ObjectID = "upL-BX-BCS"; */
+"upL-BX-BCS.text" = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. ";
+
+/* Class = "UILabel"; text = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. "; ObjectID = "vTq-mf-eoG"; */
+"vTq-mf-eoG.text" = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. ";
+
+/* Class = "UILabel"; text = "Confirmed VPN"; ObjectID = "vbK-ab-y2a"; */
+"vbK-ab-y2a.text" = "Confirmed VPN";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "vvw-R0-IOa"; */
+"vvw-R0-IOa.text" = "3";
+
+/* Class = "UILabel"; text = "Upgrade Confirmed to an Annual plan and get two months free."; ObjectID = "wNt-4a-okh"; */
+"wNt-4a-okh.text" = "Confirmedの年間購読プラン";
+
+/* Class = "UILabel"; text = "IP Address Hidden"; ObjectID = "wrZ-aS-efH"; */
+"wrZ-aS-efH.text" = "IP Address Hidden";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "wty-cI-SuR"; */
+"wty-cI-SuR.text" = "アカウント";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "xCw-QW-K0K"; */
+"xCw-QW-K0K.placeholder" = "”パスワード”";
+
+/* Class = "UIButton"; normalTitle = "Setup"; ObjectID = "xMY-0a-SHd"; */
+"xMY-0a-SHd.normalTitle" = "設定";
+
+/* Class = "UIButton"; normalTitle = "ⓘ   What does this mean?"; ObjectID = "yns-bx-ZkI"; */
+"yns-bx-ZkI.normalTitle" = "ⓘ   状況を確認する";
+
+/* Class = "UILabel"; text = "|"; ObjectID = "yxg-bE-IK7"; */
+"yxg-bE-IK7.text" = "|";
+
+/* Class = "UILabel"; text = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. "; ObjectID = "zCp-MF-Ozw"; */
+"zCp-MF-Ozw.text" = "Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. ";
