@@ -43,11 +43,19 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         RawSocketFactory.TunnelProvider = self
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
+            guard error == nil else {
+                completionHandler(error)
+            }
+
             self.proxyServer = LockdownProxy.init(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
             
-            try? self.proxyServer.start()
-            //print("confirmed.lockdown.tunnel: error on start: \(String(describing: error))")
-            completionHandler(error)
+            do {
+                try self.proxyServer.start()
+            } catch let proxyError {
+                completionHandler(proxyError)
+            }
+
+            completionHandler(nil)
         })
     }
     
