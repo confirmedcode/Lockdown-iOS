@@ -41,117 +41,58 @@ class CoreUtils: NSObject {
         return lockdownDefaults
     }
     
-    static func loadCryptoDomains() -> Dictionary<String, Bool> {
+    static func loadDomainBlockList(filename: String) -> Dictionary<String, Bool> {
         var domains = [String : Bool]()
-        guard let path = Bundle.main.path(forResource: "crypto_domains", ofType: "csv") else {
+        guard let path = Bundle.main.path(forResource: filename, ofType: "txt") else {
             return domains
         }
-        
         do {
             let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
             let lines = content.components(separatedBy: "\n")
             for line in lines {
-                if line.contains(":") {
-                    let d = String(line.split(separator: ":")[0])
-                    domains[d] = true
+                if (line.trimmingCharacters(in: CharacterSet.whitespaces) != "" && !line.starts(with: "#")) {
+                    domains[line] = true;
                 }
             }
         } catch _ as NSError {
         }
-        
         return domains
     }
     
-    static func loadEmailTrackingDomains() -> Dictionary<String, Bool> {
-        var domains = [String : Bool]()
-        guard let path = Bundle.main.path(forResource: "email_tracking_domains", ofType: "csv") else {
-            return domains
-        }
-        
-        do {
-            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
-            let lines = content.components(separatedBy: "\n")
-            for line in lines {
-                if line.contains(".") {
-                    domains[line] = true
-                }
-            }
-        } catch _ as NSError {
-        }
-        
-        return domains
-    }
-    
-    static func loadCryptoIPs() -> Dictionary<String, IPRange> {
+    static func loadIPv4BlockList(filename: String) -> Dictionary<String, IPRange> {
         var domains = [String : IPRange]()
-        guard let path = Bundle.main.path(forResource: "crypto_ips", ofType: "csv") else {
+        guard let path = Bundle.main.path(forResource: filename, ofType: "txt") else {
             return domains
         }
-        
         do {
             let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
             let lines = content.components(separatedBy: "\n")
             for line in lines {
-                if line.contains(":") {
-                    let d = String(line.split(separator: ":")[0])
-                    domains[d] = IPRange.init(subnetMask: "255.255.255.255", enabled: true, IPv6: false, subnetBits: 0)
-                }
-            }
-        } catch _ as NSError {
-        }
-        
-        return domains
-    }
-    
-    static func loadFacebookDomains() -> Dictionary<String, Bool> {
-        var domains = [String : Bool]()
-        guard let path = Bundle.main.path(forResource: "facebook_domains", ofType: "csv") else {
-            return domains
-        }
-        
-        do {
-            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
-            let lines = content.components(separatedBy: "\n")
-            for line in lines {
-                if line.contains(" ") {
-                    let d = String(line.split(separator: " ")[1])
-                    domains[d] = true
-                }
-            }
-        } catch _ as NSError {
-        }
-        
-        return domains
-    }
-    
-    static func loadFacebookIPs() -> Dictionary<String, IPRange> {
-        var domains = [String : IPRange]()
-        guard let path = Bundle.main.path(forResource: "facebook_ips", ofType: "csv") else {
-            return domains
-        }
-        
-        do {
-            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
-            let lines = content.components(separatedBy: "\n")
-            for line in lines {
+                // CIDR
                 if line.contains("/") {
                     if let subnetBits = Int(line.split(separator: "/")[1]) {
                         let d = String(line.split(separator: "/")[0])
-                        
                         let mask = 0xffffffff ^ ((1 << (32 - subnetBits)) - 1)
                         let subnetMask = String.init(format: "%d.%d.%d.%d", (mask & 0x00ff000000) >> 24, (mask & 0x00ff0000) >> 16, (mask & 0x0000ff00) >> 8, (mask & 0xff))
-
+                        
                         domains[d] = IPRange.init(subnetMask: subnetMask, enabled: true, IPv6: false, subnetBits: subnetBits)
                     }
+                }
+                // not CIDR, just feed the IP itself
+                else {
+                    domains[line] = IPRange.init(subnetMask: "255.255.255.255", enabled: true, IPv6: false, subnetBits: 0)
                 }
             }
         } catch _ as NSError {
         }
-        
-        guard let ipv6Path = Bundle.main.path(forResource: "facebook_ipv6", ofType: "csv") else {
+        return domains
+    }
+    
+    static func loadIPv6BlockList(filename: String) -> Dictionary<String, IPRange> {
+        var domains = [String : IPRange]()
+        guard let ipv6Path = Bundle.main.path(forResource: filename, ofType: "txt") else {
             return domains
         }
-        
         do {
             let content = try String(contentsOfFile:ipv6Path, encoding: String.Encoding.utf8)
             let lines = content.components(separatedBy: "\n")
@@ -160,86 +101,104 @@ class CoreUtils: NSObject {
                     if let subnetBits = Int(line.split(separator: "/")[1]) {
                         let d = String(line.split(separator: "/")[0])
                         let subnetMask = "\(subnetBits)"
-                        
                         domains[d] = IPRange.init(subnetMask: subnetMask, enabled: true, IPv6: true, subnetBits: subnetBits)
                     }
                 }
             }
         } catch _ as NSError {
         }
-        
         return domains
     }
     
     static func setupLockdownDefaults() {
         
         let defaults = Global.sharedUserDefaults()
-        
-        if defaults.bool(forKey: "LockdownV2Settings") == false {
-            defaults.removeObject(forKey: Global.kConfirmedLockdownDomains)
-            defaults.set(true, forKey: "LockdownV2Settings")
-            defaults.synchronize()
-        }
         var domains = getConfirmedLockdown()
         
+        let clickbait = LockdownGroup.init(
+            version: 20,
+            internalID: "clickbait",
+            name: "Clickbait",
+            iconURL: "clickbait_icon",
+            enabled: false,
+            domains: loadDomainBlockList(filename: "clickbait"),
+            ipRanges: [:])
+        
         let crypto = LockdownGroup.init(
-            version: 7,
+            version: 20,
             internalID: "crypto_mining",
             name: "Crypto Mining",
             iconURL: "crypto_icon",
             enabled: true,
-            domains: loadCryptoDomains(),
-            ipRanges: loadCryptoIPs())
-        
-        let facebookApps = LockdownGroup.init(
-            version: 16,
-            internalID: "facebook_inc",
-            name: "Facebook Inc. (Beta)",
-            iconURL: "facebook_icon",
-            enabled: false,
-            domains: loadFacebookDomains(),
-            ipRanges: loadFacebookIPs())
-        
-        
-        let facebookSDK = LockdownGroup.init(
-            version: 1,
-            internalID: "facebook_sdk",
-            name: "Facebook SDK",
-            iconURL: "facebook_icon",
-            enabled: true,
-            domains: ["graph.facebook.com" : true, "api.facebook.com" : true, "connect.facebook.net" : true],
+            domains: loadDomainBlockList(filename: "crypto_mining"),
             ipRanges: [:])
         
-        
-        let marketingScripts = LockdownGroup.init(
-            version: 11,
-            internalID: "marketing_scripts",
-            name: "Marketing Scripts",
-            iconURL: "marketing_icon",
-            enabled: true,
-            domains: ["adwords.com" : true, "app-measurement.com" : true, "sc-analytics.appspot.com" : true,  "api.mixpanel.com" : true, "fabric.io" : true, "firebase.com" : true, "heapanalytics.com" : true, "api.facebook.com" : true, "facebook.net" : true, "fb.com" : true, "openx.net" : true, "kochava.com" : true, "appboy.com" : true, "adnxs.com" : true, "braze.com" : true, "sb.scorecardresearch.com" : true, "analytics.google.com" : true, "google-analytics.com" : true, "doubleclick.net" : true, "googleadservices.com/" : true, "hm.baidu.com" : true, "richmetrics.com" : true, "ping.chartbeat.net" : true, "in.getclicky.com" : true],
-            ipRanges: [:])
-        
-        
-        let emailTrackingPixels = LockdownGroup.init(
-            version: 7,
+        let emailOpens = LockdownGroup.init(
+            version: 20,
             internalID: "email_opens",
             name: "Email Opens (Beta)",
             iconURL: "email_icon",
             enabled: false,
-            domains: loadEmailTrackingDomains(),
+            domains: loadDomainBlockList(filename: "email_opens"),
             ipRanges: [:])
         
-        let defaultLockdownSettings = [crypto, emailTrackingPixels, facebookApps, facebookSDK, marketingScripts]
+        let facebookInc = LockdownGroup.init(
+            version: 20,
+            internalID: "facebook_inc",
+            name: "Facebook Inc (Beta)",
+            iconURL: "facebook_icon",
+            enabled: false,
+            domains: loadDomainBlockList(filename: "facebook_inc"),
+            ipRanges: [:])
         
+        let facebookSDK = LockdownGroup.init(
+            version: 20,
+            internalID: "facebook_sdk",
+            name: "Facebook SDK",
+            iconURL: "facebook_white_icon",
+            enabled: true,
+            domains: loadDomainBlockList(filename: "facebook_sdk"),
+            ipRanges: [:])
+        
+        let marketingScripts = LockdownGroup.init(
+            version: 20,
+            internalID: "marketing_scripts",
+            name: "Marketing Scripts",
+            iconURL: "marketing_icon",
+            enabled: true,
+            domains: loadDomainBlockList(filename: "marketing"),
+            ipRanges: [:])
+        
+        let ransomware = LockdownGroup.init(
+            version: 20,
+            internalID: "ransomware",
+            name: "Ransomware",
+            iconURL: "ransomware_icon",
+            enabled: false,
+            domains: loadDomainBlockList(filename: "ransomware"),
+            ipRanges: [:])
+        
+        let defaultLockdownSettings = [clickbait,
+                                       crypto,
+                                       emailOpens,
+                                       facebookInc,
+                                       facebookSDK,
+                                       marketingScripts,
+                                       ransomware];
         
         for var def in defaultLockdownSettings {
             if let current = domains.lockdownDefaults[def.internalID], current.version >= def.version {}
             else {
                 if let current = domains.lockdownDefaults[def.internalID] {
-                    def.enabled = current.enabled //don't replace whether it was disabled
+                    def.enabled = current.enabled // don't replace whether it was disabled
                 }
                 domains.lockdownDefaults[def.internalID] = def
+            }
+        }
+        
+        for (key, value) in domains.lockdownDefaults {
+            if let current = domains.lockdownDefaults[value.name] {
+                domains.lockdownDefaults.removeValue(forKey: value.name)
             }
         }
        

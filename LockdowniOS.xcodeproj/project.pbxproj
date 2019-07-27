@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1D1A3D208998E194C020B353 /* Pods_Today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498BB228C9E2F1FA4AECBD3F /* Pods_Today.framework */; };
+		3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */; };
+		3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D922EBAD4C00CCD326 /* marketing.txt */; };
 		3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
 		3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */; };
 		3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */; };
 		3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
 		3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */; };
 		3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */; };
+		3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B4E22EA76420018FC09 /* clickbait.txt */; };
+		3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B5222EA988F0018FC09 /* ransomware.txt */; };
 		A101106D202B9D4300807612 /* ConfirmedBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* ConfirmedBaseViewController.swift */; };
 		A10805292027B88300F5AD37 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10805282027B88300F5AD37 /* SignInViewController.swift */; };
 		A1141A151F46230500F54698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A141F46230500F54698 /* AppDelegate.swift */; };
@@ -166,12 +170,12 @@
 		A1FCDA8022C7666400C928BC /* CoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA7C22C765B200C928BC /* CoreUtils.swift */; };
 		A1FCDA8122C766B200C928BC /* ConfirmedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A6A30202B4DE600657B9E /* ConfirmedConstants.swift */; };
 		A1FCDA8222C76A9E00C928BC /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C4A5B20AE2C510006A186 /* NotificationCenter+Additions.swift */; };
-		A1FCDA8522CDE60800C928BC /* crypto_domains.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8422CDE60800C928BC /* crypto_domains.csv */; };
-		A1FCDA8722CDE8C000C928BC /* crypto_ips.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8622CDE8C000C928BC /* crypto_ips.csv */; };
-		A1FCDA8A22D3BA1900C928BC /* facebook_ips.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8822D3BA1900C928BC /* facebook_ips.csv */; };
-		A1FCDA8B22D3BA1900C928BC /* facebook_domains.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_domains.csv */; };
-		A1FCDA8D22D3C50A00C928BC /* email_tracking_domains.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_tracking_domains.csv */; };
-		A1FCDA9122D3D52C00C928BC /* facebook_ipv6.csv in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_ipv6.csv */; };
+		A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8422CDE60800C928BC /* crypto_mining.txt */; };
+		A1FCDA8722CDE8C000C928BC /* crypto_mining_ips.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8622CDE8C000C928BC /* crypto_mining_ips.txt */; };
+		A1FCDA8A22D3BA1900C928BC /* facebook_inc_ips.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8822D3BA1900C928BC /* facebook_inc_ips.txt */; };
+		A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */; };
+		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
+		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
 		A1FF5D8C21F38F2F00F70710 /* OpenSSLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D8B21F38F2F00F70710 /* OpenSSLHelper.m */; };
 		D37198BBCE0A226BD9071F4A /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */; };
 		E0C51E8814F43CD752AB740D /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */; };
@@ -242,12 +246,16 @@
 
 /* Begin PBXFileReference section */
 		31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = facebook_sdk.txt; sourceTree = "<group>"; };
+		3D0971D922EBAD4C00CCD326 /* marketing.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marketing.txt; sourceTree = "<group>"; };
 		3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		3DAA6B4E22EA76420018FC09 /* clickbait.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
+		3DAA6B5222EA988F0018FC09 /* ransomware.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
 		428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		498BB228C9E2F1FA4AECBD3F /* Pods_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C50BEAA399D6FDF2C2672C6 /* Pods-Confirmed VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.debug.xcconfig"; sourceTree = "<group>"; };
@@ -401,12 +409,12 @@
 		A1FCDA6222C7616400C928BC /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A1FCDA7B22C7626D00C928BC /* LockdownTunnel copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "LockdownTunnel copy-Info.plist"; path = "/Users/rahuldewan/Trust/LockdownPrivate/LockdownTunnel copy-Info.plist"; sourceTree = "<absolute>"; };
 		A1FCDA7C22C765B200C928BC /* CoreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUtils.swift; sourceTree = "<group>"; };
-		A1FCDA8422CDE60800C928BC /* crypto_domains.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_domains.csv; sourceTree = "<group>"; };
-		A1FCDA8622CDE8C000C928BC /* crypto_ips.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_ips.csv; sourceTree = "<group>"; };
-		A1FCDA8822D3BA1900C928BC /* facebook_ips.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_ips.csv; sourceTree = "<group>"; };
-		A1FCDA8922D3BA1900C928BC /* facebook_domains.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_domains.csv; sourceTree = "<group>"; };
-		A1FCDA8C22D3C50A00C928BC /* email_tracking_domains.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_tracking_domains.csv; sourceTree = "<group>"; };
-		A1FCDA9022D3D52C00C928BC /* facebook_ipv6.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_ipv6.csv; sourceTree = "<group>"; };
+		A1FCDA8422CDE60800C928BC /* crypto_mining.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_mining.txt; sourceTree = "<group>"; };
+		A1FCDA8622CDE8C000C928BC /* crypto_mining_ips.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_mining_ips.txt; sourceTree = "<group>"; };
+		A1FCDA8822D3BA1900C928BC /* facebook_inc_ips.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ips.txt; sourceTree = "<group>"; };
+		A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
+		A1FCDA8C22D3C50A00C928BC /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
+		A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ipv6.txt; sourceTree = "<group>"; };
 		A1FF5D8B21F38F2F00F70710 /* OpenSSLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSSLHelper.m; sourceTree = "<group>"; };
 		A1FF5D8D21F38FB800F70710 /* OpenSSLHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSSLHelper.h; sourceTree = "<group>"; };
 		A21525EDF4D5DA8CD8E4C27C /* Pods_Confirmed_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Confirmed_VPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -493,6 +501,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0971D522EBAAEE00CCD326 /* Domains */ = {
+			isa = PBXGroup;
+			children = (
+				3DAA6B4E22EA76420018FC09 /* clickbait.txt */,
+				A1FCDA8422CDE60800C928BC /* crypto_mining.txt */,
+				A1FCDA8C22D3C50A00C928BC /* email_opens.txt */,
+				A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */,
+				3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */,
+				3D0971D922EBAD4C00CCD326 /* marketing.txt */,
+				3DAA6B5222EA988F0018FC09 /* ransomware.txt */,
+			);
+			name = Domains;
+			sourceTree = "<group>";
+		};
+		3D0971D622EBAB0200CCD326 /* IPs */ = {
+			isa = PBXGroup;
+			children = (
+				A1FCDA8622CDE8C000C928BC /* crypto_mining_ips.txt */,
+				A1FCDA8822D3BA1900C928BC /* facebook_inc_ips.txt */,
+				A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */,
+			);
+			name = IPs;
+			sourceTree = "<group>";
+		};
 		3D44377922DFB22600908CDC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,12 +869,8 @@
 		A1FCDA8322CDE5ED00C928BC /* Block List */ = {
 			isa = PBXGroup;
 			children = (
-				A1FCDA8422CDE60800C928BC /* crypto_domains.csv */,
-				A1FCDA8622CDE8C000C928BC /* crypto_ips.csv */,
-				A1FCDA8922D3BA1900C928BC /* facebook_domains.csv */,
-				A1FCDA8822D3BA1900C928BC /* facebook_ips.csv */,
-				A1FCDA9022D3D52C00C928BC /* facebook_ipv6.csv */,
-				A1FCDA8C22D3C50A00C928BC /* email_tracking_domains.csv */,
+				3D0971D622EBAB0200CCD326 /* IPs */,
+				3D0971D522EBAAEE00CCD326 /* Domains */,
 			);
 			name = "Block List";
 			sourceTree = "<group>";
@@ -1125,10 +1153,11 @@
 				A1D85F0B207C562F00B766E0 /* adBlockListThree.json in Resources */,
 				A1159FCC207C228300DA4670 /* privacyBlockList.json in Resources */,
 				A1159FCD207C228300DA4670 /* socialBlockList.json in Resources */,
-				A1FCDA8722CDE8C000C928BC /* crypto_ips.csv in Resources */,
+				A1FCDA8722CDE8C000C928BC /* crypto_mining_ips.txt in Resources */,
 				A1159FCE207C228300DA4670 /* adBlockList.json in Resources */,
 				3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */,
 				3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */,
+				3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */,
 				A1EDF8DA1FE56BC800F5889D /* IMG_273507FA7DE5-1.jpeg in Resources */,
 				A1E912111FE55B1C00C236DB /* IMG_F26CD38DA8D8-1.jpeg in Resources */,
 				3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */,
@@ -1136,15 +1165,18 @@
 				A121E81C20ADC36A00D003EF /* Localizable.strings in Resources */,
 				3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */,
 				A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */,
-				A1FCDA8522CDE60800C928BC /* crypto_domains.csv in Resources */,
-				A1FCDA8B22D3BA1900C928BC /* facebook_domains.csv in Resources */,
+				A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */,
+				A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */,
+				3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */,
 				A1DBA19621B82F73008A9322 /* LICENSE.md in Resources */,
 				3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */,
-				A1FCDA8A22D3BA1900C928BC /* facebook_ips.csv in Resources */,
-				A1FCDA8D22D3C50A00C928BC /* email_tracking_domains.csv in Resources */,
+				A1FCDA8A22D3BA1900C928BC /* facebook_inc_ips.txt in Resources */,
+				3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */,
+				A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */,
 				A1141A1C1F46230500F54698 /* Assets.xcassets in Resources */,
 				3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */,
-				A1FCDA9122D3D52C00C928BC /* facebook_ipv6.csv in Resources */,
+				A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */,
+				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
 				A1141A1A1F46230500F54698 /* Main.storyboard in Resources */,
 				A1F3FB641F4E19BD001ED22C /* CircularSpinner.xib in Resources */,
 			);

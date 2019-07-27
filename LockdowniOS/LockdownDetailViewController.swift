@@ -85,21 +85,18 @@ class LockdownDetailViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         if let lockdown = lockdownGroup {
             self.groupTitle?.text = lockdown.name
             self.lockdownEnabled?.isOn = lockdown.enabled
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func toggleLockdown(sender : Any) {
         lockdownGroup?.enabled = self.lockdownEnabled!.isOn
         var ldDefaults = Utils.getConfirmedLockdown()
-        ldDefaults.lockdownDefaults[(lockdownGroup?.name)!] = lockdownGroup
+        ldDefaults.lockdownDefaults[(lockdownGroup?.internalID)!] = lockdownGroup
         
         let defaults = Global.sharedUserDefaults()
         defaults.set(try? PropertyListEncoder().encode(ldDefaults), forKey: "lockdown_domains")
@@ -109,17 +106,6 @@ class LockdownDetailViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func dismiss() {
         self.dismiss(animated: true, completion: {})
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     var lockdownGroup : LockdownGroup?
     @IBOutlet var lockdownEnabled : UISwitch?

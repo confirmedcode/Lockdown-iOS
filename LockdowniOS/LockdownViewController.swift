@@ -52,7 +52,8 @@ class LockdownViewController: ConfirmedBaseViewController, UITableViewDataSource
     }
     
     @IBAction func dismissWhitelistingPage() {
-        saveNewDomain()
+        //toggle tunneling to load new rules
+        VPNController.shared.reloadWhitelistRules()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.dismiss(animated: true, completion: {})
         }
@@ -71,8 +72,6 @@ class LockdownViewController: ConfirmedBaseViewController, UITableViewDataSource
                 Utils.addDomainToUserLockdown(key: text)
                 addDomainTextField!.text = ""
                 
-                //toggle tunneling to load new rules
-                VPNController.shared.reloadWhitelistRules()
                 tableview?.reloadData()
             }
         }
@@ -183,7 +182,6 @@ class LockdownViewController: ConfirmedBaseViewController, UITableViewDataSource
             }
         }
         
-        VPNController.shared.reloadWhitelistRules()
         tableView.reloadData()
     }
     
@@ -216,21 +214,6 @@ class LockdownViewController: ConfirmedBaseViewController, UITableViewDataSource
         return .delete
     }
     
-    func setFavIcon(imageView: UIImageView, domain : String) {
-        imageView.sd_setImage(with: URL(string: "https://\(domain)/apple-touch-icon.png"), placeholderImage: UIImage.init(named: "website_icon.png"), options: [], completed: { (image, error, cacheType, imageURL) in
-            
-            if error != nil {
-                imageView.sd_setImage(with: URL(string: "https://\(domain)/favicon.ico"), placeholderImage: UIImage.init(named: "website_icon.png"), options: [], completed: { (image, error, cacheType, imageURL) in
-                    
-                    if error != nil {
-                        
-                    }
-                    
-                })
-            }
-        })
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
@@ -249,7 +232,6 @@ class LockdownViewController: ConfirmedBaseViewController, UITableViewDataSource
                 if (domainArray.count) > indexPath.row {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "whitelistedDomainCell", for: indexPath) as! WhitelistCell
                     
-                    
                     let backgroundView = UIView()
                     backgroundView.backgroundColor = UIColor.init(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
                     cell.selectedBackgroundView = backgroundView
@@ -265,10 +247,10 @@ class LockdownViewController: ConfirmedBaseViewController, UITableViewDataSource
                     }
                     cell.whitelistIcon?.clipsToBounds = true
                     cell.whitelistIcon?.layer.cornerRadius = 4
-                    if let imageView = cell.whitelistIcon, let domain = domainLabel?.text {
-                        self.setFavIcon(imageView: imageView, domain: domain)
-                    }
                     
+                    if let imageView = cell.whitelistIcon {
+                        imageView.image = UIImage.init(named: "website_icon.png");
+                    }
                     domainLabel?.highlightedTextColor = UIColor.white
                     statusLabel?.highlightedTextColor = UIColor.white
                     

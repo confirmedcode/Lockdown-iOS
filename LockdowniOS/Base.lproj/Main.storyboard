@@ -69,7 +69,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lockdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbK-ab-y2a">
-                                <rect key="frame" x="87.5" y="37" width="200" height="23.5"/>
+                                <rect key="frame" x="87.5" y="37" width="200" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="aHF-jU-b4r">
                                         <variation key="heightClass=regular-widthClass=regular" constant="250"/>
@@ -94,7 +94,7 @@
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmW-aE-Qnf">
-                                        <rect key="frame" x="113.5" y="0.0" width="148" height="60"/>
+                                        <rect key="frame" x="104.5" y="0.0" width="166" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="S6T-Bc-e0G">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="160"/>
@@ -109,7 +109,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usa_flag.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bpg-Ru-wzn">
-                                        <rect key="frame" x="72" y="17" width="34" height="26"/>
+                                        <rect key="frame" x="63" y="17" width="34" height="26"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="34" id="3aY-gc-nBJ"/>
@@ -117,7 +117,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="dHo-Hq-mwk">
-                                        <rect key="frame" x="270" y="22" width="16" height="16"/>
+                                        <rect key="frame" x="279" y="22" width="16" height="16"/>
                                         <color key="backgroundColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="6DI-Pv-54G"/>
@@ -171,7 +171,7 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightning_icon" translatesAutoresizingMaskIntoConstraints="NO" id="adp-Up-G0m">
-                                <rect key="frame" x="71" y="567" width="36" height="32"/>
+                                <rect key="frame" x="62" y="567" width="36" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="QY6-tR-QOy"/>
                                     <constraint firstAttribute="width" constant="36" id="mde-3d-7fs"/>
@@ -295,7 +295,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvg-9A-4GE">
-                                                <rect key="frame" x="4" y="28" width="111.5" height="17.5"/>
+                                                <rect key="frame" x="4" y="28" width="111.5" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -325,7 +325,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryh-u8-IEU">
-                                                <rect key="frame" x="4" y="28" width="112" height="17.5"/>
+                                                <rect key="frame" x="4" y="28" width="112" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -355,7 +355,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zl-BM-33H">
-                                                <rect key="frame" x="4" y="28" width="111.5" height="17.5"/>
+                                                <rect key="frame" x="4" y="28" width="111.5" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -938,7 +938,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELD-E3-Yae">
-                                                <rect key="frame" x="91.5" y="10" width="247.5" height="38.5"/>
+                                                <rect key="frame" x="91.5" y="9.5" width="247.5" height="38.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="yln-Qp-rsJ"/>
                                                 </constraints>
@@ -950,7 +950,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mac, Windows, iOS, and Android" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch7-UR-ecd">
-                                                <rect key="frame" x="91.5" y="42.5" width="247.5" height="40"/>
+                                                <rect key="frame" x="91.5" y="42" width="247.5" height="41.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1043,7 +1043,7 @@
                                                 </connections>
                                             </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Only" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCU-Ip-FHE">
-                                                <rect key="frame" x="91.5" y="10" width="247.5" height="38.5"/>
+                                                <rect key="frame" x="91.5" y="9.5" width="247.5" height="38.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="tTS-OL-llY"/>
                                                 </constraints>
@@ -1055,7 +1055,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up to three of your iPhones and iPads" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gF-hr-Rzj">
-                                                <rect key="frame" x="91.5" y="42.5" width="247.5" height="40"/>
+                                                <rect key="frame" x="91.5" y="42" width="247.5" height="41.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1172,7 +1172,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xb-62-FB6">
-                                                <rect key="frame" x="106.5" y="64.5" width="63" height="24"/>
+                                                <rect key="frame" x="101" y="64.5" width="69" height="25"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                 <state key="normal" title="Privacy Policy">
                                                     <color key="titleColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1185,7 +1185,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRi-ok-YKh">
-                                                <rect key="frame" x="206" y="64.5" width="88" height="24"/>
+                                                <rect key="frame" x="205.5" y="64.5" width="97" height="25"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
                                                 <state key="normal" title="Terms &amp; Conditions">
                                                     <color key="titleColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1198,7 +1198,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxg-bE-IK7">
-                                                <rect key="frame" x="186" y="68" width="3.5" height="16.5"/>
+                                                <rect key="frame" x="185.5" y="68" width="4.5" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1657,7 +1657,7 @@
                                         <rect key="frame" x="0.0" y="267" width="375" height="300"/>
                                         <subviews>
                                             <label opaque="NO" tag="2" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdy-uC-C21" customClass="ConfirmedLabel" customModule="Lockdown" customModuleProvider="target">
-                                                <rect key="frame" x="37.5" y="-20" width="300" height="122.5"/>
+                                                <rect key="frame" x="37.5" y="-20" width="300" height="128"/>
                                                 <string key="text">Lockdown uses lightning fast algorithms completely on the device to let users limit connections to services they do not trust. For free.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1782,7 +1782,7 @@
                                         <rect key="frame" x="0.0" y="267" width="375" height="266.5"/>
                                         <subviews>
                                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGo-KU-kDG" customClass="ConfirmedLabel" customModule="Lockdown" customModuleProvider="target">
-                                                <rect key="frame" x="37.5" y="-20" width="300" height="147"/>
+                                                <rect key="frame" x="37.5" y="-20" width="300" height="110"/>
                                                 <string key="text">(Coming Soon) Upgrade to Lockdown VPN, the only VPN that can prove it's privacy policy: zero logging of any personal data or information.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1992,7 +1992,7 @@
                                         <rect key="frame" x="0.0" y="267" width="375" height="266.5"/>
                                         <subviews>
                                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lockdown is the simple, powerful on-device firewall for your phone. Free and open source." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4b-sZ-Gy4" customClass="ConfirmedLabel" customModule="Lockdown" customModuleProvider="target">
-                                                <rect key="frame" x="37.5" y="0.0" width="300" height="107.5"/>
+                                                <rect key="frame" x="37.5" y="0.0" width="300" height="112.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="23"/>
                                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2597,7 +2597,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.34999999999999998" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rg7-oq-8EX">
-                                <rect key="frame" x="28" y="86.5" width="319" height="308"/>
+                                <rect key="frame" x="28" y="86.5" width="319" height="362.5"/>
                                 <string key="text">Everything Lockdown does stays on your phone, so no data is transmitted to any of our servers. This can be confirmed by checking our source code, which is 100% open and public for anyone to examine. Lockdown doesn't use any type of third party analytics, trackers, or APIs, so there's no risk of your data leaking to third parties. This means there's no Google Analytics, no Facebook Pixel, no Mixpanel, Fabric, Mailchimp, etc — nada.  Tl;dr: Everything stays on your device, and what you see is literally what you get, and nothing more or less, because that's the way it should be.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16.5"/>
                                 <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
@@ -2683,7 +2683,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whitelist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agz-pH-D2H">
-                                                <rect key="frame" x="97.5" y="21.5" width="180" height="23.5"/>
+                                                <rect key="frame" x="97.5" y="21" width="180" height="24.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="DnP-Qg-hCq">
                                                         <variation key="heightClass=regular-widthClass=regular" constant="300"/>
@@ -2718,7 +2718,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEL-fV-wRa">
-                                                            <rect key="frame" x="47" y="10" width="281" height="114.5"/>
+                                                            <rect key="frame" x="47" y="10" width="281" height="119.5"/>
                                                             <string key="text">Certain websites don't operate well with a VPN or specifically block a VPN's use. For the most seamless experience, we recommend not sending this small percentage of traffic through a VPN. This is configurable and you can add or remove sites as you would like.</string>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                                             <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3310,7 +3310,7 @@
                                         <rect key="frame" x="0.0" y="267" width="375" height="333.5"/>
                                         <subviews>
                                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="260" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b81-0P-0Mt" customClass="ConfirmedLabel" customModule="Lockdown" customModuleProvider="target">
-                                                <rect key="frame" x="28" y="-25" width="319" height="122.5"/>
+                                                <rect key="frame" x="28" y="-25" width="319" height="110"/>
                                                 <string key="text">Everything stays on your device, and what you see is literally what you get, and nothing more or less, because that's the way it should be.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3387,7 +3387,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-Lq-o7k">
-                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <rect key="frame" x="0.0" y="72.5" width="375" height="594.5"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IPAddressCell" id="AuB-Co-Hv3" userLabel="IPAddressCell" customClass="FeatureCell" customModule="Lockdown" customModuleProvider="target">
@@ -3437,7 +3437,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42e-yG-VLg">
-                                                    <rect key="frame" x="82" y="33" width="223" height="82"/>
+                                                    <rect key="frame" x="82" y="33" width="223" height="85.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <string key="text">Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. </string>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -3524,7 +3524,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upL-BX-BCS">
-                                                    <rect key="frame" x="82" y="33" width="223" height="82"/>
+                                                    <rect key="frame" x="82" y="33" width="223" height="85.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <string key="text">Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. </string>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -3611,7 +3611,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTq-mf-eoG">
-                                                    <rect key="frame" x="82" y="33" width="223" height="82"/>
+                                                    <rect key="frame" x="82" y="33" width="223" height="85.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <string key="text">Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. </string>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -3698,7 +3698,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCp-MF-Ozw">
-                                                    <rect key="frame" x="82" y="33" width="223" height="82"/>
+                                                    <rect key="frame" x="82" y="33" width="223" height="85.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <string key="text">Your IP address is a uniquely identifiable number to track your activities. Confirmed masks this number to let you browse anonymously. </string>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -3805,7 +3805,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmed VPN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ari-H5-3gJ">
-                                <rect key="frame" x="87.5" y="33.5" width="200" height="23.5"/>
+                                <rect key="frame" x="87.5" y="33" width="200" height="24.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="R0z-hX-y9k">
                                         <variation key="heightClass=regular-widthClass=regular" constant="250"/>
@@ -4102,7 +4102,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="ViV-f2-U7q">
-                                <rect key="frame" x="37.5" y="148" width="300" height="111"/>
+                                <rect key="frame" x="37.5" y="148" width="300" height="116"/>
                                 <string key="text">Tap the circle to agree to our simple Privacy Policy. Because Lockdown is on-device, nothing is ever shared with third parties or our servers.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4137,7 +4137,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI5-1h-PO3">
-                                <rect key="frame" x="86" y="499" width="100.5" height="20"/>
+                                <rect key="frame" x="86" y="498.5" width="113.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4146,7 +4146,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Trg-Y5-SGU">
-                                <rect key="frame" x="190.5" y="493" width="107" height="32"/>
+                                <rect key="frame" x="203.5" y="492.5" width="116" height="33"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <state key="normal" title="Privacy Policy">
                                     <color key="titleColor" red="0.0" green="0.67751116069999995" blue="0.90461090690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4422,7 +4422,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Blocking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7X-fW-T55">
-                                                <rect key="frame" x="77.5" y="23.5" width="220" height="20"/>
+                                                <rect key="frame" x="77.5" y="23" width="220" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="220" id="pVN-o7-Kzb">
                                                         <variation key="heightClass=regular-widthClass=regular" constant="300"/>
@@ -4454,7 +4454,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MD7-QB-pAR">
-                                                            <rect key="frame" x="19" y="15.5" width="337.5" height="49"/>
+                                                            <rect key="frame" x="19" y="14.5" width="337.5" height="51.5"/>
                                                             <string key="text">Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown includes pre-configured defaults.</string>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                                             <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
