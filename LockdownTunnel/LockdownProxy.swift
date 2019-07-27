@@ -19,6 +19,7 @@ public final class LockdownProxy: GCDProxyServer {
      - parameter socket: The accepted socket.
      */
     override public func handleNewGCDSocket(_ socket: GCDTCPSocket) {
+        
         let defaults = Global.sharedUserDefaults()
         
         let metricsEnabled = defaults.bool(forKey: "LockdownMetricsEnabled")

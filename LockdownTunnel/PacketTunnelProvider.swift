@@ -7,6 +7,93 @@
 
 import NetworkExtension
 import NEKit
+import CocoaLumberjackSwift
+
+class LDObserverFactory: ObserverFactory {
+    
+    override func getObserverForProxySocket(_ socket: ProxySocket) -> Observer<ProxySocketEvent>? {
+        return LDProxySocketObserver();
+    }
+    
+    class LDProxySocketObserver: Observer<ProxySocketEvent> {
+        
+        var defaults: UserDefaults;
+        let formatter = DateFormatter();
+        
+        let kTotalMetrics = "LockdownTotalMetrics"
+        let kDayMetrics = "LockdownDayMetrics"
+        let kActiveDay = "LockdownActiveDay"
+        let kDayLogs = "LockdownDayLogs"
+        let kWeekMetrics = "LockdownWeekMetrics"
+        let kActiveWeek = "LockdownActiveWeek"
+        let kDayLogsMaxSize = 5000;
+        let kDayLogsMaxReduction = 4500;
+        
+        override init() {
+            formatter.dateFormat = "h:mm a_";
+            defaults = Global.sharedUserDefaults()
+        }
+        
+        override func signal(_ event: ProxySocketEvent) {
+            switch event {
+            case .receivedRequest(let session, let socket):
+                incrementMetricsAndLog(log: session.host);
+                DDLogInfo("session host: \(session.host) Rule: \(session.matchedRule?.description ?? "")");
+                socket.forceDisconnect();
+                break;
+            default:
+                break;
+            }
+        }
+        
+        func incrementMetricsAndLog(log: String) {
+            let metricsEnabled = defaults.bool(forKey: "LockdownMetricsEnabled")
+            if metricsEnabled {
+                let date = Date()
+                let calendar = Calendar.current
+                
+                // set total
+                let total = defaults.integer(forKey: kTotalMetrics)
+                defaults.set(Int(total + 1), forKey: kTotalMetrics)
+                
+                // set day metric and log
+                let currentDay = calendar.component(.day, from: date)
+                if currentDay != defaults.integer(forKey: kActiveDay) { // reset metrics/log on new day
+                    defaults.set(0, forKey: kDayMetrics)
+                    defaults.set(currentDay, forKey: kActiveDay)
+                    defaults.set([], forKey:kDayLogs);
+                }
+                // set day metric
+                let day = defaults.integer(forKey: kDayMetrics)
+                defaults.set(Int(day + 1), forKey: kDayMetrics)
+                
+                // set day log
+                let logString = formatter.string(from: date) + log;
+                if var dayLog = defaults.array(forKey: kDayLogs) {
+                    if dayLog.count > kDayLogsMaxSize {
+                        dayLog = dayLog.suffix(kDayLogsMaxReduction);
+                    }
+                    dayLog.append(logString);
+                    defaults.set(dayLog, forKey: kDayLogs);
+                }
+                else {
+                    defaults.set([logString], forKey: kDayLogs);
+                }
+                
+                // set this week
+                let currentWeek = calendar.component(.weekOfYear, from: date)
+                if currentWeek != defaults.integer(forKey: kActiveWeek) { //reset metrics on new day
+                    defaults.set(0, forKey: kWeekMetrics)
+                    defaults.set(currentWeek, forKey: kActiveWeek)
+                }
+                
+                let weekly = defaults.integer(forKey: kWeekMetrics)
+                defaults.set(Int(weekly + 1), forKey: kWeekMetrics)
+            }
+        }
+    }
+    
+}
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
@@ -35,17 +122,20 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
         proxySettings.matchDomains = getLockdownRules() // ["*.apple.com", "*.confirmedvpn.com", "*.ipchicken.com"]
-        proxySettings.autoProxyConfigurationEnabled = true
-        proxySettings.proxyAutoConfigurationJavaScript = "function FindProxyForURL(url, host) { return \"127.0.0.1:9090\"; }"
+//        proxySettings.autoProxyConfigurationEnabled = true
+//        proxySettings.proxyAutoConfigurationJavaScript = "function FindProxyForURL(url, host) { return \"127.0.0.1:9090\"; }"
         
         settings.dnsSettings = NEDNSSettings.init(servers: ["127.0.0.1"])
         settings.proxySettings = proxySettings;
         RawSocketFactory.TunnelProvider = self
+        ObserverFactory.currentFactory = LDObserverFactory();
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
-            self.proxyServer = LockdownProxy.init(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+            self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+            //self.proxyServer = LockdownProxy.init(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
             
             try? self.proxyServer.start()
+            
             //print("confirmed.lockdown.tunnel: error on start: \(String(describing: error))")
             completionHandler(error)
         })
@@ -261,6 +351,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     let proxyServerPort : UInt16 = 9090;
     let proxyServerAddress = "127.0.0.1";
-    var proxyServer: LockdownProxy!
+    var proxyServer: GCDHTTPProxyServer!
     
 }

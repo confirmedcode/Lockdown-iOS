@@ -16,6 +16,8 @@
 		3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
 		3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */; };
 		3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */; };
+		3D970DAD22EC149D00F9CC93 /* BlockLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D970DAC22EC149D00F9CC93 /* BlockLogTableViewCell.swift */; };
+		3D970DAF22EC15D800F9CC93 /* BlockLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D970DAE22EC15D800F9CC93 /* BlockLogTableViewController.swift */; };
 		3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B4E22EA76420018FC09 /* clickbait.txt */; };
 		3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B5222EA988F0018FC09 /* ransomware.txt */; };
 		A101106D202B9D4300807612 /* ConfirmedBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* ConfirmedBaseViewController.swift */; };
@@ -254,6 +256,8 @@
 		3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		3D970DAC22EC149D00F9CC93 /* BlockLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogTableViewCell.swift; sourceTree = "<group>"; };
+		3D970DAE22EC15D800F9CC93 /* BlockLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogTableViewController.swift; sourceTree = "<group>"; };
 		3DAA6B4E22EA76420018FC09 /* clickbait.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
 		3DAA6B5222EA988F0018FC09 /* ransomware.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
 		428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
@@ -720,6 +724,7 @@
 				A154A067215C6C180010FFCC /* SideMenuCell.swift */,
 				A154A07B215C76AD0010FFCC /* AdBlockerCell.swift */,
 				A154A07D215C78180010FFCC /* WhitelistCell.swift */,
+				3D970DAC22EC149D00F9CC93 /* BlockLogTableViewCell.swift */,
 				A154A07F215C7A8C0010FFCC /* WhitelistAddCell.swift */,
 				A1FCDA5E22C14EB800C928BC /* LockdownGroupTableViewCell.swift */,
 			);
@@ -767,6 +772,7 @@
 			isa = PBXGroup;
 			children = (
 				A1FCDA5C22C1301900C928BC /* LockdownDetailViewController.swift */,
+				3D970DAE22EC15D800F9CC93 /* BlockLogTableViewController.swift */,
 				A174CCAD22B15B1000F1B840 /* LockdownViewController.swift */,
 				A1CD1F1C1F782A1A006A43FE /* SideMenuViewController.swift */,
 				A1E912121FE55CBE00C236DB /* AddWidgetViewController.swift */,
@@ -1379,6 +1385,7 @@
 				A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */,
 				A1EBEACD2097AE6E002B9087 /* M13CheckboxFadeController.swift in Sources */,
 				A1EBEAD72097AE6E002B9087 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				3D970DAD22EC149D00F9CC93 /* BlockLogTableViewCell.swift in Sources */,
 				A13108872153DE7100501527 /* SharedUtils.swift in Sources */,
 				A1329D70209A633E00EEEEE8 /* PostboardingViewController.swift in Sources */,
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
@@ -1410,6 +1417,7 @@
 				A10805292027B88300F5AD37 /* SignInViewController.swift in Sources */,
 				A154A075215C71910010FFCC /* AccountSignoutCell.swift in Sources */,
 				A1E7481A1F9108B6004B8021 /* TunnelSpeed.swift in Sources */,
+				3D970DAF22EC15D800F9CC93 /* BlockLogTableViewController.swift in Sources */,
 				A154A06D215C6E7B0010FFCC /* AccountEmailCell.swift in Sources */,
 				A1EBEADB2097AE6E002B9087 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				A1DBA18821B77C75008A9322 /* Utils.swift in Sources */,

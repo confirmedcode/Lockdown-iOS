@@ -227,6 +227,8 @@ class Global {
     ]
     
     //MARK: - USER DEFAULTS
+    static let kDayLogs = "LockdownDayLogs"
+    
     static let kAdBlockingEnabled = "AdBlockingEnabled" //content blocker: should block ads
     static let kScriptBlockingEnabled = "PrivacyBlockingEnabled" //content blocker: should block tracking scripts
     static let kSocialBlockingEnabled = "SocialBlockingEnabled" //content blocker: should block social domains

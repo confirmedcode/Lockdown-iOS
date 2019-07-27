@@ -502,12 +502,12 @@ class VPNViewController: ConfirmedBaseViewController, BWWalkthroughViewControlle
         let metricsEnabled = defaults.bool(forKey: "LockdownMetricsEnabled")
         if metricsEnabled {
             self.enableMetricsButton?.isHidden = true
-            self.metricsTitle?.isHidden = false
+            self.viewBlockLog?.isHidden = false
             self.metricsStackView?.isHidden = false
         }
         else {
             self.enableMetricsButton?.isHidden = false
-            self.metricsTitle?.isHidden = true
+            self.viewBlockLog?.isHidden = true
             self.metricsStackView?.isHidden = true
         }
         
@@ -799,7 +799,7 @@ class VPNViewController: ConfirmedBaseViewController, BWWalkthroughViewControlle
     @IBOutlet weak var lockdownDescription: UILabel?
     
     @IBOutlet weak var enableMetricsButton: UIButton?
-    @IBOutlet weak var metricsTitle: UILabel?
+    @IBOutlet weak var viewBlockLog: UIButton!
     @IBOutlet weak var metricsStackView: UIView?
     
     @IBOutlet weak var dailyMetrics: UILabel?
