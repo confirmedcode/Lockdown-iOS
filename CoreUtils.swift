@@ -171,6 +171,66 @@ class CoreUtils: NSObject {
         return domains
     }
     
+    static func loadEasylistDomains() -> Dictionary<String, Bool> {
+        var domains = [String : Bool]()
+        guard let path = Bundle.main.path(forResource: "easylist_domains", ofType: "csv") else {
+            return domains
+        }
+        
+        do {
+            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
+            let lines = content.components(separatedBy: "\n")
+            for line in lines {
+                if line.contains(".") {
+                    domains[line] = true
+                }
+            }
+        } catch _ as NSError {
+        }
+        
+        return domains
+    }
+    
+    static func loadEasyprivacyDomains() -> Dictionary<String, Bool> {
+        var domains = [String : Bool]()
+        guard let path = Bundle.main.path(forResource: "easyprivacy_domains", ofType: "csv") else {
+            return domains
+        }
+        
+        do {
+            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
+            let lines = content.components(separatedBy: "\n")
+            for line in lines {
+                if line.contains(".") {
+                    domains[line] = true
+                }
+            }
+        } catch _ as NSError {
+        }
+        
+        return domains
+    }
+    
+    static func loadGoogleTrackingDomains() -> Dictionary<String, Bool> {
+        var domains = [String : Bool]()
+        guard let path = Bundle.main.path(forResource: "google_domains", ofType: "csv") else {
+            return domains
+        }
+        
+        do {
+            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
+            let lines = content.components(separatedBy: "\n")
+            for line in lines {
+                if line.contains(".") {
+                    domains[line] = true
+                }
+            }
+        } catch _ as NSError {
+        }
+        
+        return domains
+    }
+    
     static func setupLockdownDefaults() {
         
         let defaults = Global.sharedUserDefaults()
@@ -230,7 +290,38 @@ class CoreUtils: NSObject {
             domains: loadEmailTrackingDomains(),
             ipRanges: [:])
         
-        let defaultLockdownSettings = [crypto, emailTrackingPixels, facebookApps, facebookSDK, marketingScripts]
+        // GITHUB ISSUE FIX: https://github.com/confirmedcode/lockdown-ios/issues/1
+        let Easylist = LockdownGroup.init(
+            version: 1,
+            internalID: "easylist",
+            name: "EasyList",
+            iconURL: "lockdown_icon",
+            //enabled: true,
+            enabled: false,
+            domains: loadEasylistDomains(),
+            ipRanges: [:])
+        
+        let Easyprivacy = LockdownGroup.init(
+            version: 1,
+            internalID: "easyprivacy",
+            name: "EasyPrivacy",
+            iconURL: "lockdown_icon",
+            //enabled: true,
+            enabled: false,
+            domains: loadEasyprivacyDomains(),
+            ipRanges: [:])
+        
+        // GITHUB ISSUE FIX: https://github.com/confirmedcode/lockdown-ios/issues/16
+        let Googletracking = LockdownGroup.init(
+            version: 1,
+            internalID: "googletracking",
+            name: "Google Tracking",
+            iconURL: "lockdown_icon",
+            enabled: false,
+            domains: loadGoogleTrackingDomains(),
+            ipRanges: [:])
+        
+        let defaultLockdownSettings = [crypto, emailTrackingPixels, facebookApps, facebookSDK, marketingScripts, Easylist, Easyprivacy, Googletracking]
         
         
         for var def in defaultLockdownSettings {
