@@ -29,6 +29,8 @@ class LDObserverFactory: ObserverFactory {
         let kDayLogsMaxSize = 5000;
         let kDayLogsMaxReduction = 4500;
         
+        let lockdowns = getLockdownRules()
+        
         override init() {
             formatter.dateFormat = "h:mm a_";
             defaults = Global.sharedUserDefaults()
@@ -37,12 +39,17 @@ class LDObserverFactory: ObserverFactory {
         override func signal(_ event: ProxySocketEvent) {
             switch event {
             case .receivedRequest(let session, let socket):
-                incrementMetricsAndLog(log: session.host);
-                DDLogInfo("session host: \(session.host) Rule: \(session.matchedRule?.description ?? "")");
-                socket.forceDisconnect();
-                break;
+                for domain in lockdowns {
+                    if session.host.hasSuffix("." + domain) || session.host == domain{
+                        incrementMetricsAndLog(log: session.host);
+                        DDLogInfo("session host: \(session.host) Rule: \(session.matchedRule?.description ?? "")")
+                        socket.forceDisconnect()
+                        return
+                    }
+                }
+                break
             default:
-                break;
+                break
             }
         }
         
@@ -107,9 +114,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxyServer = nil
         let settings = NEPacketTunnelNetworkSettings.init(tunnelRemoteAddress: proxyServerAddress)
         let ipv4Settings = NEIPv4Settings.init(addresses: ["10.0.0.8"], subnetMasks: ["255.255.255.0"])
-        ipv4Settings.includedRoutes = getLockdownIPs()
+        ipv4Settings.includedRoutes = [NEIPv4Route.default()]
         let ipv6Settings = NEIPv6Settings.init(addresses: ["fe80:1ca8:5ee3:4d6d:aaf5"], networkPrefixLengths: [64])
-        ipv6Settings.includedRoutes = getLockdownIPv6()
+        ipv6Settings.includedRoutes = [NEIPv6Route.default()]
         settings.ipv4Settings = ipv4Settings;
         settings.ipv6Settings = ipv6Settings;
         settings.mtu = NSNumber.init(value: 1500)
@@ -121,22 +128,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.httpsServer = NEProxyServer.init(address: proxyServerAddress, port: Int(proxyServerPort))
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
-        proxySettings.matchDomains = getLockdownRules() // ["*.apple.com", "*.confirmedvpn.com", "*.ipchicken.com"]
-//        proxySettings.autoProxyConfigurationEnabled = true
-//        proxySettings.proxyAutoConfigurationJavaScript = "function FindProxyForURL(url, host) { return \"127.0.0.1:9090\"; }"
+        proxySettings.matchDomains = nil
+        proxySettings.autoProxyConfigurationEnabled = true
+        proxySettings.proxyAutoConfigurationJavaScript = getJavascriptProxyForRules()
         
-        settings.dnsSettings = NEDNSSettings.init(servers: ["127.0.0.1"])
         settings.proxySettings = proxySettings;
         RawSocketFactory.TunnelProvider = self
         ObserverFactory.currentFactory = LDObserverFactory();
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
             self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
-            //self.proxyServer = LockdownProxy.init(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
             
             try? self.proxyServer.start()
-            
-            //print("confirmed.lockdown.tunnel: error on start: \(String(describing: error))")
             completionHandler(error)
         })
     }
@@ -176,56 +179,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let lockdowns = getLockdownRules()
         
         if domains.count == 0 && lockdowns.count == 0 {
-            return "function FindProxyForURL(url, host) { return \"127.0.0.1:123\" }"
+            return "function FindProxyForURL(url, host) { return \"DIRECT\" }"
         }
         else {
-            
-            //forced URLs to go through VPN (right now just IP address to show to user)
-            let forcedVPNConditions = "dnsDomainIs(host, \"ip.confirmedvpn.com\")"
-            
-            var conditions = ""
-            for (index, domain) in domains.enumerated() {
-                if index > 0 {
-                    conditions = conditions + " || "
-                }
-                let formattedDomain = domain.replacingOccurrences(of: "*.", with: "")
-                conditions = conditions + "dnsDomainIs(host, \"" + formattedDomain + "\")"
-            }
-            
-            var lockdownConditions = ""
-            for (index, domain) in lockdowns.enumerated() {
-                if index > 0 {
-                    lockdownConditions = lockdownConditions + " || "
-                }
-                let formattedDomain = domain.replacingOccurrences(of: "*.", with: "")
-                lockdownConditions = lockdownConditions + "dnsDomainIs(host, \"" + formattedDomain + "\")"
-            }
-            
-            return "function FindProxyForURL(url, host) { return \"127.0.0.1:123\"; }"
+            let proxyString = "function FindProxyForURL(url, host) { return \"PROXY 127.0.0.1\"; }"
+            return proxyString
         }
-    }
-    
-    func getUserLockdown() -> Dictionary<String, Any> {
-        let defaults = UserDefaults(suiteName: "group.com.confirmed")!
-        
-        if let domains = defaults.dictionary(forKey:Global.kUserLockdownDomains) {
-            return domains
-        }
-        return Dictionary()
-    }
-    
-    func getConfirmedLockdown() -> LockdownDefaults {
-        let defaults = UserDefaults(suiteName: "group.com.confirmed")!
-        
-        guard let lockdownDefaultsData = defaults.object(forKey: Global.kConfirmedLockdownDomains) as? Data else {
-            return LockdownDefaults.init(lockdownDefaults: [:])
-        }
-        
-        guard let lockdownDefaults = try? PropertyListDecoder().decode(LockdownDefaults.self, from: lockdownDefaultsData) else {
-            return LockdownDefaults.init(lockdownDefaults: [:])
-        }
-        
-        return lockdownDefaults
     }
     
     //ipV4 only
@@ -263,40 +222,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
         }
         return ipRoutes
-    }
-    
-    func getLockdownRules() -> Array<String> {
-        let domains = getConfirmedLockdown()
-        let userDomains = getUserLockdown()
-        
-        var whitelistedDomains = Array<String>.init()
-        
-        //combine user rules with confirmed rules
-        for (ldKey, ldValue) in domains.lockdownDefaults {
-            if ldValue.enabled {
-                for (key, value) in ldValue.domains {
-                    if value {
-                        var formattedKey = key
-                        if key.split(separator: ".").count == 1 {
-                            formattedKey = "*." + key //wildcard for two part domains
-                        }
-                        whitelistedDomains.append(formattedKey)
-                    }
-                }
-            }
-        }
-        
-        for (key, value) in userDomains {
-            if (value as AnyObject).boolValue {
-                var formattedKey = key
-                if key.split(separator: ".").count == 1 {
-                    formattedKey = "*." + key
-                }
-                whitelistedDomains.append(formattedKey)
-            }
-        }
-        
-        return whitelistedDomains
     }
     
     func getConfirmedWhitelist() -> Dictionary<String, Any> {
@@ -353,4 +278,61 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let proxyServerAddress = "127.0.0.1";
     var proxyServer: GCDHTTPProxyServer!
     
+}
+
+func getUserLockdown() -> Dictionary<String, Any> {
+    let defaults = UserDefaults(suiteName: "group.com.confirmed")!
+    
+    if let domains = defaults.dictionary(forKey:Global.kUserLockdownDomains) {
+        return domains
+    }
+    return Dictionary()
+}
+
+func getConfirmedLockdown() -> LockdownDefaults {
+    let defaults = UserDefaults(suiteName: "group.com.confirmed")!
+    
+    guard let lockdownDefaultsData = defaults.object(forKey: Global.kConfirmedLockdownDomains) as? Data else {
+        return LockdownDefaults.init(lockdownDefaults: [:])
+    }
+    
+    guard let lockdownDefaults = try? PropertyListDecoder().decode(LockdownDefaults.self, from: lockdownDefaultsData) else {
+        return LockdownDefaults.init(lockdownDefaults: [:])
+    }
+    
+    return lockdownDefaults
+}
+
+func getLockdownRules() -> Array<String> {
+    let domains = getConfirmedLockdown()
+    let userDomains = getUserLockdown()
+    
+    var whitelistedDomains = Array<String>.init()
+    
+    //combine user rules with confirmed rules
+    for (ldKey, ldValue) in domains.lockdownDefaults {
+        if ldValue.enabled {
+            for (key, value) in ldValue.domains {
+                if value {
+                    var formattedKey = key
+                    if key.split(separator: ".").count == 1 {
+                        formattedKey = "*." + key //wildcard for two part domains
+                    }
+                    whitelistedDomains.append(formattedKey)
+                }
+            }
+        }
+    }
+    
+    for (key, value) in userDomains {
+        if (value as AnyObject).boolValue {
+            var formattedKey = key
+            if key.split(separator: ".").count == 1 {
+                formattedKey = "*." + key
+            }
+            whitelistedDomains.append(formattedKey)
+        }
+    }
+    
+    return whitelistedDomains
 }
