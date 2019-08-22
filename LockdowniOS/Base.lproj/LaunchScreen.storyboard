@@ -20,21 +20,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockdown_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Fo6-bY-Nhu">
-                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Bck-13-ONq"/>
-                                    <constraint firstAttribute="width" constant="150" id="d1M-pY-E2b"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Fo6-bY-Nhu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fU7-46-UMl"/>
-                            <constraint firstItem="Fo6-bY-Nhu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="woF-0W-FXG"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -42,7 +28,4 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="lockdown_icon" width="512" height="512"/>
-    </resources>
 </document>

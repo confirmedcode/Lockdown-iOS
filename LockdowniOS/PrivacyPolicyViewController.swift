@@ -1,42 +1,74 @@
 //
-//  PrivacyPlicyViewController.swift
-//  Tunnels
+//  PrivacyPolicyViewController.swift
+//  Lockdown
 //
-//  Copyright © 2018 Confirmed Inc. All rights reserved.
+//  Created by Johnny Lin on 8/9/19.
+//  Copyright © 2019 Confirmed Inc. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import PopupDialog
 
-class PrivacyPolicyViewController: ConfirmedBaseViewController {
+let kHasAgreedToFirewallPrivacyPolicy = "kHasAgreedToFirewallPrivacyPolicy"
+let kHasAgreedToVPNPrivacyPolicy = "kHasAgreedToVPNPrivacyPolicy"
 
-    //MARK: - OVERRIDE
+class PrivacyPolicyViewController: BaseViewController {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var getStartedButton: UIButton!
+    @IBOutlet weak var privacyPolicyWrap: UIView!
+    @IBOutlet weak var privacyPolicyCheckbox: M13Checkbox!
+    @IBOutlet weak var checkbox: M13Checkbox!
+    @IBOutlet weak var whyTrustButton: UIButton!
+    
+    var parentVC: HomeViewController? = nil
+    var privacyPolicyKey = kHasAgreedToFirewallPrivacyPolicy
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    //MARK: - ACTION
-    @IBAction func goToPrivacyPolicy () {
-        dismissView()
-        UIApplication.shared.open(URL(string: "https://lockdownhq.com/privacy")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+        self.getStartedButton.backgroundColor = .gray
     }
     
-    @IBAction func goToAuditReports(_ sender: Any) {
-        dismissView()
-        UIApplication.shared.open(URL(string: "https://openlyoperated.org/report/confirmedvpn")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+    @IBAction func getStartedTapped(_ sender: Any) {
+        if (checkbox.checkState == .unchecked) {
+            showPopupDialog(title: "Privacy Policy", message: "Please tap the checkbox circle to agree to the Privacy Policy in order to continue.", acceptButton: "Okay")
+        }
+        else {
+            defaults.set(true, forKey: privacyPolicyKey)
+            if (privacyPolicyKey == kHasAgreedToFirewallPrivacyPolicy) {
+                self.dismiss(animated: true, completion: {
+                    self.parentVC?.toggleFirewall(self)
+                })
+            }
+            else {
+                self.dismiss(animated: true, completion: {
+                    self.parentVC?.toggleVPN(self)
+                })
+            }
+        }
     }
     
-    @IBAction func dismissView() {
+    @IBAction func checkboxTapped(_ sender: Any) {
+        if checkbox.checkState == .checked {
+            self.getStartedButton.backgroundColor = .tunnelsBlue
+        }
+        else {
+            self.getStartedButton.backgroundColor = .gray
+        }
+    }
+    
+    @IBAction func privacyPolicyTapped(_ sender: Any) {
+        showPrivacyPolicyModal()
+    }
+    
+    @IBAction func whyTrustTapped(_ sender: Any) {
+        showWhyTrustPopup()
+    }
+    
+    @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

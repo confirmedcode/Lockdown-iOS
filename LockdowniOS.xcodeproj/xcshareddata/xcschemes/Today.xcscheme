@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A12473F21FE44284008493B8"
-               BuildableName = "Today.appex"
-               BlueprintName = "Today"
+               BuildableName = "Lockdown VPN Widget.appex"
+               BlueprintName = "Lockdown VPN Widget"
                ReferencedContainer = "container:LockdowniOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A12473F21FE44284008493B8"
-            BuildableName = "Today.appex"
-            BlueprintName = "Today"
+            BuildableName = "Lockdown VPN Widget.appex"
+            BlueprintName = "Lockdown VPN Widget"
             ReferencedContainer = "container:LockdowniOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,16 +67,26 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1141A101F46230500F54698"
-            BuildableName = "Lockdown.app"
-            BlueprintName = "Lockdown"
+            BlueprintIdentifier = "A12473F21FE44284008493B8"
+            BuildableName = "Lockdown VPN Widget.appex"
+            BlueprintName = "Lockdown VPN Widget"
             ReferencedContainer = "container:LockdowniOS.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A12473F21FE44284008493B8"
+            BuildableName = "Lockdown VPN Widget.appex"
+            BlueprintName = "Lockdown VPN Widget"
+            ReferencedContainer = "container:LockdowniOS.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

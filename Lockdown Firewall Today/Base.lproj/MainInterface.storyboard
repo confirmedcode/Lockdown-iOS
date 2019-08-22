@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Firewall Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="FirewallTodayViewController" customModule="Lockdown_Firewall_Widget" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="kGM-8K-W6P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-w1-E1e">
+                                <rect key="frame" x="32" y="23.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="0Zx-bN-BFD"/>
+                                    <constraint firstAttribute="height" constant="60" id="vyz-mj-SDZ"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="power_button_padded"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleFirewallButtonWithSender:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="QnU-rp-wqg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firewall Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pC-80-fVF">
+                                <rect key="frame" x="116" y="26" width="196" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="i3c-p6-QXz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbb-eR-jl5">
+                                <rect key="frame" x="116" y="51" width="185" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="LZK-Nm-HfK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PT0-Mi-sJG">
+                                <rect key="frame" x="80" y="111" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="0.14428367080000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="UXD-oo-q6p"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="jCc-47-8be"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Open Lockdown">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openLockdownWithSender:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="aji-eE-35j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Vbb-eR-jl5" firstAttribute="top" secondItem="1pC-80-fVF" secondAttribute="bottom" constant="5" id="6Kr-V9-3lR"/>
+                            <constraint firstItem="XHh-w1-E1e" firstAttribute="leading" secondItem="O1u-bP-sJj" secondAttribute="leading" constant="32" id="AY6-aE-gWW"/>
+                            <constraint firstItem="O1u-bP-sJj" firstAttribute="trailing" secondItem="Vbb-eR-jl5" secondAttribute="trailing" constant="19" id="JQj-A9-wnL"/>
+                            <constraint firstItem="1pC-80-fVF" firstAttribute="leading" secondItem="XHh-w1-E1e" secondAttribute="trailing" constant="24" id="KT0-cF-hUK"/>
+                            <constraint firstItem="1pC-80-fVF" firstAttribute="top" secondItem="O1u-bP-sJj" secondAttribute="top" constant="26" id="UAG-hO-vyJ"/>
+                            <constraint firstItem="O1u-bP-sJj" firstAttribute="trailing" secondItem="1pC-80-fVF" secondAttribute="trailing" constant="8" id="aON-6j-U5r"/>
+                            <constraint firstItem="PT0-Mi-sJG" firstAttribute="top" secondItem="Vbb-eR-jl5" secondAttribute="bottom" constant="44" id="hv3-F6-5C3"/>
+                            <constraint firstItem="PT0-Mi-sJG" firstAttribute="centerX" secondItem="O1u-bP-sJj" secondAttribute="centerX" id="uUu-1x-Qfv"/>
+                            <constraint firstItem="Vbb-eR-jl5" firstAttribute="leading" secondItem="1pC-80-fVF" secondAttribute="leading" id="vQm-gt-7Ja"/>
+                            <constraint firstItem="XHh-w1-E1e" firstAttribute="top" secondItem="O1u-bP-sJj" secondAttribute="top" constant="23.5" id="xbA-Qm-yh8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O1u-bP-sJj"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="170"/>
+                    <connections>
+                        <outlet property="blockedTodayLabel" destination="Vbb-eR-jl5" id="G52-Q0-mJg"/>
+                        <outlet property="firewallStatusLabel" destination="1pC-80-fVF" id="xkb-HT-RpG"/>
+                        <outlet property="toggleFirewall" destination="XHh-w1-E1e" id="JyS-um-smB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.80000000000001" y="133.13343328335833"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="power_button_padded" width="288" height="288"/>
+    </resources>
+</document>

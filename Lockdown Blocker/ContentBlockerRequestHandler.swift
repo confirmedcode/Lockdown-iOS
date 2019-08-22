@@ -2,7 +2,7 @@
 //  ContentBlockerRequestHandler.swift
 //  Confirmed Blocker
 //
-//  Copyright © 2018 Confirmed Inc. All rights reserved.
+//  Copyright © 2019 Confirmed Inc. All rights reserved.
 //
 
 import UIKit

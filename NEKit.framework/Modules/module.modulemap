@@ -1,4 +1,0 @@
-framework module NEKit {
-    header "NEKit-Swift.h"
-    requires objc
-}

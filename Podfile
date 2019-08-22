@@ -4,44 +4,46 @@ use_frameworks!
 platform :ios, '11.0'
 
 target :'Lockdown' do
-    pod 'ReachabilitySwift'
-    pod 'SwiftMessages', '6.0.0'
-    pod 'PromiseKit'
-    pod 'PromiseKit/Alamofire', '~> 6.0'
-    pod 'SwiftyStoreKit', '0.13.1'
-    pod 'CNPPopupController'
-    pod 'LGSideMenuController', '2.1.1'
-    pod 'Alamofire'
-    pod 'SkyFloatingLabelTextField', '~> 3.0'
-    pod 'TextFieldEffects'
-    pod 'KeychainAccess'
-    pod 'Segmentio'
-    pod 'NVActivityIndicatorView'
-    pod 'CocoaLumberjack'
-    pod 'PopupDialog', '~> 0.9'
-    pod 'SDWebImage'
+  plugin 'cocoapods-acknowledgements', :settings_bundle => true
+  pod 'AwesomeSpotlightView'
+  pod 'RQShineLabel'
+  pod 'ReachabilitySwift'
+  pod 'SwiftMessages', '6.0.0'
+  pod 'PromiseKit'
+  pod 'SwiftyStoreKit', '0.13.1'
+  pod 'KeychainAccess'
+  pod 'CocoaLumberjack'
+  pod 'PopupDialog', '~> 0.9'
 end
 
-
 target :'LockdownTunnel' do
+  pod 'PromiseKit'
   pod 'KeychainAccess'
+  pod 'SwiftyStoreKit', '0.13.1'
+  pod 'ReachabilitySwift'
+  pod 'CocoaLumberjack'
+end
+
+target :'Lockdown VPN Widget' do
+  pod 'PromiseKit'
+  pod 'SwiftyStoreKit', '0.13.1'
+  pod 'KeychainAccess'
+  pod 'CocoaLumberjack'
   pod 'ReachabilitySwift'
 end
 
-target :'Today' do
-    pod 'PromiseKit'
-    pod 'PromiseKit/Alamofire', '~> 6.0'
-    pod 'SwiftyStoreKit', '0.13.1'
-    pod 'Alamofire'
-    pod 'KeychainAccess'
-    pod 'CocoaLumberjack'
-    pod 'ReachabilitySwift'
+target :'Lockdown Firewall Widget' do
+  pod 'PromiseKit'
+  pod 'SwiftyStoreKit', '0.13.1'
+  pod 'KeychainAccess'
+  pod 'CocoaLumberjack'
+  pod 'ReachabilitySwift'
 end
 
-post_install do |installer| 
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
-        end
-    end
-end
+# post_install do |installer|
+#   installer.pods_project.targets.each do |target|
+#     target.build_configurations.each do |config|
+#       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+#     end
+#   end
+# end

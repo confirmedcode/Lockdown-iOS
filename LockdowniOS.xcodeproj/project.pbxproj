@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D1A3D208998E194C020B353 /* Pods_Today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498BB228C9E2F1FA4AECBD3F /* Pods_Today.framework */; };
+		08799CF7AFE70CC200E47EDB /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */; };
+		20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */; };
+		3D0711B822FE79BE00391C6E /* WhyTrustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0711B722FE79BE00391C6E /* WhyTrustViewController.swift */; };
+		3D0711BB22FE7B5100391C6E /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0711BA22FE7B5100391C6E /* TitleViewController.swift */; };
 		3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */; };
 		3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D922EBAD4C00CCD326 /* marketing.txt */; };
 		3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
@@ -16,71 +19,126 @@
 		3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
 		3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */; };
 		3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */; };
-		3D970DAD22EC149D00F9CC93 /* BlockLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D970DAC22EC149D00F9CC93 /* BlockLogTableViewCell.swift */; };
-		3D970DAF22EC15D800F9CC93 /* BlockLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D970DAE22EC15D800F9CC93 /* BlockLogTableViewController.swift */; };
+		3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift */; };
+		3D47CDB022F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8622F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift */; };
+		3D47CDB122F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8722F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift */; };
+		3D47CDB222F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8922F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift */; };
+		3D47CDB322F3C3F3003BD7F7 /* NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8A22F3C3F3003BD7F7 /* NVActivityIndicatorView.swift */; };
+		3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8D22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift */; };
+		3D47CDB622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8E22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift */; };
+		3D47CDB722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD8F22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
+		3D47CDB822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */; };
+		3D47CDB922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift */; };
+		3D47CDBA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift */; };
+		3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift */; };
+		3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift */; };
+		3D47CDBD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */; };
+		3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift */; };
+		3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift */; };
+		3D47CDC022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift */; };
+		3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift */; };
+		3D47CDC222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9A22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift */; };
+		3D47CDC322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9B22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift */; };
+		3D47CDC422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9C22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift */; };
+		3D47CDC522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9D22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift */; };
+		3D47CDC622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9E22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulse.swift */; };
+		3D47CDC722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBlank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CD9F22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBlank.swift */; };
+		3D47CDC822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift */; };
+		3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift */; };
+		3D47CDCA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift */; };
+		3D47CDCB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridBeat.swift */; };
+		3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift */; };
+		3D47CDCD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift */; };
+		3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift */; };
+		3D47CDCF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift */; };
+		3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift */; };
+		3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDA922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift */; };
+		3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDAA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift */; };
+		3D47CDD322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDAB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift */; };
+		3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDAC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift */; };
+		3D47CDD522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDAD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift */; };
+		3D47CDD622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CDAE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift */; };
+		3D5464D323037CCA00AE1F73 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D5464D223037CCA00AE1F73 /* Settings.bundle */; };
+		3D5464D42303839200AE1F73 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D5464D223037CCA00AE1F73 /* Settings.bundle */; };
+		3D5464D52303839400AE1F73 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D5464D223037CCA00AE1F73 /* Settings.bundle */; };
+		3D5464D62303839500AE1F73 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D5464D223037CCA00AE1F73 /* Settings.bundle */; };
+		3D5561D4230B58F30062001D /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5561D3230B58F30062001D /* PrivacyPolicyViewController.swift */; };
+		3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
+		3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
+		3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
+		3D94AAF322FDEAC50012B0DE /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
+		3D94AAF422FDEAC80012B0DE /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
+		3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
+		3D94AAF622FDEAD60012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
+		3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
+		3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
+		3D94AB0D22FE05090012B0DE /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
+		3D94AB0E22FE05090012B0DE /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
+		3D94AB0F22FE0CF60012B0DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1141A1B1F46230500F54698 /* Assets.xcassets */; };
+		3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */; };
+		3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
+		3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
+		3D94AB1422FE3BA20012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
+		3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
+		3D970DAD22EC149D00F9CC93 /* BlockLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D970DAC22EC149D00F9CC93 /* BlockLogCell.swift */; };
+		3D970DAF22EC15D800F9CC93 /* BlockLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D970DAE22EC15D800F9CC93 /* BlockLogViewController.swift */; };
 		3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B4E22EA76420018FC09 /* clickbait.txt */; };
 		3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B5222EA988F0018FC09 /* ransomware.txt */; };
-		A101106D202B9D4300807612 /* ConfirmedBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* ConfirmedBaseViewController.swift */; };
-		A10805292027B88300F5AD37 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10805282027B88300F5AD37 /* SignInViewController.swift */; };
+		3DABD9FD22F7961F00480AAC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
+		3DABD9FF22F7AD4D00480AAC /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
+		3DABDA0022F7AD4D00480AAC /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
+		3DABDA0122F7AD4D00480AAC /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
+		3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
+		3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
+		3DAF7C5722F456F2003C8F9C /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
+		3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
+		3DAF907A22EFD70900FB29E0 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
+		3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */; };
+		3DBD57A622FBCD7A00DE189F /* WhitelistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */; };
+		3DBD57A822FBD7A100DE189F /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
+		3DBD57A922FBD7A100DE189F /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
+		3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
+		3DBD57AC22FBDFE300DE189F /* WhitelistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AB22FBDFE200DE189F /* WhitelistCell.swift */; };
+		3DBD57AE22FBE04300DE189F /* WhitelistAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AD22FBE04300DE189F /* WhitelistAddCell.swift */; };
+		3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		3DBD57B122FC14CD00DE189F /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57B322FCFF2400DE189F /* SetRegionViewController.swift */; };
+		3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57B522FD00BB00DE189F /* SetRegionCell.swift */; };
+		3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */; };
+		3DBD57BF22FD727900DE189F /* FirewallTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57BE22FD727900DE189F /* FirewallTodayViewController.swift */; };
+		3DBD57C622FD727900DE189F /* Lockdown Firewall Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3DBD57BB22FD727900DE189F /* Lockdown Firewall Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3DBD57CD22FD7AE400DE189F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E78D12207BE58C007FAE70 /* CloudKit.framework */; };
+		3DCA4F2E22F190720017740D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
+		3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
+		3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3222F22CB40017740D /* HomeViewController.swift */; };
+		3DCA4F4122F252720017740D /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
+		A101106D202B9D4300807612 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* BaseViewController.swift */; };
 		A1141A151F46230500F54698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A141F46230500F54698 /* AppDelegate.swift */; };
 		A1141A1A1F46230500F54698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1141A181F46230500F54698 /* Main.storyboard */; };
 		A1141A1C1F46230500F54698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1141A1B1F46230500F54698 /* Assets.xcassets */; };
-		A1141A2A1F46230600F54698 /* ConfirmediOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A291F46230600F54698 /* ConfirmediOSTests.swift */; };
-		A1141A351F46230600F54698 /* ConfirmediOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A341F46230600F54698 /* ConfirmediOSUITests.swift */; };
-		A1141A531F4A1C3100F54698 /* VPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A521F4A1C3100F54698 /* VPNViewController.swift */; };
 		A1159FCA207C201A00DA4670 /* socialBlockList.json in Resources */ = {isa = PBXBuildFile; fileRef = A1159FC8207C201900DA4670 /* socialBlockList.json */; };
 		A1159FCB207C201A00DA4670 /* privacyBlockList.json in Resources */ = {isa = PBXBuildFile; fileRef = A1159FC9207C201A00DA4670 /* privacyBlockList.json */; };
 		A1159FCC207C228300DA4670 /* privacyBlockList.json in Resources */ = {isa = PBXBuildFile; fileRef = A1159FC9207C201A00DA4670 /* privacyBlockList.json */; };
 		A1159FCD207C228300DA4670 /* socialBlockList.json in Resources */ = {isa = PBXBuildFile; fileRef = A1159FC8207C201900DA4670 /* socialBlockList.json */; };
 		A1159FCE207C228300DA4670 /* adBlockList.json in Resources */ = {isa = PBXBuildFile; fileRef = A1931CFD20791F5900E695EB /* adBlockList.json */; };
 		A118F64120B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63C20B33FED009A64E7 /* TransitionSubmitButton.swift */; };
-		A118F64220B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63C20B33FED009A64E7 /* TransitionSubmitButton.swift */; };
 		A118F64320B33FED009A64E7 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63D20B33FED009A64E7 /* FadeTransition.swift */; };
-		A118F64420B33FED009A64E7 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63D20B33FED009A64E7 /* FadeTransition.swift */; };
 		A118F64520B33FED009A64E7 /* TimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63E20B33FED009A64E7 /* TimerEx.swift */; };
-		A118F64620B33FED009A64E7 /* TimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63E20B33FED009A64E7 /* TimerEx.swift */; };
 		A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63F20B33FED009A64E7 /* SpinerLayer.swift */; };
-		A118F64820B33FED009A64E7 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63F20B33FED009A64E7 /* SpinerLayer.swift */; };
 		A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F64020B33FED009A64E7 /* CGRectEx.swift */; };
-		A118F64A20B33FED009A64E7 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F64020B33FED009A64E7 /* CGRectEx.swift */; };
-		A11C67171F4E204F00B72AAA /* CountrySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C67161F4E204F00B72AAA /* CountrySelection.swift */; };
 		A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12186261FB8F691007058B3 /* SignupViewController.swift */; };
-		A12186291FB8FDED007058B3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12186281FB8FDED007058B3 /* Auth.swift */; };
-		A121E81C20ADC36A00D003EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A121E81E20ADC36A00D003EF /* Localizable.strings */; };
 		A12229AB22C014CB00BFF624 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12229AA22C014CA00BFF624 /* StoreKit.framework */; };
 		A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */; };
-		A12473F71FE44285008493B8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12473F61FE44285008493B8 /* TodayViewController.swift */; };
+		A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12473F61FE44285008493B8 /* VPNTodayViewController.swift */; };
 		A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12473F81FE44285008493B8 /* MainInterface.storyboard */; };
-		A12473FE1FE44285008493B8 /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A12473F31FE44284008493B8 /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A12474051FE44297008493B8 /* TunnelSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E748191F9108B6004B8021 /* TunnelSpeed.swift */; };
-		A12542641F7AFB32001B0B57 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12542631F7AFB32001B0B57 /* WalkthroughViewController.swift */; };
-		A128435720291EAA00DE79B4 /* AddEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128435620291EAA00DE79B4 /* AddEmailViewController.swift */; };
-		A12ADAAA2028F36200D50D81 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12ADAA82028F36200D50D81 /* BWWalkthroughPageViewController.swift */; };
-		A12ADAAB2028F36200D50D81 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12ADAA92028F36200D50D81 /* BWWalkthroughViewController.swift */; };
-		A12CA0402079358B00BA3D82 /* ContentBlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12CA03F2079358B00BA3D82 /* ContentBlockerViewController.swift */; };
-		A13108872153DE7100501527 /* SharedUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13108862153DE7100501527 /* SharedUtils.swift */; };
-		A13108882153DE7100501527 /* SharedUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13108862153DE7100501527 /* SharedUtils.swift */; };
-		A13233DC21F4EE820035DC1A /* AccountProtocolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13233DB21F4EE820035DC1A /* AccountProtocolCell.swift */; };
-		A13233E021F60F940035DC1A /* OpenSSLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D8B21F38F2F00F70710 /* OpenSSLHelper.m */; };
-		A1329D6E209A454100EEEEE8 /* InstallVPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1329D6D209A454100EEEEE8 /* InstallVPNViewController.swift */; };
-		A1329D70209A633E00EEEEE8 /* PostboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1329D6F209A633E00EEEEE8 /* PostboardingViewController.swift */; };
-		A1329D72209BA3EB00EEEEE8 /* PushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1329D71209BA3EB00EEEEE8 /* PushViewController.swift */; };
+		A12473FE1FE44285008493B8 /* Lockdown VPN Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A12473F31FE44284008493B8 /* Lockdown VPN Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1342E8C20B0B87D0045E9DF /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
 		A1342E8D20B0B8870045E9DF /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
-		A1359FDA20AF6E32008C4BF7 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1359FD920AF6E31008C4BF7 /* LogFormatter.swift */; };
-		A13C4A5C20AE2C510006A186 /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C4A5B20AE2C510006A186 /* NotificationCenter+Additions.swift */; };
-		A13C4A5D20AE2FCD0006A186 /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C4A5B20AE2C510006A186 /* NotificationCenter+Additions.swift */; };
-		A154A068215C6C180010FFCC /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A067215C6C180010FFCC /* SideMenuCell.swift */; };
-		A154A06D215C6E7B0010FFCC /* AccountEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A06C215C6E7B0010FFCC /* AccountEmailCell.swift */; };
-		A154A06F215C6F5F0010FFCC /* AccountAddEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A06E215C6F5F0010FFCC /* AccountAddEmailCell.swift */; };
-		A154A071215C702A0010FFCC /* AccountPlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A070215C702A0010FFCC /* AccountPlanCell.swift */; };
-		A154A073215C70DA0010FFCC /* AccountUpgradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A072215C70DA0010FFCC /* AccountUpgradeCell.swift */; };
-		A154A075215C71910010FFCC /* AccountSignoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A074215C71910010FFCC /* AccountSignoutCell.swift */; };
-		A154A078215C720B0010FFCC /* FeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A077215C720B0010FFCC /* FeatureCell.swift */; };
-		A154A07A215C74D80010FFCC /* FeatureSetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A079215C74D80010FFCC /* FeatureSetupCell.swift */; };
-		A154A07C215C76AD0010FFCC /* AdBlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07B215C76AD0010FFCC /* AdBlockerCell.swift */; };
-		A154A07E215C78180010FFCC /* WhitelistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07D215C78180010FFCC /* WhitelistCell.swift */; };
-		A154A080215C7A8C0010FFCC /* WhitelistAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07F215C7A8C0010FFCC /* WhitelistAddCell.swift */; };
+		A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1359FD920AF6E31008C4BF7 /* LocalLogger.swift */; };
+		A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07D215C78180010FFCC /* BlockListCell.swift */; };
+		A154A080215C7A8C0010FFCC /* BlockListAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07F215C7A8C0010FFCC /* BlockListAddCell.swift */; };
 		A15939C0206D965D0060D945 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939B9206D965C0060D945 /* tun2socks.framework */; };
 		A15939C1206D965D0060D945 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BA206D965D0060D945 /* lwip.framework */; };
 		A15939C2206D965D0060D945 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BB206D965D0060D945 /* MMDB.framework */; };
@@ -91,43 +149,24 @@
 		A15939E3206D982B0060D945 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E0206D982B0060D945 /* CocoaAsyncSocket.framework */; };
 		A15939E4206D982B0060D945 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
 		A15939E5206D982B0060D945 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
-		A15F3C701F797FFF00B07F03 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F3C6F1F797FFF00B07F03 /* PrivacyPolicyViewController.swift */; };
 		A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15F3C731F79D90500B07F03 /* LaunchScreen.storyboard */; };
-		A169586422DFA0EE00495976 /* ToggleMetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A169586322DFA0EE00495976 /* ToggleMetricsViewController.swift */; };
-		A16A54EE202A527900512AE9 /* ConfirmedAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A54ED202A527800512AE9 /* ConfirmedAccountViewController.swift */; };
-		A174CCAE22B15B1000F1B840 /* LockdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174CCAD22B15B1000F1B840 /* LockdownViewController.swift */; };
-		A17A6A31202B4DE600657B9E /* ConfirmedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A6A30202B4DE600657B9E /* ConfirmedConstants.swift */; };
-		A17A6A32202B4EC000657B9E /* ConfirmedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A6A30202B4DE600657B9E /* ConfirmedConstants.swift */; };
-		A186387F206E8A5400EF4511 /* WhitelistingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A186387E206E8A5400EF4511 /* WhitelistingViewController.swift */; };
+		A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174CCAD22B15B1000F1B840 /* BlockListViewController.swift */; };
 		A18B31F92087ED7900C0FFAA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E78D12207BE58C007FAE70 /* CloudKit.framework */; };
-		A18CCF261F7B416A0072D4A8 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18CCF251F7B416A0072D4A8 /* CountryTableViewCell.swift */; };
 		A1931CFE20791F5900E695EB /* adBlockList.json in Resources */ = {isa = PBXBuildFile; fileRef = A1931CFD20791F5900E695EB /* adBlockList.json */; };
 		A1931D0020791F5900E695EB /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1931CFF20791F5900E695EB /* ContentBlockerRequestHandler.swift */; };
 		A1931D0420791F5900E695EB /* Lockdown Blocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1931CFB20791F5800E695EB /* Lockdown Blocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A19BF6BF21DE7FCF00737FBD /* ConfirmedVPNProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BF6BE21DE7FCF00737FBD /* ConfirmedVPNProtocol.swift */; };
-		A19BF6C021DE7FCF00737FBD /* ConfirmedVPNProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BF6BE21DE7FCF00737FBD /* ConfirmedVPNProtocol.swift */; };
-		A19BF6C821DE826600737FBD /* IPSecV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BF6C721DE826600737FBD /* IPSecV3.swift */; };
-		A19BF6C921DE826600737FBD /* IPSecV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19BF6C721DE826600737FBD /* IPSecV3.swift */; };
-		A1A130F9202CF4CB00ECBA32 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12186281FB8FDED007058B3 /* Auth.swift */; };
-		A1A130FB202CF4F000ECBA32 /* ConfirmedAppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A130FA202CF4F000ECBA32 /* ConfirmedAppHelper.swift */; };
-		A1CD1F1D1F782A1A006A43FE /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CD1F1C1F782A1A006A43FE /* SideMenuViewController.swift */; };
 		A1D85F07207C4C8300B766E0 /* adBlockListTwo.json in Resources */ = {isa = PBXBuildFile; fileRef = A1D85F06207C4C8300B766E0 /* adBlockListTwo.json */; };
 		A1D85F09207C52A000B766E0 /* adBlockListThree.json in Resources */ = {isa = PBXBuildFile; fileRef = A1D85F08207C52A000B766E0 /* adBlockListThree.json */; };
 		A1D85F0A207C562F00B766E0 /* adBlockListTwo.json in Resources */ = {isa = PBXBuildFile; fileRef = A1D85F06207C4C8300B766E0 /* adBlockListTwo.json */; };
 		A1D85F0B207C562F00B766E0 /* adBlockListThree.json in Resources */ = {isa = PBXBuildFile; fileRef = A1D85F08207C52A000B766E0 /* adBlockListThree.json */; };
-		A1DBA18621B77C66008A9322 /* TunnelsSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* TunnelsSubscription.swift */; };
-		A1DBA18821B77C75008A9322 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18721B77C75008A9322 /* Utils.swift */; };
+		A1DBA18621B77C66008A9322 /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
 		A1DBA18A21B77C80008A9322 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		A1DBA18B21B77C88008A9322 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
-		A1DBA18E21B77C8E008A9322 /* TunnelsSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* TunnelsSubscription.swift */; };
-		A1DBA19121B77C96008A9322 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18721B77C75008A9322 /* Utils.swift */; };
+		A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
 		A1DBA19621B82F73008A9322 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = A1DBA19521B82F72008A9322 /* LICENSE.md */; };
 		A1DD82BE1FE446CA00482632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1141A1B1F46230500F54698 /* Assets.xcassets */; };
-		A1E7481A1F9108B6004B8021 /* TunnelSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E748191F9108B6004B8021 /* TunnelSpeed.swift */; };
+		A1E7481A1F9108B6004B8021 /* SpeedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E748191F9108B6004B8021 /* SpeedTest.swift */; };
 		A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E78D12207BE58C007FAE70 /* CloudKit.framework */; };
-		A1E9120F1FE5584100C236DB /* IMG_D350EEDEB9A8-1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1E9120E1FE5584100C236DB /* IMG_D350EEDEB9A8-1.jpeg */; };
-		A1E912111FE55B1C00C236DB /* IMG_F26CD38DA8D8-1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1E912101FE55B1B00C236DB /* IMG_F26CD38DA8D8-1.jpeg */; };
-		A1E912131FE55CBE00C236DB /* AddWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E912121FE55CBE00C236DB /* AddWidgetViewController.swift */; };
 		A1EBEACB2097AE6E002B9087 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEAB82097AE5B002B9087 /* M13CheckboxDisclosurePathGenerator.swift */; };
 		A1EBEACC2097AE6E002B9087 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEAB92097AE5B002B9087 /* M13CheckboxDotController.swift */; };
 		A1EBEACD2097AE6E002B9087 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEABA2097AE5B002B9087 /* M13CheckboxFadeController.swift */; };
@@ -147,10 +186,6 @@
 		A1EBEADB2097AE6E002B9087 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEAC82097AE6A002B9087 /* M13CheckboxAnimationGenerator.swift */; };
 		A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEAC92097AE6C002B9087 /* DefaultValues.swift */; };
 		A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEACA2097AE6D002B9087 /* M13CheckboxStrokeController.swift */; };
-		A1EDF8DA1FE56BC800F5889D /* IMG_273507FA7DE5-1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1EDF8D91FE56BC800F5889D /* IMG_273507FA7DE5-1.jpeg */; };
-		A1F3FB631F4E19BD001ED22C /* CircularSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F3FB5F1F4E19BD001ED22C /* CircularSpinner.swift */; };
-		A1F3FB641F4E19BD001ED22C /* CircularSpinner.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F3FB601F4E19BD001ED22C /* CircularSpinner.xib */; };
-		A1F4C45320964D2600AC004C /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F4C45220964D2600AC004C /* FeaturesViewController.swift */; };
 		A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA4322C0651300C928BC /* PacketTunnelProvider.swift */; };
 		A1FCDA4922C0651300C928BC /* LockdownTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1FCDA4122C0651300C928BC /* LockdownTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1FCDA4E22C0666A00C928BC /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E0206D982B0060D945 /* CocoaAsyncSocket.framework */; };
@@ -163,40 +198,27 @@
 		A1FCDA5522C066B900C928BC /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939B9206D965C0060D945 /* tun2socks.framework */; };
 		A1FCDA5622C066B900C928BC /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BE206D965D0060D945 /* Yaml.framework */; };
 		A1FCDA5722C066F300C928BC /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BC206D965D0060D945 /* NEKit.framework */; };
-		A1FCDA5D22C1301A00C928BC /* LockdownDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA5C22C1301900C928BC /* LockdownDetailViewController.swift */; };
-		A1FCDA5F22C14EB800C928BC /* LockdownGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA5E22C14EB800C928BC /* LockdownGroupTableViewCell.swift */; };
-		A1FCDA6122C1ADFD00C928BC /* LockdownProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA6022C1ADFD00C928BC /* LockdownProxy.swift */; };
+		A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA5C22C1301900C928BC /* BlockListGroupViewController.swift */; };
+		A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA5E22C14EB800C928BC /* BlockListGroupCell.swift */; };
 		A1FCDA6322C7616400C928BC /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
-		A1FCDA7D22C765B200C928BC /* CoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA7C22C765B200C928BC /* CoreUtils.swift */; };
-		A1FCDA7E22C7666200C928BC /* CoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA7C22C765B200C928BC /* CoreUtils.swift */; };
-		A1FCDA8022C7666400C928BC /* CoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA7C22C765B200C928BC /* CoreUtils.swift */; };
-		A1FCDA8122C766B200C928BC /* ConfirmedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A6A30202B4DE600657B9E /* ConfirmedConstants.swift */; };
-		A1FCDA8222C76A9E00C928BC /* NotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C4A5B20AE2C510006A186 /* NotificationCenter+Additions.swift */; };
 		A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8422CDE60800C928BC /* crypto_mining.txt */; };
 		A1FCDA8722CDE8C000C928BC /* crypto_mining_ips.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8622CDE8C000C928BC /* crypto_mining_ips.txt */; };
 		A1FCDA8A22D3BA1900C928BC /* facebook_inc_ips.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8822D3BA1900C928BC /* facebook_inc_ips.txt */; };
 		A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */; };
 		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
 		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
-		A1FF5D8C21F38F2F00F70710 /* OpenSSLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D8B21F38F2F00F70710 /* OpenSSLHelper.m */; };
 		D37198BBCE0A226BD9071F4A /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */; };
 		E0C51E8814F43CD752AB740D /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */; };
+		F6529FCC7BC553DB6372DE40 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A1141A261F46230500F54698 /* PBXContainerItemProxy */ = {
+		3DBD57C422FD727900DE189F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1141A091F46230500F54698 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A1141A101F46230500F54698;
-			remoteInfo = TrustiOS;
-		};
-		A1141A311F46230600F54698 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1141A091F46230500F54698 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1141A101F46230500F54698;
-			remoteInfo = TrustiOS;
+			remoteGlobalIDString = 3DBD57BA22FD727900DE189F;
+			remoteInfo = "Lockdown Firewall Today";
 		};
 		A118F63520B33F44009A64E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -238,7 +260,8 @@
 			dstSubfolderSpec = 13;
 			files = (
 				A1931D0420791F5900E695EB /* Lockdown Blocker.appex in Embed App Extensions */,
-				A12473FE1FE44285008493B8 /* Today.appex in Embed App Extensions */,
+				3DBD57C622FD727900DE189F /* Lockdown Firewall Widget.appex in Embed App Extensions */,
+				A12473FE1FE44285008493B8 /* Lockdown VPN Widget.appex in Embed App Extensions */,
 				A1FCDA4922C0651300C928BC /* LockdownTunnel.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -247,7 +270,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
+		12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-metadata.plist"; path = "Pods/Pods-Lockdown Firewall Widget-metadata.plist"; sourceTree = "<group>"; };
 		31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D0711B722FE79BE00391C6E /* WhyTrustViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyTrustViewController.swift; sourceTree = "<group>"; };
+		3D0711BA22FE7B5100391C6E /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = facebook_sdk.txt; sourceTree = "<group>"; };
 		3D0971D922EBAD4C00CCD326 /* marketing.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marketing.txt; sourceTree = "<group>"; };
 		3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -256,37 +283,97 @@
 		3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
-		3D970DAC22EC149D00F9CC93 /* BlockLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogTableViewCell.swift; sourceTree = "<group>"; };
-		3D970DAE22EC15D800F9CC93 /* BlockLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogTableViewController.swift; sourceTree = "<group>"; };
+		3D47CD8422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationDelegate.swift; sourceTree = "<group>"; };
+		3D47CD8622F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorPresenter.swift; sourceTree = "<group>"; };
+		3D47CD8722F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewable.swift; sourceTree = "<group>"; };
+		3D47CD8822F3C3F3003BD7F7 /* NVActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVActivityIndicatorView.h; sourceTree = "<group>"; };
+		3D47CD8922F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorShape.swift; sourceTree = "<group>"; };
+		3D47CD8A22F3C3F3003BD7F7 /* NVActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorView.swift; sourceTree = "<group>"; };
+		3D47CD8D22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallRotate.swift; sourceTree = "<group>"; };
+		3D47CD8E22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallGridPulse.swift; sourceTree = "<group>"; };
+		3D47CD8F22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
+		3D47CD9022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotateMultiple.swift; sourceTree = "<group>"; };
+		3D47CD9122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallTrianglePath.swift; sourceTree = "<group>"; };
+		3D47CD9222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallDoubleBounce.swift; sourceTree = "<group>"; };
+		3D47CD9322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScalePulseOut.swift; sourceTree = "<group>"; };
+		3D47CD9422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineSpinFadeLoader.swift; sourceTree = "<group>"; };
+		3D47CD9522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallZigZagDeflect.swift; sourceTree = "<group>"; };
+		3D47CD9622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScale.swift; sourceTree = "<group>"; };
+		3D47CD9722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallZigZag.swift; sourceTree = "<group>"; };
+		3D47CD9822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
+		3D47CD9922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationSemiCircleSpin.swift; sourceTree = "<group>"; };
+		3D47CD9A22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScaleRipple.swift; sourceTree = "<group>"; };
+		3D47CD9B22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotatePulse.swift; sourceTree = "<group>"; };
+		3D47CD9C22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationSquareSpin.swift; sourceTree = "<group>"; };
+		3D47CD9D22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallRotateChase.swift; sourceTree = "<group>"; };
+		3D47CD9E22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallPulse.swift; sourceTree = "<group>"; };
+		3D47CD9F22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBlank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBlank.swift; sourceTree = "<group>"; };
+		3D47CDA022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationCircleStrokeSpin.swift; sourceTree = "<group>"; };
+		3D47CDA122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationAudioEqualizer.swift; sourceTree = "<group>"; };
+		3D47CDA222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationTriangleSkewSpin.swift; sourceTree = "<group>"; };
+		3D47CDA322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallGridBeat.swift; sourceTree = "<group>"; };
+		3D47CDA422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScaleMultiple.swift; sourceTree = "<group>"; };
+		3D47CDA522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScale.swift; sourceTree = "<group>"; };
+		3D47CDA622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallScaleRippleMultiple.swift; sourceTree = "<group>"; };
+		3D47CDA722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationPacman.swift; sourceTree = "<group>"; };
+		3D47CDA822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallPulseSync.swift; sourceTree = "<group>"; };
+		3D47CDA922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationCubeTransition.swift; sourceTree = "<group>"; };
+		3D47CDAA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallSpinFadeLoader.swift; sourceTree = "<group>"; };
+		3D47CDAB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScaleParty.swift; sourceTree = "<group>"; };
+		3D47CDAC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationLineScalePulseOutRapid.swift; sourceTree = "<group>"; };
+		3D47CDAD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallPulseRise.swift; sourceTree = "<group>"; };
+		3D47CDAE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationOrbit.swift; sourceTree = "<group>"; };
+		3D5464D223037CCA00AE1F73 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		3D5561D3230B58F30062001D /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		3D94AB0322FDEDEB0012B0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3D94AB1122FE3A460012B0DE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		3D970DAC22EC149D00F9CC93 /* BlockLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogCell.swift; sourceTree = "<group>"; };
+		3D970DAE22EC15D800F9CC93 /* BlockLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogViewController.swift; sourceTree = "<group>"; };
 		3DAA6B4E22EA76420018FC09 /* clickbait.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
 		3DAA6B5222EA988F0018FC09 /* ransomware.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
+		3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
+		3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistViewController.swift; sourceTree = "<group>"; };
+		3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistUtilities.swift; sourceTree = "<group>"; };
+		3DBD57AB22FBDFE200DE189F /* WhitelistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistCell.swift; sourceTree = "<group>"; };
+		3DBD57AD22FBE04300DE189F /* WhitelistAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistAddCell.swift; sourceTree = "<group>"; };
+		3DBD57AF22FC14CC00DE189F /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		3DBD57B322FCFF2400DE189F /* SetRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRegionViewController.swift; sourceTree = "<group>"; };
+		3DBD57B522FD00BB00DE189F /* SetRegionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRegionCell.swift; sourceTree = "<group>"; };
+		3DBD57BB22FD727900DE189F /* Lockdown Firewall Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lockdown Firewall Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DBD57BE22FD727900DE189F /* FirewallTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallTodayViewController.swift; sourceTree = "<group>"; };
+		3DBD57C322FD727900DE189F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DBD57CC22FD75B200DE189F /* Lockdown Firewall Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lockdown Firewall Widget.entitlements"; sourceTree = "<group>"; };
+		3DCA4F2D22F190720017740D /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		3DCA4F3022F190AE0017740D /* ClientModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModels.swift; sourceTree = "<group>"; };
+		3DCA4F3222F22CB40017740D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3DCA4F4022F252720017740D /* FirewallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallController.swift; sourceTree = "<group>"; };
 		428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
-		498BB228C9E2F1FA4AECBD3F /* Pods_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C50BEAA399D6FDF2C2672C6 /* Pods-Confirmed VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.debug.xcconfig"; sourceTree = "<group>"; };
 		4D422CB6539443825E5CD91B /* Pods-Confirmed Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed Tunnels/Pods-Confirmed Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
+		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		65F695578DAA62084B36A513 /* Pods-Lockdown Tunnels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Tunnels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Tunnels/Pods-Lockdown Tunnels.release.xcconfig"; sourceTree = "<group>"; };
-		6EE3B447D3215CD7FD0B3EFD /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		726E8CFC747C13F896CA72B6 /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		7E013E3207564A64E3A1BD49 /* Pods-Lockdown Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Tunnels/Pods-Lockdown Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
 		8827B5DAD4A819CDC5115562 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
+		8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown VPN Widget-settings-metadata.plist"; sourceTree = "<group>"; };
+		92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-metadata.plist"; path = "Pods/Pods-Lockdown VPN Widget-metadata.plist"; sourceTree = "<group>"; };
 		953709B6B9D85B15EF763F5B /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
 		96179E9445306C33ADBDDFAB /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
 		A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A101106C202B9D4300807612 /* ConfirmedBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedBaseViewController.swift; sourceTree = "<group>"; };
-		A10805282027B88300F5AD37 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		A10EFF1C1F7C28AE0075984E /* tunnels_gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tunnels_gradient.png; path = Assets.xcassets/tunnel_icon.imageset/tunnels_gradient.png; sourceTree = "<group>"; };
+		A101106C202B9D4300807612 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A1141A111F46230500F54698 /* Lockdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1141A141F46230500F54698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1141A191F46230500F54698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1141A1B1F46230500F54698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1141A201F46230500F54698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1141A251F46230500F54698 /* LockdowniOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LockdowniOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1141A291F46230600F54698 /* ConfirmediOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmediOSTests.swift; sourceTree = "<group>"; };
 		A1141A2B1F46230600F54698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1141A301F46230600F54698 /* LockdowniOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LockdowniOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1141A341F46230600F54698 /* ConfirmediOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmediOSUITests.swift; sourceTree = "<group>"; };
 		A1141A361F46230600F54698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1141A521F4A1C3100F54698 /* VPNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNViewController.swift; sourceTree = "<group>"; };
 		A1159FC8207C201900DA4670 /* socialBlockList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = socialBlockList.json; sourceTree = "<group>"; };
 		A1159FC9207C201A00DA4670 /* privacyBlockList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = privacyBlockList.json; sourceTree = "<group>"; };
 		A118F63C20B33FED009A64E7 /* TransitionSubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionSubmitButton.swift; sourceTree = "<group>"; };
@@ -294,43 +381,16 @@
 		A118F63E20B33FED009A64E7 /* TimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEx.swift; sourceTree = "<group>"; };
 		A118F63F20B33FED009A64E7 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
 		A118F64020B33FED009A64E7 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
-		A11C67161F4E204F00B72AAA /* CountrySelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySelection.swift; sourceTree = "<group>"; };
 		A12186261FB8F691007058B3 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		A12186281FB8FDED007058B3 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Auth.swift; path = LockdowniOS/Auth.swift; sourceTree = "<group>"; };
-		A121E81D20ADC36A00D003EF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A122299822C00E8F00BFF624 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12229AA22C014CA00BFF624 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A12473F31FE44284008493B8 /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A12473F61FE44285008493B8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		A12473F31FE44284008493B8 /* Lockdown VPN Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lockdown VPN Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12473F61FE44285008493B8 /* VPNTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNTodayViewController.swift; sourceTree = "<group>"; };
 		A12473F91FE44285008493B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		A12473FB1FE44285008493B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A12474081FE442A8008493B8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
-		A12542631F7AFB32001B0B57 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
-		A128435620291EAA00DE79B4 /* AddEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailViewController.swift; sourceTree = "<group>"; };
-		A12ADAA82028F36200D50D81 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
-		A12ADAA92028F36200D50D81 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
-		A12CA03F2079358B00BA3D82 /* ContentBlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerViewController.swift; sourceTree = "<group>"; };
-		A13108862153DE7100501527 /* SharedUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedUtils.swift; path = LockdowniOS/SharedUtils.swift; sourceTree = "<group>"; };
-		A13233DB21F4EE820035DC1A /* AccountProtocolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProtocolCell.swift; sourceTree = "<group>"; };
-		A1329D6D209A454100EEEEE8 /* InstallVPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallVPNViewController.swift; sourceTree = "<group>"; };
-		A1329D6F209A633E00EEEEE8 /* PostboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostboardingViewController.swift; sourceTree = "<group>"; };
-		A1329D71209BA3EB00EEEEE8 /* PushViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushViewController.swift; sourceTree = "<group>"; };
-		A1359FD920AF6E31008C4BF7 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
-		A135A3E120AB234300603828 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		A135A3E220AB234300603828 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		A135A3E320AB234400603828 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
-		A13C4A5B20AE2C510006A186 /* NotificationCenter+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Additions.swift"; sourceTree = "<group>"; };
-		A154A067215C6C180010FFCC /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
-		A154A06C215C6E7B0010FFCC /* AccountEmailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEmailCell.swift; sourceTree = "<group>"; };
-		A154A06E215C6F5F0010FFCC /* AccountAddEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAddEmailCell.swift; sourceTree = "<group>"; };
-		A154A070215C702A0010FFCC /* AccountPlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPlanCell.swift; sourceTree = "<group>"; };
-		A154A072215C70DA0010FFCC /* AccountUpgradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUpgradeCell.swift; sourceTree = "<group>"; };
-		A154A074215C71910010FFCC /* AccountSignoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSignoutCell.swift; sourceTree = "<group>"; };
-		A154A077215C720B0010FFCC /* FeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCell.swift; sourceTree = "<group>"; };
-		A154A079215C74D80010FFCC /* FeatureSetupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSetupCell.swift; sourceTree = "<group>"; };
-		A154A07B215C76AD0010FFCC /* AdBlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBlockerCell.swift; sourceTree = "<group>"; };
-		A154A07D215C78180010FFCC /* WhitelistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistCell.swift; sourceTree = "<group>"; };
-		A154A07F215C7A8C0010FFCC /* WhitelistAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistAddCell.swift; sourceTree = "<group>"; };
+		A1359FD920AF6E31008C4BF7 /* LocalLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalLogger.swift; sourceTree = "<group>"; };
+		A154A07D215C78180010FFCC /* BlockListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListCell.swift; sourceTree = "<group>"; };
+		A154A07F215C7A8C0010FFCC /* BlockListAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListAddCell.swift; sourceTree = "<group>"; };
 		A15939B9206D965C0060D945 /* tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = tun2socks.framework; path = Carthage/Build/iOS/tun2socks.framework; sourceTree = "<group>"; };
 		A15939BA206D965D0060D945 /* lwip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = lwip.framework; path = Carthage/Build/iOS/lwip.framework; sourceTree = "<group>"; };
 		A15939BB206D965D0060D945 /* MMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMDB.framework; path = Carthage/Build/iOS/MMDB.framework; sourceTree = "<group>"; };
@@ -341,43 +401,22 @@
 		A15939E0206D982B0060D945 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		A15939E1206D982B0060D945 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
-		A15F3C6F1F797FFF00B07F03 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		A15F3C741F79D90500B07F03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A15F3C791F7A0A1600B07F03 /* tunnel_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tunnel_icon.png; path = Assets.xcassets/tunnel_icon.imageset/tunnel_icon.png; sourceTree = "<group>"; };
-		A1625FD220B4874300EFB715 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		A1625FD320B4874300EFB715 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		A1625FD420B4874300EFB715 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
-		A1625FD520B4874300EFB715 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A169586322DFA0EE00495976 /* ToggleMetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleMetricsViewController.swift; sourceTree = "<group>"; };
-		A16A54ED202A527800512AE9 /* ConfirmedAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmedAccountViewController.swift; sourceTree = "<group>"; };
-		A172CB1C1F7AFA5300C85CBB /* tunnel_icon_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tunnel_icon_transparent.png; path = Assets.xcassets/tunnel_icon.imageset/tunnel_icon_transparent.png; sourceTree = "<group>"; };
-		A174CCAD22B15B1000F1B840 /* LockdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownViewController.swift; sourceTree = "<group>"; };
-		A17A6A30202B4DE600657B9E /* ConfirmedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmedConstants.swift; path = LockdowniOS/ConfirmedConstants.swift; sourceTree = "<group>"; };
-		A186387E206E8A5400EF4511 /* WhitelistingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistingViewController.swift; sourceTree = "<group>"; };
-		A18CCF251F7B416A0072D4A8 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
-		A1912FE31F5655440007F6D4 /* LockdowniOS-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LockdowniOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		A174CCAD22B15B1000F1B840 /* BlockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewController.swift; sourceTree = "<group>"; };
 		A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A1931CFB20791F5800E695EB /* Lockdown Blocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lockdown Blocker.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1931CFD20791F5900E695EB /* adBlockList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = adBlockList.json; sourceTree = "<group>"; };
 		A1931CFF20791F5900E695EB /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		A1931D0120791F5900E695EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1931D0820791F6100E695EB /* Lockdown Blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lockdown Blocker.entitlements"; sourceTree = "<group>"; };
-		A19BF6BE21DE7FCF00737FBD /* ConfirmedVPNProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmedVPNProtocol.swift; path = LockdowniOS/ConfirmedVPNProtocol.swift; sourceTree = "<group>"; };
-		A19BF6C721DE826600737FBD /* IPSecV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IPSecV3.swift; path = LockdowniOS/IPSecV3.swift; sourceTree = "<group>"; };
-		A1A130FA202CF4F000ECBA32 /* ConfirmedAppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedAppHelper.swift; sourceTree = "<group>"; };
-		A1CD1F1C1F782A1A006A43FE /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		A1D85F06207C4C8300B766E0 /* adBlockListTwo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adBlockListTwo.json; sourceTree = "<group>"; };
 		A1D85F08207C52A000B766E0 /* adBlockListThree.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adBlockListThree.json; sourceTree = "<group>"; };
-		A1DBA18521B77C66008A9322 /* TunnelsSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TunnelsSubscription.swift; path = LockdowniOS/TunnelsSubscription.swift; sourceTree = "<group>"; };
-		A1DBA18721B77C75008A9322 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = LockdowniOS/Utils.swift; sourceTree = "<group>"; };
+		A1DBA18521B77C66008A9322 /* VPNSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNSubscription.swift; path = LockdowniOS/VPNSubscription.swift; sourceTree = "<group>"; };
 		A1DBA18921B77C80008A9322 /* VPNController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNController.swift; path = LockdowniOS/VPNController.swift; sourceTree = "<group>"; };
 		A1DBA19421B77CE9008A9322 /* LockdowniOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdowniOS.entitlements; sourceTree = "<group>"; };
 		A1DBA19521B82F72008A9322 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		A1E748191F9108B6004B8021 /* TunnelSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelSpeed.swift; sourceTree = "<group>"; };
+		A1E748191F9108B6004B8021 /* SpeedTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedTest.swift; sourceTree = "<group>"; };
 		A1E78D12207BE58C007FAE70 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		A1E9120E1FE5584100C236DB /* IMG_D350EEDEB9A8-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IMG_D350EEDEB9A8-1.jpeg"; sourceTree = "<group>"; };
-		A1E912101FE55B1B00C236DB /* IMG_F26CD38DA8D8-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IMG_F26CD38DA8D8-1.jpeg"; sourceTree = "<group>"; };
-		A1E912121FE55CBE00C236DB /* AddWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWidgetViewController.swift; sourceTree = "<group>"; };
 		A1EBEAB82097AE5B002B9087 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
 		A1EBEAB92097AE5B002B9087 /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDotController.swift; sourceTree = "<group>"; };
 		A1EBEABA2097AE5B002B9087 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFadeController.swift; sourceTree = "<group>"; };
@@ -397,39 +436,45 @@
 		A1EBEAC82097AE6A002B9087 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
 		A1EBEAC92097AE6C002B9087 /* DefaultValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultValues.swift; sourceTree = "<group>"; };
 		A1EBEACA2097AE6D002B9087 /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
-		A1EDF8D91FE56BC800F5889D /* IMG_273507FA7DE5-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IMG_273507FA7DE5-1.jpeg"; sourceTree = "<group>"; };
 		A1F07D4720A37FA8007CBA1B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		A1F3FB5F1F4E19BD001ED22C /* CircularSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularSpinner.swift; sourceTree = "<group>"; };
-		A1F3FB601F4E19BD001ED22C /* CircularSpinner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircularSpinner.xib; sourceTree = "<group>"; };
-		A1F4C45220964D2600AC004C /* FeaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesViewController.swift; sourceTree = "<group>"; };
 		A1FCDA4122C0651300C928BC /* LockdownTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FCDA4322C0651300C928BC /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		A1FCDA4522C0651300C928BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1FCDA4622C0651300C928BC /* LockdownTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownTunnel.entitlements; sourceTree = "<group>"; };
-		A1FCDA5922C067F000C928BC /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1FCDA5C22C1301900C928BC /* LockdownDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownDetailViewController.swift; sourceTree = "<group>"; };
-		A1FCDA5E22C14EB800C928BC /* LockdownGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownGroupTableViewCell.swift; sourceTree = "<group>"; };
-		A1FCDA6022C1ADFD00C928BC /* LockdownProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LockdownProxy.swift; path = LockdownTunnel/LockdownProxy.swift; sourceTree = "<group>"; };
+		A1FCDA5C22C1301900C928BC /* BlockListGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListGroupViewController.swift; sourceTree = "<group>"; };
+		A1FCDA5E22C14EB800C928BC /* BlockListGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListGroupCell.swift; sourceTree = "<group>"; };
 		A1FCDA6222C7616400C928BC /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		A1FCDA7B22C7626D00C928BC /* LockdownTunnel copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "LockdownTunnel copy-Info.plist"; path = "/Users/rahuldewan/Trust/LockdownPrivate/LockdownTunnel copy-Info.plist"; sourceTree = "<absolute>"; };
-		A1FCDA7C22C765B200C928BC /* CoreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUtils.swift; sourceTree = "<group>"; };
 		A1FCDA8422CDE60800C928BC /* crypto_mining.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_mining.txt; sourceTree = "<group>"; };
 		A1FCDA8622CDE8C000C928BC /* crypto_mining_ips.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crypto_mining_ips.txt; sourceTree = "<group>"; };
 		A1FCDA8822D3BA1900C928BC /* facebook_inc_ips.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ips.txt; sourceTree = "<group>"; };
 		A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
 		A1FCDA8C22D3C50A00C928BC /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
 		A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ipv6.txt; sourceTree = "<group>"; };
-		A1FF5D8B21F38F2F00F70710 /* OpenSSLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSSLHelper.m; sourceTree = "<group>"; };
-		A1FF5D8D21F38FB800F70710 /* OpenSSLHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSSLHelper.h; sourceTree = "<group>"; };
-		A21525EDF4D5DA8CD8E4C27C /* Pods_Confirmed_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Confirmed_VPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6822C9110BC5F2F96454261 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		A75E57A0F35C50EA949FB1FE /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		AC978E3E9830282F26277011 /* Pods-Confirmed Tunnels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed Tunnels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed Tunnels/Pods-Confirmed Tunnels.release.xcconfig"; sourceTree = "<group>"; };
-		B3BE2E263A7FFAA28A4D30E1 /* Pods_Confirmed_Tunnels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Confirmed_Tunnels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
 		C184E908CB776A3C52800606 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
 		D996266D8EF26A3162182E10 /* Pods-Confirmed VPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.release.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.release.xcconfig"; sourceTree = "<group>"; };
-		FB1EC4F17932C7B5858109B6 /* Pods_Lockdown_Tunnels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Tunnels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
+		EE344B485CF03034ED1715B2 /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
+		FDC72127CE99C59603A65899 /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3DBD57B822FD727900DE189F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DBD57CD22FD7AE400DE189F /* CloudKit.framework in Frameworks */,
+				3D94AB0D22FE05090012B0DE /* CocoaLumberjack.framework in Frameworks */,
+				3D94AB0E22FE05090012B0DE /* CocoaLumberjackSwift.framework in Frameworks */,
+				3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */,
+				3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */,
+				08799CF7AFE70CC200E47EDB /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1141A0E1F46230500F54698 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -447,20 +492,7 @@
 				A15939C5206D965D0060D945 /* Yaml.framework in Frameworks */,
 				A15939C6206D965D0060D945 /* Sodium.framework in Frameworks */,
 				E0C51E8814F43CD752AB740D /* Pods_Lockdown.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1141A221F46230500F54698 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1141A2D1F46230600F54698 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,10 +501,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1342E8D20B0B8870045E9DF /* CocoaLumberjack.framework in Frameworks */,
+				3DAF907A22EFD70900FB29E0 /* NetworkExtension.framework in Frameworks */,
 				A1342E8C20B0B87D0045E9DF /* CocoaLumberjackSwift.framework in Frameworks */,
 				A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */,
 				A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */,
-				1D1A3D208998E194C020B353 /* Pods_Today.framework in Frameworks */,
+				F6529FCC7BC553DB6372DE40 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +538,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0711B922FE79FF00391C6E /* Why Trust */ = {
+			isa = PBXGroup;
+			children = (
+				3D0711B722FE79BE00391C6E /* WhyTrustViewController.swift */,
+			);
+			name = "Why Trust";
+			sourceTree = "<group>";
+		};
 		3D0971D522EBAAEE00CCD326 /* Domains */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,23 +583,153 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		3D47CD8322F3C3F3003BD7F7 /* NVActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				3D47CD8422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift */,
+				3D47CD8522F3C3F3003BD7F7 /* Presenter */,
+				3D47CD8822F3C3F3003BD7F7 /* NVActivityIndicatorView.h */,
+				3D47CD8922F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift */,
+				3D47CD8A22F3C3F3003BD7F7 /* NVActivityIndicatorView.swift */,
+				3D47CD8C22F3C3F3003BD7F7 /* Animations */,
+			);
+			path = NVActivityIndicatorView;
+			sourceTree = "<group>";
+		};
+		3D47CD8522F3C3F3003BD7F7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3D47CD8622F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift */,
+				3D47CD8722F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3D47CD8C22F3C3F3003BD7F7 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				3D47CD8D22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift */,
+				3D47CD8E22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift */,
+				3D47CD8F22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift */,
+				3D47CD9022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */,
+				3D47CD9122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift */,
+				3D47CD9222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift */,
+				3D47CD9322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift */,
+				3D47CD9422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift */,
+				3D47CD9522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */,
+				3D47CD9622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift */,
+				3D47CD9722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift */,
+				3D47CD9822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift */,
+				3D47CD9922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift */,
+				3D47CD9A22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift */,
+				3D47CD9B22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift */,
+				3D47CD9C22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift */,
+				3D47CD9D22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift */,
+				3D47CD9E22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulse.swift */,
+				3D47CD9F22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBlank.swift */,
+				3D47CDA022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift */,
+				3D47CDA122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift */,
+				3D47CDA222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift */,
+				3D47CDA322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridBeat.swift */,
+				3D47CDA422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift */,
+				3D47CDA522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift */,
+				3D47CDA622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift */,
+				3D47CDA722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift */,
+				3D47CDA822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift */,
+				3D47CDA922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift */,
+				3D47CDAA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift */,
+				3D47CDAB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift */,
+				3D47CDAC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift */,
+				3D47CDAD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift */,
+				3D47CDAE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		3DBD57A322FBB97D00DE189F /* Firewall */ = {
+			isa = PBXGroup;
+			children = (
+				A154A07F215C7A8C0010FFCC /* BlockListAddCell.swift */,
+				A154A07D215C78180010FFCC /* BlockListCell.swift */,
+				A1FCDA5E22C14EB800C928BC /* BlockListGroupCell.swift */,
+				A1FCDA5C22C1301900C928BC /* BlockListGroupViewController.swift */,
+				A174CCAD22B15B1000F1B840 /* BlockListViewController.swift */,
+				3D970DAC22EC149D00F9CC93 /* BlockLogCell.swift */,
+				3D970DAE22EC15D800F9CC93 /* BlockLogViewController.swift */,
+			);
+			name = Firewall;
+			sourceTree = "<group>";
+		};
+		3DBD57A422FBBA4600DE189F /* VPN */ = {
+			isa = PBXGroup;
+			children = (
+				A12186261FB8F691007058B3 /* SignupViewController.swift */,
+				3DBD57B522FD00BB00DE189F /* SetRegionCell.swift */,
+				3DBD57B322FCFF2400DE189F /* SetRegionViewController.swift */,
+				3DBD57AD22FBE04300DE189F /* WhitelistAddCell.swift */,
+				3DBD57AB22FBDFE200DE189F /* WhitelistCell.swift */,
+				3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */,
+			);
+			name = VPN;
+			sourceTree = "<group>";
+		};
+		3DBD57BD22FD727900DE189F /* Lockdown Firewall Today */ = {
+			isa = PBXGroup;
+			children = (
+				3DBD57CC22FD75B200DE189F /* Lockdown Firewall Widget.entitlements */,
+				3DBD57BE22FD727900DE189F /* FirewallTodayViewController.swift */,
+				3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */,
+				3DBD57C322FD727900DE189F /* Info.plist */,
+			);
+			path = "Lockdown Firewall Today";
+			sourceTree = "<group>";
+		};
+		3DBD57CB22FD74D700DE189F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A1141A281F46230600F54698 /* LockdowniOSTests */,
+				A1141A331F46230600F54698 /* LockdowniOSUITests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		3DFD0F8422F0F773002A3F25 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A1141A141F46230500F54698 /* AppDelegate.swift */,
+				A101106C202B9D4300807612 /* BaseViewController.swift */,
+				A1141A201F46230500F54698 /* Info.plist */,
+				3DCA4F3222F22CB40017740D /* HomeViewController.swift */,
+				A15F3C731F79D90500B07F03 /* LaunchScreen.storyboard */,
+				A1359FD920AF6E31008C4BF7 /* LocalLogger.swift */,
+				A1DBA19421B77CE9008A9322 /* LockdowniOS.entitlements */,
+				A1141A181F46230500F54698 /* Main.storyboard */,
+				3D0711BA22FE7B5100391C6E /* TitleViewController.swift */,
+				3D5561D3230B58F30062001D /* PrivacyPolicyViewController.swift */,
+				3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		A1141A081F46230500F54698 = {
 			isa = PBXGroup;
 			children = (
-				A1DBA19521B82F72008A9322 /* LICENSE.md */,
-				3D44377922DFB22600908CDC /* Fonts */,
-				A17A6A2C202B44BB00657B9E /* Modified Pods */,
+				3D5464D223037CCA00AE1F73 /* Settings.bundle */,
 				A11E78A21F6A33C5007499CA /* Shared */,
 				A1141A131F46230500F54698 /* LockdowniOS */,
-				A1141A281F46230600F54698 /* LockdowniOSTests */,
-				A1141A331F46230600F54698 /* LockdowniOSUITests */,
-				A12473F51FE44285008493B8 /* Today */,
 				A1931CFC20791F5900E695EB /* Lockdown Blocker */,
-				A1FCDA4222C0651300C928BC /* LockdownTunnel */,
-				A1141A121F46230500F54698 /* Products */,
+				3DBD57BD22FD727900DE189F /* Lockdown Firewall Today */,
+				A12473F51FE44285008493B8 /* Today */,
+				A1FCDA4222C0651300C928BC /* Lockdown Tunnel */,
+				A1DBA19521B82F72008A9322 /* LICENSE.md */,
+				A1141A1B1F46230500F54698 /* Assets.xcassets */,
+				A1FCDA8322CDE5ED00C928BC /* Block Lists */,
+				3D44377922DFB22600908CDC /* Fonts */,
 				A1141A421F46233600F54698 /* Frameworks */,
+				A17A6A2C202B44BB00657B9E /* Modified Pods */,
+				3DBD57CB22FD74D700DE189F /* Tests */,
 				D4B0457BD6E109D891101985 /* Pods */,
-				A1FCDA7B22C7626D00C928BC /* LockdownTunnel copy-Info.plist */,
+				A1141A121F46230500F54698 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -566,11 +737,10 @@
 			isa = PBXGroup;
 			children = (
 				A1141A111F46230500F54698 /* Lockdown.app */,
-				A1141A251F46230500F54698 /* LockdowniOSTests.xctest */,
-				A1141A301F46230600F54698 /* LockdowniOSUITests.xctest */,
-				A12473F31FE44284008493B8 /* Today.appex */,
+				A12473F31FE44284008493B8 /* Lockdown VPN Widget.appex */,
 				A1931CFB20791F5800E695EB /* Lockdown Blocker.appex */,
 				A1FCDA4122C0651300C928BC /* LockdownTunnel.appex */,
+				3DBD57BB22FD727900DE189F /* Lockdown Firewall Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -578,29 +748,10 @@
 		A1141A131F46230500F54698 /* LockdowniOS */ = {
 			isa = PBXGroup;
 			children = (
-				A1FCDA8322CDE5ED00C928BC /* Block List */,
-				A154A069215C6DD80010FFCC /* Table Cells */,
-				A1329D6C209A451E00EEEEE8 /* Postboarding */,
-				A17A6A2F202B49E300657B9E /* Main Interface */,
-				A17A6A2E202B49AA00657B9E /* Onboarding */,
-				A1DBA19421B77CE9008A9322 /* LockdowniOS.entitlements */,
-				A1359FD920AF6E31008C4BF7 /* LogFormatter.swift */,
-				A1F4C45220964D2600AC004C /* FeaturesViewController.swift */,
-				A1141A141F46230500F54698 /* AppDelegate.swift */,
-				A1141A181F46230500F54698 /* Main.storyboard */,
-				A121E81E20ADC36A00D003EF /* Localizable.strings */,
-				A12CA03F2079358B00BA3D82 /* ContentBlockerViewController.swift */,
-				A1141A1B1F46230500F54698 /* Assets.xcassets */,
-				A1EDF8D91FE56BC800F5889D /* IMG_273507FA7DE5-1.jpeg */,
-				A1912FE31F5655440007F6D4 /* LockdowniOS-Bridging-Header.h */,
-				A1E9120E1FE5584100C236DB /* IMG_D350EEDEB9A8-1.jpeg */,
-				A1E912101FE55B1B00C236DB /* IMG_F26CD38DA8D8-1.jpeg */,
-				A15F3C731F79D90500B07F03 /* LaunchScreen.storyboard */,
-				A1141A201F46230500F54698 /* Info.plist */,
-				A11E78A31F6A359C007499CA /* Images */,
-				A186387E206E8A5400EF4511 /* WhitelistingViewController.swift */,
-				A1FF5D8B21F38F2F00F70710 /* OpenSSLHelper.m */,
-				A1FF5D8D21F38FB800F70710 /* OpenSSLHelper.h */,
+				3DFD0F8422F0F773002A3F25 /* Main */,
+				3DBD57A322FBB97D00DE189F /* Firewall */,
+				3D0711B922FE79FF00391C6E /* Why Trust */,
+				3DBD57A422FBBA4600DE189F /* VPN */,
 			);
 			path = LockdowniOS;
 			sourceTree = "<group>";
@@ -627,9 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				A1FCDA6222C7616400C928BC /* NetworkExtension.framework */,
-				A1FCDA5922C067F000C928BC /* Alamofire.framework */,
 				A12229AA22C014CA00BFF624 /* StoreKit.framework */,
-				A122299822C00E8F00BFF624 /* CocoaLumberjack.framework */,
 				A1F07D4720A37FA8007CBA1B /* AdSupport.framework */,
 				A1E78D12207BE58C007FAE70 /* CloudKit.framework */,
 				A15939E0206D982B0060D945 /* CocoaAsyncSocket.framework */,
@@ -643,13 +792,10 @@
 				A15939B9206D965C0060D945 /* tun2socks.framework */,
 				A15939BE206D965D0060D945 /* Yaml.framework */,
 				A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */,
-				A21525EDF4D5DA8CD8E4C27C /* Pods_Confirmed_VPN.framework */,
-				6EE3B447D3215CD7FD0B3EFD /* Pods_OneSignalNotificationServiceExtension.framework */,
-				498BB228C9E2F1FA4AECBD3F /* Pods_Today.framework */,
-				B3BE2E263A7FFAA28A4D30E1 /* Pods_Confirmed_Tunnels.framework */,
 				31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */,
-				FB1EC4F17932C7B5858109B6 /* Pods_Lockdown_Tunnels.framework */,
 				A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */,
+				6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */,
+				7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -669,122 +815,39 @@
 		A11E78A21F6A33C5007499CA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A19BF6C221DE808A00737FBD /* Protocols */,
-				A13C4A5B20AE2C510006A186 /* NotificationCenter+Additions.swift */,
+				3DCA4F2D22F190720017740D /* Client.swift */,
+				3DCA4F3022F190AE0017740D /* ClientModels.swift */,
+				3D94AB1122FE3A460012B0DE /* Environment.swift */,
+				3DCA4F4022F252720017740D /* FirewallController.swift */,
+				3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */,
+				3DBD57AF22FC14CC00DE189F /* Shared.swift */,
+				A1E748191F9108B6004B8021 /* SpeedTest.swift */,
 				A1DBA18921B77C80008A9322 /* VPNController.swift */,
-				A17A6A30202B4DE600657B9E /* ConfirmedConstants.swift */,
-				A13108862153DE7100501527 /* SharedUtils.swift */,
-				A1FCDA7C22C765B200C928BC /* CoreUtils.swift */,
-				A1DBA18721B77C75008A9322 /* Utils.swift */,
-				A1E748191F9108B6004B8021 /* TunnelSpeed.swift */,
-				A12186281FB8FDED007058B3 /* Auth.swift */,
-				A1DBA18521B77C66008A9322 /* TunnelsSubscription.swift */,
-				A1FCDA6022C1ADFD00C928BC /* LockdownProxy.swift */,
+				A1DBA18521B77C66008A9322 /* VPNSubscription.swift */,
+				3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */,
 			);
 			name = Shared;
-			sourceTree = "<group>";
-		};
-		A11E78A31F6A359C007499CA /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				A10EFF1C1F7C28AE0075984E /* tunnels_gradient.png */,
-				A172CB1C1F7AFA5300C85CBB /* tunnel_icon_transparent.png */,
-				A15F3C791F7A0A1600B07F03 /* tunnel_icon.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		A12473F51FE44285008493B8 /* Today */ = {
 			isa = PBXGroup;
 			children = (
 				A12474081FE442A8008493B8 /* Today.entitlements */,
-				A12473F61FE44285008493B8 /* TodayViewController.swift */,
+				A12473F61FE44285008493B8 /* VPNTodayViewController.swift */,
 				A12473F81FE44285008493B8 /* MainInterface.storyboard */,
 				A12473FB1FE44285008493B8 /* Info.plist */,
 			);
 			path = Today;
 			sourceTree = "<group>";
 		};
-		A1329D6C209A451E00EEEEE8 /* Postboarding */ = {
-			isa = PBXGroup;
-			children = (
-				A1329D71209BA3EB00EEEEE8 /* PushViewController.swift */,
-				A1329D6D209A454100EEEEE8 /* InstallVPNViewController.swift */,
-				A1329D6F209A633E00EEEEE8 /* PostboardingViewController.swift */,
-			);
-			name = Postboarding;
-			sourceTree = "<group>";
-		};
-		A154A069215C6DD80010FFCC /* Table Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A154A077215C720B0010FFCC /* FeatureCell.swift */,
-				A154A079215C74D80010FFCC /* FeatureSetupCell.swift */,
-				A154A076215C71EC0010FFCC /* Account */,
-				A154A067215C6C180010FFCC /* SideMenuCell.swift */,
-				A154A07B215C76AD0010FFCC /* AdBlockerCell.swift */,
-				A154A07D215C78180010FFCC /* WhitelistCell.swift */,
-				3D970DAC22EC149D00F9CC93 /* BlockLogTableViewCell.swift */,
-				A154A07F215C7A8C0010FFCC /* WhitelistAddCell.swift */,
-				A1FCDA5E22C14EB800C928BC /* LockdownGroupTableViewCell.swift */,
-			);
-			name = "Table Cells";
-			sourceTree = "<group>";
-		};
-		A154A076215C71EC0010FFCC /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				A154A06C215C6E7B0010FFCC /* AccountEmailCell.swift */,
-				A154A06E215C6F5F0010FFCC /* AccountAddEmailCell.swift */,
-				A154A070215C702A0010FFCC /* AccountPlanCell.swift */,
-				A154A072215C70DA0010FFCC /* AccountUpgradeCell.swift */,
-				A154A074215C71910010FFCC /* AccountSignoutCell.swift */,
-				A13233DB21F4EE820035DC1A /* AccountProtocolCell.swift */,
-			);
-			name = Account;
-			sourceTree = "<group>";
-		};
 		A17A6A2C202B44BB00657B9E /* Modified Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A118F62A20B33E57009A64E7 /* TKSubmit */,
+				3D47CD8322F3C3F3003BD7F7 /* NVActivityIndicatorView */,
 				A1EBEAB72097AE47002B9087 /* M13Checkbox */,
-				A1F3FB5A1F4E19BD001ED22C /* CircularSpinner */,
-				A12ADAA82028F36200D50D81 /* BWWalkthroughPageViewController.swift */,
-				A12ADAA92028F36200D50D81 /* BWWalkthroughViewController.swift */,
+				A118F62A20B33E57009A64E7 /* TKSubmit */,
 			);
 			path = "Modified Pods";
-			sourceTree = "<group>";
-		};
-		A17A6A2E202B49AA00657B9E /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				A128435620291EAA00DE79B4 /* AddEmailViewController.swift */,
-				A12542631F7AFB32001B0B57 /* WalkthroughViewController.swift */,
-				A10805282027B88300F5AD37 /* SignInViewController.swift */,
-				A12186261FB8F691007058B3 /* SignupViewController.swift */,
-				A101106C202B9D4300807612 /* ConfirmedBaseViewController.swift */,
-			);
-			name = Onboarding;
-			sourceTree = "<group>";
-		};
-		A17A6A2F202B49E300657B9E /* Main Interface */ = {
-			isa = PBXGroup;
-			children = (
-				A1FCDA5C22C1301900C928BC /* LockdownDetailViewController.swift */,
-				3D970DAE22EC15D800F9CC93 /* BlockLogTableViewController.swift */,
-				A174CCAD22B15B1000F1B840 /* LockdownViewController.swift */,
-				A1CD1F1C1F782A1A006A43FE /* SideMenuViewController.swift */,
-				A1E912121FE55CBE00C236DB /* AddWidgetViewController.swift */,
-				A16A54ED202A527800512AE9 /* ConfirmedAccountViewController.swift */,
-				A18CCF251F7B416A0072D4A8 /* CountryTableViewCell.swift */,
-				A15F3C6F1F797FFF00B07F03 /* PrivacyPolicyViewController.swift */,
-				A1141A521F4A1C3100F54698 /* VPNViewController.swift */,
-				A11C67161F4E204F00B72AAA /* CountrySelection.swift */,
-				A1A130FA202CF4F000ECBA32 /* ConfirmedAppHelper.swift */,
-				A169586322DFA0EE00495976 /* ToggleMetricsViewController.swift */,
-			);
-			name = "Main Interface";
 			sourceTree = "<group>";
 		};
 		A1931CFC20791F5900E695EB /* Lockdown Blocker */ = {
@@ -800,15 +863,6 @@
 				A1931D0120791F5900E695EB /* Info.plist */,
 			);
 			path = "Lockdown Blocker";
-			sourceTree = "<group>";
-		};
-		A19BF6C221DE808A00737FBD /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				A19BF6BE21DE7FCF00737FBD /* ConfirmedVPNProtocol.swift */,
-				A19BF6C721DE826600737FBD /* IPSecV3.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		A1EBEAB72097AE47002B9087 /* M13Checkbox */ = {
@@ -837,48 +891,24 @@
 			path = M13Checkbox;
 			sourceTree = "<group>";
 		};
-		A1F3FB5A1F4E19BD001ED22C /* CircularSpinner */ = {
-			isa = PBXGroup;
-			children = (
-				A1F3FB5B1F4E19BD001ED22C /* Assets */,
-				A1F3FB5E1F4E19BD001ED22C /* Classes */,
-			);
-			path = CircularSpinner;
-			sourceTree = "<group>";
-		};
-		A1F3FB5B1F4E19BD001ED22C /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		A1F3FB5E1F4E19BD001ED22C /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				A1F3FB5F1F4E19BD001ED22C /* CircularSpinner.swift */,
-				A1F3FB601F4E19BD001ED22C /* CircularSpinner.xib */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		A1FCDA4222C0651300C928BC /* LockdownTunnel */ = {
+		A1FCDA4222C0651300C928BC /* Lockdown Tunnel */ = {
 			isa = PBXGroup;
 			children = (
 				A1FCDA4322C0651300C928BC /* PacketTunnelProvider.swift */,
 				A1FCDA4522C0651300C928BC /* Info.plist */,
 				A1FCDA4622C0651300C928BC /* LockdownTunnel.entitlements */,
 			);
-			path = LockdownTunnel;
+			path = "Lockdown Tunnel";
 			sourceTree = "<group>";
 		};
-		A1FCDA8322CDE5ED00C928BC /* Block List */ = {
+		A1FCDA8322CDE5ED00C928BC /* Block Lists */ = {
 			isa = PBXGroup;
 			children = (
 				3D0971D622EBAB0200CCD326 /* IPs */,
 				3D0971D522EBAAEE00CCD326 /* Domains */,
 			);
-			name = "Block List";
+			name = "Block Lists";
+			path = LockdowniOS;
 			sourceTree = "<group>";
 		};
 		D4B0457BD6E109D891101985 /* Pods */ = {
@@ -896,6 +926,18 @@
 				65F695578DAA62084B36A513 /* Pods-Lockdown Tunnels.release.xcconfig */,
 				953709B6B9D85B15EF763F5B /* Pods-LockdownTunnel.debug.xcconfig */,
 				726E8CFC747C13F896CA72B6 /* Pods-LockdownTunnel.release.xcconfig */,
+				7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
+				FDC72127CE99C59603A65899 /* Pods-Lockdown Firewall Widget.release.xcconfig */,
+				A6822C9110BC5F2F96454261 /* Pods-Lockdown VPN Widget.debug.xcconfig */,
+				EE344B485CF03034ED1715B2 /* Pods-Lockdown VPN Widget.release.xcconfig */,
+				E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */,
+				B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */,
+				92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */,
+				12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */,
+				A75E57A0F35C50EA949FB1FE /* Pods-Lockdown-settings-metadata.plist */,
+				0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */,
+				8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */,
+				50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -903,6 +945,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DBD57C722FD727900DE189F /* Build configuration list for PBXNativeTarget "Lockdown Firewall Widget" */;
+			buildPhases = (
+				FCE1317D723F4940F4E41C9C /* [CP] Check Pods Manifest.lock */,
+				3DBD57B722FD727900DE189F /* Sources */,
+				3DBD57B822FD727900DE189F /* Frameworks */,
+				3DBD57B922FD727900DE189F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Lockdown Firewall Widget";
+			productName = "Lockdown Firewall Today";
+			productReference = 3DBD57BB22FD727900DE189F /* Lockdown Firewall Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A1141A101F46230500F54698 /* Lockdown */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1141A391F46230600F54698 /* Build configuration list for PBXNativeTarget "Lockdown" */;
@@ -922,51 +982,16 @@
 				A118F63620B33F44009A64E7 /* PBXTargetDependency */,
 				A1931D0320791F5900E695EB /* PBXTargetDependency */,
 				A1FCDA4822C0651300C928BC /* PBXTargetDependency */,
+				3DBD57C522FD727900DE189F /* PBXTargetDependency */,
 			);
 			name = Lockdown;
 			productName = TrustiOS;
 			productReference = A1141A111F46230500F54698 /* Lockdown.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A1141A241F46230500F54698 /* LockdowniOSTests */ = {
+		A12473F21FE44284008493B8 /* Lockdown VPN Widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1141A3C1F46230600F54698 /* Build configuration list for PBXNativeTarget "LockdowniOSTests" */;
-			buildPhases = (
-				A1141A211F46230500F54698 /* Sources */,
-				A1141A221F46230500F54698 /* Frameworks */,
-				A1141A231F46230500F54698 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A1141A271F46230500F54698 /* PBXTargetDependency */,
-			);
-			name = LockdowniOSTests;
-			productName = TrustiOSTests;
-			productReference = A1141A251F46230500F54698 /* LockdowniOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A1141A2F1F46230600F54698 /* LockdowniOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A1141A3F1F46230600F54698 /* Build configuration list for PBXNativeTarget "LockdowniOSUITests" */;
-			buildPhases = (
-				A1141A2C1F46230600F54698 /* Sources */,
-				A1141A2D1F46230600F54698 /* Frameworks */,
-				A1141A2E1F46230600F54698 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A1141A321F46230600F54698 /* PBXTargetDependency */,
-			);
-			name = LockdowniOSUITests;
-			productName = TrustiOSUITests;
-			productReference = A1141A301F46230600F54698 /* LockdowniOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		A12473F21FE44284008493B8 /* Today */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Today" */;
+			buildConfigurationList = A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Lockdown VPN Widget" */;
 			buildPhases = (
 				E20A95E02AF7431818AFB079 /* [CP] Check Pods Manifest.lock */,
 				A12473EF1FE44284008493B8 /* Sources */,
@@ -977,9 +1002,9 @@
 			);
 			dependencies = (
 			);
-			name = Today;
+			name = "Lockdown VPN Widget";
 			productName = Today;
-			productReference = A12473F31FE44284008493B8 /* Today.appex */;
+			productReference = A12473F31FE44284008493B8 /* Lockdown VPN Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		A1931CFA20791F5800E695EB /* Lockdown Blocker */ = {
@@ -1023,10 +1048,35 @@
 		A1141A091F46230500F54698 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Confirmed Inc.";
 				TargetAttributes = {
+					3DBD57BA22FD727900DE189F = {
+						CreatedOnToolsVersion = 10.3;
+						DevelopmentTeam = V8J3Z26F6Z;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					A1141A101F46230500F54698 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = V8J3Z26F6Z;
@@ -1058,19 +1108,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					A1141A241F46230500F54698 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = V8J3Z26F6Z;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A1141A101F46230500F54698;
-					};
-					A1141A2F1F46230600F54698 = {
-						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A1141A101F46230500F54698;
 					};
 					A12473F21FE44284008493B8 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1126,14 +1163,11 @@
 			};
 			buildConfigurationList = A1141A0C1F46230500F54698 /* Build configuration list for PBXProject "LockdowniOS" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
-				ja,
-				es,
 			);
 			mainGroup = A1141A081F46230500F54698;
 			productRefGroup = A1141A121F46230500F54698 /* Products */;
@@ -1141,16 +1175,25 @@
 			projectRoot = "";
 			targets = (
 				A1141A101F46230500F54698 /* Lockdown */,
-				A1141A241F46230500F54698 /* LockdowniOSTests */,
-				A1141A2F1F46230600F54698 /* LockdowniOSUITests */,
-				A12473F21FE44284008493B8 /* Today */,
 				A1931CFA20791F5800E695EB /* Lockdown Blocker */,
+				A12473F21FE44284008493B8 /* Lockdown VPN Widget */,
 				A1FCDA4022C0651300C928BC /* LockdownTunnel */,
+				3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3DBD57B922FD727900DE189F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D94AB0F22FE0CF60012B0DE /* Assets.xcassets in Resources */,
+				3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */,
+				3D5464D62303839500AE1F73 /* Settings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1141A0F1F46230500F54698 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1164,11 +1207,7 @@
 				3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */,
 				3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */,
 				3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */,
-				A1EDF8DA1FE56BC800F5889D /* IMG_273507FA7DE5-1.jpeg in Resources */,
-				A1E912111FE55B1C00C236DB /* IMG_F26CD38DA8D8-1.jpeg in Resources */,
 				3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */,
-				A1E9120F1FE5584100C236DB /* IMG_D350EEDEB9A8-1.jpeg in Resources */,
-				A121E81C20ADC36A00D003EF /* Localizable.strings in Resources */,
 				3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */,
 				A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */,
 				A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */,
@@ -1184,21 +1223,8 @@
 				A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
 				A1141A1A1F46230500F54698 /* Main.storyboard in Resources */,
-				A1F3FB641F4E19BD001ED22C /* CircularSpinner.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1141A231F46230500F54698 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1141A2E1F46230600F54698 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3D5464D323037CCA00AE1F73 /* Settings.bundle in Resources */,
+				20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,6 +1234,7 @@
 			files = (
 				A1DD82BE1FE446CA00482632 /* Assets.xcassets in Resources */,
 				A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */,
+				3D5464D42303839200AE1F73 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,6 +1254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5464D52303839400AE1F73 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,41 +1331,29 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Lockdown/Pods-Lockdown-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CNPPopupController/CNPPopupController.framework",
+				"${BUILT_PRODUCTS_DIR}/AwesomeSpotlightView/AwesomeSpotlightView.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RQShineLabel/RQShineLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
-				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNPPopupController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwesomeSpotlightView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RQShineLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1355,7 +1371,29 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Today-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown VPN Widget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCE1317D723F4940F4E41C9C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1365,104 +1403,121 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3DBD57B722FD727900DE189F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D94AAF422FDEAC80012B0DE /* WhitelistUtilities.swift in Sources */,
+				3D94AAF322FDEAC50012B0DE /* FirewallUtilities.swift in Sources */,
+				3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */,
+				3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */,
+				3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */,
+				3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */,
+				3DBD57BF22FD727900DE189F /* FirewallTodayViewController.swift in Sources */,
+				3D94AB1422FE3BA20012B0DE /* Environment.swift in Sources */,
+				3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */,
+				3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1141A0D1F46230500F54698 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A16A54EE202A527900512AE9 /* ConfirmedAccountViewController.swift in Sources */,
-				A17A6A31202B4DE600657B9E /* ConfirmedConstants.swift in Sources */,
+				3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */,
 				A1DBA18A21B77C80008A9322 /* VPNController.swift in Sources */,
-				A154A078215C720B0010FFCC /* FeatureCell.swift in Sources */,
-				A1FCDA7D22C765B200C928BC /* CoreUtils.swift in Sources */,
-				A12542641F7AFB32001B0B57 /* WalkthroughViewController.swift in Sources */,
-				A12186291FB8FDED007058B3 /* Auth.swift in Sources */,
-				A1F3FB631F4E19BD001ED22C /* CircularSpinner.swift in Sources */,
-				A154A071215C702A0010FFCC /* AccountPlanCell.swift in Sources */,
+				3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */,
+				3D47CDB622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
+				3D47CDD622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
+				3D5561D4230B58F30062001D /* PrivacyPolicyViewController.swift in Sources */,
+				3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */,
+				3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */,
 				A118F64320B33FED009A64E7 /* FadeTransition.swift in Sources */,
-				A154A068215C6C180010FFCC /* SideMenuCell.swift in Sources */,
-				A169586422DFA0EE00495976 /* ToggleMetricsViewController.swift in Sources */,
+				3D47CDC822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */,
 				A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */,
+				3D47CDC522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				A1EBEACD2097AE6E002B9087 /* M13CheckboxFadeController.swift in Sources */,
+				3D47CDCF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
+				3D47CDC422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				A1EBEAD72097AE6E002B9087 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
-				3D970DAD22EC149D00F9CC93 /* BlockLogTableViewCell.swift in Sources */,
-				A13108872153DE7100501527 /* SharedUtils.swift in Sources */,
-				A1329D70209A633E00EEEEE8 /* PostboardingViewController.swift in Sources */,
+				3D970DAD22EC149D00F9CC93 /* BlockLogCell.swift in Sources */,
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
-				A12ADAAB2028F36200D50D81 /* BWWalkthroughViewController.swift in Sources */,
-				A1FF5D8C21F38F2F00F70710 /* OpenSSLHelper.m in Sources */,
+				3D47CDD522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
+				3D47CDCD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				A1EBEAD22097AE6E002B9087 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */,
+				3D0711B822FE79BE00391C6E /* WhyTrustViewController.swift in Sources */,
 				A118F64520B33FED009A64E7 /* TimerEx.swift in Sources */,
-				A1359FDA20AF6E32008C4BF7 /* LogFormatter.swift in Sources */,
+				3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
+				3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */,
+				3DCA4F4122F252720017740D /* FirewallController.swift in Sources */,
+				A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */,
+				3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				A118F64120B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */,
+				3DBD57A622FBCD7A00DE189F /* WhitelistViewController.swift in Sources */,
 				A1EBEAD82097AE6E002B9087 /* M13CheckboxBounceController.swift in Sources */,
-				A19BF6BF21DE7FCF00737FBD /* ConfirmedVPNProtocol.swift in Sources */,
-				A11C67171F4E204F00B72AAA /* CountrySelection.swift in Sources */,
-				A101106D202B9D4300807612 /* ConfirmedBaseViewController.swift in Sources */,
-				A12ADAAA2028F36200D50D81 /* BWWalkthroughPageViewController.swift in Sources */,
+				3DCA4F2E22F190720017740D /* Client.swift in Sources */,
+				A101106D202B9D4300807612 /* BaseViewController.swift in Sources */,
+				3DABD9FF22F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
 				A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */,
-				A13233DC21F4EE820035DC1A /* AccountProtocolCell.swift in Sources */,
 				A1EBEADA2097AE6E002B9087 /* M13CheckboxFillController.swift in Sources */,
-				A13C4A5C20AE2C510006A186 /* NotificationCenter+Additions.swift in Sources */,
-				A1CD1F1D1F782A1A006A43FE /* SideMenuViewController.swift in Sources */,
-				A1329D72209BA3EB00EEEEE8 /* PushViewController.swift in Sources */,
 				A1EBEAD42097AE6E002B9087 /* M13CheckboxPathGenerator.swift in Sources */,
 				A1EBEACB2097AE6E002B9087 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
-				A15F3C701F797FFF00B07F03 /* PrivacyPolicyViewController.swift in Sources */,
-				A1A130FB202CF4F000ECBA32 /* ConfirmedAppHelper.swift in Sources */,
-				A1329D6E209A454100EEEEE8 /* InstallVPNViewController.swift in Sources */,
-				A1141A531F4A1C3100F54698 /* VPNViewController.swift in Sources */,
-				A18CCF261F7B416A0072D4A8 /* CountryTableViewCell.swift in Sources */,
-				A1F4C45320964D2600AC004C /* FeaturesViewController.swift in Sources */,
-				A10805292027B88300F5AD37 /* SignInViewController.swift in Sources */,
-				A154A075215C71910010FFCC /* AccountSignoutCell.swift in Sources */,
-				A1E7481A1F9108B6004B8021 /* TunnelSpeed.swift in Sources */,
-				3D970DAF22EC15D800F9CC93 /* BlockLogTableViewController.swift in Sources */,
-				A154A06D215C6E7B0010FFCC /* AccountEmailCell.swift in Sources */,
+				3D47CDC622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
+				3D47CDCB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
+				3D47CDCA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
+				3D47CDC722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
+				A1E7481A1F9108B6004B8021 /* SpeedTest.swift in Sources */,
+				3D970DAF22EC15D800F9CC93 /* BlockLogViewController.swift in Sources */,
 				A1EBEADB2097AE6E002B9087 /* M13CheckboxAnimationGenerator.swift in Sources */,
-				A1DBA18821B77C75008A9322 /* Utils.swift in Sources */,
+				3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */,
 				A1EBEAD12097AE6E002B9087 /* M13Checkbox+IB.swift in Sources */,
-				A12CA0402079358B00BA3D82 /* ContentBlockerViewController.swift in Sources */,
-				A1FCDA5F22C14EB800C928BC /* LockdownGroupTableViewCell.swift in Sources */,
+				A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */,
 				A1EBEACC2097AE6E002B9087 /* M13CheckboxDotController.swift in Sources */,
 				A1EBEAD92097AE6E002B9087 /* M13CheckboxGestureRecognizer.swift in Sources */,
-				A1FCDA5D22C1301A00C928BC /* LockdownDetailViewController.swift in Sources */,
-				A154A07E215C78180010FFCC /* WhitelistCell.swift in Sources */,
+				A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */,
+				3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */,
+				A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */,
+				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
+				3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */,
-				A1E912131FE55CBE00C236DB /* AddWidgetViewController.swift in Sources */,
-				A154A06F215C6F5F0010FFCC /* AccountAddEmailCell.swift in Sources */,
-				A154A073215C70DA0010FFCC /* AccountUpgradeCell.swift in Sources */,
 				A1EBEAD02097AE6E002B9087 /* M13CheckboxController.swift in Sources */,
+				3D47CDB322F3C3F3003BD7F7 /* NVActivityIndicatorView.swift in Sources */,
+				3D47CDBD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
+				3D47CDB022F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift in Sources */,
+				3D47CDC322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				A1EBEAD52097AE6E002B9087 /* M13CheckboxRadioPathGenerator.swift in Sources */,
-				A154A080215C7A8C0010FFCC /* WhitelistAddCell.swift in Sources */,
-				A1DBA18621B77C66008A9322 /* TunnelsSubscription.swift in Sources */,
-				A128435720291EAA00DE79B4 /* AddEmailViewController.swift in Sources */,
+				3D47CDB122F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift in Sources */,
+				A154A080215C7A8C0010FFCC /* BlockListAddCell.swift in Sources */,
+				3D47CDB822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
+				3DBD57A822FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
+				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
+				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
+				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
+				3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
+				3D47CDBA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
+				A1DBA18621B77C66008A9322 /* VPNSubscription.swift in Sources */,
+				3D0711BB22FE7B5100391C6E /* TitleViewController.swift in Sources */,
+				3D47CDB222F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift in Sources */,
 				A1EBEAD32097AE6E002B9087 /* M13CheckboxFlatController.swift in Sources */,
-				A154A07A215C74D80010FFCC /* FeatureSetupCell.swift in Sources */,
+				3D47CDC022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
+				3D47CDC222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				A1EBEAD62097AE6E002B9087 /* M13CheckboxSpiralController.swift in Sources */,
-				A19BF6C821DE826600737FBD /* IPSecV3.swift in Sources */,
+				3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
+				3DBD57AC22FBDFE300DE189F /* WhitelistCell.swift in Sources */,
+				3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
+				3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
+				3D47CDB722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
+				3D47CDD322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				A1141A151F46230500F54698 /* AppDelegate.swift in Sources */,
+				3DBD57AE22FBE04300DE189F /* WhitelistAddCell.swift in Sources */,
+				3D47CDB922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				A1EBEACE2097AE6E002B9087 /* M13CheckboxExpandController.swift in Sources */,
-				A186387F206E8A5400EF4511 /* WhitelistingViewController.swift in Sources */,
-				A174CCAE22B15B1000F1B840 /* LockdownViewController.swift in Sources */,
-				A154A07C215C76AD0010FFCC /* AdBlockerCell.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1141A211F46230500F54698 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1141A2A1F46230600F54698 /* ConfirmediOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1141A2C1F46230600F54698 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1141A351F46230600F54698 /* ConfirmediOSUITests.swift in Sources */,
+				A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */,
+				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1470,24 +1525,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A13233E021F60F940035DC1A /* OpenSSLHelper.m in Sources */,
-				A13C4A5D20AE2FCD0006A186 /* NotificationCenter+Additions.swift in Sources */,
-				A1A130F9202CF4CB00ECBA32 /* Auth.swift in Sources */,
+				3DBD57A922FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
+				3D94AAF622FDEAD60012B0DE /* FirewallController.swift in Sources */,
 				A1DBA18B21B77C88008A9322 /* VPNController.swift in Sources */,
-				A1DBA19121B77C96008A9322 /* Utils.swift in Sources */,
-				A19BF6C021DE7FCF00737FBD /* ConfirmedVPNProtocol.swift in Sources */,
-				A19BF6C921DE826600737FBD /* IPSecV3.swift in Sources */,
-				A17A6A32202B4EC000657B9E /* ConfirmedConstants.swift in Sources */,
-				A118F64220B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */,
-				A118F64A20B33FED009A64E7 /* CGRectEx.swift in Sources */,
-				A1FCDA8022C7666400C928BC /* CoreUtils.swift in Sources */,
-				A118F64820B33FED009A64E7 /* SpinerLayer.swift in Sources */,
-				A13108882153DE7100501527 /* SharedUtils.swift in Sources */,
-				A118F64620B33FED009A64E7 /* TimerEx.swift in Sources */,
-				A118F64420B33FED009A64E7 /* FadeTransition.swift in Sources */,
-				A12474051FE44297008493B8 /* TunnelSpeed.swift in Sources */,
-				A1DBA18E21B77C8E008A9322 /* TunnelsSubscription.swift in Sources */,
-				A12473F71FE44285008493B8 /* TodayViewController.swift in Sources */,
+				3DAF7C5722F456F2003C8F9C /* ClientModels.swift in Sources */,
+				3DBD57B122FC14CD00DE189F /* Shared.swift in Sources */,
+				3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */,
+				3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */,
+				3DABDA0022F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
+				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
+				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1503,30 +1550,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FCDA8122C766B200C928BC /* ConfirmedConstants.swift in Sources */,
+				3DABDA0122F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
+				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
+				3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */,
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
-				A1FCDA7E22C7666200C928BC /* CoreUtils.swift in Sources */,
-				A1FCDA8222C76A9E00C928BC /* NotificationCenter+Additions.swift in Sources */,
-				A1FCDA6122C1ADFD00C928BC /* LockdownProxy.swift in Sources */,
+				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
+				3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */,
+				3DABD9FD22F7961F00480AAC /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A1141A271F46230500F54698 /* PBXTargetDependency */ = {
+		3DBD57C522FD727900DE189F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A1141A101F46230500F54698 /* Lockdown */;
-			targetProxy = A1141A261F46230500F54698 /* PBXContainerItemProxy */;
-		};
-		A1141A321F46230600F54698 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A1141A101F46230500F54698 /* Lockdown */;
-			targetProxy = A1141A311F46230600F54698 /* PBXContainerItemProxy */;
+			target = 3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */;
+			targetProxy = 3DBD57C422FD727900DE189F /* PBXContainerItemProxy */;
 		};
 		A118F63620B33F44009A64E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A12473F21FE44284008493B8 /* Today */;
+			target = A12473F21FE44284008493B8 /* Lockdown VPN Widget */;
 			targetProxy = A118F63520B33F44009A64E7 /* PBXContainerItemProxy */;
 		};
 		A1931D0320791F5900E695EB /* PBXTargetDependency */ = {
@@ -1542,31 +1586,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D94AB0322FDEDEB0012B0DE /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		A1141A181F46230500F54698 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A1141A191F46230500F54698 /* Base */,
-				A135A3E120AB234300603828 /* es */,
-				A1625FD220B4874300EFB715 /* ja */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A121E81E20ADC36A00D003EF /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A121E81D20ADC36A00D003EF /* es */,
-				A1625FD520B4874300EFB715 /* ja */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		A12473F81FE44285008493B8 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A12473F91FE44285008493B8 /* Base */,
-				A135A3E320AB234400603828 /* es */,
-				A1625FD420B4874300EFB715 /* ja */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -1575,8 +1614,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A15F3C741F79D90500B07F03 /* Base */,
-				A135A3E220AB234300603828 /* es */,
-				A1625FD320B4874300EFB715 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1584,6 +1621,65 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3DBD57C822FD727900DE189F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Lockdown Firewall Today/Lockdown Firewall Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3DBD57C922FD727900DE189F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDC72127CE99C59603A65899 /* Pods-Lockdown Firewall Widget.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Lockdown Firewall Today/Lockdown Firewall Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		A1141A371F46230600F54698 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1634,14 +1730,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1689,13 +1785,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1727,7 +1823,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "LockdowniOS/LockdowniOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1762,7 +1857,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "LockdowniOS/LockdowniOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1770,69 +1864,9 @@
 			};
 			name = Release;
 		};
-		A1141A3D1F46230600F54698 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = V8J3Z26F6Z;
-				INFOPLIST_FILE = ConfirmediOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.ConfirmediOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Confirmed VPN.app/Confirmed VPN";
-			};
-			name = Debug;
-		};
-		A1141A3E1F46230600F54698 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = V8J3Z26F6Z;
-				INFOPLIST_FILE = ConfirmediOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.ConfirmediOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Confirmed VPN.app/Confirmed VPN";
-			};
-			name = Release;
-		};
-		A1141A401F46230600F54698 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = ConfirmediOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.ConfirmediOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = ConfirmediOS;
-			};
-			name = Debug;
-		};
-		A1141A411F46230600F54698 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = ConfirmediOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.ConfirmediOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = ConfirmediOS;
-			};
-			name = Release;
-		};
 		A12474001FE44285008493B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */;
+			baseConfigurationReference = A6822C9110BC5F2F96454261 /* Pods-Lockdown VPN Widget.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1855,12 +1889,11 @@
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.today;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LockdowniOS/LockdowniOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1870,7 +1903,7 @@
 		};
 		A12474011FE44285008493B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96179E9445306C33ADBDDFAB /* Pods-Today.release.xcconfig */;
+			baseConfigurationReference = EE344B485CF03034ED1715B2 /* Pods-Lockdown VPN Widget.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1893,12 +1926,11 @@
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.today;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LockdowniOS/LockdowniOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1924,7 +1956,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LockdowniOS/LockdowniOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1950,7 +1981,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LockdowniOS/LockdowniOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1965,7 +1995,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = LockdownTunnel/LockdownTunnel.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Lockdown Tunnel/LockdownTunnel.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1975,7 +2005,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = LockdownTunnel/Info.plist;
+				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1995,7 +2025,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = LockdownTunnel/LockdownTunnel.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Lockdown Tunnel/LockdownTunnel.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -2005,7 +2035,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = LockdownTunnel/Info.plist;
+				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
@@ -2020,6 +2050,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3DBD57C722FD727900DE189F /* Build configuration list for PBXNativeTarget "Lockdown Firewall Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DBD57C822FD727900DE189F /* Debug */,
+				3DBD57C922FD727900DE189F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A1141A0C1F46230500F54698 /* Build configuration list for PBXProject "LockdowniOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2038,25 +2077,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1141A3C1F46230600F54698 /* Build configuration list for PBXNativeTarget "LockdowniOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1141A3D1F46230600F54698 /* Debug */,
-				A1141A3E1F46230600F54698 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A1141A3F1F46230600F54698 /* Build configuration list for PBXNativeTarget "LockdowniOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1141A401F46230600F54698 /* Debug */,
-				A1141A411F46230600F54698 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Today" */ = {
+		A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Lockdown VPN Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A12474001FE44285008493B8 /* Debug */,

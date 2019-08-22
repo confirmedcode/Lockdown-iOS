@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Speed: Tap to test"; ObjectID = "Apy-GL-W9N"; */
+"Apy-GL-W9N.normalTitle" = "Velocidad: Pulse para probar";
+
+/* Class = "UIButton"; normalTitle = "Change country"; ObjectID = "Nlw-t0-1Mi"; */
+"Nlw-t0-1Mi.normalTitle" = "Cambiar Pais";
+
+/* Class = "UILabel"; text = "Connected"; ObjectID = "XJH-bI-G1N"; */
+"XJH-bI-G1N.text" = "PROTEGIDO";
+
+/* Class = "UILabel"; text = "IP: Finding..."; ObjectID = "Zgn-9l-eoa"; */
+"Zgn-9l-eoa.text" = "Direccion IP: ...";
