@@ -141,6 +141,24 @@ func metricsToString(metric : Int) -> String {
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
+    let snapchatAnalytics = LockdownGroup.init(
+        version: 20,
+        internalID: "snapchatAnalytics",
+        name: "Snapchat Trackers",
+        iconURL: "snapchat_analytics_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "snapchat_analytics"),
+        ipRanges: [:])
+    
+    let gameAds = LockdownGroup.init(
+        version: 20,
+        internalID: "gameAds",
+        name: "Game Ads",
+        iconURL: "game_ads_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "game_ads"),
+        ipRanges: [:])
+    
     let clickbait = LockdownGroup.init(
         version: 20,
         internalID: "clickbait",
@@ -162,7 +180,7 @@ func setupFirewallDefaultBlockLists() {
     let emailOpens = LockdownGroup.init(
         version: 20,
         internalID: "email_opens",
-        name: "Email Opens (Beta)",
+        name: "Email Trackers (Beta)",
         iconURL: "email_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "email_opens"),
@@ -171,7 +189,7 @@ func setupFirewallDefaultBlockLists() {
     let facebookInc = LockdownGroup.init(
         version: 20,
         internalID: "facebook_inc",
-        name: "Facebook Inc (Beta)",
+        name: "Facebook Apps (Beta)",
         iconURL: "facebook_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "facebook_inc"),
@@ -180,7 +198,7 @@ func setupFirewallDefaultBlockLists() {
     let facebookSDK = LockdownGroup.init(
         version: 20,
         internalID: "facebook_sdk",
-        name: "Facebook SDK",
+        name: "Facebook Trackers",
         iconURL: "facebook_white_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "facebook_sdk"),
@@ -189,7 +207,7 @@ func setupFirewallDefaultBlockLists() {
     let marketingScripts = LockdownGroup.init(
         version: 20,
         internalID: "marketing_scripts",
-        name: "Marketing Scripts",
+        name: "Marketing Trackers",
         iconURL: "marketing_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "marketing"),
@@ -204,7 +222,9 @@ func setupFirewallDefaultBlockLists() {
         domains: getDomainBlockList(filename: "ransomware"),
         ipRanges: [:])
     
-    let defaultLockdownSettings = [clickbait,
+    let defaultLockdownSettings = [snapchatAnalytics,
+                                   gameAds,
+                                   clickbait,
                                    crypto,
                                    emailOpens,
                                    facebookInc,

@@ -17,14 +17,23 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(emailTeam))
-        longPressRecognizer.minimumPressDuration = 4
-        self.view.addGestureRecognizer(longPressRecognizer)
+//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(emailTeam))
+//        longPressRecognizer.minimumPressDuration = 4
+//        self.view.addGestureRecognizer(longPressRecognizer)
         
         //        let doubleLongPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(signoutUser))
         //        doubleLongPressRecognizer.minimumPressDuration = 5
         //        doubleLongPressRecognizer.numberOfTouchesRequired = 2
         //        self.view.addGestureRecognizer(doubleLongPressRecognizer)
+    }
+    
+    // MARK: - AwesomeSpotlight Helper
+    
+    func getRectForView(_ v: UIView) -> CGRect {
+        if let sv = v.superview {
+            return sv.convert(v.frame, to: self.view)
+        }
+        return CGRect.zero;
     }
     
     // MARK: - Handle NSURLError and APIErrors

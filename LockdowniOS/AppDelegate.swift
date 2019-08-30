@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Clear local data for testing
+//        for d in defaults.dictionaryRepresentation() {
+//            defaults.removeObject(forKey: d.key)
+//        }
+        
         // Set up basic logging
         setupLocalLogger()
         

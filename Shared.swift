@@ -149,6 +149,10 @@ let vpnRegions:[VPNRegion] = [
               regionDisplayNameShort: "Canada",
               regionFlagEmoji: "🇨🇦",
               serverPrefix: "canada"),
+    VPNRegion(regionDisplayName: "India",
+              regionDisplayNameShort: "India",
+              regionFlagEmoji: "🇮🇳",
+              serverPrefix: "ap-mumbai"),
     VPNRegion(regionDisplayName: "Japan",
               regionDisplayNameShort: "Japan",
               regionFlagEmoji: "🇯🇵",
@@ -259,7 +263,8 @@ extension String: Error { // Error makes it easy to throw errors as one-liners
 }
 
 extension UIColor {
-    static let tunnelsBlue = UIColor.init(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
+    static let tunnelsBlue = UIColor(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
+    static let tunnelsYellow = UIColor(red: 241/255.0, green: 196/255.0, blue: 15/255.0, alpha: 1.0)
 }
 
 extension UnicodeScalar {

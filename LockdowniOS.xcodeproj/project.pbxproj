@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		08799CF7AFE70CC200E47EDB /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */; };
+		1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */; };
 		20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */; };
+		388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */; };
 		3D0711B822FE79BE00391C6E /* WhyTrustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0711B722FE79BE00391C6E /* WhyTrustViewController.swift */; };
 		3D0711BB22FE7B5100391C6E /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0711BA22FE7B5100391C6E /* TitleViewController.swift */; };
 		3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */; };
@@ -63,6 +65,9 @@
 		3D5464D52303839400AE1F73 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D5464D223037CCA00AE1F73 /* Settings.bundle */; };
 		3D5464D62303839500AE1F73 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D5464D223037CCA00AE1F73 /* Settings.bundle */; };
 		3D5561D4230B58F30062001D /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5561D3230B58F30062001D /* PrivacyPolicyViewController.swift */; };
+		3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5A0723107C1E004C3860 /* game_ads.txt */; };
+		3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5A0923107EB8004C3860 /* snapchat_analytics.txt */; };
+		3D5F5A0C23109ABB004C3860 /* WhatIsVpnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5A0B23109ABB004C3860 /* WhatIsVpnViewController.swift */; };
 		3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
@@ -114,6 +119,10 @@
 		3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
 		3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3222F22CB40017740D /* HomeViewController.swift */; };
 		3DCA4F4122F252720017740D /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
+		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
+		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
+		601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */; };
+		90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */; };
 		A101106D202B9D4300807612 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* BaseViewController.swift */; };
 		A1141A151F46230500F54698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A141F46230500F54698 /* AppDelegate.swift */; };
 		A1141A1A1F46230500F54698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1141A181F46230500F54698 /* Main.storyboard */; };
@@ -207,6 +216,7 @@
 		A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */; };
 		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
 		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
+		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
 		D37198BBCE0A226BD9071F4A /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */; };
 		E0C51E8814F43CD752AB740D /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */; };
 		F6529FCC7BC553DB6372DE40 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */; };
@@ -272,6 +282,7 @@
 /* Begin PBXFileReference section */
 		0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
 		12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-metadata.plist"; path = "Pods/Pods-Lockdown Firewall Widget-metadata.plist"; sourceTree = "<group>"; };
+		2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0711B722FE79BE00391C6E /* WhyTrustViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhyTrustViewController.swift; sourceTree = "<group>"; };
 		3D0711BA22FE7B5100391C6E /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +336,9 @@
 		3D47CDAE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationOrbit.swift; sourceTree = "<group>"; };
 		3D5464D223037CCA00AE1F73 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3D5561D3230B58F30062001D /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		3D5F5A0723107C1E004C3860 /* game_ads.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = game_ads.txt; sourceTree = "<group>"; };
+		3D5F5A0923107EB8004C3860 /* snapchat_analytics.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = snapchat_analytics.txt; sourceTree = "<group>"; };
+		3D5F5A0B23109ABB004C3860 /* WhatIsVpnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsVpnViewController.swift; sourceTree = "<group>"; };
 		3D94AB0322FDEDEB0012B0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3D94AB1122FE3A460012B0DE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3D970DAC22EC149D00F9CC93 /* BlockLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogCell.swift; sourceTree = "<group>"; };
@@ -351,9 +365,11 @@
 		428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		4C50BEAA399D6FDF2C2672C6 /* Pods-Confirmed VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.debug.xcconfig"; sourceTree = "<group>"; };
 		4D422CB6539443825E5CD91B /* Pods-Confirmed Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed Tunnels/Pods-Confirmed Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
+		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		65F695578DAA62084B36A513 /* Pods-Lockdown Tunnels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Tunnels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Tunnels/Pods-Lockdown Tunnels.release.xcconfig"; sourceTree = "<group>"; };
 		6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
 		726E8CFC747C13F896CA72B6 /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
 		7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -409,6 +425,7 @@
 		A1931CFF20791F5900E695EB /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		A1931D0120791F5900E695EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1931D0820791F6100E695EB /* Lockdown Blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lockdown Blocker.entitlements"; sourceTree = "<group>"; };
+		A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown VPN Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		A1D85F06207C4C8300B766E0 /* adBlockListTwo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adBlockListTwo.json; sourceTree = "<group>"; };
 		A1D85F08207C52A000B766E0 /* adBlockListThree.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = adBlockListThree.json; sourceTree = "<group>"; };
 		A1DBA18521B77C66008A9322 /* VPNSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VPNSubscription.swift; path = LockdowniOS/VPNSubscription.swift; sourceTree = "<group>"; };
@@ -551,6 +568,8 @@
 			children = (
 				3DAA6B4E22EA76420018FC09 /* clickbait.txt */,
 				A1FCDA8422CDE60800C928BC /* crypto_mining.txt */,
+				3D5F5A0723107C1E004C3860 /* game_ads.txt */,
+				3D5F5A0923107EB8004C3860 /* snapchat_analytics.txt */,
 				A1FCDA8C22D3C50A00C928BC /* email_opens.txt */,
 				A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */,
 				3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */,
@@ -666,6 +685,7 @@
 				A12186261FB8F691007058B3 /* SignupViewController.swift */,
 				3DBD57B522FD00BB00DE189F /* SetRegionCell.swift */,
 				3DBD57B322FCFF2400DE189F /* SetRegionViewController.swift */,
+				3D5F5A0B23109ABB004C3860 /* WhatIsVpnViewController.swift */,
 				3DBD57AD22FBE04300DE189F /* WhitelistAddCell.swift */,
 				3DBD57AB22FBDFE200DE189F /* WhitelistCell.swift */,
 				3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */,
@@ -698,14 +718,14 @@
 			children = (
 				A1141A141F46230500F54698 /* AppDelegate.swift */,
 				A101106C202B9D4300807612 /* BaseViewController.swift */,
-				A1141A201F46230500F54698 /* Info.plist */,
 				3DCA4F3222F22CB40017740D /* HomeViewController.swift */,
+				A1141A201F46230500F54698 /* Info.plist */,
 				A15F3C731F79D90500B07F03 /* LaunchScreen.storyboard */,
 				A1359FD920AF6E31008C4BF7 /* LocalLogger.swift */,
 				A1DBA19421B77CE9008A9322 /* LockdowniOS.entitlements */,
 				A1141A181F46230500F54698 /* Main.storyboard */,
-				3D0711BA22FE7B5100391C6E /* TitleViewController.swift */,
 				3D5561D3230B58F30062001D /* PrivacyPolicyViewController.swift */,
+				3D0711BA22FE7B5100391C6E /* TitleViewController.swift */,
 				3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */,
 			);
 			name = Main;
@@ -938,6 +958,10 @@
 				0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */,
 				8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */,
 				50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */,
+				50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */,
+				6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */,
+				A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */,
+				2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1191,6 +1215,8 @@
 				3D94AB0F22FE0CF60012B0DE /* Assets.xcassets in Resources */,
 				3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */,
 				3D5464D62303839500AE1F73 /* Settings.bundle in Resources */,
+				601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */,
+				388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1221,10 +1247,13 @@
 				A1141A1C1F46230500F54698 /* Assets.xcassets in Resources */,
 				3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */,
 				A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */,
+				3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */,
+				3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
 				A1141A1A1F46230500F54698 /* Main.storyboard in Resources */,
 				3D5464D323037CCA00AE1F73 /* Settings.bundle in Resources */,
 				20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */,
+				C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,6 +1264,8 @@
 				A1DD82BE1FE446CA00482632 /* Assets.xcassets in Resources */,
 				A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */,
 				3D5464D42303839200AE1F73 /* Settings.bundle in Resources */,
+				90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */,
+				1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1255,6 +1286,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5464D52303839400AE1F73 /* Settings.bundle in Resources */,
+				5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */,
+				5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1335,6 +1368,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/NicoProgress/NicoProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RQShineLabel/RQShineLabel.framework",
@@ -1348,6 +1382,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NicoProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RQShineLabel.framework",
@@ -1516,6 +1551,7 @@
 				3DBD57AE22FBE04300DE189F /* WhitelistAddCell.swift in Sources */,
 				3D47CDB922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				A1EBEACE2097AE6E002B9087 /* M13CheckboxExpandController.swift in Sources */,
+				3D5F5A0C23109ABB004C3860 /* WhatIsVpnViewController.swift in Sources */,
 				A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */,
 				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 			);

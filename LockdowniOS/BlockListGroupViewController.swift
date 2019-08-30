@@ -100,7 +100,7 @@ class BlockListGroupViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func dismiss() {
         self.dismiss(animated: true, completion: {
             if let vc = self.blockListVC {
-                vc.tableView.reloadData();
+                vc.tableView.reloadData()
             }
         })
     }

@@ -7,6 +7,7 @@ target :'Lockdown' do
   plugin 'cocoapods-acknowledgements', :settings_bundle => true
   pod 'AwesomeSpotlightView'
   pod 'RQShineLabel'
+  pod 'NicoProgress'
   pod 'ReachabilitySwift'
   pod 'SwiftMessages', '6.0.0'
   pod 'PromiseKit'

@@ -33,10 +33,6 @@ class SignupViewController: BaseViewController {
         selectMonthly()
     }
     
-    @IBAction func detailsTapped(_ sender: Any) {
-        showVPNDetails()
-    }
-    
     @objc func selectMonthly() {
         annualPlanCheckbox.setCheckState(.unchecked, animated: true)
         monthlyPlanCheckbox.setCheckState(.checked, animated: true)

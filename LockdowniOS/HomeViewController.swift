@@ -26,6 +26,7 @@ class CircularView: UIView {
 class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     let kHasViewedTutorial = "hasViewedTutorial"
+    let kHasSeenInitialFirewallConnectedDialog = "hasSeenInitialFirewallConnectedDialog8"
     let kVPNBodyViewVisible = "VPNBodyViewVisible"
     
     let ratingCountKey = "ratingCount" + lastVersionToAskForRating
@@ -40,6 +41,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     @IBOutlet weak var firewallToggleCircle: UIButton!
     @IBOutlet weak var firewallToggleAnimatedCircle: NVActivityIndicatorView!
     @IBOutlet weak var firewallButton: UIButton!
+    @IBOutlet weak var tapToActivateFirewallLabel: UILabel!
     var lastFirewallStatus: NEVPNStatus?
     @IBOutlet weak var metricsStack: UIStackView!
     @IBOutlet weak var dailyMetrics: UILabel?
@@ -129,6 +131,37 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         if (defaults.bool(forKey: kHasViewedTutorial) == false) {
             startTutorial()
         }
+        if defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
+            tapToActivateFirewallLabel.isHidden = false
+        }
+    }
+    
+    func showVPNSubscriptionDialog(title: String, message: String) {
+        let popup = PopupDialog(
+            title: title,
+            message: message,
+            image: nil,
+            buttonAlignment: .vertical,
+            transitionStyle: .bounceUp,
+            preferredWidth: 300.0,
+            tapGestureDismissal: false,
+            panGestureDismissal: false,
+            hideStatusBar: true,
+            completion: nil)
+        
+        let whatisVpnButton = DefaultButton(title: "What is a VPN?", dismissOnTap: true) {
+            self.toggleVPNBodyView(animate: true, show: true)
+            self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
+        }
+        let getEnhancedPrivacyButton = DefaultButton(title: "Try 1 Week Free", dismissOnTap: true) {
+            self.toggleVPNBodyView(animate: true, show: true)
+            self.performSegue(withIdentifier: "showSignup", sender: self)
+        }
+        let laterButton = CancelButton(title: "Later", dismissOnTap: true) { }
+        
+        popup.addButtons([whatisVpnButton, getEnhancedPrivacyButton, laterButton])
+        
+        self.present(popup, animated: true, completion: nil)
     }
     
     // This notification is triggered for both Firewall and VPN
@@ -141,6 +174,13 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
             }
             else {
                 updateFirewallButtonWithStatus(status: tunnelProviderSession.status)
+                if (tunnelProviderSession.status == .connected && defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false) {
+                    defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
+                    self.tapToActivateFirewallLabel.isHidden = true
+                    if (VPNController.shared.status() == .invalid) {
+                        self.showVPNSubscriptionDialog(title: "🔥🧱 Firewall Activated 🎊🎉", message: "Trackers, ads, and other malicious scripts are now blocked in all your apps. Lockdown Firewall is 100% free.\n\nFor enhanced privacy and security, try Lockdown's best-in-class VPN: a secure tunnel to protect and anonymize your connections. \n\nGet a 1 week trial for free, and cancel anytime.")
+                    }
+                }
             }
         }
         // VPN
@@ -180,8 +220,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
             DefaultButton(title: "Privacy Policy", dismissOnTap: true) {
                 self.showPrivacyPolicyModal()
             },
-            DefaultButton(title: "About The VPN", dismissOnTap: true) {
-                self.showVPNDetails()
+            DefaultButton(title: "What is VPN?", dismissOnTap: true) {
+                self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
             },
             DefaultButton(title: "Email Support", dismissOnTap: true) {
                 self.emailTeam()
@@ -202,8 +242,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         let s3 = AwesomeSpotlight(withRect: getRectForView(metricsStack).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "See live metrics for how many bad connections Firewall has blocked.")
         let s4 = AwesomeSpotlight(withRect: getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you.")
         let s5 = AwesomeSpotlight(withRect: getRectForView(firewallSettingsButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block.")
-        let s6 = AwesomeSpotlight(withRect: getRectForView(vpnHeaderView).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "If you want to protect your data and trusted connections when you're on insecure sites or public hotspots, you can try a 1-week free trial of Lockdown VPN.\n\n Lockdown's fast VPN is fully audited, open source, and has a no-logs policy.")
-        let s7 = AwesomeSpotlight(withRect: getRectForView(menuButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "To see this Tutorial again, or for Privacy Policy, questions, and support, tap the menu button at the top left.")
+        let s6 = AwesomeSpotlight(withRect: getRectForView(vpnHeaderView).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "For enhanced privacy using a secure, encrypted tunnel, you can try a 1-week free trial of Lockdown VPN.\n\n Lockdown's fully-audited VPN has a 1 week free trial.")
+        let s7 = AwesomeSpotlight(withRect: getRectForView(menuButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "Tap Menu to see this Tutorial, Privacy Policy, and support.")
         
         let spotlightView = AwesomeSpotlightView(frame: view.frame,
                                                  spotlight: [s0, s1, s2, s3, s4, s5, s6, s7])
@@ -215,13 +255,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         spotlightView.delegate = self
         view.addSubview(spotlightView)
         spotlightView.start()
-    }
-    
-    func getRectForView(_ v: UIView) -> CGRect {
-        if let sv = v.superview {
-            return sv.convert(v.frame, to: self.view)
-        }
-        return CGRect.zero;
     }
     
     func spotlightViewDidCleanup(_ spotlightView: AwesomeSpotlightView) {
@@ -286,29 +319,29 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     activeLabel.text = "ACTIVE"
                     activeLabel.backgroundColor = UIColor.tunnelsBlue
                     toggleCircle.tintColor = .tunnelsBlue
-                    toggleCircle.isHidden = false;
-                    toggleAnimatedCircle.stopAnimating();
+                    toggleCircle.isHidden = false
+                    toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .tunnelsBlue
                 case .connecting:
                     activeLabel.text = "ACTIVATING"
                     activeLabel.backgroundColor = .tunnelsBlue
-                    toggleCircle.isHidden = true;
+                    toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .tunnelsBlue
-                    toggleAnimatedCircle.startAnimating();
+                    toggleAnimatedCircle.startAnimating()
                     button.tintColor = .tunnelsBlue
                 case .disconnected, .invalid:
                     activeLabel.text = "NOT ACTIVE"
-                    activeLabel.backgroundColor = .lightGray
+                    activeLabel.backgroundColor = .tunnelsYellow
                     toggleCircle.tintColor = .lightGray
-                    toggleCircle.isHidden = false;
-                    toggleAnimatedCircle.stopAnimating();
+                    toggleCircle.isHidden = false
+                    toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .lightGray
                 case .disconnecting:
                     activeLabel.text = "DEACTIVATING"
                     activeLabel.backgroundColor = .lightGray
-                    toggleCircle.isHidden = true;
+                    toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .lightGray
-                    toggleAnimatedCircle.startAnimating();
+                    toggleAnimatedCircle.startAnimating()
                     button.tintColor = .lightGray
                 case .reasserting:
                     break;
@@ -321,6 +354,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     @objc @IBAction func vpnHeaderTapped(_ sender: Any) {
         toggleVPNBodyView(animate: true)
+    }
+    
+    @IBAction func vpnQuestionTapped(_ sender: Any) {
+        toggleVPNBodyView(animate: false, show: true)
+        self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
     }
     
     func toggleVPNBodyView(animate: Bool, show: Bool? = nil) {
@@ -382,14 +420,15 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     }
     
     @IBAction func toggleVPN(_ sender: Any) {
-        if (defaults.bool(forKey: kHasAgreedToVPNPrivacyPolicy) == false) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "vpnPrivacyPolicyViewController") as! PrivacyPolicyViewController
-            viewController.privacyPolicyKey = kHasAgreedToVPNPrivacyPolicy
-            viewController.parentVC = self
-            self.present(viewController, animated: true, completion: nil)
-            return
-        }
+        // redundant - privacy policy agreement already happens in Firewall activation
+//        if (defaults.bool(forKey: kHasAgreedToVPNPrivacyPolicy) == false) {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "vpnPrivacyPolicyViewController") as! PrivacyPolicyViewController
+//            viewController.privacyPolicyKey = kHasAgreedToVPNPrivacyPolicy
+//            viewController.parentVC = self
+//            self.present(viewController, animated: true, completion: nil)
+//            return
+//        }
         
         DDLogInfo("Toggle VPN")
         switch VPNController.shared.status() {
@@ -419,7 +458,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                 else if let apiError = error as? ApiError {
                     switch apiError.code {
                     case kApiCodeNoSubscriptionInReceipt:
-                        self.performSegue(withIdentifier: "showSignup", sender: self)
+                        self.showVPNSubscriptionDialog(title: "VPN Enhanced Privacy", message: "Lockdown's Firewall is 100% free, but for enhanced privacy and security, try Lockdown's best-in-class VPN: a secure tunnel to protect and anonymize your connections.\n\nGet a 1 week trial for free, and cancel anytime.")
                     case kApiCodeNoActiveSubscription:
                         self.showPopupDialog(title: "VPN Subscription Expired", message: "Please renew your subscription to activate the VPN.", acceptButton: "Okay", completionHandler: {
                             self.performSegue(withIdentifier: "showSignup", sender: self)
@@ -453,6 +492,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         if (segue.identifier == "showSetRegion") {
             if let vc = segue.destination as? SetRegionViewController {
                 vc.homeVC = self
+            }
+        }
+        else if (segue.identifier == "showWhatIsVPN") {
+            if let vc = segue.destination as? WhatIsVpnViewController {
+                vc.parentVC = self
             }
         }
     }
