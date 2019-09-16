@@ -264,7 +264,7 @@ extension String: Error { // Error makes it easy to throw errors as one-liners
 
 extension UIColor {
     static let tunnelsBlue = UIColor(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
-    static let tunnelsYellow = UIColor(red: 241/255.0, green: 196/255.0, blue: 15/255.0, alpha: 1.0)
+    static let tunnelsWarning = UIColor(red: 231/255.0, green: 76/255.0, blue: 68/255.0, alpha: 1.0)
 }
 
 extension UnicodeScalar {

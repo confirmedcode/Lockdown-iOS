@@ -44,7 +44,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
         setPrivacyState(state: false)
 
         dataFlow.primaryColor = .orange
-        dataFlow.secondaryColor = .tunnelsYellow
+        dataFlow.secondaryColor = .tunnelsWarning
     }
     
     @IBAction func getStartedTapped(_ sender: Any) {
@@ -60,7 +60,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let s1 = AwesomeSpotlight(withRect: getRectForView(toggleCircle).insetBy(dx: -20.0, dy: -20.0), shape: .circle, text: "Tap to see how VPN Privacy secures your internet.")
+        let s1 = AwesomeSpotlight(withRect: getRectForView(toggleCircle).insetBy(dx: -20.0, dy: -20.0), shape: .circle, text: "Tap to see a demo of how Secure Tunnel protects and anonymizes you.")
         let spotlightView = AwesomeSpotlightView(frame: view.frame,
                                                  spotlight: [s1])
         spotlightView.cutoutRadius = 8
@@ -90,7 +90,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
                 self.toggleCircle.isHidden = false
                 self.toggleCircle.tintColor = .tunnelsBlue
                 
-                self.vpnActiveLabel.text = "VPN ACTIVE"
+                self.vpnActiveLabel.text = "TUNNEL ON"
                 self.vpnActiveLabel.backgroundColor = .tunnelsBlue
                 self.locationLabel.text = "Location: 🇯🇵"
                 self.ipLabel.text = "IP: [Anonymized]"
@@ -111,7 +111,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
         }
         else {
             
-            vpnActiveLabel.text = "VPN NOT ACTIVE"
+            vpnActiveLabel.text = "TUNNEL OFF"
             vpnActiveLabel.backgroundColor = .lightGray
             
             toggleCircle.tintColor = .lightGray
@@ -123,9 +123,9 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
             ipLabel.text = "IP: 18.132.2.87"
             dataLabel.text = "To: joe@email.com\nRe: Q4 2019 Finance Review"
             dataFlow.primaryColor = .orange
-            dataFlow.secondaryColor = .tunnelsYellow
-            vpnActiveLabel.text = "VPN NOT ACTIVE"
-            vpnActiveLabel.backgroundColor = .tunnelsYellow
+            dataFlow.secondaryColor = .tunnelsWarning
+            vpnActiveLabel.text = "TUNNEL OFF"
+            vpnActiveLabel.backgroundColor = .tunnelsWarning
             descriptionLabel.attributedText = add(stringList: [
                 "Precise location exposed",
                 "Unique IP address broadcasted",
@@ -134,8 +134,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
                                           font: UIFont(name: "Montserrat-SemiBold", size: 15.5)!,
                                           bulletFont: UIFont(name: "Montserrat-Medium", size: 18.0)!,
                                           bullet: "•",
-                                          textColor: .tunnelsYellow,
-                                          bulletColor: .tunnelsYellow)
+                                          textColor: .tunnelsWarning,
+                                          bulletColor: .tunnelsWarning)
         }
     }
     

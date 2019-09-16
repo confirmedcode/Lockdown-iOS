@@ -22,7 +22,7 @@ class VPNSubscription: NSObject {
     static var selectedProductId = productIdMonthly
     
     static var defaultPriceMonthly = "$4.99"
-    static var defaultPriceAnnual = "$49.99"
+    static var defaultPriceAnnual = "$4.17"
     
     static func purchase(succeeded: @escaping () -> Void, errored: @escaping (Error) -> Void) {
         DDLogInfo("purchase")
@@ -49,28 +49,15 @@ class VPNSubscription: NSObject {
         }
     }
     
-    static func setProductIdPrice(productId: String, price: String?) {
-        DDLogInfo("Setting product id price for \(productId)")
-        if price != nil {
-            UserDefaults.standard.set(price, forKey: productId + "Price")
-        }
-        else {
-            DDLogError("Invalid nil localizedPrice for productId \(productId), returning default")
-            if productId == productIdMonthly {
-                UserDefaults.standard.set(defaultPriceMonthly, forKey: productId + "Price")
-            }
-            else if productId == productIdAnnual {
-                UserDefaults.standard.set(defaultPriceAnnual, forKey: productId + "Price")
-            }
-            else {
-                DDLogError("Invalid product Id: \(productId)")
-            }
-        }
+    static func setProductIdPrice(productId: String, price: String) {
+        DDLogInfo("Setting product id price \(price) for \(productId)")
+        UserDefaults.standard.set(price, forKey: productId + "Price")
     }
     
     static func getProductIdPrice(productId: String) -> String {
         DDLogInfo("Getting product id price for \(productId)")
-        if let price = UserDefaults.standard.string(forKey: productId) {
+        if let price = UserDefaults.standard.string(forKey: productId + "Price") {
+            DDLogInfo("Got product id price for \(productId): \(price)")
             return price
         }
         else {
@@ -93,9 +80,34 @@ class VPNSubscription: NSObject {
         SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
             DDLogInfo("retrieve products results: \(result)")
             for product in result.retrievedProducts {
-                DDLogInfo("product: \(product)")
+                DDLogInfo("product locale: \(product.priceLocale)")
                 DDLogInfo("productprice: \(product.localizedPrice)")
-                setProductIdPrice(productId: product.productIdentifier, price: product.localizedPrice)
+                if product.productIdentifier == productIdMonthly {
+                    if product.localizedPrice != nil {
+                        DDLogInfo("setting monthly display price = " + product.localizedPrice!)
+                        setProductIdPrice(productId: product.productIdentifier, price: product.localizedPrice!)
+                    }
+                    else {
+                        DDLogError("monthly nil localizedPrice, setting default")
+                        setProductIdPrice(productId: product.productIdentifier, price: defaultPriceMonthly)
+                    }
+                }
+                else if product.productIdentifier == productIdAnnual {
+                    let currencyFormatter = NumberFormatter()
+                    currencyFormatter.usesGroupingSeparator = true
+                    currencyFormatter.numberStyle = .currency
+                    currencyFormatter.locale = product.priceLocale
+                    let price = product.price.dividing(by: 12)
+                    DDLogInfo("annual price = \(product.price)")
+                    if let priceString = currencyFormatter.string(from: price) {
+                        DDLogInfo("setting annual display price = annual product price / 12 = " + priceString)
+                        setProductIdPrice(productId: product.productIdentifier, price: priceString)
+                    }
+                    else {
+                        DDLogError("unable to format price with currencyformatter: " + price.stringValue)
+                        setProductIdPrice(productId: product.productIdentifier, price: defaultPriceAnnual)
+                    }
+                }
             }
             for invalidProductId in result.invalidProductIDs {
                 DDLogError("invalid product id: \(invalidProductId)");

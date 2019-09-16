@@ -30,7 +30,8 @@ class SignupViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectMonthly()
+        VPNSubscription.cacheLocalizedPrices()
+        selectAnnual()
     }
     
     @objc func selectMonthly() {
@@ -57,10 +58,10 @@ class SignupViewController: BaseViewController {
     
     @objc func updatePricingSubtitle() {
         if monthlyPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = String(format: NSLocalizedString("%@ per month after", comment: ""), VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly))
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly) + " per month after"
         }
         else if annualPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = String(format: NSLocalizedString("%@ per year after", comment: ""), VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual))
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual) + " per month after"
         }
     }
     
