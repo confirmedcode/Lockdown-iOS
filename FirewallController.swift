@@ -27,6 +27,10 @@ class FirewallController: NSObject {
         // get the reference to the latest manager in Settings
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
             if let managers = managers, managers.count > 0 {
+                if (self.manager == managers[0]) {
+                    DDLogInfo("Encountered same manager while refreshing manager, not replacing it.")
+                    completion(nil)
+                }
                 self.manager = nil
                 self.manager = managers[0]
             }

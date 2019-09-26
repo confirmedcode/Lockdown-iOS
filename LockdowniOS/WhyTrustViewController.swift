@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WhyTrustViewController: UIViewController, UIScrollViewDelegate {
+class WhyTrustViewController: BaseViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!

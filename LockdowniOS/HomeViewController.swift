@@ -123,6 +123,37 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
+        
+        // Check that Firewall is still working correctly, restart it if it's not
+        FirewallController.shared.refreshManager(completion: { error in
+            if let e = error {
+                DDLogError("Error refreshing Manager in Home viewdidappear: \(e)")
+                return
+            }
+            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
+                DDLogInfo("User wants firewall enabled and connected/invalid, testing blocking in Home")
+                _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
+                    DDLogError("Home Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                    FirewallController.shared.restart(completion: {
+                        error in
+                        if error != nil {
+                            DDLogError("Error restarting firewall on Home: \(error!)")
+                        }
+                    })
+                }, connectionFailedHandler: {
+                    error in
+                    if error != nil {
+                        let nsError = error! as NSError
+                        if nsError.domain == NSURLErrorDomain {
+                            DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                        }
+                        else {
+                            DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                        }
+                    }
+                })
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -473,7 +504,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     case kApiCodeNoSubscriptionInReceipt:
                         self.performSegue(withIdentifier: "showSignup", sender: self)
                     case kApiCodeNoActiveSubscription:
-                        self.showPopupDialog(title: "VPN Subscription Expired", message: "Please renew your subscription to activate the VPN.", acceptButton: "Okay", completionHandler: {
+                        self.showPopupDialog(title: "Subscription Expired", message: "Please renew your subscription to activate the Secure Tunnel.", acceptButton: "Okay", completionHandler: {
                             self.performSegue(withIdentifier: "showSignup", sender: self)
                         })
                     default:

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BlockLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dayLogTime.count;
@@ -62,8 +62,8 @@ class BlockLogViewController: UIViewController, UITableViewDelegate, UITableView
         self.dismiss(animated: true, completion: {})
     }
     
-    var dayLogTime: [String] = [];
-    var dayLogHost: [String] = [];
+    var dayLogTime: [String] = []
+    var dayLogHost: [String] = []
     private let refreshControl = UIRefreshControl()
     @IBOutlet weak var tableView: UITableView!
     

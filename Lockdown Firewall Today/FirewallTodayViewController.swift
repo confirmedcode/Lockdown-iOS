@@ -47,26 +47,31 @@ class FirewallTodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupFirewallButtons()
-        
-        if getUserWantsFirewallEnabled() && FirewallController.shared.status() == .connected {
-            DDLogInfo("Widget Firewall Test: user wants firewall enabled and connected, testing blocking with widget")
-            _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
-                DDLogError("Widget Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
-                self.restartFirewall()
-            }, connectionFailedHandler: {
-                error in
-                if error != nil {
-                    let nsError = error! as NSError
-                    if nsError.domain == NSURLErrorDomain {
-                        DDLogInfo("Widget Firewall Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+        FirewallController.shared.refreshManager(completion: { error in
+            if let e = error {
+                DDLogError("Error refreshing Manager in background check: \(e)")
+                return
+            }
+            self.setupFirewallButtons()
+            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
+                DDLogInfo("Widget Firewall Test: user wants firewall enabled and connected, testing blocking with widget")
+                _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
+                    DDLogError("Widget Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                    self.restartFirewall()
+                }, connectionFailedHandler: {
+                    error in
+                    if error != nil {
+                        let nsError = error! as NSError
+                        if nsError.domain == NSURLErrorDomain {
+                            DDLogInfo("Widget Firewall Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                        }
+                        else {
+                            DDLogInfo("Widget Firewall Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                        }
                     }
-                    else {
-                        DDLogInfo("Widget Firewall Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
-                    }
-                }
-            })
-        }
+                })
+            }
+        })
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
@@ -178,7 +183,7 @@ class FirewallTodayViewController: UIViewController, NCWidgetProviding {
                     self.openApp()
                 }
             } else {
-                DDLogInfo("Successfully saved record")
+                DDLogInfo("Successfully saved record: \(returnRecord)")
             }
         }))
     }

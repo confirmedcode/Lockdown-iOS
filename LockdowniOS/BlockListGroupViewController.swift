@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BlockListGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var lockdownGroup : LockdownGroup?
     @IBOutlet var lockdownEnabled : UISwitch?

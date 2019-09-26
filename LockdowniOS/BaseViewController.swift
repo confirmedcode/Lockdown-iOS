@@ -17,6 +17,11 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        // disable swipe down to dismiss
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
+        
 //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(emailTeam))
 //        longPressRecognizer.minimumPressDuration = 4
 //        self.view.addGestureRecognizer(longPressRecognizer)

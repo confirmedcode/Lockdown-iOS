@@ -39,23 +39,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up PopupDialog
         let dialogAppearance = PopupDialogDefaultView.appearance()
-        dialogAppearance.backgroundColor      = .white
+        if #available(iOS 13.0, *) {
+            dialogAppearance.backgroundColor = .systemBackground
+            dialogAppearance.titleColor = .label
+            dialogAppearance.messageColor = .label
+        } else {
+            dialogAppearance.backgroundColor = .white
+            dialogAppearance.titleColor = .black
+            dialogAppearance.messageColor = .darkGray
+        }
         dialogAppearance.titleFont            = UIFont(name: "Montserrat-Bold", size: 15)!
-        dialogAppearance.titleColor           = .darkGray
         dialogAppearance.titleTextAlignment   = .center
         dialogAppearance.messageFont          = UIFont(name: "Montserrat-Medium", size: 15)!
-        dialogAppearance.messageColor         = .darkGray
         dialogAppearance.messageTextAlignment = .center
         let buttonAppearance = DefaultButton.appearance()
+        if #available(iOS 13.0, *) {
+            buttonAppearance.buttonColor = .systemBackground
+            buttonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
+        }
+        else {
+            buttonAppearance.buttonColor    = .clear
+            buttonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
+        }
         buttonAppearance.titleFont      = UIFont(name: "Montserrat-SemiBold", size: 17)!
         buttonAppearance.titleColor     = UIColor.tunnelsBlue
-        buttonAppearance.buttonColor    = .clear
-        buttonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
         let cancelButtonAppearance = CancelButton.appearance()
+        if #available(iOS 13.0, *) {
+            cancelButtonAppearance.buttonColor = .systemBackground
+            cancelButtonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
+        }
+        else {
+            cancelButtonAppearance.buttonColor    = .clear
+            cancelButtonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
+        }
         cancelButtonAppearance.titleFont      = UIFont(name: "Montserrat-SemiBold", size: 17)!
         cancelButtonAppearance.titleColor     = UIColor.lightGray
-        cancelButtonAppearance.buttonColor    = .clear
-        cancelButtonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
 
         // Lockdown default lists
         setupFirewallDefaultBlockLists()
@@ -134,35 +152,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        DDLogError("Successfully registered for remote notification: \(deviceToken)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        DDLogError("Error registering for remote notification: \(error)")
+    }
+    
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if getUserWantsFirewallEnabled() && FirewallController.shared.status() == .connected {
-            DDLogInfo("user wants firewall enabled and connected, testing blocking with background fetch")
-            _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
-                DDLogError("Background Fetch Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
-                FirewallController.shared.restart(completion: {
+        FirewallController.shared.refreshManager(completion: { error in
+            if let e = error {
+                DDLogError("Error refreshing Manager in background check: \(e)")
+                return
+            }
+            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
+                DDLogInfo("user wants firewall enabled and connected/invalid, testing blocking with background fetch")
+                _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
+                    DDLogError("Background Fetch Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                    FirewallController.shared.restart(completion: {
+                        error in
+                        if error != nil {
+                            DDLogError("Error restarting firewall on background fetch: \(error!)")
+                        }
+                        completionHandler(.newData)
+                    })
+                }, connectionFailedHandler: {
                     error in
                     if error != nil {
-                        DDLogError("Error restarting firewall on background fetch: \(error!)")
+                        let nsError = error! as NSError
+                        if nsError.domain == NSURLErrorDomain {
+                            DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                        }
+                        else {
+                            DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                        }
                     }
                     completionHandler(.newData)
                 })
-            }, connectionFailedHandler: {
-                error in
-                if error != nil {
-                    let nsError = error! as NSError
-                    if nsError.domain == NSURLErrorDomain {
-                        DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
-                    }
-                    else {
-                        DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
-                    }
-                }
+            }
+            else {
                 completionHandler(.newData)
-            })
-        }
-        else {
-            completionHandler(.newData)
-        }
+            }
+        })
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -177,58 +209,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clearDatabaseForRecord(recordName: kRestartFirewallTunnelRecord)
         let privateDatabase = CKContainer(identifier: kICloudContainer).privateCloudDatabase
         privateDatabase.fetchAllSubscriptions(completionHandler: { subscriptions, error in
-            if error == nil, let subs = subscriptions {
-                var isSubscribedToOpen = false
-                var isSubscribedToClose = false
-                var isSubscribedToRestart = false
-                for subscriptionObject in subs {
-                    if subscriptionObject.notificationInfo?.category == kCloseFirewallTunnelRecord {
-                        isSubscribedToClose = true
-                    }
-                    if subscriptionObject.notificationInfo?.category == kOpenFirewallTunnelRecord {
-                        isSubscribedToOpen = true
-                    }
-                    if subscriptionObject.notificationInfo?.category == kRestartFirewallTunnelRecord {
-                        isSubscribedToRestart = true
-                    }
-                }
-                if !isSubscribedToOpen {
-                    self.setupCloudKitSubscription(categoryName: kOpenFirewallTunnelRecord)
-                }
-                if !isSubscribedToClose {
-                    self.setupCloudKitSubscription(categoryName: kCloseFirewallTunnelRecord)
-                }
-                if !isSubscribedToRestart {
-                    self.setupCloudKitSubscription(categoryName: kRestartFirewallTunnelRecord)
-                }
-            }
-            else {
+            // always set up cloudkit subscriptions - no downside to doing it
+//            if error == nil, let subs = subscriptions {
+////                for sub in subs {
+////                    print("deleting sub: \(sub.subscriptionID)")
+////                    privateDatabase.delete(withSubscriptionID: sub.subscriptionID, completionHandler: {
+////                        result, error in
+////                        print("result: \(result)")
+////                    })
+////                }
+////                return
+//                var isSubscribedToOpen = false
+//                var isSubscribedToClose = false
+//                var isSubscribedToRestart = false
+//                for subscriptionObject in subs {
+//                    if subscriptionObject.notificationInfo?.category == kCloseFirewallTunnelRecord {
+//                        isSubscribedToClose = true
+//                    }
+//                    if subscriptionObject.notificationInfo?.category == kOpenFirewallTunnelRecord {
+//                        isSubscribedToOpen = true
+//                    }
+//                    if subscriptionObject.notificationInfo?.category == kRestartFirewallTunnelRecord {
+//                        isSubscribedToRestart = true
+//                    }
+//                }
+//                if !isSubscribedToOpen {
+//                    self.setupCloudKitSubscription(categoryName: kOpenFirewallTunnelRecord)
+//                }
+//                if !isSubscribedToClose {
+//                    self.setupCloudKitSubscription(categoryName: kCloseFirewallTunnelRecord)
+//                }
+//                if !isSubscribedToRestart {
+//                    self.setupCloudKitSubscription(categoryName: kRestartFirewallTunnelRecord)
+//                }
+//            }
+//            else {
                 self.setupCloudKitSubscription(categoryName: kCloseFirewallTunnelRecord)
                 self.setupCloudKitSubscription(categoryName: kOpenFirewallTunnelRecord)
                 self.setupCloudKitSubscription(categoryName: kRestartFirewallTunnelRecord)
-            }
+//            }
         })
     }
     
-    func setupCloudKitSubscription(categoryName : String) {
+    func setupCloudKitSubscription(categoryName: String) {
         let privateDatabase = CKContainer(identifier: kICloudContainer).privateCloudDatabase
-        let predicate = NSPredicate(value: true)
         let subscription = CKQuerySubscription(recordType: categoryName,
-                                               predicate: predicate,
+                                               predicate: NSPredicate(value: true),
                                                options: .firesOnRecordCreation)
-        
         let notificationInfo = CKSubscription.NotificationInfo()
-        notificationInfo.alertBody = ""
+        //notificationInfo.alertBody = "" // iOS 13 doesn't like this - fails to trigger notification
         notificationInfo.shouldSendContentAvailable = true
         notificationInfo.shouldBadge = false
         notificationInfo.category = categoryName
-        
         subscription.notificationInfo = notificationInfo
-        
         privateDatabase.save(subscription,
                              completionHandler: ({returnRecord, error in
                                 if let err = error {
-                                    DDLogInfo("Could not save CloudKit subscription (signed in?) \(err)")
+                                    DDLogInfo("Could not save CloudKit subscription (not signed in?) \(err)")
                                 } else {
                                     DispatchQueue.main.async() {
                                         DDLogInfo("Successfully saved CloudKit subscription")
@@ -239,10 +276,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func clearDatabaseForRecord(recordName: String) {
         let privateDatabase = CKContainer(identifier: kICloudContainer).privateCloudDatabase
-        let predicate = NSPredicate.init(value: true)
-        let query = CKQuery.init(recordType: recordName, predicate: predicate)
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: recordName, predicate: predicate)
         
         privateDatabase.perform(query, inZoneWith: nil) { (record, error) in
+            if let err = error {
+                DDLogError("Error querying for CKRecordType: \(recordName) - \(error)")
+            }
             for aRecord in record! {
                 privateDatabase.delete(withRecordID: aRecord.recordID, completionHandler: { (recordID, error) in
                     DDLogInfo("Deleting record \(aRecord.recordID)")
