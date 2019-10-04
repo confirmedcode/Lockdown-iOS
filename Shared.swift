@@ -125,52 +125,52 @@ struct VPNRegion {
 }
 
 let vpnRegions:[VPNRegion] = [
-    VPNRegion(regionDisplayName: "United States - West",
-              regionDisplayNameShort: "USA West",
+    VPNRegion(regionDisplayName: NSLocalizedString("United States - West", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("USA West", comment: ""),
               regionFlagEmoji: "🇺🇸",
               serverPrefix: "us-west"),
-    VPNRegion(regionDisplayName: "United States - East",
-              regionDisplayNameShort: "USA East",
+    VPNRegion(regionDisplayName: NSLocalizedString("United States - East", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("USA East", comment: ""),
               regionFlagEmoji: "🇺🇸",
               serverPrefix: "us-east"),
-    VPNRegion(regionDisplayName: "United Kingdom",
-              regionDisplayNameShort: "United Kingdom",
+    VPNRegion(regionDisplayName: NSLocalizedString("United Kingdom", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("United Kingdom", comment: ""),
               regionFlagEmoji: "🇬🇧",
               serverPrefix: "eu-london"),
-    VPNRegion(regionDisplayName: "Ireland",
-              regionDisplayNameShort: "Ireland",
+    VPNRegion(regionDisplayName: NSLocalizedString("Ireland", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Ireland", comment: ""),
               regionFlagEmoji: "🇮🇪",
               serverPrefix: "eu-ireland"),
-    VPNRegion(regionDisplayName: "Germany",
-              regionDisplayNameShort: "Germany",
+    VPNRegion(regionDisplayName: NSLocalizedString("Germany", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Germany", comment: ""),
               regionFlagEmoji: "🇩🇪",
               serverPrefix: "eu-frankfurt"),
-    VPNRegion(regionDisplayName: "Canada",
-              regionDisplayNameShort: "Canada",
+    VPNRegion(regionDisplayName: NSLocalizedString("Canada", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Canada", comment: ""),
               regionFlagEmoji: "🇨🇦",
               serverPrefix: "canada"),
-    VPNRegion(regionDisplayName: "India",
-              regionDisplayNameShort: "India",
+    VPNRegion(regionDisplayName: NSLocalizedString("India", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("India", comment: ""),
               regionFlagEmoji: "🇮🇳",
               serverPrefix: "ap-mumbai"),
-    VPNRegion(regionDisplayName: "Japan",
-              regionDisplayNameShort: "Japan",
+    VPNRegion(regionDisplayName: NSLocalizedString("Japan", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Japan", comment: ""),
               regionFlagEmoji: "🇯🇵",
               serverPrefix: "ap-tokyo"),
-    VPNRegion(regionDisplayName: "Australia",
-              regionDisplayNameShort: "Australia",
+    VPNRegion(regionDisplayName: NSLocalizedString("Australia", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Australia", comment: ""),
               regionFlagEmoji: "🇦🇺",
               serverPrefix: "ap-sydney"),
-    VPNRegion(regionDisplayName: "South Korea",
-              regionDisplayNameShort: "South Korea",
+    VPNRegion(regionDisplayName: NSLocalizedString("South Korea", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("South Korea", comment: ""),
               regionFlagEmoji: "🇰🇷",
               serverPrefix: "ap-seoul"),
-    VPNRegion(regionDisplayName: "Singapore",
-              regionDisplayNameShort: "Singapore",
+    VPNRegion(regionDisplayName: NSLocalizedString("Singapore", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Singapore", comment: ""),
               regionFlagEmoji: "🇸🇬",
               serverPrefix: "ap-singapore"),
-    VPNRegion(regionDisplayName: "Brazil",
-              regionDisplayNameShort: "Brazil",
+    VPNRegion(regionDisplayName: NSLocalizedString("Brazil", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("Brazil", comment: ""),
               regionFlagEmoji: "🇧🇷",
               serverPrefix: "sa")
 ]
@@ -248,16 +248,12 @@ extension String: Error { // Error makes it easy to throw errors as one-liners
         }
         return nil
     }
+    
     func base64Decoded() -> String? {
         if let data = Data(base64Encoded: self) {
             return String(data: data, encoding: .utf8)
         }
         return nil
-    }
-    
-    func localized(bundle: Bundle = .main, tableName: String = "Localizable") -> String {
-        //return NSLocalizedString(self, tableName: tableName, value: "***\(self)***", comment: "") // used for debug missing strings
-        return NSLocalizedString(self, tableName: tableName, value: "\(self)", comment: "")
     }
     
 }
@@ -338,3 +334,12 @@ struct Config {
         }
     }
 }
+
+// MARK: - Fonts
+let fontMedium14 = UIFont(name: "Montserrat-Medium", size: 14)!
+let fontMedium15 = UIFont(name: "Montserrat-Medium", size: 15)!
+let fontMedium16 = UIFont(name: "Montserrat-Medium", size: 16)!
+let fontMedium18 = UIFont(name: "Montserrat-Medium", size: 18.0)!
+let fontSemiBold15_5 = UIFont(name: "Montserrat-SemiBold", size: 15.5)!
+let fontSemiBold17 = UIFont(name: "Montserrat-SemiBold", size: 17)!
+let fontBold15 = UIFont(name: "Montserrat-Bold", size: 15)!

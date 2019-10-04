@@ -46,7 +46,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     func popupErrorAsNSURLError(_ error: Error) -> Bool {
         let nsError = error as NSError
         if nsError.domain == NSURLErrorDomain {
-            self.showPopupDialog(title: "Network Error", message: "Please check your internet connection. If this persists, please contact team@lockdownhq.com.\n\nError Description\n\(nsError.localizedDescription)", acceptButton: "Okay")
+            self.showPopupDialog(title: NSLocalizedString("Network Error", comment: ""), message: NSLocalizedString("Please check your internet connection. If this persists, please contact team@lockdownhq.com.\n\nError Description\n", comment: "") + nsError.localizedDescription, acceptButton: NSLocalizedString("Okay", comment: ""))
             return true
         }
         else {
@@ -56,7 +56,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     
     func popupErrorAsApiError(_ error: Error) -> Bool {
         if let e = error as? ApiError {
-            self.showPopupDialog(title: "Error Code \(e.code)", message: "\(e.message)\n\n If this persists, please contact team@lockdownhq.com.", acceptButton: "Okay")
+            self.showPopupDialog(title: NSLocalizedString("Error Code ", comment: "") + "\(e.code)", message: "\(e.message)" + NSLocalizedString("\n\n If this persists, please contact team@lockdownhq.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
             return true
         }
         else {
@@ -66,8 +66,8 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     
     func showWhyTrustPopup() {
         let popup = PopupDialog(
-            title: "Why Trust Lockdown?",
-            message: "Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts.",
+            title: NSLocalizedString("Why Trust Lockdown?", comment: ""),
+            message: NSLocalizedString("Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts.", comment: ""),
             image: UIImage(named: "whyTrustImage")!,
             buttonAlignment: .vertical,
             transitionStyle: .bounceDown,
@@ -77,19 +77,19 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             hideStatusBar: true,
             completion: nil)
         
-        let privacyPolicyButton = DefaultButton(title: "Privacy Policy", dismissOnTap: true) {
+        let privacyPolicyButton = DefaultButton(title: NSLocalizedString("Privacy Policy", comment: ""), dismissOnTap: true) {
             self.showPrivacyPolicyModal()
         }
         
-        let auditReportsButton = DefaultButton(title: "Audit Reports", dismissOnTap: true) {
+        let auditReportsButton = DefaultButton(title: NSLocalizedString("Audit Reports", comment: ""), dismissOnTap: true) {
             self.showAuditModal()
         }
         
-        let pressButton = DefaultButton(title: "Press & Media", dismissOnTap: true) {
+        let pressButton = DefaultButton(title: NSLocalizedString("Press & Media", comment: ""), dismissOnTap: true) {
             self.showWebsitePressModal()
         }
         
-        let okayButton = CancelButton(title: "Done", dismissOnTap: true) {  }
+        let okayButton = CancelButton(title: NSLocalizedString("Done", comment: ""), dismissOnTap: true) {  }
         popup.addButtons([privacyPolicyButton, auditReportsButton, pressButton, okayButton])
         
         self.present(popup, animated: true, completion: nil)
@@ -97,8 +97,8 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     
     func showVPNDetails() {
         let popup = PopupDialog(
-            title: "About Lockdown VPN",
-            message: "Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.",
+            title: NSLocalizedString("About Lockdown VPN", comment: ""),
+            message: NSLocalizedString("Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.", comment: ""),
             buttonAlignment: .vertical,
             transitionStyle: .bounceDown,
             preferredWidth: 300.0,
@@ -107,19 +107,19 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             hideStatusBar: true,
             completion: nil)
         
-        let whyUseVPNButton = DefaultButton(title: "Why Use VPN?", dismissOnTap: true) {
-            self.showModalWebView(title: "Why VPN?", urlString: "https://confirmedvpn.com/why-vpn")
+        let whyUseVPNButton = DefaultButton(title: NSLocalizedString("Why Use VPN?", comment: ""), dismissOnTap: true) {
+            self.showModalWebView(title: NSLocalizedString("Why Use VPN?", comment: ""), urlString: "https://confirmedvpn.com/why-vpn")
         }
         
-        let auditReportsButton = DefaultButton(title: "Audit Reports", dismissOnTap: true) {
+        let auditReportsButton = DefaultButton(title: NSLocalizedString("Audit Reports", comment: ""), dismissOnTap: true) {
             self.showAuditModal()
         }
         
-        let confirmedWebsiteButton = DefaultButton(title: "Confirmed Site", dismissOnTap: true) {
-            self.showModalWebView(title: "Why VPN?", urlString: "https://confirmedvpn.com")
+        let confirmedWebsiteButton = DefaultButton(title: NSLocalizedString("Confirmed Site", comment: ""), dismissOnTap: true) {
+            self.showModalWebView(title: NSLocalizedString("Why Use VPN?", comment: ""), urlString: "https://confirmedvpn.com")
         }
         
-        let okayButton = CancelButton(title: "Done", dismissOnTap: true) {  }
+        let okayButton = CancelButton(title: NSLocalizedString("Done", comment: ""), dismissOnTap: true) {  }
         popup.addButtons([whyUseVPNButton, auditReportsButton, confirmedWebsiteButton, okayButton])
         
         self.present(popup, animated: true, completion: nil)
@@ -128,23 +128,23 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     // MARK: - WebView
     
     func showPrivacyPolicyModal() {
-        self.showModalWebView(title: "Privacy Policy", urlString: "https://lockdownhq.com/privacy")
+        self.showModalWebView(title: NSLocalizedString("Privacy Policy", comment: ""), urlString: "https://lockdownhq.com/privacy")
     }
     
     func showTermsModal() {
-        self.showModalWebView(title: "Terms", urlString: "https://lockdownhq.com/terms")
+        self.showModalWebView(title: NSLocalizedString("Terms", comment: ""), urlString: "https://lockdownhq.com/terms")
     }
     
     func showWebsiteModal() {
-        self.showModalWebView(title: "Website", urlString: "https://lockdownhq.com")
+        self.showModalWebView(title: NSLocalizedString("Website", comment: ""), urlString: "https://lockdownhq.com")
     }
     
     func showWebsitePressModal() {
-        self.showModalWebView(title: "Press & Media", urlString: "https://lockdownhq.com/#press")
+        self.showModalWebView(title: NSLocalizedString("Press & Media", comment: ""), urlString: "https://lockdownhq.com/#press")
     }
     
     func showAuditModal() {
-        self.showModalWebView(title: "Audit Reports", urlString: "https://openlyoperated.org/report/confirmedvpn")
+        self.showModalWebView(title: NSLocalizedString("Audit Reports", comment: ""), urlString: "https://openlyoperated.org/report/confirmedvpn")
     }
     
     func showModalWebView(title: String, urlString: String) {
@@ -185,7 +185,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     func showPopupDialog(title: String, message: String, acceptButton: String, completionHandler: @escaping () -> () = {}) {
         let popup = PopupDialog(title: title.uppercased(), message: message, image: nil, transitionStyle: .bounceDown, hideStatusBar: false)
         
-        let acceptButton = DefaultButton(title: "OK", dismissOnTap: true) { completionHandler() }
+        let acceptButton = DefaultButton(title: NSLocalizedString("OK", comment: ""), dismissOnTap: true) { completionHandler() }
         popup.addButtons([acceptButton])
         
         self.present(popup, animated: true, completion: nil)
@@ -207,7 +207,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         controller.dismiss(animated: true)
     }
     
-    @objc func emailTeam(messageBody: String = "Hey Lockdown team, \nI have a question, issue, or suggestion - ", messageErrorBody: String = "") {
+    @objc func emailTeam(messageBody: String = NSLocalizedString("Hey Lockdown Team, \nI have a question, issue, or suggestion - ", comment: ""), messageErrorBody: String = "") {
         DDLogInfo("")
         DDLogInfo("UserId: \(keychain[kVPNCredentialsId] ?? "No User ID")")
         DDLogInfo("UserReceipt: \(keychain[kVPNCredentialsKeyBase64] ?? "No User Receipt")")
@@ -234,8 +234,8 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "ConfirmedLogs.log")
             self.present(composeVC, animated: true, completion: nil)
         } else {
-            showPopupDialog(title: "Couldn't Find Your Email Client",
-                            message: "Please make sure you have added an e-mail account to your iOS device and try again.", acceptButton: "OK")
+            showPopupDialog(title: NSLocalizedString("Couldn't Find Your Email Client", comment: ""),
+                            message: NSLocalizedString("Please make sure you have added an e-mail account to your iOS device and try again.", comment: ""), acceptButton: NSLocalizedString("OK", comment: ""))
         }
     }
     

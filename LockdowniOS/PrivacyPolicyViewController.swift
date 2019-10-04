@@ -34,7 +34,7 @@ class PrivacyPolicyViewController: BaseViewController {
     
     @IBAction func getStartedTapped(_ sender: Any) {
         if (checkbox.checkState == .unchecked) {
-            showPopupDialog(title: "Privacy Policy", message: "Please tap the checkbox circle to agree to the Privacy Policy in order to continue.", acceptButton: "Okay")
+            showPopupDialog(title: NSLocalizedString("Privacy Policy", comment: ""), message: NSLocalizedString("Please tap the checkbox circle to agree to the Privacy Policy in order to continue.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
         }
         else {
             defaults.set(true, forKey: privacyPolicyKey)

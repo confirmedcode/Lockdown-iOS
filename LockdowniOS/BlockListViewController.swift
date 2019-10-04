@@ -93,14 +93,14 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 45))
         view.backgroundColor = UIColor.groupTableViewBackground
         let label = UILabel(frame: CGRect.init(x: 20, y: 20, width: tableView.frame.size.width, height: 24))
-        label.font = UIFont.init(name: "Montserrat-Medium", size: 14)
+        label.font = fontMedium14
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = "Your settings".localized()
+            label.text = NSLocalizedString("Your Settings", comment: "")
         }
         else {
-            label.text = "Pre-configured Suggestions".localized()
+            label.text = NSLocalizedString("Pre-configured Suggestions", comment: "")
         }
         
         view.addSubview(label)
@@ -191,10 +191,10 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
                     let cell = tableView.dequeueReusableCell(withIdentifier: "blockListCell", for: indexPath) as! BlockListCell
                     cell.blockListDomain?.text = domainArray[indexPath.row].key
                     if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
-                        cell.blockListStatus?.text = "Blocked".localized()
+                        cell.blockListStatus?.text = NSLocalizedString("Blocked", comment: "")
                     }
                     else {
-                        cell.blockListStatus?.text = "Not Blocked".localized()
+                        cell.blockListStatus?.text = NSLocalizedString("Not Blocked", comment: "")
                     }
                     cell.blockListIcon?.image = UIImage(named: "website_icon.png")
                     
@@ -209,10 +209,10 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
             if domainKeys.count > indexPath.row {
                 cell.blockListDomain?.text = domains[domainKeys[indexPath.row]]?.name
                 if domains[domainKeys[indexPath.row]]!.enabled {
-                    cell.blockListStatus?.text = "Blocked".localized()
+                    cell.blockListStatus?.text = NSLocalizedString("Blocked", comment: "")
                 }
                 else {
-                    cell.blockListStatus?.text = "Not Blocked".localized()
+                    cell.blockListStatus?.text = NSLocalizedString("Not Blocked", comment: "")
                 }
                 if let imageView = cell.blockListIcon,
                     let lockdownGroup = domains[domainKeys[indexPath.row]] {

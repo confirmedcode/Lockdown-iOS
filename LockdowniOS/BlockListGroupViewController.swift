@@ -43,14 +43,14 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 45))
         view.backgroundColor = UIColor.groupTableViewBackground
         let label = UILabel(frame: CGRect.init(x: 20, y: 20, width: tableView.frame.size.width, height: 24))
-        label.font = UIFont.init(name: "Montserrat-Medium", size: 14)
+        label.font = fontMedium14
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = "Domains".localized()
+            label.text = NSLocalizedString("Domains", comment: "")
         }
         else {
-            label.text = "IP Ranges".localized()
+            label.text = NSLocalizedString("IP Ranges", comment: "")
         }
         
         view.addSubview(label)

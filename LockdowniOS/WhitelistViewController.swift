@@ -93,14 +93,14 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 45))
         view.backgroundColor = UIColor.groupTableViewBackground
         let label = UILabel(frame: CGRect.init(x: 20, y: 20, width: tableView.frame.size.width, height: 24))
-        label.font = UIFont.init(name: "Montserrat-Medium", size: 14)
+        label.font = fontMedium14
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = "Your settings".localized()
+            label.text = NSLocalizedString("Your Settings", comment: "")
         }
         else {
-            label.text = "Pre-configured Suggestions".localized()
+            label.text = NSLocalizedString("Pre-configured Suggestions", comment: "")
         }
         
         view.addSubview(label)
@@ -199,10 +199,10 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
             let cell = tableView.dequeueReusableCell(withIdentifier: "whitelistCell", for: indexPath) as! WhitelistCell
             cell.whitelistDomain?.text = domainArray[indexPath.row].key
             if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
-                cell.whitelistStatus?.text = "Whitelisted".localized()
+                cell.whitelistStatus?.text = NSLocalizedString("Whitelisted", comment: "")
             }
             else {
-                cell.whitelistStatus?.text = "Not Whitelisted".localized()
+                cell.whitelistStatus?.text = NSLocalizedString("Not Whitelisted", comment: "")
             }
             return cell
         }

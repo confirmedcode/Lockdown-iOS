@@ -1,12 +1,9 @@
 
-/* Class = "UIButton"; normalTitle = "Speed: Tap to test"; ObjectID = "Apy-GL-W9N"; */
-"Apy-GL-W9N.normalTitle" = "速度: タップしてください（テスト）";
+/* Class = "UILabel"; text = "VPN Active"; ObjectID = "1pC-80-fVF"; */
+"1pC-80-fVF.text" = "VPN Active";
 
-/* Class = "UIButton"; normalTitle = "Change country"; ObjectID = "Nlw-t0-1Mi"; */
-"Nlw-t0-1Mi.normalTitle" = "地域を変更する";
+/* Class = "UIButton"; normalTitle = "Open Lockdown"; ObjectID = "PT0-Mi-sJG"; */
+"PT0-Mi-sJG.normalTitle" = "Open Lockdown";
 
-/* Class = "UILabel"; text = "Connected"; ObjectID = "XJH-bI-G1N"; */
-"XJH-bI-G1N.text" = "保護されています";
-
-/* Class = "UILabel"; text = "IP: Finding..."; ObjectID = "Zgn-9l-eoa"; */
-"Zgn-9l-eoa.text" = "IP: ...";
+/* Class = "UILabel"; text = "United Kingdom"; ObjectID = "Vbb-eR-jl5"; */
+"Vbb-eR-jl5.text" = "United Kingdom";

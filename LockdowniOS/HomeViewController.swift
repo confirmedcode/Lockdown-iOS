@@ -107,7 +107,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                 else if let apiError = error as? ApiError {
                     switch apiError.code {
                     case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                        self.showPopupDialog(title: "VPN Subscription Expired", message: "Please renew your subscription to re-activate the VPN.", acceptButton: "Okay", completionHandler: {
+                        self.showPopupDialog(title: NSLocalizedString("VPN Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to re-activate the VPN.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
                             self.performSegue(withIdentifier: "showSignup", sender: self)
                         })
                     default:
@@ -115,7 +115,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     }
                 }
                 else {
-                    self.showPopupDialog(title: "Error Signing In To Verify Subscription",
+                    self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
                                          message: "\(error)",
                         acceptButton: "Okay")
                 }
@@ -180,15 +180,15 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
             hideStatusBar: true,
             completion: nil)
         
-        let whatisVpnButton = DefaultButton(title: "What is a VPN?", dismissOnTap: true) {
-            self.toggleVPNBodyView(animate: true, show: true)
-            self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
-        }
-        let getEnhancedPrivacyButton = DefaultButton(title: "1 Week Free", dismissOnTap: true) {
+//        let whatisVpnButton = DefaultButton(title: "What is a VPN?", dismissOnTap: true) {
+//            self.toggleVPNBodyView(animate: true, show: true)
+//            self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
+//        }
+        let getEnhancedPrivacyButton = DefaultButton(title: NSLocalizedString("1 Week Free", comment: ""), dismissOnTap: true) {
             self.toggleVPNBodyView(animate: true, show: true)
             self.performSegue(withIdentifier: "showSignup", sender: self)
         }
-        let laterButton = CancelButton(title: "Skip Trial", dismissOnTap: true) { }
+        let laterButton = CancelButton(title: NSLocalizedString("Skip Trial", comment: ""), dismissOnTap: true) { }
         
         popup.addButtons([laterButton, getEnhancedPrivacyButton])
         
@@ -209,7 +209,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
                     self.tapToActivateFirewallLabel.isHidden = true
                     if (VPNController.shared.status() == .invalid) {
-                        self.showVPNSubscriptionDialog(title: "🔥🧱 Firewall Activated 🎊🎉", message: "Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that uses bank-level encryption to protect your connections, anonymize your browsing history, and hide your location.")
+                        self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that uses bank-level encryption to protect your connections, anonymize your browsing history, and hide your location.", comment: ""))
                     }
                 }
             }
@@ -232,7 +232,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     @IBAction func menuTapped(_ sender: Any) {
         let popup = PopupDialog(title: nil,
-                                message: "For suggestions, questions, and issues, please tap Email Support.",
+                                message: NSLocalizedString("For suggestions, questions, and issues, please tap Email Support.", comment: ""),
                                 image: nil,
                                 buttonAlignment: .vertical,
                                 transitionStyle: .bounceDown,
@@ -242,46 +242,46 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                                 hideStatusBar: false,
                                 completion: nil)
         popup.addButtons([
-            DefaultButton(title: "Tutorial", dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Tutorial", comment: ""), dismissOnTap: true) {
                 self.startTutorial()
             },
-            DefaultButton(title: "Why Trust Lockdown", dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Why Trust Lockdown", comment: ""), dismissOnTap: true) {
                 self.showWhyTrustPopup()
             },
-            DefaultButton(title: "Privacy Policy", dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Privacy Policy", comment: ""), dismissOnTap: true) {
                 self.showPrivacyPolicyModal()
             },
-            DefaultButton(title: "What is VPN?", dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("What is VPN?", comment: ""), dismissOnTap: true) {
                 self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
             },
-            DefaultButton(title: "Email Support", dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Email Support", comment: ""), dismissOnTap: true) {
                 self.emailTeam()
             },
-            DefaultButton(title: "Website", dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Website", comment: ""), dismissOnTap: true) {
                 self.showWebsiteModal()
             },
-            CancelButton(title: "Cancel", dismissOnTap: true) {}
+            CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {}
         ])
         self.present(popup, animated: true, completion: nil)
     }
     
     func startTutorial() {
         let centerPoint = UIScreen.main.bounds.center
-        let s0 = AwesomeSpotlight(withRect: CGRect(x: centerPoint.x, y: centerPoint.y - 100, width: 0, height: 0), shape: .circle, text: "Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue.")
-        let s1 = AwesomeSpotlight(withRect: getRectForView(firewallTitleLabel).insetBy(dx: -13.0, dy: -13.0), shape: .roundRectangle, text: "Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari.")
-        let s2 = AwesomeSpotlight(withRect: getRectForView(firewallToggleCircle).insetBy(dx: -10.0, dy: -10.0), shape: .circle, text: "Activate Firewall with this button.")
-        let s3 = AwesomeSpotlight(withRect: getRectForView(metricsStack).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "See live metrics for how many bad connections Firewall has blocked.")
-        let s4 = AwesomeSpotlight(withRect: getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you.")
-        let s5 = AwesomeSpotlight(withRect: getRectForView(firewallSettingsButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block.")
-        let s6 = AwesomeSpotlight(withRect: getRectForView(vpnHeaderView).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP.")
-        let s7 = AwesomeSpotlight(withRect: getRectForView(menuButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: "To see this tutorial again, tap the Menu button.")
+        let s0 = AwesomeSpotlight(withRect: CGRect(x: centerPoint.x, y: centerPoint.y - 100, width: 0, height: 0), shape: .circle, text: NSLocalizedString("Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue.", comment: ""))
+        let s1 = AwesomeSpotlight(withRect: getRectForView(firewallTitleLabel).insetBy(dx: -13.0, dy: -13.0), shape: .roundRectangle, text: NSLocalizedString("Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari.", comment: ""))
+        let s2 = AwesomeSpotlight(withRect: getRectForView(firewallToggleCircle).insetBy(dx: -10.0, dy: -10.0), shape: .circle, text: NSLocalizedString("Activate Firewall with this button.", comment: ""))
+        let s3 = AwesomeSpotlight(withRect: getRectForView(metricsStack).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("See live metrics for how many bad connections Firewall has blocked.", comment: ""))
+        let s4 = AwesomeSpotlight(withRect: getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you.", comment: ""))
+        let s5 = AwesomeSpotlight(withRect: getRectForView(firewallSettingsButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block.", comment: ""))
+        let s6 = AwesomeSpotlight(withRect: getRectForView(vpnHeaderView).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP.", comment: ""))
+        let s7 = AwesomeSpotlight(withRect: getRectForView(menuButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("To see this tutorial again, tap the Menu button.", comment: ""))
         
         let spotlightView = AwesomeSpotlightView(frame: view.frame,
                                                  spotlight: [s0, s1, s2, s3, s4, s5, s6, s7])
         spotlightView.cutoutRadius = 8
         spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
         spotlightView.enableArrowDown = true
-        spotlightView.textLabelFont = UIFont(name: "Montserrat-Medium", size: 16.0)!
+        spotlightView.textLabelFont = fontMedium16
         spotlightView.labelSpacing = 24;
         spotlightView.delegate = self
         view.addSubview(spotlightView)
@@ -336,7 +336,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                                      toggleCircle: firewallToggleCircle,
                                      toggleAnimatedCircle: firewallToggleAnimatedCircle,
                                      button: firewallButton,
-                                     prefixText: "FIREWALL")
+                                     prefixText: NSLocalizedString("FIREWALL", comment: ""))
     }
     
     func updateToggleButtonWithStatus(lastStatus: NEVPNStatus?, newStatus: NEVPNStatus, activeLabel: UILabel, toggleCircle: UIButton, toggleAnimatedCircle: NVActivityIndicatorView, button: UIButton, prefixText: String) {
@@ -348,28 +348,28 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
             DispatchQueue.main.async() {
                 switch newStatus {
                 case .connected:
-                    activeLabel.text = prefixText + " ON"
+                    activeLabel.text = prefixText + NSLocalizedString(" ON", comment: "")
                     activeLabel.backgroundColor = UIColor.tunnelsBlue
                     toggleCircle.tintColor = .tunnelsBlue
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .tunnelsBlue
                 case .connecting:
-                    activeLabel.text = "ACTIVATING"
+                    activeLabel.text = NSLocalizedString("ACTIVATING", comment: "")
                     activeLabel.backgroundColor = .tunnelsBlue
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .tunnelsBlue
                     toggleAnimatedCircle.startAnimating()
                     button.tintColor = .tunnelsBlue
                 case .disconnected, .invalid:
-                    activeLabel.text = prefixText + " OFF"
+                    activeLabel.text = prefixText + NSLocalizedString(" OFF", comment: "")
                     activeLabel.backgroundColor = .tunnelsWarning
                     toggleCircle.tintColor = .lightGray
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .lightGray
                 case .disconnecting:
-                    activeLabel.text = "DEACTIVATING"
+                    activeLabel.text = NSLocalizedString("DEACTIVATING", comment: "")
                     activeLabel.backgroundColor = .lightGray
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .lightGray
@@ -395,7 +395,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     func toggleVPNBodyView(animate: Bool, show: Bool? = nil) {
         // always show
-        self.vpnHideButton.setTitle("HIDE", for: .normal)
+        self.vpnHideButton.setTitle(NSLocalizedString("HIDE", comment: ""), for: .normal)
         self.vpnBodyView.alpha = 1
         self.vpnActiveHeaderConstraint.isActive = false
         self.vpnActiveTopBodyConstraint.isActive = true
@@ -422,7 +422,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
             vpnBodyView.alpha = 0
             self.vpnBodyView.isHidden = false
             UIView.animate(withDuration: animationTime, animations: {
-                self.vpnHideButton.setTitle("HIDE", for: .normal)
+                self.vpnHideButton.setTitle(NSLocalizedString("HIDE", comment: ""), for: .normal)
                 self.vpnBodyView.alpha = 1
                 self.vpnActiveHeaderConstraint.isActive = false
                 self.vpnActiveTopBodyConstraint.isActive = true
@@ -436,7 +436,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         }
         else {
             UIView.animate(withDuration: animationTime, animations: {
-                self.vpnHideButton.setTitle("SHOW", for: .normal)
+                self.vpnHideButton.setTitle(NSLocalizedString("SHOW", comment: ""), for: .normal)
                 self.vpnBodyView.alpha = 0
                 self.vpnActiveHeaderConstraint.isActive = true
                 self.vpnActiveTopBodyConstraint.isActive = false
@@ -460,7 +460,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                                      toggleCircle: vpnToggleCircle,
                                      toggleAnimatedCircle: vpnToggleAnimatedCircle,
                                      button: vpnButton,
-                                     prefixText: "TUNNEL")
+                                     prefixText: NSLocalizedString("TUNNEL", comment: ""))
     }
     
     @IBAction func toggleVPN(_ sender: Any) {
@@ -504,7 +504,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     case kApiCodeNoSubscriptionInReceipt:
                         self.performSegue(withIdentifier: "showSignup", sender: self)
                     case kApiCodeNoActiveSubscription:
-                        self.showPopupDialog(title: "Subscription Expired", message: "Please renew your subscription to activate the Secure Tunnel.", acceptButton: "Okay", completionHandler: {
+                        self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
                             self.performSegue(withIdentifier: "showSignup", sender: self)
                         })
                     default:
@@ -512,9 +512,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     }
                 }
                 else {
-                    self.showPopupDialog(title: "Error Signing In To Verify Subscription",
+                    self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
                                          message: "\(error)",
-                        acceptButton: "Okay")
+                        acceptButton: NSLocalizedString("Okay", comment: ""))
                 }
             }
         }

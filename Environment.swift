@@ -17,4 +17,4 @@ let mainURL = "https://www." + mainDomain
 
 let testFirewallDomain = "example.com"
 
-let lastVersionToAskForRating = "020"
+let lastVersionToAskForRating = "024"

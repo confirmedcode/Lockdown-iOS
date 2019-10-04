@@ -48,9 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dialogAppearance.titleColor = .black
             dialogAppearance.messageColor = .darkGray
         }
-        dialogAppearance.titleFont            = UIFont(name: "Montserrat-Bold", size: 15)!
+        dialogAppearance.titleFont            = fontBold15
         dialogAppearance.titleTextAlignment   = .center
-        dialogAppearance.messageFont          = UIFont(name: "Montserrat-Medium", size: 15)!
+        dialogAppearance.messageFont          = fontMedium15
         dialogAppearance.messageTextAlignment = .center
         let buttonAppearance = DefaultButton.appearance()
         if #available(iOS 13.0, *) {
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             buttonAppearance.buttonColor    = .clear
             buttonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
         }
-        buttonAppearance.titleFont      = UIFont(name: "Montserrat-SemiBold", size: 17)!
+        buttonAppearance.titleFont      = fontSemiBold17
         buttonAppearance.titleColor     = UIColor.tunnelsBlue
         let cancelButtonAppearance = CancelButton.appearance()
         if #available(iOS 13.0, *) {
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             cancelButtonAppearance.buttonColor    = .clear
             cancelButtonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
         }
-        cancelButtonAppearance.titleFont      = UIFont(name: "Montserrat-SemiBold", size: 17)!
+        cancelButtonAppearance.titleFont      = fontSemiBold17
         cancelButtonAppearance.titleColor     = UIColor.lightGray
 
         // Lockdown default lists
@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DDLogInfo("Internet not reachable")
             self.noInternetMessageView.backgroundView.backgroundColor = UIColor.orange
             self.noInternetMessageView.bodyLabel?.textColor = UIColor.white
-            self.noInternetMessageView.configureContent(body: "No Internet Connection")
+            self.noInternetMessageView.configureContent(body: NSLocalizedString("No Internet Connection", comment: ""))
             var noInternetMessageViewConfig = SwiftMessages.defaultConfig
             noInternetMessageViewConfig.presentationContext = .window(windowLevel: UIWindow.Level(rawValue: 0))
             noInternetMessageViewConfig.preferredStatusBarStyle = .lightContent

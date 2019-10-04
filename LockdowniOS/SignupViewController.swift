@@ -58,10 +58,10 @@ class SignupViewController: BaseViewController {
     
     @objc func updatePricingSubtitle() {
         if monthlyPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly) + " per month after"
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly) + NSLocalizedString(" per month after", comment: "this refers to price, as in $5 per month after the trial period ends")
         }
         else if annualPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual) + " per month after"
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual) + NSLocalizedString(" per month after", comment: "this refers to price, as in $5 per month after the trial period ends")
         }
     }
     
@@ -116,8 +116,8 @@ class SignupViewController: BaseViewController {
                     return
                 }
                 else {
-                    self.showPopupDialog(title: "Error Starting Trial",
-                                         message: "Please contact team@lockdownhq.com.\n\nError details:\n\(error)",
+                    self.showPopupDialog(title: NSLocalizedString("Error Starting Trial", comment: ""),
+                                         message: NSLocalizedString("Please contact team@lockdownhq.com.\n\nError details:\n", comment: "") + "\(error)",
                         acceptButton: "Okay")
                 }
         })
@@ -157,19 +157,19 @@ class SignupViewController: BaseViewController {
             if let apiError = error as? ApiError {
                 switch apiError.code {
                 case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                    self.showPopupDialog(title: "No Active Subscription",
-                                        message: "Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownhq.com",
-                                        acceptButton: "OK")
+                    self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
+                                        message: NSLocalizedString("Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownhq.com", comment: ""),
+                                        acceptButton: NSLocalizedString("OK", comment: ""))
                 default:
-                    self.showPopupDialog(title: "Error Restoring Subscription",
-                                         message: "Please email team@lockdownhq.com with the following error Code \(apiError.code): \(apiError.message)",
-                                         acceptButton: "OK")
+                    self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
+                                         message: NSLocalizedString("Please email team@lockdownhq.com with the following Error Code ", comment: "") + "\(apiError.code) : \(apiError.message)",
+                                         acceptButton: NSLocalizedString("OK", comment: ""))
                 }
             }
             else {
-                self.showPopupDialog(title: "Error Restoring Subscription",
-                                     message: "Please make sure your Internet connection is active. If this error persists, email team@lockdownhq.com with the following error message: \(error)",
-                    acceptButton: "OK")
+                self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
+                                     message: NSLocalizedString("Please make sure your Internet connection is active. If this error persists, email team@lockdownhq.com with the following error message: ", comment: "") + "\(error)",
+                    acceptButton: NSLocalizedString("OK", comment: ""))
             }
         }
     }

@@ -74,7 +74,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.httpsServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
-        let combined: Array<String> = getAllBlockedDomains() + getAllWhitelistedDomains() + [testFirewallDomain] // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
+        var combined: Array<String> = getAllBlockedDomains() + [testFirewallDomain] // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
+        if ( getUserWantsVPNEnabled() == true ) { // only add whitelist if user wants VPN active
+             combined = combined + getAllWhitelistedDomains()
+        }
         proxySettings.matchDomains = combined
         
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
