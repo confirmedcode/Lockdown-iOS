@@ -326,8 +326,9 @@
                                     <constraint firstAttribute="width" constant="38" id="b5D-9T-dkR"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="imageEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
-                                <state key="normal" image="menu"/>
+                                <state key="normal" image="line.horizontal.3" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" weight="semibold"/>
+                                </state>
                                 <connections>
                                     <action selector="menuTapped:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="cwy-3t-4lq"/>
                                 </connections>
@@ -576,6 +577,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
+                                                        <color key="backgroundColor" name="Panel Background"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="qet-fn-FY0"/>
                                                         </constraints>
@@ -599,9 +601,27 @@
                                                         <color key="textColor" red="0.90196078431372551" green="0.49411764705882355" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tZ-rh-ZOa">
+                                                        <rect key="frame" x="303" y="12" width="32" height="34"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="Hm0-6R-I3s"/>
+                                                            <constraint firstAttribute="height" constant="34" id="gLX-lJ-Yu4"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" image="square.and.arrow.up" catalog="system">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21" weight="medium"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="shareFirewallMetricsTapped:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="396-21-MUz"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Panel Background"/>
                                                 <constraints>
+                                                    <constraint firstItem="3tZ-rh-ZOa" firstAttribute="top" secondItem="Kyi-Fn-BTq" secondAttribute="top" constant="12" id="1YG-ur-Sd8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3tZ-rh-ZOa" secondAttribute="trailing" constant="12" id="2gX-y2-hgU"/>
                                                     <constraint firstItem="xTx-NG-XuM" firstAttribute="leading" secondItem="Kyi-Fn-BTq" secondAttribute="leading" id="5pl-Zr-LXQ"/>
                                                     <constraint firstItem="BoV-0k-BS5" firstAttribute="leading" secondItem="ldh-Fd-85p" secondAttribute="trailing" constant="5" id="71r-mw-0fw"/>
                                                     <constraint firstAttribute="trailing" secondItem="XvC-pH-UjX" secondAttribute="trailing" id="Bjg-us-SL0"/>
@@ -891,22 +911,19 @@
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLt-18-OkW">
-                                                                <rect key="frame" x="303" y="16.666666666666686" width="30" height="30"/>
-                                                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLt-18-OkW">
+                                                                <rect key="frame" x="303" y="12" width="32" height="34"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="30" id="645-Ok-03q"/>
-                                                                    <constraint firstAttribute="height" constant="30" id="Jir-V5-PWt"/>
+                                                                    <constraint firstAttribute="width" constant="32" id="645-Ok-03q"/>
+                                                                    <constraint firstAttribute="height" constant="34" id="Jir-V5-PWt"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                                                                <state key="normal" title="?">
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" image="questionmark.circle.fill" catalog="system">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23" weight="medium"/>
                                                                 </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <integer key="value" value="15"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="vpnQuestionTapped:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="9f7-vE-YKb"/>
                                                                 </connections>
@@ -916,14 +933,14 @@
                                                         <constraints>
                                                             <constraint firstItem="nuc-D4-P1M" firstAttribute="leading" secondItem="oXk-la-xaY" secondAttribute="leading" constant="14" id="0B8-lg-2eb"/>
                                                             <constraint firstItem="2I5-jL-jQr" firstAttribute="centerX" secondItem="oXk-la-xaY" secondAttribute="centerX" id="G9F-eI-y9U"/>
-                                                            <constraint firstAttribute="trailing" secondItem="OLt-18-OkW" secondAttribute="trailing" constant="14" id="Phc-Og-R4g"/>
+                                                            <constraint firstAttribute="trailing" secondItem="OLt-18-OkW" secondAttribute="trailing" constant="12" id="Phc-Og-R4g"/>
                                                             <constraint firstItem="Pvv-c6-deR" firstAttribute="centerX" secondItem="oXk-la-xaY" secondAttribute="centerX" id="Ryz-hV-4na"/>
                                                             <constraint firstItem="OLt-18-OkW" firstAttribute="leading" secondItem="ked-BF-PXx" secondAttribute="trailing" constant="8" id="XJI-eE-4eM"/>
                                                             <constraint firstItem="Pvv-c6-deR" firstAttribute="top" secondItem="oXk-la-xaY" secondAttribute="top" constant="13" id="aIb-gJ-LcW"/>
                                                             <constraint firstItem="ked-BF-PXx" firstAttribute="leading" secondItem="oXk-la-xaY" secondAttribute="leading" constant="14" id="abo-yf-9In"/>
-                                                            <constraint firstItem="OLt-18-OkW" firstAttribute="centerY" secondItem="oXk-la-xaY" secondAttribute="centerY" id="aeK-8U-ISw"/>
                                                             <constraint firstAttribute="height" constant="63" id="c3y-Y9-WR9"/>
                                                             <constraint firstItem="2I5-jL-jQr" firstAttribute="centerY" secondItem="nuc-D4-P1M" secondAttribute="centerY" priority="999" id="fqL-ad-2Ax"/>
+                                                            <constraint firstItem="OLt-18-OkW" firstAttribute="top" secondItem="oXk-la-xaY" secondAttribute="top" constant="12" id="hGN-Jx-zIV"/>
                                                             <constraint firstItem="ked-BF-PXx" firstAttribute="top" secondItem="nuc-D4-P1M" secondAttribute="bottom" constant="2" id="ieq-GZ-cLw"/>
                                                             <constraint firstItem="OLt-18-OkW" firstAttribute="leading" secondItem="nuc-D4-P1M" secondAttribute="trailing" constant="8" id="rlI-MA-NvP"/>
                                                             <constraint firstItem="nuc-D4-P1M" firstAttribute="top" secondItem="oXk-la-xaY" secondAttribute="top" constant="12" id="vD9-ZB-HMO"/>
@@ -1757,8 +1774,9 @@
                                     <constraint firstAttribute="height" constant="36" id="c7Q-uA-3q6"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                                <state key="normal" image="safari"/>
+                                <state key="normal" image="safari" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                                </state>
                                 <connections>
                                     <action selector="dismiss" destination="H7Z-IH-L96" eventType="touchUpInside" id="7PY-pE-TTp"/>
                                     <action selector="dismiss" destination="RuT-lD-Vwk" eventType="touchUpInside" id="Tse-wm-ptf"/>
@@ -2017,7 +2035,9 @@
                                                         <constraint firstAttribute="height" constant="18" id="qnF-XH-BcC"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" image="checkmark"/>
+                                                    <state key="normal" image="checkmark" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                                                    </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2849,11 +2869,13 @@
     </scenes>
     <resources>
         <image name="blue_circle" width="104" height="104"/>
-        <image name="checkmark" width="85.333335876464844" height="85.333335876464844"/>
+        <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="globe" width="80" height="80"/>
-        <image name="menu" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="power_button" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="safari" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="questionmark.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="safari" catalog="system" width="64" height="62"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <image name="website_icon" width="300" height="302"/>
         <namedColor name="Panel Background">
             <color red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

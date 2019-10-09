@@ -292,6 +292,73 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         defaults.set(true, forKey: kHasViewedTutorial)
     }
     
+    @IBAction func shareFirewallMetricsTapped(_ sender: Any) {
+        let thousandsFormatter = NumberFormatter()
+        thousandsFormatter.groupingSeparator = ","
+        thousandsFormatter.numberStyle = .decimal
+        
+        let imageSize = CGSize(width: 720, height: 420)
+        let renderer = UIGraphicsImageRenderer(size: imageSize)
+        let image = renderer.image { ctx in
+            let rectangle = CGRect(origin: CGPoint.zero, size: imageSize)
+            ctx.cgContext.setFillColor(UIColor.white.cgColor)
+            ctx.cgContext.addRect(rectangle)
+            ctx.cgContext.drawPath(using: .fill)
+
+            UIImage(named: "share.png")!.draw(in: CGRect(origin: CGPoint.zero, size: imageSize))
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let sinceAttrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .semibold), NSAttributedString.Key.paragraphStyle: paragraphStyle, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 0.59)]
+            let sinceY = 90
+            
+            var date = "INSTALL"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d YYYY"
+            if let appInstall = appInstallDate {
+                date = formatter.string(from: appInstall).uppercased()
+            }
+            
+            "SINCE \(date)".draw(with: CGRect(origin: CGPoint(x: 0, y: sinceY), size: CGSize(width: 720, height: 50)), options: .usesLineFragmentOrigin, attributes: sinceAttrs, context: nil)
+            
+            let attrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 46, weight: .bold), NSAttributedString.Key.paragraphStyle: paragraphStyle,  NSAttributedString.Key.foregroundColor: UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1.0)]
+            
+            let countSize = CGSize(width: 240, height: 50)
+            let countY = 216
+            
+            thousandsFormatter.string(for: getDayMetrics())!.draw(with: CGRect(origin: CGPoint(x: 0, y: countY), size: countSize), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+            thousandsFormatter.string(for: getWeekMetrics())!.draw(with: CGRect(origin: CGPoint(x: 240, y: countY), size: countSize), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+            thousandsFormatter.string(for: getTotalMetrics())!.draw(with: CGRect(origin: CGPoint(x: 480, y: countY), size: countSize), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+         
+        }
+
+        let popup = PopupDialog(
+            title: NSLocalizedString("Share Your Stats", comment: ""),
+            message: NSLocalizedString("Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step.", comment: ""),
+            image: image,
+            buttonAlignment: .horizontal,
+            transitionStyle: .bounceDown,
+            preferredWidth: 300.0,
+            tapGestureDismissal: true,
+            panGestureDismissal: false,
+            hideStatusBar: true,
+            completion: nil)
+        
+        let cancelButton = CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {  }
+        
+        let shareButton = DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
+            let shareText = NSLocalizedString("I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownhq.com.", comment: "")
+            let vc = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+            vc.excludedActivityTypes = [ UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.print ]
+            self.present(vc, animated: true)
+        }
+        
+        popup.addButtons([cancelButton, shareButton])
+        self.present(popup, animated: true, completion: nil)
+        
+    }
+    
     // MARK: - Firewall
     
     @objc func updateMetrics() {
