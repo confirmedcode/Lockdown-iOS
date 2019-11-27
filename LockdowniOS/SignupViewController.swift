@@ -58,10 +58,10 @@ class SignupViewController: BaseViewController {
     
     @objc func updatePricingSubtitle() {
         if monthlyPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly) + NSLocalizedString(" per month after", comment: "this refers to price, as in $5 per month after the trial period ends")
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly)
         }
         else if annualPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual) + NSLocalizedString(" per month after", comment: "this refers to price, as in $5 per month after the trial period ends")
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)
         }
     }
     

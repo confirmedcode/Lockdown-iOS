@@ -71,6 +71,10 @@
 		3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5A0723107C1E004C3860 /* game_ads.txt */; };
 		3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D5F5A0923107EB8004C3860 /* snapchat_analytics.txt */; };
 		3D5F5A0C23109ABB004C3860 /* WhatIsVpnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5F5A0B23109ABB004C3860 /* WhatIsVpnViewController.swift */; };
+		3D752C342357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C302357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf */; };
+		3D752C352357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C312357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf */; };
+		3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C322357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf */; };
+		3D752C372357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */; };
 		3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
@@ -371,6 +375,10 @@
 		3D5F5A0723107C1E004C3860 /* game_ads.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = game_ads.txt; sourceTree = "<group>"; };
 		3D5F5A0923107EB8004C3860 /* snapchat_analytics.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = snapchat_analytics.txt; sourceTree = "<group>"; };
 		3D5F5A0B23109ABB004C3860 /* WhatIsVpnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsVpnViewController.swift; sourceTree = "<group>"; };
+		3D752C302357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		3D752C312357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		3D752C322357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
+		3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		3D94AB0322FDEDEB0012B0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3D94AB1122FE3A460012B0DE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3D970DAC22EC149D00F9CC93 /* BlockLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogCell.swift; sourceTree = "<group>"; };
@@ -624,6 +632,10 @@
 		3D44377922DFB22600908CDC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3D752C322357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf */,
+				3D752C312357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf */,
+				3D752C302357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf */,
+				3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */,
 				3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */,
 				3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */,
 				3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */,
@@ -1270,6 +1282,7 @@
 				A1159FCC207C228300DA4670 /* privacyBlockList.json in Resources */,
 				A1159FCD207C228300DA4670 /* socialBlockList.json in Resources */,
 				A1FCDA8722CDE8C000C928BC /* crypto_mining_ips.txt in Resources */,
+				3D752C342357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf in Resources */,
 				A1159FCE207C228300DA4670 /* adBlockList.json in Resources */,
 				3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */,
 				3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */,
@@ -1282,6 +1295,9 @@
 				3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */,
 				A1DBA19621B82F73008A9322 /* LICENSE.md in Resources */,
 				3D3BF4CC233D5E9100D0C482 /* Localizable.strings in Resources */,
+				3D752C352357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				3D752C372357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */,
 				A1FCDA8A22D3BA1900C928BC /* facebook_inc_ips.txt in Resources */,
 				3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */,
@@ -1757,7 +1773,7 @@
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -1789,7 +1805,7 @@
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1939,7 +1955,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1975,7 +1991,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2013,7 +2029,7 @@
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2052,7 +2068,7 @@
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2080,7 +2096,7 @@
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2107,7 +2123,7 @@
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2140,7 +2156,7 @@
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
@@ -2172,7 +2188,7 @@
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.9;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

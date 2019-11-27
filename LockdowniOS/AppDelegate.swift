@@ -132,21 +132,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // If not yet agreed to privacy policy, set initial view controller to TitleViewController
         if (defaults.bool(forKey: kHasShownTitlePage) == false) {
+            // TODO: removed this check because this was causing crashes possibly due to Locale
             // don't show onboarding page for anyone who installed before Aug 16th
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-            let tutorialCutoffDate = formatter.date(from: "2019/08/16 00:00")!.timeIntervalSince1970;
-            if let appInstall = appInstallDate, appInstall.timeIntervalSince1970 < tutorialCutoffDate {
-                DDLogInfo("Not showing onboarding page, installation epoch \(appInstall.timeIntervalSince1970)")
-            }
-            else {
-                DDLogInfo("Showing onboarding page")
+        //            let formatter = DateFormatter()
+        //            formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        //            let tutorialCutoffDate = formatter.date(from: "2019/08/16 00:00")!.timeIntervalSince1970;
+        //            if let appInstall = appInstallDate, appInstall.timeIntervalSince1970 < tutorialCutoffDate {
+        //                print("Not showing onboarding page, installation epoch \(appInstall.timeIntervalSince1970)")
+        //            }
+        //            else {
+                print("Showing onboarding page")
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController
                 self.window?.rootViewController = viewController
                 self.window?.makeKeyAndVisible()
-            }
+        //            }
         }
         
         return true

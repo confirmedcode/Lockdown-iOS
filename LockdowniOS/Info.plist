@@ -41,6 +41,8 @@
 	<string>We use this to automatically select the best region for the VPN.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use this to automatically select the best region for the VPN.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>You asked to save an image to your photos. This does not give access to read your photos.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
@@ -49,6 +51,10 @@
 		<string>Montserrat-Regular.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
 		<string>Montserrat-Thin.ttf</string>
+		<string>SF-Pro-Rounded-Bold.otf</string>
+		<string>SF-Pro-Rounded-Medium.otf</string>
+		<string>SF-Pro-Rounded-Regular.otf</string>
+		<string>SF-Pro-Rounded-Semibold.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

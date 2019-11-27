@@ -28,6 +28,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     let kHasViewedTutorial = "hasViewedTutorial"
     let kHasSeenInitialFirewallConnectedDialog = "hasSeenInitialFirewallConnectedDialog11"
     let kVPNBodyViewVisible = "VPNBodyViewVisible"
+    let kHasSeenShare = "hasSeenShareDialog4"
     
     let ratingCountKey = "ratingCount" + lastVersionToAskForRating
     let ratingTriggeredKey = "ratingTriggered" + lastVersionToAskForRating
@@ -50,6 +51,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     var metricsTimer : Timer?
     @IBOutlet weak var firewallSettingsButton: UIButton!
     @IBOutlet weak var firewallViewLogButton: UIButton!
+    @IBOutlet weak var firewallShareButton: UIButton!
     
     @IBOutlet var vpnViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var vpnHeaderView: UIView!
@@ -164,6 +166,40 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         }
         if defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
             tapToActivateFirewallLabel.isHidden = false
+        }
+        
+        // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
+        if (getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) != true) {
+            defaults.set(true, forKey: kHasSeenShare)
+            let popup = PopupDialog(title: "You've blocked over 1000 trackers! 🎊",
+                                     message: NSLocalizedString("Share your anonymized metrics and show other people how to block invasive tracking.", comment: ""),
+                                     image: nil,
+                                     buttonAlignment: .horizontal,
+                                     transitionStyle: .bounceDown,
+                                     preferredWidth: 270,
+                                     tapGestureDismissal: true,
+                                     panGestureDismissal: false,
+                                     hideStatusBar: false,
+                                     completion: nil)
+             popup.addButtons([
+                CancelButton(title: NSLocalizedString("Not Now", comment: ""), dismissOnTap: true) {
+                    let s0 = AwesomeSpotlight(withRect: self.getRectForView(self.firewallShareButton).insetBy(dx: -13.0, dy: -13.0), shape: .roundRectangle, text: NSLocalizedString("You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)", comment: ""))
+                    let spotlightView = AwesomeSpotlightView(frame: self.view.frame,
+                                                             spotlight: [s0])
+                    spotlightView.cutoutRadius = 8
+                    spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
+                    spotlightView.enableArrowDown = true
+                    spotlightView.textLabelFont = fontMedium16
+                    spotlightView.labelSpacing = 24;
+                    spotlightView.delegate = self
+                    self.view.addSubview(spotlightView)
+                    spotlightView.start()
+                },
+                DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
+                    self.shareFirewallMetricsTapped("")
+                }
+             ])
+             self.present(popup, animated: true, completion: nil)
         }
     }
     
@@ -349,7 +385,13 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         
         let shareButton = DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
             let shareText = NSLocalizedString("I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownhq.com.", comment: "")
-            let vc = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+            let vc = UIActivityViewController(activityItems: [LockdownCustomActivityItemProvider(text: shareText), image], applicationActivities: [])
+            vc.completionWithItemsHandler = { (activity, success, items, error) in
+                if (success) {
+                    self.showPopupDialog(title: NSLocalizedString("Success!", comment: ""), message: NSLocalizedString("Thanks for helping to increase privacy and tracking awareness.", comment: ""), acceptButton: NSLocalizedString("Nice", comment: ""))
+                }
+                print(success ? "SUCCESS!" : "FAILURE")
+            }
             vc.excludedActivityTypes = [ UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.print ]
             self.present(vc, animated: true)
         }
@@ -694,4 +736,29 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
 //        }
 //    }
     
+}
+
+class LockdownCustomActivityItemProvider : UIActivityItemProvider {
+
+    let shareText: String
+    
+    init(text: String) {
+        self.shareText = text
+        super.init(placeholderItem: text)
+    }
+    
+    override func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        if let type = activityType {
+            switch type {
+                case UIActivity.ActivityType.postToTwitter:
+                    return shareText + " @lockdown_hq"
+                default:
+                    return shareText
+            }
+        }
+        else {
+            return shareText
+        }
+    }
+
 }

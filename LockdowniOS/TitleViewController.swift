@@ -17,6 +17,7 @@ class TitleViewController: BaseViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var getStartedButton: UIButton!
     @IBOutlet weak var whyTrustButton: UIButton!
+    @IBOutlet weak var overOneBillionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class TitleViewController: BaseViewController {
         self.descriptionLabel.alpha = 0
         self.getStartedButton.alpha = 0
         self.whyTrustButton.alpha = 0
+        self.overOneBillionLabel.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +39,7 @@ class TitleViewController: BaseViewController {
                     UIView.animate(withDuration: 1.5, animations: {
                         self.getStartedButton.alpha = 1
                         self.whyTrustButton.alpha = 1
+                        self.overOneBillionLabel.alpha = 1
                     })
                 })
             })
