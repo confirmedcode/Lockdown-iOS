@@ -21,7 +21,16 @@ struct GetKey: Codable {
     let b64: String
 }
 
+struct SubscriptionEvent: Codable {
+    let message: String
+}
+
 struct SignIn: Codable {
+    let code: Int
+    let message: String
+}
+
+struct Signup: Codable {
     let code: Int
     let message: String
 }

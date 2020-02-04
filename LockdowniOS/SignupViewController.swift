@@ -16,12 +16,10 @@ class SignupViewController: BaseViewController {
     //MARK: - VARIABLES
     
     @IBOutlet var monthlyPlanCheckbox: M13Checkbox!
-    @IBOutlet var monthlyTitle: UILabel!
-    @IBOutlet var monthlyDescription: UILabel!
+    @IBOutlet weak var monthlyProPlanCheckbox: M13Checkbox!
     
     @IBOutlet var annualPlanCheckbox: M13Checkbox!
-    @IBOutlet var annualTitle: UILabel!
-    @IBOutlet var annualDescription: UILabel!
+    @IBOutlet weak var annualProPlanCheckbox: M13Checkbox!
     
     @IBOutlet var startTrialButton: TKTransitionSubmitButton!
     @IBOutlet var pricingSubtitle: UILabel!
@@ -35,9 +33,20 @@ class SignupViewController: BaseViewController {
     }
     
     @objc func selectMonthly() {
-        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
         monthlyPlanCheckbox.setCheckState(.checked, animated: true)
+        monthlyProPlanCheckbox.setCheckState(.unchecked, animated: true)
+        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
+        annualProPlanCheckbox.setCheckState(.unchecked, animated: true)
         VPNSubscription.selectedProductId = VPNSubscription.productIdMonthly
+        updatePricingSubtitle()
+    }
+    
+    @objc func selectMonthlyPro() {
+        monthlyPlanCheckbox.setCheckState(.unchecked, animated: true)
+        monthlyProPlanCheckbox.setCheckState(.checked, animated: true)
+        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
+        annualProPlanCheckbox.setCheckState(.unchecked, animated: true)
+        VPNSubscription.selectedProductId = VPNSubscription.productIdMonthlyPro
         updatePricingSubtitle()
     }
     
@@ -45,9 +54,15 @@ class SignupViewController: BaseViewController {
         selectMonthly()
     }
     
+    @IBAction func monthlyProTapped(_ sender: Any) {
+        selectMonthlyPro()
+    }
+    
     @objc func selectAnnual() {
         monthlyPlanCheckbox.setCheckState(.unchecked, animated: true)
+        monthlyProPlanCheckbox.setCheckState(.unchecked, animated: true)
         annualPlanCheckbox.setCheckState(.checked, animated: true)
+        annualProPlanCheckbox.setCheckState(.unchecked, animated: true)
         VPNSubscription.selectedProductId = VPNSubscription.productIdAnnual
         updatePricingSubtitle()
     }
@@ -56,12 +71,31 @@ class SignupViewController: BaseViewController {
         selectAnnual()
     }
     
+    @objc func selectAnnualPro() {
+        monthlyPlanCheckbox.setCheckState(.unchecked, animated: true)
+        monthlyProPlanCheckbox.setCheckState(.unchecked, animated: true)
+        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
+        annualProPlanCheckbox.setCheckState(.checked, animated: true)
+        VPNSubscription.selectedProductId = VPNSubscription.productIdAnnualPro
+        updatePricingSubtitle()
+    }
+    
+    @IBAction func annualProTapped(_ sender: Any) {
+        selectAnnualPro()
+    }
+    
     @objc func updatePricingSubtitle() {
         if monthlyPlanCheckbox.checkState == .checked {
             pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly)
         }
         else if annualPlanCheckbox.checkState == .checked {
             pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)
+        }
+        else if annualProPlanCheckbox.checkState == .checked {
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro)
+        }
+        else if monthlyProPlanCheckbox.checkState == .checked {
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro)
         }
     }
     
@@ -100,9 +134,14 @@ class SignupViewController: BaseViewController {
         toggleStartTrialButton(false)
         VPNSubscription.purchase (
             succeeded: {
+                let presentingViewController = self.presentingViewController as? HomeViewController
                 self.dismiss(animated: true, completion: {
-                    // TODO: show onboarding, and THEN activate VPN
-                    VPNController.shared.setEnabled(true)
+                    if presentingViewController != nil {
+                        presentingViewController?.toggleVPN("me")
+                    }
+                    else {
+                        VPNController.shared.setEnabled(true)
+                    }
                 })
             },
             errored: { error in
@@ -146,9 +185,15 @@ class SignupViewController: BaseViewController {
             try Client.getKey()
         }
         .done { (getKey: GetKey) in
-            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+            // we were able to get key, so subscription is valid -- follow pathway from HomeViewController to associate this with the email account if there is one
+            let presentingViewController = self.presentingViewController as? HomeViewController
             self.dismiss(animated: true, completion: {
-                VPNController.shared.setEnabled(true)
+                if presentingViewController != nil {
+                    presentingViewController?.toggleVPN("me")
+                }
+                else {
+                    VPNController.shared.setEnabled(true)
+                }
             })
         }
         .catch { error in

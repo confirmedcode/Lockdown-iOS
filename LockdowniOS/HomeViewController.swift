@@ -23,7 +23,9 @@ class CircularView: UIView {
     }
 }
 
-class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
+let kHasSeenEmailSignup = "hasSeenEmailSignup"
+
+class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Loadable {
     
     let kHasViewedTutorial = "hasViewedTutorial"
     let kHasSeenInitialFirewallConnectedDialog = "hasSeenInitialFirewallConnectedDialog11"
@@ -34,6 +36,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     let ratingTriggeredKey = "ratingTriggered" + lastVersionToAskForRating
     
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var menuButtonDot: UIView!
     
     @IBOutlet var stackEqualHeightConstraint: NSLayoutConstraint!
     
@@ -160,10 +163,17 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        reloadMenuDot()
+        
         toggleVPNBodyView(animate: false, show: defaults.bool(forKey: kVPNBodyViewVisible))
         if (defaults.bool(forKey: kHasViewedTutorial) == false) {
             startTutorial()
         }
+        else if (defaults.bool(forKey: kHasSeenEmailSignup) == false) {
+            self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: nil)
+        }
+        
         if defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
             tapToActivateFirewallLabel.isHidden = false
         }
@@ -245,7 +255,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                     defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
                     self.tapToActivateFirewallLabel.isHidden = true
                     if (VPNController.shared.status() == .invalid) {
-                        self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that uses bank-level encryption to protect your connections, anonymize your browsing history, and hide your location.", comment: ""))
+                        self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.", comment: ""))
                     }
                 }
             }
@@ -266,9 +276,149 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     // MARK: - Top Buttons
     
+    func reloadMenuDot() {
+        if (getAPICredentials() == nil || getAPICredentialsConfirmed() == false) {
+            menuButtonDot.isHidden = false
+        }
+        else {
+            menuButtonDot.isHidden = true
+        }
+    }
+    
     @IBAction func menuTapped(_ sender: Any) {
-        let popup = PopupDialog(title: nil,
-                                message: NSLocalizedString("For suggestions, questions, and issues, please tap Email Support.", comment: ""),
+        var title = "⚠️ Not Signed In"
+        var message: String? = "Sign up below to unlock benefits of a Lockdown account."
+        var firstButton = DefaultButton(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), dismissOnTap: true) {
+            self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: self)
+        }
+        if let apiCredentials = getAPICredentials() {
+            message = apiCredentials.email
+            if getAPICredentialsConfirmed() == true {
+                title = "Signed In"
+                firstButton = DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                    let confirm = PopupDialog(title: "Sign Out?",
+                                               message: "You'll be signed out from this account.",
+                                               image: nil,
+                                               buttonAlignment: .horizontal,
+                                               transitionStyle: .bounceDown,
+                                               preferredWidth: 270,
+                                               tapGestureDismissal: true,
+                                               panGestureDismissal: false,
+                                               hideStatusBar: false,
+                                               completion: nil)
+                    confirm.addButtons([
+                       DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
+                       },
+                       DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                        URLCache.shared.removeAllCachedResponses()
+                        Client.clearCookies()
+                        clearAPICredentials()
+                        setAPICredentialsConfirmed(confirmed: false)
+                        self.reloadMenuDot()
+                        self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                       },
+                    ])
+                    self.present(confirm, animated: true, completion: nil)
+                }
+            }
+            else {
+                title = "⚠️ Email Not Confirmed"
+                firstButton = DefaultButton(title: NSLocalizedString("Confirm Email", comment: ""), dismissOnTap: true) {
+                    self.showLoadingView()
+                    
+                    firstly {
+                        try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                    }
+                    .done { (signin: SignIn) in
+                        self.hideLoadingView()
+                        // successfully signed in with no errors, show confirmation success
+                        setAPICredentialsConfirmed(confirmed: true)
+                        
+                        // logged in and confirmed - update this email with the receipt and refresh VPN credentials
+                        firstly { () -> Promise<SubscriptionEvent> in
+                            try Client.subscriptionEvent()
+                        }
+                        .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                            try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            if (getUserWantsVPNEnabled() == true) {
+                                VPNController.shared.restart()
+                            }
+                        }
+                        .catch { error in
+                            // it's okay for this to error out with "no subscription in receipt"
+                            DDLogError("HomeViewController ConfirmEmail subscriptionevent error (ok for it to be \"no subscription in receipt\"): \(error)")
+                        }
+                        
+                        let popup = PopupDialog(title: "Success! 🎉",
+                                                message: NSLocalizedString("Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements.", comment: ""),
+                                                image: nil,
+                                                buttonAlignment: .horizontal,
+                                                transitionStyle: .bounceDown,
+                                                preferredWidth: 270,
+                                                tapGestureDismissal: true,
+                                                panGestureDismissal: false,
+                                                hideStatusBar: false,
+                                                completion: nil)
+                        popup.addButtons([
+                           DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
+                            self.reloadMenuDot()
+                            }
+                        ])
+                        self.present(popup, animated: true, completion: nil)
+                    }
+                    .catch { error in
+                        self.hideLoadingView()
+                        let popup = PopupDialog(title: "Check Your Inbox",
+                                                message: "To complete your signup, click the confirmation link we sent to \(apiCredentials.email). Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.",
+                                                image: nil,
+                                                buttonAlignment: .horizontal,
+                                                transitionStyle: .bounceDown,
+                                                preferredWidth: 270,
+                                                tapGestureDismissal: true,
+                                                panGestureDismissal: false,
+                                                hideStatusBar: false,
+                                                completion: nil)
+                        popup.addButtons([
+                            DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {},
+                            DefaultButton(title: NSLocalizedString("Re-send", comment: ""), dismissOnTap: true) {
+                                firstly {
+                                    try Client.resendConfirmCode(email: apiCredentials.email)
+                                }
+                                .done { (success: Bool) in
+                                    var message = "Successfully re-sent your email confirmation to \(apiCredentials.email)"
+                                    if (success == false) {
+                                        message = "Failed to re-send email confirmation."
+                                    }
+                                    self.showPopupDialog(title: "", message: message, acceptButton: NSLocalizedString("Okay", comment: ""))
+                                }
+                                .catch { error in
+                                    if (self.popupErrorAsNSURLError(error)) {
+                                        return
+                                    }
+                                    else if let apiError = error as? ApiError {
+                                        _ = self.popupErrorAsApiError(error)
+                                    }
+                                    else {
+                                        self.showPopupDialog(title: NSLocalizedString("Error Re-sending Email Confirmation", comment: ""),
+                                                             message: "\(error)",
+                                            acceptButton: NSLocalizedString("Okay", comment: ""))
+                                    }
+                                }
+                            },
+                        ])
+                        self.present(popup, animated: true, completion: nil)
+                    }
+
+                }
+            }
+        }
+        firstButton.buttonColor = UIColor.tunnelsBlue
+        firstButton.titleColor = UIColor.white
+        let popup = PopupDialog(title: title,
+                                message: message,
                                 image: nil,
                                 buttonAlignment: .vertical,
                                 transitionStyle: .bounceDown,
@@ -278,6 +428,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
                                 hideStatusBar: false,
                                 completion: nil)
         popup.addButtons([
+            firstButton,
             DefaultButton(title: NSLocalizedString("Tutorial", comment: ""), dismissOnTap: true) {
                 self.startTutorial()
             },
@@ -326,6 +477,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
     func spotlightViewDidCleanup(_ spotlightView: AwesomeSpotlightView) {
         defaults.set(true, forKey: kHasViewedTutorial)
+        self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: nil)
     }
     
     @IBAction func shareFirewallMetricsTapped(_ sender: Any) {
@@ -592,40 +744,106 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate {
         case .disconnected, .disconnecting, .invalid:
             DDLogInfo("Toggle VPN: off currently, turning it on")
             updateVPNButtonWithStatus(status: .connecting)
-            firstly {
-                try Client.signIn() // this will fetch and set latest receipt, then submit to API to get cookie
-            }
-            .then { (signin: SignIn) -> Promise<GetKey> in
-                // TODO: don't always do this -- if we already have a key, then only do it once per day max
-                try Client.getKey()
-            }
-            .done { (getKey: GetKey) in
-                try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                VPNController.shared.setEnabled(true)
-            }
-            .catch { error in
-                self.updateVPNButtonWithStatus(status: .disconnected)
-                if (self.popupErrorAsNSURLError(error)) {
-                    return
+            // if there's a confirmed email, use that and sync the receipt with it
+            if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                print("have confirmed API credentials, using them")
+                firstly {
+                    try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
                 }
-                else if let apiError = error as? ApiError {
-                    switch apiError.code {
-                    case kApiCodeNoSubscriptionInReceipt:
-                        self.performSegue(withIdentifier: "showSignup", sender: self)
-                    case kApiCodeNoActiveSubscription:
-                        self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
+                .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
+                    print("signin result: \(signin)")
+                    return try Client.subscriptionEvent()
+                }
+                .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                    print("subscriptionevent result: \(result)")
+                    return try Client.getKey()
+                }
+                .done { (getKey: GetKey) in
+                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                    print("setting VPN creds with ID: \(getKey.id)")
+                    VPNController.shared.setEnabled(true)
+                }
+                .catch { error in
+                    DDLogError("Error doing email-login -> subscription-event: \(error)")
+                    self.updateVPNButtonWithStatus(status: .disconnected)
+                    if (self.popupErrorAsNSURLError(error)) {
+                        return
+                    }
+                    else if let apiError = error as? ApiError {
+                        switch apiError.code {
+                        case kApiCodeInvalidAuth, kApiCodeIncorrectLogin:
+                            let confirm = PopupDialog(title: "Incorrect Login",
+                                                       message: "Your saved login credentials are incorrect. Please sign out and try again.",
+                                                       image: nil,
+                                                       buttonAlignment: .horizontal,
+                                                       transitionStyle: .bounceDown,
+                                                       preferredWidth: 270,
+                                                       tapGestureDismissal: true,
+                                                       panGestureDismissal: false,
+                                                       hideStatusBar: false,
+                                                       completion: nil)
+                            confirm.addButtons([
+                               DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
+                               },
+                               DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                                URLCache.shared.removeAllCachedResponses()
+                                Client.clearCookies()
+                                clearAPICredentials()
+                                setAPICredentialsConfirmed(confirmed: false)
+                                self.reloadMenuDot()
+                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                               },
+                            ])
+                            self.present(confirm, animated: true, completion: nil)
+                        case kApiCodeNoSubscriptionInReceipt:
                             self.performSegue(withIdentifier: "showSignup", sender: self)
-                        })
-                    default:
-                        _ = self.popupErrorAsApiError(error)
+                        case kApiCodeNoActiveSubscription:
+                            self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
+                                self.performSegue(withIdentifier: "showSignup", sender: self)
+                            })
+                        default:
+                            _ = self.popupErrorAsApiError(error)
+                        }
                     }
                 }
-                else {
-                    self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
-                                         message: "\(error)",
-                        acceptButton: NSLocalizedString("Okay", comment: ""))
+            }
+            else {
+                firstly {
+                    try Client.signIn() // this will fetch and set latest receipt, then submit to API to get cookie
+                }
+                .then { (signin: SignIn) -> Promise<GetKey> in
+                    // TODO: don't always do this -- if we already have a key, then only do it once per day max
+                    try Client.getKey()
+                }
+                .done { (getKey: GetKey) in
+                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                    VPNController.shared.setEnabled(true)
+                }
+                .catch { error in
+                    self.updateVPNButtonWithStatus(status: .disconnected)
+                    if (self.popupErrorAsNSURLError(error)) {
+                        return
+                    }
+                    else if let apiError = error as? ApiError {
+                        switch apiError.code {
+                        case kApiCodeNoSubscriptionInReceipt:
+                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                        case kApiCodeNoActiveSubscription:
+                            self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
+                                self.performSegue(withIdentifier: "showSignup", sender: self)
+                            })
+                        default:
+                            _ = self.popupErrorAsApiError(error)
+                        }
+                    }
+                    else {
+                        self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
+                                             message: "\(error)",
+                            acceptButton: NSLocalizedString("Okay", comment: ""))
+                    }
                 }
             }
+            
         }
     }
     

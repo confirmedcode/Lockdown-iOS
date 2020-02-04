@@ -18,11 +18,15 @@ class VPNSubscription: NSObject {
     
     static let productIdMonthly = "LockdowniOSVpnMonthly"
     static let productIdAnnual = "LockdowniOSVpnAnnual"
-    static let productIds: Set = [productIdMonthly, productIdAnnual]
+    static let productIdMonthlyPro = "LockdowniOSVpnMonthlyPro"
+    static let productIdAnnualPro = "LockdowniOSVpnAnnualPro"
+    static let productIds: Set = [productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
     static var selectedProductId = productIdMonthly
     
     static var defaultPriceStringMonthly = "$7.99 per month after"
+    static var defaultPriceStringMonthlyPro = "$9.99 per month after"
     static var defaultPriceStringAnnual = "$49.99/year after (~$4.17/month)"
+    static var defaultPriceStringAnnualPro = "$99.99/year after (~$8.33/month)"
     
     static func purchase(succeeded: @escaping () -> Void, errored: @escaping (Error) -> Void) {
         DDLogInfo("purchase")
@@ -62,20 +66,28 @@ class VPNSubscription: NSObject {
         }
         else {
             DDLogError("Found no cached price for productId \(productId), returning default")
-            if productId == productIdMonthly {
-                return defaultPriceStringMonthly
-            }
-            else if productId == productIdAnnual {
-                return defaultPriceStringAnnual
-            }
-            else {
-                DDLogError("Invalid product Id: \(productId)")
-                return "Invalid Price"
+            switch productId {
+                case productIdMonthly:
+                    return defaultPriceStringMonthly
+                case productIdMonthlyPro:
+                    return defaultPriceStringMonthlyPro
+                case productIdAnnual:
+                    return defaultPriceStringAnnual
+                case productIdAnnualPro:
+                    return defaultPriceStringAnnualPro
+                default:
+                    DDLogError("Invalid product Id: \(productId)")
+                    return "Invalid Price"
             }
         }
     }
     
     static func cacheLocalizedPrices() -> Void {
+
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        
         DDLogInfo("cache localized price for productIds: \(productIds)")
         SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
             DDLogInfo("retrieve products results: \(result)")
@@ -92,10 +104,17 @@ class VPNSubscription: NSObject {
                         setProductIdPrice(productId: productIdMonthly, price: defaultPriceStringMonthly)
                     }
                 }
+                else if product.productIdentifier == productIdMonthlyPro {
+                    if product.localizedPrice != nil {
+                        DDLogInfo("setting monthlyPro display price = " + product.localizedPrice!)
+                        setProductIdPrice(productId: productIdMonthlyPro, price: "\(product.localizedPrice!) per month after")
+                    }
+                    else {
+                        DDLogError("monthlyPro nil localizedPrice, setting default")
+                        setProductIdPrice(productId: productIdMonthlyPro, price: defaultPriceStringMonthlyPro)
+                    }
+                }
                 else if product.productIdentifier == productIdAnnual {
-                    let currencyFormatter = NumberFormatter()
-                    currencyFormatter.usesGroupingSeparator = true
-                    currencyFormatter.numberStyle = .currency
                     currencyFormatter.locale = product.priceLocale
                     let priceMonthly = product.price.dividing(by: 12)
                     DDLogInfo("annual price = \(product.price)")
@@ -106,6 +125,19 @@ class VPNSubscription: NSObject {
                     else {
                         DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)
                         setProductIdPrice(productId: productIdAnnual, price: defaultPriceStringAnnual)
+                    }
+                }
+                else if product.productIdentifier == productIdAnnualPro {
+                    currencyFormatter.locale = product.priceLocale
+                    let priceMonthly = product.price.dividing(by: 12)
+                    DDLogInfo("annualPro price = \(product.price)")
+                    if let priceString = currencyFormatter.string(from: product.price), let priceStringMonthly = currencyFormatter.string(from: priceMonthly) {
+                        DDLogInfo("setting annualPro display price = annualPro product price / 12 = " + priceString)
+                        setProductIdPrice(productId: productIdAnnualPro, price: "\(priceString)/year after (~\(priceStringMonthly)/month)")
+                    }
+                    else {
+                        DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)
+                        setProductIdPrice(productId: productIdAnnualPro, price: defaultPriceStringAnnualPro)
                     }
                 }
             }

@@ -142,7 +142,7 @@ func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
     let snapchatAnalytics = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "snapchatAnalytics",
         name: "Snapchat Trackers",
         iconURL: "snapchat_analytics_icon",
@@ -151,7 +151,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let gameAds = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "gameAds",
         name: "Game Ads",
         iconURL: "game_ads_icon",
@@ -160,7 +160,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let clickbait = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "clickbait",
         name: "Clickbait",
         iconURL: "clickbait_icon",
@@ -169,7 +169,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let crypto = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "crypto_mining",
         name: "Crypto Mining",
         iconURL: "crypto_icon",
@@ -178,7 +178,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let emailOpens = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "email_opens",
         name: "Email Trackers (Beta)",
         iconURL: "email_icon",
@@ -187,7 +187,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "facebook_inc",
         name: "Facebook Apps (Beta)",
         iconURL: "facebook_icon",
@@ -196,7 +196,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookSDK = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "facebook_sdk",
         name: "Facebook Trackers",
         iconURL: "facebook_white_icon",
@@ -205,7 +205,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScripts = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "marketing_scripts",
         name: "Marketing Trackers",
         iconURL: "marketing_icon",
@@ -214,7 +214,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let ransomware = LockdownGroup.init(
-        version: 20,
+        version: 21,
         internalID: "ransomware",
         name: "Ransomware",
         iconURL: "ransomware_icon",

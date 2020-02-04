@@ -34,9 +34,10 @@ class Client {
         clearCookies()
         return getReceipt(forceRefresh: forceRefresh)
             .then { receipt -> Promise<(data: Data, response: URLResponse)> in
-                let parameters = [
+                let parameters:[String : Any] = [
                     "authtype": "ios",
-                    "authreceipt": receipt
+                    "authreceipt": receipt,
+                    "lockdown": true
                 ]
                 return URLSession.shared.dataTask(.promise,
                                            with: try makePostRequest(urlString: mainURL + "/signin",
@@ -54,12 +55,115 @@ class Client {
                 }
             }
     }
+    
+    static func signInWithEmail(email: String, password: String) throws -> Promise<SignIn> {
+        DDLogInfo("API CALL: test signIn with email")
+        URLCache.shared.removeAllCachedResponses()
+        clearCookies()
+        return firstly { () -> Promise<(data: Data, response: URLResponse)> in
+                let parameters:[String : Any] = [
+                    "email" : email,
+                    "password" : password,
+                    "lockdown": true
+                ]
+                return URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/signin", parameters: parameters))
+            }
+            .map { data, response -> SignIn in
+                try self.validateApiResponse(data: data, response: response)
+                let resp = response as! HTTPURLResponse // already validated the type in validateApiResponse
+                DDLogInfo("Got signin (with email) response with headers: \(resp.allHeaderFields)")
+                return try JSONDecoder().decode(SignIn.self, from: data)
+            }
+    }
+    
+    static func resendConfirmCode(email: String) throws -> Promise<Bool> {
+        DDLogInfo("API CALL: resendConfirmCode")
+        return firstly { () -> Promise<(data: Data, response: URLResponse)> in
+                let parameters:[String : Any] = [
+                    "email" : email,
+                    "lockdown": true
+                ]
+                return URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/resend-confirm-code", parameters: parameters))
+            }
+            .map { data, response -> Bool in
+                if let httpResponse = response as? HTTPURLResponse {
+                    DDLogInfo("API RESULT: resend-confirm-code: \(httpResponse.statusCode)")
+                    if httpResponse.statusCode < 400 {
+                        return true
+                    }
+                    return false
+                }
+                DDLogInfo("API RESULT: error - resend-confirm-code: not HTTPURLResponse")
+                return false
+        }
+    }
+    
+    static func subscriptionEvent() throws -> Promise<SubscriptionEvent> {
+        DDLogInfo("API CALL: subscription-event")
+        return getReceipt(forceRefresh: false)
+            .then { receipt -> Promise<(data: Data, response: URLResponse)> in
+                let parameters:[String : Any] = [
+                    "authtype": "ios",
+                    "authreceipt": receipt,
+                    "lockdown": true
+                ]
+                return URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/subscription-event", parameters: parameters))
+            }
+            .map { data, response -> SubscriptionEvent in
+                try self.validateApiResponse(data: data, response: response)
+                let subscriptionEvent = try JSONDecoder().decode(SubscriptionEvent.self, from: data)
+                DDLogInfo("API RESULT: subscriptionEvent: \(subscriptionEvent)")
+                return subscriptionEvent
+        }
+    }
+    
+    // For creating email account only - not signing up with IAP receipt
+    static func signup(email: String, password: String) throws -> Promise<Signup> {
+        DDLogInfo("API CALL: signup")
+        return firstly { () -> Promise<(data: Data, response: URLResponse)> in
+                let parameters:[String : Any] = [
+                    "email" : email,
+                    "password" : password,
+                    "lockdown": true
+                ]
+                return URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/signup", parameters: parameters))
+            }
+            .map { data, response -> Signup in
+                try self.validateApiResponse(data: data, response: response)
+                let signup = try JSONDecoder().decode(Signup.self, from: data)
+                DDLogInfo("API RESULT: signup: \(signup)")
+                return signup
+        }
+    }
+    
+    static func forgotPassword(email: String) throws -> Promise<Bool> {
+       DDLogInfo("API CALL: forgot-password")
+       return firstly { () -> Promise<(data: Data, response: URLResponse)> in
+               let parameters:[String : Any] = [
+                   "email" : email,
+                   "lockdown": true
+               ]
+               return URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/forgot-password", parameters: parameters))
+           }
+           .map { data, response -> Bool in
+               if let httpResponse = response as? HTTPURLResponse {
+                   DDLogInfo("API RESULT: forgot-password: \(httpResponse.statusCode)")
+                   if httpResponse.statusCode < 400 {
+                       return true
+                   }
+                   return false
+               }
+               DDLogInfo("API RESULT: error - forgot-password: not HTTPURLResponse")
+               return false
+       }
+    }
 
     static func getKey() throws -> Promise<GetKey> {
         DDLogInfo("API CALL: getKey")
         return firstly { () -> Promise<(data: Data, response: URLResponse)> in
-                let parameters = [
-                    "platform" : "ios"
+                let parameters:[String : Any] = [
+                    "platform" : "ios",
+                    "lockdown": true
                 ]
                 return URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/get-key", parameters: parameters))
             }
@@ -127,7 +231,7 @@ class Client {
     }
     
     static func makePostRequest(urlString: String, parameters: [String: Any]) throws -> URLRequest {
-        DDLogInfo("makePostRequest: \(urlString), parameters: \(parameters)")
+        DDLogInfo("makePostRequest: \(urlString)")//", parameters: \(parameters)")
         if let url = URL(string: urlString) {
             var rq = URLRequest(url: url)
             rq.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
@@ -198,7 +302,7 @@ class Client {
         return hasValidCookie
     }
     
-    private static func clearCookies() {
+    static func clearCookies() {
         DDLogInfo("clearing cookies")
         var cookiesToDelete:[HTTPCookie] = []
         if let cookies = HTTPCookieStorage.shared.cookies {

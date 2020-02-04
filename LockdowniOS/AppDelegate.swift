@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Clear local data for testing
+//         try? keychain.removeAll()
 //        for d in defaults.dictionaryRepresentation() {
 //            defaults.removeObject(forKey: d.key)
 //        }
@@ -320,6 +321,126 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0, execute: {
             completionHandler(.newData)
         })
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+            let host = components.host else {
+                print("Invalid URL")
+                return false
+        }
+        
+        if (host == "emailconfirmed") {
+            // test the stored login
+            guard let apiCredentials = getAPICredentials() else {
+                let popup = PopupDialog(title: "Error",
+                                        message: NSLocalizedString("No stored API credentials found. Please contact team@lockdownhq.com about this error.", comment: ""),
+                                        image: nil,
+                                        buttonAlignment: .horizontal,
+                                        transitionStyle: .bounceDown,
+                                        preferredWidth: 270,
+                                        tapGestureDismissal: true,
+                                        panGestureDismissal: false,
+                                        hideStatusBar: false,
+                                        completion: nil)
+                popup.addButtons([
+                   DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
+                ])
+                getCurrentViewController()?.present(popup, animated: true, completion: nil)
+                return true
+            }
+            firstly {
+                try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+            }
+            .done { (signin: SignIn) in
+                // successfully signed in with no errors, show confirmation success
+                setAPICredentialsConfirmed(confirmed: true)
+                // logged in and confirmed - update this email with the receipt and refresh VPN credentials
+                firstly { () -> Promise<SubscriptionEvent> in
+                    try Client.subscriptionEvent()
+                }
+                .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                    try Client.getKey()
+                }
+                .done { (getKey: GetKey) in
+                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                    if (getUserWantsVPNEnabled() == true) {
+                        VPNController.shared.restart()
+                    }
+                }
+                .catch { error in
+                    // it's okay for this to error out with "no subscription in receipt"
+                    DDLogError("HomeViewController ConfirmEmail subscriptionevent error (ok for it to be \"no subscription in receipt\"): \(error)")
+                }
+                let popup = PopupDialog(title: "Success! 🎉",
+                                        message: NSLocalizedString("Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements.", comment: ""),
+                                        image: nil,
+                                        buttonAlignment: .horizontal,
+                                        transitionStyle: .bounceDown,
+                                        preferredWidth: 270,
+                                        tapGestureDismissal: true,
+                                        panGestureDismissal: false,
+                                        hideStatusBar: false,
+                                        completion: nil)
+                popup.addButtons([
+                   DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
+                ])
+                self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
+            }
+            .catch { error in
+                
+                var errorMessage = error.localizedDescription
+                if let apiError = error as? ApiError {
+                    errorMessage = apiError.message
+                }
+                
+                let popup = PopupDialog(title: "Error Confirming Account",
+                                        message: NSLocalizedString("Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownhq.com.", comment: ""),
+                                        image: nil,
+                                        buttonAlignment: .horizontal,
+                                        transitionStyle: .bounceDown,
+                                        preferredWidth: 270,
+                                        tapGestureDismissal: true,
+                                        panGestureDismissal: false,
+                                        hideStatusBar: false,
+                                        completion: nil)
+                popup.addButtons([
+                   DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
+                ])
+                self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
+            }
+        }
+        
+        return true
+    }
+    
+    // MARK: - Utilities
+    // Returns the most recently presented UIViewController (visible)
+    func getCurrentViewController() -> UIViewController? {
+        // If the root view is a navigation controller, we can just return the visible ViewController
+        if let navigationController = getNavigationController() {
+            return navigationController.visibleViewController
+        }
+        // Otherwise, we must get the root UIViewController and iterate through presented views
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            // Each ViewController keeps track of the view it has presented, so we
+            // can move from the head to the tail, which will always be the current view
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+    }
+
+    // Returns the navigation controller if it exists
+    func getNavigationController() -> UINavigationController? {
+        if let navigationController = UIApplication.shared.keyWindow?.rootViewController {
+            return navigationController as? UINavigationController
+        }
+        return nil
     }
 
 }

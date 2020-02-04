@@ -22,3 +22,7 @@ ping.chartbeat.net
 richmetrics.com
 sb.scorecardresearch.com
 sc-analytics.appspot.com
+flashtalking.com
+3lift.com
+2mdn.net
+googlesyndication.com

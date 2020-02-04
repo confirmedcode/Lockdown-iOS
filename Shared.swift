@@ -90,6 +90,77 @@ func getVPNCredentials() -> VPNCredentials? {
     return VPNCredentials(id: id!, keyBase64: keyBase64!)
 }
 
+// MARK: - API Credentials
+
+let kAPICredentialsEmail = "APICredentialsEmail"
+let kAPICredentialsPassword = "APICredentialsPassword"
+
+struct APICredentials {
+    var email: String = ""
+    var password: String = ""
+}
+
+func setAPICredentials(email: String, password: String) throws {
+    print("Setting API Credentials with email: \(email)")
+    if (email == "") {
+        throw "Email was blank"
+    }
+    if (password == "") {
+        throw "Password was blank"
+    }
+    do {
+        try keychain.set(email, key: kAPICredentialsEmail)
+        try keychain.set(password, key: kAPICredentialsPassword)
+    }
+    catch {
+        throw "Unable to set API credentials on keychain"
+    }
+}
+
+func clearAPICredentials() {
+    try? keychain.remove(kAPICredentialsEmail)
+    try? keychain.remove(kAPICredentialsPassword)
+}
+
+func getAPICredentials() -> APICredentials? {
+    print("Getting stored API credentials")
+    var email: String? = nil
+    do {
+        email = try keychain.get(kAPICredentialsEmail)
+        if email == nil {
+            print("No stored API credential email")
+            return nil
+        }
+    }
+    catch {
+        print("Error getting stored API credentials email: \(error)")
+        return nil
+    }
+    var password: String? = nil
+    do {
+        password = try keychain.get(kAPICredentialsPassword)
+        if password == nil {
+            print("No stored API credential password")
+            return nil
+        }
+    }
+    catch {
+        print("Error getting stored API credentials password: \(error)")
+        return nil
+    }
+    print("Returning stored API credentials with email: \(email!)")
+    return APICredentials(email: email!, password: password!)
+}
+
+let kAPICredentialsConfirmed = "APICredentialsConfirmed"
+
+func getAPICredentialsConfirmed() -> Bool {
+    return defaults.bool(forKey: kAPICredentialsConfirmed)
+}
+
+func setAPICredentialsConfirmed(confirmed: Bool) {
+    defaults.set(confirmed, forKey: kAPICredentialsConfirmed)
+}
 
 // MARK: - User wants Firewall/VPN Enabled
 
