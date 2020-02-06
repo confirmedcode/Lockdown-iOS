@@ -24,7 +24,7 @@ class VPNSubscription: NSObject {
     static var selectedProductId = productIdMonthly
     
     static var defaultPriceStringMonthly = "$7.99 per month after"
-    static var defaultPriceStringMonthlyPro = "$9.99 per month after"
+    static var defaultPriceStringMonthlyPro = "$11.99 per month after"
     static var defaultPriceStringAnnual = "$49.99/year after (~$4.17/month)"
     static var defaultPriceStringAnnualPro = "$99.99/year after (~$8.33/month)"
     

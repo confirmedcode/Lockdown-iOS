@@ -331,7 +331,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
         }
         
-        if (host == "emailconfirmed") {
+        if (host == "resetsuccessful") {
+            let popup = PopupDialog(title: "Password Reset Successfully",
+                                    message: "Please Sign In With Your New Password",
+                                    image: nil,
+                                    buttonAlignment: .horizontal,
+                                    transitionStyle: .bounceDown,
+                                    preferredWidth: 270,
+                                    tapGestureDismissal: true,
+                                    panGestureDismissal: false,
+                                    hideStatusBar: false,
+                                    completion: nil)
+            popup.addButtons([
+                DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
+                    if let hvc = self.getCurrentViewController() as? HomeViewController {
+                        hvc.performSegue(withIdentifier: "showSignInFromHome", sender: nil)
+                    }
+                }
+            ])
+            self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
+            return true
+        }
+        
+        else if (host == "emailconfirmed") {
             // test the stored login
             guard let apiCredentials = getAPICredentials() else {
                 let popup = PopupDialog(title: "Error",
