@@ -87,6 +87,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
             guard error == nil else {
+                DDLogError("Error setting tunnel network settings \(error)")
                 completionHandler(error)
                 return
             }
@@ -96,7 +97,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 completionHandler(nil)
             }
             catch let proxyError {
-                DDLogError("Error starting proxy server \(error)")
+                DDLogError("Error starting proxy server \(proxyError)")
                 completionHandler(proxyError)
             }
         })
