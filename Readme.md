@@ -12,7 +12,7 @@ If you have any questions, concerns, or other feedback, please let us know in Gi
 We have many planned features in the upcoming months, so if you are interested, please download our app from the App Store. If you are interested in helping develop these features, please reach out to us at engineering@lockdownhq.com. For any feature requests or bug reports, please create an issue on our Github repository.
 
 ## How To Build
-To build the app from source, please make sure to run a 'pod install' & 'carthage update --no-use-binaries --platform ios' and open the *.xcworkspace file to build. To sign the app, you will need an Apple Developer account.
+To build the app from source, please make sure to run a `pod install` & `carthage update --no-use-binaries --platform ios` and open the *.xcworkspace file to build. To sign the app, you will need an Apple Developer account.
 
 ## License
 
