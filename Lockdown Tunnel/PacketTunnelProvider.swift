@@ -86,14 +86,19 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         ObserverFactory.currentFactory = LDObserverFactory()
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
+            guard error == nil else {
+                DDLogError("Error setting tunnel network settings \(error)")
+                completionHandler(error)
+                return
+            }
             self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
             do {
                 try self.proxyServer.start()
                 completionHandler(nil)
             }
-            catch {
-                DDLogError("Error starting proxy server \(error)")
-                completionHandler(error)
+            catch let proxyError {
+                DDLogError("Error starting proxy server \(proxyError)")
+                completionHandler(proxyError)
             }
         })
     }
