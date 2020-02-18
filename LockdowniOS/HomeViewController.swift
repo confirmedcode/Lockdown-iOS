@@ -374,7 +374,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                         let popup = PopupDialog(title: "Check Your Inbox",
                                                 message: "To complete your signup, click the confirmation link we sent to \(apiCredentials.email). Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.",
                                                 image: nil,
-                                                buttonAlignment: .horizontal,
+                                                buttonAlignment: .vertical,
                                                 transitionStyle: .bounceDown,
                                                 preferredWidth: 270,
                                                 tapGestureDismissal: true,
@@ -383,6 +383,14 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                                 completion: nil)
                         popup.addButtons([
                             DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {},
+                            DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                                URLCache.shared.removeAllCachedResponses()
+                                Client.clearCookies()
+                                clearAPICredentials()
+                                setAPICredentialsConfirmed(confirmed: false)
+                                self.reloadMenuDot()
+                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                            },
                             DefaultButton(title: NSLocalizedString("Re-send", comment: ""), dismissOnTap: true) {
                                 firstly {
                                     try Client.resendConfirmCode(email: apiCredentials.email)
