@@ -38,15 +38,25 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
         })
     }
     
-    func saveNewDomain() {
-        // TODO: Check it's a valid domain format
-        didMakeChange = true
-        if let text = addDomainTextField?.text {
-            if text.count > 0 {
-                DDLogInfo("Adding custom domain - \(text)")
-                addUserBlockedDomain(domain: text.lowercased())
-                addDomainTextField!.text = ""
-                tableView.reloadData()
+    func saveNewDomain(userEnteredDomainName: String) {
+        let validation = DomainNameValidator.validate(userEnteredDomainName)
+        
+        switch validation {
+        case .valid:
+            didMakeChange = true
+            
+            DDLogInfo("Adding custom domain - \(userEnteredDomainName)")
+            addUserBlockedDomain(domain: userEnteredDomainName.lowercased())
+            addDomainTextField?.text = ""
+            tableView.reloadData()
+        case .notValid(let reason):
+            DDLogWarn("Custom domain is not valid - \(userEnteredDomainName), reason - \(reason)")
+            showPopupDialog(
+                title: NSLocalizedString("Invalid domain", comment: ""),
+                message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"", comment: ""),
+                acceptButton: NSLocalizedString("Okay", comment: "")
+            ) {
+                self.addDomainTextField?.becomeFirstResponder()
             }
         }
     }
@@ -69,7 +79,7 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
         if indexPath.section == 0 {
             // Add Domain row
             if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-                return 70
+                return 75
             }
             else {
                 return 50
@@ -97,10 +107,10 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = NSLocalizedString("Your Settings", comment: "")
+            label.text = NSLocalizedString("Custom Settings (Advanced)", comment: "")
         }
         else {
-            label.text = NSLocalizedString("Pre-configured Suggestions", comment: "")
+            label.text = NSLocalizedString("Pre-configured Block Lists", comment: "")
         }
         
         view.addSubview(label)
@@ -163,7 +173,9 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
             let domainLabel = cell.blockListDomain
             
             didMakeChange = true
-            deleteUserBlockedDomain(domain: (domainLabel?.text)!)
+            let domain = domainLabel?.text ?? ""
+            deleteUserBlockedDomain(domain: domain)
+            DDLogInfo("Deleting custom domain - \(domain)")
             self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -178,6 +190,7 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
             // Add Domain
             if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "blockListAddCell", for: indexPath) as! BlockListAddCell
+                cell.accessoryType = .none
                 let textfield = cell.addBlockListDomain
                 textfield?.addTarget(self, action: #selector(textFieldDidEndOnExit), for: .editingDidEndOnExit)
                 textfield?.addTarget(self, action: #selector(didSelectTextField), for: .editingDidBegin)
@@ -189,6 +202,7 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
                 let domainArray = domains.sorted {$0.key < $1.key}
                 if domainArray.count > indexPath.row {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "blockListCell", for: indexPath) as! BlockListCell
+                    cell.accessoryType = .none
                     cell.blockListDomain?.text = domainArray[indexPath.row].key
                     if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
                         cell.blockListStatus?.text = NSLocalizedString("Blocked", comment: "")
@@ -224,6 +238,7 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
                     }
                 }
             }
+            cell.accessoryType = .disclosureIndicator
             return cell
         }
         
@@ -232,7 +247,13 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
     
     @IBAction func textFieldDidEndOnExit(textField: UITextField) {
         self.dismissKeyboard()
-        saveNewDomain()
+        
+        guard let text = textField.text else {
+            DDLogError("Text is empty on add domain text field")
+            return
+        }
+        
+        saveNewDomain(userEnteredDomainName: text)
     }
     
     @objc func didSelectTextField(textField: UITextField) {

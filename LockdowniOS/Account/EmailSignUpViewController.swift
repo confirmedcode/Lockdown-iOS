@@ -45,7 +45,7 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
         let attrStr = NSMutableAttributedString (
             string: "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.",
             attributes: [
-                .font: UIFont(name: "Montserrat-Regular", size: 11),
+                .font: UIFont(name: "Montserrat-Regular", size: 11) ?? UIFont.systemFont(ofSize: 11),
                 .foregroundColor: UIColor.lightGray
             ])
         

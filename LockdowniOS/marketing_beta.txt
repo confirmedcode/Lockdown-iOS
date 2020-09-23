@@ -1,0 +1,11 @@
+events.appsflyer.com
+sdk.appsflyer.com
+t.appsflyer.com
+cdn.branch.io
+api.branch.io
+api.instabug.com
+e.crashlytics.com
+settings.crashlytics.com
+mobile-service.segment.com
+api.segment.io
+cdn-settings.segment.com

@@ -117,6 +117,18 @@ class Client {
         }
     }
     
+    static func activeSubscriptions() throws -> Promise<[Subscription]> {
+        DDLogInfo("API CALL: active-subscriptions")
+        return firstly {
+            URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/active-subscriptions", parameters: [:]))
+        }.map { data, response -> [Subscription] in
+            try self.validateApiResponse(data: data, response: response)
+            let subscriptions = try JSONDecoder().decode([Subscription].self, from: data)
+            DDLogInfo("API RESULT: active-subscriptions: \(subscriptions)")
+            return subscriptions
+        }
+    }
+    
     // For creating email account only - not signing up with IAP receipt
     static func signup(email: String, password: String) throws -> Promise<Signup> {
         DDLogInfo("API CALL: signup")

@@ -23,6 +23,35 @@ var appInstallDate: Date? {
     return nil
 }
 
+func deviceHasRestarted() -> Bool {
+    let currentSystemUptime: TimeInterval = ProcessInfo.processInfo.systemUptime
+    let lastSystemUptime = UserDefaults.standard.double(forKey: "SystemUpTime")
+    DDLogInfo("SYSTEM RESTART CHECK: LAST UPTIME \(lastSystemUptime) | CURRENT \(currentSystemUptime)")
+    UserDefaults.standard.set(currentSystemUptime, forKey: "SystemUpTime")
+    if (currentSystemUptime < lastSystemUptime || lastSystemUptime == 0) {
+        DDLogInfo("SYSTEM RESTART CHECK: RESTARTED - LAST UPTIME \(lastSystemUptime) | CURRENT \(currentSystemUptime)")
+        return true
+    }
+    DDLogInfo("SYSTEM RESTART CHECK: NOT RESTARTED")
+    return false
+}
+
+func appHasJustBeenUpgradedOrIsNewInstall() -> Bool {
+    let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
+    DDLogInfo("APP UPGRADED CHECK: LAST RUN \(versionOfLastRun ?? "n/a") | CURRENT \(currentVersion ?? "n/a")")
+    UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
+    if (versionOfLastRun == nil || versionOfLastRun != currentVersion) {
+        // either first time this check has occurred, or app was updated since last run
+        DDLogInfo("APP UPGRADED CHECK: TRUE - LAST RUN \(versionOfLastRun ?? "n/a") | CURRENT \(currentVersion ?? "n/a")")
+        return true
+    } else {
+        // nothing changed
+        DDLogInfo("APP UPGRADED CHECK: FALSE")
+        return false
+    }
+}
+
 let reachability = Reachability()
 
 let defaults = UserDefaults(suiteName: "group.com.confirmed")!
@@ -208,6 +237,10 @@ let vpnRegions:[VPNRegion] = [
               regionDisplayNameShort: NSLocalizedString("United Kingdom", comment: ""),
               regionFlagEmoji: "🇬🇧",
               serverPrefix: "eu-london"),
+    VPNRegion(regionDisplayName: NSLocalizedString("France", comment: ""),
+              regionDisplayNameShort: NSLocalizedString("France", comment: ""),
+              regionFlagEmoji: "🇫🇷",
+              serverPrefix: "eu-paris"),
     VPNRegion(regionDisplayName: NSLocalizedString("Ireland", comment: ""),
               regionDisplayNameShort: NSLocalizedString("Ireland", comment: ""),
               regionFlagEmoji: "🇮🇪",
@@ -332,6 +365,7 @@ extension String: Error { // Error makes it easy to throw errors as one-liners
 extension UIColor {
     static let tunnelsBlue = UIColor(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
     static let tunnelsWarning = UIColor(red: 231/255.0, green: 76/255.0, blue: 68/255.0, alpha: 1.0)
+    static let tunnelsDarkBlue = UIColor(red: 0/255.0, green: 117/255.0, blue: 157/255.0, alpha: 1.0)
 }
 
 extension UnicodeScalar {

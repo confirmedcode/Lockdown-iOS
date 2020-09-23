@@ -1,0 +1,12 @@
+{
+  "trackerIds": {
+    "googleadservices.com": "google_ads",
+    "doubleclick.net": "google_ads"
+  },
+  "descriptions": {
+    "google_ads": {
+      "title": "Google Ads",
+      "description": "These are Google ad servers, some of which host ads you see in shopping search results. Many apps also report to these servers in the background, even when your device is locked."
+    }
+  }
+}

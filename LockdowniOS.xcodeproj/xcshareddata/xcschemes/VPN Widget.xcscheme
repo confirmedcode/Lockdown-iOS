@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1020"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DBD57BA22FD727900DE189F"
-               BuildableName = "Lockdown Firewall Widget.appex"
-               BlueprintName = "Lockdown Firewall Widget"
+               BlueprintIdentifier = "A12473F21FE44284008493B8"
+               BuildableName = "Lockdown VPN Widget.appex"
+               BlueprintName = "Lockdown VPN Widget"
                ReferencedContainer = "container:LockdowniOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,7 +42,26 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A12473F21FE44284008493B8"
+            BuildableName = "Lockdown VPN Widget.appex"
+            BlueprintName = "Lockdown VPN Widget"
+            ReferencedContainer = "container:LockdowniOS.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C0D11192473FC7E00A26E04"
+               BuildableName = "LockdownTests.xctest"
+               BlueprintName = "LockdownTests"
+               ReferencedContainer = "container:LockdowniOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -57,16 +76,17 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1141A101F46230500F54698"
-            BuildableName = "Lockdown.app"
-            BlueprintName = "Lockdown"
+            BlueprintIdentifier = "A12473F21FE44284008493B8"
+            BuildableName = "Lockdown VPN Widget.appex"
+            BlueprintName = "Lockdown VPN Widget"
             ReferencedContainer = "container:LockdowniOS.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

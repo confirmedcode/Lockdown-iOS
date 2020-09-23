@@ -15,11 +15,27 @@ class SignupViewController: BaseViewController {
 
     //MARK: - VARIABLES
     
-    @IBOutlet var monthlyPlanCheckbox: M13Checkbox!
-    @IBOutlet weak var monthlyProPlanCheckbox: M13Checkbox!
+    enum Mode {
+        case newSubscription
+        case upgrade(active: [Subscription.PlanType])
+    }
     
+    var enableVPNAfterSubscribe = true
+    var mode = Mode.newSubscription
+    
+    @IBOutlet var monthlyPlanContainer: UIView!
+    @IBOutlet var monthlyPlanCheckbox: M13Checkbox!
+    
+    @IBOutlet var monthlyProPlanContainer: UIView!
+    @IBOutlet var monthlyProPlanCheckbox: M13Checkbox!
+    
+    @IBOutlet var annualPlanContainer: UIView!
     @IBOutlet var annualPlanCheckbox: M13Checkbox!
-    @IBOutlet weak var annualProPlanCheckbox: M13Checkbox!
+    
+    @IBOutlet var annualProPlanContainer: UIView!
+    @IBOutlet var annualProPlanCheckbox: M13Checkbox!
+    
+    @IBOutlet var upgradeSubscriptionHintLabel: UILabel!
     
     @IBOutlet var startTrialButton: TKTransitionSubmitButton!
     @IBOutlet var pricingSubtitle: UILabel!
@@ -29,23 +45,32 @@ class SignupViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         VPNSubscription.cacheLocalizedPrices()
-        selectAnnual()
+        switch mode {
+        case .newSubscription:
+            selectAnnual()
+            upgradeSubscriptionHintLabel.isHidden = true
+        case .upgrade(active: let activeSubscriptions):
+            configureWithActiveSubscriptions(activeSubscriptions)
+            restorePurchasesButton.isHidden = true
+        }
     }
     
+    var disabledCheckboxes: Set<M13Checkbox> = []
+    
     @objc func selectMonthly() {
-        monthlyPlanCheckbox.setCheckState(.checked, animated: true)
-        monthlyProPlanCheckbox.setCheckState(.unchecked, animated: true)
-        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
-        annualProPlanCheckbox.setCheckState(.unchecked, animated: true)
+        animatedSetChecked(monthlyPlanCheckbox, .checked)
+        animatedSetChecked(monthlyProPlanCheckbox, .unchecked)
+        animatedSetChecked(annualPlanCheckbox, .unchecked)
+        animatedSetChecked(annualProPlanCheckbox, .unchecked)
         VPNSubscription.selectedProductId = VPNSubscription.productIdMonthly
         updatePricingSubtitle()
     }
     
     @objc func selectMonthlyPro() {
-        monthlyPlanCheckbox.setCheckState(.unchecked, animated: true)
-        monthlyProPlanCheckbox.setCheckState(.checked, animated: true)
-        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
-        annualProPlanCheckbox.setCheckState(.unchecked, animated: true)
+        animatedSetChecked(monthlyPlanCheckbox, .unchecked)
+        animatedSetChecked(monthlyProPlanCheckbox, .checked)
+        animatedSetChecked(annualPlanCheckbox, .unchecked)
+        animatedSetChecked(annualProPlanCheckbox, .unchecked)
         VPNSubscription.selectedProductId = VPNSubscription.productIdMonthlyPro
         updatePricingSubtitle()
     }
@@ -59,10 +84,10 @@ class SignupViewController: BaseViewController {
     }
     
     @objc func selectAnnual() {
-        monthlyPlanCheckbox.setCheckState(.unchecked, animated: true)
-        monthlyProPlanCheckbox.setCheckState(.unchecked, animated: true)
-        annualPlanCheckbox.setCheckState(.checked, animated: true)
-        annualProPlanCheckbox.setCheckState(.unchecked, animated: true)
+        animatedSetChecked(monthlyPlanCheckbox, .unchecked)
+        animatedSetChecked(monthlyProPlanCheckbox, .unchecked)
+        animatedSetChecked(annualPlanCheckbox, .checked)
+        animatedSetChecked(annualProPlanCheckbox, .unchecked)
         VPNSubscription.selectedProductId = VPNSubscription.productIdAnnual
         updatePricingSubtitle()
     }
@@ -72,10 +97,10 @@ class SignupViewController: BaseViewController {
     }
     
     @objc func selectAnnualPro() {
-        monthlyPlanCheckbox.setCheckState(.unchecked, animated: true)
-        monthlyProPlanCheckbox.setCheckState(.unchecked, animated: true)
-        annualPlanCheckbox.setCheckState(.unchecked, animated: true)
-        annualProPlanCheckbox.setCheckState(.checked, animated: true)
+        animatedSetChecked(monthlyPlanCheckbox, .unchecked)
+        animatedSetChecked(monthlyProPlanCheckbox, .unchecked)
+        animatedSetChecked(annualPlanCheckbox, .unchecked)
+        animatedSetChecked(annualProPlanCheckbox, .checked)
         VPNSubscription.selectedProductId = VPNSubscription.productIdAnnualPro
         updatePricingSubtitle()
     }
@@ -85,17 +110,26 @@ class SignupViewController: BaseViewController {
     }
     
     @objc func updatePricingSubtitle() {
-        if monthlyPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly)
+        let context: VPNSubscription.SubscriptionContext = {
+            switch mode {
+            case .newSubscription:
+                return .new
+            case .upgrade:
+                return .upgrade
+            }
+        }()
+        
+        if monthlyPlanCheckbox.checkState == .checked, monthlyPlanCheckbox.isEnabled {
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly, for: context)
         }
-        else if annualPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)
+        else if annualPlanCheckbox.checkState == .checked, annualPlanCheckbox.isEnabled {
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual, for: context)
         }
-        else if annualProPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro)
+        else if annualProPlanCheckbox.checkState == .checked, annualProPlanCheckbox.isEnabled {
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro, for: context)
         }
-        else if monthlyProPlanCheckbox.checkState == .checked {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro)
+        else if monthlyProPlanCheckbox.checkState == .checked, monthlyProPlanCheckbox.isEnabled {
+            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro, for: context)
         }
     }
     
@@ -136,11 +170,13 @@ class SignupViewController: BaseViewController {
             succeeded: {
                 let presentingViewController = self.presentingViewController as? HomeViewController
                 self.dismiss(animated: true, completion: {
-                    if presentingViewController != nil {
-                        presentingViewController?.toggleVPN("me")
-                    }
-                    else {
-                        VPNController.shared.setEnabled(true)
+                    if self.enableVPNAfterSubscribe {
+                        if presentingViewController != nil {
+                            presentingViewController?.toggleVPN("me")
+                        }
+                        else {
+                            VPNController.shared.setEnabled(true)
+                        }
                     }
                 })
             },
@@ -235,4 +271,117 @@ class SignupViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
+}
+
+extension SignupViewController {
+    
+    // MARK: - Functions for "Upgrade Plan" mode
+    
+    private func configureWithActiveSubscriptions(_ activePlans: [Subscription.PlanType]) {
+        startTrialButton.setTitle("Upgrade Plan", for: .normal)
+        
+        for plan in activePlans {
+            configureForUnavailable(plan, reason: .purchased)
+            if let unavailableToUpgrade = plan.unavailableToUpgrade {
+                for unavailable in unavailableToUpgrade where unavailable != plan {
+                    configureForUnavailable(unavailable, reason: .lowerTierThanPurchased)
+                }
+            }
+        }
+        
+        selectAnnualOrFirstAvailable()
+    }
+    
+    enum UnavailableReason {
+        case purchased
+        case lowerTierThanPurchased
+    }
+    
+    private func configureForUnavailable(_ subscriptionPlanType: Subscription.PlanType, reason: UnavailableReason) {
+        switch subscriptionPlanType {
+        case .monthly:
+            markAsUnavailable(monthlyPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: monthlyPlanContainer)
+        case .proMonthly:
+            markAsUnavailable(monthlyProPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: monthlyProPlanContainer)
+        case .annual:
+            markAsUnavailable(annualPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: annualPlanContainer)
+        case .proAnnual:
+            markAsUnavailable(annualProPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: annualProPlanContainer)
+        default:
+            break
+        }
+    }
+    
+    private func markAsUnavailable(_ checkbox: M13Checkbox, plan: Subscription.PlanType, reason: UnavailableReason, container: UIView) {
+        disabledCheckboxes.insert(checkbox)
+        checkbox.isEnabled = false
+        
+        switch reason {
+        case .lowerTierThanPurchased:
+            container.isHidden = true
+        case .purchased:
+            container.alpha = 0.4
+            checkbox.setCheckState(.checked, animated: false)
+            checkbox.tintColor = UIColor.gray
+            checkbox.secondaryTintColor = UIColor.gray
+            checkbox.isEnabled = false
+            checkbox.accessibilityLabel = Accessibility.currentPlanCheckboxLabel(for: plan)
+            checkbox.accessibilityHint = Accessibility.currentPlanCheckboxHint()
+        }
+    }
+    
+    private func animatedSetChecked(_ checkbox: M13Checkbox, _ state: M13Checkbox.CheckState) {
+        if disabledCheckboxes.contains(checkbox) {
+            return
+        } else {
+            checkbox.setCheckState(state, animated: true)
+        }
+    }
+    
+    func selectAnnualOrFirstAvailable() {
+        if disabledCheckboxes.contains(annualPlanCheckbox) {
+            // Annual is unavailable, find first available option to select
+            if monthlyPlanCheckbox.isEnabled {
+                selectMonthly()
+            } else if annualPlanCheckbox.isEnabled {
+                selectAnnual()
+            } else if monthlyProPlanCheckbox.isEnabled {
+                selectMonthlyPro()
+            } else if annualProPlanCheckbox.isEnabled {
+                selectAnnualPro()
+            } else {
+                selectAnnualPro()
+                startTrialButton.isEnabled = false
+                startTrialButton.backgroundColor = UIColor.gray
+                startTrialButton.isUserInteractionEnabled = false
+                startTrialButton.alpha = 0.5
+                pricingSubtitle.alpha = 0.3
+            }
+        } else {
+            selectAnnual()
+        }
+    }
+}
+
+extension SignupViewController {
+    enum Accessibility {
+        static func currentPlanCheckboxLabel(for plan: Subscription.PlanType) -> String? {
+            switch plan {
+            case .monthly:
+                return NSLocalizedString("\"iOS Monthly\" is your current plan", comment: "")
+            case .proMonthly:
+                return NSLocalizedString("\"Pro Monthly\" is your current plan", comment: "")
+            case .annual:
+                return NSLocalizedString("\"iOS Annual\" is your current plan", comment: "")
+            case .proAnnual:
+                return NSLocalizedString("\"Pro Annual\" is your current plan", comment: "")
+            default:
+                return "\"\(plan.rawValue)\" is your current plan"
+            }
+        }
+        
+        static func currentPlanCheckboxHint() -> String? {
+            return nil
+        }
+    }
 }

@@ -7,7 +7,6 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>webcredentials:confirmedvpn.com</string>
-		<string>webcredentials:confirmedvpn.co</string>
 		<string>webcredentials:lockdownhq.com</string>
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>

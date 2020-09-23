@@ -34,6 +34,7 @@ struct LockdownGroup : Codable {
     var enabled : Bool
     var domains : Dictionary<String, Bool>
     var ipRanges : Dictionary<String, IPRange>
+    var warning: String?
 }
 
 struct LockdownDefaults : Codable {
@@ -56,16 +57,55 @@ let kTotalMetrics = "LockdownTotalMetrics"
 let kActiveDay = "LockdownActiveDay"
 let kActiveWeek = "LockdownActiveWeek"
 
-let kDayLogs = "LockdownDayLogs"
-let kDayLogsMaxSize = 5000;
-let kDayLogsMaxReduction = 4500;
+enum MetricsUpdate {
+    
+    enum Mode {
+        case incrementAndLog(host: String)
+        case resetIfNeeded
+        
+        var incrementBy: Int {
+            switch self {
+            case .incrementAndLog:
+                return 1
+            case .resetIfNeeded:
+                return 0
+            }
+        }
+    }
+    
+    enum RescheduleNotifications {
+        case always
+        case never
+        case withEnergySaving
+        
+        var allowsScheduling: Bool {
+            switch self {
+            case .always, .withEnergySaving:
+                return true
+            case .never:
+                return false
+            }
+        }
+    }
+}
 
-func incrementMetricsAndLog(host: String) {
+func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsUpdate.RescheduleNotifications) {
     
     let date = Date()
     
     // TOTAL - increment total
-    defaults.set(Int(getTotalMetrics() + 1), forKey: kTotalMetrics)
+    let totalMetrics = getTotalMetrics()
+    let updatedTotal = totalMetrics + mode.incrementBy
+    
+    defaults.set(updatedTotal, forKey: kTotalMetrics)
+    
+    if (100 ... 200) ~= updatedTotal, rescheduleNotifications.allowsScheduling {
+        OneTimeActions.performOnce(ifHasNotSeen: .oneHundredTrackingAttemptsBlockedNotification) {
+            PushNotifications.shared.scheduleOnboardingNotification(
+                options: rescheduleNotifications == .withEnergySaving ? [.energySaving] : []
+            )
+        }
+    }
     
     // WEEKLY - reset metrics on new week and increment week
     let currentWeek = currentCalendar.component(.weekOfYear, from: date)
@@ -73,7 +113,8 @@ func incrementMetricsAndLog(host: String) {
         defaults.set(0, forKey: kWeekMetrics)
         defaults.set(currentWeek, forKey: kActiveWeek)
     }
-    defaults.set(Int(getWeekMetrics() + 1), forKey: kWeekMetrics)
+    let weekMetrics = getWeekMetrics()
+    defaults.set(Int(weekMetrics + mode.incrementBy), forKey: kWeekMetrics)
     
     // DAY - reset metric on new day and increment day and log
     // set day metric
@@ -81,23 +122,33 @@ func incrementMetricsAndLog(host: String) {
     if currentDay != defaults.integer(forKey: kActiveDay) {
         defaults.set(0, forKey: kDayMetrics)
         defaults.set(currentDay, forKey: kActiveDay)
-        defaults.set([], forKey:kDayLogs);
+        BlockDayLog.shared.clear()
     }
-    defaults.set(Int(getDayMetrics() + 1), forKey: kDayMetrics)
-    // set log
-    let logString = blockLogDateFormatter.string(from: date) + host;
-    // reduce log size if it's over the maxSize
-    if var dayLog = defaults.array(forKey: kDayLogs) {
-        if dayLog.count > kDayLogsMaxSize {
-            dayLog = dayLog.suffix(kDayLogsMaxReduction);
+    defaults.set(Int(getDayMetrics() + mode.incrementBy), forKey: kDayMetrics)
+    
+    switch mode {
+    case .incrementAndLog(host: let host):
+        guard BlockDayLog.shared.isDisabled == false else {
+            // block log disabled
+            break
         }
-        dayLog.append(logString);
-        defaults.set(dayLog, forKey: kDayLogs);
-    }
-    else {
-        defaults.set([logString], forKey: kDayLogs);
+        
+        // set log
+        BlockDayLog.shared.append(host: host, date: date)
+    case .resetIfNeeded:
+        // no-act
+        break
     }
     
+    switch rescheduleNotifications {
+    case .always:
+        PushNotifications.shared.rescheduleWeeklyUpdate(options: [])
+    case .withEnergySaving:
+        PushNotifications.shared.rescheduleWeeklyUpdate(options: [.energySaving])
+    case .never:
+        // no-act
+        break
+    }
 }
 
 func getDayMetrics() -> Int {
@@ -142,7 +193,7 @@ func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
     let snapchatAnalytics = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "snapchatAnalytics",
         name: "Snapchat Trackers",
         iconURL: "snapchat_analytics_icon",
@@ -151,16 +202,16 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let gameAds = LockdownGroup.init(
-        version: 21,
+        version: 27,
         internalID: "gameAds",
-        name: "Game Ads",
+        name: "Game Marketing",
         iconURL: "game_ads_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "game_ads"),
         ipRanges: [:])
     
     let clickbait = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "clickbait",
         name: "Clickbait",
         iconURL: "clickbait_icon",
@@ -169,7 +220,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let crypto = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "crypto_mining",
         name: "Crypto Mining",
         iconURL: "crypto_icon",
@@ -178,25 +229,26 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let emailOpens = LockdownGroup.init(
-        version: 21,
+        version: 29,
         internalID: "email_opens",
-        name: "Email Trackers (Beta)",
+        name: "Email Trackers",
         iconURL: "email_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "email_opens"),
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 21,
+        version: 30,
         internalID: "facebook_inc",
-        name: "Facebook Apps (Beta)",
+        name: "Facebook & WhatsApp",
         iconURL: "facebook_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "facebook_inc"),
-        ipRanges: [:])
+        ipRanges: [:],
+        warning: "This list is intended to block Facebook Apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.")
     
     let facebookSDK = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "facebook_sdk",
         name: "Facebook Trackers",
         iconURL: "facebook_white_icon",
@@ -205,7 +257,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScripts = LockdownGroup.init(
-        version: 21,
+        version: 29,
         internalID: "marketing_scripts",
         name: "Marketing Trackers",
         iconURL: "marketing_icon",
@@ -213,13 +265,59 @@ func setupFirewallDefaultBlockLists() {
         domains: getDomainBlockList(filename: "marketing"),
         ipRanges: [:])
     
+    let marketingScriptsII = LockdownGroup.init(
+        version: 27,
+        internalID: "marketing_beta_scripts",
+        name: "Marketing Trackers II",
+        iconURL: "marketing_icon",
+        enabled: true,
+        domains: getDomainBlockList(filename: "marketing_beta"),
+        ipRanges: [:])
+
     let ransomware = LockdownGroup.init(
-        version: 21,
+        version: 26,
         internalID: "ransomware",
         name: "Ransomware",
         iconURL: "ransomware_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "ransomware"),
+        ipRanges: [:])
+
+    let googleShoppingAds = LockdownGroup.init(
+        version: 34,
+        internalID: "google_shopping_ads",
+        name: "Google Shopping",
+        iconURL: "google_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "google_shopping_ads"),
+        ipRanges: [:],
+        warning: "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.")
+    
+    let dataTrackers = LockdownGroup.init(
+        version: 29,
+        internalID: "data_trackers",
+        name: "Data Trackers",
+        iconURL: "user_data_icon",
+        enabled: true,
+        domains: getDomainBlockList(filename: "data_trackers"),
+        ipRanges: [:])
+    
+    let generalAds = LockdownGroup.init(
+        version: 37,
+        internalID: "general_ads",
+        name: "General Marketing",
+        iconURL: "ads_icon",
+        enabled: true,
+        domains: getDomainBlockList(filename: "general_ads"),
+        ipRanges: [:])
+    
+    let reporting = LockdownGroup.init(
+        version: 27,
+        internalID: "reporting",
+        name: "Reporting",
+        iconURL: "reporting_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "reporting"),
         ipRanges: [:])
     
     let defaultLockdownSettings = [snapchatAnalytics,
@@ -230,15 +328,21 @@ func setupFirewallDefaultBlockLists() {
                                    facebookInc,
                                    facebookSDK,
                                    marketingScripts,
-                                   ransomware];
+                                   marketingScriptsII,
+                                   ransomware,
+                                   googleShoppingAds,
+                                   dataTrackers,
+                                   generalAds,
+                                   reporting];
     
-    for var def in defaultLockdownSettings {
-        if let current = lockdownBlockedDomains.lockdownDefaults[def.internalID], current.version >= def.version {}
-        else {
-            if let current = lockdownBlockedDomains.lockdownDefaults[def.internalID] {
-                def.enabled = current.enabled // don't replace whether it was disabled
+    for var defaultGroup in defaultLockdownSettings {
+        if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID], current.version >= defaultGroup.version {
+            // no version change, no action needed
+        } else {
+            if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID] {
+                defaultGroup.enabled = current.enabled // don't replace whether it was disabled
             }
-            lockdownBlockedDomains.lockdownDefaults[def.internalID] = def
+            lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID] = defaultGroup
         }
     }
     

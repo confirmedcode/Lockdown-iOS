@@ -25,6 +25,29 @@ struct SubscriptionEvent: Codable {
     let message: String
 }
 
+struct Subscription: Codable {
+    let planType: PlanType
+    let receiptId: String
+    let expirationDate: String
+    let expirationDateString: String
+    let expirationDateMs: Int
+    let cancellationDate: String?
+    let cancellationDateString: String?
+    let cancellationDateMs: Int?
+    
+    struct PlanType: RawRepresentable, RawValueCodable, Hashable {
+        let rawValue: String
+        init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+        
+        static let monthly = PlanType(rawValue: "ios-monthly")
+        static let annual = PlanType(rawValue: "ios-annual")
+        static let proMonthly = PlanType(rawValue: "all-monthly")
+        static let proAnnual = PlanType(rawValue: "all-annual")        
+    }
+}
+
 struct SignIn: Codable {
     let code: Int
     let message: String
@@ -39,3 +62,30 @@ struct ApiError: Codable, Error {
     let code: Int
     let message: String
 }
+
+// MARK: - Helpers
+
+public enum RawValueCodableError: Error {
+    case wrongRawValue
+}
+
+public protocol RawValueCodable: RawRepresentable, Codable {
+}
+
+public extension RawValueCodable where RawValue: Codable {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(RawValue.self)
+        if let value = Self.init(rawValue: rawValue) {
+            self = value
+        } else {
+            throw RawValueCodableError.wrongRawValue
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(rawValue)
+    }
+}
+

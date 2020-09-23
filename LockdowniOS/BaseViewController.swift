@@ -96,33 +96,34 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func showVPNDetails() {
-        let popup = PopupDialog(
-            title: NSLocalizedString("About Lockdown VPN", comment: ""),
-            message: NSLocalizedString("Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.", comment: ""),
-            buttonAlignment: .vertical,
-            transitionStyle: .bounceDown,
-            preferredWidth: 300.0,
-            tapGestureDismissal: true,
-            panGestureDismissal: false,
-            hideStatusBar: true,
-            completion: nil)
+        self.showModalWebView(title: NSLocalizedString("Secure Tunnel VPN", comment: ""), urlString: "https://lockdownhq.com/secure-tunnel")
+//        let popup = PopupDialog(
+//            title: NSLocalizedString("About Lockdown VPN", comment: ""),
+//            message: NSLocalizedString("Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.", comment: ""),
+//            buttonAlignment: .vertical,
+//            transitionStyle: .bounceDown,
+//            preferredWidth: 300.0,
+//            tapGestureDismissal: true,
+//            panGestureDismissal: false,
+//            hideStatusBar: true,
+//            completion: nil)
+//
+//        let whyUseVPNButton = DefaultButton(title: NSLocalizedString("Why Use VPN?", comment: ""), dismissOnTap: true) {
+//            self.showModalWebView(title: NSLocalizedString("Why Use VPN?", comment: ""), urlString: "https://confirmedvpn.com/why-vpn")
+//        }
+//
+//        let auditReportsButton = DefaultButton(title: NSLocalizedString("Audit Reports", comment: ""), dismissOnTap: true) {
+//            self.showAuditModal()
+//        }
+//
+//        let confirmedWebsiteButton = DefaultButton(title: NSLocalizedString("Confirmed Site", comment: ""), dismissOnTap: true) {
+//            self.showModalWebView(title: NSLocalizedString("Why Use VPN?", comment: ""), urlString: "https://confirmedvpn.com")
+//        }
         
-        let whyUseVPNButton = DefaultButton(title: NSLocalizedString("Why Use VPN?", comment: ""), dismissOnTap: true) {
-            self.showModalWebView(title: NSLocalizedString("Why Use VPN?", comment: ""), urlString: "https://confirmedvpn.com/why-vpn")
-        }
-        
-        let auditReportsButton = DefaultButton(title: NSLocalizedString("Audit Reports", comment: ""), dismissOnTap: true) {
-            self.showAuditModal()
-        }
-        
-        let confirmedWebsiteButton = DefaultButton(title: NSLocalizedString("Confirmed Site", comment: ""), dismissOnTap: true) {
-            self.showModalWebView(title: NSLocalizedString("Why Use VPN?", comment: ""), urlString: "https://confirmedvpn.com")
-        }
-        
-        let okayButton = CancelButton(title: NSLocalizedString("Done", comment: ""), dismissOnTap: true) {  }
-        popup.addButtons([whyUseVPNButton, auditReportsButton, confirmedWebsiteButton, okayButton])
-        
-        self.present(popup, animated: true, completion: nil)
+//        let okayButton = CancelButton(title: NSLocalizedString("Done", comment: ""), dismissOnTap: true) {  }
+//        popup.addButtons([whyUseVPNButton, auditReportsButton, confirmedWebsiteButton, okayButton])
+//
+//        self.present(popup, animated: true, completion: nil)
     }
     
     // MARK: - WebView
@@ -187,6 +188,52 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         
         let acceptButton = DefaultButton(title: NSLocalizedString("OK", comment: ""), dismissOnTap: true) { completionHandler() }
         popup.addButtons([acceptButton])
+        
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    enum PopupButton {
+        case custom(PopupDialogButton)
+        case defaultAccept(completion: () -> ())
+        
+        static func custom(title: String, titleColor: UIColor? = nil, completion: @escaping () -> ()) -> PopupButton {
+            let button = DefaultButton(title: title, dismissOnTap: true, action: completion)
+            if let color = titleColor {
+                button.titleColor = color
+            }
+            return .custom(button)
+        }
+        
+        static func destructive(title: String, completion: @escaping () -> ()) -> PopupButton {
+            return .custom(title: title, titleColor: UIColor.systemRed, completion: completion)
+        }
+        
+        static func cancel(completion: @escaping () -> () = { }) -> PopupButton {
+            return .custom(CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true, action: completion))
+        }
+        
+        static func preferredCancel(completion: @escaping () -> () = { }) -> PopupButton {
+            return .custom(title: NSLocalizedString("Cancel", comment: ""), titleColor: nil, completion: completion)
+        }
+        
+        fileprivate func makeButton() -> PopupDialogButton {
+            switch self {
+            case .custom(let button):
+                return button
+            case .defaultAccept(completion: let completion):
+                let acceptButton = DefaultButton(title: NSLocalizedString("OK", comment: ""), dismissOnTap: true) { completion() }
+                return acceptButton
+            }
+        }
+    }
+    
+    func showPopupDialog(title: String?, message: String?, buttons: [PopupButton]) {
+        let popup = PopupDialog(title: title?.uppercased(), message: message, image: nil, transitionStyle: .bounceDown, tapGestureDismissal: false, panGestureDismissal: false, hideStatusBar: false)
+
+        for action in buttons {
+            let button = action.makeButton()
+            popup.addButton(button)
+        }
         
         self.present(popup, animated: true, completion: nil)
     }

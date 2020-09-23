@@ -1,22 +1,32 @@
-# Lockdown (iOS)
+# Lockdown Privacy (iOS)
 
-Lockdown is an Open Source and free firewall for your iOS device. We built the product to help protect users from app developers and analytics companies that are monetizing user data without consent or transparency.
+Lockdown is an open source firewall that blocks trackers, ads, and badware in all apps. Product details at [lockdownhq.com](https://lockdownhq.com).
 
+### Feature Requests + Bugs
 
-## Feedback
+Create an issue on Github for feature requests and bug reports.
 
-If you have any questions, concerns, or other feedback, please let us know in Github issues or by e-mail at engineering@lockdownhq.com, or contact us through https://lockdownhq.com/.
+### Contributing
 
+Pull requests are welcome - please document any changes and potential bugs.
 
-## Roadmap
-We have many planned features in the upcoming months, so if you are interested, please download our app from the App Store. If you are interested in helping develop these features, please reach out to us at engineering@lockdownhq.com. For any feature requests or bug reports, please create an issue on our Github repository.
+### Build Instructions
 
-## How To Build
-To build the app from source, please make sure to run a `pod install` & `carthage update --no-use-binaries --platform ios` and open the *.xcworkspace file to build. To sign the app, you will need an Apple Developer account.
+1. `pod install`
 
-## License
+2. `carthage update --no-use-binaries --platform ios` or for XCode 12 `./wcarthage update --no-use-binaries --platform ios` (workaround for [this Carthage issue](https://github.com/Carthage/Carthage/issues/3019)) 
 
-This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details
+3. Open `LockdowniOS.xcworkspace`
+
+To sign the app for devices, you will need an Apple Developer account.
+
+### Contact
+
+[team@lockdownhq.com](mailto:team@lockdownhq.com)
+
+### License
+
+This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details.
 
 
 

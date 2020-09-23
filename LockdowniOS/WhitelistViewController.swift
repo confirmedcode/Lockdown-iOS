@@ -38,15 +38,24 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
         })
     }
     
-    func saveNewDomain() {
-        // TODO: Check it's a valid domain format
-        if let text = addDomainTextField?.text {
-            if text.count > 0 {
-                didMakeChange = true
-                DDLogInfo("Adding custom whitelist domain - \(text)")
-                addUserWhitelistedDomain(domain: text.lowercased())
-                addDomainTextField!.text = ""
-                tableView.reloadData()
+    func saveNewDomain(userEnteredDomainName: String) {
+        let validation = DomainNameValidator.validate(userEnteredDomainName)
+        
+        switch validation {
+        case .valid:
+            didMakeChange = true
+            DDLogInfo("Adding custom whitelist domain - \(userEnteredDomainName)")
+            addUserWhitelistedDomain(domain: userEnteredDomainName.lowercased())
+            addDomainTextField?.text = ""
+            tableView.reloadData()
+        case .notValid(let reason):
+            DDLogWarn("Custom whitelist domain not valid - \(userEnteredDomainName), reason - \(reason)")
+            showPopupDialog(
+                title: NSLocalizedString("Invalid domain", comment: ""),
+                message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"", comment: ""),
+                acceptButton: NSLocalizedString("Okay", comment: "")
+            ) {
+                self.addDomainTextField?.becomeFirstResponder()
             }
         }
     }
@@ -69,7 +78,7 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
         if indexPath.section == 0 {
             // Add Domain row
             if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-                return 70
+                return 75
             }
             else {
                 return 50
@@ -211,7 +220,13 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
     
     @IBAction func textFieldDidEndOnExit(textField: UITextField) {
         self.dismissKeyboard()
-        saveNewDomain()
+        
+        guard let text = textField.text else {
+            DDLogError("Text is empty on add domain text field")
+            return
+        }
+        
+        saveNewDomain(userEnteredDomainName: text)
     }
     
     @objc func didSelectTextField(textField: UITextField) {

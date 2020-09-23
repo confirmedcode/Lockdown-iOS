@@ -41,6 +41,11 @@ target :'Lockdown Firewall Widget' do
   pod 'ReachabilitySwift', '4.3.1'
 end
 
+target :'LockdownTests' do
+  # see https://github.com/pointfreeco/swift-snapshot-testing/pull/308
+  pod 'SnapshotTesting', :git => 'https://github.com/pointfreeco/swift-snapshot-testing.git', :commit => '8e9f685'
+end
+
 # post_install do |installer|
 #   installer.pods_project.targets.each do |target|
 #     target.build_configurations.each do |config|

@@ -16,6 +16,7 @@ import CloudKit
 import CocoaLumberjackSwift
 import PopupDialog
 import PromiseKit
+import UserNotifications
 
 let fileLogger: DDFileLogger = DDFileLogger()
 
@@ -34,9 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        for d in defaults.dictionaryRepresentation() {
 //            defaults.removeObject(forKey: d.key)
 //        }
-        
+//        return true
+
         // Set up basic logging
         setupLocalLogger()
+        
+        UNUserNotificationCenter.current().delegate = self
         
         // Set up PopupDialog
         let dialogAppearance = PopupDialogDefaultView.appearance()
@@ -64,6 +68,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         buttonAppearance.titleFont      = fontSemiBold17
         buttonAppearance.titleColor     = UIColor.tunnelsBlue
+        let dynamicButtonAppearance = DynamicButton.appearance()
+        if #available(iOS 13.0, *) {
+            dynamicButtonAppearance.buttonColor = .systemBackground
+            dynamicButtonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
+        }
+        else {
+            dynamicButtonAppearance.buttonColor    = .clear
+            dynamicButtonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
+        }
+        dynamicButtonAppearance.titleFont      = fontSemiBold17
+        dynamicButtonAppearance.titleColor     = UIColor.tunnelsBlue
         let cancelButtonAppearance = CancelButton.appearance()
         if #available(iOS 13.0, *) {
             cancelButtonAppearance.buttonColor = .systemBackground
@@ -154,6 +169,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
+    }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         DDLogError("Successfully registered for remote notification: \(deviceToken)")
     }
@@ -163,6 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // Check 3 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
                 DDLogError("Error refreshing Manager in background check: \(e)")
@@ -170,28 +190,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
                 DDLogInfo("user wants firewall enabled and connected/invalid, testing blocking with background fetch")
-                _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
-                    DDLogError("Background Fetch Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                // 1) If device has been restarted (current system uptime is lower than last stored System Uptime)
+                if (deviceHasRestarted()) {
+                    DDLogInfo("BACKGROUND: DEVICE RESTARTED, RESTART FIREWALL")
                     FirewallController.shared.restart(completion: {
                         error in
                         if error != nil {
-                            DDLogError("Error restarting firewall on background fetch: \(error!)")
+                            DDLogError("Error restarting firewall on Background Device Restarted Check: \(error!)")
                         }
                         completionHandler(.newData)
                     })
-                }, connectionFailedHandler: {
-                    error in
-                    if error != nil {
-                        let nsError = error! as NSError
-                        if nsError.domain == NSURLErrorDomain {
-                            DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                }
+                // 2) if app has just been upgraded or is new install
+                else if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                    DDLogInfo("BACKGROUND: APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
+                    setupFirewallDefaultBlockLists()
+                    setupLockdownWhitelistedDomains()
+                    FirewallController.shared.restart(completion: {
+                        error in
+                        if error != nil {
+                            DDLogError("Error restarting firewall on Background App Upgraded Check: \(error!)")
                         }
-                        else {
-                            DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                        completionHandler(.newData)
+                    })
+                }
+                // 3) Check that Firewall is still working correctly, restart it if it's not
+                else {
+                    _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
+                        DDLogError("Background Fetch Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                        FirewallController.shared.restart(completion: {
+                            error in
+                            if error != nil {
+                                DDLogError("Error restarting firewall on background fetch: \(error!)")
+                            }
+                            completionHandler(.newData)
+                        })
+                    }, connectionFailedHandler: {
+                        error in
+                        if error != nil {
+                            let nsError = error! as NSError
+                            if nsError.domain == NSURLErrorDomain {
+                                DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                            }
+                            else {
+                                DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                            }
                         }
-                    }
-                    completionHandler(.newData)
-                })
+                        completionHandler(.newData)
+                    })
+                }
             }
             else {
                 completionHandler(.newData)
@@ -283,7 +330,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         privateDatabase.perform(query, inZoneWith: nil) { (record, error) in
             if let err = error {
-                DDLogError("Error querying for CKRecordType: \(recordName) - \(error)")
+                DDLogError("Error querying for CKRecordType: \(recordName) - \(err)")
             }
             for aRecord in record! {
                 privateDatabase.delete(withRecordID: aRecord.recordID, completionHandler: { (recordID, error) in
@@ -465,5 +512,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return nil
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let identifier = PushNotifications.Identifier(rawValue: response.notification.request.identifier)
+        if identifier.isWeeklyUpdate {
+            showUpdateBlockListsFlow()
+        } else if identifier == .onboarding {
+            highlightBlockLogOnHomeVC()
+        }
+        completionHandler()
+    }
+    
+    private func highlightBlockLogOnHomeVC() {
+        if let hvc = self.getCurrentViewController() as? HomeViewController {
+            hvc.highlightBlockLog()
+        }
+    }
+    
+    private func showUpdateBlockListsFlow() {
+        // the actual update happens in `appHasJustBeenUpgradedOrIsNewInstall`,
+        // these are supporting visuals
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.showUpdatingBlockListsLoader()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.25) {
+                self.hideUpdatingBlockListsLoader()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.showBlockListsUpdatedPopup()
+                }
+            }
+        }
+    }
+    
+    private func showUpdatingBlockListsLoader() {
+        let activity = ActivityData(
+            message: NSLocalizedString("Updating Block Lists", comment: ""),
+            messageFont: UIFont(name: "Montserrat-Bold", size: 18),
+            type: .ballSpinFadeLoader,
+            backgroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+        )
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activity, NVActivityIndicatorView.DEFAULT_FADE_IN_ANIMATION)
+    }
+    
+    private func hideUpdatingBlockListsLoader() {
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(NVActivityIndicatorView.DEFAULT_FADE_OUT_ANIMATION)
+    }
+    
+    private func showBlockListsUpdatedPopup() {
+        let popup = PopupDialog(
+            title: NSLocalizedString("Update Success", comment: ""),
+            message: "You're now protected against the latest trackers. 🎉"
+        )
+        popup.addButton(DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap:
+        true, action: nil))
+        self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
+    }
 }
 

@@ -41,19 +41,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1141A241F46230500F54698"
-               BuildableName = "LockdowniOSTests.xctest"
-               BlueprintName = "LockdowniOSTests"
-               ReferencedContainer = "container:LockdowniOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1141A2F1F46230600F54698"
-               BuildableName = "LockdowniOSUITests.xctest"
-               BlueprintName = "LockdowniOSUITests"
+               BlueprintIdentifier = "7C0D11192473FC7E00A26E04"
+               BuildableName = "LockdownTests.xctest"
+               BlueprintName = "LockdownTests"
                ReferencedContainer = "container:LockdowniOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -79,6 +69,23 @@
             ReferencedContainer = "container:LockdowniOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "vpnSourceID"
+            value = "-111818"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "vpnDomain"
+            value = "confirmedvpn.com"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "mainDomain"
+            value = "confirmedvpn.com"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

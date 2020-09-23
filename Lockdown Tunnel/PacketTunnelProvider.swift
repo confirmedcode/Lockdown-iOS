@@ -36,7 +36,7 @@ class LDObserverFactory: ObserverFactory {
                 }
                 // else if firewall on, then block
                 if (getUserWantsFirewallEnabled()) {
-                    incrementMetricsAndLog(host: session.host);
+                    updateMetrics(.incrementAndLog(host: session.host), rescheduleNotifications: .withEnergySaving)
                     DDLogInfo("session host: \(session.host)")
                     socket.forceDisconnect()
                     return
@@ -75,9 +75,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
         var combined: Array<String> = getAllBlockedDomains() + [testFirewallDomain] // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
-        if ( getUserWantsVPNEnabled() == true ) { // only add whitelist if user wants VPN active
+//        if ( getUserWantsVPNEnabled() == true ) { // only add whitelist if user wants VPN active
+        // bugfix: attempting to fix issue with whitelist sometimes breaking
              combined = combined + getAllWhitelistedDomains()
-        }
+//        }
         proxySettings.matchDomains = combined
         
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
@@ -87,7 +88,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
             guard error == nil else {
-                DDLogError("Error setting tunnel network settings \(error)")
+                DDLogError("Error setting tunnel network settings \(error as Any)")
                 completionHandler(error)
                 return
             }

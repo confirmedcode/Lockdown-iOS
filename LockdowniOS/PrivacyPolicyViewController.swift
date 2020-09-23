@@ -20,8 +20,6 @@ class PrivacyPolicyViewController: BaseViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var getStartedButton: UIButton!
     @IBOutlet weak var privacyPolicyWrap: UIView!
-    @IBOutlet weak var privacyPolicyCheckbox: M13Checkbox!
-    @IBOutlet weak var checkbox: M13Checkbox!
     @IBOutlet weak var whyTrustButton: UIButton!
     
     var parentVC: HomeViewController? = nil
@@ -29,34 +27,20 @@ class PrivacyPolicyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getStartedButton.backgroundColor = .gray
+        self.getStartedButton.backgroundColor = .tunnelsBlue
     }
     
     @IBAction func getStartedTapped(_ sender: Any) {
-        if (checkbox.checkState == .unchecked) {
-            showPopupDialog(title: NSLocalizedString("Privacy Policy", comment: ""), message: NSLocalizedString("Please tap the checkbox circle to agree to the Privacy Policy in order to continue.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+        defaults.set(true, forKey: privacyPolicyKey)
+        if (privacyPolicyKey == kHasAgreedToFirewallPrivacyPolicy) {
+            self.dismiss(animated: true, completion: {
+                self.parentVC?.toggleFirewall(self)
+            })
         }
         else {
-            defaults.set(true, forKey: privacyPolicyKey)
-            if (privacyPolicyKey == kHasAgreedToFirewallPrivacyPolicy) {
-                self.dismiss(animated: true, completion: {
-                    self.parentVC?.toggleFirewall(self)
-                })
-            }
-            else {
-                self.dismiss(animated: true, completion: {
-                    self.parentVC?.toggleVPN(self)
-                })
-            }
-        }
-    }
-    
-    @IBAction func checkboxTapped(_ sender: Any) {
-        if checkbox.checkState == .checked {
-            self.getStartedButton.backgroundColor = .tunnelsBlue
-        }
-        else {
-            self.getStartedButton.backgroundColor = .gray
+            self.dismiss(animated: true, completion: {
+                self.parentVC?.toggleVPN(self)
+            })
         }
     }
     

@@ -1,0 +1,2 @@
+sessions.bugsnag.com
+api.bugfender.com

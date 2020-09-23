@@ -74,6 +74,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @IBOutlet weak var vpnRegionLabel: UILabel!
     @IBOutlet weak var vpnWhitelistButton: UIButton!
     
+    var activePlans: [Subscription.PlanType] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -128,8 +130,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
-        
-        // Check that Firewall is still working correctly, restart it if it's not
+ 
+        // Check 3 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
                 DDLogError("Error refreshing Manager in Home viewdidappear: \(e)")
@@ -137,34 +139,70 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             }
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
                 DDLogInfo("User wants firewall enabled and connected/invalid, testing blocking in Home")
-                _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
-                    DDLogError("Home Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                
+                // 1) If device has been restarted (current system uptime is lower than last stored System Uptime)
+                if (deviceHasRestarted()) {
+                    DDLogInfo("HOMEVIEW: DEVICE RESTARTED, RESTART FIREWALL")
                     FirewallController.shared.restart(completion: {
                         error in
                         if error != nil {
-                            DDLogError("Error restarting firewall on Home: \(error!)")
+                            DDLogError("Error restarting firewall on HomeView Device Restarted Check: \(error!)")
                         }
                     })
-                }, connectionFailedHandler: {
-                    error in
-                    if error != nil {
-                        let nsError = error! as NSError
-                        if nsError.domain == NSURLErrorDomain {
-                            DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                }
+                // 2) if app has just been upgraded or is new install
+                else if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                    DDLogInfo("HOMEVIEW: APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
+                    setupFirewallDefaultBlockLists()
+                    setupLockdownWhitelistedDomains()
+                    FirewallController.shared.restart(completion: {
+                        error in
+                        if error != nil {
+                            DDLogError("Error restarting firewall on HomeView App Upgraded Check: \(error!)")
                         }
-                        else {
-                            DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                    })
+                }
+                // 3) Check that Firewall is still working correctly, restart it if it's not
+                else {
+                    _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
+                        DDLogError("Home Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
+                        FirewallController.shared.restart(completion: {
+                            error in
+                            if error != nil {
+                                DDLogError("Error restarting firewall on Home: \(error!)")
+                            }
+                        })
+                    }, connectionFailedHandler: {
+                        error in
+                        if error != nil {
+                            let nsError = error! as NSError
+                            if nsError.domain == NSURLErrorDomain {
+                                DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                            }
+                            else {
+                                DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
+                            }
                         }
-                    }
-                })
+                    })
+                }
             }
         })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let inset = firewallButton.frame.width * 0.225
+        firewallButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        vpnButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         reloadMenuDot()
+        
+        //performSegue(withIdentifier: "showSignup", sender: nil)
         
         toggleVPNBodyView(animate: false, show: defaults.bool(forKey: kVPNBodyViewVisible))
         if (defaults.bool(forKey: kHasViewedTutorial) == false) {
@@ -176,6 +214,14 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         if defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
             tapToActivateFirewallLabel.isHidden = false
+        }
+        
+        OneTimeActions.performOnce(ifHasNotSeen: .notificationAuthorizationRequestPopup) {
+            PushNotifications.Authorization.requestWeeklyUpdateAuthorization(presentingDialogOn: self).done { status in
+                DDLogInfo("Updated notifications status: \(status)")
+            }.catch { error in
+                DDLogWarn(error.localizedDescription)
+            }
         }
         
         // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
@@ -286,16 +332,20 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     @IBAction func menuTapped(_ sender: Any) {
+        let buttonHeight = UIDevice.is4InchIphone ? 40 : 45
+
         var title = "⚠️ Not Signed In"
         var message: String? = "Sign up below to unlock benefits of a Lockdown account."
-        var firstButton = DefaultButton(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), dismissOnTap: true) {
+        var firstButton = DefaultButton(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), height: buttonHeight, dismissOnTap: true) {
             self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: self)
         }
+        
+        
         if let apiCredentials = getAPICredentials() {
             message = apiCredentials.email
             if getAPICredentialsConfirmed() == true {
                 title = "Signed In"
-                firstButton = DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                firstButton = DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), height: buttonHeight, dismissOnTap: true) {
                     let confirm = PopupDialog(title: "Sign Out?",
                                                message: "You'll be signed out from this account.",
                                                image: nil,
@@ -323,7 +373,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             }
             else {
                 title = "⚠️ Email Not Confirmed"
-                firstButton = DefaultButton(title: NSLocalizedString("Confirm Email", comment: ""), dismissOnTap: true) {
+                firstButton = DefaultButton(title: NSLocalizedString("Confirm Email", comment: ""), height: buttonHeight, dismissOnTap: true) {
                     self.showLoadingView()
                     
                     firstly {
@@ -407,7 +457,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                         return
                                     }
                                     else if let apiError = error as? ApiError {
-                                        _ = self.popupErrorAsApiError(error)
+                                        _ = self.popupErrorAsApiError(apiError)
                                     }
                                     else {
                                         self.showPopupDialog(title: NSLocalizedString("Error Re-sending Email Confirmation", comment: ""),
@@ -425,6 +475,74 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         firstButton.buttonColor = UIColor.tunnelsBlue
         firstButton.titleColor = UIColor.white
+        
+        let upgradeButton = DefaultButton(title: "Loading Plan", height: buttonHeight, dismissOnTap: true) {
+            self.performSegue(withIdentifier: "showUpgradePlan", sender: self)
+        }
+        upgradeButton.titleColor = UIColor.lightGray
+        upgradeButton.startActivityIndicator()
+        upgradeButton.isEnabled = false
+        
+        self.activePlans = []
+
+        firstly {
+            try Client.signIn()
+        }.then { _ in
+            try Client.activeSubscriptions()
+        }.ensure {
+            upgradeButton.stopActivityIndicator()
+        }.done { subscriptions in
+            self.activePlans = subscriptions.map({ $0.planType })
+            if let active = subscriptions.first {
+                if active.planType == .proAnnual {
+                    upgradeButton.isEnabled = false
+                    upgradeButton.setTitle("Plan: Annual Pro", for: UIControl.State())
+                } else {
+                    upgradeButton.isEnabled = true
+                    upgradeButton.buttonColor = UIColor.tunnelsDarkBlue
+                    upgradeButton.titleColor = UIColor.white
+                    upgradeButton.setTitle("View or Upgrade Plan", for: UIControl.State())
+                }
+            } else {
+                upgradeButton.isEnabled = true
+                upgradeButton.buttonColor = UIColor.tunnelsDarkBlue
+                upgradeButton.titleColor = UIColor.white
+                upgradeButton.setTitle("View Upgrade Options", for: UIControl.State())
+            }
+        }.catch { error in
+            DDLogWarn(error.localizedDescription)
+            if let apiError = error as? ApiError {
+                switch apiError.code {
+                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                    upgradeButton.isEnabled = true
+                    upgradeButton.buttonColor = UIColor.tunnelsDarkBlue
+                    upgradeButton.titleColor = UIColor.white
+                    upgradeButton.setTitle("View Upgrade Options", for: UIControl.State())
+                default:
+                    upgradeButton.isEnabled = false
+                    upgradeButton.setTitle("Cannot load your plan", for: UIControl.State())
+                }
+            } else {
+                upgradeButton.isEnabled = false
+                upgradeButton.setTitle("Cannot load your plan", for: UIControl.State())
+            }
+        }
+        
+        // The `DynamicButton` is a special subclass created for this case.
+        // It's needed to dynamically update the title of the button after it's pressed
+        
+        let notificationsButton = DynamicButton(title: "", height: buttonHeight, dismissOnTap: false, action: nil)
+        
+        let updateNotificationButtonTitle = { (button: DynamicButton) in
+            if PushNotifications.Authorization.getUserWantsNotificationsEnabled(forCategory: .weeklyUpdate) {
+                button.setTitle(NSLocalizedString("Notifications: On", comment: ""), for: UIControl.State())
+            } else {
+                button.setTitle(NSLocalizedString("Notifications: Off", comment: ""), for: UIControl.State())
+            }
+        }
+        
+        updateNotificationButtonTitle(notificationsButton)
+        
         let popup = PopupDialog(title: title,
                                 message: message,
                                 image: nil,
@@ -435,27 +553,47 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                 panGestureDismissal: false,
                                 hideStatusBar: false,
                                 completion: nil)
+                
+        notificationsButton.onTap = { button in
+            if PushNotifications.Authorization.getUserWantsNotificationsEnabled(forCategory: .weeklyUpdate) {
+                PushNotifications.Authorization.setUserWantsNotificationsEnabled(false, forCategory: .weeklyUpdate)
+                updateNotificationButtonTitle(button)
+            } else {
+                PushNotifications.Authorization.requestWeeklyUpdateAuthorization(presentingDialogOn: popup).done { status in
+                    DDLogInfo("New authorization status for push notifications: \(status)")
+                    updateNotificationButtonTitle(button)
+                }.catch { error in
+                    DDLogError("Error updating notification authorization status: \(error.localizedDescription)")
+                }
+            }
+        }
+        
         popup.addButtons([
             firstButton,
-            DefaultButton(title: NSLocalizedString("Tutorial", comment: ""), dismissOnTap: true) {
+            upgradeButton,
+            notificationsButton,
+        ])
+        
+        popup.addButtons([
+            DefaultButton(title: NSLocalizedString("Tutorial", comment: ""), height: buttonHeight, dismissOnTap: true) {
                 self.startTutorial()
             },
-            DefaultButton(title: NSLocalizedString("Why Trust Lockdown", comment: ""), dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Why Trust Lockdown", comment: ""), height: buttonHeight, dismissOnTap: true) {
                 self.showWhyTrustPopup()
             },
-            DefaultButton(title: NSLocalizedString("Privacy Policy", comment: ""), dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Privacy Policy", comment: ""), height: buttonHeight, dismissOnTap: true) {
                 self.showPrivacyPolicyModal()
             },
-            DefaultButton(title: NSLocalizedString("What is VPN?", comment: ""), dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("What is VPN?", comment: ""), height: buttonHeight, dismissOnTap: true) {
                 self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
             },
-            DefaultButton(title: NSLocalizedString("Email Support", comment: ""), dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Email Support", comment: ""), height: buttonHeight, dismissOnTap: true) {
                 self.emailTeam()
             },
-            DefaultButton(title: NSLocalizedString("Website", comment: ""), dismissOnTap: true) {
+            DefaultButton(title: NSLocalizedString("Website", comment: ""), height: buttonHeight, dismissOnTap: true) {
                 self.showWebsiteModal()
             },
-            CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {}
+            CancelButton(title: NSLocalizedString("Close", comment: ""), height: buttonHeight, dismissOnTap: true) {}
         ])
         self.present(popup, animated: true, completion: nil)
     }
@@ -473,6 +611,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         let spotlightView = AwesomeSpotlightView(frame: view.frame,
                                                  spotlight: [s0, s1, s2, s3, s4, s5, s6, s7])
+        spotlightView.accessibilityIdentifier = "tutorial"
         spotlightView.cutoutRadius = 8
         spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
         spotlightView.enableArrowDown = true
@@ -484,8 +623,17 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     func spotlightViewDidCleanup(_ spotlightView: AwesomeSpotlightView) {
+        guard spotlightView.accessibilityIdentifier == "tutorial" else {
+            return
+        }
+        
         defaults.set(true, forKey: kHasViewedTutorial)
-        self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: nil)
+        if getAPICredentials() != nil {
+            // already has email signup pending or confirmed, don't show create account
+        }
+        else {
+            self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: nil)
+        }
     }
     
     @IBAction func shareFirewallMetricsTapped(_ sender: Any) {
@@ -651,6 +799,20 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
     }
     
+    func highlightBlockLog() {
+        let blockLogSpotlight = AwesomeSpotlight(withRect: getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("Tap to see the blocked tracking attempts.", comment: ""))
+        
+        let spotlightView = AwesomeSpotlightView(frame: view.frame, spotlight: [blockLogSpotlight])
+        spotlightView.accessibilityIdentifier = "highlightBlockLog"
+        spotlightView.cutoutRadius = 8
+        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
+        spotlightView.enableArrowDown = true
+        spotlightView.textLabelFont = fontMedium16
+        spotlightView.labelSpacing = 24;
+        view.addSubview(spotlightView)
+        spotlightView.start()
+    }
+    
     // MARK: - VPN
     
     @objc @IBAction func vpnHeaderTapped(_ sender: Any) {
@@ -762,6 +924,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     print("signin result: \(signin)")
                     return try Client.subscriptionEvent()
                 }
+                .recover { error -> Promise<SubscriptionEvent> in
+                    print("recovering from subscriptionevent error: \(error) - it's okay because we should try to GetKey anyways")
+                    return .value(SubscriptionEvent(message: "Recovery"))
+                }
                 .then { (result: SubscriptionEvent) -> Promise<GetKey> in
                     print("subscriptionevent result: \(result)")
                     return try Client.getKey()
@@ -868,15 +1034,27 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showSetRegion") {
+        switch segue.identifier {
+        case "showSetRegion":
             if let vc = segue.destination as? SetRegionViewController {
                 vc.homeVC = self
             }
-        }
-        else if (segue.identifier == "showWhatIsVPN") {
+        case "showWhatIsVPN":
             if let vc = segue.destination as? WhatIsVpnViewController {
                 vc.parentVC = self
             }
+        case "showUpgradePlan":
+            if let vc = segue.destination as? SignupViewController {
+                if activePlans.isEmpty {
+                    vc.mode = .newSubscription
+                    vc.enableVPNAfterSubscribe = false
+                } else {
+                    vc.mode = .upgrade(active: activePlans)
+                    vc.enableVPNAfterSubscribe = false
+                }
+            }
+        default:
+            break
         }
     }
     
@@ -987,4 +1165,42 @@ class LockdownCustomActivityItemProvider : UIActivityItemProvider {
         }
     }
 
+}
+
+fileprivate extension PopupDialogButton {
+    func startActivityIndicator() {
+        let activity = UIActivityIndicatorView()
+        
+        if let label = titleLabel {
+            label.addSubview(activity)
+            activity.translatesAutoresizingMaskIntoConstraints = false
+            activity.centerYAnchor.constraint(equalTo: label.centerYAnchor).isActive = true
+            activity.leadingAnchor.constraint(equalToSystemSpacingAfter: label.trailingAnchor, multiplier: 1).isActive = true
+            activity.startAnimating()
+        }
+    }
+    
+    func stopActivityIndicator() {
+        if let label = titleLabel {
+            let indicators = label.subviews.compactMap { $0 as? UIActivityIndicatorView }
+            for indicator in indicators {
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+            }
+        }
+    }
+}
+
+final class DynamicButton: PopupDialogButton {
+    var onTap: ((DynamicButton) -> ())?
+    
+    override var buttonAction: PopupDialogButton.PopupDialogButtonAction? {
+        get {
+            if let onTap = onTap {
+                return { [weak self] in if let value = self { return onTap(value) } }
+            } else {
+                return nil
+            }
+        }
+    }
 }

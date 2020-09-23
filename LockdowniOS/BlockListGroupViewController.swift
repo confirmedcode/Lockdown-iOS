@@ -9,10 +9,14 @@ import UIKit
 
 class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var lockdownGroup : LockdownGroup?
-    @IBOutlet var lockdownEnabled : UISwitch?
-    @IBOutlet var groupTitle : UILabel?
-    var blockListVC : BlockListViewController?
+    var lockdownGroup: LockdownGroup?
+    
+    @IBOutlet var warningContainer: UIView!
+    @IBOutlet var warningLabel: UILabel!
+    @IBOutlet var lockdownEnabled: UISwitch!
+    @IBOutlet var groupTitle: UILabel!
+    
+    var blockListVC: BlockListViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,37 +24,37 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
             self.groupTitle?.text = lockdown.name
             self.lockdownEnabled?.isOn = lockdown.enabled
         }
+        
+        warningLabel.text = lockdownGroup?.warning
+        if lockdownGroup?.warning != nil {
+            warningContainer.isHidden = false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return (lockdownGroup?.domains.count)!
         }
-        else {
-            return (lockdownGroup?.ipRanges.keys.count)!
-        }
+        return 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return 32
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 45))
+        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 32))
         view.backgroundColor = UIColor.groupTableViewBackground
-        let label = UILabel(frame: CGRect.init(x: 20, y: 20, width: tableView.frame.size.width, height: 24))
+        let label = UILabel(frame: CGRect.init(x: 12, y: 6, width: tableView.frame.size.width, height: 24))
         label.font = fontMedium14
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = NSLocalizedString("Domains", comment: "")
-        }
-        else {
-            label.text = NSLocalizedString("IP Ranges", comment: "")
+            label.text = NSLocalizedString("Blocked Domains", comment: "")
         }
         
         view.addSubview(label)
@@ -67,30 +71,19 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
                 cell.cellTitle?.text = keys[indexPath.row]
             }
         }
-        else {
-            if let ipKeys = lockdownGroup?.ipRanges {
-                let keys = ipKeys.keys.sorted {$0 < $1}
-                if let bits = ipKeys[keys[indexPath.row]]?.subnetBits {
-                    if bits == 0 {
-                        cell.cellTitle?.text = "\(keys[indexPath.row])"
-                    }
-                    else {
-                        cell.cellTitle?.text = "\(keys[indexPath.row]) / \(bits)"
-                    }
-                }
-                else {
-                    cell.cellTitle?.text = "\(keys[indexPath.row])"
-                }
-            }
-        }
         return cell
     }
 
-    @IBAction func toggleLockdown(sender : Any) {
+    @IBAction func toggleLockdown(sender: UISwitch) {
+        setIsLockdownEnabled(sender.isOn)
+    }
+    
+    private func setIsLockdownEnabled(_ isEnabled: Bool) {
         if let vc = self.blockListVC {
             vc.didMakeChange = true
         }
-        lockdownGroup?.enabled = self.lockdownEnabled!.isOn
+
+        lockdownGroup?.enabled = isEnabled
         var ldDefaults = getLockdownBlockedDomains()
         ldDefaults.lockdownDefaults[(lockdownGroup?.internalID)!] = lockdownGroup
         

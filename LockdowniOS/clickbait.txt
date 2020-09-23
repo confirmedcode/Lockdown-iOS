@@ -9,5 +9,6 @@ newsmaxfeednetwork.com
 outbrain.com
 revcontent.com
 taboola.com
-zemanta
+zemanta.com
 zergnet.com
+img-taboola.com

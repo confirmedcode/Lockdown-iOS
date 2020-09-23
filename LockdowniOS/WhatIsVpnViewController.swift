@@ -13,6 +13,8 @@ import NicoProgress
 
 class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate {
     
+    var is4InchIphone = UIDevice.is4InchIphone
+    
     @IBOutlet weak var getStartedButton: UIButton!
     @IBOutlet weak var dataFlow: NicoProgressBar!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -33,7 +35,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
         super.viewDidLoad()
         
         // iPhone SE
-        if (UIScreen.main.nativeBounds.height < 1200) {
+        if self.is4InchIphone {
             descriptionLabelHeight.constant = 0
         }
         
