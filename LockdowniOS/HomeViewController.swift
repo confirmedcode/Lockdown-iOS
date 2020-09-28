@@ -1033,6 +1033,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         performSegue(withIdentifier: "showSetRegion", sender: nil)
     }
     
+    func showBlockLog(_ sender: Any) {
+        performSegue(withIdentifier: "showBlockLog", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showSetRegion":
