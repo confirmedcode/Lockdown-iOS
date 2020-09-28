@@ -48,16 +48,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hio-Xi-kNY">
-                                <rect key="frame" x="32" y="247" width="256" height="54.5"/>
+                                <rect key="frame" x="32" y="245.5" width="256" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Log Disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mg-Xn-BmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                         <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7V-kr-ymm">
-                                        <rect key="frame" x="0.0" y="24.5" width="256" height="30"/>
+                                        <rect key="frame" x="0.0" y="26" width="256" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <state key="normal" title="Enable Block Log">
                                             <color key="titleColor" name="Confirmed Blue"/>
@@ -467,7 +467,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="H7Z-IH-L96" kind="presentation" id="9hL-y9-Hue"/>
+                                                            <segue destination="H7Z-IH-L96" kind="presentation" identifier="showBlockLog" id="9hL-y9-Hue"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jmJ-jD-Nql">

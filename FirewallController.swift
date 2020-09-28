@@ -9,6 +9,7 @@ import UIKit
 import NetworkExtension
 import CocoaLumberjackSwift
 import PromiseKit
+import WidgetKit
 
 let kFirewallTunnelLocalizedDescription = "Lockdown Configuration"
 
@@ -70,6 +71,9 @@ class FirewallController: NSObject {
         // only change this boolean if it's user action
         if (isUserExplicitToggle) {
             setUserWantsFirewallEnabled(enabled)
+            if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
         // just to be sure, reload the managers to make sure we don't make multiple configs
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
