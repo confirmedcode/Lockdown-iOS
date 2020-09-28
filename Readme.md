@@ -14,7 +14,7 @@ Pull requests are welcome - please document any changes and potential bugs.
 
 1. `pod install`
 
-2. `carthage update --no-use-binaries --platform ios` or for XCode 12 `./wcarthage update --no-use-binaries --platform ios` (workaround for [this Carthage issue](https://github.com/Carthage/Carthage/issues/3019)) 
+2. `carthage update --no-use-binaries --platform iOS` or for XCode 12 `./wcarthage update --no-use-binaries --platform iOS` (workaround for [this Carthage issue](https://github.com/Carthage/Carthage/issues/3019)) 
 
 3. Open `LockdowniOS.xcworkspace`
 

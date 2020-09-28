@@ -303,7 +303,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let generalAds = LockdownGroup.init(
-        version: 37,
+        version: 38,
         internalID: "general_ads",
         name: "General Marketing",
         iconURL: "ads_icon",
