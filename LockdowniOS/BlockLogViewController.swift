@@ -9,6 +9,8 @@ import UIKit
 
 class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var blockDayCounterLabel: UILabel!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dayLogTime.count;
     }
@@ -39,6 +41,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        blockDayCounterLabel.text = getDayMetricsString()
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
         
@@ -46,6 +49,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func refreshData(_ sender: Any) {
+        blockDayCounterLabel.text = getDayMetricsString()
         if BlockDayLog.shared.isEnabled {
             tableView.isHidden = false
             blockLogDisabledContainer.isHidden = true
