@@ -7,6 +7,7 @@
 
 import UIKit
 import CocoaLumberjackSwift
+import WidgetKit
 
 class SetRegionViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -50,6 +51,9 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
         
         let tappedVpnRegion = vpnRegions[indexPath.row]
         setSavedVPNRegion(vpnRegion: tappedVpnRegion)
+        if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
         if homeVC != nil {
             homeVC!.updateVPNRegionLabel()
         }

@@ -141,6 +141,12 @@
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
 		601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */; };
 		78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */; };
+		7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
+		7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
+		7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377E22DFB22600908CDC /* Montserrat-SemiBold.ttf */; };
+		7C0156572521C2F200670CB5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377F22DFB22600908CDC /* Montserrat-Regular.ttf */; };
+		7C0156582521C2F200670CB5 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */; };
+		7C0156592521C2F200670CB5 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */; };
 		7C0D11122473EE2E00A26E04 /* DomainNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D11112473EE2E00A26E04 /* DomainNameValidator.swift */; };
 		7C0D111D2473FC7E00A26E04 /* LockdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D111C2473FC7E00A26E04 /* LockdownTests.swift */; };
 		7C0D11252473FD6500A26E04 /* DomainNameValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D11242473FD6500A26E04 /* DomainNameValidatorTests.swift */; };
@@ -162,10 +168,32 @@
 		7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BE247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BF247810EF005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
+		7C9A936C251E1EC700DA5721 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9A936B251E1EC700DA5721 /* WidgetKit.framework */; };
+		7C9A936E251E1EC700DA5721 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9A936D251E1EC700DA5721 /* SwiftUI.framework */; };
+		7C9A9371251E1EC700DA5721 /* LockdownFirewallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A9370251E1EC700DA5721 /* LockdownFirewallWidget.swift */; };
+		7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9A9372251E1EC700DA5721 /* Assets.xcassets */; };
+		7C9A9377251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7C9A9384251E1F9C00DA5721 /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A9383251E1F9C00DA5721 /* LoadingCircle.swift */; };
 		7CD1435F248798D4009206A9 /* TrackerInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */; };
 		7CD52D81247E850D00D0530F /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD52D80247E850D00D0530F /* SnapshotTests.swift */; };
 		7CD52D82247EC18800D0530F /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
 		7CD52D83247EC18900D0530F /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
+		7CE91C592521D54F009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
+		7CE91C602521D564009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
+		7CE91C672521D565009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
+		7CE91C682521D565009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
+		7CE91C692521D566009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
+		7CE91C712521D58C009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
+		7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
+		7CE91C852521D5B7009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
+		7CE91C862521D5B7009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
+		7CE91C872521D5B8009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
+		7CE91C962521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
+		7CE91C972521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
+		7CE91C982521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
+		7CE91C992521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
+		7CE91C9A2521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
+		7CE91CA8252214C9009D8269 /* CombinedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91CA7252214C9009D8269 /* CombinedProvider.swift */; };
 		90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */; };
 		A101106D202B9D4300807612 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* BaseViewController.swift */; };
 		A1141A151F46230500F54698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A141F46230500F54698 /* AppDelegate.swift */; };
@@ -282,6 +310,13 @@
 			remoteGlobalIDString = A1141A101F46230500F54698;
 			remoteInfo = Lockdown;
 		};
+		7C9A9375251E1EC700DA5721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1141A091F46230500F54698 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C9A9369251E1EC700DA5721;
+			remoteInfo = LockdownFirewallWidgetExtension;
+		};
 		A118F63520B33F44009A64E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1141A091F46230500F54698 /* Project object */;
@@ -325,6 +360,7 @@
 				3DBD57C622FD727900DE189F /* Lockdown Firewall Widget.appex in Embed App Extensions */,
 				A12473FE1FE44285008493B8 /* Lockdown VPN Widget.appex in Embed App Extensions */,
 				A1FCDA4922C0651300C928BC /* LockdownTunnel.appex in Embed App Extensions */,
+				7C9A9377251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,9 +518,21 @@
 		7C3EFA0124867DEE00719D96 /* TrackerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfo.swift; sourceTree = "<group>"; };
 		7C3EFA032486879800719D96 /* tracker_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tracker_info.json; sourceTree = "<group>"; };
 		7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDayLog.swift; sourceTree = "<group>"; };
+		7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownFirewallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C9A936B251E1EC700DA5721 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7C9A936D251E1EC700DA5721 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7C9A9370251E1EC700DA5721 /* LockdownFirewallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownFirewallWidget.swift; sourceTree = "<group>"; };
+		7C9A9372251E1EC700DA5721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7C9A9374251E1EC700DA5721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C9A9383251E1F9C00DA5721 /* LoadingCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
 		7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfoTests.swift; sourceTree = "<group>"; };
 		7CD52D80247E850D00D0530F /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		7CE91C582521D54F009D8269 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		7CE91C702521D58C009D8269 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownFirewallWidgetExtension.entitlements; sourceTree = "<group>"; };
+		7CE91C952521ED5E009D8269 /* VPNRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRegion.swift; sourceTree = "<group>"; };
+		7CE91CA7252214C9009D8269 /* CombinedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedProvider.swift; sourceTree = "<group>"; };
 		7E013E3207564A64E3A1BD49 /* Pods-Lockdown Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Tunnels/Pods-Lockdown Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
 		8827B5DAD4A819CDC5115562 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
 		8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-metadata.plist"; path = "Pods/Pods-LockdownTests-metadata.plist"; sourceTree = "<group>"; };
@@ -607,6 +655,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0892ACE7DBE8147BA030522 /* Pods_LockdownTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C9A9367251E1EC700DA5721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C9A936E251E1EC700DA5721 /* SwiftUI.framework in Frameworks */,
+				7C9A936C251E1EC700DA5721 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,9 +966,22 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		7C9A936F251E1EC700DA5721 /* LockdownFirewallWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7C9A9370251E1EC700DA5721 /* LockdownFirewallWidget.swift */,
+				7C9A9383251E1F9C00DA5721 /* LoadingCircle.swift */,
+				7C9A9372251E1EC700DA5721 /* Assets.xcassets */,
+				7C9A9374251E1EC700DA5721 /* Info.plist */,
+				7CE91CA7252214C9009D8269 /* CombinedProvider.swift */,
+			);
+			path = LockdownFirewallWidget;
+			sourceTree = "<group>";
+		};
 		A1141A081F46230500F54698 = {
 			isa = PBXGroup;
 			children = (
+				7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */,
 				3D3BF4D0233D5E9100D0C482 /* Localizable.strings */,
 				3D5464D223037CCA00AE1F73 /* Settings.bundle */,
 				A11E78A21F6A33C5007499CA /* Shared */,
@@ -924,6 +994,7 @@
 				A1141A1B1F46230500F54698 /* Assets.xcassets */,
 				A1FCDA8322CDE5ED00C928BC /* Block Lists */,
 				3D44377922DFB22600908CDC /* Fonts */,
+				7C9A936F251E1EC700DA5721 /* LockdownFirewallWidget */,
 				A1141A421F46233600F54698 /* Frameworks */,
 				A17A6A2C202B44BB00657B9E /* Modified Pods */,
 				3DBD57CB22FD74D700DE189F /* Tests */,
@@ -941,6 +1012,7 @@
 				A1FCDA4122C0651300C928BC /* LockdownTunnel.appex */,
 				3DBD57BB22FD727900DE189F /* Lockdown Firewall Widget.appex */,
 				7C0D111A2473FC7E00A26E04 /* LockdownTests.xctest */,
+				7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -982,6 +1054,8 @@
 				6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */,
 				7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */,
 				5E35FBEF05099C0B8784ED2E /* Pods_LockdownTests.framework */,
+				7C9A936B251E1EC700DA5721 /* WidgetKit.framework */,
+				7C9A936D251E1EC700DA5721 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1011,6 +1085,9 @@
 				A1DBA18921B77C80008A9322 /* VPNController.swift */,
 				A1DBA18521B77C66008A9322 /* VPNSubscription.swift */,
 				3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */,
+				7CE91C582521D54F009D8269 /* UserDefaults.swift */,
+				7CE91C702521D58C009D8269 /* Metrics.swift */,
+				7CE91C952521ED5E009D8269 /* VPNRegion.swift */,
 				7C0D11102473EDFD00A26E04 /* Services */,
 			);
 			name = Shared;
@@ -1179,6 +1256,23 @@
 			productReference = 7C0D111A2473FC7E00A26E04 /* LockdownTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7C9A9369251E1EC700DA5721 /* LockdownFirewallWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C9A937A251E1EC700DA5721 /* Build configuration list for PBXNativeTarget "LockdownFirewallWidgetExtension" */;
+			buildPhases = (
+				7C9A9366251E1EC700DA5721 /* Sources */,
+				7C9A9367251E1EC700DA5721 /* Frameworks */,
+				7C9A9368251E1EC700DA5721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockdownFirewallWidgetExtension;
+			productName = LockdownFirewallWidgetExtension;
+			productReference = 7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A1141A101F46230500F54698 /* Lockdown */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1141A391F46230600F54698 /* Build configuration list for PBXNativeTarget "Lockdown" */;
@@ -1199,6 +1293,7 @@
 				A1931D0320791F5900E695EB /* PBXTargetDependency */,
 				A1FCDA4822C0651300C928BC /* PBXTargetDependency */,
 				3DBD57C522FD727900DE189F /* PBXTargetDependency */,
+				7C9A9376251E1EC700DA5721 /* PBXTargetDependency */,
 			);
 			name = Lockdown;
 			productName = TrustiOS;
@@ -1264,7 +1359,7 @@
 		A1141A091F46230500F54698 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Confirmed Inc.";
 				TargetAttributes = {
@@ -1298,6 +1393,11 @@
 						DevelopmentTeam = V8J3Z26F6Z;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A1141A101F46230500F54698;
+					};
+					7C9A9369251E1EC700DA5721 = {
+						CreatedOnToolsVersion = 12.0;
+						DevelopmentTeam = V8J3Z26F6Z;
+						ProvisioningStyle = Automatic;
 					};
 					A1141A101F46230500F54698 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -1409,6 +1509,7 @@
 				A1FCDA4022C0651300C928BC /* LockdownTunnel */,
 				3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */,
 				7C0D11192473FC7E00A26E04 /* LockdownTests */,
+				7C9A9369251E1EC700DA5721 /* LockdownFirewallWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1433,6 +1534,20 @@
 			files = (
 				4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */,
 				78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C9A9368251E1EC700DA5721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C0156582521C2F200670CB5 /* Montserrat-Light.ttf in Resources */,
+				7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */,
+				7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */,
+				7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */,
+				7C0156572521C2F200670CB5 /* Montserrat-Regular.ttf in Resources */,
+				7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */,
+				7C0156592521C2F200670CB5 /* Montserrat-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1719,11 +1834,14 @@
 				7C1AE07D247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */,
 				3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */,
+				7CE91C992521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				7CD52D83247EC18900D0530F /* PushNotifications.swift in Sources */,
 				3DBD57BF22FD727900DE189F /* FirewallTodayViewController.swift in Sources */,
+				7CE91C682521D565009D8269 /* UserDefaults.swift in Sources */,
 				3D94AB1422FE3BA20012B0DE /* Environment.swift in Sources */,
 				3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */,
 				3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */,
+				7CE91C862521D5B7009D8269 /* Metrics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1735,6 +1853,19 @@
 				7C0D111D2473FC7E00A26E04 /* LockdownTests.swift in Sources */,
 				7CD52D81247E850D00D0530F /* SnapshotTests.swift in Sources */,
 				7C0D11252473FD6500A26E04 /* DomainNameValidatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C9A9366251E1EC700DA5721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C9A9384251E1F9C00DA5721 /* LoadingCircle.swift in Sources */,
+				7CE91CA8252214C9009D8269 /* CombinedProvider.swift in Sources */,
+				7C9A9371251E1EC700DA5721 /* LockdownFirewallWidget.swift in Sources */,
+				7CE91C9A2521ED5E009D8269 /* VPNRegion.swift in Sources */,
+				7CE91C692521D566009D8269 /* UserDefaults.swift in Sources */,
+				7CE91C872521D5B8009D8269 /* Metrics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,6 +1886,7 @@
 				7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */,
 				A118F64320B33FED009A64E7 /* FadeTransition.swift in Sources */,
+				7CE91C592521D54F009D8269 /* UserDefaults.swift in Sources */,
 				3D47CDC822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */,
 				3DF2455623A306DB00E46613 /* Loader.swift in Sources */,
 				A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */,
@@ -1776,6 +1908,7 @@
 				3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				3D9FC67723E503DF004122D3 /* EmailSignInViewController.swift in Sources */,
 				3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */,
+				7CE91C962521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				3DCA4F4122F252720017740D /* FirewallController.swift in Sources */,
 				A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */,
 				3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
@@ -1798,6 +1931,7 @@
 				3D970DAF22EC15D800F9CC93 /* BlockLogViewController.swift in Sources */,
 				A1EBEADB2097AE6E002B9087 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
+				7CE91C712521D58C009D8269 /* Metrics.swift in Sources */,
 				A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */,
 				A1EBEAD12097AE6E002B9087 /* M13Checkbox+IB.swift in Sources */,
 				A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */,
@@ -1866,11 +2000,14 @@
 				7C1AE07B247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				3DBD57B122FC14CD00DE189F /* Shared.swift in Sources */,
 				3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */,
+				7CE91C972521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				7CD52D82247EC18800D0530F /* PushNotifications.swift in Sources */,
 				3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */,
+				7CE91C602521D564009D8269 /* UserDefaults.swift in Sources */,
 				3DABDA0022F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
 				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
 				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
+				7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1887,13 +2024,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DABDA0122F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
+				7CE91C852521D5B7009D8269 /* Metrics.swift in Sources */,
 				7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
 				3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */,
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
 				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
+				7CE91C982521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */,
+				7CE91C672521D565009D8269 /* UserDefaults.swift in Sources */,
 				7C6619BF247810EF005E8BB1 /* BlockDayLog.swift in Sources */,
 				7C1AE07C247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				3DABD9FD22F7961F00480AAC /* Client.swift in Sources */,
@@ -1912,6 +2052,11 @@
 			isa = PBXTargetDependency;
 			target = A1141A101F46230500F54698 /* Lockdown */;
 			targetProxy = 7C0D111F2473FC7E00A26E04 /* PBXContainerItemProxy */;
+		};
+		7C9A9376251E1EC700DA5721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C9A9369251E1EC700DA5721 /* LockdownFirewallWidgetExtension */;
+			targetProxy = 7C9A9375251E1EC700DA5721 /* PBXContainerItemProxy */;
 		};
 		A118F63620B33F44009A64E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2112,6 +2257,61 @@
 			};
 			name = Release;
 		};
+		7C9A9378251E1EC700DA5721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LockdownFirewallWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7C9A9379251E1EC700DA5721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LockdownFirewallWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A1141A371F46230600F54698 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2260,7 +2460,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -2296,7 +2495,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -2335,7 +2533,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -2374,7 +2571,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -2401,7 +2597,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -2428,7 +2623,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -2512,6 +2706,15 @@
 			buildConfigurations = (
 				7C0D11212473FC7E00A26E04 /* Debug */,
 				7C0D11222473FC7E00A26E04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C9A937A251E1EC700DA5721 /* Build configuration list for PBXNativeTarget "LockdownFirewallWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C9A9378251E1EC700DA5721 /* Debug */,
+				7C9A9379251E1EC700DA5721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
