@@ -19,8 +19,8 @@ func getDayMetrics() -> Int {
     return defaults.integer(forKey: kDayMetrics)
 }
 
-func getDayMetricsString() -> String {
-    return metricsToString(metric: getDayMetrics())
+func getDayMetricsString(commas: Bool = false) -> String {
+    return metricsToString(metric: getDayMetrics(), commas: commas)
 }
 
 func getWeekMetrics() -> Int {
@@ -39,7 +39,13 @@ func getTotalMetricsString() -> String {
     return metricsToString(metric: getTotalMetrics())
 }
 
-func metricsToString(metric : Int) -> String {
+func metricsToString(metric : Int, commas: Bool = false) -> String {
+    if (commas) {
+        let commasFormatter = NumberFormatter()
+        commasFormatter.numberStyle = .decimal
+        guard let formattedNumber = commasFormatter.string(from: NSNumber(value: metric)) else { return "\(metric)" }
+        return formattedNumber
+    }
     if metric < 1000 {
         return "\(metric)"
     }

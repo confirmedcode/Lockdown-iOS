@@ -15,7 +15,7 @@ struct FirewallProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (FirewallEntry) -> ()) {
-        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: getUserWantsFirewallEnabled(), dayMetricsString: getDayMetricsString())
+        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: getUserWantsFirewallEnabled(), dayMetricsString: getDayMetricsString(commas: true))
         completion(entry)
     }
 
@@ -23,7 +23,7 @@ struct FirewallProvider: TimelineProvider {
         var entries: [FirewallEntry] = []
         
         let currentDate = Date()
-        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: getUserWantsFirewallEnabled(), dayMetricsString: getDayMetricsString())
+        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: getUserWantsFirewallEnabled(), dayMetricsString: getDayMetricsString(commas: true))
         entries.append(entry)
 
         let timeline = Timeline(
@@ -62,7 +62,7 @@ struct LockdownFirewallWidgetEntryView : View {
                 side: entry.size.height,
                 link: "lockdown://toggleFirewall"
             )
-            .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 2))
+            .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isFirewallEnabled {
                 StatusLabel(text: "FIREWALL ON", color: .confirmedBlue)
             } else {
@@ -76,9 +76,9 @@ struct LockdownFirewallWidgetEntryView : View {
             Link(destination: URL(string: "lockdown://showMetrics")!, label: {
                 VStack(spacing: 0) {
                     Text(entry.dayMetricsString)
-                        .font(.custom("Montserrat-Bold", size: 25, relativeTo: .title))
+                        .font(.system(size: 21, weight: .semibold))
                     Text("Blocked Today")
-                        .font(.custom("Montserrat-Medium", size: 12))
+                        .font(.system(size: 12, weight: .medium))
                 }
                 .padding(.bottom, 12)
             })
@@ -139,7 +139,7 @@ struct LockdownVPNWidgetEntryView : View {
                 side: entry.size.height,
                 link: "lockdown://toggleVPN"
             )
-            .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 2))
+            .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isVPNEnabled {
                 StatusLabel(text: "TUNNEL ON", color: .confirmedBlue)
             } else {
@@ -153,14 +153,11 @@ struct LockdownVPNWidgetEntryView : View {
             Link(destination: URL(string: "lockdown://changeVPNregion")!, label: {
                 VStack(spacing: 0) {
                     Text(entry.vpnRegion.regionFlagEmoji)
-                        .font(.title2)
+                        .font(.system(size: 21, weight: .semibold))
                     Text(entry.vpnRegion.regionDisplayNameShort)
-                        .font(.custom("Montserrat-Medium", size: 12))
-                        .padding(.bottom, 4)
+                        .font(.system(size: 12, weight: .medium))
                 }
                 .frame(width: entry.size.height - 30)
-                .background(Color(.systemGray5))
-                .cornerRadius(20)
                 .padding(.bottom, 12)
             })
         }.frame(width: entry.size.height, height: entry.size.height)

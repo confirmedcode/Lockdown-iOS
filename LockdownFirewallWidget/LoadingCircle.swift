@@ -29,9 +29,9 @@ struct StatusLabel: View {
     
     var body: some View {
         Text(text)
-            .font(Font.custom("Montserrat-Medium", size: 10))
+            .font(.system(size: 10, weight: .semibold))
             .foregroundColor(.white)
-            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+            .padding(EdgeInsets(top: 0, leading: 7, bottom: 0, trailing: 7))
             .background(color)
             .overlay(
                 RoundedRectangle(cornerRadius: 3)
@@ -56,7 +56,7 @@ struct LoadingCircle: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 4)
+                .stroke(lineWidth: 2.5)
                 .frame(width: side * 0.4, height: side * 0.4)
                 .padding(4)
                 .foregroundColor(tunnelState.circleColor)
