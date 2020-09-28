@@ -41,7 +41,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        blockDayCounterLabel.text = getDayMetricsString()
+        blockDayCounterLabel.text = getDayMetricsString(commas: true)
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
         
@@ -49,7 +49,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func refreshData(_ sender: Any) {
-        blockDayCounterLabel.text = getDayMetricsString()
+        blockDayCounterLabel.text = getDayMetricsString(commas: true)
         if BlockDayLog.shared.isEnabled {
             tableView.isHidden = false
             blockLogDisabledContainer.isHidden = true
