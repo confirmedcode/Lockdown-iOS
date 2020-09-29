@@ -17,6 +17,7 @@ import CocoaLumberjackSwift
 import PopupDialog
 import PromiseKit
 import UserNotifications
+import WidgetKit
 
 let fileLogger: DDFileLogger = DDFileLogger()
 
@@ -171,6 +172,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
