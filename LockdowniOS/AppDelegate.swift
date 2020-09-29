@@ -182,6 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        updateMetrics(.resetIfNeeded, rescheduleNotifications: .withEnergySaving)
         // Check 3 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
@@ -398,6 +399,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ])
             self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
             return true
+        }
+        
+        else if (host == "changeVPNregion") {
+            if let home = self.getCurrentViewController() as? HomeViewController {
+                home.showSetRegion(self)
+            }
+        }
+        
+        else if (host == "showMetrics") {
+            if let home = self.getCurrentViewController() as? HomeViewController {
+                home.showBlockLog(self)
+            }
+        }
+        
+        else if (host == "toggleFirewall") {
+            if let home = self.getCurrentViewController() as? HomeViewController {
+                home.toggleFirewall(self)
+            }
+        }
+        
+        else if (host == "toggleVPN") {
+            if let home = self.getCurrentViewController() as? HomeViewController {
+                home.toggleVPN(self)
+            }
         }
         
         else if (host == "emailconfirmed") {

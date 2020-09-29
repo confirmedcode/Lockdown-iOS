@@ -8,6 +8,7 @@
 
 import Foundation
 import NetworkExtension
+import WidgetKit
 
 // MARK: - Constants
 
@@ -49,13 +50,6 @@ let blockLogDateFormatter : DateFormatter = {
     formatter.dateFormat = "h:mm a_"
     return formatter
 }()
-
-let kDayMetrics = "LockdownDayMetrics"
-let kWeekMetrics = "LockdownWeekMetrics"
-let kTotalMetrics = "LockdownTotalMetrics"
-
-let kActiveDay = "LockdownActiveDay"
-let kActiveWeek = "LockdownActiveWeek"
 
 enum MetricsUpdate {
     
@@ -126,6 +120,10 @@ func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsU
     }
     defaults.set(Int(getDayMetrics() + mode.incrementBy), forKey: kDayMetrics)
     
+    if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
     switch mode {
     case .incrementAndLog(host: let host):
         guard BlockDayLog.shared.isDisabled == false else {
@@ -148,42 +146,6 @@ func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsU
     case .never:
         // no-act
         break
-    }
-}
-
-func getDayMetrics() -> Int {
-    return defaults.integer(forKey: kDayMetrics)
-}
-
-func getDayMetricsString() -> String {
-    return metricsToString(metric: getDayMetrics())
-}
-
-func getWeekMetrics() -> Int {
-    return defaults.integer(forKey: kWeekMetrics)
-}
-
-func getWeekMetricsString() -> String {
-    return metricsToString(metric: getWeekMetrics())
-}
-
-func getTotalMetrics() -> Int {
-    return defaults.integer(forKey: kTotalMetrics)
-}
-
-func getTotalMetricsString() -> String {
-    return metricsToString(metric: getTotalMetrics())
-}
-
-func metricsToString(metric : Int) -> String {
-    if metric < 1000 {
-        return "\(metric)"
-    }
-    else if metric < 1000000 {
-        return "\(Int(metric / 1000))k"
-    }
-    else {
-        return "\(Int(metric / 1000000))m"
     }
 }
 
