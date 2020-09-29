@@ -747,6 +747,14 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     func updateFirewallButtonWithStatus(status: NEVPNStatus) {
         DDLogInfo("UpdateFirewallButton")
+        switch status {
+        case .connected:
+            LatestKnowledge.isFirewallEnabled = true
+        case .disconnected:
+            LatestKnowledge.isFirewallEnabled = false
+        default:
+            break
+        }
         updateToggleButtonWithStatus(lastStatus: lastFirewallStatus,
                                      newStatus: status,
                                      activeLabel: firewallActive,
@@ -885,6 +893,14 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     func updateVPNButtonWithStatus(status: NEVPNStatus) {
         DDLogInfo("UpdateVPNButton")
+        switch status {
+        case .connected:
+            LatestKnowledge.isVPNEnabled = true
+        case .disconnected:
+            LatestKnowledge.isVPNEnabled = false
+        default:
+            break
+        }
         updateToggleButtonWithStatus(lastStatus: lastVPNStatus,
                                      newStatus: status,
                                      activeLabel: vpnActive,

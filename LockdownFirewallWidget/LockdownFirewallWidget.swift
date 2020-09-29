@@ -15,7 +15,7 @@ struct FirewallProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (FirewallEntry) -> ()) {
-        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: getUserWantsFirewallEnabled(), dayMetricsString: getDayMetricsString(commas: true))
+        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: LatestKnowledge.isFirewallEnabled, dayMetricsString: getDayMetricsString(commas: true))
         completion(entry)
     }
 
@@ -23,7 +23,7 @@ struct FirewallProvider: TimelineProvider {
         var entries: [FirewallEntry] = []
         
         let currentDate = Date()
-        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: getUserWantsFirewallEnabled(), dayMetricsString: getDayMetricsString(commas: true))
+        let entry = FirewallEntry(date: Date(), size: context.displaySize, isFirewallEnabled: LatestKnowledge.isFirewallEnabled, dayMetricsString: getDayMetricsString(commas: true))
         entries.append(entry)
 
         let timeline = Timeline(
@@ -92,7 +92,7 @@ struct VPNProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (VPNEntry) -> ()) {
-        let entry = VPNEntry(date: Date(), size: context.displaySize, isVPNEnabled: getUserWantsVPNEnabled(), vpnRegion: getSavedVPNRegion())
+        let entry = VPNEntry(date: Date(), size: context.displaySize, isVPNEnabled: LatestKnowledge.isVPNEnabled, vpnRegion: getSavedVPNRegion())
         completion(entry)
     }
 
@@ -100,7 +100,7 @@ struct VPNProvider: TimelineProvider {
         var entries: [VPNEntry] = []
         
         let currentDate = Date()
-        let entry = VPNEntry(date: Date(), size: context.displaySize, isVPNEnabled: getUserWantsVPNEnabled(), vpnRegion: getSavedVPNRegion())
+        let entry = VPNEntry(date: Date(), size: context.displaySize, isVPNEnabled: LatestKnowledge.isVPNEnabled, vpnRegion: getSavedVPNRegion())
         entries.append(entry)
 
         let timeline = Timeline(

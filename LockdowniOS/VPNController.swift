@@ -8,6 +8,7 @@
 import UIKit
 import NetworkExtension
 import CocoaLumberjackSwift
+import WidgetKit
 
 let kVPNLocalizedDescription = "Lockdown VPN"
 
@@ -38,6 +39,9 @@ class VPNController: NSObject {
     func setEnabled(_ enabled: Bool, completion: @escaping (_ error: Error?) -> Void = {_ in }) {
         DDLogInfo("VPNController set enabled: \(enabled)")
         setUserWantsVPNEnabled(enabled)
+        if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
         if (enabled) {
             setUpAndEnableVPN { error in
                 completion(error)
