@@ -101,6 +101,8 @@ func getSavedVPNRegion() -> VPNRegion {
             else {
                 return getVPNRegionForServerPrefix(serverPrefix: "us-west")
             }
+        case "FR", "PT":
+            return getVPNRegionForServerPrefix(serverPrefix: "eu-paris")
         case "GB":
             return getVPNRegionForServerPrefix(serverPrefix: "eu-london")
         case "IE":
@@ -111,7 +113,7 @@ func getSavedVPNRegion() -> VPNRegion {
             return getVPNRegionForServerPrefix(serverPrefix: "ap-seoul")
         case "ID", "SG", "MY", "PH", "TH", "TW", "VN":
             return getVPNRegionForServerPrefix(serverPrefix: "ap-singapore")
-        case "DE", "FR", "IT", "PT", "ES", "AT", "PL", "RU", "UA", "NG", "TR", "ZA":
+        case "DE", "IT", "ES", "AT", "PL", "RU", "UA", "NG", "TR", "ZA":
             return getVPNRegionForServerPrefix(serverPrefix: "eu-frankfurt")
         case "AU", "NZ":
             return getVPNRegionForServerPrefix(serverPrefix: "ap-sydney")
