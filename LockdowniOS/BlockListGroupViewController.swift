@@ -16,7 +16,7 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet var lockdownEnabled: UISwitch!
     @IBOutlet var groupTitle: UILabel!
     
-    var blockListVC: BlockListViewController?
+    weak var blockListVC: BlockListViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,11 +91,8 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
     }
 
     @IBAction func dismiss() {
-        self.dismiss(animated: true, completion: {
-            if let vc = self.blockListVC {
-                vc.tableView.reloadData()
-            }
-        })
+        blockListVC?.tableView.reloadData()
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

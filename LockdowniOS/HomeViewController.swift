@@ -38,6 +38,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var menuButtonDot: UIView!
     
+    @IBOutlet var mainStack: UIStackView!
     @IBOutlet var stackEqualHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var firewallTitleLabel: UILabel!
@@ -98,6 +99,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         vpnSetRegionButton.layer.cornerRadius = 8
         vpnSetRegionButton.layer.maskedCorners = [.layerMaxXMaxYCorner]
         updateVPNRegionLabel()
+        
+        updateStackViewAxis(basedOn: view.frame.size)
         
         // Check Subscription - if VPN active but not subscribed, then disconnect and show dialog (don't do this if connection error)
         if (VPNController.shared.status() == .connected) {
@@ -256,6 +259,31 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 }
              ])
              self.present(popup, animated: true, completion: nil)
+        }
+    }
+    
+    func updateStackViewAxis(basedOn size: CGSize) {
+        guard traitCollection.userInterfaceIdiom == .pad else {
+            // axis always vertical on iPhone
+            return
+        }
+        
+        if size.width > size.height {
+            mainStack.axis = .horizontal
+        } else {
+            mainStack.axis = .vertical
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard traitCollection.userInterfaceIdiom == .pad else {
+            return
+        }
+        
+        coordinator.animate { [unowned self] _ in
+            self.updateStackViewAxis(basedOn: size)
+        } completion: { (_) in
+            return
         }
     }
     
@@ -701,6 +729,12 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 print(success ? "SUCCESS!" : "FAILURE")
             }
             vc.excludedActivityTypes = [ UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.print ]
+            
+            if let popoverPC = vc.popoverPresentationController {
+                popoverPC.sourceView = self.firewallShareButton
+                popoverPC.sourceRect = self.firewallShareButton.bounds
+                popoverPC.permittedArrowDirections = .up
+            }
             self.present(vc, animated: true)
         }
         
