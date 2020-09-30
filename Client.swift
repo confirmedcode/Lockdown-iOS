@@ -23,6 +23,7 @@ let kApiCodeReceiptAlreadyUsed = 48
 let kApiCodeInvalidAuth = 401
 let kApiCodeTooManyRequests = 999
 let kApiCodeUnknownError = 99999
+let kApiCodeNegativeError = -1
 
 class Client {
 
