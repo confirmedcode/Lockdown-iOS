@@ -11,6 +11,12 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var blockDayCounterLabel: UILabel!
     
+    // -- SUPPORTING LIVE UPDATES
+    var timer: Timer?
+    var kvoObservationToken: Any?
+    let debouncer = Debouncer(seconds: 0.3)
+    //
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dayLogTime.count;
     }
@@ -21,6 +27,10 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +55,30 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
         
+        configureObservers()
+        
         refreshData(self);
+    }
+    
+    deinit {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func configureObservers() {
+        kvoObservationToken = defaults.observe(\.LockdownDayLogs, options: [.new, .old]) { [weak self] (defaults, change) in
+            DispatchQueue.main.async {
+                self?.debouncer.debounce {
+                    self?.refreshData(defaults)
+                }
+            }
+        }
+        
+        // timer is used as a backup in case KVO fails for any reason
+        timer = Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true) { [weak self] (timer) in
+            self?.refreshData(timer)
+        }
+        timer?.tolerance = 3.0
     }
     
     @objc func refreshData(_ sender: Any) {
@@ -53,6 +86,8 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
         if BlockDayLog.shared.isEnabled {
             tableView.isHidden = false
             blockLogDisabledContainer.isHidden = true
+            
+            let oldDayLogTime = dayLogTime
             
             dayLogTime = []
             dayLogHost = []
@@ -65,7 +100,19 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
                     }
                 }
             }
-            tableView.reloadData();
+            
+            if dayLogTime.count > oldDayLogTime.count, oldDayLogTime != [] {
+                let diff = dayLogTime.count - oldDayLogTime.count
+                let indexPaths = (0 ..< diff).map({ IndexPath(row: $0, section: 0) })
+                tableView.performBatchUpdates {
+                    tableView.insertRows(at: indexPaths, with: .top)
+                } completion: { (finished) in
+                    return
+                }
+            } else {
+                tableView.reloadData()
+            }
+            
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
             }
@@ -119,4 +166,39 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBOutlet var tableView: UITableView!
     @IBOutlet var blockLogDisabledContainer: UIStackView!
     
+}
+
+fileprivate extension UserDefaults {
+    
+    @objc
+    dynamic var LockdownDayLogs: [Any]? {
+        get {
+            return array(forKey: "LockdownDayLogs")
+        }
+        set {
+            set(newValue, forKey: "LockdownDayLogs")
+        }
+    }
+}
+
+// https://stackoverflow.com/a/52338788
+// by Frédéric Adda
+class Debouncer {
+
+    // MARK: - Properties
+    private let queue = DispatchQueue.main
+    private var workItem = DispatchWorkItem(block: {})
+    private var interval: TimeInterval
+    
+    // MARK: - Initializer
+    init(seconds: TimeInterval) {
+        self.interval = seconds
+    }
+
+    // MARK: - Debouncing function
+    func debounce(action: @escaping (() -> Void)) {
+        workItem.cancel()
+        workItem = DispatchWorkItem(block: { action() })
+        queue.asyncAfter(deadline: .now() + interval, execute: workItem)
+    }
 }
