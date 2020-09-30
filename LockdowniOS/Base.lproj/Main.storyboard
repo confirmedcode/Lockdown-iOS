@@ -1261,9 +1261,7 @@
                                 <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A simple, powerful firewall that stops connections to trackers, malware and other bad agents.
-
-Free and open source." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Qj-yK-k5A">
+                            <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Qj-yK-k5A">
                                 <rect key="frame" x="24" y="162" width="272" height="188"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <nil key="highlightedColor"/>
@@ -2921,8 +2919,7 @@ Free and open source." textAlignment="center" lineBreakMode="tailTruncation" num
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: joe@email.com
-Re: Q4 2019 Finance Review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRH-Ie-0qb">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: joe@email.com Re: Q4 2019 Finance Review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRH-Ie-0qb">
                                                         <rect key="frame" x="66" y="84" width="180" height="34"/>
                                                         <color key="backgroundColor" white="0.92890808390000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -3291,9 +3288,7 @@ Re: Q4 2019 Finance Review" textAlignment="center" lineBreakMode="tailTruncation
                                         <rect key="frame" x="0.0" y="0.0" width="4" height="62"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓ Get new block lists for trackers
-✓ Access Lockdown Mac and Desktop
-✓ Critical announcements and features" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XhT-hq-Dd2">
+                                    <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓ Get new block lists for trackers ✓ Access Lockdown Mac and Desktop ✓ Critical announcements and features" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XhT-hq-Dd2">
                                         <rect key="frame" x="4" y="0.0" width="280" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="AQa-5e-yPu"/>
@@ -3425,8 +3420,7 @@ Re: Q4 2019 Finance Review" textAlignment="center" lineBreakMode="tailTruncation
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have a Lockdown account?
-Sign in below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KDA-UD-f4u">
+                            <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have a Lockdown account? Sign in below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KDA-UD-f4u">
                                 <rect key="frame" x="24" y="54" width="272" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="rW4-kE-JeT"/>
