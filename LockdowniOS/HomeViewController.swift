@@ -1023,10 +1023,15 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                 self.performSegue(withIdentifier: "showSignup", sender: self)
                             })
                         default:
-                            if (apiError.code == kApiCodeNegativeError && getVPNCredentials() != nil) {
-                                DDLogError("Unknown error -1 from API, but VPNCredentials exists, so activating anyway.")
-                                self.updateVPNButtonWithStatus(status: .connecting)
-                                VPNController.shared.setEnabled(true)
+                            if (apiError.code == kApiCodeNegativeError) {
+                                if (getVPNCredentials() != nil) {
+                                    DDLogError("Unknown error -1 from API, but VPNCredentials exists, so activating anyway.")
+                                    self.updateVPNButtonWithStatus(status: .connecting)
+                                    VPNController.shared.setEnabled(true)
+                                }
+                                else {
+                                    self.showPopupDialog(title: NSLocalizedString("Apple Outage", comment: ""), message: "There is currently an outage at Apple which is preventing Secure Tunnel from activating. This will likely by resolved by Apple soon, and we apologize for this issue in the meantime." + NSLocalizedString("\n\n If this error persists, please contact team@lockdownhq.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+                                }
                             }
                             else {
                                 _ = self.popupErrorAsApiError(error)
