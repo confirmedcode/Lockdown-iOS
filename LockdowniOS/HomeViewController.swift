@@ -1023,7 +1023,14 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                 self.performSegue(withIdentifier: "showSignup", sender: self)
                             })
                         default:
-                            _ = self.popupErrorAsApiError(error)
+                            if (apiError.code == kApiCodeNegativeError && getVPNCredentials() != nil) {
+                                DDLogError("Unknown error -1 from API, but VPNCredentials exists, so activating anyway.")
+                                self.updateVPNButtonWithStatus(status: .connecting)
+                                VPNController.shared.setEnabled(true)
+                            }
+                            else {
+                                _ = self.popupErrorAsApiError(error)
+                            }
                         }
                     }
                     else {
