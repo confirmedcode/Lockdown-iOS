@@ -72,6 +72,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "archive.is")
     addLockdownWhitelistedDomainIfNotExists(domain: "bamgrid.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cdn-apple.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "coinbase.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "confirmedvpn.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "creditkarma.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "digicert.com")
