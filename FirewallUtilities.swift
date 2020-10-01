@@ -256,7 +256,7 @@ func setupFirewallDefaultBlockLists() {
         warning: "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.")
     
     let dataTrackers = LockdownGroup.init(
-        version: 29,
+        version: 30,
         internalID: "data_trackers",
         name: "Data Trackers",
         iconURL: "user_data_icon",

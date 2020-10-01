@@ -19,5 +19,4 @@ sdk.foursquare.com
 umeng.com
 umengcloud.com
 voicefive.com
-segment.com
 segment.io
