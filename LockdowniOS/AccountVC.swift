@@ -1,0 +1,391 @@
+//
+//  AccountVC.swift
+//  Lockdown
+//
+//  Created by Oleg Dreyman on 02.10.2020.
+//  Copyright © 2020 Confirmed Inc. All rights reserved.
+//
+
+import UIKit
+import PopupDialog
+import PromiseKit
+import CocoaLumberjackSwift
+
+final class AccountViewController: BaseViewController {
+    
+    let tableView = StaticTableView(frame: .zero, style: .plain)
+    var activePlans: [Subscription.PlanType] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        do {
+            view.addSubview(tableView)
+            tableView.anchors.edges.pin()
+            tableView.separatorStyle = .singleLine
+            tableView.cellLayoutMarginsFollowReadableWidth = true
+//            tableView.delaysContentTouches = false
+            tableView.deselectsCellsAutomatically = true
+            
+            createTable()
+        }
+    }
+    
+    func reloadTable() {
+        tableView.rows = []
+        createTable()
+        tableView.reloadData()
+    }
+    
+    func createTable() {
+        let buttonHeight = 55
+        
+        var title = "⚠️ Not Signed In"
+        var message: String? = "Sign up below to unlock benefits of a Lockdown account."
+        var firstButton = DefaultCell(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), height: buttonHeight, dismissOnTap: true) {
+            self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: self)
+        }
+        
+        if let apiCredentials = getAPICredentials() {
+            message = apiCredentials.email
+            if getAPICredentialsConfirmed() == true {
+                title = "Signed In"
+                firstButton = DefaultCell(title: NSLocalizedString("Sign Out", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                    let confirm = PopupDialog(title: "Sign Out?",
+                                               message: "You'll be signed out from this account.",
+                                               image: nil,
+                                               buttonAlignment: .horizontal,
+                                               transitionStyle: .bounceDown,
+                                               preferredWidth: 270,
+                                               tapGestureDismissal: true,
+                                               panGestureDismissal: false,
+                                               hideStatusBar: false,
+                                               completion: nil)
+                    confirm.addButtons([
+                       DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
+                       },
+                       DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) { [unowned self] in
+                        URLCache.shared.removeAllCachedResponses()
+                        Client.clearCookies()
+                        clearAPICredentials()
+                        setAPICredentialsConfirmed(confirmed: false)
+                        self.reloadTable()
+//                        self.reloadMenuDot()
+                        self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                       },
+                    ])
+                    self.present(confirm, animated: true, completion: nil)
+                }
+            }
+            else {
+                title = "⚠️ Email Not Confirmed"
+                firstButton = DefaultCell(title: NSLocalizedString("Confirm Email", comment: ""), height: buttonHeight, dismissOnTap: true) {
+//                    self.showLoadingView()
+                    
+                    firstly {
+                        try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                    }
+                    .done { (signin: SignIn) in
+//                        self.hideLoadingView()
+                        // successfully signed in with no errors, show confirmation success
+                        setAPICredentialsConfirmed(confirmed: true)
+                        
+                        // logged in and confirmed - update this email with the receipt and refresh VPN credentials
+                        firstly { () -> Promise<SubscriptionEvent> in
+                            try Client.subscriptionEvent()
+                        }
+                        .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                            try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            if (getUserWantsVPNEnabled() == true) {
+                                VPNController.shared.restart()
+                            }
+                        }
+                        .catch { error in
+                            // it's okay for this to error out with "no subscription in receipt"
+                            DDLogError("HomeViewController ConfirmEmail subscriptionevent error (ok for it to be \"no subscription in receipt\"): \(error)")
+                        }
+                        
+                        let popup = PopupDialog(title: "Success! 🎉",
+                                                message: NSLocalizedString("Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements.", comment: ""),
+                                                image: nil,
+                                                buttonAlignment: .horizontal,
+                                                transitionStyle: .bounceDown,
+                                                preferredWidth: 270,
+                                                tapGestureDismissal: true,
+                                                panGestureDismissal: false,
+                                                hideStatusBar: false,
+                                                completion: nil)
+                        popup.addButtons([
+                           DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
+//                            self.reloadMenuDot()
+                            }
+                        ])
+                        self.present(popup, animated: true, completion: nil)
+                    }
+                    .catch { error in
+//                        self.hideLoadingView()
+                        let popup = PopupDialog(title: "Check Your Inbox",
+                                                message: "To complete your signup, click the confirmation link we sent to \(apiCredentials.email). Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.",
+                                                image: nil,
+                                                buttonAlignment: .vertical,
+                                                transitionStyle: .bounceDown,
+                                                preferredWidth: 270,
+                                                tapGestureDismissal: true,
+                                                panGestureDismissal: false,
+                                                hideStatusBar: false,
+                                                completion: nil)
+                        popup.addButtons([
+                            DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {},
+                            DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                                URLCache.shared.removeAllCachedResponses()
+                                Client.clearCookies()
+                                clearAPICredentials()
+                                setAPICredentialsConfirmed(confirmed: false)
+//                                self.reloadMenuDot()
+//                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                            },
+                            DefaultButton(title: NSLocalizedString("Re-send", comment: ""), dismissOnTap: true) {
+                                firstly {
+                                    try Client.resendConfirmCode(email: apiCredentials.email)
+                                }
+                                .done { (success: Bool) in
+                                    var message = "Successfully re-sent your email confirmation to \(apiCredentials.email)"
+                                    if (success == false) {
+                                        message = "Failed to re-send email confirmation."
+                                    }
+//                                    self.showPopupDialog(title: "", message: message, acceptButton: NSLocalizedString("Okay", comment: ""))
+                                }
+                                .catch { error in
+//                                    if (self.popupErrorAsNSURLError(error)) {
+//                                        return
+//                                    }
+//                                    else if let apiError = error as? ApiError {
+//                                        _ = self.popupErrorAsApiError(apiError)
+//                                    }
+//                                    else {
+//                                        self.showPopupDialog(title: NSLocalizedString("Error Re-sending Email Confirmation", comment: ""),
+//                                                             message: "\(error)",
+//                                            acceptButton: NSLocalizedString("Okay", comment: ""))
+//                                    }
+                                }
+                            },
+                        ])
+                        self.present(popup, animated: true, completion: nil)
+                    }
+
+                }
+            }
+        }
+        firstButton.backgroundView = UIView()
+        firstButton.backgroundView?.backgroundColor = UIColor.tunnelsBlue
+        firstButton.label.textColor = UIColor.white
+        
+        let upgradeButton = DefaultButtonCell(title: "Loading Plan", height: buttonHeight, dismissOnTap: true) {
+            self.performSegue(withIdentifier: "showUpgradePlan", sender: self)
+        }
+        upgradeButton.startActivityIndicator()
+        upgradeButton.button.isEnabled = false
+        upgradeButton.selectionStyle = .none
+        
+        self.activePlans = []
+
+        firstly {
+            try Client.signIn()
+        }.then { _ in
+            try Client.activeSubscriptions()
+        }.ensure {
+            upgradeButton.stopActivityIndicator()
+        }.done { subscriptions in
+            self.activePlans = subscriptions.map({ $0.planType })
+            if let active = subscriptions.first {
+                if active.planType == .proAnnual {
+                    upgradeButton.button.isEnabled = false
+                    upgradeButton.selectionStyle = .none
+                    upgradeButton.button.setTitle("Plan: Annual Pro", for: UIControl.State())
+                } else {
+                    upgradeButton.button.isEnabled = true
+                    upgradeButton.selectionStyle = .default
+                    upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
+                    upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
+                    upgradeButton.button.setTitle("View or Upgrade Plan", for: UIControl.State())
+                }
+            } else {
+                upgradeButton.button.isEnabled = true
+                upgradeButton.selectionStyle = .default
+                upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
+                upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
+                upgradeButton.button.setTitle("View Upgrade Options", for: UIControl.State())
+            }
+        }.catch { error in
+            DDLogWarn(error.localizedDescription)
+            if let apiError = error as? ApiError {
+                switch apiError.code {
+                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                    upgradeButton.button.isEnabled = true
+                    upgradeButton.selectionStyle = .default
+                    upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
+                    upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
+                    upgradeButton.button.setTitle("View Upgrade Options", for: UIControl.State())
+                default:
+                    upgradeButton.button.isEnabled = false
+                    upgradeButton.selectionStyle = .none
+                    upgradeButton.button.setTitle("Cannot load your plan", for: UIControl.State())
+                }
+            } else {
+                upgradeButton.button.isEnabled = false
+                upgradeButton.selectionStyle = .none
+                upgradeButton.button.setTitle("Cannot load your plan", for: UIControl.State())
+            }
+        }
+        
+        let notificationsButton = DefaultCell(title: "", height: buttonHeight, dismissOnTap: false, action: { })
+        
+        let updateNotificationButtonTitle = { (cell: _DefaultCell) in
+            if PushNotifications.Authorization.getUserWantsNotificationsEnabled(forCategory: .weeklyUpdate) {
+                cell.label.text = "Notifications: On"
+            } else {
+                cell.label.text = "Notifications: Off"
+            }
+        }
+        
+        updateNotificationButtonTitle(notificationsButton)
+                        
+        notificationsButton.onSelect { [unowned notificationsButton, unowned self] in
+            if PushNotifications.Authorization.getUserWantsNotificationsEnabled(forCategory: .weeklyUpdate) {
+                PushNotifications.Authorization.setUserWantsNotificationsEnabled(false, forCategory: .weeklyUpdate)
+                updateNotificationButtonTitle(notificationsButton)
+            } else {
+                PushNotifications.Authorization.requestWeeklyUpdateAuthorization(presentingDialogOn: self).done { status in
+                    DDLogInfo("New authorization status for push notifications: \(status)")
+                    updateNotificationButtonTitle(notificationsButton)
+                }.catch { error in
+                    DDLogError("Error updating notification authorization status: \(error.localizedDescription)")
+                }
+            }
+        }
+        
+        tableView.addRow { (contentView) in
+            let stack = UIStackView()
+            stack.axis = .vertical
+            stack.spacing = 8
+            contentView.addSubview(stack)
+            stack.anchors.edges.marginsPin(insets: .init(top: 8, left: 0, bottom: 8, right: 0))
+            
+            let titleLabel = UILabel()
+            titleLabel.text = title
+            titleLabel.font = fontBold18
+            titleLabel.textAlignment = .center
+            stack.addArrangedSubview(titleLabel)
+            
+            let messageLabel = UILabel()
+            messageLabel.text = message
+            messageLabel.font = fontMedium18
+            messageLabel.textAlignment = .center
+            stack.addArrangedSubview(messageLabel)
+        }
+        
+        let firstButtons: [SelectableTableViewCell] = [
+            firstButton,
+            upgradeButton,
+            notificationsButton,
+        ]
+        
+        for cell in firstButtons {
+            tableView.addCell(cell)
+        }
+        
+        let otherCells = [
+            DefaultCell(title: NSLocalizedString("Tutorial", comment: ""), height: buttonHeight, dismissOnTap: true) { [unowned self] in
+                self.startTutorial()
+            },
+            DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                self.showWhyTrustPopup()
+            },
+            DefaultCell(title: NSLocalizedString("Privacy Policy", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                self.showPrivacyPolicyModal()
+            },
+            DefaultCell(title: NSLocalizedString("What is VPN?", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
+            },
+            DefaultCell(title: NSLocalizedString("Email Support", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                self.emailTeam()
+            },
+            DefaultCell(title: NSLocalizedString("Website", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                self.showWebsiteModal()
+            },
+        ]
+        
+        for cell in otherCells {
+            tableView.addCell(cell)
+        }
+    }
+    
+    func startTutorial() {
+        if let tabBarController = tabBarController as? MainTabBarController {
+            tabBarController.selectedViewController = tabBarController.homeViewController
+            tabBarController.homeViewController.startTutorial()
+        }
+    }
+}
+
+// MARK: - Helpers / Extensions
+
+class _DefaultButtonCell: SelectableTableViewCell {
+    let button = UIButton(type: .system)
+}
+
+func DefaultButtonCell(title: String, height: Int, dismissOnTap: Bool, action: @escaping () -> ()) -> _DefaultButtonCell {
+    let cell = _DefaultButtonCell()
+    cell.backgroundView = UIView()
+    cell.button.setTitle(title, for: .normal)
+    cell.button.isUserInteractionEnabled = false
+    cell.button.titleLabel?.font = fontSemiBold17
+    cell.button.tintColor = .tunnelsBlue
+//    cell.label.textColor = .tunnelsBlue
+//    cell.label.textAlignment = .center
+    cell.contentView.addSubview(cell.button)
+    cell.button.anchors.edges.marginsPin(insets: .init(top: 8, left: 0, bottom: 8, right: 0))
+    return cell.onSelect(callback: action)
+}
+
+class _DefaultCell: SelectableTableViewCell {
+    let label = UILabel()
+}
+
+func DefaultCell(title: String, height: Int, dismissOnTap: Bool, action: @escaping () -> ()) -> _DefaultCell {
+    let cell = _DefaultCell()
+    cell.label.text = title
+    cell.label.font = fontSemiBold17
+    cell.label.textColor = .tunnelsBlue
+    cell.label.textAlignment = .center
+    cell.contentView.addSubview(cell.label)
+    cell.label.anchors.edges.marginsPin(insets: .init(top: 8, left: 0, bottom: 8, right: 0))
+    return cell.onSelect(callback: action)
+}
+
+fileprivate extension _DefaultButtonCell {
+    func startActivityIndicator() {
+        let activity = UIActivityIndicatorView()
+        
+        if let label = button.titleLabel {
+            label.addSubview(activity)
+            activity.translatesAutoresizingMaskIntoConstraints = false
+            activity.centerYAnchor.constraint(equalTo: label.centerYAnchor).isActive = true
+            activity.leadingAnchor.constraint(equalToSystemSpacingAfter: label.trailingAnchor, multiplier: 1).isActive = true
+            activity.startAnimating()
+        }
+    }
+    
+    func stopActivityIndicator() {
+        if let label = button.titleLabel {
+            let indicators = label.subviews.compactMap { $0 as? UIActivityIndicatorView }
+            for indicator in indicators {
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+            }
+        }
+    }
+}
