@@ -24,14 +24,18 @@ final class AccountViewController: BaseViewController {
             tableView.anchors.edges.pin()
             tableView.separatorStyle = .singleLine
             tableView.cellLayoutMarginsFollowReadableWidth = true
-//            tableView.delaysContentTouches = false
             tableView.deselectsCellsAutomatically = true
+            tableView.tableFooterView = UIView()
             
             createTable()
         }
     }
     
     func reloadTable() {
+        guard isViewLoaded else {
+            return
+        }
+        
         tableView.rows = []
         createTable()
         tableView.reloadData()
@@ -43,7 +47,9 @@ final class AccountViewController: BaseViewController {
         var title = "⚠️ Not Signed In"
         var message: String? = "Sign up below to unlock benefits of a Lockdown account."
         var firstButton = DefaultCell(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), height: buttonHeight, dismissOnTap: true) {
-            self.performSegue(withIdentifier: "showCreateAccountFromHome", sender: self)
+            AccountUI.presentCreateAccount(on: self) { [weak self] in
+                self?.reloadTable()
+            }
         }
         
         if let apiCredentials = getAPICredentials() {
@@ -120,7 +126,7 @@ final class AccountViewController: BaseViewController {
                                                 completion: nil)
                         popup.addButtons([
                            DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
-//                            self.reloadMenuDot()
+                            self.reloadTable()
                             }
                         ])
                         self.present(popup, animated: true, completion: nil)
@@ -144,8 +150,8 @@ final class AccountViewController: BaseViewController {
                                 Client.clearCookies()
                                 clearAPICredentials()
                                 setAPICredentialsConfirmed(confirmed: false)
-//                                self.reloadMenuDot()
-//                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                                self.reloadTable()
+                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
                             },
                             DefaultButton(title: NSLocalizedString("Re-send", comment: ""), dismissOnTap: true) {
                                 firstly {
@@ -156,20 +162,20 @@ final class AccountViewController: BaseViewController {
                                     if (success == false) {
                                         message = "Failed to re-send email confirmation."
                                     }
-//                                    self.showPopupDialog(title: "", message: message, acceptButton: NSLocalizedString("Okay", comment: ""))
+                                    self.showPopupDialog(title: "", message: message, acceptButton: NSLocalizedString("Okay", comment: ""))
                                 }
                                 .catch { error in
-//                                    if (self.popupErrorAsNSURLError(error)) {
-//                                        return
-//                                    }
-//                                    else if let apiError = error as? ApiError {
-//                                        _ = self.popupErrorAsApiError(apiError)
-//                                    }
-//                                    else {
-//                                        self.showPopupDialog(title: NSLocalizedString("Error Re-sending Email Confirmation", comment: ""),
-//                                                             message: "\(error)",
-//                                            acceptButton: NSLocalizedString("Okay", comment: ""))
-//                                    }
+                                    if (self.popupErrorAsNSURLError(error)) {
+                                        return
+                                    }
+                                    else if let apiError = error as? ApiError {
+                                        _ = self.popupErrorAsApiError(apiError)
+                                    }
+                                    else {
+                                        self.showPopupDialog(title: NSLocalizedString("Error Re-sending Email Confirmation", comment: ""),
+                                                             message: "\(error)",
+                                            acceptButton: NSLocalizedString("Okay", comment: ""))
+                                    }
                                 }
                             },
                         ])
@@ -344,9 +350,8 @@ func DefaultButtonCell(title: String, height: Int, dismissOnTap: Bool, action: @
     cell.button.isUserInteractionEnabled = false
     cell.button.titleLabel?.font = fontSemiBold17
     cell.button.tintColor = .tunnelsBlue
-//    cell.label.textColor = .tunnelsBlue
-//    cell.label.textAlignment = .center
     cell.contentView.addSubview(cell.button)
+    cell.button.anchors.height.equal(21)
     cell.button.anchors.edges.marginsPin(insets: .init(top: 8, left: 0, bottom: 8, right: 0))
     return cell.onSelect(callback: action)
 }

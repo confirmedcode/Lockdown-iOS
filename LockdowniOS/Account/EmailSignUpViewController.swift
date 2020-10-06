@@ -14,6 +14,13 @@ import PromiseKit
 
 class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadable {
     
+    struct Delegate {
+        var accountStateDidChange: () -> () = { }
+        var showSignIn: () -> () = { }
+    }
+    
+    var delegate = Delegate()
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var lblPasswordValidation: UILabel!
@@ -117,6 +124,7 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
                            }
                         ])
                         self.present(popup, animated: true, completion: nil)
+                        self.delegate.accountStateDidChange()
                     }
                     catch {
                         self.showPopupDialog(title: "Error Saving Credentials", message: "Couldn't save credentials to local keychain. Please report this error to team@lockdownhq.com.", acceptButton: "Okay")
@@ -134,9 +142,8 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
     }
     
     @IBAction func signInClicked(_ sender: Any) {
-        let presenting = self.presentingViewController
         dismiss(animated: true, completion: {
-            presenting?.performSegue(withIdentifier: "showSignInFromHome", sender: nil)
+            self.delegate.showSignIn()
         })
     }
     

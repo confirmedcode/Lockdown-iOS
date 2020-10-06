@@ -18,4 +18,9 @@ final class MainTabBarController: UITabBarController {
         let navigation = viewControllers![2] as! UINavigationController
         return navigation.viewControllers[0] as! AccountViewController
     }
+    
+    var accountTabBarButton: UIView? {
+        // this assumes that "Account" is the last tab. Change the code if this is no longer true
+        return tabBar.subviews.last(where: { String(describing: type(of: $0)) == "UITabBarButton" })
+    }
 }

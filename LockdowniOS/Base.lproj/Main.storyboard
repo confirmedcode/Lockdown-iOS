@@ -30,9 +30,6 @@
         <array key="SF-Pro-Rounded-Regular.otf">
             <string>SFProRounded-Regular</string>
         </array>
-        <array key="SF-Pro-Rounded-Semibold.otf">
-            <string>SFProRounded-Semibold</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Block Log View Controller-->
@@ -407,23 +404,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m83-IN-amO">
-                                <rect key="frame" x="16" y="0.0" width="38" height="38"/>
-                                <accessibility key="accessibilityConfiguration" label="Menu Button"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="Cig-sP-2U0"/>
-                                    <constraint firstAttribute="width" constant="38" id="b5D-9T-dkR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="28"/>
-                                <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="􀌇">
-                                    <color key="titleColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" weight="semibold"/>
-                                </state>
-                                <connections>
-                                    <action selector="menuTapped:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="cwy-3t-4lq"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sXZ-et-a1R">
                                 <rect key="frame" x="0.0" y="42" width="320" height="477"/>
                                 <subviews>
@@ -1124,29 +1104,11 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dO-0o-hEB">
-                                <rect key="frame" x="43" y="5" width="12" height="12"/>
-                                <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="12" id="YqB-CM-5wp"/>
-                                    <constraint firstAttribute="height" constant="12" id="isq-PY-WRW"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="m83-IN-amO" firstAttribute="leading" secondItem="5pE-f0-RUq" secondAttribute="leading" constant="16" id="Nuj-Ud-e2S"/>
                             <constraint firstItem="heC-gP-0Km" firstAttribute="top" secondItem="asm-BH-LXE" secondAttribute="bottom" constant="4" id="PQA-Wm-AUN"/>
-                            <constraint firstItem="2dO-0o-hEB" firstAttribute="leading" secondItem="m83-IN-amO" secondAttribute="leading" constant="27" id="bxW-9g-iG1"/>
-                            <constraint firstItem="2dO-0o-hEB" firstAttribute="top" secondItem="m83-IN-amO" secondAttribute="top" constant="5" id="dXp-al-niD"/>
                             <constraint firstItem="iil-Zo-BlC" firstAttribute="top" secondItem="sXZ-et-a1R" secondAttribute="bottom" id="dbK-6q-ybR"/>
-                            <constraint firstItem="m83-IN-amO" firstAttribute="centerY" secondItem="heC-gP-0Km" secondAttribute="centerY" id="fVI-lV-yhF"/>
                             <constraint firstItem="heC-gP-0Km" firstAttribute="centerX" secondItem="5pE-f0-RUq" secondAttribute="centerX" id="qaj-LL-ddM"/>
                             <constraint firstAttribute="trailing" secondItem="sXZ-et-a1R" secondAttribute="trailing" id="qwW-Ab-dgf"/>
                             <constraint firstItem="sXZ-et-a1R" firstAttribute="top" secondItem="heC-gP-0Km" secondAttribute="bottom" constant="8" id="u8B-Vs-vmF"/>
@@ -1166,8 +1128,6 @@
                         <outlet property="firewallToggleCircle" destination="SpT-Lb-wPN" id="86N-Mp-v32"/>
                         <outlet property="firewallViewLogButton" destination="JVD-sS-lUY" id="fWI-7M-bOB"/>
                         <outlet property="mainStack" destination="sXZ-et-a1R" id="SfM-Fr-ew4"/>
-                        <outlet property="menuButton" destination="m83-IN-amO" id="Whd-Iz-t9Q"/>
-                        <outlet property="menuButtonDot" destination="2dO-0o-hEB" id="5oq-V3-m29"/>
                         <outlet property="metricsStack" destination="xTx-NG-XuM" id="4oP-e2-kSa"/>
                         <outlet property="stackEqualHeightConstraint" destination="haH-jq-gfn" id="fYu-y2-Vf2"/>
                         <outlet property="tapToActivateFirewallLabel" destination="BoV-0k-BS5" id="dQg-tU-AsX"/>
@@ -1195,7 +1155,6 @@
                         </segue>
                         <segue destination="qUL-wd-7I2" kind="presentation" identifier="showFirewallPrivacyPolicy" id="MTm-o9-6Hq"/>
                         <segue destination="2kB-SU-8kN" kind="presentation" id="DoL-Jm-m89"/>
-                        <segue destination="2U8-mK-anH" kind="presentation" identifier="showSignInFromHome" id="2ka-BM-PnV"/>
                         <segue destination="uhi-Bj-03J" kind="presentation" identifier="showUpgradePlan" id="QzY-Hs-CoL"/>
                     </connections>
                 </viewController>
@@ -1265,7 +1224,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Qj-yK-k5A">
-                                <rect key="frame" x="24" y="162" width="272" height="154"/>
+                                <rect key="frame" x="24" y="162" width="272" height="188"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1295,7 +1254,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6y-cc-pyT">
-                                <rect key="frame" x="80" y="503" width="160" height="31"/>
+                                <rect key="frame" x="68" y="503" width="184" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <state key="normal" title="Why Trust Lockdown?">
                                     <color key="titleColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3169,11 +3128,11 @@
                         <viewControllerLayoutGuide type="bottom" id="feT-Rj-gJ2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JzM-3h-rFn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTE-DP-SL6">
-                                <rect key="frame" x="50" y="400" width="220" height="60"/>
+                                <rect key="frame" x="50" y="420" width="220" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.67843137254901964" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="HM0-rE-TaN">
@@ -3198,7 +3157,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp2-kD-Scb">
-                                <rect key="frame" x="50" y="468" width="220" height="60"/>
+                                <rect key="frame" x="50" y="488" width="220" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DI3-bi-P8H">
@@ -3363,11 +3322,11 @@
                         <viewControllerLayoutGuide type="bottom" id="tTJ-Vt-Qi7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yzv-wt-IIc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-4S-hHD">
-                                <rect key="frame" x="50" y="400" width="220" height="60"/>
+                                <rect key="frame" x="50" y="420" width="220" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.67751116069999995" blue="0.90461090690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="j30-BT-CNG">
@@ -3450,7 +3409,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dxs-1n-lKD">
-                                <rect key="frame" x="50" y="468" width="220" height="60"/>
+                                <rect key="frame" x="50" y="488" width="220" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="EWe-A9-hG9">
@@ -3654,7 +3613,6 @@
                     <navigationItem key="navigationItem" title="Account" id="Y6I-Ar-Q5y"/>
                     <connections>
                         <segue destination="FBF-Y3-Pii" kind="presentation" identifier="showWhatIsVPN" id="f2L-nH-Ive"/>
-                        <segue destination="RHG-dp-yBz" kind="presentation" identifier="showCreateAccountFromHome" id="9T1-rU-zQO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="758-up-kc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3695,7 +3653,6 @@
                         <segue destination="NZN-Gg-FQX" kind="relationship" relationship="viewControllers" id="1gW-Xi-pFI"/>
                         <segue destination="vIf-oB-grD" kind="relationship" relationship="viewControllers" id="a26-M6-bGN"/>
                         <segue destination="x5h-bb-His" kind="relationship" relationship="viewControllers" id="SYk-6p-fce"/>
-                        <segue destination="2U8-mK-anH" kind="presentation" identifier="showSignInFromHome" id="5OC-qf-m4L"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zkl-A7-EXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3731,7 +3688,6 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="5OC-qf-m4L"/>
         <segue reference="f2L-nH-Ive"/>
         <segue reference="QzY-Hs-CoL"/>
     </inferredMetricsTieBreakers>

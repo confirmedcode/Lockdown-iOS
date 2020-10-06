@@ -400,7 +400,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             popup.addButtons([
                 DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
                     if let hvc = self.getCurrentViewController() as? HomeViewController {
-                        hvc.performSegue(withIdentifier: "showSignInFromHome", sender: nil)
+                        AccountUI.presentSignInToAccount(on: hvc)
                     }
                 }
             ])
@@ -488,6 +488,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
                 ])
                 self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    (self.window?.rootViewController as? MainTabBarController)?.accountViewController.reloadTable()
+                }
             }
             .catch { error in
                 

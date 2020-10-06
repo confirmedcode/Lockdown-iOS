@@ -304,3 +304,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     //    }
     
 }
+
+extension UIStoryboard {
+    static let main = UIStoryboard(name: "Main", bundle: nil)
+}

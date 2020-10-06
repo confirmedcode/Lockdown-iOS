@@ -168,6 +168,7 @@
 		7C422EA525279724007F9C22 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422EA425279724007F9C22 /* Align.swift */; };
 		7C422EAF252797A6007F9C22 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422EAE252797A6007F9C22 /* AccountVC.swift */; };
 		7C422EB72527A2D1007F9C22 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422EB62527A2D1007F9C22 /* MainTabBarViewController.swift */; };
+		7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9BBA252C8748004175EA /* AccountUI.swift */; };
 		7C6619BC247810E2005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BE247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
@@ -525,6 +526,7 @@
 		7C422EA425279724007F9C22 /* Align.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		7C422EAE252797A6007F9C22 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		7C422EB62527A2D1007F9C22 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		7C4D9BBA252C8748004175EA /* AccountUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUI.swift; sourceTree = "<group>"; };
 		7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDayLog.swift; sourceTree = "<group>"; };
 		7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownFirewallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9A936B251E1EC700DA5721 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -985,7 +987,9 @@
 		7C422EAC25279755007F9C22 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3D9FC67A23E521E5004122D3 /* Account */,
 				7C422EAD2527975E007F9C22 /* Main */,
+				7C4D9BBA252C8748004175EA /* AccountUI.swift */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -1058,7 +1062,6 @@
 				7C422E95252796E2007F9C22 /* Views */,
 				7C1AE07E248028E40000A7D3 /* Extensions */,
 				3DFD0F8422F0F773002A3F25 /* Main */,
-				3D9FC67A23E521E5004122D3 /* Account */,
 				3DBD57A322FBB97D00DE189F /* Firewall */,
 				3D0711B922FE79FF00391C6E /* Why Trust */,
 				3DBD57A422FBBA4600DE189F /* VPN */,
@@ -1996,6 +1999,7 @@
 				3D9FC67923E521DE004122D3 /* ForgotPasswordViewController.swift in Sources */,
 				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
+				7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */,
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				7C1AE073247FD82A0000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
 				3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,

@@ -15,6 +15,12 @@ import CocoaLumberjackSwift
 
 class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadable {
     
+    struct Delegate {
+        var accountStateDidChange: () -> () = { }
+    }
+    
+    var delegate = Delegate()
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
@@ -64,12 +70,9 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
             try setAPICredentials(email: email, password: password)
             setAPICredentialsConfirmed(confirmed: true)
             self.hideLoadingView()
-            
+            self.delegate.accountStateDidChange()
             self.showPopupDialog(title: "Success! 🎉", message: "You've successfully signed in.", acceptButton: "Okay") {
-                let presenting = self.presentingViewController as? HomeViewController
                 self.dismiss(animated: true, completion: {
-                    presenting?.reloadMenuDot()
-
                     // logged in and confirmed - update this email with the receipt and refresh VPN credentials
                     firstly { () -> Promise<SubscriptionEvent> in
                         try Client.subscriptionEvent()
