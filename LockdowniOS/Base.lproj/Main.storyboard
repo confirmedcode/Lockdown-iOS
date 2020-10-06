@@ -405,13 +405,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sXZ-et-a1R">
-                                <rect key="frame" x="0.0" y="42" width="320" height="477"/>
+                                <rect key="frame" x="0.0" y="12" width="320" height="507"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnL-qg-cpL" userLabel="Firewall Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="238.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="253.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyi-Fn-BTq">
-                                                <rect key="frame" x="14" y="2" width="292" height="226.5"/>
+                                                <rect key="frame" x="14" y="2" width="292" height="241.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firewall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIB-Tk-mf1">
                                                         <rect key="frame" x="14" y="12" width="77" height="23"/>
@@ -425,7 +425,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XvC-pH-UjX">
-                                                        <rect key="frame" x="146.5" y="176.5" width="145.5" height="50"/>
+                                                        <rect key="frame" x="146.5" y="191.5" width="145.5" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="yf6-GY-5TP"/>
@@ -441,7 +441,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JVD-sS-lUY">
-                                                        <rect key="frame" x="0.0" y="176.5" width="146" height="50"/>
+                                                        <rect key="frame" x="0.0" y="191.5" width="146" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="h6l-fM-sxH"/>
@@ -457,17 +457,17 @@
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jmJ-jD-Nql">
-                                                        <rect key="frame" x="119.5" y="63" width="53.5" height="63.5"/>
+                                                        <rect key="frame" x="112" y="63" width="68.5" height="78.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2y-nx-6AE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="0.0"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koL-dc-mZr" customClass="CircularView" customModule="Lockdown" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpT-Lb-wPN">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                         <accessibility key="accessibilityConfiguration">
                                                                             <bool key="isElement" value="NO"/>
                                                                         </accessibility>
@@ -475,7 +475,7 @@
                                                                         <state key="normal" image="blue_circle"/>
                                                                     </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldh-Fd-85p" customClass="NVActivityIndicatorView" customModule="Lockdown" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="color">
@@ -488,7 +488,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRG-nx-zRG">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                         <accessibility key="accessibilityConfiguration" label="Tap This Button To Activate Firewall"/>
                                                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
@@ -532,10 +532,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-5L-NkS">
-                                                                <rect key="frame" x="0.0" y="53.5" width="53.5" height="10"/>
+                                                                <rect key="frame" x="0.0" y="68.5" width="68.5" height="10"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOT ACTIVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmJ-b4-n81">
-                                                                        <rect key="frame" x="-15.5" y="-4" width="84" height="18"/>
+                                                                        <rect key="frame" x="-8" y="-4" width="84" height="18"/>
                                                                         <color key="backgroundColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="18" id="F6Q-Xt-Wbs"/>
@@ -567,7 +567,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xTx-NG-XuM">
-                                                        <rect key="frame" x="0.0" y="126.5" width="292" height="48"/>
+                                                        <rect key="frame" x="0.0" y="141.5" width="292" height="48"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnD-4K-FVx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="97.5" height="48"/>
@@ -675,7 +675,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To Activate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoV-0k-BS5">
-                                                        <rect key="frame" x="178" y="60" width="70" height="60"/>
+                                                        <rect key="frame" x="185.5" y="67.5" width="70" height="60"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Instructs user to tap the blue circle to the left of this label to activate." label="A label that says Tap To Activate. Not the actual button."/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="70" id="TkC-Op-Yxy"/>
@@ -753,26 +753,26 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGi-DQ-KGY" userLabel="VPN Container">
-                                        <rect key="frame" x="0.0" y="238.5" width="320" height="238.5"/>
+                                        <rect key="frame" x="0.0" y="253.5" width="320" height="253.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAF-sc-hcp">
-                                                <rect key="frame" x="14" y="2" width="292" height="226.5"/>
+                                                <rect key="frame" x="14" y="2" width="292" height="241.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lf9-9Y-4Wz">
-                                                        <rect key="frame" x="0.0" y="63" width="292" height="163.5"/>
+                                                        <rect key="frame" x="0.0" y="63" width="292" height="178.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cYL-kT-s5o">
-                                                                <rect key="frame" x="119.5" y="0.0" width="53.5" height="63.5"/>
+                                                                <rect key="frame" x="112" y="0.0" width="68.5" height="78.5"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7J-jX-u0J">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="0.0"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="0.0"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPf-nR-X1a" customClass="CircularView" customModule="Lockdown" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                         <subviews>
                                                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsZ-OF-efk">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                                 <accessibility key="accessibilityConfiguration">
                                                                                     <bool key="isElement" value="NO"/>
                                                                                 </accessibility>
@@ -780,7 +780,7 @@
                                                                                 <state key="normal" image="blue_circle"/>
                                                                             </button>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWe-0G-LDl" customClass="NVActivityIndicatorView" customModule="Lockdown" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
@@ -793,7 +793,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </view>
                                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXy-3G-JaC">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="53.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="68.5"/>
                                                                                 <accessibility key="accessibilityConfiguration" label="Tap This Button To Activate Secure Tunnel"/>
                                                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
@@ -837,7 +837,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rto-E0-ie1">
-                                                                        <rect key="frame" x="0.0" y="53.5" width="53.5" height="10"/>
+                                                                        <rect key="frame" x="0.0" y="68.5" width="68.5" height="10"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </view>
                                                                 </subviews>
@@ -850,7 +850,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aLy-JM-aIj">
-                                                                <rect key="frame" x="0.0" y="63.5" width="292" height="48"/>
+                                                                <rect key="frame" x="0.0" y="78.5" width="292" height="48"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXp-IS-FfO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="292" height="48"/>
@@ -895,7 +895,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a4O-qT-yLk">
-                                                                <rect key="frame" x="146.5" y="113.5" width="145.5" height="50"/>
+                                                                <rect key="frame" x="146.5" y="128.5" width="145.5" height="50"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="h1M-fp-4iR"/>
@@ -910,7 +910,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-9H-gRT">
-                                                                <rect key="frame" x="0.0" y="113.5" width="146" height="50"/>
+                                                                <rect key="frame" x="0.0" y="128.5" width="146" height="50"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="Dse-hU-pGs"/>
@@ -924,7 +924,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKc-uc-qfV">
-                                                                <rect key="frame" x="149" y="139.5" width="140" height="18"/>
+                                                                <rect key="frame" x="149" y="154.5" width="140" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="Td6-9E-Ony"/>
                                                                 </constraints>
@@ -956,7 +956,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="292" height="63"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOT ACTIVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2I5-jL-jQr">
-                                                                <rect key="frame" x="104" y="112.5" width="84" height="18"/>
+                                                                <rect key="frame" x="104" y="127.5" width="84" height="18"/>
                                                                 <color key="backgroundColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="Ixo-sa-Qj7"/>
@@ -1093,25 +1093,12 @@
                                     <constraint firstItem="HnL-qg-cpL" firstAttribute="height" secondItem="dGi-DQ-KGY" secondAttribute="height" id="haH-jq-gfn"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lockdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heC-gP-0Km">
-                                <rect key="frame" x="100" y="4" width="120" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="0gj-lK-4DB">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="250"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="30" id="LlW-0h-O5H"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="heC-gP-0Km" firstAttribute="top" secondItem="asm-BH-LXE" secondAttribute="bottom" constant="4" id="PQA-Wm-AUN"/>
                             <constraint firstItem="iil-Zo-BlC" firstAttribute="top" secondItem="sXZ-et-a1R" secondAttribute="bottom" id="dbK-6q-ybR"/>
-                            <constraint firstItem="heC-gP-0Km" firstAttribute="centerX" secondItem="5pE-f0-RUq" secondAttribute="centerX" id="qaj-LL-ddM"/>
                             <constraint firstAttribute="trailing" secondItem="sXZ-et-a1R" secondAttribute="trailing" id="qwW-Ab-dgf"/>
-                            <constraint firstItem="sXZ-et-a1R" firstAttribute="top" secondItem="heC-gP-0Km" secondAttribute="bottom" constant="8" id="u8B-Vs-vmF"/>
+                            <constraint firstItem="sXZ-et-a1R" firstAttribute="top" secondItem="asm-BH-LXE" secondAttribute="bottom" constant="12" id="u8B-Vs-vmF"/>
                             <constraint firstItem="sXZ-et-a1R" firstAttribute="leading" secondItem="5pE-f0-RUq" secondAttribute="leading" id="zfh-IK-dLO"/>
                         </constraints>
                     </view>
@@ -1318,7 +1305,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CQN-ao-cuu">
-                                <rect key="frame" x="0.0" y="54" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="54" width="320" height="48"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PO4-d5-rZJ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="8"/>
@@ -1339,10 +1326,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-dA-tWF">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocking Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-nB-tAb">
-                                                <rect key="frame" x="20" y="6.5" width="125.5" height="30"/>
+                                                <rect key="frame" x="20" y="5.5" width="144" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZgL-en-Q3V"/>
                                                 </constraints>
@@ -1350,14 +1337,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-Pp-XI4">
-                                                <rect key="frame" x="251" y="5" width="51" height="33"/>
+                                                <rect key="frame" x="251" y="5" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.0" green="0.67751116069999995" blue="0.90461090690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="toggleLockdownWithSender:" destination="lbX-da-1v3" eventType="valueChanged" id="5KZ-iG-w1a"/>
                                                 </connections>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH0-q3-pY2">
-                                                <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                                                <rect key="frame" x="0.0" y="47" width="320" height="1"/>
                                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="cle-g9-fSo"/>
@@ -1380,7 +1367,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="45" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gjd-0I-N7k">
-                                <rect key="frame" x="0.0" y="104" width="320" height="444"/>
+                                <rect key="frame" x="0.0" y="102" width="320" height="446"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlockListGroupCell" rowHeight="72" id="c8H-rF-8EP" customClass="BlockListGroupCell" customModule="Lockdown" customModuleProvider="target">
@@ -2406,7 +2393,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-yz-40I">
-                                <rect key="frame" x="24" y="172" width="272" height="161"/>
+                                <rect key="frame" x="24" y="172" width="272" height="128.5"/>
                                 <string key="text">Lockdown Firewall is 100% on-device, so it does not collect or transmit any data to any servers - everything stays on your device.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <nil key="highlightedColor"/>
@@ -2440,7 +2427,7 @@
                                 <rect key="frame" x="37" y="340" width="246" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a37-qm-xpZ">
-                                        <rect key="frame" x="147.5" y="18.5" width="103" height="18.5"/>
+                                        <rect key="frame" x="132" y="18.5" width="94" height="18.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18.5" id="RbT-fI-KPp"/>
                                         </constraints>
@@ -2453,7 +2440,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to agree to this" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sd-rw-Pyl">
-                                        <rect key="frame" x="0.0" y="18.5" width="144.5" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="19" width="129" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2469,7 +2456,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-8r-pbC">
-                                <rect key="frame" x="68" y="483" width="184" height="32"/>
+                                <rect key="frame" x="80" y="483" width="160" height="31"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <state key="normal" title="Why Trust Lockdown?">
                                     <color key="titleColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

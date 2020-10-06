@@ -284,12 +284,14 @@ final class AccountViewController: BaseViewController, Loadable {
             titleLabel.text = title
             titleLabel.font = fontBold18
             titleLabel.textAlignment = .center
+            titleLabel.numberOfLines = 0
             stack.addArrangedSubview(titleLabel)
             
             let messageLabel = UILabel()
             messageLabel.text = message
             messageLabel.font = fontMedium18
             messageLabel.textAlignment = .center
+            messageLabel.numberOfLines = 0
             stack.addArrangedSubview(messageLabel)
         }
         
