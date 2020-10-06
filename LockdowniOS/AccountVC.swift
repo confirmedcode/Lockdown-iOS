@@ -11,7 +11,7 @@ import PopupDialog
 import PromiseKit
 import CocoaLumberjackSwift
 
-final class AccountViewController: BaseViewController {
+final class AccountViewController: BaseViewController, Loadable {
     
     let tableView = StaticTableView(frame: .zero, style: .plain)
     var activePlans: [Subscription.PlanType] = []
@@ -86,13 +86,13 @@ final class AccountViewController: BaseViewController {
             else {
                 title = "⚠️ Email Not Confirmed"
                 firstButton = DefaultCell(title: NSLocalizedString("Confirm Email", comment: ""), height: buttonHeight, dismissOnTap: true) {
-//                    self.showLoadingView()
+                    self.showLoadingView()
                     
                     firstly {
                         try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
                     }
                     .done { (signin: SignIn) in
-//                        self.hideLoadingView()
+                        self.hideLoadingView()
                         // successfully signed in with no errors, show confirmation success
                         setAPICredentialsConfirmed(confirmed: true)
                         
@@ -132,7 +132,7 @@ final class AccountViewController: BaseViewController {
                         self.present(popup, animated: true, completion: nil)
                     }
                     .catch { error in
-//                        self.hideLoadingView()
+                        self.hideLoadingView()
                         let popup = PopupDialog(title: "Check Your Inbox",
                                                 message: "To complete your signup, click the confirmation link we sent to \(apiCredentials.email). Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.",
                                                 image: nil,
