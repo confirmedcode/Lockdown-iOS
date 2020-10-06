@@ -192,7 +192,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let inset = firewallButton.frame.width * 0.225
+        let inset = firewallButton.frame.width * 0.175
         firewallButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         vpnButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }

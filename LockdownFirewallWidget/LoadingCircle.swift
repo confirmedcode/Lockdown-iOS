@@ -70,11 +70,8 @@ struct LoadingCircle: View {
                 .background(Color.panelBackground)
                 .zIndex(1)
             Link.init(destination: URL.init(string: self.link)!, label: {
-                Image("power_button")
-                    .resizable()
-                    .padding(19)
+                Image(uiImage: UIImage(named: "power")!.withRenderingMode(.alwaysTemplate).withTintColor(UIColor(tunnelState.circleColor)).resized(toFit: CGSize(width: side * 0.30, height: side * 0.30)))
                     .foregroundColor(tunnelState.circleColor)
-                    .frame(width: side * 0.4 * 1.15, height: side * 0.4 * 1.15)
                     .zIndex(40)
             })
         }
@@ -94,4 +91,31 @@ extension Color {
     
     static let lightGray = Color(UIColor.lightGray)
     static let flatRed = Color(red: 231/255, green: 76/255, blue: 60/255)
+}
+
+extension UIImage {
+    func resized(toFit size: CGSize) -> UIImage {
+        assert(size.width > 0 && size.height > 0, "You cannot safely scale an image to a zero width or height")
+        
+        let imageAspectRatio = self.size.width / self.size.height
+        let canvasAspectRatio = size.width / size.height
+        
+        var resizeFactor: CGFloat
+        
+        if imageAspectRatio > canvasAspectRatio {
+            resizeFactor = size.width / self.size.width
+        } else {
+            resizeFactor = size.height / self.size.height
+        }
+        
+        let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
+        
+        UIGraphicsBeginImageContextWithOptions(scaledSize, false, 0.0)
+        draw(in: CGRect(origin: .zero, size: scaledSize))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+        UIGraphicsEndImageContext()
+        
+        return scaledImage
+    }
 }

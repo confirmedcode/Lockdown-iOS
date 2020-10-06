@@ -45,16 +45,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hio-Xi-kNY">
-                                <rect key="frame" x="32" y="245.5" width="256" height="57"/>
+                                <rect key="frame" x="32" y="247" width="256" height="54.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Log Disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mg-Xn-BmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="24.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                         <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7V-kr-ymm">
-                                        <rect key="frame" x="0.0" y="26" width="256" height="31"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="256" height="30"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <state key="normal" title="Enable Block Log">
                                             <color key="titleColor" name="Confirmed Blue"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="I2D-RD-nwm">
-                                <rect key="frame" x="0.0" y="168" width="320" height="380"/>
+                                <rect key="frame" x="0.0" y="167" width="320" height="381"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockLogCell" rowHeight="36" id="7rY-DO-9Xs" customClass="BlockLogCell" customModule="Lockdown" customModuleProvider="target">
@@ -170,14 +170,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3421" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-GU-wUS">
-                                <rect key="frame" x="139" y="138.5" width="41" height="22"/>
+                                <rect key="frame" x="128.5" y="138.5" width="40.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocked today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-Wf-i0q">
-                                <rect key="frame" x="19" y="140.5" width="105" height="17.5"/>
+                                <rect key="frame" x="19" y="140.5" width="94.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -492,7 +492,7 @@
                                                                         <accessibility key="accessibilityConfiguration" label="Tap This Button To Activate Firewall"/>
                                                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
-                                                                        <state key="normal" image="power_button"/>
+                                                                        <state key="normal" image="power"/>
                                                                         <connections>
                                                                             <action selector="toggleFirewall:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="57V-aU-ItM"/>
                                                                         </connections>
@@ -797,7 +797,7 @@
                                                                                 <accessibility key="accessibilityConfiguration" label="Tap This Button To Activate Secure Tunnel"/>
                                                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
-                                                                                <state key="normal" image="power_button"/>
+                                                                                <state key="normal" image="power"/>
                                                                                 <connections>
                                                                                     <action selector="toggleVPN:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="DWX-Ij-gHF"/>
                                                                                 </connections>
@@ -1342,7 +1342,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocking Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-nB-tAb">
-                                                <rect key="frame" x="20" y="6.5" width="144" height="30"/>
+                                                <rect key="frame" x="20" y="6.5" width="125.5" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZgL-en-Q3V"/>
                                                 </constraints>
@@ -3696,6 +3696,7 @@
         <image name="globe" width="120" height="120"/>
         <image name="lock.shield.fill" catalog="system" width="128" height="118"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="power" width="284" height="284"/>
         <image name="power_button" width="256" height="256"/>
         <image name="website_icon" width="300" height="302"/>
         <namedColor name="Confirmed Blue">
