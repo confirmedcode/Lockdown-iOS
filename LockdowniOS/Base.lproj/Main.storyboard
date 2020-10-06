@@ -45,16 +45,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hio-Xi-kNY">
-                                <rect key="frame" x="32" y="247" width="256" height="54.5"/>
+                                <rect key="frame" x="32" y="245.5" width="256" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Log Disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mg-Xn-BmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                         <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7V-kr-ymm">
-                                        <rect key="frame" x="0.0" y="24.5" width="256" height="30"/>
+                                        <rect key="frame" x="0.0" y="26" width="256" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <state key="normal" title="Enable Block Log">
                                             <color key="titleColor" name="Confirmed Blue"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="I2D-RD-nwm">
-                                <rect key="frame" x="0.0" y="167" width="320" height="381"/>
+                                <rect key="frame" x="0.0" y="168" width="320" height="380"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockLogCell" rowHeight="36" id="7rY-DO-9Xs" customClass="BlockLogCell" customModule="Lockdown" customModuleProvider="target">
@@ -170,14 +170,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3421" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-GU-wUS">
-                                <rect key="frame" x="128.5" y="138.5" width="40.5" height="21"/>
+                                <rect key="frame" x="139" y="138.5" width="41" height="22"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocked today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-Wf-i0q">
-                                <rect key="frame" x="19" y="140.5" width="94.5" height="16.5"/>
+                                <rect key="frame" x="19" y="140.5" width="105" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -404,7 +404,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sXZ-et-a1R">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sXZ-et-a1R">
                                 <rect key="frame" x="0.0" y="12" width="320" height="507"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnL-qg-cpL" userLabel="Firewall Container">
@@ -749,8 +749,19 @@
                                             <constraint firstAttribute="trailing" secondItem="Kyi-Fn-BTq" secondAttribute="trailing" constant="14" id="1wc-Wj-ZDs"/>
                                             <constraint firstItem="Kyi-Fn-BTq" firstAttribute="leading" secondItem="HnL-qg-cpL" secondAttribute="leading" constant="14" id="G72-B7-Ni6"/>
                                             <constraint firstItem="Kyi-Fn-BTq" firstAttribute="top" secondItem="HnL-qg-cpL" secondAttribute="top" constant="2" id="LP3-Dd-hhS"/>
+                                            <constraint firstAttribute="width" secondItem="HnL-qg-cpL" secondAttribute="height" multiplier="1:1" id="pDD-mk-L4A"/>
                                             <constraint firstAttribute="bottom" secondItem="Kyi-Fn-BTq" secondAttribute="bottom" constant="10" id="xmB-PP-Oxe"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="pDD-mk-L4A"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="pDD-mk-L4A"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGi-DQ-KGY" userLabel="VPN Container">
                                         <rect key="frame" x="0.0" y="253.5" width="320" height="253.5"/>
@@ -1083,23 +1094,43 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="dAF-sc-hcp" secondAttribute="trailing" constant="14" id="NHk-Sa-0c4"/>
                                             <constraint firstItem="dAF-sc-hcp" firstAttribute="top" secondItem="dGi-DQ-KGY" secondAttribute="top" constant="2" id="Rxp-Jf-Upw"/>
+                                            <constraint firstAttribute="width" secondItem="dGi-DQ-KGY" secondAttribute="height" multiplier="1:1" id="TLk-Rr-x3S"/>
                                             <constraint firstAttribute="bottom" secondItem="dAF-sc-hcp" secondAttribute="bottom" constant="10" id="XFI-B8-1cu"/>
                                             <constraint firstItem="dAF-sc-hcp" firstAttribute="leading" secondItem="dGi-DQ-KGY" secondAttribute="leading" constant="14" id="vco-GD-1yq"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="TLk-Rr-x3S"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="TLk-Rr-x3S"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="HnL-qg-cpL" firstAttribute="width" secondItem="dGi-DQ-KGY" secondAttribute="width" id="Ep8-Oy-C9F"/>
                                     <constraint firstItem="HnL-qg-cpL" firstAttribute="height" secondItem="dGi-DQ-KGY" secondAttribute="height" id="haH-jq-gfn"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=regular" spacing="32"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iil-Zo-BlC" firstAttribute="top" secondItem="sXZ-et-a1R" secondAttribute="bottom" id="dbK-6q-ybR"/>
-                            <constraint firstAttribute="trailing" secondItem="sXZ-et-a1R" secondAttribute="trailing" id="qwW-Ab-dgf"/>
-                            <constraint firstItem="sXZ-et-a1R" firstAttribute="top" secondItem="asm-BH-LXE" secondAttribute="bottom" constant="12" id="u8B-Vs-vmF"/>
-                            <constraint firstItem="sXZ-et-a1R" firstAttribute="leading" secondItem="5pE-f0-RUq" secondAttribute="leading" id="zfh-IK-dLO"/>
+                            <constraint firstItem="iil-Zo-BlC" firstAttribute="top" secondItem="sXZ-et-a1R" secondAttribute="bottom" id="dbK-6q-ybR">
+                                <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="sXZ-et-a1R" secondAttribute="trailing" id="qwW-Ab-dgf">
+                                <variation key="heightClass=regular-widthClass=regular" constant="64"/>
+                            </constraint>
+                            <constraint firstItem="sXZ-et-a1R" firstAttribute="top" secondItem="asm-BH-LXE" secondAttribute="bottom" constant="12" id="u8B-Vs-vmF">
+                                <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                            </constraint>
+                            <constraint firstItem="sXZ-et-a1R" firstAttribute="leading" secondItem="5pE-f0-RUq" secondAttribute="leading" id="zfh-IK-dLO">
+                                <variation key="heightClass=regular-widthClass=regular" constant="64"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Protect" image="lock.shield.fill" catalog="system" id="O5a-jC-Mj1"/>
@@ -1305,7 +1336,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CQN-ao-cuu">
-                                <rect key="frame" x="0.0" y="54" width="320" height="48"/>
+                                <rect key="frame" x="0.0" y="54" width="320" height="50"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PO4-d5-rZJ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="8"/>
@@ -1326,10 +1357,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-dA-tWF">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocking Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-nB-tAb">
-                                                <rect key="frame" x="20" y="5.5" width="144" height="30"/>
+                                                <rect key="frame" x="20" y="6.5" width="144" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZgL-en-Q3V"/>
                                                 </constraints>
@@ -1337,14 +1368,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-Pp-XI4">
-                                                <rect key="frame" x="251" y="5" width="51" height="31"/>
+                                                <rect key="frame" x="251" y="5" width="51" height="33"/>
                                                 <color key="onTintColor" red="0.0" green="0.67751116069999995" blue="0.90461090690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="toggleLockdownWithSender:" destination="lbX-da-1v3" eventType="valueChanged" id="5KZ-iG-w1a"/>
                                                 </connections>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH0-q3-pY2">
-                                                <rect key="frame" x="0.0" y="47" width="320" height="1"/>
+                                                <rect key="frame" x="0.0" y="49" width="320" height="1"/>
                                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="cle-g9-fSo"/>
@@ -1367,7 +1398,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="45" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gjd-0I-N7k">
-                                <rect key="frame" x="0.0" y="102" width="320" height="446"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="444"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlockListGroupCell" rowHeight="72" id="c8H-rF-8EP" customClass="BlockListGroupCell" customModule="Lockdown" customModuleProvider="target">
@@ -2393,7 +2424,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-yz-40I">
-                                <rect key="frame" x="24" y="172" width="272" height="128.5"/>
+                                <rect key="frame" x="24" y="172" width="272" height="161"/>
                                 <string key="text">Lockdown Firewall is 100% on-device, so it does not collect or transmit any data to any servers - everything stays on your device.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <nil key="highlightedColor"/>
@@ -2427,7 +2458,7 @@
                                 <rect key="frame" x="37" y="340" width="246" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a37-qm-xpZ">
-                                        <rect key="frame" x="132" y="18.5" width="94" height="18.5"/>
+                                        <rect key="frame" x="147.5" y="18.5" width="103" height="18.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18.5" id="RbT-fI-KPp"/>
                                         </constraints>
@@ -2440,7 +2471,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to agree to this" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sd-rw-Pyl">
-                                        <rect key="frame" x="0.0" y="19" width="129" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="18.5" width="144.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2456,7 +2487,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-8r-pbC">
-                                <rect key="frame" x="80" y="483" width="160" height="31"/>
+                                <rect key="frame" x="68" y="483" width="184" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <state key="normal" title="Why Trust Lockdown?">
                                     <color key="titleColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
