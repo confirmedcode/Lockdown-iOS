@@ -45,16 +45,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hio-Xi-kNY">
-                                <rect key="frame" x="32" y="329.66666666666669" width="350" height="56.666666666666686"/>
+                                <rect key="frame" x="32" y="330.66666666666669" width="350" height="54.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Log Disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mg-Xn-BmP">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="25.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="24.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
                                         <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7V-kr-ymm">
-                                        <rect key="frame" x="0.0" y="25.666666666666629" width="350" height="31"/>
+                                        <rect key="frame" x="0.0" y="24.666666666666629" width="350" height="30"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <state key="normal" title="Enable Block Log">
                                             <color key="titleColor" name="Confirmed Blue"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="I2D-RD-nwm">
-                                <rect key="frame" x="0.0" y="168" width="414" height="548"/>
+                                <rect key="frame" x="0.0" y="167" width="414" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockLogCell" rowHeight="36" id="7rY-DO-9Xs" customClass="BlockLogCell" customModule="Lockdown" customModuleProvider="target">
@@ -170,14 +170,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3421" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-GU-wUS">
-                                <rect key="frame" x="139" y="138.33333333333334" width="41" height="22"/>
+                                <rect key="frame" x="128.66666666666666" y="138.33333333333334" width="40.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocked today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-Wf-i0q">
-                                <rect key="frame" x="19" y="140.66666666666666" width="105" height="17.333333333333343"/>
+                                <rect key="frame" x="19.000000000000007" y="140.66666666666666" width="94.666666666666686" height="16.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1361,7 +1361,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocking Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-nB-tAb">
-                                                <rect key="frame" x="20" y="6.6666666666666643" width="143.66666666666666" height="30"/>
+                                                <rect key="frame" x="19.999999999999993" y="6.6666666666666643" width="125.33333333333331" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZgL-en-Q3V"/>
                                                 </constraints>
@@ -3016,9 +3016,9 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4a-yi-uRp">
-                                                        <rect key="frame" x="22.666666666666657" y="22.333333333333371" width="55" height="55"/>
+                                                        <rect key="frame" x="17.666666666666657" y="17.333333333333371" width="65" height="65"/>
                                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button" image="power_button"/>
+                                                        <state key="normal" title="Button" image="power"/>
                                                         <connections>
                                                             <action selector="privTapped:" destination="FBF-Y3-Pii" eventType="touchUpInside" id="fNj-Dd-doa"/>
                                                         </connections>
@@ -3033,10 +3033,10 @@
                                                     <constraint firstItem="yFr-Yw-ddj" firstAttribute="height" secondItem="Lgj-pF-gac" secondAttribute="height" id="HZu-3q-Cro"/>
                                                     <constraint firstItem="O4a-yi-uRp" firstAttribute="centerY" secondItem="Lgj-pF-gac" secondAttribute="centerY" id="Ibw-Jj-zS3"/>
                                                     <constraint firstAttribute="trailing" secondItem="rVv-AB-Lz6" secondAttribute="trailing" id="MS2-IZ-Iih"/>
-                                                    <constraint firstItem="O4a-yi-uRp" firstAttribute="width" secondItem="Lgj-pF-gac" secondAttribute="width" multiplier="0.55" id="Omx-cq-cP6"/>
+                                                    <constraint firstItem="O4a-yi-uRp" firstAttribute="width" secondItem="Lgj-pF-gac" secondAttribute="width" multiplier="0.65" id="Omx-cq-cP6"/>
                                                     <constraint firstAttribute="bottom" secondItem="yFr-Yw-ddj" secondAttribute="bottom" id="Qgc-Cx-uGW"/>
                                                     <constraint firstItem="yFr-Yw-ddj" firstAttribute="width" secondItem="Lgj-pF-gac" secondAttribute="width" id="UsL-Cj-7JL"/>
-                                                    <constraint firstItem="O4a-yi-uRp" firstAttribute="height" secondItem="Lgj-pF-gac" secondAttribute="height" multiplier="0.55" id="dbZ-oM-kgJ"/>
+                                                    <constraint firstItem="O4a-yi-uRp" firstAttribute="height" secondItem="Lgj-pF-gac" secondAttribute="height" multiplier="0.65" id="dbZ-oM-kgJ"/>
                                                     <constraint firstAttribute="width" secondItem="Lgj-pF-gac" secondAttribute="height" multiplier="1:1" id="jfN-Ov-Q5S"/>
                                                     <constraint firstItem="yFr-Yw-ddj" firstAttribute="top" secondItem="Lgj-pF-gac" secondAttribute="top" id="kPc-eI-mwl"/>
                                                     <constraint firstAttribute="trailing" secondItem="yFr-Yw-ddj" secondAttribute="trailing" id="q36-lp-7cR"/>
@@ -3716,7 +3716,6 @@
         <image name="lock.shield.fill" catalog="system" width="128" height="118"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="power" width="284" height="284"/>
-        <image name="power_button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="website_icon" width="300" height="302"/>
         <namedColor name="Confirmed Blue">
             <color red="0.0" green="0.67799997329711914" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
