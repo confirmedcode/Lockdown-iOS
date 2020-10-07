@@ -25,6 +25,7 @@ final class AccountViewController: BaseViewController, Loadable {
             tableView.separatorStyle = .singleLine
             tableView.cellLayoutMarginsFollowReadableWidth = true
             tableView.deselectsCellsAutomatically = true
+            tableView.contentInset.top += 48
             tableView.tableFooterView = UIView()
             
             createTable()
