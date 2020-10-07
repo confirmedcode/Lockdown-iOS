@@ -337,6 +337,17 @@ final class AccountViewController: BaseViewController, Loadable {
             tabBarController.homeViewController.startTutorial()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showWhatIsVPN":
+            if let vc = segue.destination as? WhatIsVpnViewController {
+                vc.parentVC = (tabBarController as? MainTabBarController)?.homeViewController
+            }
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - Helpers / Extensions
