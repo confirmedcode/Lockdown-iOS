@@ -522,12 +522,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Utilities
     // Returns the most recently presented UIViewController (visible)
     func getCurrentViewController() -> UIViewController? {
+        return getCurrentViewController(in: UIApplication.shared.keyWindow?.rootViewController)
+    }
+    
+    private func getCurrentViewController(in root: UIViewController?) -> UIViewController? {
         // If the root view is a navigation controller, we can just return the visible ViewController
-        if let navigationController = getNavigationController() {
+        if let navigationController = getNavigationController(in: root) {
             return navigationController.visibleViewController
         }
+        if let tabBarVC = root as? UITabBarController {
+            if let nvc = getNavigationController(in: tabBarVC.selectedViewController) {
+                return nvc.visibleViewController
+            } else if let selected = tabBarVC.selectedViewController {
+                return selected
+            }
+        }
         // Otherwise, we must get the root UIViewController and iterate through presented views
-        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+        if let rootController = root {
             var currentController: UIViewController! = rootController
             // Each ViewController keeps track of the view it has presented, so we
             // can move from the head to the tail, which will always be the current view
@@ -540,8 +551,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // Returns the navigation controller if it exists
-    func getNavigationController() -> UINavigationController? {
-        if let navigationController = UIApplication.shared.keyWindow?.rootViewController {
+    func getNavigationController(in root: UIViewController?) -> UINavigationController? {
+        if let navigationController = root {
             return navigationController as? UINavigationController
         }
         return nil

@@ -146,7 +146,7 @@ struct LockdownVPNWidgetEntryView : View {
                 StatusLabel(text: "TUNNEL OFF", color: .flatRed)
             }
             if entry.size.height < 160 {
-                Spacer().frame(minHeight: 8)
+                Spacer().frame(minHeight: 4)
             } else {
                 Spacer()
             }
@@ -157,7 +157,6 @@ struct LockdownVPNWidgetEntryView : View {
                     Text(entry.vpnRegion.regionDisplayNameShort)
                         .font(.system(size: 12, weight: .medium))
                 }
-                .frame(width: entry.size.height - 30)
                 .padding(.bottom, 12)
             })
         }.frame(width: entry.size.height, height: entry.size.height)

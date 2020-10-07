@@ -64,9 +64,9 @@ struct LoadingCircle: View {
             Circle()
                 .fill()
                 .frame(width: side * 0.4, height: side * 0.4)
-                .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 8, x: 0, y: 3.5)
+                .shadow(color: .powerButtonShadowColor, radius: 8, x: 0, y: 3.5)
                 .padding(4)
-                .foregroundColor(Color.panelBackground)
+                .foregroundColor(Color.panelSecondaryBackground)
                 .background(Color.panelBackground)
                 .zIndex(1)
             Link.init(destination: URL.init(string: self.link)!, label: {
@@ -87,6 +87,8 @@ struct BlankButtonStyle: ButtonStyle {
 extension Color {
     static let confirmedBlue = Color(red: 0/255.0, green: 173/255.0, blue: 231/255.0)
     static let panelBackground = Color("Panel Background")
+    static let panelSecondaryBackground = Color("Panel Secondary Background")
+    static let powerButtonShadowColor = Color("Power Button Shadow Color")
     static let mainBackground = Color("Main Background")
     
     static let lightGray = Color(UIColor.lightGray)
