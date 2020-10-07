@@ -23,17 +23,18 @@ class CircularView: UIView {
     }
     
     @IBInspectable var shadowUIColor: UIColor? {
-        set {
-            layer.shadowColor = newValue?.cgColor
+        didSet {
+            redrawShadowColor()
         }
-        get {
-            if let color = layer.shadowColor {
-                return UIColor(cgColor: color)
-            }
-            else {
-                return nil
-            }
-        }
+    }
+    
+    func redrawShadowColor() {
+        self.layer.shadowColor = shadowUIColor?.cgColor
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        redrawShadowColor()
     }
 }
 
