@@ -21,6 +21,20 @@ class CircularView: UIView {
         super.layoutSubviews()
         self.layer.cornerRadius = self.bounds.size.width * 0.50
     }
+    
+    @IBInspectable var shadowUIColor: UIColor? {
+        set {
+            layer.shadowColor = newValue?.cgColor
+        }
+        get {
+            if let color = layer.shadowColor {
+                return UIColor(cgColor: color)
+            }
+            else {
+                return nil
+            }
+        }
+    }
 }
 
 let kHasSeenEmailSignup = "hasSeenEmailSignup"
