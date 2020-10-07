@@ -51,6 +51,9 @@ final class AccountViewController: BaseViewController, Loadable {
                 self?.reloadTable()
             }
         }
+        firstButton.backgroundView = UIView()
+        firstButton.backgroundView?.backgroundColor = UIColor.tunnelsBlue
+        firstButton.label.textColor = UIColor.white
         
         if let apiCredentials = getAPICredentials() {
             message = apiCredentials.email
@@ -82,6 +85,8 @@ final class AccountViewController: BaseViewController, Loadable {
                     ])
                     self.present(confirm, animated: true, completion: nil)
                 }
+                firstButton.backgroundView?.backgroundColor = UIColor.clear
+                firstButton.label.textColor = UIColor.systemRed
             }
             else {
                 title = "⚠️ Email Not Confirmed"
@@ -185,9 +190,6 @@ final class AccountViewController: BaseViewController, Loadable {
                 }
             }
         }
-        firstButton.backgroundView = UIView()
-        firstButton.backgroundView?.backgroundColor = UIColor.tunnelsBlue
-        firstButton.label.textColor = UIColor.white
         
         let upgradeButton = DefaultButtonCell(title: "Loading Plan", height: buttonHeight, dismissOnTap: true) {
             self.performSegue(withIdentifier: "showUpgradePlan", sender: self)
