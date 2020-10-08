@@ -192,7 +192,7 @@ class SignupViewController: BaseViewController {
                 }
                 else {
                     self.showPopupDialog(title: NSLocalizedString("Error Starting Trial", comment: ""),
-                                         message: NSLocalizedString("Please contact team@lockdownhq.com.\n\nError details:\n", comment: "") + "\(error)",
+                                         message: NSLocalizedString("Please contact team@lockdownprivacy.com.\n\nError details:\n", comment: "") + "\(error)",
                         acceptButton: "Okay")
                 }
         })
@@ -239,17 +239,17 @@ class SignupViewController: BaseViewController {
                 switch apiError.code {
                 case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
                     self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
-                                        message: NSLocalizedString("Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownhq.com", comment: ""),
+                                        message: NSLocalizedString("Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
                                         acceptButton: NSLocalizedString("OK", comment: ""))
                 default:
                     self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
-                                         message: NSLocalizedString("Please email team@lockdownhq.com with the following Error Code ", comment: "") + "\(apiError.code) : \(apiError.message)",
+                                         message: NSLocalizedString("Please email team@lockdownprivacy.com with the following Error Code ", comment: "") + "\(apiError.code) : \(apiError.message)",
                                          acceptButton: NSLocalizedString("OK", comment: ""))
                 }
             }
             else {
                 self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
-                                     message: NSLocalizedString("Please make sure your Internet connection is active. If this error persists, email team@lockdownhq.com with the following error message: ", comment: "") + "\(error)",
+                                     message: NSLocalizedString("Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: ", comment: "") + "\(error)",
                     acceptButton: NSLocalizedString("OK", comment: ""))
             }
         }
