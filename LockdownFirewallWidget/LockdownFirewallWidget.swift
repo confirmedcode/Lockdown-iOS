@@ -170,7 +170,6 @@ struct CombinedWidgetView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             LockdownFirewallWidgetEntryView(entry: firewall)
-            Divider().padding(.vertical, 8)
             LockdownVPNWidgetEntryView(entry: vpn)
         }
         .frame(minWidth: firewall.size.width, minHeight: firewall.size.height)
