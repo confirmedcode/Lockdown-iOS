@@ -107,6 +107,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "t.co")
     addLockdownWhitelistedDomainIfNotExists(domain: "tapbots.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "tapbots.net")
+    addLockdownWhitelistedDomainIfNotExists(domain: "telegram.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "teslamotors.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "twimg.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "twitter.com")
