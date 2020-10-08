@@ -15,7 +15,7 @@ final class MainTabBarController: UITabBarController {
     }
     
     var accountViewController: AccountViewController {
-        let navigation = viewControllers![2] as! UINavigationController
+        let navigation = viewControllers![1] as! UINavigationController
         return navigation.viewControllers[0] as! AccountViewController
     }
     
