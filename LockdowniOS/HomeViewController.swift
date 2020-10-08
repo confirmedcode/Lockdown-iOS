@@ -459,7 +459,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let cancelButton = CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {  }
         
         let shareButton = DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
-            let shareText = NSLocalizedString("I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownhq.com.", comment: "")
+            let shareText = NSLocalizedString("I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.", comment: "")
             let vc = UIActivityViewController(activityItems: [LockdownCustomActivityItemProvider(text: shareText), image], applicationActivities: [])
             vc.completionWithItemsHandler = { (activity, success, items, error) in
                 if (success) {
@@ -802,7 +802,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                     VPNController.shared.setEnabled(true)
                                 }
                                 else {
-                                    self.showPopupDialog(title: NSLocalizedString("Apple Outage", comment: ""), message: "There is currently an outage at Apple which is preventing Secure Tunnel from activating. This will likely by resolved by Apple soon, and we apologize for this issue in the meantime." + NSLocalizedString("\n\n If this error persists, please contact team@lockdownhq.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+                                    self.showPopupDialog(title: NSLocalizedString("Apple Outage", comment: ""), message: "There is currently an outage at Apple which is preventing Secure Tunnel from activating. This will likely by resolved by Apple soon, and we apologize for this issue in the meantime." + NSLocalizedString("\n\n If this error persists, please contact team@lockdownprivacy.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
                                 }
                             }
                             else {

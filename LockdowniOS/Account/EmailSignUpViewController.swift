@@ -127,7 +127,7 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
                         self.delegate.accountStateDidChange()
                     }
                     catch {
-                        self.showPopupDialog(title: "Error Saving Credentials", message: "Couldn't save credentials to local keychain. Please report this error to team@lockdownhq.com.", acceptButton: "Okay")
+                        self.showPopupDialog(title: "Error Saving Credentials", message: "Couldn't save credentials to local keychain. Please report this error to team@lockdownprivacy.com.", acceptButton: "Okay")
                     }
                 default:
                     _ = self.popupErrorAsApiError(error)

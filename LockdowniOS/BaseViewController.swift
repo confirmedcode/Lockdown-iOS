@@ -46,7 +46,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     func popupErrorAsNSURLError(_ error: Error) -> Bool {
         let nsError = error as NSError
         if nsError.domain == NSURLErrorDomain {
-            self.showPopupDialog(title: NSLocalizedString("Network Error", comment: ""), message: NSLocalizedString("Please check your internet connection. If this persists, please contact team@lockdownhq.com.\n\nError Description\n", comment: "") + nsError.localizedDescription, acceptButton: NSLocalizedString("Okay", comment: ""))
+            self.showPopupDialog(title: NSLocalizedString("Network Error", comment: ""), message: NSLocalizedString("Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n", comment: "") + nsError.localizedDescription, acceptButton: NSLocalizedString("Okay", comment: ""))
             return true
         }
         else {
@@ -56,7 +56,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     
     func popupErrorAsApiError(_ error: Error) -> Bool {
         if let e = error as? ApiError {
-            self.showPopupDialog(title: NSLocalizedString("Error Code ", comment: "") + "\(e.code)", message: "\(e.message)" + NSLocalizedString("\n\n If this persists, please contact team@lockdownhq.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+            self.showPopupDialog(title: NSLocalizedString("Error Code ", comment: "") + "\(e.code)", message: "\(e.message)" + NSLocalizedString("\n\n If this persists, please contact team@lockdownprivacy.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
             return true
         }
         else {
@@ -96,7 +96,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func showVPNDetails() {
-        self.showModalWebView(title: NSLocalizedString("Secure Tunnel VPN", comment: ""), urlString: "https://lockdownhq.com/secure-tunnel")
+        self.showModalWebView(title: NSLocalizedString("Secure Tunnel VPN", comment: ""), urlString: "https://lockdownprivacy.com/secure-tunnel")
 //        let popup = PopupDialog(
 //            title: NSLocalizedString("About Lockdown VPN", comment: ""),
 //            message: NSLocalizedString("Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.", comment: ""),
@@ -129,19 +129,19 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     // MARK: - WebView
     
     func showPrivacyPolicyModal() {
-        self.showModalWebView(title: NSLocalizedString("Privacy Policy", comment: ""), urlString: "https://lockdownhq.com/privacy")
+        self.showModalWebView(title: NSLocalizedString("Privacy Policy", comment: ""), urlString: "https://lockdownprivacy.com/privacy")
     }
     
     func showTermsModal() {
-        self.showModalWebView(title: NSLocalizedString("Terms", comment: ""), urlString: "https://lockdownhq.com/terms")
+        self.showModalWebView(title: NSLocalizedString("Terms", comment: ""), urlString: "https://lockdownprivacy.com/terms")
     }
     
     func showWebsiteModal() {
-        self.showModalWebView(title: NSLocalizedString("Website", comment: ""), urlString: "https://lockdownhq.com")
+        self.showModalWebView(title: NSLocalizedString("Website", comment: ""), urlString: "https://lockdownprivacy.com")
     }
     
     func showWebsitePressModal() {
-        self.showModalWebView(title: NSLocalizedString("Press & Media", comment: ""), urlString: "https://lockdownhq.com/#press")
+        self.showModalWebView(title: NSLocalizedString("Press & Media", comment: ""), urlString: "https://lockdownprivacy.com/#press")
     }
     
     func showAuditModal() {
@@ -267,7 +267,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
-            composeVC.setToRecipients(["team@lockdownhq.com"])
+            composeVC.setToRecipients(["team@lockdownprivacy.com"])
             composeVC.setSubject("Lockdown Feedback (iOS)")
             var message = messageBody
             if messageErrorBody != "" {

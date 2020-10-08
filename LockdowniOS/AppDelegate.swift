@@ -436,7 +436,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // test the stored login
             guard let apiCredentials = getAPICredentials() else {
                 let popup = PopupDialog(title: "Error",
-                                        message: NSLocalizedString("No stored API credentials found. Please contact team@lockdownhq.com about this error.", comment: ""),
+                                        message: NSLocalizedString("No stored API credentials found. Please contact team@lockdownprivacy.com about this error.", comment: ""),
                                         image: nil,
                                         buttonAlignment: .horizontal,
                                         transitionStyle: .bounceDown,
@@ -500,7 +500,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 let popup = PopupDialog(title: "Error Confirming Account",
-                                        message: NSLocalizedString("Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownhq.com.", comment: ""),
+                                        message: NSLocalizedString("Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com.", comment: ""),
                                         image: nil,
                                         buttonAlignment: .horizontal,
                                         transitionStyle: .bounceDown,

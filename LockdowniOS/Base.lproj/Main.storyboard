@@ -1532,7 +1532,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xt8-uP-JgS">
-                                                <rect key="frame" x="79" y="12.333333333333329" width="327" height="38.666666666666664"/>
+                                                <rect key="frame" x="79" y="13.000000000000004" width="327" height="38.333333333333343"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="9jN-wn-44u"/>
                                                 </constraints>
@@ -1540,7 +1540,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPads and iPhones" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODT-wN-bGo">
-                                                <rect key="frame" x="79" y="45" width="327" height="17.333333333333329"/>
+                                                <rect key="frame" x="79" y="45.333333333333343" width="327" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1634,7 +1634,7 @@
                                                 </connections>
                                             </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Annual (Save ~50%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-KH-z1j">
-                                                <rect key="frame" x="79" y="12.333333333333314" width="327" height="38.666666666666664"/>
+                                                <rect key="frame" x="79" y="13.000000000000004" width="327" height="38.333333333333343"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="evj-cu-zx7"/>
                                                 </constraints>
@@ -1642,7 +1642,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPads and iPhones" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naG-mg-g14">
-                                                <rect key="frame" x="79" y="45" width="327" height="17.333333333333329"/>
+                                                <rect key="frame" x="79" y="45.333333333333314" width="327" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1671,7 +1671,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6Y-nW-xhv">
-                                                <rect key="frame" x="79" y="12.333333333333314" width="327" height="38.333333333333336"/>
+                                                <rect key="frame" x="79" y="12.666666666666629" width="327" height="38.666666666666664"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="PoX-VC-lK0"/>
                                                 </constraints>
@@ -1679,7 +1679,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPads, iPhones, and Macs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLG-gG-QTX">
-                                                <rect key="frame" x="79" y="44.666666666666629" width="327" height="17.333333333333329"/>
+                                                <rect key="frame" x="79" y="45.333333333333314" width="327" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1773,7 +1773,7 @@
                                                 </connections>
                                             </view>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Annual (Save ~30%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASZ-so-4BJ">
-                                                <rect key="frame" x="79" y="12.666666666666629" width="327" height="38.333333333333336"/>
+                                                <rect key="frame" x="79" y="12.999999999999996" width="327" height="38.666666666666657"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="TS3-2d-dVZ"/>
                                                 </constraints>
@@ -1781,7 +1781,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPad, iPhones, and Macs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvR-wl-rIt">
-                                                <rect key="frame" x="79" y="45" width="327" height="17.333333333333329"/>
+                                                <rect key="frame" x="79" y="45.666666666666629" width="327" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1809,7 +1809,7 @@
                                         <rect key="frame" x="0.0" y="334" width="414" height="221"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll automatically be credited for your existing subscription." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEt-3l-yTH">
-                                                <rect key="frame" x="78.666666666666686" y="40.333333333333314" width="257" height="29.333333333333329"/>
+                                                <rect key="frame" x="78.666666666666686" y="41.666666666666686" width="257" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1960,7 +1960,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse Safer - Fully Audited Privacy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXI-U1-vLz">
-                                <rect key="frame" x="97.666666666666671" y="43" width="218.66666666666663" height="16"/>
+                                <rect key="frame" x="109" y="43" width="196" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="hUe-kw-qdG"/>
                                 </constraints>
@@ -3704,14 +3704,14 @@
     </scenes>
     <designables>
         <designable name="Dm9-pY-Snm">
-            <size key="intrinsicContentSize" width="125" height="30"/>
+            <size key="intrinsicContentSize" width="111" height="29"/>
         </designable>
         <designable name="v8r-0N-ycQ">
-            <size key="intrinsicContentSize" width="206" height="37"/>
+            <size key="intrinsicContentSize" width="181" height="36"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="XMa-OM-jKs"/>
+        <segue reference="f2L-nH-Ive"/>
         <segue reference="QzY-Hs-CoL"/>
     </inferredMetricsTieBreakers>
     <resources>
