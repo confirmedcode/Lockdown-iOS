@@ -264,7 +264,7 @@ class Client {
     private static func getReceipt(forceRefresh: Bool) -> Promise<String> {
         DDLogInfo("fetch and set latest receipt")
         return Promise { seal in
-            SwiftyStoreKit.fetchReceipt(forceRefresh: forceRefresh) { result in
+            SwiftyStoreKit.fetchReceipt(forceRefresh: true) { result in
                 switch result {
                 case .success(let receiptData):
                     let receipt = receiptData.base64EncodedString(options: [])

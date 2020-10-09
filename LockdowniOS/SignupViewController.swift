@@ -15,6 +15,8 @@ class SignupViewController: BaseViewController {
 
     //MARK: - VARIABLES
     
+    var parentVC: UIViewController?
+    
     enum Mode {
         case newSubscription
         case upgrade(active: [Subscription.PlanType])
@@ -168,15 +170,12 @@ class SignupViewController: BaseViewController {
         toggleStartTrialButton(false)
         VPNSubscription.purchase (
             succeeded: {
-                let presentingViewController = self.presentingViewController as? HomeViewController
                 self.dismiss(animated: true, completion: {
+                    if let presentingViewController = self.parentVC as? AccountViewController {
+                        presentingViewController.reloadTable()
+                    }
                     if self.enableVPNAfterSubscribe {
-                        if presentingViewController != nil {
-                            presentingViewController?.toggleVPN("me")
-                        }
-                        else {
-                            VPNController.shared.setEnabled(true)
-                        }
+                        VPNController.shared.setEnabled(true)
                     }
                 })
             },

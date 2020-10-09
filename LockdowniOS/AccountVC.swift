@@ -33,9 +33,10 @@ final class AccountViewController: BaseViewController, Loadable {
     }
     
     func reloadTable() {
-        guard isViewLoaded else {
-            return
-        }
+        // always reload when called
+//        guard isViewLoaded else {
+//            return
+//        }
         
         tableView.rows = []
         createTable()
@@ -193,7 +194,7 @@ final class AccountViewController: BaseViewController, Loadable {
         }
         
         let upgradeButton = DefaultButtonCell(title: "Loading Plan", height: buttonHeight, dismissOnTap: true) {
-            self.performSegue(withIdentifier: "showUpgradePlan", sender: self)
+            self.performSegue(withIdentifier: "showUpgradePlanAccount", sender: self)
         }
         upgradeButton.startActivityIndicator()
         upgradeButton.button.isEnabled = false
@@ -239,14 +240,22 @@ final class AccountViewController: BaseViewController, Loadable {
                     upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
                     upgradeButton.button.setTitle("View Upgrade Options", for: UIControl.State())
                 default:
-                    upgradeButton.button.isEnabled = false
-                    upgradeButton.selectionStyle = .none
-                    upgradeButton.button.setTitle("Cannot load your plan", for: UIControl.State())
+                    upgradeButton.button.isEnabled = true
+                    upgradeButton.selectionStyle = .default
+                    upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
+                    upgradeButton.button.setTitle("Error Loading Plan: Retry", for: UIControl.State())
+                    upgradeButton.onSelect {
+                        self.reloadTable()
+                    }
                 }
             } else {
-                upgradeButton.button.isEnabled = false
-                upgradeButton.selectionStyle = .none
-                upgradeButton.button.setTitle("Cannot load your plan", for: UIControl.State())
+                upgradeButton.button.isEnabled = true
+                upgradeButton.selectionStyle = .default
+                upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
+                upgradeButton.button.setTitle("Error Loading Plan: Retry", for: UIControl.State())
+                upgradeButton.onSelect {
+                    self.reloadTable()
+                }
             }
         }
         
@@ -346,6 +355,17 @@ final class AccountViewController: BaseViewController, Loadable {
         case "showWhatIsVPN":
             if let vc = segue.destination as? WhatIsVpnViewController {
                 vc.parentVC = (tabBarController as? MainTabBarController)?.homeViewController
+            }
+        case "showUpgradePlanAccount":
+            if let vc = segue.destination as? SignupViewController {
+                vc.parentVC = self
+                if activePlans.isEmpty {
+                    vc.mode = .newSubscription
+                    vc.enableVPNAfterSubscribe = true
+                } else {
+                    vc.mode = .upgrade(active: activePlans)
+                    vc.enableVPNAfterSubscribe = true
+                }
             }
         default:
             break

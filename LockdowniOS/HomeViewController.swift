@@ -851,10 +851,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             if let vc = segue.destination as? SignupViewController {
                 if activePlans.isEmpty {
                     vc.mode = .newSubscription
-                    vc.enableVPNAfterSubscribe = false
+                    vc.enableVPNAfterSubscribe = true
                 } else {
                     vc.mode = .upgrade(active: activePlans)
-                    vc.enableVPNAfterSubscribe = false
+                    vc.enableVPNAfterSubscribe = true
                 }
             }
         default:
