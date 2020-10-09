@@ -489,7 +489,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ])
                 self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
                 DispatchQueue.main.async {
-                    (self.window?.rootViewController as? MainTabBarController)?.accountViewController.reloadTable()
+                    NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
                 }
             }
             .catch { error in

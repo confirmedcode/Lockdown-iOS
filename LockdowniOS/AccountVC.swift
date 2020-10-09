@@ -28,17 +28,23 @@ final class AccountViewController: BaseViewController, Loadable {
             tableView.contentInset.top += 12
             tableView.tableFooterView = UIView()
             
+            tableView.clear()
             createTable()
+        }
+        
+        do {
+            NotificationCenter.default.addObserver(self, selector: #selector(accountStateDidChange), name: AccountUI.accountStateDidChange, object: nil)
         }
     }
     
+    @objc
+    func accountStateDidChange() {
+        assert(Thread.isMainThread)
+        self.reloadTable()
+    }
+    
     func reloadTable() {
-        // always reload when called
-//        guard isViewLoaded else {
-//            return
-//        }
-        
-        tableView.rows = []
+        tableView.clear()
         createTable()
         tableView.reloadData()
     }
@@ -49,9 +55,9 @@ final class AccountViewController: BaseViewController, Loadable {
         var title = "⚠️ Not Signed In"
         var message: String? = "Sign up below to unlock benefits of a Lockdown account."
         var firstButton = DefaultCell(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), height: buttonHeight, dismissOnTap: true) {
-            AccountUI.presentCreateAccount(on: self) { [weak self] in
-                self?.reloadTable()
-            }
+            // AccountViewController will update itself by observing
+            // AccountUI.accountStateDidChange notification
+            AccountUI.presentCreateAccount(on: self)
         }
         firstButton.backgroundView = UIView()
         firstButton.backgroundView?.backgroundColor = UIColor.tunnelsBlue

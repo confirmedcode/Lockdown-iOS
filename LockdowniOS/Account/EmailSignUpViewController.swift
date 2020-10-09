@@ -15,7 +15,6 @@ import PromiseKit
 class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadable {
     
     struct Delegate {
-        var accountStateDidChange: () -> () = { }
         var showSignIn: () -> () = { }
     }
     
@@ -120,11 +119,11 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
                         popup.addButtons([
                            DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
                                 self.hideLoadingView()
-                                self.dismiss(animated: true, completion: nil)
+                                self.presentingViewController?.dismiss(animated: true, completion: nil)
                            }
                         ])
                         self.present(popup, animated: true, completion: nil)
-                        self.delegate.accountStateDidChange()
+                        NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
                     }
                     catch {
                         self.showPopupDialog(title: "Error Saving Credentials", message: "Couldn't save credentials to local keychain. Please report this error to team@lockdownprivacy.com.", acceptButton: "Okay")
