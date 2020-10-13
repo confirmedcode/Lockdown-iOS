@@ -53,3 +53,25 @@ func setUserWantsVPNEnabled(_ enabled: Bool) {
 func getUserWantsVPNEnabled() -> Bool {
     return defaults.bool(forKey: kUserWantsVPNEnabled)
 }
+
+enum PacketTunnelProviderLogs {
+    
+    static let userDefaultsKey = "com.confirmed.lockdown.ne_temporaryLogs"
+    
+    static func log(_ string: String) {
+        if var array = defaults.stringArray(forKey: userDefaultsKey) {
+            array.append(string)
+            defaults.setValue(array, forKey: userDefaultsKey)
+        } else {
+            defaults.setValue([string], forKey: userDefaultsKey)
+        }
+    }
+    
+    static var allEntries: [String] {
+        return defaults.stringArray(forKey: userDefaultsKey) ?? []
+    }
+    
+    static func clear() {
+        defaults.setValue(Array<String>(), forKey: userDefaultsKey)
+    }
+}
