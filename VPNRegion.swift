@@ -19,6 +19,8 @@ struct VPNRegion {
     var serverPrefix: String = ""
 }
 
+var strsdf:String = NSLocalizedString("Testzz", comment: "")
+
 let vpnRegions:[VPNRegion] = [
     VPNRegion(regionDisplayName: NSLocalizedString("United States - West", comment: ""),
               regionDisplayNameShort: NSLocalizedString("USA West", comment: ""),

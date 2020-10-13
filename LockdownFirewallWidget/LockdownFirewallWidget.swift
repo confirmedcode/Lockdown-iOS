@@ -64,9 +64,9 @@ struct LockdownFirewallWidgetEntryView : View {
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isFirewallEnabled {
-                StatusLabel(text: "FIREWALL ON", color: .confirmedBlue)
+                StatusLabel(text: NSLocalizedString("FIREWALL ON", comment: ""), color: .confirmedBlue)
             } else {
-                StatusLabel(text: "FIREWALL OFF", color: .flatRed)
+                StatusLabel(text: NSLocalizedString("FIREWALL OFF", comment: ""), color: .flatRed)
             }
             if entry.size.height < 160 {
                 Spacer().frame(minHeight: 4)
@@ -77,7 +77,7 @@ struct LockdownFirewallWidgetEntryView : View {
                 VStack(spacing: 0) {
                     Text(entry.dayMetricsString)
                         .font(.system(size: 21, weight: .semibold))
-                    Text("Blocked Today")
+                    Text(NSLocalizedString("Blocked Today", comment: ""))
                         .font(.system(size: 12, weight: .medium))
                 }
                 .padding(.bottom, 12)
@@ -141,9 +141,9 @@ struct LockdownVPNWidgetEntryView : View {
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isVPNEnabled {
-                StatusLabel(text: "TUNNEL ON", color: .confirmedBlue)
+                StatusLabel(text: NSLocalizedString("TUNNEL ON", comment: ""), color: .confirmedBlue)
             } else {
-                StatusLabel(text: "TUNNEL OFF", color: .flatRed)
+                StatusLabel(text: NSLocalizedString("TUNNEL OFF", comment: ""), color: .flatRed)
             }
             if entry.size.height < 160 {
                 Spacer().frame(minHeight: 4)
