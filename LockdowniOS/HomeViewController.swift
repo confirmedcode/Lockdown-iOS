@@ -329,7 +329,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @objc func tunnelStatusDidChange(_ notification: Notification) {
         // Firewall
         if let tunnelProviderSession = notification.object as? NETunnelProviderSession {
-            DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.rawValue)");
+            DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.description)");
             if (!getUserWantsFirewallEnabled()) {
                 updateFirewallButtonWithStatus(status: .disconnected)
             }
@@ -346,7 +346,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         // VPN
         else if let neVPNConnection = notification.object as? NEVPNConnection {
-            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.rawValue)");
+            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.description)");
             updateVPNButtonWithStatus(status: neVPNConnection.status);
             updateVPNRegionLabel()
             if NEVPNManager.shared().connection.status == .connected || NEVPNManager.shared().connection.status == .disconnected {
@@ -505,9 +505,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         switch FirewallController.shared.status() {
         case .invalid:
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
         case .disconnected:
             updateFirewallButtonWithStatus(status: .connecting)
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
             
             checkForAskRating()
         case .connected:
@@ -515,6 +517,35 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
         case .connecting, .disconnecting, .reasserting:
             break;
+        }
+    }
+    
+    func ensureFirewallWorkingAfterEnabling(waitingSeconds: TimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + waitingSeconds) {
+            DDLogInfo("\(waitingSeconds) seconds passed, checking if Firewall is enabled")
+            guard getUserWantsFirewallEnabled() else {
+                // firewall shouldn't be enabled, no need to act
+                DDLogInfo("User doesn't want Firewall enabled, no action")
+                return
+            }
+            
+            let status = FirewallController.shared.status()
+            switch status {
+            case .connecting, .disconnecting, .reasserting:
+                // check again in three seconds
+                DDLogInfo("Firewall is in transient state, will check again in 3 seconds")
+                self.ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
+            case .connected:
+                // all good
+                DDLogInfo("Firewall is connected, no action")
+                break
+            case .disconnected, .invalid:
+                // we suppose that the connection is somehow broken, trying to fix
+                DDLogInfo("Firewall is not connected even though it should be, attempting to fix")
+                self.showFixFirewallConnectionDialog {
+                    FirewallController.shared.deleteConfigurationAndAddAgain()
+                }
+            }
         }
     }
     
@@ -1007,4 +1038,25 @@ final class DynamicButton: PopupDialogButton {
             }
         }
     }
+}
+
+extension NEVPNStatus: CustomStringConvertible {
+    
+    public var description: String {
+        switch self {
+        case .invalid:
+            return "invalid"
+        case .disconnected:
+            return "disconnected"
+        case .connecting:
+            return "connecting"
+        case .connected:
+            return "connected"
+        case .reasserting:
+            return "reasserting"
+        case .disconnecting:
+            return "disconnecting"
+        }
+    }
+    
 }

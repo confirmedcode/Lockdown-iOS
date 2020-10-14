@@ -238,6 +238,19 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         self.present(popup, animated: true, completion: nil)
     }
     
+    func showFixFirewallConnectionDialog(completion: @escaping () -> ()) {
+        self.showPopupDialog(
+            title: "Tap \"Allow\" on the Next Popup",
+            message: "Due to a recent iOS or Lockdown update, the Firewall needs to be refreshed to run properly.\n\nIf asked, tap \"Allow\" on the next dialog to automatically complete this process.",
+            buttons: [
+                .cancel(),
+                .defaultAccept(completion: {
+                    completion()
+                })
+            ]
+        )
+    }
+    
 //    func showPopupDialogSubmitError(title : String = "Sorry, An Error Occurred", message : String, error: Error?) {
 //        let popup = PopupDialog(title: title, message: message, image: nil, transitionStyle: .zoomIn, hideStatusBar: false)
 //        let acceptButton = DefaultButton(title: "Don't Submit", dismissOnTap: true) { }
