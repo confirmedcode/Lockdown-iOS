@@ -23,19 +23,6 @@ var appInstallDate: Date? {
     return nil
 }
 
-func deviceHasRestarted() -> Bool {
-    let currentSystemUptime: TimeInterval = ProcessInfo.processInfo.systemUptime
-    let lastSystemUptime = UserDefaults.standard.double(forKey: "SystemUpTime")
-    DDLogInfo("SYSTEM RESTART CHECK: LAST UPTIME \(lastSystemUptime) | CURRENT \(currentSystemUptime)")
-    UserDefaults.standard.set(currentSystemUptime, forKey: "SystemUpTime")
-    if (currentSystemUptime < lastSystemUptime || lastSystemUptime == 0) {
-        DDLogInfo("SYSTEM RESTART CHECK: RESTARTED - LAST UPTIME \(lastSystemUptime) | CURRENT \(currentSystemUptime)")
-        return true
-    }
-    DDLogInfo("SYSTEM RESTART CHECK: NOT RESTARTED")
-    return false
-}
-
 func appHasJustBeenUpgradedOrIsNewInstall() -> Bool {
     let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String

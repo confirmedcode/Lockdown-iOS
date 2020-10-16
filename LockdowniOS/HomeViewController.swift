@@ -146,7 +146,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
  
-        // Check 3 conditions for firewall restart, but reload manager first to get non-stale one
+        // Check 2 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
                 DDLogError("Error refreshing Manager in Home viewdidappear: \(e)")
@@ -155,18 +155,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
                 DDLogInfo("User wants firewall enabled and connected/invalid, testing blocking in Home")
                 
-                // 1) If device has been restarted (current system uptime is lower than last stored System Uptime)
-                if (deviceHasRestarted()) {
-                    DDLogInfo("HOMEVIEW: DEVICE RESTARTED, RESTART FIREWALL")
-                    FirewallController.shared.restart(completion: {
-                        error in
-                        if error != nil {
-                            DDLogError("Error restarting firewall on HomeView Device Restarted Check: \(error!)")
-                        }
-                    })
-                }
-                // 2) if app has just been upgraded or is new install
-                else if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                // 1) if app has just been upgraded or is new install
+                if (appHasJustBeenUpgradedOrIsNewInstall()) {
                     DDLogInfo("HOMEVIEW: APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
                     setupFirewallDefaultBlockLists()
                     setupLockdownWhitelistedDomains()
@@ -177,7 +167,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                         }
                     })
                 }
-                // 3) Check that Firewall is still working correctly, restart it if it's not
+                // 2) Check that Firewall is still working correctly, restart it if it's not
                 else {
                     _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
                         DDLogError("Home Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")

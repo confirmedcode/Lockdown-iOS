@@ -194,7 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .withEnergySaving)
-        // Check 3 conditions for firewall restart, but reload manager first to get non-stale one
+        // Check 2 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
                 DDLogError("Error refreshing Manager in background check: \(e)")
@@ -202,19 +202,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
                 DDLogInfo("user wants firewall enabled and connected/invalid, testing blocking with background fetch")
-                // 1) If device has been restarted (current system uptime is lower than last stored System Uptime)
-                if (deviceHasRestarted()) {
-                    DDLogInfo("BACKGROUND: DEVICE RESTARTED, RESTART FIREWALL")
-                    FirewallController.shared.restart(completion: {
-                        error in
-                        if error != nil {
-                            DDLogError("Error restarting firewall on Background Device Restarted Check: \(error!)")
-                        }
-                        completionHandler(.newData)
-                    })
-                }
-                // 2) if app has just been upgraded or is new install
-                else if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                // 1) if app has just been upgraded or is new install
+                if (appHasJustBeenUpgradedOrIsNewInstall()) {
                     DDLogInfo("BACKGROUND: APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
                     setupFirewallDefaultBlockLists()
                     setupLockdownWhitelistedDomains()
@@ -226,7 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         completionHandler(.newData)
                     })
                 }
-                // 3) Check that Firewall is still working correctly, restart it if it's not
+                // 2) Check that Firewall is still working correctly, restart it if it's not
                 else {
                     _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
                         DDLogError("Background Fetch Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
