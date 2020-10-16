@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set up basic logging
         setupLocalLogger()
         
-        DDLogInfo("Creating protection.check file...")
-        ProtectedFileAccess.createProtectionCheck()
+        DDLogInfo("Creating protectionAccess.check file...")
+        ProtectedFileAccess.createProtectionAccessCheckFile()
         
         UNUserNotificationCenter.current().delegate = self
         

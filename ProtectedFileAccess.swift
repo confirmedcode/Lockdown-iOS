@@ -13,27 +13,33 @@ enum ProtectedFileAccess {
     
     private static let fileURL = FileManager.default
         .containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")!
-        .appendingPathComponent("protection.check")
+        .appendingPathComponent("protectionAccess.check")
     
     static var isAvailable: Bool {
-        return FileManager.default.fileExists(atPath: fileURL.path)
+        do {
+            let data = try Data.init(contentsOf: fileURL, options: [.mappedIfSafe])
+            let string = String(data: data, encoding: .utf8)
+            return string == "CHECK"
+        } catch {
+            return false
+        }
     }
     
     @available(iOS 10.0, *)
-    static func createProtectionCheck() {
+    static func createProtectionAccessCheckFile() {
         if !isAvailable {
             let result = FileManager.default.createFile(
                 atPath: fileURL.path,
-                contents: "This file exists to check system file protection status".data(using: .utf8),
+                contents: "CHECK".data(using: .utf8),
                 attributes: [FileAttributeKey.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication]
             )
             if result {
-                DDLogInfo("Created protection.check file")
+                DDLogInfo("Created protectionAccess.check file")
             } else {
-                DDLogError("Failed to create protection.check file")
+                DDLogError("Failed to create protectionAccess.check file")
             }
         } else {
-            DDLogInfo("protection.check file already exists")
+            DDLogInfo("protectionAccess.check file already exists")
         }
     }
 }
@@ -72,6 +78,7 @@ enum PacketTunnelProviderLogs {
     }
 }
 
+#if DEBUG
 final class AppGroupStorage {
     
     struct Key<Value: Codable>: RawRepresentable {
@@ -144,3 +151,4 @@ extension AppGroupStorage {
         }
     }
 }
+#endif

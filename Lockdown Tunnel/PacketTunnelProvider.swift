@@ -55,29 +55,6 @@ class LDObserverFactory: ObserverFactory {
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
-    #if DEBUG
-    let debugLogsKey = AppGroupStorage.Key<[String]>(rawValue: "com.confirmed.packettunnelprovider.debuglogs")
-    
-    func debugLog(_ string: String) {
-        let string = "DEBUG LOG \(PacketTunnelProviderLogs.dateFormatter.string(from: Date())) \(string)"
-        if var existing = AppGroupStorage.shared.read(key: debugLogsKey) {
-            existing.append(string)
-            AppGroupStorage.shared.write(content: existing, key: debugLogsKey)
-        } else {
-            AppGroupStorage.shared.write(content: [string], key: debugLogsKey)
-        }
-    }
-    
-    func flushDebugLogs() {
-        if let existing = AppGroupStorage.shared.read(key: debugLogsKey) {
-            for entry in existing {
-                PacketTunnelProviderLogs.log(entry)
-            }
-            AppGroupStorage.shared.delete(forKey: debugLogsKey)
-        }
-    }
-    #endif
-    
     let proxyServerPort: UInt16 = 9090;
     let proxyServerAddress = "127.0.0.1";
     var proxyServer: GCDHTTPProxyServer!
@@ -85,9 +62,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     //MARK: - OVERRIDES
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        #if DEBUG
-        debugLog("startTunnel called")
-        #endif
         if proxyServer != nil {
             proxyServer.stop()
         }
@@ -97,7 +71,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
             #if DEBUG
             debugLog("startTunnel function called with protected file access")
-            flushDebugLogs()
+            flushDebugLogsToPacketTunnelProviderLogs()
             #endif
             self.connect(options: options, completionHandler: completionHandler)
         } else {
@@ -124,6 +98,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // bugfix: attempting to fix issue with whitelist sometimes breaking
              combined = combined + getAllWhitelistedDomains()
 //        }
+        #if DEBUG
+        if combined.count < 10 {
+            debugLog("COMBINED BLOCK LIST IS INVALID")
+            debugLog(combined.description)
+        }
+        #endif
         proxySettings.matchDomains = combined
         
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
@@ -166,6 +146,32 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         PacketTunnelProviderLogs.log("Packet tunnel provider cancelled with error: \(error as Any)")
     }
 
+}
+
+extension PacketTunnelProvider {
+    
+    #if DEBUG
+    static let debugLogsKey = AppGroupStorage.Key<[String]>(rawValue: "com.confirmed.packettunnelprovider.debuglogs")
+    
+    func debugLog(_ string: String) {
+        let string = "DEBUG LOG \(PacketTunnelProviderLogs.dateFormatter.string(from: Date())) \(string)"
+        if var existing = AppGroupStorage.shared.read(key: PacketTunnelProvider.debugLogsKey) {
+            existing.append(string)
+            AppGroupStorage.shared.write(content: existing, key: PacketTunnelProvider.debugLogsKey)
+        } else {
+            AppGroupStorage.shared.write(content: [string], key: PacketTunnelProvider.debugLogsKey)
+        }
+    }
+    
+    func flushDebugLogsToPacketTunnelProviderLogs() {
+        if let existing = AppGroupStorage.shared.read(key: PacketTunnelProvider.debugLogsKey) {
+            for entry in existing {
+                PacketTunnelProviderLogs.log(entry)
+            }
+            AppGroupStorage.shared.delete(forKey: PacketTunnelProvider.debugLogsKey)
+        }
+    }
+    #endif
 }
 
 extension NEProviderStopReason: CustomDebugStringConvertible {
