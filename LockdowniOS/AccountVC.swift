@@ -347,6 +347,13 @@ final class AccountViewController: BaseViewController, Loadable {
         for cell in otherCells {
             tableView.addCell(cell)
         }
+        
+        #if DEBUG
+        let fixVPNConfig = DefaultCell(title: "_Fix Firewall Config", height: buttonHeight, dismissOnTap: true, action: {
+            
+        })
+        tableView.addCell(fixVPNConfig)
+        #endif
     }
     
     func startTutorial() {

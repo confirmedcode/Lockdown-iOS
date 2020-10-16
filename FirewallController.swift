@@ -47,6 +47,16 @@ class FirewallController: NSObject {
             return .invalid
         }
     }
+    
+    func deleteConfigurationAndAddAgain() {
+        refreshManager { (error) in
+            self.manager?.removeFromPreferences(completionHandler: { (removeError) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.setEnabled(true, isUserExplicitToggle: true)
+                }
+            })
+        }
+    }
 
     func restart(completion: @escaping (_ error: Error?) -> Void = {_ in }) {
         // Don't let this affect userWantsFirewallOn/Off config
