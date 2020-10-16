@@ -55,6 +55,29 @@ class LDObserverFactory: ObserverFactory {
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
+    #if DEBUG
+    let debugLogsKey = AppGroupStorage.Key<[String]>(rawValue: "com.confirmed.packettunnelprovider.debuglogs")
+    
+    func debugLog(_ string: String) {
+        let string = "DEBUG LOG \(PacketTunnelProviderLogs.dateFormatter.string(from: Date())) \(string)"
+        if var existing = AppGroupStorage.shared.read(key: debugLogsKey) {
+            existing.append(string)
+            AppGroupStorage.shared.write(content: existing, key: debugLogsKey)
+        } else {
+            AppGroupStorage.shared.write(content: [string], key: debugLogsKey)
+        }
+    }
+    
+    func flushDebugLogs() {
+        if let existing = AppGroupStorage.shared.read(key: debugLogsKey) {
+            for entry in existing {
+                PacketTunnelProviderLogs.log(entry)
+            }
+            AppGroupStorage.shared.delete(forKey: debugLogsKey)
+        }
+    }
+    #endif
+    
     let proxyServerPort: UInt16 = 9090;
     let proxyServerAddress = "127.0.0.1";
     var proxyServer: GCDHTTPProxyServer!
@@ -62,13 +85,30 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     //MARK: - OVERRIDES
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        PacketTunnelProviderLogs.log("startTunnel function called")
-        
+        #if DEBUG
+        debugLog("startTunnel called")
+        #endif
         if proxyServer != nil {
             proxyServer.stop()
         }
         proxyServer = nil
         
+        if ProtectedFileAccess.isAvailable {
+            PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
+            #if DEBUG
+            debugLog("startTunnel function called with protected file access")
+            flushDebugLogs()
+            #endif
+            self.connect(options: options, completionHandler: completionHandler)
+        } else {
+            #if DEBUG
+            debugLog("startTunnel called, no protected file access")
+            #endif
+            completionHandler(NEVPNError(.configurationInvalid))
+        }
+    }
+    
+    private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: proxyServerAddress)
         settings.mtu = NSNumber(value: 1500)
         

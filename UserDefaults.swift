@@ -53,33 +53,3 @@ func setUserWantsVPNEnabled(_ enabled: Bool) {
 func getUserWantsVPNEnabled() -> Bool {
     return defaults.bool(forKey: kUserWantsVPNEnabled)
 }
-
-enum PacketTunnelProviderLogs {
-    
-    static let dateFormatter: DateFormatter = {
-        $0.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        $0.formatterBehavior = .behavior10_4
-        $0.locale = .init(identifier: "en_US_POSIX")
-        return $0
-    }(DateFormatter())
-    
-    static let userDefaultsKey = "com.confirmed.lockdown.ne_temporaryLogs"
-    
-    static func log(_ string: String) {
-        let string = "\(dateFormatter.string(from: Date())) \(string)"
-        if var array = defaults.stringArray(forKey: userDefaultsKey) {
-            array.append(string)
-            defaults.setValue(array, forKey: userDefaultsKey)
-        } else {
-            defaults.setValue([string], forKey: userDefaultsKey)
-        }
-    }
-    
-    static var allEntries: [String] {
-        return defaults.stringArray(forKey: userDefaultsKey) ?? []
-    }
-    
-    static func clear() {
-        defaults.setValue(Array<String>(), forKey: userDefaultsKey)
-    }
-}
