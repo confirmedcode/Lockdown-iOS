@@ -2202,7 +2202,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2212,7 +2212,7 @@
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -2234,7 +2234,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2244,7 +2244,7 @@
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2314,13 +2314,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -2344,13 +2344,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2486,7 +2486,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2500,7 +2500,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2521,7 +2521,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2535,7 +2535,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2562,7 +2562,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2572,7 +2572,7 @@
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2600,7 +2600,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2610,7 +2610,7 @@
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2631,13 +2631,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2657,13 +2657,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2685,7 +2685,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2695,7 +2695,7 @@
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
@@ -2717,7 +2717,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2727,7 +2727,7 @@
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

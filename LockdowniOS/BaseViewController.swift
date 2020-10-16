@@ -276,6 +276,8 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             DDLogInfo("Has loaded cookie.")
         }
         DDLogInfo("")
+        PacketTunnelProviderLogs.flush()
+        DDLogInfo("")
         
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()

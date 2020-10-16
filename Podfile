@@ -22,7 +22,6 @@ target :'LockdownTunnel' do
   pod 'KeychainAccess'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'ReachabilitySwift', '4.3.1'
-  pod 'CocoaLumberjack', '3.5.2'
 end
 
 target :'Lockdown VPN Widget' do

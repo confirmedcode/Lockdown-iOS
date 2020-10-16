@@ -171,6 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        PacketTunnelProviderLogs.flush()
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
     }
     
@@ -620,3 +621,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 }
 
+extension PacketTunnelProviderLogs {
+    static func flush() {
+        guard !PacketTunnelProviderLogs.allEntries.isEmpty else {
+            return
+        }
+        
+        DDLogInfo("Packet Tunnel Provider Logs: START")
+        for logEntry in PacketTunnelProviderLogs.allEntries {
+            DDLogError(logEntry)
+        }
+        DDLogInfo("Packet Tunnel Provider Logs: END")
+        PacketTunnelProviderLogs.clear()
+    }
+}

@@ -7,7 +7,6 @@
 
 import NetworkExtension
 import NEKit
-import CocoaLumberjackSwift
 
 class LDObserverFactory: ObserverFactory {
     
@@ -30,14 +29,18 @@ class LDObserverFactory: ObserverFactory {
                 // if domain is in whitelist, just return (user probably didn't whitelist something they want to block
                 for whitelistedDomain in whitelistedDomains {
                     if (session.host.hasSuffix("." + whitelistedDomain) || session.host == whitelistedDomain) {
-                        DDLogInfo("whitelisted \(session.host), not blocking")
+                        #if DEBUG
+                        PacketTunnelProviderLogs.log("whitelisted \(session.host), not blocking")
+                        #endif
                         return
                     }
                 }
                 // else if firewall on, then block
                 if (getUserWantsFirewallEnabled()) {
                     updateMetrics(.incrementAndLog(host: session.host), rescheduleNotifications: .withEnergySaving)
-                    DDLogInfo("session host: \(session.host)")
+                    #if DEBUG
+                    PacketTunnelProviderLogs.log("session host: \(session.host)")
+                    #endif
                     socket.forceDisconnect()
                     return
                 }
@@ -59,6 +62,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     //MARK: - OVERRIDES
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+        PacketTunnelProviderLogs.log("startTunnel function called")
+        
         if proxyServer != nil {
             proxyServer.stop()
         }
@@ -88,17 +93,17 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
             guard error == nil else {
-                DDLogError("Error setting tunnel network settings \(error as Any)")
+                PacketTunnelProviderLogs.log("Error setting tunnel network settings \(error as Any)")
                 completionHandler(error)
                 return
             }
             self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
             do {
                 try self.proxyServer.start()
+                PacketTunnelProviderLogs.log("Proxy server started")
                 completionHandler(nil)
-            }
-            catch let proxyError {
-                DDLogError("Error starting proxy server \(proxyError)")
+            } catch let proxyError {
+                PacketTunnelProviderLogs.log("Error starting proxy server \(proxyError)")
                 completionHandler(proxyError)
             }
         })
@@ -110,10 +115,57 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         ObserverFactory.currentFactory = nil
         proxyServer.stop()
         proxyServer = nil
-        DDLogError("LockdownTunnel: error on stopping: \(reason)")
+        PacketTunnelProviderLogs.log("LockdownTunnel: error on stopping: \(reason.debugDescription)")
         
         completionHandler()
         exit(EXIT_SUCCESS)
     }
+    
+    override func cancelTunnelWithError(_ error: Error?) {
+        super.cancelTunnelWithError(error)
+        PacketTunnelProviderLogs.log("Packet tunnel provider cancelled with error: \(error as Any)")
+    }
 
+}
+
+extension NEProviderStopReason: CustomDebugStringConvertible {
+    
+    public var debugDescription: String {
+        switch self {
+        case .none:
+            return "none"
+        case .userInitiated:
+            return "userInitiated"
+        case .providerFailed:
+            return "providerFailed"
+        case .noNetworkAvailable:
+            return "noNetworkAvailable"
+        case .unrecoverableNetworkChange:
+            return "unrecoverableNetworkChange"
+        case .providerDisabled:
+            return "providerDisabled"
+        case .authenticationCanceled:
+            return "authenticationCanceled"
+        case .configurationFailed:
+            return "configurationFailed"
+        case .idleTimeout:
+            return "idleTimeout"
+        case .configurationDisabled:
+            return "configurationDisabled"
+        case .configurationRemoved:
+            return "configurationRemoved"
+        case .superceded:
+            return "superceded"
+        case .userLogout:
+            return "userLogout"
+        case .userSwitch:
+            return "userSwitch"
+        case .connectionFailed:
+            return "connectionFailed"
+        case .sleep:
+            return "sleep"
+        case .appUpdate:
+            return "appUpdate"
+        }
+    }
 }
