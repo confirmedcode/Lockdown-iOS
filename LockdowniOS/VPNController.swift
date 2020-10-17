@@ -93,7 +93,7 @@ class VPNController: NSObject {
             p.ikeSecurityAssociationParameters.integrityAlgorithm = NEVPNIKEv2IntegrityAlgorithm.SHA512
             p.ikeSecurityAssociationParameters.lifetimeMinutes = 1440
             
-            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.high
+            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.medium
             p.identityData = identityData
             p.identityDataPassword = ""
             
