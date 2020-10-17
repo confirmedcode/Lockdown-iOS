@@ -143,8 +143,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        // Periodically check if the firewall is functioning correctly
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        // Periodically check if the firewall is functioning correctly - every 2.5 hours
+        UIApplication.shared.setMinimumBackgroundFetchInterval(9000)
 
         // WORKAROUND: allows the widget to toggle VPN
         application.registerForRemoteNotifications()
@@ -198,6 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
                 DDLogError("Error refreshing Manager in background check: \(e)")
+                completionHandler(.failed)
                 return
             }
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
@@ -237,12 +238,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 DDLogInfo("Background Fetch Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
                             }
                         }
-                        completionHandler(.newData)
+                        completionHandler(.noData)
                     })
                 }
             }
             else {
-                completionHandler(.newData)
+                completionHandler(.noData)
             }
         })
     }
