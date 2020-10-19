@@ -355,11 +355,6 @@ final class AccountViewController: BaseViewController, Loadable {
             }
         })
         tableView.addCell(fixVPNConfig)
-        
-        let inspect = DefaultCell(title: "_Enable VPN", height: buttonHeight, dismissOnTap: true) {
-            VPNController.shared.setEnabled(true)
-        }
-        tableView.addCell(inspect)
         #endif
         
         tableView.addRowCell { (cell) in
