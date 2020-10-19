@@ -350,7 +350,9 @@ final class AccountViewController: BaseViewController, Loadable {
         
         #if DEBUG
         let fixVPNConfig = DefaultCell(title: "_Fix Firewall Config", height: buttonHeight, dismissOnTap: true, action: {
-            
+            self.showFixFirewallConnectionDialog {
+                FirewallController.shared.deleteConfigurationAndAddAgain()
+            }
         })
         tableView.addCell(fixVPNConfig)
         #endif

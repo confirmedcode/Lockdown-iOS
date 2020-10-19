@@ -239,16 +239,27 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func showFixFirewallConnectionDialog(completion: @escaping () -> ()) {
-        self.showPopupDialog(
-            title: "Tap \"Allow\" on the Next Popup",
-            message: "Due to a recent iOS or Lockdown update, the Firewall needs to be refreshed to run properly.\n\nIf asked, tap \"Allow\" on the next dialog to automatically complete this process.",
-            buttons: [
-                .cancel(),
-                .defaultAccept(completion: {
-                    completion()
-                })
-            ]
-        )
+        VPNController.shared.isConfigurationExisting { (exists) in
+            if exists {
+                // if VPN configuration exists, the system will not show an alert,
+                // so we do need to warn users about it
+                completion()
+            } else {
+                // if there is no existing VPN configuration,
+                // we need to show a dialog explaining the
+                // upcoming popup
+                self.showPopupDialog(
+                    title: "Tap \"Allow\" on the Next Popup",
+                    message: "Due to a recent iOS or Lockdown update, the Firewall needs to be refreshed to run properly.\n\nIf asked, tap \"Allow\" on the next dialog to automatically complete this process.",
+                    buttons: [
+                        .cancel(),
+                        .defaultAccept(completion: {
+                            completion()
+                        })
+                    ]
+                )
+            }
+        }
     }
     
 //    func showPopupDialogSubmitError(title : String = "Sorry, An Error Occurred", message : String, error: Error?) {
