@@ -299,6 +299,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             if messageErrorBody != "" {
                 message = messageBody + "\n\nError Details: " + messageErrorBody
             }
+            message += "\n\n\n \(Bundle.main.versionString)"
             composeVC.setMessageBody(message, isHTML: false)
             let attachmentData = NSMutableData()
             for logFileData in logFileDataArray {

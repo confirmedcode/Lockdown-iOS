@@ -355,7 +355,23 @@ final class AccountViewController: BaseViewController, Loadable {
             }
         })
         tableView.addCell(fixVPNConfig)
+        
+        let inspect = DefaultCell(title: "_Enable VPN", height: buttonHeight, dismissOnTap: true) {
+            VPNController.shared.setEnabled(true)
+        }
+        tableView.addCell(inspect)
         #endif
+        
+        tableView.addRowCell { (cell) in
+            cell.textLabel?.text = Bundle.main.versionString
+            cell.textLabel?.font = fontSemiBold17
+            cell.textLabel?.textColor = UIColor.systemGray
+            cell.textLabel?.textAlignment = .right
+            
+            // removing the bottom separator
+            cell.separatorInset = .init(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+            cell.directionalLayoutMargins = .zero
+        }
     }
     
     func startTutorial() {
