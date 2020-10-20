@@ -350,10 +350,23 @@ final class AccountViewController: BaseViewController, Loadable {
         
         #if DEBUG
         let fixVPNConfig = DefaultCell(title: "_Fix Firewall Config", height: buttonHeight, dismissOnTap: true, action: {
-            
+            self.showFixFirewallConnectionDialog {
+                FirewallController.shared.deleteConfigurationAndAddAgain()
+            }
         })
         tableView.addCell(fixVPNConfig)
         #endif
+        
+        tableView.addRowCell { (cell) in
+            cell.textLabel?.text = Bundle.main.versionString
+            cell.textLabel?.font = fontSemiBold17
+            cell.textLabel?.textColor = UIColor.systemGray
+            cell.textLabel?.textAlignment = .right
+            
+            // removing the bottom separator
+            cell.separatorInset = .init(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+            cell.directionalLayoutMargins = .zero
+        }
     }
     
     func startTutorial() {

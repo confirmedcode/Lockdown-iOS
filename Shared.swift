@@ -282,5 +282,6 @@ let fontMedium16 = UIFont(name: "Montserrat-Medium", size: 16)!
 let fontMedium18 = UIFont(name: "Montserrat-Medium", size: 18.0)!
 let fontSemiBold15_5 = UIFont(name: "Montserrat-SemiBold", size: 15.5)!
 let fontSemiBold17 = UIFont(name: "Montserrat-SemiBold", size: 17)!
+let fontBold11 = UIFont(name: "Montserrat-Bold", size: 11)!
 let fontBold15 = UIFont(name: "Montserrat-Bold", size: 15)!
 let fontBold18 = UIFont(name: "Montserrat-Bold", size: 18)!

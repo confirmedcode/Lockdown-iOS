@@ -35,6 +35,12 @@ class VPNController: NSObject {
             VPNController.shared.setEnabled(true)
         })
     }
+    
+    func isConfigurationExisting(_ completion: @escaping (Bool) -> ()) {
+        manager.loadFromPreferences { (error) in
+            completion(self.manager.protocolConfiguration != nil)
+        }
+    }
  
     func setEnabled(_ enabled: Bool, completion: @escaping (_ error: Error?) -> Void = {_ in }) {
         DDLogInfo("VPNController set enabled: \(enabled)")
