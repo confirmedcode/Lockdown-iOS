@@ -67,19 +67,22 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
         proxyServer = nil
         
-        if ProtectedFileAccess.isAvailable {
-            PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
-            #if DEBUG
-            debugLog("startTunnel function called with protected file access")
-            flushDebugLogsToPacketTunnelProviderLogs()
-            #endif
-            self.connect(options: options, completionHandler: completionHandler)
-        } else {
-            #if DEBUG
-            debugLog("startTunnel called, no protected file access")
-            #endif
-            completionHandler(NEVPNError(.configurationInvalid))
-        }
+        PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
+        self.connect(options: options, completionHandler: completionHandler)
+        
+//        if ProtectedFileAccess.isAvailable {
+//            PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
+//            #if DEBUG
+//            debugLog("startTunnel function called with protected file access")
+//            flushDebugLogsToPacketTunnelProviderLogs()
+//            #endif
+//            self.connect(options: options, completionHandler: completionHandler)
+//        } else {
+//            #if DEBUG
+//            debugLog("startTunnel called, no protected file access")
+//            #endif
+//            completionHandler(NEVPNError(.configurationInvalid))
+//        }
     }
     
     private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
@@ -98,12 +101,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // bugfix: attempting to fix issue with whitelist sometimes breaking
              combined = combined + getAllWhitelistedDomains()
 //        }
-        #if DEBUG
-        if combined.count < 10 {
-            debugLog("COMBINED BLOCK LIST IS INVALID")
+        if combined.count <= 1 {
+            #if DEBUG
+            debugLog("PTP: COMBINED BLOCK LIST IS INVALID, LIKELY JUST RESTARTED")
             debugLog(combined.description)
+            #endif
+            completionHandler(NEVPNError(.configurationInvalid))
+            return
         }
-        #endif
         proxySettings.matchDomains = combined
         
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])

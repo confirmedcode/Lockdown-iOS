@@ -31,7 +31,11 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
     @IBAction func save() {
         self.dismiss(animated: true, completion: {
             if (self.didMakeChange == true) {
-                if (FirewallController.shared.status() == .connected) {
+                let combined: Array<String> = getAllBlockedDomains() + getAllWhitelistedDomains()
+                if (combined.count == 0) {
+                    FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
+                }
+                else if (FirewallController.shared.status() == .connected) {
                     FirewallController.shared.restart()
                 }
             }

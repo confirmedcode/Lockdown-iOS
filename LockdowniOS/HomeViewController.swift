@@ -492,6 +492,13 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             return
         }
         
+        let combined: Array<String> = getAllBlockedDomains() + getAllWhitelistedDomains()
+        if combined.count == 0 {
+            FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
+            self.showPopupDialog(title: NSLocalizedString("No Block Lists Enabled", comment: ""), message: NSLocalizedString("Please tap Block List and enable at least one block list to activate Firewall.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+            return
+        }
+        
         switch FirewallController.shared.status() {
         case .invalid:
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)

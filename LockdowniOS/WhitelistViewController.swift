@@ -31,7 +31,11 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
     @IBAction func save() {
         self.dismiss(animated: true, completion: {
             if self.didMakeChange == true {
-                if VPNController.shared.status() == .connected {
+                let combined: Array<String> = getAllBlockedDomains() + getAllWhitelistedDomains()
+                if (combined.count == 0) {
+                    FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
+                }
+                else if VPNController.shared.status() == .connected {
                     FirewallController.shared.restart()
                 }
             }
