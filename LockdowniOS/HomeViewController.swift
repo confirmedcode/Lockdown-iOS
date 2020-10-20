@@ -495,11 +495,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         switch FirewallController.shared.status() {
         case .invalid:
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
-            ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
         case .disconnected:
             updateFirewallButtonWithStatus(status: .connecting)
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
-            ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
             
             checkForAskRating()
         case .connected:
@@ -511,30 +511,37 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     func ensureFirewallWorkingAfterEnabling(waitingSeconds: TimeInterval) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + waitingSeconds) {
-            DDLogInfo("\(waitingSeconds) seconds passed, checking if Firewall is enabled")
-            guard getUserWantsFirewallEnabled() else {
-                // firewall shouldn't be enabled, no need to act
-                DDLogInfo("User doesn't want Firewall enabled, no action")
-                return
-            }
-            
-            let status = FirewallController.shared.status()
-            switch status {
-            case .connecting, .disconnecting, .reasserting:
-                // check again in three seconds
-                DDLogInfo("Firewall is in transient state, will check again in 3 seconds")
-                self.ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
-            case .connected:
-                // all good
-                DDLogInfo("Firewall is connected, no action")
-                break
-            case .disconnected, .invalid:
-                // we suppose that the connection is somehow broken, trying to fix
-                DDLogInfo("Firewall is not connected even though it should be, attempting to fix")
-                self.showFixFirewallConnectionDialog {
-                    FirewallController.shared.deleteConfigurationAndAddAgain()
+        FirewallController.shared.existingManagerCount { (count) in
+            if let count = count, count > 0 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + waitingSeconds) {
+                    DDLogInfo("\(waitingSeconds) seconds passed, checking if Firewall is enabled")
+                    guard getUserWantsFirewallEnabled() else {
+                        // firewall shouldn't be enabled, no need to act
+                        DDLogInfo("User doesn't want Firewall enabled, no action")
+                        return
+                    }
+                    
+                    let status = FirewallController.shared.status()
+                    switch status {
+                    case .connecting, .disconnecting, .reasserting:
+                        // check again in three seconds
+                        DDLogInfo("Firewall is in transient state, will check again in 3 seconds")
+                        self.ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
+                    case .connected:
+                        // all good
+                        DDLogInfo("Firewall is connected, no action")
+                        break
+                    case .disconnected, .invalid:
+                        // we suppose that the connection is somehow broken, trying to fix
+                        DDLogInfo("Firewall is not connected even though it should be, attempting to fix")
+                        self.showFixFirewallConnectionDialog {
+                            FirewallController.shared.deleteConfigurationAndAddAgain()
+                        }
+                    }
                 }
+            } else {
+                DDLogInfo("No Firewall configurations in settings (likely fresh install): not checking")
+                return
             }
         }
     }
