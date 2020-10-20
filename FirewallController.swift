@@ -76,6 +76,8 @@ class FirewallController: NSObject {
         })
     }
     
+    struct CombinedBlockListEmptyError: Error { }
+    
     func setEnabled(_ enabled: Bool, isUserExplicitToggle: Bool = false, completion: @escaping (_ error: Error?) -> Void = {_ in }) {
         DDLogInfo("FirewallController set enabled: \(enabled)")
         // only change this boolean if it's user action
@@ -85,6 +87,14 @@ class FirewallController: NSObject {
                 WidgetCenter.shared.reloadAllTimelines()
             }
         }
+        
+        if enabled && getIsCombinedBlockListEmpty() {
+            DDLogError("Trying to enable Firewall when combined block list is empty; not allowing")
+            completion(FirewallController.CombinedBlockListEmptyError())
+            assertionFailure("Trying to enable Firewall when combined block list is empty; not allowing. This crash only happens in DEBUG mode")
+            return
+        }
+        
         // just to be sure, reload the managers to make sure we don't make multiple configs
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) -> Void in
             if let managers = managers, managers.count > 0 {

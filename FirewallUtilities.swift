@@ -358,6 +358,10 @@ func getAllBlockedDomains() -> Array<String> {
     return allBlockedDomains
 }
 
+func getIsCombinedBlockListEmpty() -> Bool {
+    return (getAllBlockedDomains() + getAllWhitelistedDomains()).isEmpty
+}
+
 // MARK: - User blocked domains
 
 func getUserBlockedDomains() -> Dictionary<String, Any> {
