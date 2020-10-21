@@ -215,16 +215,10 @@ class Client {
         }
     }
     
-    static func getBlockedDomainTest(connectionSuccessHandler: @escaping () -> Void, connectionFailedHandler: @escaping (_ error: Error?) -> Void) -> PMKFinalizer {
+    static func getBlockedDomainTest() -> Promise<Void> {
         return firstly {
             URLSession.shared.dataTask(.promise, with: try Client.makeGetRequest(urlString: "https://\(testFirewallDomain)"))
-        }
-        .done { _ in
-            connectionSuccessHandler()
-        }
-        .catch { error in
-            connectionFailedHandler(error)
-        }
+        }.asVoid()
     }
     
     // MARK: - Request Makers
