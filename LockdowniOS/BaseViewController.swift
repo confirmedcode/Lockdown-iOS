@@ -136,6 +136,10 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         self.showModalWebView(title: NSLocalizedString("Terms", comment: ""), urlString: "https://lockdownprivacy.com/terms")
     }
     
+    func showFAQsModal() {
+        self.showModalWebView(title: NSLocalizedString("FAQs", comment: ""), urlString: "https://lockdownprivacy.com/faq")
+    }
+    
     func showWebsiteModal() {
         self.showModalWebView(title: NSLocalizedString("Website", comment: ""), urlString: "https://lockdownprivacy.com")
     }
