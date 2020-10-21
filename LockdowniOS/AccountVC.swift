@@ -334,15 +334,15 @@ final class AccountViewController: BaseViewController, Loadable {
             DefaultCell(title: NSLocalizedString("What is VPN?", comment: "")) {
                 self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
             },
-            DefaultCell(title: NSLocalizedString("Support", comment: "")) {
+            DefaultCell(title: NSLocalizedString("Support | Feedback", comment: "")) {
                 self.showPopupDialog(
                     title: nil,
-                    message: NSLocalizedString("Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to help and take feedback by email.", comment: ""),
+                    message: NSLocalizedString("Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.", comment: ""),
                     buttons: [
-                        .custom(title: NSLocalizedString("See FAQs", comment: ""), completion: {
+                        .custom(title: NSLocalizedString("View FAQs", comment: ""), completion: {
                             self.showFAQsModal()
                         }),
-                        .custom(title: NSLocalizedString("Email Support", comment: ""), completion: {
+                        .custom(title: NSLocalizedString("Email Us", comment: ""), completion: {
                             self.emailTeam()
                         }),
                         .cancel()
