@@ -41,9 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set up basic logging
         setupLocalLogger()
         
-        DDLogInfo("Creating protectionAccess.check file...")
-        ProtectedFileAccess.createProtectionAccessCheckFile()
-        
         UNUserNotificationCenter.current().delegate = self
         
         // Set up PopupDialog

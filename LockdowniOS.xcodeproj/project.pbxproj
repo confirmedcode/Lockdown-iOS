@@ -168,10 +168,6 @@
 		7C422EA525279724007F9C22 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422EA425279724007F9C22 /* Align.swift */; };
 		7C422EAF252797A6007F9C22 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422EAE252797A6007F9C22 /* AccountVC.swift */; };
 		7C422EB72527A2D1007F9C22 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422EB62527A2D1007F9C22 /* MainTabBarViewController.swift */; };
-		7C44081B2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */; };
-		7C44081C2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */; };
-		7C44081D2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */; };
-		7C44081E2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */; };
 		7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9BBA252C8748004175EA /* AccountUI.swift */; };
 		7C6619BC247810E2005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
@@ -530,7 +526,6 @@
 		7C422EA425279724007F9C22 /* Align.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
 		7C422EAE252797A6007F9C22 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		7C422EB62527A2D1007F9C22 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedFileAccess.swift; sourceTree = "<group>"; };
 		7C4D9BBA252C8748004175EA /* AccountUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUI.swift; sourceTree = "<group>"; };
 		7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDayLog.swift; sourceTree = "<group>"; };
 		7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownFirewallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -946,7 +941,6 @@
 				7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */,
 				7C1AE074247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift */,
 				7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */,
-				7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1887,7 +1881,6 @@
 				3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */,
 				3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */,
 				7CE91C862521D5B7009D8269 /* Metrics.swift in Sources */,
-				7C44081E2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2008,7 +2001,6 @@
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
 				7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */,
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
-				7C44081B2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 				7C1AE073247FD82A0000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
 				3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				3D47CDBA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
@@ -2060,7 +2052,6 @@
 				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
 				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
 				7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */,
-				7C44081C2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2084,7 +2075,6 @@
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
 				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
-				7C44081D2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 				7CE91C982521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */,
 				7CE91C672521D565009D8269 /* UserDefaults.swift in Sources */,

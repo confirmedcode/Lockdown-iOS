@@ -67,22 +67,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
         proxyServer = nil
         
-        PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
+        PacketTunnelProviderLogs.log("startTunnel function called")
         self.connect(options: options, completionHandler: completionHandler)
-        
-//        if ProtectedFileAccess.isAvailable {
-//            PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
-//            #if DEBUG
-//            debugLog("startTunnel function called with protected file access")
-//            flushDebugLogsToPacketTunnelProviderLogs()
-//            #endif
-//            self.connect(options: options, completionHandler: completionHandler)
-//        } else {
-//            #if DEBUG
-//            debugLog("startTunnel called, no protected file access")
-//            #endif
-//            completionHandler(NEVPNError(.configurationInvalid))
-//        }
     }
     
     private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
