@@ -290,16 +290,20 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         PacketTunnelProviderLogs.flush()
         DDLogInfo("")
         
+        let recipient = "team@lockdownprivacy.com"
+        let subject = "Lockdown Feedback (iOS)"
+        
+        var message = messageBody
+        if messageErrorBody != "" {
+            message = messageBody + "\n\nError Details: " + messageErrorBody
+        }
+        message += "\n\n\n \(Bundle.main.versionString)"
+        
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
-            composeVC.setToRecipients(["team@lockdownprivacy.com"])
-            composeVC.setSubject("Lockdown Feedback (iOS)")
-            var message = messageBody
-            if messageErrorBody != "" {
-                message = messageBody + "\n\nError Details: " + messageErrorBody
-            }
-            message += "\n\n\n \(Bundle.main.versionString)"
+            composeVC.setToRecipients([recipient])
+            composeVC.setSubject(subject)
             composeVC.setMessageBody(message, isHTML: false)
             let attachmentData = NSMutableData()
             for logFileData in logFileDataArray {
@@ -308,8 +312,23 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "ConfirmedLogs.log")
             self.present(composeVC, animated: true, completion: nil)
         } else {
-            showPopupDialog(title: NSLocalizedString("Couldn't Find Your Email Client", comment: ""),
-                            message: NSLocalizedString("Please make sure you have added an e-mail account to your iOS device and try again.", comment: ""), acceptButton: NSLocalizedString("OK", comment: ""))
+            let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            let messageEncoded = message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            let mailtoString = "mailto:\(recipient)?subject=\(subjectEncoded)&body=\(messageEncoded)"
+            guard let mailtoURL = URL(string: mailtoString) else {
+                DDLogError("invalid url: \(mailtoString)")
+                return
+            }
+            
+            UIApplication.shared.open(mailtoURL, options: [:]) { (success) in
+                if !success {
+                    self.showPopupDialog(
+                        title: NSLocalizedString("Couldn't Find Your Email Client", comment: ""),
+                        message: NSLocalizedString("Please make sure you have added an e-mail account to your iOS device and try again.", comment: ""),
+                        acceptButton: NSLocalizedString("OK", comment: "")
+                    )
+                }
+            }
         }
     }
     
