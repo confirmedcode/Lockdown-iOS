@@ -39,6 +39,12 @@ class FirewallController: NSObject {
         }
     }
     
+    func existingManagerCount(completion: @escaping (Int?) -> Void) {
+        NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
+            completion(managers?.count)
+        }
+    }
+    
     func status() -> NEVPNStatus {
         if manager != nil {
             return manager!.connection.status
