@@ -1,6 +1,6 @@
 # Lockdown Privacy (iOS)
 
-Lockdown is an open source firewall that blocks trackers, ads, and badware in all apps. Product details at [lockdownhq.com](https://lockdownhq.com).
+Lockdown is an open source firewall that blocks trackers, ads, and badware in all apps. Product details at [lockdownprivacy.com](https://lockdownprivacy.com).
 
 ### Feature Requests + Bugs
 
@@ -28,11 +28,11 @@ To sign the app for devices, you will need an Apple Developer account.
 
 If you build Lockdown locally, you will not be able to access Secure Tunnel, because that requires a Production app store receipt. We will soon enable a DEV environment for Secure Tunnel with limited capacity and regions, designed only for testing.
 
-To use Secure Tunnel, you must download Lockdown from the [App Store](https://lockdownhq.com).
+To use Secure Tunnel, you must download Lockdown from the [App Store](https://lockdownprivacy.com).
 
 ### Contact
 
-[team@lockdownhq.com](mailto:team@lockdownhq.com)
+[team@lockdownprivacy.com](mailto:team@lockdownprivacy.com)
 
 ### License
 
