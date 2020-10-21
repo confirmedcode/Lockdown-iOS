@@ -177,6 +177,7 @@
 		7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BE247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C6619BF247810EF005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
+		7C798A1A25409F8100A99695 /* Mailto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C798A1925409F8100A99695 /* Mailto.swift */; };
 		7C9A936C251E1EC700DA5721 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9A936B251E1EC700DA5721 /* WidgetKit.framework */; };
 		7C9A936E251E1EC700DA5721 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9A936D251E1EC700DA5721 /* SwiftUI.framework */; };
 		7C9A9371251E1EC700DA5721 /* LockdownFirewallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A9370251E1EC700DA5721 /* LockdownFirewallWidget.swift */; };
@@ -533,6 +534,7 @@
 		7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedFileAccess.swift; sourceTree = "<group>"; };
 		7C4D9BBA252C8748004175EA /* AccountUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUI.swift; sourceTree = "<group>"; };
 		7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDayLog.swift; sourceTree = "<group>"; };
+		7C798A1925409F8100A99695 /* Mailto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailto.swift; sourceTree = "<group>"; };
 		7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownFirewallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9A936B251E1EC700DA5721 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7C9A936D251E1EC700DA5721 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -978,6 +980,7 @@
 				3DF2455523A306DB00E46613 /* Loader.swift */,
 				A1359FD920AF6E31008C4BF7 /* LocalLogger.swift */,
 				7C3EFA0124867DEE00719D96 /* TrackerInfo.swift */,
+				7C798A1925409F8100A99695 /* Mailto.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -2010,6 +2013,7 @@
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				7C44081B2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 				7C1AE073247FD82A0000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
+				7C798A1A25409F8100A99695 /* Mailto.swift in Sources */,
 				3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				3D47CDBA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
 				A1DBA18621B77C66008A9322 /* VPNSubscription.swift in Sources */,

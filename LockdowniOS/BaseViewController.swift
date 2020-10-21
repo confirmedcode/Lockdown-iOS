@@ -312,11 +312,9 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "ConfirmedLogs.log")
             self.present(composeVC, animated: true, completion: nil)
         } else {
-            let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-            let messageEncoded = message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-            let mailtoString = "mailto:\(recipient)?subject=\(subjectEncoded)&body=\(messageEncoded)"
-            guard let mailtoURL = URL(string: mailtoString) else {
-                DDLogError("invalid url: \(mailtoString)")
+            
+            guard let mailtoURL = Mailto.generateURL(recipient: recipient, subject: subject, body: message) else {
+                DDLogError("Failed to generate mailto url")
                 return
             }
             
