@@ -282,7 +282,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         controller.dismiss(animated: true)
     }
     
-    @objc func emailTeam(messageBody: String = NSLocalizedString("Hey Lockdown Team, \nI have a question, issue, or suggestion - ", comment: ""), messageErrorBody: String = "") {
+    @objc func emailTeam(messageBody: String = NSLocalizedString("Hi, my question or feedback for Lockdown is: ", comment: ""), messageErrorBody: String = "") {
         DDLogInfo("")
         DDLogInfo("UserId: \(keychain[kVPNCredentialsId] ?? "No User ID")")
         DDLogInfo("UserReceipt: \(keychain[kVPNCredentialsKeyBase64] ?? "No User Receipt")")
@@ -295,13 +295,17 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         DDLogInfo("")
         
         let recipient = "team@lockdownprivacy.com"
-        let subject = "Lockdown Feedback (iOS)"
+        var appendString = ""
+        if (getUserWantsVPNEnabled()) {
+            appendString = appendString + " - S"
+        }
+        let subject = "Lockdown Question or Feedback (iOS \(Bundle.main.versionString))" + appendString
         
         var message = messageBody
         if messageErrorBody != "" {
             message = messageBody + "\n\nError Details: " + messageErrorBody
         }
-        message += "\n\n\n \(Bundle.main.versionString)"
+        message += "\n\n\n"
         
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
