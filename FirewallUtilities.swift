@@ -200,17 +200,17 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 30,
+        version: 31,
         internalID: "facebook_inc",
         name: "Facebook & WhatsApp",
         iconURL: "facebook_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "facebook_inc"),
         ipRanges: [:],
-        warning: "This list is intended to block Facebook Apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.")
+        warning: "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.")
     
     let facebookSDK = LockdownGroup.init(
-        version: 26,
+        version: 27,
         internalID: "facebook_sdk",
         name: "Facebook Trackers",
         iconURL: "facebook_white_icon",
@@ -356,6 +356,10 @@ func getAllBlockedDomains() -> Array<String> {
     }
     
     return allBlockedDomains
+}
+
+func getIsCombinedBlockListEmpty() -> Bool {
+    return (getAllBlockedDomains() + getAllWhitelistedDomains()).isEmpty
 }
 
 // MARK: - User blocked domains

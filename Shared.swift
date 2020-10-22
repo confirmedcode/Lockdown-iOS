@@ -23,19 +23,6 @@ var appInstallDate: Date? {
     return nil
 }
 
-func deviceHasRestarted() -> Bool {
-    let currentSystemUptime: TimeInterval = ProcessInfo.processInfo.systemUptime
-    let lastSystemUptime = UserDefaults.standard.double(forKey: "SystemUpTime")
-    DDLogInfo("SYSTEM RESTART CHECK: LAST UPTIME \(lastSystemUptime) | CURRENT \(currentSystemUptime)")
-    UserDefaults.standard.set(currentSystemUptime, forKey: "SystemUpTime")
-    if (currentSystemUptime < lastSystemUptime || lastSystemUptime == 0) {
-        DDLogInfo("SYSTEM RESTART CHECK: RESTARTED - LAST UPTIME \(lastSystemUptime) | CURRENT \(currentSystemUptime)")
-        return true
-    }
-    DDLogInfo("SYSTEM RESTART CHECK: NOT RESTARTED")
-    return false
-}
-
 func appHasJustBeenUpgradedOrIsNewInstall() -> Bool {
     let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
@@ -295,5 +282,6 @@ let fontMedium16 = UIFont(name: "Montserrat-Medium", size: 16)!
 let fontMedium18 = UIFont(name: "Montserrat-Medium", size: 18.0)!
 let fontSemiBold15_5 = UIFont(name: "Montserrat-SemiBold", size: 15.5)!
 let fontSemiBold17 = UIFont(name: "Montserrat-SemiBold", size: 17)!
+let fontBold11 = UIFont(name: "Montserrat-Bold", size: 11)!
 let fontBold15 = UIFont(name: "Montserrat-Bold", size: 15)!
 let fontBold18 = UIFont(name: "Montserrat-Bold", size: 18)!

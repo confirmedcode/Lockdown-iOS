@@ -146,62 +146,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
  
-        // Check 3 conditions for firewall restart, but reload manager first to get non-stale one
-        FirewallController.shared.refreshManager(completion: { error in
-            if let e = error {
-                DDLogError("Error refreshing Manager in Home viewdidappear: \(e)")
-                return
-            }
-            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
-                DDLogInfo("User wants firewall enabled and connected/invalid, testing blocking in Home")
-                
-                // 1) If device has been restarted (current system uptime is lower than last stored System Uptime)
-                if (deviceHasRestarted()) {
-                    DDLogInfo("HOMEVIEW: DEVICE RESTARTED, RESTART FIREWALL")
-                    FirewallController.shared.restart(completion: {
-                        error in
-                        if error != nil {
-                            DDLogError("Error restarting firewall on HomeView Device Restarted Check: \(error!)")
-                        }
-                    })
-                }
-                // 2) if app has just been upgraded or is new install
-                else if (appHasJustBeenUpgradedOrIsNewInstall()) {
-                    DDLogInfo("HOMEVIEW: APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
-                    setupFirewallDefaultBlockLists()
-                    setupLockdownWhitelistedDomains()
-                    FirewallController.shared.restart(completion: {
-                        error in
-                        if error != nil {
-                            DDLogError("Error restarting firewall on HomeView App Upgraded Check: \(error!)")
-                        }
-                    })
-                }
-                // 3) Check that Firewall is still working correctly, restart it if it's not
-                else {
-                    _ = Client.getBlockedDomainTest(connectionSuccessHandler: {
-                        DDLogError("Home Firewall Test: Connected to \(testFirewallDomain) even though it's supposed to be blocked, restart the Firewall")
-                        FirewallController.shared.restart(completion: {
-                            error in
-                            if error != nil {
-                                DDLogError("Error restarting firewall on Home: \(error!)")
-                            }
-                        })
-                    }, connectionFailedHandler: {
-                        error in
-                        if error != nil {
-                            let nsError = error! as NSError
-                            if nsError.domain == NSURLErrorDomain {
-                                DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
-                            }
-                            else {
-                                DDLogInfo("Home Firewall Test: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error!)")
-                            }
-                        }
-                    })
-                }
-            }
-        })
+        FirewallRepair.run(context: .homeScreenDidLoad)
     }
     
     override func viewDidLayoutSubviews() {
@@ -329,7 +274,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @objc func tunnelStatusDidChange(_ notification: Notification) {
         // Firewall
         if let tunnelProviderSession = notification.object as? NETunnelProviderSession {
-            DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.rawValue)");
+            DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.description)");
             if (!getUserWantsFirewallEnabled()) {
                 updateFirewallButtonWithStatus(status: .disconnected)
             }
@@ -346,7 +291,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         // VPN
         else if let neVPNConnection = notification.object as? NEVPNConnection {
-            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.rawValue)");
+            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.description)");
             updateVPNButtonWithStatus(status: neVPNConnection.status);
             updateVPNRegionLabel()
             if NEVPNManager.shared().connection.status == .connected || NEVPNManager.shared().connection.status == .disconnected {
@@ -502,12 +447,20 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             return
         }
         
+        if getIsCombinedBlockListEmpty() {
+            FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
+            self.showPopupDialog(title: NSLocalizedString("No Block Lists Enabled", comment: ""), message: NSLocalizedString("Please tap Block List and enable at least one block list to activate Firewall.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+            return
+        }
+        
         switch FirewallController.shared.status() {
         case .invalid:
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
         case .disconnected:
             updateFirewallButtonWithStatus(status: .connecting)
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
             
             checkForAskRating()
         case .connected:
@@ -515,6 +468,42 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
         case .connecting, .disconnecting, .reasserting:
             break;
+        }
+    }
+    
+    func ensureFirewallWorkingAfterEnabling(waitingSeconds: TimeInterval) {
+        FirewallController.shared.existingManagerCount { (count) in
+            if let count = count, count > 0 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + waitingSeconds) {
+                    DDLogInfo("\(waitingSeconds) seconds passed, checking if Firewall is enabled")
+                    guard getUserWantsFirewallEnabled() else {
+                        // firewall shouldn't be enabled, no need to act
+                        DDLogInfo("User doesn't want Firewall enabled, no action")
+                        return
+                    }
+                    
+                    let status = FirewallController.shared.status()
+                    switch status {
+                    case .connecting, .disconnecting, .reasserting:
+                        // check again in three seconds
+                        DDLogInfo("Firewall is in transient state, will check again in 3 seconds")
+                        self.ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
+                    case .connected:
+                        // all good
+                        DDLogInfo("Firewall is connected, no action")
+                        break
+                    case .disconnected, .invalid:
+                        // we suppose that the connection is somehow broken, trying to fix
+                        DDLogInfo("Firewall is not connected even though it should be, attempting to fix")
+                        self.showFixFirewallConnectionDialog {
+                            FirewallController.shared.deleteConfigurationAndAddAgain()
+                        }
+                    }
+                }
+            } else {
+                DDLogInfo("No Firewall configurations in settings (likely fresh install): not checking")
+                return
+            }
         }
     }
     
@@ -1007,4 +996,25 @@ final class DynamicButton: PopupDialogButton {
             }
         }
     }
+}
+
+extension NEVPNStatus: CustomStringConvertible {
+    
+    public var description: String {
+        switch self {
+        case .invalid:
+            return "invalid"
+        case .disconnected:
+            return "disconnected"
+        case .connecting:
+            return "connecting"
+        case .connected:
+            return "connected"
+        case .reasserting:
+            return "reasserting"
+        case .disconnecting:
+            return "disconnecting"
+        }
+    }
+    
 }

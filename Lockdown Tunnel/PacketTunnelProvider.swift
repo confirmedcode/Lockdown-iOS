@@ -7,7 +7,6 @@
 
 import NetworkExtension
 import NEKit
-import CocoaLumberjackSwift
 
 class LDObserverFactory: ObserverFactory {
     
@@ -30,14 +29,18 @@ class LDObserverFactory: ObserverFactory {
                 // if domain is in whitelist, just return (user probably didn't whitelist something they want to block
                 for whitelistedDomain in whitelistedDomains {
                     if (session.host.hasSuffix("." + whitelistedDomain) || session.host == whitelistedDomain) {
-                        DDLogInfo("whitelisted \(session.host), not blocking")
+                        #if DEBUG
+                        PacketTunnelProviderLogs.log("whitelisted \(session.host), not blocking")
+                        #endif
                         return
                     }
                 }
                 // else if firewall on, then block
                 if (getUserWantsFirewallEnabled()) {
                     updateMetrics(.incrementAndLog(host: session.host), rescheduleNotifications: .withEnergySaving)
-                    DDLogInfo("session host: \(session.host)")
+                    #if DEBUG
+                    PacketTunnelProviderLogs.log("session host: \(session.host)")
+                    #endif
                     socket.forceDisconnect()
                     return
                 }
@@ -64,6 +67,25 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
         proxyServer = nil
         
+        PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
+        self.connect(options: options, completionHandler: completionHandler)
+        
+//        if ProtectedFileAccess.isAvailable {
+//            PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
+//            #if DEBUG
+//            debugLog("startTunnel function called with protected file access")
+//            flushDebugLogsToPacketTunnelProviderLogs()
+//            #endif
+//            self.connect(options: options, completionHandler: completionHandler)
+//        } else {
+//            #if DEBUG
+//            debugLog("startTunnel called, no protected file access")
+//            #endif
+//            completionHandler(NEVPNError(.configurationInvalid))
+//        }
+    }
+    
+    private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: proxyServerAddress)
         settings.mtu = NSNumber(value: 1500)
         
@@ -79,6 +101,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // bugfix: attempting to fix issue with whitelist sometimes breaking
              combined = combined + getAllWhitelistedDomains()
 //        }
+        if combined.count <= 1 {
+            #if DEBUG
+            debugLog("PTP: COMBINED BLOCK LIST IS INVALID, LIKELY JUST RESTARTED")
+            debugLog(combined.description)
+            #endif
+            completionHandler(NEVPNError(.configurationInvalid))
+            return
+        }
         proxySettings.matchDomains = combined
         
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
@@ -88,17 +118,17 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
             guard error == nil else {
-                DDLogError("Error setting tunnel network settings \(error as Any)")
+                PacketTunnelProviderLogs.log("Error setting tunnel network settings \(error as Any)")
                 completionHandler(error)
                 return
             }
             self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
             do {
                 try self.proxyServer.start()
+                PacketTunnelProviderLogs.log("Proxy server started")
                 completionHandler(nil)
-            }
-            catch let proxyError {
-                DDLogError("Error starting proxy server \(proxyError)")
+            } catch let proxyError {
+                PacketTunnelProviderLogs.log("Error starting proxy server \(proxyError)")
                 completionHandler(proxyError)
             }
         })
@@ -110,10 +140,83 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         ObserverFactory.currentFactory = nil
         proxyServer.stop()
         proxyServer = nil
-        DDLogError("LockdownTunnel: error on stopping: \(reason)")
+        PacketTunnelProviderLogs.log("LockdownTunnel: error on stopping: \(reason.debugDescription)")
         
         completionHandler()
         exit(EXIT_SUCCESS)
     }
+    
+    override func cancelTunnelWithError(_ error: Error?) {
+        super.cancelTunnelWithError(error)
+        PacketTunnelProviderLogs.log("Packet tunnel provider cancelled with error: \(error as Any)")
+    }
 
+}
+
+extension PacketTunnelProvider {
+    
+    #if DEBUG
+    static let debugLogsKey = AppGroupStorage.Key<[String]>(rawValue: "com.confirmed.packettunnelprovider.debuglogs")
+    
+    func debugLog(_ string: String) {
+        let string = "DEBUG LOG \(PacketTunnelProviderLogs.dateFormatter.string(from: Date())) \(string)"
+        if var existing = AppGroupStorage.shared.read(key: PacketTunnelProvider.debugLogsKey) {
+            existing.append(string)
+            AppGroupStorage.shared.write(content: existing, key: PacketTunnelProvider.debugLogsKey)
+        } else {
+            AppGroupStorage.shared.write(content: [string], key: PacketTunnelProvider.debugLogsKey)
+        }
+    }
+    
+    func flushDebugLogsToPacketTunnelProviderLogs() {
+        if let existing = AppGroupStorage.shared.read(key: PacketTunnelProvider.debugLogsKey) {
+            for entry in existing {
+                PacketTunnelProviderLogs.log(entry)
+            }
+            AppGroupStorage.shared.delete(forKey: PacketTunnelProvider.debugLogsKey)
+        }
+    }
+    #endif
+}
+
+extension NEProviderStopReason: CustomDebugStringConvertible {
+    
+    public var debugDescription: String {
+        switch self {
+        case .none:
+            return "none"
+        case .userInitiated:
+            return "userInitiated"
+        case .providerFailed:
+            return "providerFailed"
+        case .noNetworkAvailable:
+            return "noNetworkAvailable"
+        case .unrecoverableNetworkChange:
+            return "unrecoverableNetworkChange"
+        case .providerDisabled:
+            return "providerDisabled"
+        case .authenticationCanceled:
+            return "authenticationCanceled"
+        case .configurationFailed:
+            return "configurationFailed"
+        case .idleTimeout:
+            return "idleTimeout"
+        case .configurationDisabled:
+            return "configurationDisabled"
+        case .configurationRemoved:
+            return "configurationRemoved"
+        case .superceded:
+            return "superceded"
+        case .userLogout:
+            return "userLogout"
+        case .userSwitch:
+            return "userSwitch"
+        case .connectionFailed:
+            return "connectionFailed"
+        case .sleep:
+            return "sleep"
+        case .appUpdate:
+            return "appUpdate"
+        }
+    }
 }

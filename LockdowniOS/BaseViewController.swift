@@ -136,6 +136,10 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         self.showModalWebView(title: NSLocalizedString("Terms", comment: ""), urlString: "https://lockdownprivacy.com/terms")
     }
     
+    func showFAQsModal() {
+        self.showModalWebView(title: NSLocalizedString("FAQs", comment: ""), urlString: "https://lockdownprivacy.com/faq")
+    }
+    
     func showWebsiteModal() {
         self.showModalWebView(title: NSLocalizedString("Website", comment: ""), urlString: "https://lockdownprivacy.com")
     }
@@ -238,6 +242,30 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         self.present(popup, animated: true, completion: nil)
     }
     
+    func showFixFirewallConnectionDialog(completion: @escaping () -> ()) {
+        VPNController.shared.isConfigurationExisting { (exists) in
+            if exists {
+                // if VPN configuration exists, the system will not show an alert,
+                // so we do need to warn users about it
+                completion()
+            } else {
+                // if there is no existing VPN configuration,
+                // we need to show a dialog explaining the
+                // upcoming popup
+                self.showPopupDialog(
+                    title: "Tap \"Allow\" on the Next Popup",
+                    message: "Due to a recent iOS or Lockdown update, the Firewall needs to be refreshed to run properly.\n\nIf asked, tap \"Allow\" on the next dialog to automatically complete this process.",
+                    buttons: [
+                        .cancel(),
+                        .defaultAccept(completion: {
+                            completion()
+                        })
+                    ]
+                )
+            }
+        }
+    }
+    
 //    func showPopupDialogSubmitError(title : String = "Sorry, An Error Occurred", message : String, error: Error?) {
 //        let popup = PopupDialog(title: title, message: message, image: nil, transitionStyle: .zoomIn, hideStatusBar: false)
 //        let acceptButton = DefaultButton(title: "Don't Submit", dismissOnTap: true) { }
@@ -254,7 +282,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         controller.dismiss(animated: true)
     }
     
-    @objc func emailTeam(messageBody: String = NSLocalizedString("Hey Lockdown Team, \nI have a question, issue, or suggestion - ", comment: ""), messageErrorBody: String = "") {
+    @objc func emailTeam(messageBody: String = NSLocalizedString("Hi, my question or feedback for Lockdown is: ", comment: ""), messageErrorBody: String = "") {
         DDLogInfo("")
         DDLogInfo("UserId: \(keychain[kVPNCredentialsId] ?? "No User ID")")
         DDLogInfo("UserReceipt: \(keychain[kVPNCredentialsKeyBase64] ?? "No User Receipt")")
@@ -263,16 +291,27 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             DDLogInfo("Has loaded cookie.")
         }
         DDLogInfo("")
+        PacketTunnelProviderLogs.flush()
+        DDLogInfo("")
+        
+        let recipient = "team@lockdownprivacy.com"
+        var appendString = ""
+        if (getUserWantsVPNEnabled()) {
+            appendString = appendString + " - S"
+        }
+        let subject = "Lockdown Question or Feedback (iOS \(Bundle.main.versionString))" + appendString
+        
+        var message = messageBody
+        if messageErrorBody != "" {
+            message = messageBody + "\n\nError Details: " + messageErrorBody
+        }
+        message += "\n\n\n"
         
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
-            composeVC.setToRecipients(["team@lockdownprivacy.com"])
-            composeVC.setSubject("Lockdown Feedback (iOS)")
-            var message = messageBody
-            if messageErrorBody != "" {
-                message = messageBody + "\n\nError Details: " + messageErrorBody
-            }
+            composeVC.setToRecipients([recipient])
+            composeVC.setSubject(subject)
             composeVC.setMessageBody(message, isHTML: false)
             let attachmentData = NSMutableData()
             for logFileData in logFileDataArray {
@@ -281,8 +320,21 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "ConfirmedLogs.log")
             self.present(composeVC, animated: true, completion: nil)
         } else {
-            showPopupDialog(title: NSLocalizedString("Couldn't Find Your Email Client", comment: ""),
-                            message: NSLocalizedString("Please make sure you have added an e-mail account to your iOS device and try again.", comment: ""), acceptButton: NSLocalizedString("OK", comment: ""))
+            
+            guard let mailtoURL = Mailto.generateURL(recipient: recipient, subject: subject, body: message) else {
+                DDLogError("Failed to generate mailto url")
+                return
+            }
+            
+            UIApplication.shared.open(mailtoURL, options: [:]) { (success) in
+                if !success {
+                    self.showPopupDialog(
+                        title: NSLocalizedString("Couldn't Find Your Email Client", comment: ""),
+                        message: NSLocalizedString("Please make sure you have added an e-mail account to your iOS device and try again.", comment: ""),
+                        acceptButton: NSLocalizedString("OK", comment: "")
+                    )
+                }
+            }
         }
     }
     

@@ -1,3 +1,2 @@
 api.facebook.com
-connect.facebook.net
 graph.facebook.com

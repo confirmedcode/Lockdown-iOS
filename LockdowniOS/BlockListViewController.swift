@@ -31,7 +31,9 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
     @IBAction func save() {
         self.dismiss(animated: true, completion: {
             if (self.didMakeChange == true) {
-                if (FirewallController.shared.status() == .connected) {
+                if getIsCombinedBlockListEmpty() {
+                    FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
+                } else if (FirewallController.shared.status() == .connected) {
                     FirewallController.shared.restart()
                 }
             }

@@ -35,6 +35,12 @@ class VPNController: NSObject {
             VPNController.shared.setEnabled(true)
         })
     }
+    
+    func isConfigurationExisting(_ completion: @escaping (Bool) -> ()) {
+        manager.loadFromPreferences { (error) in
+            completion(self.manager.protocolConfiguration != nil)
+        }
+    }
  
     func setEnabled(_ enabled: Bool, completion: @escaping (_ error: Error?) -> Void = {_ in }) {
         DDLogInfo("VPNController set enabled: \(enabled)")
@@ -93,7 +99,7 @@ class VPNController: NSObject {
             p.ikeSecurityAssociationParameters.integrityAlgorithm = NEVPNIKEv2IntegrityAlgorithm.SHA512
             p.ikeSecurityAssociationParameters.lifetimeMinutes = 1440
             
-            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.high
+            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.medium
             p.identityData = identityData
             p.identityDataPassword = ""
             

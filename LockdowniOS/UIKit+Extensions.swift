@@ -14,3 +14,9 @@ extension UIDevice {
         return UIScreen.main.nativeBounds.height == 1136
     }
 }
+
+extension Bundle {
+    var versionString: String {
+        return "v" + (infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+    }
+}

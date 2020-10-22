@@ -50,11 +50,9 @@ final class AccountViewController: BaseViewController, Loadable {
     }
     
     func createTable() {
-        let buttonHeight = 55
-        
         var title = "⚠️ Not Signed In"
         var message: String? = "Sign up below to unlock benefits of a Lockdown account."
-        var firstButton = DefaultCell(title: NSLocalizedString("Sign Up  |  Sign In", comment: ""), height: buttonHeight, dismissOnTap: true) {
+        var firstButton = DefaultCell(title: NSLocalizedString("Sign Up  |  Sign In", comment: "")) {
             // AccountViewController will update itself by observing
             // AccountUI.accountStateDidChange notification
             AccountUI.presentCreateAccount(on: self)
@@ -67,7 +65,7 @@ final class AccountViewController: BaseViewController, Loadable {
             message = apiCredentials.email
             if getAPICredentialsConfirmed() == true {
                 title = "Signed In"
-                firstButton = DefaultCell(title: NSLocalizedString("Sign Out", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                firstButton = DefaultCell(title: NSLocalizedString("Sign Out", comment: "")) {
                     let confirm = PopupDialog(title: "Sign Out?",
                                                message: "You'll be signed out from this account.",
                                                image: nil,
@@ -98,7 +96,7 @@ final class AccountViewController: BaseViewController, Loadable {
             }
             else {
                 title = "⚠️ Email Not Confirmed"
-                firstButton = DefaultCell(title: NSLocalizedString("Confirm Email", comment: ""), height: buttonHeight, dismissOnTap: true) {
+                firstButton = DefaultCell(title: NSLocalizedString("Confirm Email", comment: "")) {
                     self.showLoadingView()
                     
                     firstly {
@@ -199,7 +197,7 @@ final class AccountViewController: BaseViewController, Loadable {
             }
         }
         
-        let upgradeButton = DefaultButtonCell(title: "Loading Plan", height: buttonHeight, dismissOnTap: true) {
+        let upgradeButton = DefaultButtonCell(title: "Loading Plan") {
             self.performSegue(withIdentifier: "showUpgradePlanAccount", sender: self)
         }
         upgradeButton.startActivityIndicator()
@@ -265,7 +263,7 @@ final class AccountViewController: BaseViewController, Loadable {
             }
         }
         
-        let notificationsButton = DefaultCell(title: "", height: buttonHeight, dismissOnTap: false, action: { })
+        let notificationsButton = DefaultCell(title: "", action: { })
         
         let updateNotificationButtonTitle = { (cell: _DefaultCell) in
             if PushNotifications.Authorization.getUserWantsNotificationsEnabled(forCategory: .weeklyUpdate) {
@@ -324,28 +322,63 @@ final class AccountViewController: BaseViewController, Loadable {
         }
         
         let otherCells = [
-            DefaultCell(title: NSLocalizedString("Tutorial", comment: ""), height: buttonHeight, dismissOnTap: true) { [unowned self] in
+            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
                 self.startTutorial()
             },
-            DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: ""), height: buttonHeight, dismissOnTap: true) {
+            DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: "")) {
                 self.showWhyTrustPopup()
             },
-            DefaultCell(title: NSLocalizedString("Privacy Policy", comment: ""), height: buttonHeight, dismissOnTap: true) {
+            DefaultCell(title: NSLocalizedString("Privacy Policy", comment: "")) {
                 self.showPrivacyPolicyModal()
             },
-            DefaultCell(title: NSLocalizedString("What is VPN?", comment: ""), height: buttonHeight, dismissOnTap: true) {
+            DefaultCell(title: NSLocalizedString("What is VPN?", comment: "")) {
                 self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
             },
-            DefaultCell(title: NSLocalizedString("Email Support", comment: ""), height: buttonHeight, dismissOnTap: true) {
-                self.emailTeam()
+            DefaultCell(title: NSLocalizedString("Support | Feedback", comment: "")) {
+                self.showPopupDialog(
+                    title: nil,
+                    message: NSLocalizedString("Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.", comment: ""),
+                    buttons: [
+                        .custom(title: NSLocalizedString("View FAQs", comment: ""), completion: {
+                            self.showFAQsModal()
+                        }),
+                        .custom(title: NSLocalizedString("Email Us", comment: ""), completion: {
+                            self.emailTeam()
+                        }),
+                        .cancel()
+                    ]
+                )
             },
-            DefaultCell(title: NSLocalizedString("Website", comment: ""), height: buttonHeight, dismissOnTap: true) {
+            DefaultCell(title: NSLocalizedString("FAQs", comment: "")) {
+                self.showFAQsModal()
+            },
+            DefaultCell(title: NSLocalizedString("Website", comment: "")) {
                 self.showWebsiteModal()
             },
         ]
         
         for cell in otherCells {
             tableView.addCell(cell)
+        }
+        
+        #if DEBUG
+        let fixVPNConfig = DefaultCell(title: "_Fix Firewall Config", action: {
+            self.showFixFirewallConnectionDialog {
+                FirewallController.shared.deleteConfigurationAndAddAgain()
+            }
+        })
+        tableView.addCell(fixVPNConfig)
+        #endif
+        
+        tableView.addRowCell { (cell) in
+            cell.textLabel?.text = Bundle.main.versionString
+            cell.textLabel?.font = fontSemiBold17
+            cell.textLabel?.textColor = UIColor.systemGray
+            cell.textLabel?.textAlignment = .right
+            
+            // removing the bottom separator
+            cell.separatorInset = .init(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+            cell.directionalLayoutMargins = .zero
         }
     }
     
@@ -385,7 +418,7 @@ class _DefaultButtonCell: SelectableTableViewCell {
     let button = UIButton(type: .system)
 }
 
-func DefaultButtonCell(title: String, height: Int, dismissOnTap: Bool, action: @escaping () -> ()) -> _DefaultButtonCell {
+func DefaultButtonCell(title: String, action: @escaping () -> ()) -> _DefaultButtonCell {
     let cell = _DefaultButtonCell()
     cell.backgroundView = UIView()
     cell.button.setTitle(title, for: .normal)
@@ -402,7 +435,7 @@ class _DefaultCell: SelectableTableViewCell {
     let label = UILabel()
 }
 
-func DefaultCell(title: String, height: Int, dismissOnTap: Bool, action: @escaping () -> ()) -> _DefaultCell {
+func DefaultCell(title: String, action: @escaping () -> ()) -> _DefaultCell {
     let cell = _DefaultCell()
     cell.label.text = title
     cell.label.font = fontSemiBold17
