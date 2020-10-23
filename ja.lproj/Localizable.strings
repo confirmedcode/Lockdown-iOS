@@ -424,8 +424,6 @@
 /* No comment provided by engineer. */
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 ファイアウォールがアクティブ化されました 🎊🎉";
 
-/* ================================= REQUIRES TRANSLATION BELOW ============================== */
-
 /* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
 " and " = " and ";
 
@@ -433,7 +431,7 @@
 " trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
-"at least 8 characters" = "at least 8 characters";
+"at least 8 characters" = "8文字以上";
 
 /* No comment provided by engineer. */
 "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.";
@@ -544,19 +542,19 @@
 "Notifications: On" = "Notifications: On";
 
 /* No comment provided by engineer. */
-"one lowercase letter" = "one lowercase letter";
+"one lowercase letter" = "小文字";
 
 /* No comment provided by engineer. */
-"one number" = "one number";
+"one number" = "数字";
 
 /* No comment provided by engineer. */
-"one symbol" = "one symbol";
+"one symbol" = "記号を";
 
 /* No comment provided by engineer. */
-"one uppercase letter" = "one uppercase letter";
+"one uppercase letter" = "大文字";
 
 /* No comment provided by engineer. */
-"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.";
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "パスワードは8文字以上で、大文字、小文字、数字、記号を1つ以上含む必要があります。";
 
 /* No comment provided by engineer. */
 "Plan: Annual Pro" = "Plan: Annual Pro";

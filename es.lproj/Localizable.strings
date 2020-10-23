@@ -421,8 +421,6 @@
 /* No comment provided by engineer. */
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Firewall Activado 🎊🎉";
 
-/* ================================= REQUIRES TRANSLATION BELOW ============================== */
-
 /* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
 " and " = " and ";
 
@@ -433,7 +431,7 @@
 "Activating" = "Activating";
 
 /* No comment provided by engineer. */
-"at least 8 characters" = "at least 8 characters";
+"at least 8 characters" = "al menos 8 caracteres";
 
 /* No comment provided by engineer. */
 "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.";
@@ -544,19 +542,19 @@
 "Notifications: On" = "Notifications: On";
 
 /* No comment provided by engineer. */
-"one lowercase letter" = "one lowercase letter";
+"one lowercase letter" = "una letra minúscula";
 
 /* No comment provided by engineer. */
-"one number" = "one number";
+"one number" = "un número";
 
 /* No comment provided by engineer. */
-"one symbol" = "one symbol";
+"one symbol" = "un símbolo";
 
 /* No comment provided by engineer. */
-"one uppercase letter" = "one uppercase letter";
+"one uppercase letter" = "una letra mayúscula";
 
 /* No comment provided by engineer. */
-"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.";
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "La contraseña debe tener al menos 8 caracteres, contener al menos una letra mayúscula, una letra minúscula, un número y un símbolo.";
 
 /* No comment provided by engineer. */
 "Plan: Annual Pro" = "Plan: Annual Pro";
