@@ -181,9 +181,6 @@
 /* No comment provided by engineer. */
 "Error Starting Trial" = "Error Starting Trial";
 
-/* No comment provided by engineer. */
-"Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com.";
-
 /* The title of a list of trackers */
 "Facebook & WhatsApp" = "Facebook & WhatsApp";
 
@@ -237,9 +234,6 @@
 
 /* Used in the sentence: I blocked 500 trackers with Lockdown. */
 "I blocked" = "I blocked";
-
-/* No comment provided by engineer. */
-"I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = "I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
 
 /* Used in: You blocked tracker.com in your custom blocked domains. */
 "in your custom blocked domains." = "in your custom blocked domains.";
@@ -609,9 +603,6 @@
 "You blocked" = "You blocked";
 
 /* No comment provided by engineer. */
-"You blocked \(match) in your custom blocked domains." = "You blocked \(match) in your custom blocked domains.";
-
-/* No comment provided by engineer. */
 "You blocked this domain in your custom blocked domains." = "You blocked this domain in your custom blocked domains.";
 
 /* No comment provided by engineer. */
@@ -637,3 +628,9 @@
 
 /* No comment provided by engineer. */
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Firewall Activated 🎊🎉";
+
+/* No comment provided by engineer. */
+"Error while trying to confirm your account:" = "Error while trying to confirm your account:";
+
+/* No comment provided by engineer. */
+"If this persists, please contact team@lockdownprivacy.com." = "If this persists, please contact team@lockdownprivacy.com.";

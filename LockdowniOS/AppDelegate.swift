@@ -452,7 +452,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 let popup = PopupDialog(title: "Error Confirming Account",
-                                        message: NSLocalizedString("Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com.", comment: ""),
+                                        message: "\(NSLocalizedString("Error while trying to confirm your account:", comment: "")) \(errorMessage). \(NSLocalizedString("If this persists, please contact team@lockdownprivacy.com.", comment: ""))",
                                         image: nil,
                                         buttonAlignment: .horizontal,
                                         transitionStyle: .bounceDown,

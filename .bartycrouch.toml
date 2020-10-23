@@ -10,8 +10,7 @@ unstripped = false
 [update.code]
 codePaths = ["."]
 localizablePaths = ["."]
-defaultToKeys = false
-additive = true
+defaultToKeys = true
 unstripped = false
 plistArguments = true
 
@@ -26,8 +25,8 @@ plistArguments = true
 [update.normalize]
 paths = ["."]
 sourceLocale = "en"
-harmonizeWithSource = true
-sortByKeys = true
+harmonizeWithSource = false
+sortByKeys = false
 
 [lint]
 paths = ["."]
