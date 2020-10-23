@@ -523,7 +523,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      toggleCircle: firewallToggleCircle,
                                      toggleAnimatedCircle: firewallToggleAnimatedCircle,
                                      button: firewallButton,
-                                     prefixText: NSLocalizedString("FIREWALL", comment: ""))
+                                     prefixText: NSLocalizedString("Firewall", comment: "").uppercased())
     }
     
     func updateToggleButtonWithStatus(lastStatus: NEVPNStatus?, newStatus: NEVPNStatus, activeLabel: UILabel, toggleCircle: UIButton, toggleAnimatedCircle: NVActivityIndicatorView, button: UIButton, prefixText: String) {
@@ -535,28 +535,28 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             DispatchQueue.main.async() {
                 switch newStatus {
                 case .connected:
-                    activeLabel.text = prefixText + NSLocalizedString(" ON", comment: "")
+                    activeLabel.text = "\(prefixText) \(NSLocalizedString("On", comment: "").uppercased())"
                     activeLabel.backgroundColor = UIColor.tunnelsBlue
                     toggleCircle.tintColor = .tunnelsBlue
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .tunnelsBlue
                 case .connecting:
-                    activeLabel.text = NSLocalizedString("ACTIVATING", comment: "")
+                    activeLabel.text = NSLocalizedString("Activating", comment: "").uppercased()
                     activeLabel.backgroundColor = .tunnelsBlue
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .tunnelsBlue
                     toggleAnimatedCircle.startAnimating()
                     button.tintColor = .tunnelsBlue
                 case .disconnected, .invalid:
-                    activeLabel.text = prefixText + NSLocalizedString(" OFF", comment: "")
+                    activeLabel.text = "\(prefixText) \(NSLocalizedString("Off", comment: "").uppercased())"
                     activeLabel.backgroundColor = .tunnelsWarning
                     toggleCircle.tintColor = .lightGray
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .lightGray
                 case .disconnecting:
-                    activeLabel.text = NSLocalizedString("DEACTIVATING", comment: "")
+                    activeLabel.text = NSLocalizedString("Deactivating", comment: "").uppercased()
                     activeLabel.backgroundColor = .lightGray
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .lightGray
@@ -596,7 +596,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     func toggleVPNBodyView(animate: Bool, show: Bool? = nil) {
         // always show
-        self.vpnHideButton.setTitle(NSLocalizedString("HIDE", comment: ""), for: .normal)
+        self.vpnHideButton.setTitle(NSLocalizedString("Hide", comment: "").uppercased(), for: .normal)
         self.vpnBodyView.alpha = 1
         self.vpnActiveHeaderConstraint.isActive = false
         self.vpnActiveTopBodyConstraint.isActive = true
@@ -623,7 +623,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             vpnBodyView.alpha = 0
             self.vpnBodyView.isHidden = false
             UIView.animate(withDuration: animationTime, animations: {
-                self.vpnHideButton.setTitle(NSLocalizedString("HIDE", comment: ""), for: .normal)
+                self.vpnHideButton.setTitle(NSLocalizedString("Hide", comment: "").uppercased(), for: .normal)
                 self.vpnBodyView.alpha = 1
                 self.vpnActiveHeaderConstraint.isActive = false
                 self.vpnActiveTopBodyConstraint.isActive = true
@@ -637,7 +637,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         else {
             UIView.animate(withDuration: animationTime, animations: {
-                self.vpnHideButton.setTitle(NSLocalizedString("SHOW", comment: ""), for: .normal)
+                self.vpnHideButton.setTitle(NSLocalizedString("Show", comment: "").uppercased(), for: .normal)
                 self.vpnBodyView.alpha = 0
                 self.vpnActiveHeaderConstraint.isActive = true
                 self.vpnActiveTopBodyConstraint.isActive = false
@@ -669,7 +669,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      toggleCircle: vpnToggleCircle,
                                      toggleAnimatedCircle: vpnToggleAnimatedCircle,
                                      button: vpnButton,
-                                     prefixText: NSLocalizedString("TUNNEL", comment: ""))
+                                     prefixText: NSLocalizedString("Tunnel", comment: "").uppercased())
     }
     
     @IBAction func toggleVPN(_ sender: Any) {

@@ -141,9 +141,9 @@ struct LockdownVPNWidgetEntryView : View {
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isVPNEnabled {
-                StatusLabel(text: "TUNNEL ON", color: .confirmedBlue)
+                StatusLabel(text: NSLocalizedString("Tunnel on", comment: "").uppercased(), color: .confirmedBlue)
             } else {
-                StatusLabel(text: "TUNNEL OFF", color: .flatRed)
+                StatusLabel(text: NSLocalizedString("Tunnel off", comment: "").uppercased(), color: .flatRed)
             }
             if entry.size.height < 160 {
                 Spacer().frame(minHeight: 4)

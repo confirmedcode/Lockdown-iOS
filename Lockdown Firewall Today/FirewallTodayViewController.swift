@@ -144,11 +144,11 @@ class FirewallTodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func setFirewallButtonConnecting() {
-        firewallStatusLabel.text = NSLocalizedString("Activating...", comment: "")
+        firewallStatusLabel.text = NSLocalizedString("Activating", comment: "") + "..."
     }
     
     func setFirewallButtonDisconnecting() {
-        firewallStatusLabel.text = NSLocalizedString("Deactivating...", comment: "")
+        firewallStatusLabel.text = NSLocalizedString("Deactivating", comment: "") + "..."
     }
     
     // MARK: - Helpers

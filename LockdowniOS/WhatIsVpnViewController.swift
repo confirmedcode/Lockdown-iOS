@@ -78,7 +78,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     func setPrivacyState(state: Bool) {
         privacyEnabled = state
         if (state == true) {
-            vpnActiveLabel.text = NSLocalizedString("ACTIVATING", comment: "")
+            vpnActiveLabel.text = NSLocalizedString("Activating", comment: "").uppercased()
             vpnActiveLabel.backgroundColor = .tunnelsBlue
             
             toggleCircle.isHidden = true
@@ -126,7 +126,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
             dataLabel.text = NSLocalizedString("To: joe@email.com\nRe: Q4 2019 Finance Review", comment: "")
             dataFlow.primaryColor = .orange
             dataFlow.secondaryColor = .tunnelsWarning
-            vpnActiveLabel.text = NSLocalizedString("TUNNEL OFF", comment: "")
+            vpnActiveLabel.text = NSLocalizedString("Tunnel off", comment: "").uppercased()
             vpnActiveLabel.backgroundColor = .tunnelsWarning
             descriptionLabel.attributedText = add(stringList: [
                 NSLocalizedString("Precise location exposed", comment: ""),
