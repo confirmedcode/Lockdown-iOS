@@ -7,18 +7,56 @@
 
 import UIKit
 
-class BlockListAddCell: UITableViewCell {
+class BlockListAddView: UIView {
+    
+    let textField = UITextField()
+    
+    init() {
+        super.init(frame: .zero)
+        didLoad()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func didLoad() {
+        textField.font = fontRegular17
+        textField.placeholder = "domain-to-block.com"
+        textField.clearButtonMode = .whileEditing
+        textField.keyboardType = .URL
+        textField.textContentType = .URL
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.smartDashesType = .no
+        textField.smartInsertDeleteType = .no
+        textField.smartQuotesType = .no
+        textField.spellCheckingType = .no
+        textField.returnKeyType = .done
+
+        addSubview(textField)
+        textField.anchors.width.equal(280)
+        textField.anchors.centerX.align()
+        textField.anchors.bottom.marginsPin(inset: 8)
+        
+        let label = UILabel()
+        label.text = NSLocalizedString("Add a domain to block", comment: "")
+        label.font = fontRegular14
+        addSubview(label)
+        label.anchors.top.marginsPin()
+        label.anchors.bottom.spacing(4, to: textField.anchors.top)
+        label.anchors.leading.pin(to: textField)
+        label.anchors.trailing.pin(to: textField)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         // Add line to bottom of Add Domain Text Field
         let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: addBlockListDomain.frame.height - 2, width: addBlockListDomain.frame.width, height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textField.frame.height + 2, width: textField.frame.width, height: 2)
         bottomLine.backgroundColor = UIColor.tunnelsBlue.cgColor
-        addBlockListDomain.layer.addSublayer(bottomLine)
+        textField.layer.addSublayer(bottomLine)
     }
-
-    @IBOutlet weak var addBlockListDomain: UITextField!
-    
 }

@@ -8,36 +8,219 @@
 import UIKit
 import CocoaLumberjackSwift
 
-class BlockListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
-
-    var addDomainTextField: UITextField?
-    @IBOutlet weak var tableView: UITableView!
+class BlockListViewController: BaseViewController {
+    
     var didMakeChange = false
+    
+    var lockdownBlockedDomains: [LockdownGroup] = []
+    var userBlockedDomains: [(String, Bool)] = []
+    
+    let listsTableView = StaticTableView()
+    let customBlocksTableView = StaticTableView()
+    
+    enum Page: CaseIterable {
+        case blockLists
+        case custom
+        
+        var localizedTitle: String {
+            switch self {
+            case .blockLists:
+                return NSLocalizedString("Block Lists", comment: "")
+            case .custom:
+                return NSLocalizedString("Custom", comment: "")
+            }
+        }
+    }
+    
+    let segmented = UISegmentedControl(items: Page.allCases.map(\.localizedTitle))
+    let explanationLabel = UILabel()
+
+    let blockListAddView = BlockListAddView()
+    var addDomainTextField: UITextField {
+        return blockListAddView.textField
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let customNavigationView = CustomNavigationView()
+        customNavigationView.title = NSLocalizedString("Configure Blocking", comment: "")
+        customNavigationView.buttonTitle = NSLocalizedString("SAVE", comment: "")
+        customNavigationView.onButtonPressed { [unowned self] in
+            self.save()
+        }
+        view.addSubview(customNavigationView)
+        customNavigationView.anchors.leading.pin()
+        customNavigationView.anchors.trailing.pin()
+        customNavigationView.anchors.top.safeAreaPin()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
-        self.tableView.reloadData()
+        do {
+            explanationLabel.font = fontRegular14
+            explanationLabel.numberOfLines = 0
+            explanationLabel.text = NSLocalizedString("Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions.", comment: "")
+            
+            view.addSubview(explanationLabel)
+            explanationLabel.anchors.top.spacing(4, to: customNavigationView.anchors.bottom)
+            explanationLabel.anchors.leading.readableContentPin(inset: 3)
+            explanationLabel.anchors.trailing.readableContentPin(inset: 3)
+        }
+        
+        do {
+            view.addSubview(segmented)
+            segmented.selectedSegmentIndex = 0
+            segmented.anchors.top.spacing(24, to: explanationLabel.anchors.bottom)
+            segmented.anchors.leading.readableContentPin()
+            segmented.anchors.trailing.readableContentPin()
+            segmented.setTitleTextAttributes([.font: fontMedium14], for: .normal)
+            if #available(iOS 13.0, *) {
+                segmented.selectedSegmentTintColor = .tunnelsBlue
+                segmented.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            }
+            
+            segmented.addTarget(self, action: #selector(segmentedControlDidChangeValue), for: .valueChanged)
+        }
+        
+        do {
+            addDomainTextField.addTarget(self, action: #selector(textFieldDidEndOnExit), for: .editingDidEndOnExit)
+        }
+        
+        do {
+            addTableView(listsTableView, layout: { tableView in
+                tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
+                tableView.anchors.leading.pin()
+                tableView.anchors.trailing.pin()
+                tableView.anchors.bottom.pin()
+            })
+            reloadBlockedDomains()
+            
+            addTableView(customBlocksTableView, layout: { tableView in
+                tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
+                tableView.anchors.leading.pin()
+                tableView.anchors.trailing.pin()
+                tableView.anchors.bottom.pin()
+            })
+            customBlocksTableView.deselectsCellsAutomatically = true
+            reloadUserBlockedDomains()
+            
+            transition(toPage: .blockLists)
+        }
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    func reloadBlockedDomains() {
+        listsTableView.clear()
+        lockdownBlockedDomains = {
+            let domains = getLockdownBlockedDomains().lockdownDefaults
+            let sorted = domains.sorted(by: { $0.key < $1.key })
+            return Array(sorted.map(\.value))
+        }()
+        createBlockListsRows()
+        listsTableView.reloadData()
     }
     
-    @IBAction func save() {
-        self.dismiss(animated: true, completion: {
-            if (self.didMakeChange == true) {
-                if getIsCombinedBlockListEmpty() {
-                    FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
-                } else if (FirewallController.shared.status() == .connected) {
-                    FirewallController.shared.restart()
+    func reloadUserBlockedDomains() {
+        customBlocksTableView.clear()
+        userBlockedDomains = {
+            let domains = getUserBlockedDomains()
+            return domains.sorted(by: { $0.key < $1.key }).map { (key, value) -> (String, Bool) in
+                if let status = value as? NSNumber {
+                    return (key, status.boolValue)
+                } else {
+                    return (key, false)
                 }
             }
-        })
+        }()
+        createCustomBlocksRows()
+        customBlocksTableView.reloadData()
+    }
+    
+    func createBlockListsRows() {
+        let tableView = listsTableView
+        
+        for lockdownGroup in lockdownBlockedDomains {
+            
+            let cell = tableView.addRow { (contentView) in
+                let blockListView = BlockListView()
+                blockListView.contents = .lockdownGroup(lockdownGroup)
+                contentView.addSubview(blockListView)
+                blockListView.anchors.edges.pin()
+            }.onSelect { [unowned self] in
+                let storyboard = UIStoryboard.main
+                let target = storyboard.instantiate(BlockListGroupViewController.self)
+                target.lockdownGroup = lockdownGroup
+                target.blockListVC = self
+                self.navigationController?.pushViewController(target, animated: true)
+            }
+            
+            cell.accessoryType = .disclosureIndicator
+        }
+    }
+    
+    func createCustomBlocksRows() {
+        let tableView = customBlocksTableView
+        
+        tableView.addRow { (contentView) in
+            contentView.addSubview(blockListAddView)
+            blockListAddView.anchors.edges.pin()
+        }
+        
+        for (domain, isEnabled) in userBlockedDomains {
+            var currentEnabledStatus = isEnabled
+            let blockListView = BlockListView()
+            blockListView.contents = .userBlocked(domain: domain, isEnabled: isEnabled)
+            
+            tableView.addRow { (contentView) in
+                contentView.addSubview(blockListView)
+                blockListView.anchors.edges.pin()
+            }.onSelect { [unowned blockListView, unowned self] in
+                self.didMakeChange = true
+                currentEnabledStatus.toggle()
+                blockListView.contents = .userBlocked(domain: domain, isEnabled: currentEnabledStatus)
+                setUserBlockedDomain(domain: domain, enabled: currentEnabledStatus)
+            }.onSwipeToDelete { [unowned self] in
+                self.didMakeChange = true
+                deleteUserBlockedDomain(domain: domain)
+                DDLogInfo("Deleting custom domain - \(domain)")
+            }
+        }
+    }
+    
+    @objc
+    func segmentedControlDidChangeValue() {
+        let page = Page.allCases[segmented.selectedSegmentIndex]
+        transition(toPage: page)
+    }
+    
+    func transition(toPage page: Page) {
+        dismissKeyboard()
+        
+        switch page {
+        case .blockLists:
+            customBlocksTableView.isHidden = true
+            listsTableView.isHidden = false
+        case .custom:
+            customBlocksTableView.isHidden = false
+            listsTableView.isHidden = true
+        }
+    }
+    
+    @objc
+    func textFieldDidEndOnExit(textField: UITextField) {
+        dismissKeyboard()
+        
+        guard let text = textField.text else {
+            DDLogError("Text is empty on add domain text field")
+            return
+        }
+        
+        saveNewDomain(userEnteredDomainName: text)
     }
     
     func saveNewDomain(userEnteredDomainName: String) {
@@ -49,8 +232,8 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
             
             DDLogInfo("Adding custom domain - \(userEnteredDomainName)")
             addUserBlockedDomain(domain: userEnteredDomainName.lowercased())
-            addDomainTextField?.text = ""
-            tableView.reloadData()
+            addDomainTextField.text = ""
+            reloadUserBlockedDomains()
         case .notValid(let reason):
             DDLogWarn("Custom domain is not valid - \(userEnteredDomainName), reason - \(reason)")
             showPopupDialog(
@@ -58,209 +241,20 @@ class BlockListViewController: BaseViewController, UITableViewDataSource, UITabl
                 message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"", comment: ""),
                 acceptButton: NSLocalizedString("Okay", comment: "")
             ) {
-                self.addDomainTextField?.becomeFirstResponder()
+                self.addDomainTextField.becomeFirstResponder()
             }
         }
     }
     
-    //MARK: - TABLE VIEW
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            // Add Domain row
-            if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-                return 75
-            }
-            else {
-                return 50
-            }
-        }
-        else {
-            return 50
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return getUserBlockedDomains().count + 1
-        }
-        else {
-            return getLockdownBlockedDomains().lockdownDefaults.keys.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 45))
-        view.backgroundColor = UIColor.groupTableViewBackground
-        let label = UILabel(frame: CGRect.init(x: 20, y: 20, width: tableView.frame.size.width, height: 24))
-        label.font = fontMedium14
-        label.textColor = UIColor.darkGray
-        
-        if section == 0 {
-            label.text = NSLocalizedString("Custom Settings (Advanced)", comment: "")
-        }
-        else {
-            label.text = NSLocalizedString("Pre-configured Block Lists", comment: "")
-        }
-        
-        view.addSubview(label)
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if indexPath.section == 0 {
-            if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-                // Do nothing for add domain row
-            }
-            else {
-                didMakeChange = true
-                let domains = getUserBlockedDomains();
-                let domainArray = domains.sorted {$0.key < $1.key}
-                if domainArray.count > indexPath.row {
-                    if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
-                        setUserBlockedDomain(domain: domainArray[indexPath.row].key, enabled: false)
-                    }
-                    else {
-                        setUserBlockedDomain(domain: domainArray[indexPath.row].key, enabled: true)
-                    }
-                }
-                tableView.reloadData()
-            }
-        }
-        else if indexPath.section == 1 {
-            let domains = getLockdownBlockedDomains().lockdownDefaults
-            let domainKeys = domains.keys.sorted {$0 < $1}
-            let lockdownGroup = domains[domainKeys[indexPath.row]]
-            self.performSegue(withIdentifier: "showBlockListGroup", sender: lockdownGroup)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showBlockListGroup") {
-            if let target = segue.destination as? BlockListGroupViewController,
-                let lockdownGroup = sender as? LockdownGroup {
-                target.lockdownGroup = lockdownGroup;
-                target.blockListVC = self
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            if indexPath.row < tableView.numberOfRows(inSection: indexPath.section) - 1 {
-                return true
-            }
-        }
-        
-        return false
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let cell = tableView.cellForRow(at: indexPath) as! BlockListCell
-            let domainLabel = cell.blockListDomain
-            
-            didMakeChange = true
-            let domain = domainLabel?.text ?? ""
-            deleteUserBlockedDomain(domain: domain)
-            DDLogInfo("Deleting custom domain - \(domain)")
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
-            // Add Domain
-            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "blockListAddCell", for: indexPath) as! BlockListAddCell
-                cell.accessoryType = .none
-                let textfield = cell.addBlockListDomain
-                textfield?.addTarget(self, action: #selector(textFieldDidEndOnExit), for: .editingDidEndOnExit)
-                textfield?.addTarget(self, action: #selector(didSelectTextField), for: .editingDidBegin)
-                addDomainTextField = textfield
-                return cell
-            }
-            else {
-                let domains = getUserBlockedDomains()
-                let domainArray = domains.sorted {$0.key < $1.key}
-                if domainArray.count > indexPath.row {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "blockListCell", for: indexPath) as! BlockListCell
-                    cell.accessoryType = .none
-                    cell.blockListDomain?.text = domainArray[indexPath.row].key
-                    if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
-                        cell.blockListStatus?.text = NSLocalizedString("Blocked", comment: "")
-                    }
-                    else {
-                        cell.blockListStatus?.text = NSLocalizedString("Not Blocked", comment: "")
-                    }
-                    cell.blockListIcon?.image = UIImage(named: "website_icon.png")
-                    
-                    return cell
+    func save() {
+        self.dismiss(animated: true, completion: {
+            if (self.didMakeChange == true) {
+                if getIsCombinedBlockListEmpty() {
+                    FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
+                } else if (FirewallController.shared.status() == .connected) {
+                    FirewallController.shared.restart()
                 }
             }
-        }
-        else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "blockListCell", for: indexPath) as! BlockListCell
-            let domains = getLockdownBlockedDomains().lockdownDefaults
-            let domainKeys = domains.keys.sorted {$0 < $1}
-            if domainKeys.count > indexPath.row {
-                cell.blockListDomain?.text = domains[domainKeys[indexPath.row]]?.name
-                if domains[domainKeys[indexPath.row]]!.enabled {
-                    cell.blockListStatus?.text = NSLocalizedString("Blocked", comment: "")
-                }
-                else {
-                    cell.blockListStatus?.text = NSLocalizedString("Not Blocked", comment: "")
-                }
-                if let imageView = cell.blockListIcon,
-                    let lockdownGroup = domains[domainKeys[indexPath.row]] {
-                    if let icon = UIImage(named: lockdownGroup.iconURL) {
-                        imageView.image = icon
-                    }
-                    else {
-                        imageView.image = UIImage(named: "website_icon.png")
-                    }
-                }
-            }
-            cell.accessoryType = .disclosureIndicator
-            return cell
-        }
-        
-        return UITableViewCell()
+        })
     }
-    
-    @IBAction func textFieldDidEndOnExit(textField: UITextField) {
-        self.dismissKeyboard()
-        
-        guard let text = textField.text else {
-            DDLogError("Text is empty on add domain text field")
-            return
-        }
-        
-        saveNewDomain(userEnteredDomainName: text)
-    }
-    
-    @objc func didSelectTextField(textField: UITextField) {
-        let addDomainRow = tableView.numberOfRows(inSection: 0) - 1
-        self.tableView.scrollToRow(at: IndexPath.init(row: addDomainRow, section: 0), at: .middle, animated: true)
-    }
-    
 }

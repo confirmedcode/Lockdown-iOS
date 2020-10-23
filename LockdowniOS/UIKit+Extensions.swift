@@ -20,3 +20,14 @@ extension Bundle {
         return "v" + (infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
     }
 }
+
+extension UIStoryboard {
+    func instantiate<ViewController: UIViewController>(_ viewControllerType: ViewController.Type) -> ViewController {
+        let identifier = String.init(describing: viewControllerType)
+        if let resolved = instantiateViewController(withIdentifier: identifier) as? ViewController {
+            return resolved
+        } else {
+            fatalError("No ViewController with Storyboard ID = \(identifier). Please make sure your Storyboard ID is the same as class name!")
+        }
+    }
+}

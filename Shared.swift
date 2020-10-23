@@ -198,6 +198,8 @@ extension String: Error { // Error makes it easy to throw errors as one-liners
 }
 
 extension UIColor {
+    static let confirmedBlue = UIColor(named: "Confirmed Blue") ?? UIColor.tunnelsBlue
+    
     static let tunnelsBlue = UIColor(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
     static let tunnelsWarning = UIColor(red: 231/255.0, green: 76/255.0, blue: 68/255.0, alpha: 1.0)
     static let tunnelsDarkBlue = UIColor(red: 0/255.0, green: 117/255.0, blue: 157/255.0, alpha: 1.0)
@@ -276,12 +278,16 @@ struct Config {
 }
 
 // MARK: - Fonts
+let fontRegular14 = UIFont(name: "Montserrat-Regular", size: 14)!
+let fontRegular17 = UIFont(name: "Montserrat-Regular", size: 17)!
 let fontMedium14 = UIFont(name: "Montserrat-Medium", size: 14)!
 let fontMedium15 = UIFont(name: "Montserrat-Medium", size: 15)!
 let fontMedium16 = UIFont(name: "Montserrat-Medium", size: 16)!
-let fontMedium18 = UIFont(name: "Montserrat-Medium", size: 18.0)!
+let fontMedium17 = UIFont(name: "Montserrat-Medium", size: 17)!
+let fontMedium18 = UIFont(name: "Montserrat-Medium", size: 18)!
 let fontSemiBold15_5 = UIFont(name: "Montserrat-SemiBold", size: 15.5)!
 let fontSemiBold17 = UIFont(name: "Montserrat-SemiBold", size: 17)!
 let fontBold11 = UIFont(name: "Montserrat-Bold", size: 11)!
+let fontBold13 = UIFont(name: "Montserrat-Bold", size: 13)!
 let fontBold15 = UIFont(name: "Montserrat-Bold", size: 15)!
 let fontBold18 = UIFont(name: "Montserrat-Bold", size: 18)!

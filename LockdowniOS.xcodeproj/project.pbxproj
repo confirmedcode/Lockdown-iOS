@@ -185,6 +185,7 @@
 		7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9A9372251E1EC700DA5721 /* Assets.xcassets */; };
 		7C9A9377251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7C9A9384251E1F9C00DA5721 /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9A9383251E1F9C00DA5721 /* LoadingCircle.swift */; };
+		7CAB283F254336230087AAF4 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB283E254336230087AAF4 /* CustomNavigationView.swift */; };
 		7CC8EFED254036050005054C /* FirewallRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8EFEC254036050005054C /* FirewallRepair.swift */; };
 		7CD1435F248798D4009206A9 /* TrackerInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */; };
 		7CD52D81247E850D00D0530F /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD52D80247E850D00D0530F /* SnapshotTests.swift */; };
@@ -528,6 +529,7 @@
 		7C9A9372251E1EC700DA5721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C9A9374251E1EC700DA5721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C9A9383251E1F9C00DA5721 /* LoadingCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
+		7CAB283E254336230087AAF4 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		7CC8EFEC254036050005054C /* FirewallRepair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallRepair.swift; sourceTree = "<group>"; };
 		7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfoTests.swift; sourceTree = "<group>"; };
 		7CD52D80247E850D00D0530F /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 			isa = PBXGroup;
 			children = (
 				7C422E96252796EE007F9C22 /* StaticTableView.swift */,
+				7CAB283E254336230087AAF4 /* CustomNavigationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1952,6 +1955,7 @@
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
 				3D47CDD522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				3D47CDCD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
+				7CAB283F254336230087AAF4 /* CustomNavigationView.swift in Sources */,
 				A1EBEAD22097AE6E002B9087 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */,
 				3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */,

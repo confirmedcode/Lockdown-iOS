@@ -72,13 +72,17 @@ class FirewallController: NSObject {
             if error != nil {
                 DDLogError("Error disabling on Firewall restart: \(error!)")
             }
-            FirewallController.shared.setEnabled(true, completion: {
-                error in
-                if error != nil {
-                    DDLogError("Error enabling on Firewall restart: \(error!)")
-                }
-                completion(error)
-            })
+            // waiting for a little bit before re-enabling:
+            // without it, sometimes Firewall fails to enable
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                FirewallController.shared.setEnabled(true, completion: {
+                    error in
+                    if error != nil {
+                        DDLogError("Error enabling on Firewall restart: \(error!)")
+                    }
+                    completion(error)
+                })
+            }
         })
     }
     

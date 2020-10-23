@@ -91,6 +91,7 @@ final class StaticTableView: UITableView {
 
 class SelectableTableViewCell: UITableViewCell {
     var selectionCallback: () -> () = { }
+    var deletionCallback: (() -> ())?
     
     enum Action {
         case toggleCheckmark
@@ -100,6 +101,12 @@ class SelectableTableViewCell: UITableViewCell {
     func onSelect(callback: @escaping () -> ()) -> Self {
         selectionStyle = .default
         selectionCallback = callback
+        return self
+    }
+    
+    @discardableResult
+    func onSwipeToDelete(callback: @escaping () -> ()) -> Self {
+        deletionCallback = callback
         return self
     }
     
@@ -133,6 +140,25 @@ extension StaticTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return rows[indexPath.row]
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let cell = rows[indexPath.row]
+        return cell.deletionCallback != nil
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let cell = rows[indexPath.row]
+        guard cell.deletionCallback != nil else {
+            return
+        }
+        cell.deletionCallback?()
+        self.rows.removeAll(where: { $0 === cell })
+        self.deleteRows(at: [indexPath], with: .fade)
+    }
 }
 
 extension StaticTableView: UITableViewDelegate {
@@ -152,4 +178,21 @@ extension StaticTableView: UITableViewDelegate {
             }
         }
     }
+}
+
+extension UIViewController {
+    func addTableView(_ tableView: UITableView, layout: (UIView) -> ()) {
+        // adding UITableView as UITableViewController will enable
+        // UIKit's own "scroll to text field when keyboard appears"
+        let tableViewController = StaticTableViewController()
+        tableViewController.tableView = tableView
+        view.addSubview(tableViewController.view)
+        layout(tableView)
+        addChild(tableViewController)
+        tableViewController.didMove(toParent: self)
+    }
+}
+
+final class StaticTableViewController: UITableViewController {
+    
 }
