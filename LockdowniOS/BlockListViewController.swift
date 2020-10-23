@@ -12,10 +12,10 @@ class BlockListViewController: BaseViewController {
     
     var didMakeChange = false
     
-    var lockdownBlockedDomains: [LockdownGroup] = []
+    var lockdownBlockLists: [LockdownGroup] = []
     var userBlockedDomains: [(String, Bool)] = []
     
-    let listsTableView = StaticTableView()
+    let blockListsTableView = StaticTableView()
     let customBlocksTableView = StaticTableView()
     
     enum Page: CaseIterable {
@@ -93,13 +93,13 @@ class BlockListViewController: BaseViewController {
         }
         
         do {
-            addTableView(listsTableView, layout: { tableView in
+            addTableView(blockListsTableView, layout: { tableView in
                 tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
                 tableView.anchors.leading.pin()
                 tableView.anchors.trailing.pin()
                 tableView.anchors.bottom.pin()
             })
-            reloadBlockedDomains()
+            reloadBlockLists()
             
             addTableView(customBlocksTableView, layout: { tableView in
                 tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
@@ -114,15 +114,15 @@ class BlockListViewController: BaseViewController {
         }
     }
     
-    func reloadBlockedDomains() {
-        listsTableView.clear()
-        lockdownBlockedDomains = {
+    func reloadBlockLists() {
+        blockListsTableView.clear()
+        lockdownBlockLists = {
             let domains = getLockdownBlockedDomains().lockdownDefaults
             let sorted = domains.sorted(by: { $0.key < $1.key })
             return Array(sorted.map(\.value))
         }()
         createBlockListsRows()
-        listsTableView.reloadData()
+        blockListsTableView.reloadData()
     }
     
     func reloadUserBlockedDomains() {
@@ -142,9 +142,9 @@ class BlockListViewController: BaseViewController {
     }
     
     func createBlockListsRows() {
-        let tableView = listsTableView
+        let tableView = blockListsTableView
         
-        for lockdownGroup in lockdownBlockedDomains {
+        for lockdownGroup in lockdownBlockLists {
             
             let cell = tableView.addRow { (contentView) in
                 let blockListView = BlockListView()
@@ -204,10 +204,10 @@ class BlockListViewController: BaseViewController {
         switch page {
         case .blockLists:
             customBlocksTableView.isHidden = true
-            listsTableView.isHidden = false
+            blockListsTableView.isHidden = false
         case .custom:
             customBlocksTableView.isHidden = false
-            listsTableView.isHidden = true
+            blockListsTableView.isHidden = true
         }
     }
     
