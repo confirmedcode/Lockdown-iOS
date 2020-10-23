@@ -91,7 +91,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
                 self.toggleCircle.isHidden = false
                 self.toggleCircle.tintColor = .tunnelsBlue
                 
-                self.vpnActiveLabel.text = NSLocalizedString("Tunnel On", comment: "")
+                self.vpnActiveLabel.text = NSLocalizedString("Tunnel On", comment: "").uppercased()
                 self.vpnActiveLabel.backgroundColor = .tunnelsBlue
                 self.locationLabel.text = NSLocalizedString("Location: 🇯🇵", comment: "")
                 self.ipLabel.text = NSLocalizedString("IP: [Anonymized]", comment: "")
@@ -112,7 +112,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
         }
         else {
             
-            vpnActiveLabel.text = NSLocalizedString("Tunnel Off", comment: "")
+            vpnActiveLabel.text = NSLocalizedString("Tunnel Off", comment: "").uppercased()
             vpnActiveLabel.backgroundColor = .lightGray
             
             toggleCircle.tintColor = .lightGray
