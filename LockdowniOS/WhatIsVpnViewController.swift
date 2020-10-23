@@ -112,9 +112,6 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
         }
         else {
             
-            vpnActiveLabel.text = NSLocalizedString("Tunnel Off", comment: "").uppercased()
-            vpnActiveLabel.backgroundColor = .lightGray
-            
             toggleCircle.tintColor = .lightGray
             toggleCircle.isHidden = false
             toggleAnimatedCircle.stopAnimating()
@@ -125,7 +122,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
             dataLabel.text = NSLocalizedString("To: joe@email.com\nRe: Q4 2019 Finance Review", comment: "")
             dataFlow.primaryColor = .orange
             dataFlow.secondaryColor = .tunnelsWarning
-            vpnActiveLabel.text = NSLocalizedString("Tunnel off", comment: "").uppercased()
+            vpnActiveLabel.text = NSLocalizedString("Tunnel Off", comment: "").uppercased()
             vpnActiveLabel.backgroundColor = .tunnelsWarning
             descriptionLabel.attributedText = add(stringList: [
                 NSLocalizedString("Precise location exposed", comment: ""),
