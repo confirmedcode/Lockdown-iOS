@@ -1,9 +1,9 @@
 
 /* Class = "UILabel"; text = "VPN Active"; ObjectID = "1pC-80-fVF"; */
-"1pC-80-fVF.text" = "VPN Active";
+"1pC-80-fVF.text" = "VPNアクティブ";
 
 /* Class = "UIButton"; normalTitle = "Open Lockdown"; ObjectID = "PT0-Mi-sJG"; */
-"PT0-Mi-sJG.normalTitle" = "Open Lockdown";
+"PT0-Mi-sJG.normalTitle" = "Lockdownを開く";
 
 /* Class = "UILabel"; text = "United Kingdom"; ObjectID = "Vbb-eR-jl5"; */
-"Vbb-eR-jl5.text" = "United Kingdom";
+"Vbb-eR-jl5.text" = "イギリス";
