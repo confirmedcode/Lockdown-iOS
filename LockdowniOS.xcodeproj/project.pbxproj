@@ -132,6 +132,7 @@
 		3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
 		3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3222F22CB40017740D /* HomeViewController.swift */; };
 		3DCA4F4122F252720017740D /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
+		3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
 		3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
 		3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
@@ -393,13 +394,6 @@
 		3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = facebook_sdk.txt; sourceTree = "<group>"; };
 		3D0971D922EBAD4C00CCD326 /* marketing.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marketing.txt; sourceTree = "<group>"; };
 		3D3BF4CF233D5E9100D0C482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3D3BF4DD233D804900D0C482 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3D3BF4E1233D805F00D0C482 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		3D3BF4E5233D809400D0C482 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3D3BF4EA233D809C00D0C482 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3D3BF4EB233D80BA00D0C482 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3D3BF4EC233D80C700D0C482 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3D3BF4F0233D817800D0C482 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
@@ -1525,13 +1519,6 @@
 			knownRegions = (
 				en,
 				Base,
-				es,
-				ja,
-				de,
-				"pt-BR",
-				ru,
-				nl,
-				"pt-PT",
 				fr,
 			);
 			mainGroup = A1141A081F46230500F54698;
@@ -1582,6 +1569,7 @@
 				7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */,
 				7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */,
 				7C0156572521C2F200670CB5 /* Montserrat-Regular.ttf in Resources */,
+				3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */,
 				7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */,
 				7C0156592521C2F200670CB5 /* Montserrat-Thin.ttf in Resources */,
 			);
@@ -2127,13 +2115,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				3D3BF4CF233D5E9100D0C482 /* en */,
-				3D3BF4DD233D804900D0C482 /* de */,
-				3D3BF4E1233D805F00D0C482 /* pt-BR */,
-				3D3BF4E5233D809400D0C482 /* ru */,
-				3D3BF4EA233D809C00D0C482 /* nl */,
-				3D3BF4EB233D80BA00D0C482 /* ja */,
-				3D3BF4EC233D80C700D0C482 /* es */,
-				3D3BF4F0233D817800D0C482 /* pt-PT */,
 				3D896110253527B2006D8C12 /* fr */,
 			);
 			name = Localizable.strings;

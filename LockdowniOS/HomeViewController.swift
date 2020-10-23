@@ -44,14 +44,12 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     let kHasViewedTutorial = "hasViewedTutorial"
     let kHasSeenInitialFirewallConnectedDialog = "hasSeenInitialFirewallConnectedDialog11"
-    let kVPNBodyViewVisible = "VPNBodyViewVisible"
     let kHasSeenShare = "hasSeenShareDialog4"
     
     let ratingCountKey = "ratingCount" + lastVersionToAskForRating
     let ratingTriggeredKey = "ratingTriggered" + lastVersionToAskForRating
     
     @IBOutlet var mainStack: UIStackView!
-    @IBOutlet var stackEqualHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var firewallTitleLabel: UILabel!
     @IBOutlet weak var firewallActive: UILabel!
@@ -69,19 +67,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @IBOutlet weak var firewallViewLogButton: UIButton!
     @IBOutlet weak var firewallShareButton: UIButton!
     
-    @IBOutlet var vpnViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var vpnHeaderView: UIView!
-    @IBOutlet weak var vpnHideButton: UIButton!
-    @IBOutlet weak var vpnBodyView: UIView!
     @IBOutlet weak var vpnActive: UILabel!
-    @IBOutlet var vpnActiveHeaderConstraint: NSLayoutConstraint!
-    @IBOutlet var vpnActiveTopBodyConstraint: NSLayoutConstraint!
-    @IBOutlet var vpnActiveVerticalBodyConstraint: NSLayoutConstraint!
     @IBOutlet weak var vpnToggleCircle: UIButton!
     @IBOutlet weak var vpnToggleAnimatedCircle: NVActivityIndicatorView!
     @IBOutlet weak var vpnButton: UIButton!
-//    @IBOutlet weak var vpnIP: UILabel!
-//    @IBOutlet weak var vpnSpeed: UILabel!
     var lastVPNStatus: NEVPNStatus?
     @IBOutlet weak var vpnSetRegionButton: UIButton!
     @IBOutlet weak var vpnRegionLabel: UILabel!
@@ -103,7 +93,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         firewallSettingsButton.layer.cornerRadius = 8
         firewallSettingsButton.layer.maskedCorners = [.layerMaxXMaxYCorner]
 
-        vpnHeaderView.addGestureRecognizer( UITapGestureRecognizer(target: self, action: #selector (vpnHeaderTapped(_:))) )
         updateVPNButtonWithStatus(status: VPNController.shared.status())
         //updateIP()
         vpnWhitelistButton.layer.cornerRadius = 8
@@ -159,10 +148,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        performSegue(withIdentifier: "showSignup", sender: nil)
         
-        //performSegue(withIdentifier: "showSignup", sender: nil)
-        
-        toggleVPNBodyView(animate: false, show: defaults.bool(forKey: kVPNBodyViewVisible))
         if (defaults.bool(forKey: kHasViewedTutorial) == false) {
             startTutorial()
         }
@@ -255,12 +242,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             hideStatusBar: true,
             completion: nil)
         
-//        let whatisVpnButton = DefaultButton(title: "What is a VPN?", dismissOnTap: true) {
-//            self.toggleVPNBodyView(animate: true, show: true)
-//            self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
-//        }
         let getEnhancedPrivacyButton = DefaultButton(title: NSLocalizedString("1 Week Free", comment: ""), dismissOnTap: true) {
-            self.toggleVPNBodyView(animate: true, show: true)
             self.performSegue(withIdentifier: "showSignup", sender: self)
         }
         let laterButton = CancelButton(title: NSLocalizedString("Skip Trial", comment: ""), dismissOnTap: true) { }
@@ -585,72 +567,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     // MARK: - VPN
     
-    @objc @IBAction func vpnHeaderTapped(_ sender: Any) {
-        toggleVPNBodyView(animate: true)
-    }
-    
+
     @IBAction func vpnQuestionTapped(_ sender: Any) {
-        toggleVPNBodyView(animate: false, show: true)
         self.performSegue(withIdentifier: "showWhatIsVPN", sender: self)
-    }
-    
-    func toggleVPNBodyView(animate: Bool, show: Bool? = nil) {
-        // always show
-        self.vpnHideButton.setTitle(NSLocalizedString("HIDE", comment: ""), for: .normal)
-        self.vpnBodyView.alpha = 1
-        self.vpnActiveHeaderConstraint.isActive = false
-        self.vpnActiveTopBodyConstraint.isActive = true
-        self.vpnActiveVerticalBodyConstraint.isActive = true
-        self.stackEqualHeightConstraint.isActive = true
-        self.vpnViewHeightConstraint.isActive = false
-        self.view.layoutIfNeeded()
-        return
-        
-        // If supplied a "show", use that. Otherwise, use the opposite of the current visible state (show -> hide, hide -> show)
-        var shouldShow = false
-        if show != nil {
-            shouldShow = show!
-        }
-        else {
-            shouldShow = !(defaults.bool(forKey: kVPNBodyViewVisible))
-        }
-        
-        var animationTime = 0.0
-        if (animate) {
-            animationTime = 0.2
-        }
-        if (shouldShow) {
-            vpnBodyView.alpha = 0
-            self.vpnBodyView.isHidden = false
-            UIView.animate(withDuration: animationTime, animations: {
-                self.vpnHideButton.setTitle(NSLocalizedString("HIDE", comment: ""), for: .normal)
-                self.vpnBodyView.alpha = 1
-                self.vpnActiveHeaderConstraint.isActive = false
-                self.vpnActiveTopBodyConstraint.isActive = true
-                self.vpnActiveVerticalBodyConstraint.isActive = true
-                self.stackEqualHeightConstraint.isActive = true
-                self.vpnViewHeightConstraint.isActive = false
-                self.view.layoutIfNeeded()
-            }, completion: { complete in
-                defaults.set(true, forKey: self.kVPNBodyViewVisible)
-            })
-        }
-        else {
-            UIView.animate(withDuration: animationTime, animations: {
-                self.vpnHideButton.setTitle(NSLocalizedString("SHOW", comment: ""), for: .normal)
-                self.vpnBodyView.alpha = 0
-                self.vpnActiveHeaderConstraint.isActive = true
-                self.vpnActiveTopBodyConstraint.isActive = false
-                self.vpnActiveVerticalBodyConstraint.isActive = false
-                self.stackEqualHeightConstraint.isActive = false
-                self.vpnViewHeightConstraint.constant = self.vpnHeaderView.frame.height
-                self.vpnViewHeightConstraint.isActive = true
-                self.view.layoutIfNeeded()
-            }, completion: { complete in
-                self.vpnBodyView.isHidden = true
-                defaults.set(false, forKey: self.kVPNBodyViewVisible)
-            })
-        }
     }
     
     func updateVPNButtonWithStatus(status: NEVPNStatus) {
@@ -889,49 +808,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             SKStoreReviewController.requestReview()
         }
     }
-    
-//    func updateIP() {
-//        DDLogInfo("Updating IP")
-//        self.vpnIP.text = "—"
-//        firstly {
-//            Client.getIP()
-//        }
-//        .done { (ip: IP) in
-//            DispatchQueue.main.async {
-//                self.vpnIP.text = ip.ip
-//            }
-//        }
-//        .catch { error in
-//            self.vpnIP.text = "error"
-//            DDLogError("Error getting IP: \(error)")
-//        }
-//    }
-    
-//    @IBAction func runSpeedTest() {
-//        DDLogInfo("Speed Test")
-//        vpnSpeed.text = "Testing..."
-//        vpnSpeed.alpha = 0.2
-//        UIView.animate(withDuration: 0.65, delay: 0, options: [.curveEaseInOut, .autoreverse, .repeat], animations: {
-//            self.vpnSpeed.alpha = 1.0
-//        })
-//        firstly {
-//            SpeedTest().testDownloadSpeedWithTimeout(timeout: 10.0)
-//        }
-//        .done { (mbps: Double) in
-//            DispatchQueue.main.async {
-//                self.vpnSpeed.layer.removeAllAnimations()
-//                self.vpnSpeed.text = String(format: "%.1f", mbps)
-//                    + " Mbps"
-//                UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: {
-//                    self.vpnSpeed.alpha = 1.0
-//                })
-//            }
-//        }
-//        .catch { error in
-//            self.vpnSpeed.text = "error"
-//            DDLogError("Error testing speed: \(error)")
-//        }
-//    }
     
 }
 

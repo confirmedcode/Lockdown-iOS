@@ -51,7 +51,6 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     
     @IBAction func getStartedTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: {
-            self.parentVC?.toggleVPNBodyView(animate: true, show: true)
             self.parentVC?.performSegue(withIdentifier: "showSignup", sender: self)
         })
     }
