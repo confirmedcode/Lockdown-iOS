@@ -634,3 +634,21 @@
 
 /* No comment provided by engineer. */
 "If this persists, please contact team@lockdownprivacy.com." = "If this persists, please contact team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "Add a domain to block";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions.";
+
+/* No comment provided by engineer. */
+"Block Lists" = "Block Lists";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "Configure Blocking";
+
+/* No comment provided by engineer. */
+"Custom" = "Custom";
+
+/* No comment provided by engineer. */
+"SAVE" = "SAVE";

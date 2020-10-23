@@ -292,9 +292,6 @@
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "f3K-Kz-eVg"; */
 "f3K-Kz-eVg.placeholder" = "パスワード";
 
-/* Class = "UILabel"; text = "Add a domain to block"; ObjectID = "fJ7-vi-d9y"; */
-"fJ7-vi-d9y.text" = "ブロックするドメインを追加する";
-
 /* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "fK4-lE-dks"; */
 "fK4-lE-dks.text" = "blocked-domain.com";
 
@@ -334,9 +331,6 @@
 /* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "jXy-3G-JaC"; */
 "jXy-3G-JaC.accessibilityLabel" = "このボタンをタップして、セキュアトンネルをアクティブにします";
 
-/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "jZ0-RK-75S"; */
-"jZ0-RK-75S.normalTitle" = "セーブ";
-
 /* Class = "UILabel"; text = "Private Browsing + Hide Location & IP"; ObjectID = "ked-BF-PXx"; */
 "ked-BF-PXx.text" = "プライベートブラウジング+場所とIPを非表示";
 
@@ -355,17 +349,11 @@
 /* Class = "UIButton"; normalTitle = "Terms of Service"; ObjectID = "lOA-PB-b5V"; */
 "lOA-PB-b5V.normalTitle" = "利用規約";
 
-/* Class = "UILabel"; text = "Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions."; ObjectID = "m75-2E-aKT"; */
-"m75-2E-aKT.text" = "以下のドメインとサイトへの接続からすべてのアプリをブロックします。便利なように、Lockdownには事前に設定された提案もあります。";
-
 /* Class = "UILabel"; text = "To: joe@email.com Re: Q4 2019 Finance Review"; ObjectID = "mRH-Ie-0qb"; */
 "mRH-Ie-0qb.text" = "宛先: joe@email.com 再: Q4 2019 財務レビュー";
 
 /* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "mU9-zL-O80"; */
 "mU9-zL-O80.normalTitle" = "セーブ";
-
-/* Class = "UILabel"; text = "Not Blocked"; ObjectID = "mgh-17-JWs"; */
-"mgh-17-JWs.text" = "ブロックされていません";
 
 /* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "naG-mg-g14"; */
 "naG-mg-g14.text" = "iPadとiPhone";
@@ -397,14 +385,8 @@
 /* Class = "UIButton"; normalTitle = "See How It Works"; ObjectID = "qBb-qF-2nJ"; */
 "qBb-qF-2nJ.normalTitle" = "仕組みを見る";
 
-/* Class = "UITextField"; placeholder = "domain-to-block.com"; ObjectID = "qMF-E0-xFg"; */
-"qMF-E0-xFg.placeholder" = "domain-to-block.com";
-
 /* Class = "UILabel"; text = "Password"; ObjectID = "rCb-D1-AbS"; */
 "rCb-D1-AbS.text" = "パスワード";
-
-/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "rHZ-Et-i9v"; */
-"rHZ-Et-i9v.text" = "blocked-domain.com";
 
 /* Class = "UILabel"; text = "Over 1 Billion Trackers Blocked"; ObjectID = "rJd-Ql-Mu9"; */
 "rJd-Ql-Mu9.text" = "10億を超えるトラッカーがブロックされています";
@@ -417,9 +399,6 @@
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "syJ-Jd-iUo"; */
 "syJ-Jd-iUo.text" = "電子メール";
-
-/* Class = "UILabel"; text = "Configure Blocking"; ObjectID = "tXa-qM-WDu"; */
-"tXa-qM-WDu.text" = "ブロッキングを設定する";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "tzL-mY-IJs"; */
 "tzL-mY-IJs.normalTitle" = "続ける";

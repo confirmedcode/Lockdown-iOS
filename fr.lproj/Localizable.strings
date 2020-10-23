@@ -640,3 +640,21 @@
 
 /* No comment provided by engineer. */
 "⚠️ Not Signed In" = "⚠️ Not Signed In";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "Ajouter un domaine à bloquer";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "Empêche toutes vos applications de se connecter aux domaines et sites ci-dessous. Pour vous faciliter la tâche, Lockdown propose également des suggestions pré-configurées.";
+
+/* No comment provided by engineer. */
+"Block Lists" = "Listes de Blocages";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "Blocage";
+
+/* No comment provided by engineer. */
+"Custom" = "Personnaliser";
+
+/* No comment provided by engineer. */
+"SAVE" = "SAUVEGARDER";

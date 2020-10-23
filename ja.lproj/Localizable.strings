@@ -640,3 +640,21 @@
 
 /* No comment provided by engineer. */
 "⚠️ Not Signed In" = "⚠️ Not Signed In";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "ブロックするドメインを追加する";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "以下のドメインとサイトへの接続からすべてのアプリをブロックします。便利なように、Lockdownには事前に設定された提案もあります。";
+
+/* No comment provided by engineer. */
+"Block Lists" = "されたブロックリスト";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "ブロッキングを設定する";
+
+/* No comment provided by engineer. */
+"Custom" = "カスタマイズ";
+
+/* No comment provided by engineer. */
+"SAVE" = "セーブ";
