@@ -68,7 +68,7 @@ class BlockListViewController: BaseViewController {
             explanationLabel.text = NSLocalizedString("Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions.", comment: "")
             
             view.addSubview(explanationLabel)
-            explanationLabel.anchors.top.spacing(4, to: customNavigationView.anchors.bottom)
+            explanationLabel.anchors.top.spacing(0, to: customNavigationView.anchors.bottom)
             explanationLabel.anchors.leading.readableContentPin(inset: 3)
             explanationLabel.anchors.trailing.readableContentPin(inset: 3)
         }
@@ -76,7 +76,7 @@ class BlockListViewController: BaseViewController {
         do {
             view.addSubview(segmented)
             segmented.selectedSegmentIndex = 0
-            segmented.anchors.top.spacing(24, to: explanationLabel.anchors.bottom)
+            segmented.anchors.top.spacing(12, to: explanationLabel.anchors.bottom)
             segmented.anchors.leading.readableContentPin()
             segmented.anchors.trailing.readableContentPin()
             segmented.setTitleTextAttributes([.font: fontMedium14], for: .normal)
