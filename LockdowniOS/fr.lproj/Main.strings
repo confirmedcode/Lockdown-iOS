@@ -1,4 +1,3 @@
-
 /* Class = "UILabel"; text = "I agree to the"; ObjectID = "04y-ib-kAj"; */
 "04y-ib-kAj.text" = "J'accepte le";
 
@@ -163,9 +162,6 @@
 
 /* Class = "UILabel"; text = "Block Invasive Tracking"; ObjectID = "PGe-EF-Ixy"; */
 "PGe-EF-Ixy.text" = "Bloqueur de Traqueurs Intrusifs";
-
-/* Class = "UIButton"; normalTitle = "HIDE"; ObjectID = "Pvv-c6-deR"; */
-"Pvv-c6-deR.normalTitle" = "MASQUER";
 
 /* Class = "UIButton"; normalTitle = "􀆅"; ObjectID = "RMP-Wh-oss"; */
 "RMP-Wh-oss.normalTitle" = "􀆅";

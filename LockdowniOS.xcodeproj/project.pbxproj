@@ -393,7 +393,7 @@
 		3D0711BA22FE7B5100391C6E /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = facebook_sdk.txt; sourceTree = "<group>"; };
 		3D0971D922EBAD4C00CCD326 /* marketing.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marketing.txt; sourceTree = "<group>"; };
-		3D3BF4CF233D5E9100D0C482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D3BF4CF233D5E9100D0C482 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
@@ -1314,6 +1314,7 @@
 			buildConfigurationList = A1141A391F46230600F54698 /* Build configuration list for PBXNativeTarget "Lockdown" */;
 			buildPhases = (
 				08EEEAB72DD0E9CF5B6B4DE3 /* [CP] Check Pods Manifest.lock */,
+				3D94AEC12542A859005FDC0E /* ShellScript */,
 				A1141A0D1F46230500F54698 /* Sources */,
 				A1141A0E1F46230500F54698 /* Frameworks */,
 				A1141A0F1F46230500F54698 /* Resources */,
@@ -1687,6 +1688,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3D94AEC12542A859005FDC0E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
 		};
 		6659B63A2377451DC09AC180 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

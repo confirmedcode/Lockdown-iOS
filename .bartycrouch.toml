@@ -15,13 +15,13 @@ additive = true
 unstripped = false
 plistArguments = true
 
-[update.transform]
-codePaths = ["."]
-localizablePaths = ["."]
-transformer = "foundation"
-supportedLanguageEnumPath = "."
-typeName = "BartyCrouch"
-translateMethodName = "translate"
+# [update.transform]
+# codePaths = ["."]
+# localizablePaths = ["."]
+# transformer = "foundation"
+# supportedLanguageEnumPath = "."
+# typeName = "BartyCrouch"
+# translateMethodName = "translate"
 
 [update.normalize]
 paths = ["."]

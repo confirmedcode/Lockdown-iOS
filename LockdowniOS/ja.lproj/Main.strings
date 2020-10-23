@@ -1,4 +1,3 @@
-
 /* Class = "UILabel"; text = "I agree to the"; ObjectID = "04y-ib-kAj"; */
 "04y-ib-kAj.text" = "に同意する。";
 
@@ -164,9 +163,6 @@
 /* Class = "UILabel"; text = "Block Invasive Tracking"; ObjectID = "PGe-EF-Ixy"; */
 "PGe-EF-Ixy.text" = "侵襲的追跡をブロック";
 
-/* Class = "UIButton"; normalTitle = "HIDE"; ObjectID = "Pvv-c6-deR"; */
-"Pvv-c6-deR.normalTitle" = "隠す";
-
 /* Class = "UIButton"; normalTitle = "􀆅"; ObjectID = "RMP-Wh-oss"; */
 "RMP-Wh-oss.normalTitle" = "􀆅";
 
@@ -224,7 +220,7 @@
 /* Class = "UILabel"; text = "THIS WEEK"; ObjectID = "WyU-rB-hEs"; */
 "WyU-rB-hEs.text" = "今週";
 
-/* Class = "UILabel"; text = "$49.99/year after (~$4.17/)"; ObjectID = "XQI-S7-VjW"; */
+/* Class = "UILabel"; text = "$49.99/year after (~$4.17/month)"; ObjectID = "XQI-S7-VjW"; */
 "XQI-S7-VjW.text" = "$49.99/y年後 (~$4.17/月)";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "XSr-oZ-hkd"; */
