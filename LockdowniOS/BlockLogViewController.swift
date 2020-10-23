@@ -129,15 +129,15 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBAction func showMenu() {
         let isBlockEnabled = BlockDayLog.shared.isEnabled
         
-        showPopupDialog(title: "Settings", message: "The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.", buttons: [
-            .custom(title: isBlockEnabled ? "Disable Block Log" : "Enable Block Log", completion: {
+        showPopupDialog(title: NSLocalizedString("Settings", comment: ""), message: NSLocalizedString("The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.", comment: ""), buttons: [
+                            .custom(title: isBlockEnabled ? NSLocalizedString("Disable Block Log" , comment: "") : NSLocalizedString("Enable Block Log", comment: ""), completion: {
                 if isBlockEnabled {
                     self.showDisableBlockLog()
                 } else {
                     self.enableBlockLog()
                 }
             }),
-            .custom(title: "Clear Block Log", completion: {
+                            .custom(title: NSLocalizedString("Clear Block Log", comment: ""), completion: {
                 BlockDayLog.shared.clear()
                 self.refreshData(self)
             }),
@@ -146,8 +146,8 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func showDisableBlockLog() {
-        showPopupDialog(title: "Disable Block Log?", message: "You'll have to reenable it later here to start seeing blocked entries again.", buttons: [
-            .destructive(title: "Disable", completion: {
+        showPopupDialog(title: NSLocalizedString("Disable Block Log?", comment: ""), message: NSLocalizedString("You'll have to reenable it later here to start seeing blocked entries again.", comment: ""), buttons: [
+                            .destructive(title: NSLocalizedString("Disable", comment: ""), completion: {
                 BlockDayLog.shared.disable(shouldClear: true)
                 self.refreshData(self)
             }),
