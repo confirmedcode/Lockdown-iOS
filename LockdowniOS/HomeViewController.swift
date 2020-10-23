@@ -385,8 +385,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let cancelButton = CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {  }
         
         let shareButton = DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
-            let shareText = NSLocalizedString("I blocked", comment: "Used in the sentence: I blocked 500 trackers with Lockdown.") + thousandsFormatter.string(for: getTotalMetrics())! +
-                NSLocalizedString(" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.", comment: "Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.")
+            let shareText = "\(NSLocalizedString("I blocked", comment: "Used in the sentence: I blocked 500 trackers with Lockdown.")) \(thousandsFormatter.string(for: getTotalMetrics())!)\(NSLocalizedString(" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.", comment: "Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com."))"
             let vc = UIActivityViewController(activityItems: [LockdownCustomActivityItemProvider(text: shareText), image], applicationActivities: [])
             vc.completionWithItemsHandler = { (activity, success, items, error) in
                 if (success) {
