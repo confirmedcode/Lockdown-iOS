@@ -516,7 +516,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             DispatchQueue.main.async() {
                 switch newStatus {
                 case .connected:
-                    activeLabel.text = "\(prefixText) \(NSLocalizedString(" On", comment: "").uppercased())"
+                    activeLabel.text = "\(prefixText)\(NSLocalizedString(" On", comment: "").uppercased())"
                     activeLabel.backgroundColor = UIColor.tunnelsBlue
                     toggleCircle.tintColor = .tunnelsBlue
                     toggleCircle.isHidden = false
@@ -530,7 +530,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     toggleAnimatedCircle.startAnimating()
                     button.tintColor = .tunnelsBlue
                 case .disconnected, .invalid:
-                    activeLabel.text = "\(prefixText) \(NSLocalizedString(" Off", comment: "").uppercased())"
+                    activeLabel.text = "\(prefixText)\(NSLocalizedString(" Off", comment: "").uppercased())"
                     activeLabel.backgroundColor = .tunnelsWarning
                     toggleCircle.tintColor = .lightGray
                     toggleCircle.isHidden = false
