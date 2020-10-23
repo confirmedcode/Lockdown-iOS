@@ -49,7 +49,7 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
     
     @IBAction func passwordFieldDidChange(_ textField: UITextField) {
         let attrStr = NSMutableAttributedString (
-            string: "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.",
+            string: NSLocalizedString("Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.", comment: ""),
             attributes: [
                 .font: UIFont(name: "Montserrat-Regular", size: 11) ?? UIFont.systemFont(ofSize: 11),
                 .foregroundColor: UIColor.lightGray
@@ -58,15 +58,15 @@ class EmailSignUpViewController: BaseViewController, UITextFieldDelegate, Loadab
         if let txt = passwordField.text {
                 isPasswordValid = true
                 attrStr.addAttributes(setupAttributeColor(if: (txt.count >= 8)),
-                                      range: findRange(in: attrStr.string, for: "at least 8 characters"))
+                                      range: findRange(in: attrStr.string, for: NSLocalizedString("at least 8 characters", comment: "")))
                 attrStr.addAttributes(setupAttributeColor(if: (txt.rangeOfCharacter(from: CharacterSet.uppercaseLetters) != nil)),
-                                      range: findRange(in: attrStr.string, for: "one uppercase letter"))
+                                      range: findRange(in: attrStr.string, for: NSLocalizedString("one uppercase letter", comment: "")))
                 attrStr.addAttributes(setupAttributeColor(if: (txt.rangeOfCharacter(from: CharacterSet.lowercaseLetters) != nil)),
-                                      range: findRange(in: attrStr.string, for: "one lowercase letter"))
+                                      range: findRange(in: attrStr.string, for: NSLocalizedString("one lowercase letter", comment: "")))
                 attrStr.addAttributes(setupAttributeColor(if: (txt.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil)),
-                                      range: findRange(in: attrStr.string, for: "one number"))
+                                      range: findRange(in: attrStr.string, for: NSLocalizedString("one number", comment: "")))
             attrStr.addAttributes(setupAttributeColor(if: ((txt.rangeOfCharacter(from: CharacterSet.symbols) != nil) || (txt.rangeOfCharacter(from: CharacterSet.punctuationCharacters) != nil))),
-                                      range: findRange(in: attrStr.string, for: "one symbol"))
+                                  range: findRange(in: attrStr.string, for: NSLocalizedString("one symbol", comment: "")))
             } else {
                 isPasswordValid = false
             }
