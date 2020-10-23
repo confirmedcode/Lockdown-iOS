@@ -504,7 +504,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      toggleCircle: firewallToggleCircle,
                                      toggleAnimatedCircle: firewallToggleAnimatedCircle,
                                      button: firewallButton,
-                                     prefixText: NSLocalizedString("FIREWALL", comment: ""))
+                                     prefixText: NSLocalizedString("Firewall", comment: "").uppercased())
     }
     
     func updateToggleButtonWithStatus(lastStatus: NEVPNStatus?, newStatus: NEVPNStatus, activeLabel: UILabel, toggleCircle: UIButton, toggleAnimatedCircle: NVActivityIndicatorView, button: UIButton, prefixText: String) {
@@ -516,28 +516,28 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             DispatchQueue.main.async() {
                 switch newStatus {
                 case .connected:
-                    activeLabel.text = prefixText + NSLocalizedString(" ON", comment: "")
+                    activeLabel.text = "\(prefixText) \(NSLocalizedString(" On", comment: "").uppercased())"
                     activeLabel.backgroundColor = UIColor.tunnelsBlue
                     toggleCircle.tintColor = .tunnelsBlue
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .tunnelsBlue
                 case .connecting:
-                    activeLabel.text = NSLocalizedString("ACTIVATING", comment: "")
+                    activeLabel.text = NSLocalizedString("Activating", comment: "").uppercased()
                     activeLabel.backgroundColor = .tunnelsBlue
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .tunnelsBlue
                     toggleAnimatedCircle.startAnimating()
                     button.tintColor = .tunnelsBlue
                 case .disconnected, .invalid:
-                    activeLabel.text = prefixText + NSLocalizedString(" OFF", comment: "")
+                    activeLabel.text = "\(prefixText) \(NSLocalizedString(" Off", comment: "").uppercased())"
                     activeLabel.backgroundColor = .tunnelsWarning
                     toggleCircle.tintColor = .lightGray
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .lightGray
                 case .disconnecting:
-                    activeLabel.text = NSLocalizedString("DEACTIVATING", comment: "")
+                    activeLabel.text = NSLocalizedString("Deactivating", comment: "").uppercased()
                     activeLabel.backgroundColor = .lightGray
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .lightGray
@@ -587,19 +587,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      toggleCircle: vpnToggleCircle,
                                      toggleAnimatedCircle: vpnToggleAnimatedCircle,
                                      button: vpnButton,
-                                     prefixText: NSLocalizedString("TUNNEL", comment: ""))
+                                     prefixText: NSLocalizedString("Tunnel", comment: "").uppercased())
     }
     
     @IBAction func toggleVPN(_ sender: Any) {
-        // redundant - privacy policy agreement already happens in Firewall activation
-//        if (defaults.bool(forKey: kHasAgreedToVPNPrivacyPolicy) == false) {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "vpnPrivacyPolicyViewController") as! PrivacyPolicyViewController
-//            viewController.privacyPolicyKey = kHasAgreedToVPNPrivacyPolicy
-//            viewController.parentVC = self
-//            self.present(viewController, animated: true, completion: nil)
-//            return
-//        }
         
         DDLogInfo("Toggle VPN")
         switch VPNController.shared.status() {

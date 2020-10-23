@@ -102,11 +102,11 @@ class VPNTodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func setVPNButtonConnecting() {
-        vpnStatusLabel.text = NSLocalizedString("Activating...", comment: "")
+        vpnStatusLabel.text = NSLocalizedString("Activating", comment: "")
     }
     
     func setVPNButtonDisconnecting() {
-        vpnStatusLabel.text = NSLocalizedString("Deactivating...", comment: "")
+        vpnStatusLabel.text = NSLocalizedString("Deactivating", comment: "")
     }
     
     // MARK: - Helpers
