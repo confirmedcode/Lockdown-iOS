@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Firewall Active"; ObjectID = "1pC-80-fVF"; */
+"1pC-80-fVF.text" = "Firewall Active";
+
+/* Class = "UIButton"; normalTitle = "Open Lockdown"; ObjectID = "PT0-Mi-sJG"; */
+"PT0-Mi-sJG.normalTitle" = "Open Lockdown";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Vbb-eR-jl5"; */
+"Vbb-eR-jl5.text" = "-";
