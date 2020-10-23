@@ -424,20 +424,116 @@
 /* No comment provided by engineer. */
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 ファイアウォールがアクティブ化されました 🎊🎉";
 
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = "";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = "";
+
 /* No comment provided by engineer. */
 "at least 8 characters" = "";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "";
+
+/* No comment provided by engineer. */
+"Blocked Trackers Summary" = "";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "";
+
+/* The title of a list of trackers */
+"Clickbait" = "";
+
+/* The title of a list of trackers */
+"Crypto Mining" = "";
+
+/* The title of a list of trackers */
+"Data Trackers" = "";
+
+/* No comment provided by engineer. */
+"Disable" = "";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "";
+
+/* The title of a list of trackers */
+"Email Trackers" = "";
 
 /* No comment provided by engineer. */
 "Email Us" = "";
 
 /* No comment provided by engineer. */
+"Enable Block Log" = "";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "";
+
+/* No comment provided by engineer. */
 "FAQs" = "";
+
+/* The title of a list of trackers */
+"Game Marketing" = "";
+
+/* The title of a list of trackers */
+"General Marketing" = "";
+
+/* The title of a list of trackers */
+"Google Shopping" = "";
 
 /* No comment provided by engineer. */
 "Hi, my question or feedback for Lockdown is: " = "";
 
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "";
+
+/* The title of a list of trackers */
+"Marketing Trackers" = "";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "";
+
 /* No comment provided by engineer. */
 "No Block Lists Enabled" = "";
+
+/* No comment provided by engineer. */
+"No Info Found" = "";
+
+/* No comment provided by engineer. */
+"Notifications: Off" = "";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "";
 
 /* No comment provided by engineer. */
 "one lowercase letter" = "";
@@ -455,13 +551,89 @@
 "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "";
 
 /* No comment provided by engineer. */
+"Plan: Annual Pro" = "";
+
+/* No comment provided by engineer. */
 "Please tap Block List and enable at least one block list to activate Firewall." = "";
+
+/* The title of a list of trackers */
+"Ransomware" = "";
 
 /* No comment provided by engineer. */
 "Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "";
+
+/* The title of a list of trackers */
+"Reporting" = "";
+
+/* No comment provided by engineer. */
+"Settings" = "";
+
+/* No comment provided by engineer. */
+"Sign Out?" = "";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "";
+
+/* No comment provided by engineer. */
+"Signed In" = "";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "";
+
+/* No comment provided by engineer. */
+"Success" = "";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "";
 
 /* No comment provided by engineer. */
 "Support | Feedback" = "";
 
 /* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "";
+
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "";
+
+/* No comment provided by engineer. */
 "View FAQs" = "";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "";
+
+/* No comment provided by engineer. */
+"You blocked \(match) in your custom blocked domains." = "";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "";
+
+/* No comment provided by engineer. */
+"⚠️ Not Signed In" = "";

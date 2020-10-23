@@ -157,7 +157,7 @@ func setupFirewallDefaultBlockLists() {
     let snapchatAnalytics = LockdownGroup.init(
         version: 26,
         internalID: "snapchatAnalytics",
-        name: "Snapchat Trackers",
+        name: NSLocalizedString("Snapchat Trackers", comment: "The title of a list of trackers"),
         iconURL: "snapchat_analytics_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "snapchat_analytics"),
@@ -166,7 +166,7 @@ func setupFirewallDefaultBlockLists() {
     let gameAds = LockdownGroup.init(
         version: 27,
         internalID: "gameAds",
-        name: "Game Marketing",
+        name: NSLocalizedString("Game Marketing", comment: "The title of a list of trackers"),
         iconURL: "game_ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "game_ads"),
@@ -175,7 +175,7 @@ func setupFirewallDefaultBlockLists() {
     let clickbait = LockdownGroup.init(
         version: 26,
         internalID: "clickbait",
-        name: "Clickbait",
+        name: NSLocalizedString("Clickbait", comment: "The title of a list of trackers"),
         iconURL: "clickbait_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "clickbait"),
@@ -184,7 +184,7 @@ func setupFirewallDefaultBlockLists() {
     let crypto = LockdownGroup.init(
         version: 26,
         internalID: "crypto_mining",
-        name: "Crypto Mining",
+        name: NSLocalizedString("Crypto Mining", comment: "The title of a list of trackers"),
         iconURL: "crypto_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "crypto_mining"),
@@ -193,7 +193,7 @@ func setupFirewallDefaultBlockLists() {
     let emailOpens = LockdownGroup.init(
         version: 29,
         internalID: "email_opens",
-        name: "Email Trackers",
+        name: NSLocalizedString("Email Trackers", comment: "The title of a list of trackers"),
         iconURL: "email_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "email_opens"),
@@ -202,7 +202,7 @@ func setupFirewallDefaultBlockLists() {
     let facebookInc = LockdownGroup.init(
         version: 31,
         internalID: "facebook_inc",
-        name: "Facebook & WhatsApp",
+        name: NSLocalizedString("Facebook & WhatsApp", comment: "The title of a list of trackers"),
         iconURL: "facebook_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "facebook_inc"),
@@ -212,7 +212,7 @@ func setupFirewallDefaultBlockLists() {
     let facebookSDK = LockdownGroup.init(
         version: 27,
         internalID: "facebook_sdk",
-        name: "Facebook Trackers",
+        name: NSLocalizedString("Facebook Trackers", comment: "The title of a list of trackers"),
         iconURL: "facebook_white_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "facebook_sdk"),
@@ -221,7 +221,7 @@ func setupFirewallDefaultBlockLists() {
     let marketingScripts = LockdownGroup.init(
         version: 29,
         internalID: "marketing_scripts",
-        name: "Marketing Trackers",
+        name: NSLocalizedString("Marketing Trackers", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "marketing"),
@@ -230,7 +230,7 @@ func setupFirewallDefaultBlockLists() {
     let marketingScriptsII = LockdownGroup.init(
         version: 27,
         internalID: "marketing_beta_scripts",
-        name: "Marketing Trackers II",
+        name: NSLocalizedString("Marketing Trackers II", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "marketing_beta"),
@@ -239,7 +239,7 @@ func setupFirewallDefaultBlockLists() {
     let ransomware = LockdownGroup.init(
         version: 26,
         internalID: "ransomware",
-        name: "Ransomware",
+        name: NSLocalizedString("Ransomware", comment: "The title of a list of trackers"),
         iconURL: "ransomware_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "ransomware"),
@@ -248,7 +248,7 @@ func setupFirewallDefaultBlockLists() {
     let googleShoppingAds = LockdownGroup.init(
         version: 34,
         internalID: "google_shopping_ads",
-        name: "Google Shopping",
+        name: NSLocalizedString("Google Shopping", comment: "The title of a list of trackers"),
         iconURL: "google_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "google_shopping_ads"),
@@ -258,7 +258,7 @@ func setupFirewallDefaultBlockLists() {
     let dataTrackers = LockdownGroup.init(
         version: 30,
         internalID: "data_trackers",
-        name: "Data Trackers",
+        name: NSLocalizedString("Data Trackers", comment: "The title of a list of trackers"),
         iconURL: "user_data_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "data_trackers"),
@@ -267,7 +267,7 @@ func setupFirewallDefaultBlockLists() {
     let generalAds = LockdownGroup.init(
         version: 38,
         internalID: "general_ads",
-        name: "General Marketing",
+        name: NSLocalizedString("General Marketing", comment: "The title of a list of trackers"),
         iconURL: "ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "general_ads"),
@@ -276,7 +276,7 @@ func setupFirewallDefaultBlockLists() {
     let reporting = LockdownGroup.init(
         version: 27,
         internalID: "reporting",
-        name: "Reporting",
+        name: NSLocalizedString("Reporting", comment: "The title of a list of trackers"),
         iconURL: "reporting_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "reporting"),

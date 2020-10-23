@@ -1,3 +1,6 @@
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = " and ";
+
 /* refers to number of connections blocked today, as in '34 Blocked Today' */
 " Blocked Today" = " Blocked Today";
 
@@ -12,6 +15,9 @@
 
 /* No comment provided by engineer. */
 " On" = " On";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
 "1 Week Free" = "1 Week Free";
@@ -56,10 +62,19 @@
 "Apple Outage" = "Apple Outage";
 
 /* No comment provided by engineer. */
+"at least 8 characters" = "at least 8 characters";
+
+/* No comment provided by engineer. */
 "Audit Reports" = "Audit Reports";
 
 /* No comment provided by engineer. */
 "Australia" = "Australia";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "block list";
 
 /* No comment provided by engineer. */
 "Blocked" = "Blocked";
@@ -71,6 +86,9 @@
 "Blocked Today" = "Blocked Today";
 
 /* No comment provided by engineer. */
+"Blocked Trackers Summary" = "Blocked Trackers Summary";
+
+/* No comment provided by engineer. */
 "Brazil" = "Brazil";
 
 /* No comment provided by engineer. */
@@ -78,6 +96,15 @@
 
 /* No comment provided by engineer. */
 "Cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "Check Your Inbox";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "Clear Block Log";
+
+/* The title of a list of trackers */
+"Clickbait" = "Clickbait";
 
 /* No comment provided by engineer. */
 "Confirm Email" = "Confirm Email";
@@ -88,11 +115,26 @@
 /* No comment provided by engineer. */
 "Couldn't Find Your Email Client" = "Couldn't Find Your Email Client";
 
+/* The title of a list of trackers */
+"Crypto Mining" = "Crypto Mining";
+
 /* No comment provided by engineer. */
 "Custom Settings (Advanced)" = "Custom Settings (Advanced)";
 
+/* The title of a list of trackers */
+"Data Trackers" = "Data Trackers";
+
 /* No comment provided by engineer. */
 "Deactivating" = "Deactivating";
+
+/* No comment provided by engineer. */
+"Disable" = "Disable";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "Disable Block Log";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "Disable Block Log?";
 
 /* No comment provided by engineer. */
 "Done" = "Done";
@@ -100,8 +142,17 @@
 /* No comment provided by engineer. */
 "Email Support" = "Email Support";
 
+/* The title of a list of trackers */
+"Email Trackers" = "Email Trackers";
+
+/* No comment provided by engineer. */
+"Email Us" = "Email Us";
+
 /* No comment provided by engineer. */
 "Enable" = "Enable";
+
+/* No comment provided by engineer. */
+"Enable Block Log" = "Enable Block Log";
 
 /* No comment provided by engineer. */
 "Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime.";
@@ -114,6 +165,9 @@
 
 /* No comment provided by engineer. */
 "Error Creating Email Account" = "Error Creating Email Account";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "Error Loading Plan: Retry";
 
 /* No comment provided by engineer. */
 "Error Re-sending Email Confirmation" = "Error Re-sending Email Confirmation";
@@ -129,6 +183,18 @@
 
 /* No comment provided by engineer. */
 "Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com.";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "Facebook & WhatsApp";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "Facebook Trackers";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "Failed to re-send email confirmation.";
+
+/* No comment provided by engineer. */
+"FAQs" = "FAQs";
 
 /* No comment provided by engineer. */
 "Firewall" = "Firewall";
@@ -151,14 +217,32 @@
 /* No comment provided by engineer. */
 "France" = "France";
 
+/* The title of a list of trackers */
+"Game Marketing" = "Game Marketing";
+
+/* The title of a list of trackers */
+"General Marketing" = "General Marketing";
+
 /* No comment provided by engineer. */
 "Germany" = "Germany";
+
+/* The title of a list of trackers */
+"Google Shopping" = "Google Shopping";
 
 /* No comment provided by engineer. */
 "Hey Lockdown Team, \nI have a question, issue, or suggestion - " = "Hey Lockdown Team, \nI have a question, issue, or suggestion - ";
 
 /* No comment provided by engineer. */
+"Hi, my question or feedback for Lockdown is: " = "Hi, my question or feedback for Lockdown is: ";
+
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "I blocked";
+
+/* No comment provided by engineer. */
 "I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = "I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "in your custom blocked domains.";
 
 /* No comment provided by engineer. */
 "India" = "India";
@@ -175,8 +259,14 @@
 /* No comment provided by engineer. */
 "Ireland" = "Ireland";
 
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "is a part of";
+
 /* No comment provided by engineer. */
 "Japan" = "Japan";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "Loading Plan";
 
 /* No comment provided by engineer. */
 "Location changed and hidden" = "Location changed and hidden";
@@ -196,6 +286,12 @@
 /* No comment provided by engineer. */
 "Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN." = "Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.";
 
+/* The title of a list of trackers */
+"Marketing Trackers" = "Marketing Trackers";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "Marketing Trackers II";
+
 /* No comment provided by engineer. */
 "Network Error" = "Network Error";
 
@@ -210,6 +306,15 @@
 
 /* No comment provided by engineer. */
 "No Active Subscription" = "No Active Subscription";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "No additional information on this blocked domain found.";
+
+/* No comment provided by engineer. */
+"No Block Lists Enabled" = "No Block Lists Enabled";
+
+/* No comment provided by engineer. */
+"No Info Found" = "No Info Found";
 
 /* No comment provided by engineer. */
 "No Internet Connection" = "No Internet Connection";
@@ -227,10 +332,34 @@
 "Not Whitelisted" = "Not Whitelisted";
 
 /* No comment provided by engineer. */
+"Notifications: Off" = "Notifications: Off";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "Notifications: On";
+
+/* No comment provided by engineer. */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
 "Okay" = "Okay";
+
+/* No comment provided by engineer. */
+"one lowercase letter" = "one lowercase letter";
+
+/* No comment provided by engineer. */
+"one number" = "one number";
+
+/* No comment provided by engineer. */
+"one symbol" = "one symbol";
+
+/* No comment provided by engineer. */
+"one uppercase letter" = "one uppercase letter";
+
+/* No comment provided by engineer. */
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.";
+
+/* No comment provided by engineer. */
+"Plan: Annual Pro" = "Plan: Annual Pro";
 
 /* No comment provided by engineer. */
 "Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n";
@@ -260,6 +389,9 @@
 "Please renew your subscription to re-activate the VPN." = "Please renew your subscription to re-activate the VPN.";
 
 /* No comment provided by engineer. */
+"Please tap Block List and enable at least one block list to activate Firewall." = "Please tap Block List and enable at least one block list to activate Firewall.";
+
+/* No comment provided by engineer. */
 "Pre-configured Block Lists" = "Pre-configured Block Lists";
 
 /* No comment provided by engineer. */
@@ -274,6 +406,9 @@
 /* No comment provided by engineer. */
 "Privacy Policy" = "Privacy Policy";
 
+/* The title of a list of trackers */
+"Ransomware" = "Ransomware";
+
 /* No comment provided by engineer. */
 "Re-send" = "Re-send";
 
@@ -281,10 +416,19 @@
 "Readable browsing and data" = "Readable browsing and data";
 
 /* No comment provided by engineer. */
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.";
+
+/* The title of a list of trackers */
+"Reporting" = "Reporting";
+
+/* No comment provided by engineer. */
 "Secure Tunnel VPN" = "Secure Tunnel VPN";
 
 /* No comment provided by engineer. */
 "See live metrics for how many bad connections Firewall has blocked." = "See live metrics for how many bad connections Firewall has blocked.";
+
+/* No comment provided by engineer. */
+"Settings" = "Settings";
 
 /* No comment provided by engineer. */
 "Share your anonymized metrics and show other people how to block invasive tracking." = "Share your anonymized metrics and show other people how to block invasive tracking.";
@@ -302,13 +446,28 @@
 "Sign Out" = "Sign Out";
 
 /* No comment provided by engineer. */
+"Sign Out?" = "Sign Out?";
+
+/* No comment provided by engineer. */
 "Sign Up  |  Sign In" = "Sign Up  |  Sign In";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "Sign up below to unlock benefits of a Lockdown account.";
+
+/* No comment provided by engineer. */
+"Signed In" = "Signed In";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "Signed out successfully.";
 
 /* No comment provided by engineer. */
 "Singapore" = "Singapore";
 
 /* No comment provided by engineer. */
 "Skip Trial" = "Skip Trial";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "Snapchat Trackers";
 
 /* No comment provided by engineer. */
 "South Korea" = "South Korea";
@@ -320,7 +479,19 @@
 "Subscription Expired" = "Subscription Expired";
 
 /* No comment provided by engineer. */
+"Success" = "Success";
+
+/* No comment provided by engineer. */
 "Success!" = "Success!";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "Successfully re-sent your email confirmation to ";
+
+/* No comment provided by engineer. */
+"Support | Feedback" = "Support | Feedback";
+
+/* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "Tap to activate Lockdown Firewall and update to the newest block lists.";
 
 /* No comment provided by engineer. */
 "Tap to see a demo of how Secure Tunnel protects and anonymizes you." = "Tap to see a demo of how Secure Tunnel protects and anonymizes you.";
@@ -328,11 +499,20 @@
 /* No comment provided by engineer. */
 "Tap to see the blocked tracking attempts." = "Tap to see the blocked tracking attempts.";
 
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "Tap to see what they are.";
+
 /* No comment provided by engineer. */
 "Terms" = "Terms";
 
 /* No comment provided by engineer. */
 "Thanks for helping to increase privacy and tracking awareness." = "Thanks for helping to increase privacy and tracking awareness.";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "To complete your signup, click the confirmation link we sent to";
 
 /* No comment provided by engineer. */
 "To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder." = "To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder.";
@@ -345,6 +525,9 @@
 
 /* No comment provided by engineer. */
 "Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location." = "Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "tracking attempts this week. Tap to update to the newest block lists.";
 
 /* No comment provided by engineer. */
 "Tunnel" = "Tunnel";
@@ -383,6 +566,15 @@
 "USA West" = "USA West";
 
 /* No comment provided by engineer. */
+"View FAQs" = "View FAQs";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "View or Upgrade Plan";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "View Upgrade Options";
+
+/* No comment provided by engineer. */
 "VPN Active" = "VPN Active";
 
 /* No comment provided by engineer. */
@@ -412,8 +604,27 @@
 /* No comment provided by engineer. */
 "Why Use VPN?" = "Why Use VPN?";
 
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "You blocked";
+
+/* No comment provided by engineer. */
+"You blocked \(match) in your custom blocked domains." = "You blocked \(match) in your custom blocked domains.";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "You blocked this domain in your custom blocked domains.";
+
 /* No comment provided by engineer. */
 "You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)" = "You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "You'll be signed out from this account.";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "You'll have to reenable it later here to start seeing blocked entries again.";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "You've just blocked 100 tracking attempts!";
 
 /* No comment provided by engineer. */
 "Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements." = "Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements.";
@@ -422,46 +633,7 @@
 "Your Settings" = "Your Settings";
 
 /* No comment provided by engineer. */
+"⚠️ Not Signed In" = "⚠️ Not Signed In";
+
+/* No comment provided by engineer. */
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Firewall Activated 🎊🎉";
-
-/* No comment provided by engineer. */
-"at least 8 characters" = "";
-
-/* No comment provided by engineer. */
-"Email Us" = "";
-
-/* No comment provided by engineer. */
-"FAQs" = "";
-
-/* No comment provided by engineer. */
-"Hi, my question or feedback for Lockdown is: " = "";
-
-/* No comment provided by engineer. */
-"No Block Lists Enabled" = "";
-
-/* No comment provided by engineer. */
-"one lowercase letter" = "";
-
-/* No comment provided by engineer. */
-"one number" = "";
-
-/* No comment provided by engineer. */
-"one symbol" = "";
-
-/* No comment provided by engineer. */
-"one uppercase letter" = "";
-
-/* No comment provided by engineer. */
-"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "";
-
-/* No comment provided by engineer. */
-"Please tap Block List and enable at least one block list to activate Firewall." = "";
-
-/* No comment provided by engineer. */
-"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "";
-
-/* No comment provided by engineer. */
-"Support | Feedback" = "";
-
-/* No comment provided by engineer. */
-"View FAQs" = "";

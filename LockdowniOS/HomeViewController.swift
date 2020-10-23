@@ -385,13 +385,13 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let cancelButton = CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {  }
         
         let shareButton = DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
-            let shareText = NSLocalizedString("I blocked \(thousandsFormatter.string(for: getTotalMetrics())!) trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.", comment: "")
+            let shareText = NSLocalizedString("I blocked", comment: "Used in the sentence: I blocked 500 trackers with Lockdown.") + thousandsFormatter.string(for: getTotalMetrics())! +
+                NSLocalizedString(" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.", comment: "Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.")
             let vc = UIActivityViewController(activityItems: [LockdownCustomActivityItemProvider(text: shareText), image], applicationActivities: [])
             vc.completionWithItemsHandler = { (activity, success, items, error) in
                 if (success) {
-                    self.showPopupDialog(title: NSLocalizedString("Success!", comment: ""), message: NSLocalizedString("Thanks for helping to increase privacy and tracking awareness.", comment: ""), acceptButton: NSLocalizedString("Nice", comment: ""))
+                    self.showPopupDialog(title: NSLocalizedString("Success!", comment: ""), message: NSLocalizedString("Thanks for helping to increase privacy and tracking awareness.", comment: ""), acceptButton: NSLocalizedString("Nice", comment: "Used as a button text in a popup. Like 'OK' except more excited."))
                 }
-                print(success ? "SUCCESS!" : "FAILURE")
             }
             vc.excludedActivityTypes = [ UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.print ]
             

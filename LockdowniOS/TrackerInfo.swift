@@ -53,9 +53,9 @@ final class TrackerInfoRegistry {
         
         let userBlocked = getUserBlockedDomains()
         if userBlocked.keys.contains(domain) {
-            return TrackerDescription(title: domain, description: "You blocked this domain in your custom blocked domains.")
+            return TrackerDescription(title: domain, description: NSLocalizedString("You blocked this domain in your custom blocked domains.", comment: ""))
         } else if let match = userBlocked.keys.first(where: { domain.hasSuffix($0) }) {
-            return TrackerDescription(title: domain, description: "You blocked \(match) in your custom blocked domains.")
+            return TrackerDescription(title: domain, description: "\(NSLocalizedString("You blocked", comment: "Used in: You blocked tracker.com in your custom blocked domains.")) \(match) \(NSLocalizedString("in your custom blocked domains.", comment: "Used in: You blocked tracker.com in your custom blocked domains."))")
         }
         
         let blocked = getLockdownBlockedDomains().lockdownDefaults
@@ -68,10 +68,11 @@ final class TrackerInfoRegistry {
         let groupsFormatted = TrackerInfoRegistry.formatList(strings: groups)
         
         if !groups.isEmpty {
-            return TrackerDescription(title: domain, description: "\(domain) is a part of \(groupsFormatted) block \(groups.count == 1 ? "list" : "lists")")
+            return TrackerDescription(title: domain,
+                                      description: "\(domain) \(NSLocalizedString("is a part of", comment: "Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list")) \(groupsFormatted) \(NSLocalizedString("block list", comment: "Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list"))")
         }
         
-        return TrackerDescription(title: "No Info Found", description: "No additional information on this blocked domain found.")
+        return TrackerDescription(title: NSLocalizedString("No Info Found", comment: ""), description: NSLocalizedString("No additional information on this blocked domain found.", comment: ""))
     }
     
     static private func formatList(strings: [String]) -> String {
@@ -84,7 +85,7 @@ final class TrackerInfoRegistry {
         
         let last = strings.removeLast()
         return strings
-            .joined(separator: ", ") + " and " + last
+            .joined(separator: ", ") + NSLocalizedString(" and ", comment: "Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com") + last
     }
     
     private func getTrackerInfoDoc() throws -> TrackerInfo {

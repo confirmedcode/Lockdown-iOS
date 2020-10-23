@@ -183,14 +183,14 @@ extension PushNotifications {
         static func makeNotificationContent(weeklyMetrics: Int) -> UNMutableNotificationContent {
             if weeklyMetrics > 0 {
                 let content = UNMutableNotificationContent()
-                content.title = "Blocked Trackers Summary"
-                content.body = "You blocked \(weeklyMetrics) tracking attempts this week. Tap to update to the newest block lists."
+                content.title = NSLocalizedString("Blocked Trackers Summary", comment: "")
+                content.body = "\(NSLocalizedString("You blocked", comment: "Used in the sentence: You blocked 500 tracking attempts this week.")) \(weeklyMetrics) \(NSLocalizedString("tracking attempts this week. Tap to update to the newest block lists.", comment: "Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists."))"
                 content.sound = .default
                 return content
             } else {
                 let content = UNMutableNotificationContent()
-                content.title = "Stay Protected"
-                content.body = "Tap to activate Lockdown Firewall and update to the newest block lists."
+                content.title = NSLocalizedString("Stay Protected", comment: "")
+                content.body = NSLocalizedString("Tap to activate Lockdown Firewall and update to the newest block lists.", comment: "")
                 content.sound = .default
                 return content
             }
@@ -198,8 +198,8 @@ extension PushNotifications {
         
         static func makeNotificationContentForOnboarding() -> UNMutableNotificationContent {
             let content = UNMutableNotificationContent()
-            content.title = "You've just blocked 100 tracking attempts!"
-            content.body = "Tap to see what they are."
+            content.title = NSLocalizedString("You've just blocked 100 tracking attempts!", comment: "")
+            content.body = NSLocalizedString("Tap to see what they are.", comment: "Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are.")
             // No sound because the user will likely be using their phone
             // when they see this notification
             content.sound = .none
