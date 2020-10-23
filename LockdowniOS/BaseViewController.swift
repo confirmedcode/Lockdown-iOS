@@ -317,7 +317,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             for logFileData in logFileDataArray {
                 attachmentData.append(logFileData as Data)
             }
-            composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "ConfirmedLogs.log")
+            composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "diagnostics.txt")
             self.present(composeVC, animated: true, completion: nil)
         } else {
             

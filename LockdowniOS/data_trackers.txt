@@ -9,7 +9,6 @@ fitanalytics.com
 localytics.com
 mob.com
 mtrtb.com
-mxpnl.com
 newrelic.com
 nr-data.net
 play.googleapis.com
