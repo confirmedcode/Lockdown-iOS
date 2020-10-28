@@ -10,6 +10,7 @@ import SwiftyStoreKit
 import NetworkExtension
 import PromiseKit
 import CocoaLumberjackSwift
+import StoreKit
 
 class SignupViewController: BaseViewController {
 
@@ -183,7 +184,25 @@ class SignupViewController: BaseViewController {
                 self.toggleStartTrialButton(true)
                 DDLogError("Start Trial Failed: \(error)")
                 
-                if (self.popupErrorAsNSURLError(error)) {
+                if let skError = error as? SKError {
+                    var errorText = ""
+                    switch skError.code {
+                    case .unknown: errorText = NSLocalizedString("Unknown error. Please contact support at team@lockdownprivacy.com.", comment: "")
+                    case .clientInvalid: errorText = NSLocalizedString("Not allowed to make the payment", comment: "")
+                    case .paymentCancelled: errorText = NSLocalizedString("Payment was cancelled", comment: "")
+                    case .paymentInvalid: errorText = NSLocalizedString("The purchase identifier was invalid", comment: "")
+                    case .paymentNotAllowed: errorText = NSLocalizedString("The device is not allowed to make the payment", comment: "")
+                    case .storeProductNotAvailable: errorText = NSLocalizedString("The product is not available in the current storefront", comment: "")
+                    case .cloudServicePermissionDenied: errorText = NSLocalizedString("Access to cloud service information is not allowed", comment: "")
+                    case .cloudServiceNetworkConnectionFailed: errorText = NSLocalizedString("Could not connect to the network", comment: "")
+                    case .cloudServiceRevoked: errorText = NSLocalizedString("User has revoked permission to use this cloud service", comment: "")
+                    default: errorText = (error as NSError).localizedDescription
+                    }
+                    self.showPopupDialog(title: NSLocalizedString("Error Starting Trial", comment: ""),
+                                         message: errorText,
+                        acceptButton: "Okay")
+                }
+                else if (self.popupErrorAsNSURLError(error)) {
                     return
                 }
                 else if (self.popupErrorAsApiError(error)) {

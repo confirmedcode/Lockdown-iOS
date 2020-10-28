@@ -149,6 +149,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Used for debugging signup
+        //performSegue(withIdentifier: "showSignup", sender: nil)
+        
         if (defaults.bool(forKey: kHasViewedTutorial) == false) {
             startTutorial()
         }

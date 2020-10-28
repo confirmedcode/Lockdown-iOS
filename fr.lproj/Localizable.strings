@@ -658,3 +658,30 @@
 
 /* No comment provided by engineer. */
 "SAVE" = "SAUVEGARDER";
+
+/* No comment provided by engineer. */
+"Access to cloud service information is not allowed" = "Access to cloud service information is not allowed";
+
+/* No comment provided by engineer. */
+"Could not connect to the network" = "Could not connect to the network";
+
+/* No comment provided by engineer. */
+"Not allowed to make the payment" = "Not allowed to make the payment";
+
+/* No comment provided by engineer. */
+"Payment was cancelled" = "Payment was cancelled";
+
+/* No comment provided by engineer. */
+"The device is not allowed to make the payment" = "The device is not allowed to make the payment";
+
+/* No comment provided by engineer. */
+"The product is not available in the current storefront" = "The product is not available in the current storefront";
+
+/* No comment provided by engineer. */
+"The purchase identifier was invalid" = "The purchase identifier was invalid";
+
+/* No comment provided by engineer. */
+"Unknown error. Please contact support at team@lockdownprivacy.com." = "Unknown error. Please contact support at team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"User has revoked permission to use this cloud service" = "User has revoked permission to use this cloud service";
