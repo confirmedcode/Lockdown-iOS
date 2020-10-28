@@ -605,25 +605,25 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             updateVPNButtonWithStatus(status: .connecting)
             // if there's a confirmed email, use that and sync the receipt with it
             if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
-                print("have confirmed API credentials, using them")
+                DDLogInfo("have confirmed API credentials, using them")
                 firstly {
                     try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
                 }
                 .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
-                    print("signin result: \(signin)")
+                    DDLogInfo("signin result: \(signin)")
                     return try Client.subscriptionEvent()
                 }
                 .recover { error -> Promise<SubscriptionEvent> in
-                    print("recovering from subscriptionevent error: \(error) - it's okay because we should try to GetKey anyways")
+                    DDLogInfo("recovering from subscriptionevent error: \(error) - it's okay because we should try to GetKey anyways")
                     return .value(SubscriptionEvent(message: "Recovery"))
                 }
                 .then { (result: SubscriptionEvent) -> Promise<GetKey> in
-                    print("subscriptionevent result: \(result)")
+                    DDLogInfo("subscriptionevent result: \(result)")
                     return try Client.getKey()
                 }
                 .done { (getKey: GetKey) in
                     try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                    print("setting VPN creds with ID: \(getKey.id)")
+                    DDLogInfo("setting VPN creds with ID: \(getKey.id)")
                     VPNController.shared.setEnabled(true)
                 }
                 .catch { error in

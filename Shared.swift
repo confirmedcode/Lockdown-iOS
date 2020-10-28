@@ -116,7 +116,7 @@ struct APICredentials {
 }
 
 func setAPICredentials(email: String, password: String) throws {
-    print("Setting API Credentials with email: \(email)")
+    DDLogInfo("Setting API Credentials with email: \(email)")
     if (email == "") {
         throw "Email was blank"
     }

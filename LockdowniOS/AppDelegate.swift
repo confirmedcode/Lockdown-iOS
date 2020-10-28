@@ -161,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //                print("Not showing onboarding page, installation epoch \(appInstall.timeIntervalSince1970)")
         //            }
         //            else {
-                print("Showing onboarding page")
+                DDLogInfo("Showing onboarding page")
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController

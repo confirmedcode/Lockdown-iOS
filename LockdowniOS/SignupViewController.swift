@@ -256,9 +256,45 @@ class SignupViewController: BaseViewController {
             if let apiError = error as? ApiError {
                 switch apiError.code {
                 case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                    self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
-                                        message: NSLocalizedString("Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
+                    // now try email if it exists
+                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                        DDLogInfo("restore: have confirmed API credentials, using them")
+                        self.toggleRestorePurchasesButton(false)
+                        firstly {
+                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                        }
+                        .then { (signin: SignIn) -> Promise<GetKey> in
+                            DDLogInfo("restore: signin result: \(signin)")
+                            return try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            DDLogInfo("restore: setting VPN creds with ID: \(getKey.id)")
+                            VPNController.shared.setEnabled(true)
+                        }
+                        .catch { error in
+                            self.toggleRestorePurchasesButton(false)
+                            DDLogError("restore: Error doing restore with email-login: \(error)")
+                            if (self.popupErrorAsNSURLError(error)) {
+                                return
+                            }
+                            else if let apiError = error as? ApiError {
+                                switch apiError.code {
+                                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                                    self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
+                                                    message: NSLocalizedString("Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
+                                                    acceptButton: NSLocalizedString("OK", comment: ""))
+                                default:
+                                    _ = self.popupErrorAsApiError(error)
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
+                                        message: NSLocalizedString("Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
                                         acceptButton: NSLocalizedString("OK", comment: ""))
+                    }
                 default:
                     self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
                                          message: NSLocalizedString("Please email team@lockdownprivacy.com with the following Error Code ", comment: "") + "\(apiError.code) : \(apiError.message)",

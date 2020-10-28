@@ -243,6 +243,7 @@ final class AccountViewController: BaseViewController, Loadable {
                     upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
                     upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
                 default:
+                    DDLogError("Error loading plan: API error code - \(apiError.code)")
                     upgradeButton.button.isEnabled = true
                     upgradeButton.selectionStyle = .default
                     upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
@@ -252,6 +253,7 @@ final class AccountViewController: BaseViewController, Loadable {
                     }
                 }
             } else {
+                DDLogError("Error loading plan: Non-API Error - \(error.localizedDescription)")
                 upgradeButton.button.isEnabled = true
                 upgradeButton.selectionStyle = .default
                 upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
