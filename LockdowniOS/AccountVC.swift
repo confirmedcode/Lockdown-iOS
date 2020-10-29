@@ -485,10 +485,8 @@ final class AccountViewController: BaseViewController, Loadable {
                 vc.parentVC = self
                 if activePlans.isEmpty {
                     vc.mode = .newSubscription
-                    vc.enableVPNAfterSubscribe = true
                 } else {
                     vc.mode = .upgrade(active: activePlans)
-                    vc.enableVPNAfterSubscribe = true
                 }
             }
         default:

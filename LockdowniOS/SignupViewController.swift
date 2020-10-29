@@ -23,7 +23,6 @@ class SignupViewController: BaseViewController {
         case upgrade(active: [Subscription.PlanType])
     }
     
-    var enableVPNAfterSubscribe = true
     var mode = Mode.newSubscription
     
     @IBOutlet var monthlyPlanContainer: UIView!
@@ -175,61 +174,59 @@ class SignupViewController: BaseViewController {
                     if let presentingViewController = self.parentVC as? AccountViewController {
                         presentingViewController.reloadTable()
                     }
-                    if self.enableVPNAfterSubscribe {
-                        // force refresh receipt, and sync with email if it exists, activate VPNte
-                        if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
-                            DDLogInfo("purchase complete: syncing with confirmed email")
-                            firstly {
-                                try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                    // force refresh receipt, and sync with email if it exists, activate VPNte
+                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                        DDLogInfo("purchase complete: syncing with confirmed email")
+                        firstly {
+                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                        }
+                        .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
+                            DDLogInfo("purchase complete: signin result: \(signin)")
+                            return try Client.subscriptionEvent(forceRefresh: true)
+                        }
+                        .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                            DDLogInfo("purchase complete: subscriptionevent result: \(result)")
+                            return try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
+                            VPNController.shared.setEnabled(true)
+                        }
+                        .catch { error in
+                            DDLogError("purchase complete: Error: \(error)")
+                            if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
+                                return
                             }
-                            .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
-                                DDLogInfo("purchase complete: signin result: \(signin)")
-                                return try Client.subscriptionEvent(forceRefresh: true)
-                            }
-                            .then { (result: SubscriptionEvent) -> Promise<GetKey> in
-                                DDLogInfo("purchase complete: subscriptionevent result: \(result)")
-                                return try Client.getKey()
-                            }
-                            .done { (getKey: GetKey) in
-                                try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                                DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
-                                VPNController.shared.setEnabled(true)
-                            }
-                            .catch { error in
-                                DDLogError("purchase complete: Error: \(error)")
-                                if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
-                                    return
-                                }
-                                else if let apiError = error as? ApiError {
-                                    switch apiError.code {
-                                    default:
-                                        _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
-                                    }
+                            else if let apiError = error as? ApiError {
+                                switch apiError.code {
+                                default:
+                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
                                 }
                             }
                         }
-                        else {
-                            firstly {
-                                try Client.signIn(forceRefresh: true) // this will fetch and set latest receipt, then submit to API to get cookie
+                    }
+                    else {
+                        firstly {
+                            try Client.signIn(forceRefresh: true) // this will fetch and set latest receipt, then submit to API to get cookie
+                        }
+                        .then { (signin: SignIn) -> Promise<GetKey> in
+                            // TODO: don't always do this -- if we already have a key, then only do it once per day max
+                            try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            VPNController.shared.setEnabled(true)
+                        }
+                        .catch { error in
+                            DDLogError("purchase complete - no email: Error: \(error)")
+                            if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
+                                return
                             }
-                            .then { (signin: SignIn) -> Promise<GetKey> in
-                                // TODO: don't always do this -- if we already have a key, then only do it once per day max
-                                try Client.getKey()
-                            }
-                            .done { (getKey: GetKey) in
-                                try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                                VPNController.shared.setEnabled(true)
-                            }
-                            .catch { error in
-                                DDLogError("purchase complete - no email: Error: \(error)")
-                                if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
-                                    return
-                                }
-                                else if let apiError = error as? ApiError {
-                                    switch apiError.code {
-                                    default:
-                                        _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
-                                    }
+                            else if let apiError = error as? ApiError {
+                                switch apiError.code {
+                                default:
+                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
                                 }
                             }
                         }
