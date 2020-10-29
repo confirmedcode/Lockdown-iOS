@@ -116,6 +116,10 @@ class Client {
                 DDLogInfo("API RESULT: subscriptionEvent: \(subscriptionEvent)")
                 return subscriptionEvent
         }
+        .recover { error -> Promise<SubscriptionEvent> in
+            DDLogInfo("Recovering from subscription-event error: \(error)")
+            return .value(SubscriptionEvent(message: "Recovery"))
+        }
     }
     
     static func activeSubscriptions() throws -> Promise<[Subscription]> {

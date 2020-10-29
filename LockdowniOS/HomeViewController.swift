@@ -613,10 +613,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     DDLogInfo("signin result: \(signin)")
                     return try Client.subscriptionEvent()
                 }
-                .recover { error -> Promise<SubscriptionEvent> in
-                    DDLogInfo("recovering from subscriptionevent error: \(error) - it's okay because we should try to GetKey anyways")
-                    return .value(SubscriptionEvent(message: "Recovery"))
-                }
                 .then { (result: SubscriptionEvent) -> Promise<GetKey> in
                     DDLogInfo("subscriptionevent result: \(result)")
                     return try Client.getKey()
