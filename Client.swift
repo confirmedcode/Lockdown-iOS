@@ -128,8 +128,39 @@ class Client {
             URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/active-subscriptions", parameters: [:]))
         }.map { data, response -> [Subscription] in
             try self.validateApiResponse(data: data, response: response)
-            let subscriptions = try JSONDecoder().decode([Subscription].self, from: data)
+            var subscriptions = try JSONDecoder().decode([Subscription].self, from: data)
             DDLogInfo("API RESULT: active-subscriptions: \(subscriptions)")
+            // sort subscriptions with highest tier at the top
+            subscriptions.sort(by: { (sub1: Subscription, sub2: Subscription) -> Bool in
+                if (sub1.planType == .proAnnual) {
+                    return true
+                }
+                else if (sub1.planType == .proMonthly) {
+                    if (sub2.planType == .proAnnual) {
+                        return false
+                    }
+                    else {
+                        return true
+                    }
+                }
+                else if (sub1.planType == .annual) {
+                    if (sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                        return false
+                    }
+                    else {
+                        return true
+                    }
+                }
+                else {
+                    if (sub2.planType == .proAnnual || sub2.planType == .proMonthly || sub2.planType == .annual) {
+                        return false
+                    }
+                    else {
+                        return true
+                    }
+                }
+            })
+            DDLogInfo("API RESULT: sorted-active-subscriptions: \(subscriptions)")
             return subscriptions
         }
     }
