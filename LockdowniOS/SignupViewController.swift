@@ -176,7 +176,63 @@ class SignupViewController: BaseViewController {
                         presentingViewController.reloadTable()
                     }
                     if self.enableVPNAfterSubscribe {
-                        VPNController.shared.setEnabled(true)
+                        // force refresh receipt, and sync with email if it exists, activate VPNte
+                        if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                            DDLogInfo("purchase complete: syncing with confirmed email")
+                            firstly {
+                                try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                            }
+                            .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
+                                DDLogInfo("purchase complete: signin result: \(signin)")
+                                return try Client.subscriptionEvent(forceRefresh: true)
+                            }
+                            .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                                DDLogInfo("purchase complete: subscriptionevent result: \(result)")
+                                return try Client.getKey()
+                            }
+                            .done { (getKey: GetKey) in
+                                try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                                DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
+                                VPNController.shared.setEnabled(true)
+                            }
+                            .catch { error in
+                                DDLogError("purchase complete: Error: \(error)")
+                                if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
+                                    return
+                                }
+                                else if let apiError = error as? ApiError {
+                                    switch apiError.code {
+                                    default:
+                                        _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            firstly {
+                                try Client.signIn(forceRefresh: true) // this will fetch and set latest receipt, then submit to API to get cookie
+                            }
+                            .then { (signin: SignIn) -> Promise<GetKey> in
+                                // TODO: don't always do this -- if we already have a key, then only do it once per day max
+                                try Client.getKey()
+                            }
+                            .done { (getKey: GetKey) in
+                                try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                                VPNController.shared.setEnabled(true)
+                            }
+                            .catch { error in
+                                DDLogError("purchase complete - no email: Error: \(error)")
+                                if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
+                                    return
+                                }
+                                else if let apiError = error as? ApiError {
+                                    switch apiError.code {
+                                    default:
+                                        _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
+                                    }
+                                }
+                            }
+                        }
                     }
                 })
             },
@@ -191,7 +247,7 @@ class SignupViewController: BaseViewController {
                     case .clientInvalid: errorText = NSLocalizedString("Not allowed to make the payment", comment: "")
                     case .paymentCancelled: errorText = NSLocalizedString("Payment was cancelled", comment: "")
                     case .paymentInvalid: errorText = NSLocalizedString("The purchase identifier was invalid", comment: "")
-                    case .paymentNotAllowed: errorText = NSLocalizedString("The device is not allowed to make the payment", comment: "")
+                    case .paymentNotAllowed: errorText = NSLocalizedString("Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again.", comment: "")
                     case .storeProductNotAvailable: errorText = NSLocalizedString("The product is not available in the current storefront", comment: "")
                     case .cloudServicePermissionDenied: errorText = NSLocalizedString("Access to cloud service information is not allowed", comment: "")
                     case .cloudServiceNetworkConnectionFailed: errorText = NSLocalizedString("Could not connect to the network", comment: "")

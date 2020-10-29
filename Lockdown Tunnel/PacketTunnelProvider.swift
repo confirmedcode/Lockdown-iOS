@@ -30,7 +30,7 @@ class LDObserverFactory: ObserverFactory {
                 for whitelistedDomain in whitelistedDomains {
                     if (session.host.hasSuffix("." + whitelistedDomain) || session.host == whitelistedDomain) {
                         #if DEBUG
-                        PacketTunnelProviderLogs.log("whitelisted \(session.host), not blocking")
+                        //PacketTunnelProviderLogs.log("whitelisted \(session.host), not blocking")
                         #endif
                         return
                     }
@@ -39,7 +39,7 @@ class LDObserverFactory: ObserverFactory {
                 if (getUserWantsFirewallEnabled()) {
                     updateMetrics(.incrementAndLog(host: session.host), rescheduleNotifications: .withEnergySaving)
                     #if DEBUG
-                    PacketTunnelProviderLogs.log("session host: \(session.host)")
+                    //PacketTunnelProviderLogs.log("session host: \(session.host)")
                     #endif
                     socket.forceDisconnect()
                     return

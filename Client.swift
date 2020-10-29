@@ -22,6 +22,7 @@ let kApiCodeEmailAlreadyUsed = 40
 let kApiCodeReceiptAlreadyUsed = 48
 let kApiCodeInvalidAuth = 401
 let kApiCodeTooManyRequests = 999
+let kApiCodeSandboxReceiptNotAllowed = 9925
 let kApiCodeUnknownError = 99999
 let kApiCodeNegativeError = -1
 
@@ -99,9 +100,9 @@ class Client {
         }
     }
     
-    static func subscriptionEvent() throws -> Promise<SubscriptionEvent> {
+    static func subscriptionEvent(forceRefresh: Bool = false) throws -> Promise<SubscriptionEvent> {
         DDLogInfo("API CALL: subscription-event")
-        return getReceipt(forceRefresh: false)
+        return getReceipt(forceRefresh: forceRefresh)
             .then { receipt -> Promise<(data: Data, response: URLResponse)> in
                 let parameters:[String : Any] = [
                     "authtype": "ios",

@@ -252,6 +252,12 @@ final class AccountViewController: BaseViewController, Loadable {
                         upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
                         upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
                         upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
+                    case kApiCodeSandboxReceiptNotAllowed:
+                        upgradeButton.button.isEnabled = true
+                        upgradeButton.selectionStyle = .default
+                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
+                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
+                        upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
                     default:
                         DDLogError("Error loading plan: API error code - \(apiError.code)")
                         upgradeButton.button.isEnabled = true
@@ -308,6 +314,12 @@ final class AccountViewController: BaseViewController, Loadable {
                 if let apiError = error as? ApiError {
                     switch apiError.code {
                     case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                        upgradeButton.button.isEnabled = true
+                        upgradeButton.selectionStyle = .default
+                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
+                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
+                        upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
+                    case kApiCodeSandboxReceiptNotAllowed:
                         upgradeButton.button.isEnabled = true
                         upgradeButton.selectionStyle = .default
                         upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
