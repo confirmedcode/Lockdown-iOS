@@ -557,19 +557,19 @@
 "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Le mot de passe doit comporter au moins 8 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole.";
 
 /* No comment provided by engineer. */
-"Plan: Annual Pro" = "Plan: Annual Pro";
+"Plan: Annual Pro" = "Abonnement : Pro Annuel";
 
 /* No comment provided by engineer. */
-"Please tap Block List and enable at least one block list to activate Firewall." = "Please tap Block List and enable at least one block list to activate Firewall.";
+"Please tap Block List and enable at least one block list to activate Firewall." = "Veuillez appuyer sur Liste de blocage et activer au moins une liste de blocage pour activer le pare-feu.";
 
 /* The title of a list of trackers */
 "Ransomware" = "Ransomware";
 
 /* No comment provided by engineer. */
-"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.";
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "N'oubliez pas de consulter d'abord notre FAQ, qui contient les réponses aux questions les plus fréquemment posées.\n\nSi vous n'y trouvez pas de réponse, nous serons heureux de vous apporter notre support et recevoir vos commentaires par email.";
 
 /* The title of a list of trackers */
-"Reporting" = "Reporting";
+"Reporting" = "Raport";
 
 /* No comment provided by engineer. */
 "Settings" = "Settings";

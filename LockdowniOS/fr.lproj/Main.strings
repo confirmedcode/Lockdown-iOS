@@ -107,7 +107,7 @@
 "J7f-4S-hHD.normalTitle" = "Connexion";
 
 /* Class = "UIButton"; normalTitle = "View Log"; ObjectID = "JVD-sS-lUY"; */
-"JVD-sS-lUY.normalTitle" = "Afficher Journal";
+"JVD-sS-lUY.normalTitle" = "Journal";
 
 /* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "Jsv-mc-ptE"; */
 "Jsv-mc-ptE.text" = "Tunnel Securisé VPN";
@@ -418,7 +418,7 @@
 "v8T-bw-mkT.normalTitle" = "Politique de Confidentialité";
 
 /* Class = "UIButton"; normalTitle = "Start 1 Week Free Trial"; ObjectID = "v8r-0N-ycQ"; */
-"v8r-0N-ycQ.normalTitle" = "Démarrer 1 semaine d'essai gratuit";
+"v8r-0N-ycQ.normalTitle" = "1 Semaine d'Essai Gratuit";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "vKc-uc-qfV"; */
 "vKc-uc-qfV.text" = "-";
