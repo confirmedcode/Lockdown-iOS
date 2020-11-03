@@ -385,7 +385,7 @@
 "pao-zq-e98.text" = "domain-en-liste-blanche.com";
 
 /* Class = "UIButton"; normalTitle = "See How It Works"; ObjectID = "qBb-qF-2nJ"; */
-"qBb-qF-2nJ.normalTitle" = "Voir Comment Cela Fonctionne";
+"qBb-qF-2nJ.normalTitle" = "Voir Le Fonctionnement";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "rCb-D1-AbS"; */
 "rCb-D1-AbS.text" = "Mot de passe";
