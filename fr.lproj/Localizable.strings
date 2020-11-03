@@ -38,7 +38,7 @@
 "\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n Si le problème persiste, merci de contacter team@lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
-"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n Si le cela persiste, veuillez contacter team@lockdownprivacy.com.";
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n Si le probème persiste, veuillez contacter team@lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
 "About Lockdown VPN" = "A propos de Lockdown VPN";
@@ -50,7 +50,7 @@
 "Activating" = "Activation";
 
 /* No comment provided by engineer. */
-"Anonymize IP against trackers" = "Anonymiser l'IP contre les traqueurs";
+"Anonymize IP against trackers" = "Anonymise l'IP contre les traqueurs";
 
 /* No comment provided by engineer. */
 "Apple Outage" = "Interruption de Service Apple";
@@ -104,7 +104,7 @@
 "Enable" = "Activer";
 
 /* No comment provided by engineer. */
-"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "Activez les notifications pour obtenir un résumé hebdomadaire et les dernières mises à jour des listes de blocage. Vous pouvez désactiver cette fonction à tout moment.";
+"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "Activez les notifications pour obtenir un résumé hebdomadaire et les dernières mises à jour des listes de blocage. Vous pouvez désactiver cette fonctionnalité à tout moment.";
 
 /* No comment provided by engineer. */
 "Encrypted, private connections" = "Connexions privées cryptées";
@@ -425,28 +425,28 @@
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Pare-feu Activé 🎊🎉";
 
 /* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
-" and " = " and ";
+" and " = " et ";
 
 /* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
-" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " traqueurs, publicités et logiciels malveillants avec Lockdown, le pare-feu qui bloque les connexions indésirables dans toutes vos applications. Télécharger-le gratuitement sur lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
 "at least 8 characters" = "au moins 8 caractères";
 
 /* No comment provided by engineer. */
-"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.";
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "N'oubliez pas de vérifier vos courriers indésirables au cas où il s'y trouverait bloqué.\n\nVous pouvez également demander un nouvel envoi de confirmation.";
 
 /* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
-"block list" = "block list";
+"block list" = "";
 
 /* No comment provided by engineer. */
-"Blocked Trackers Summary" = "Blocked Trackers Summary";
+"Blocked Trackers Summary" = "Résumé des traqueurs bloqués";
 
 /* No comment provided by engineer. */
-"Check Your Inbox" = "Check Your Inbox";
+"Check Your Inbox" = "Vérifiez votre boîte de réception";
 
 /* No comment provided by engineer. */
-"Clear Block Log" = "Clear Block Log";
+"Clear Block Log" = "Effacer le journal de blocage";
 
 /* The title of a list of trackers */
 "Clickbait" = "Clickbait";
@@ -455,91 +455,91 @@
 "Crypto Mining" = "Crypto Mining";
 
 /* The title of a list of trackers */
-"Data Trackers" = "Data Trackers";
+"Data Trackers" = "Traqueurs de données";
 
 /* No comment provided by engineer. */
-"Disable" = "Disable";
+"Disable" = "Désactiver";
 
 /* No comment provided by engineer. */
-"Disable Block Log" = "Disable Block Log";
+"Disable Block Log" = "Désactiver le journal de blocage";
 
 /* No comment provided by engineer. */
-"Disable Block Log?" = "Disable Block Log?";
+"Disable Block Log?" = "Désactiver le journal de blocage ?";
 
 /* The title of a list of trackers */
-"Email Trackers" = "Email Trackers";
+"Email Trackers" = "Traqueurs Email";
 
 /* No comment provided by engineer. */
-"Email Us" = "Email Us";
+"Email Us" = "Nous écrire";
 
 /* No comment provided by engineer. */
-"Enable Block Log" = "Enable Block Log";
+"Enable Block Log" = "Activer le journal de blocage";
 
 /* No comment provided by engineer. */
-"Error Loading Plan: Retry" = "Error Loading Plan: Retry";
+"Error Loading Plan: Retry" = "Erreur de chargement d'abonnement : Réessayer";
 
 /* No comment provided by engineer. */
-"Error while trying to confirm your account:" = "Error while trying to confirm your account:";
+"Error while trying to confirm your account:" = "Erreur lors de la confirmation de votre compte :";
 
 /* The title of a list of trackers */
-"Facebook & WhatsApp" = "Facebook & WhatsApp";
+"Facebook & WhatsApp" = "Facebook et WhatsApp";
 
 /* The title of a list of trackers */
-"Facebook Trackers" = "Facebook Trackers";
+"Facebook Trackers" = "Traqueurs Facebook";
 
 /* No comment provided by engineer. */
-"Failed to re-send email confirmation." = "Failed to re-send email confirmation.";
+"Failed to re-send email confirmation." = "Le renvoi d'email de confirmation a échoué.";
 
 /* No comment provided by engineer. */
-"FAQs" = "FAQs";
+"FAQs" = "FAQ";
 
 /* The title of a list of trackers */
-"Game Marketing" = "Game Marketing";
+"Game Marketing" = "Marketing Jeux";
 
 /* The title of a list of trackers */
-"General Marketing" = "General Marketing";
+"General Marketing" = "Marketing Général";
 
 /* The title of a list of trackers */
 "Google Shopping" = "Google Shopping";
 
 /* No comment provided by engineer. */
-"Hi, my question or feedback for Lockdown is: " = "Hi, my question or feedback for Lockdown is: ";
+"Hi, my question or feedback for Lockdown is: " = "Bonjour, ma question ou mon commentaire pour Lockdown est : ";
 
 /* Used in the sentence: I blocked 500 trackers with Lockdown. */
-"I blocked" = "I blocked";
+"I blocked" = "J'ai bloqué";
 
 /* No comment provided by engineer. */
-"If this persists, please contact team@lockdownprivacy.com." = "If this persists, please contact team@lockdownprivacy.com.";
+"If this persists, please contact team@lockdownprivacy.com." = "Si le problème persiste, veuillez contacter team@lockdownprivacy.com.";
 
 /* Used in: You blocked tracker.com in your custom blocked domains. */
-"in your custom blocked domains." = "in your custom blocked domains.";
+"in your custom blocked domains." = "dans vos domaines bloqués personnalisés.";
 
 /* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
-"is a part of" = "is a part of";
+"is a part of" = "fait partie de la liste de blocage";
 
 /* Shows when loading the details of a subscription plan */
-"Loading Plan" = "Loading Plan";
+"Loading Plan" = "Chargement de l'Abonnement";
 
 /* The title of a list of trackers */
-"Marketing Trackers" = "Marketing Trackers";
+"Marketing Trackers" = "Traqueurs Marketing";
 
 /* The title of a list of trackers */
-"Marketing Trackers II" = "Marketing Trackers II";
+"Marketing Trackers II" = "Traqueurs Marketing II";
 
 /* No comment provided by engineer. */
-"No additional information on this blocked domain found." = "No additional information on this blocked domain found.";
+"No additional information on this blocked domain found." = "Aucune information supplémentaire sur ce domaine bloqué n'a été trouvée.";
 
 /* No comment provided by engineer. */
-"No Block Lists Enabled" = "No Block Lists Enabled";
+"No Block Lists Enabled" = "Pas de Listes de Blocage Activées";
 
 /* No comment provided by engineer. */
-"No Info Found" = "No Info Found";
+"No Info Found" = "Aucune Info Trouvée";
 
 /* No comment provided by engineer. */
-"Notifications: Off" = "Notifications: Off";
+"Notifications: Off" = "Notifications : Désativées";
 
 /* No comment provided by engineer. */
-"Notifications: On" = "Notifications: On";
+"Notifications: On" = "Notifications : Activées";
 
 /* No comment provided by engineer. */
 "one lowercase letter" = "une lettre minuscule";
@@ -557,89 +557,89 @@
 "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Le mot de passe doit comporter au moins 8 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole.";
 
 /* No comment provided by engineer. */
-"Plan: Annual Pro" = "Plan: Annual Pro";
+"Plan: Annual Pro" = "Abonnement : Pro Annuel";
 
 /* No comment provided by engineer. */
-"Please tap Block List and enable at least one block list to activate Firewall." = "Please tap Block List and enable at least one block list to activate Firewall.";
+"Please tap Block List and enable at least one block list to activate Firewall." = "Veuillez appuyer sur Liste de blocage et activer au moins une liste de blocage pour activer le pare-feu.";
 
 /* The title of a list of trackers */
 "Ransomware" = "Ransomware";
 
 /* No comment provided by engineer. */
-"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.";
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "N'oubliez pas de consulter d'abord notre FAQ qui contient les réponses aux questions les plus courantes.\n\nSi vous n'y trouvez pas de réponse, nous serons heureux de vous apporter notre support et recevoir vos commentaires par email.";
 
 /* The title of a list of trackers */
-"Reporting" = "Reporting";
+"Reporting" = "Raport";
 
 /* No comment provided by engineer. */
-"Settings" = "Settings";
+"Settings" = "Paramètres";
 
 /* No comment provided by engineer. */
-"Sign Out?" = "Sign Out?";
+"Sign Out?" = "Déconnexion ?";
 
 /* No comment provided by engineer. */
-"Sign up below to unlock benefits of a Lockdown account." = "Sign up below to unlock benefits of a Lockdown account.";
+"Sign up below to unlock benefits of a Lockdown account." = "Inscrivez-vous pour débloquer tous les avantages d'un compte Lockdown.";
 
 /* No comment provided by engineer. */
-"Signed In" = "Signed In";
+"Signed In" = "Connexion";
 
 /* No comment provided by engineer. */
-"Signed out successfully." = "Signed out successfully.";
+"Signed out successfully." = "Déconnecté avec succès.";
 
 /* The title of a list of trackers */
-"Snapchat Trackers" = "Snapchat Trackers";
+"Snapchat Trackers" = "Traqueurs Snapchat";
 
 /* No comment provided by engineer. */
-"Success" = "Success";
+"Success" = "Succès";
 
 /* No comment provided by engineer. */
-"Successfully re-sent your email confirmation to " = "Successfully re-sent your email confirmation to ";
+"Successfully re-sent your email confirmation to " = "Envoi réussi de l'email de confirmation à ";
 
 /* No comment provided by engineer. */
-"Support | Feedback" = "Support | Feedback";
+"Support | Feedback" = "Support | Commentaires";
 
 /* No comment provided by engineer. */
-"Tap to activate Lockdown Firewall and update to the newest block lists." = "Tap to activate Lockdown Firewall and update to the newest block lists.";
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "Touchez pour activer le pare-feu Lockdown et mettre à jour les listes de blocage les plus récentes.";
 
 /* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
-"Tap to see what they are." = "Tap to see what they are.";
+"Tap to see what they are." = "Touchez pour les découvrir.";
 
 /* No comment provided by engineer. */
-"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.";
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "Le journal de blocage peut être effacé manuellement ou désactivé . La désactivation du journal de blocage ne désactive que le journal des connexions - le nombre de tentatives de suivi sera toujours affiché.";
 
 /* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
-"To complete your signup, click the confirmation link we sent to" = "To complete your signup, click the confirmation link we sent to";
+"To complete your signup, click the confirmation link we sent to" = "Pour terminer votre inscription, cliquez sur le lien de confirmation envoyé à";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
-"tracking attempts this week. Tap to update to the newest block lists." = "tracking attempts this week. Tap to update to the newest block lists.";
+"tracking attempts this week. Tap to update to the newest block lists." = "tentatives de suivi cette semaine. Touchez pour mettre à jour les listes de blocage les plus récentes.";
 
 /* No comment provided by engineer. */
-"View FAQs" = "View FAQs";
+"View FAQs" = "Voir la FAQ";
 
 /* No comment provided by engineer. */
-"View or Upgrade Plan" = "View or Upgrade Plan";
+"View or Upgrade Plan" = "Voir ou Mettre à Niveau l'Abonnement";
 
 /* No comment provided by engineer. */
-"View Upgrade Options" = "View Upgrade Options";
+"View Upgrade Options" = "Voir les Options de Mise à Niveau";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week.
    Used in: You blocked tracker.com in your custom blocked domains. */
-"You blocked" = "You blocked";
+"You blocked" = "Vous avez bloqué";
 
 /* No comment provided by engineer. */
-"You blocked this domain in your custom blocked domains." = "You blocked this domain in your custom blocked domains.";
+"You blocked this domain in your custom blocked domains." = "Vous avez bloqué ce domaine dans vos domaines bloqués personnalisés.";
 
 /* No comment provided by engineer. */
-"You'll be signed out from this account." = "You'll be signed out from this account.";
+"You'll be signed out from this account." = "Vous serez déconnecté de ce compte.";
 
 /* No comment provided by engineer. */
-"You'll have to reenable it later here to start seeing blocked entries again." = "You'll have to reenable it later here to start seeing blocked entries again.";
+"You'll have to reenable it later here to start seeing blocked entries again." = "Vous devrez le réactiver plus tard ici pour recommencer à voir les entrées bloquées.";
 
 /* No comment provided by engineer. */
-"You've just blocked 100 tracking attempts!" = "You've just blocked 100 tracking attempts!";
+"You've just blocked 100 tracking attempts!" = "Vous venez de bloquer 100 tentatives de traçage !";
 
 /* No comment provided by engineer. */
-"⚠️ Not Signed In" = "⚠️ Not Signed In";
+"⚠️ Not Signed In" = "⚠️ Pas Connecté";
 
 /* No comment provided by engineer. */
 "Add a domain to block" = "Ajouter un domaine à bloquer";
@@ -651,7 +651,7 @@
 "Block Lists" = "Listes de Blocages";
 
 /* No comment provided by engineer. */
-"Configure Blocking" = "Blocage";
+"Configure Blocking" = "Blocages";
 
 /* No comment provided by engineer. */
 "Custom" = "Personnaliser";
