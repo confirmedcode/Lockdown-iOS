@@ -149,20 +149,22 @@ class FirewallController: NSObject {
                 else {
                     DDLogInfo("Successfully saved config for enabled state: \(enabled)")
                     // manually activate the starting of the tunnel, and also do a dummy connect to a nonexistant, invalid URL to force enabling
-                    do {
-                        try self.manager!.connection.startVPNTunnel()
-                        let config = URLSessionConfiguration.default
-                        config.requestCachePolicy = .reloadIgnoringLocalCacheData
-                        config.urlCache = nil
-                        let session = URLSession.init(configuration: config)
-                        let url = URL(string: "https://nonexistant_invalid_url")
-                        let task = session.dataTask(with: url!) { (data, response, error) in
-                            return
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        do {
+                            try self.manager!.connection.startVPNTunnel()
+                            let config = URLSessionConfiguration.default
+                            config.requestCachePolicy = .reloadIgnoringLocalCacheData
+                            config.urlCache = nil
+                            let session = URLSession.init(configuration: config)
+                            let url = URL(string: "https://nonexistant_invalid_url")
+                            let task = session.dataTask(with: url!) { (data, response, error) in
+                                return
+                            }
+                            task.resume()
                         }
-                        task.resume()
-                    }
-                    catch {
-                        DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
+                        catch {
+                            DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
+                        }
                     }
                 }
                 self.refreshManager(completion: { error in

@@ -284,7 +284,7 @@ class SignupViewController: BaseViewController {
     }
     
     @IBAction func restorePurchases(_ sender: Any) {
-        toggleRestorePurchasesButton(false)
+        //toggleRestorePurchasesButton(false)
         firstly {
             try Client.signIn(forceRefresh: true)
         }
@@ -321,12 +321,21 @@ class SignupViewController: BaseViewController {
                             return try Client.getKey()
                         }
                         .done { (getKey: GetKey) in
+                            self.toggleRestorePurchasesButton(true)
                             try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                            DDLogInfo("restore: setting VPN creds with ID: \(getKey.id)")
-                            VPNController.shared.setEnabled(true)
+                            DDLogInfo("restore: setting VPN creds with ID and Dismissing: \(getKey.id)")
+                            let presentingViewController = self.presentingViewController as? HomeViewController
+                            self.dismiss(animated: true, completion: {
+                                if presentingViewController != nil {
+                                    presentingViewController?.toggleVPN("me")
+                                }
+                                else {
+                                    VPNController.shared.setEnabled(true)
+                                }
+                            })
                         }
                         .catch { error in
-                            self.toggleRestorePurchasesButton(false)
+                            self.toggleRestorePurchasesButton(true)
                             DDLogError("restore: Error doing restore with email-login: \(error)")
                             if (self.popupErrorAsNSURLError(error)) {
                                 return

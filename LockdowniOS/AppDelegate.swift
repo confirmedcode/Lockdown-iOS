@@ -445,8 +445,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             .catch { error in
-                
                 var errorMessage = error.localizedDescription
+                DDLogError("AppDelegate error: \(errorMessage)")
                 if let apiError = error as? ApiError {
                     errorMessage = apiError.message
                 }
