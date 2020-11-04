@@ -344,7 +344,7 @@ class SignupViewController: BaseViewController {
                                 switch apiError.code {
                                 case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
                                     self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
-                                                    message: NSLocalizedString("Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
+                                                    message: NSLocalizedString("Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
                                                     acceptButton: NSLocalizedString("OK", comment: ""))
                                 default:
                                     _ = self.popupErrorAsApiError(error)
@@ -354,7 +354,7 @@ class SignupViewController: BaseViewController {
                     }
                     else {
                         self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
-                                        message: NSLocalizedString("Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
+                                        message: NSLocalizedString("Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
                                         acceptButton: NSLocalizedString("OK", comment: ""))
                     }
                 default:

@@ -45,11 +45,11 @@ final class CustomNavigationView: UIView {
     
     func didLoad() {
         addSubview(titleView)
-        titleView.textAlignment = .center
+        titleView.textAlignment = .left
         titleView.text = title
         titleView.font = fontMedium17
         
-        titleView.anchors.centerX.align()
+        titleView.anchors.leading.marginsPin(inset: 20)
         titleView.anchors.width.greaterThanOrEqual(220)
         titleView.anchors.height.equal(24)
         titleView.anchors.top.pin(inset: 18)
