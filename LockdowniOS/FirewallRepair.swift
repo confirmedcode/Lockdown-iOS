@@ -40,19 +40,37 @@ enum FirewallRepair {
                 return
             }
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
-                DDLogInfo("Always refresh the firewall to increase reliability - only happens every 3 hours")
-                if (appHasJustBeenUpgradedOrIsNewInstall()) {
-                    DDLogInfo("\(context.debugDescription.uppercased()): APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
-                    setupFirewallDefaultBlockLists()
-                    setupLockdownWhitelistedDomains()
-                }
-                FirewallController.shared.restart(completion: {
-                    error in
-                    if error != nil {
-                        DDLogError("Error restarting firewall on \(context): \(error!)")
+                DDLogInfo("Firewall repair: user wants enabled")
+                if (context == .homeScreenDidLoad) {
+                    DDLogInfo("Home screen context - only reload if new version")
+                    if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                        DDLogInfo("\(context.debugDescription.uppercased()): APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
+                        setupFirewallDefaultBlockLists()
+                        setupLockdownWhitelistedDomains()
+                        FirewallController.shared.restart(completion: {
+                            error in
+                            if error != nil {
+                                DDLogError("Error restarting firewall on \(context): \(error!)")
+                            }
+                            completion(.repairAttempted)
+                        })
                     }
-                    completion(.repairAttempted)
-                })
+                }
+                else if (context == .backgroundRefresh) {
+                    DDLogInfo("Background context: Always refresh the firewall to increase reliability - only happens every 3 hours")
+                    if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                        DDLogInfo("\(context.debugDescription.uppercased()): APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
+                        setupFirewallDefaultBlockLists()
+                        setupLockdownWhitelistedDomains()
+                    }
+                    FirewallController.shared.restart(completion: {
+                        error in
+                        if error != nil {
+                            DDLogError("Error restarting firewall on \(context): \(error!)")
+                        }
+                        completion(.repairAttempted)
+                    })
+                }
             }
             else {
                 completion(.noAction)
