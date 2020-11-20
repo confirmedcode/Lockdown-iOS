@@ -139,6 +139,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
             }),
                             .custom(title: NSLocalizedString("Clear Block Log", comment: ""), completion: {
                 BlockDayLog.shared.clear()
+                defaults.set(0, forKey: kDayMetrics)
                 self.refreshData(self)
             }),
             .cancel()
