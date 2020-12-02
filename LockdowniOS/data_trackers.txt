@@ -21,3 +21,4 @@ voicefive.com
 segment.io
 api.myendpoint.io
 bin5y4muil.execute-api.us-east-1.amazonaws.com
+smart-sense.org
