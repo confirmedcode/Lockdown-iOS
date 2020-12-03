@@ -6,7 +6,7 @@ bluekai.com
 chartboost.com
 flurry.com
 fitanalytics.com
-localytics.com
+analytics.localytics.com
 mob.com
 mtrtb.com
 newrelic.com
