@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Periodically check if the firewall is functioning correctly - every 2.5 hours
-        UIApplication.shared.setMinimumBackgroundFetchInterval(9000)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
 
         // WORKAROUND: allows the widget to toggle VPN
         application.registerForRemoteNotifications()
@@ -194,13 +194,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
+        DDLogInfo("BGF called, running Repair")
         FirewallRepair.run(context: .backgroundRefresh) { (result) in
             switch result {
             case .failed:
+                DDLogInfo("BGF: failed")
                 completionHandler(.failed)
             case .repairAttempted:
+                DDLogInfo("BGF: attempted")
                 completionHandler(.newData)
             case .noAction:
+                DDLogInfo("BGF: no action")
                 completionHandler(.noData)
             }
         }

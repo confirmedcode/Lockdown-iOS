@@ -32,6 +32,7 @@ enum FirewallRepair {
     }
     
     static func run(context: Context, completion: @escaping (FirewallRepair.Result) -> Void = { _ in }) {
+        DDLogInfo("Repair: Starting")
         // Check 2 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
@@ -39,6 +40,9 @@ enum FirewallRepair {
                 completion(.failed(e))
                 return
             }
+            DDLogInfo("Repair: refreshed manager")
+            DDLogInfo("Repair: userWantsFirewallEnabled \(getUserWantsFirewallEnabled())")
+            DDLogInfo("Repair: firewallStatus \(FirewallController.shared.status())")
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
                 DDLogInfo("Firewall repair: user wants enabled")
                 if (context == .homeScreenDidLoad) {
@@ -68,7 +72,22 @@ enum FirewallRepair {
                         if error != nil {
                             DDLogError("Error restarting firewall on \(context): \(error!)")
                         }
-                        completion(.repairAttempted)
+                        DDLogInfo("Repair: restart complete, testing to see if it worked")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            Client.getBlockedDomainTest().done {
+                                DDLogError("Repair Fetch Test Failed: Connected to \(testFirewallDomain) even though it's supposed to be blocked")
+                                completion(.repairAttempted)
+                            }.catch { error in
+                                let nsError = error as NSError
+                                if nsError.domain == NSURLErrorDomain {
+                                    DDLogInfo("Repair Fetch Test Success: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                                }
+                                else {
+                                    DDLogInfo("Repair Fetch Test Success: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error)")
+                                }
+                                completion(.repairAttempted)
+                            }
+                        }
                     })
                 }
             }
