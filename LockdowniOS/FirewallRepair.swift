@@ -46,7 +46,7 @@ enum FirewallRepair {
             if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
                 DDLogInfo("Firewall repair: user wants enabled")
                 if (context == .homeScreenDidLoad) {
-                    DDLogInfo("Home screen context - only reload if new version")
+                    DDLogInfo("Home screen context - only reload if new version or if test fails")
                     if (appHasJustBeenUpgradedOrIsNewInstall()) {
                         DDLogInfo("\(context.debugDescription.uppercased()): APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
                         setupFirewallDefaultBlockLists()
@@ -58,6 +58,28 @@ enum FirewallRepair {
                             }
                             completion(.repairAttempted)
                         })
+                    }
+                    else {
+                        Client.getBlockedDomainTest().done {
+                            DDLogError("Home - Repair Fetch Test Failed: Connected to \(testFirewallDomain) even though it's supposed to be blocked")
+                            DDLogError("Home - Doing repair")
+                            FirewallController.shared.restart(completion: {
+                                error in
+                                if error != nil {
+                                    DDLogError("Repair: Error restarting firewall on \(context): \(error!)")
+                                }
+                                completion(.repairAttempted)
+                            })
+                        }.catch { error in
+                            let nsError = error as NSError
+                            if nsError.domain == NSURLErrorDomain {
+                                DDLogInfo("Repair Fetch Test Success: Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
+                            }
+                            else {
+                                DDLogInfo("Repair Fetch Test Success: Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error)")
+                            }
+                            completion(.repairAttempted)
+                        }
                     }
                 }
                 else if (context == .backgroundRefresh) {
