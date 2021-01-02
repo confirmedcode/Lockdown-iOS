@@ -182,7 +182,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let crypto = LockdownGroup.init(
-        version: 27,
+        version: 28,
         internalID: "crypto_mining",
         name: NSLocalizedString("Crypto Mining", comment: "The title of a list of trackers"),
         iconURL: "crypto_icon",
@@ -237,7 +237,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
 
     let ransomware = LockdownGroup.init(
-        version: 27,
+        version: 28,
         internalID: "ransomware",
         name: NSLocalizedString("Ransomware", comment: "The title of a list of trackers"),
         iconURL: "ransomware_icon",

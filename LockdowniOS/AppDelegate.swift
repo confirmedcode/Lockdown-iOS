@@ -18,6 +18,7 @@ import PopupDialog
 import PromiseKit
 import UserNotifications
 import WidgetKit
+import BackgroundTasks
 
 let fileLogger: DDFileLogger = DDFileLogger()
 
@@ -144,7 +145,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Periodically check if the firewall is functioning correctly - every 2.5 hours
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        if #available(iOS 13.0, *) {
+            DDLogInfo("BGTask: Registering BGTask id \(FirewallRepair.identifier)")
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: FirewallRepair.identifier, using: nil) { task in
+                DDLogInfo("BGTask: Task starting")
+                FirewallRepair.handleAppRefresh(task)
+            }
+        }
+        else {
+            UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        }
 
         // WORKAROUND: allows the widget to toggle VPN
         application.registerForRemoteNotifications()
@@ -173,9 +183,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        DDLogInfo("applicationDidEnterBackground")
+        FirewallRepair.reschedule()
+    }
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
+        DDLogInfo("applicationDidBecomeActive")
         PacketTunnelProviderLogs.flush()
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
+        
+        FirewallRepair.run(context: .homeScreenDidLoad)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -194,6 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
+        // Deprecated, uses BackgroundTasks after iOS 13+
         DDLogInfo("BGF called, running Repair")
         FirewallRepair.run(context: .backgroundRefresh) { (result) in
             switch result {

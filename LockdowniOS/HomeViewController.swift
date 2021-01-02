@@ -134,8 +134,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
- 
-        FirewallRepair.run(context: .homeScreenDidLoad)
     }
     
     override func viewDidLayoutSubviews() {
