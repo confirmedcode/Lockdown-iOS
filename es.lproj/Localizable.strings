@@ -422,124 +422,124 @@
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Firewall Activado 🎊🎉";
 
 /* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
-" and " = " and ";
+" and " = " y ";
 
 /* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
-" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " rastreadores, anuncios y software malicioso con Lockdown, el servidor de seguridad que bloquea las conexiones no deseadas en todas tus aplicaciones. Consíguelo gratis en lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
-"Activating" = "Activating";
+"Activating" = "Activando";
 
 /* No comment provided by engineer. */
 "at least 8 characters" = "al menos 8 caracteres";
 
 /* No comment provided by engineer. */
-"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.";
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Asegúrate de revisar tu carpeta de correo no deseado en caso de que haya caído allí. \n\nTambién puedes solicitar un reenvío de la confirmación.";
 
 /* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
-"block list" = "block list";
+"block list" = "lista de bloqueo";
 
 /* No comment provided by engineer. */
-"Blocked Trackers Summary" = "Blocked Trackers Summary";
+"Blocked Trackers Summary" = "Resumen de Rastreos Bloqueados";
 
 /* No comment provided by engineer. */
-"Check Your Inbox" = "Check Your Inbox";
+"Check Your Inbox" = "Revisa Tu Bandeja de Entrada";
 
 /* No comment provided by engineer. */
-"Clear Block Log" = "Clear Block Log";
+"Clear Block Log" = "Borrar Registro de Bloqueos";
 
 /* The title of a list of trackers */
 "Clickbait" = "Clickbait";
 
 /* The title of a list of trackers */
-"Crypto Mining" = "Crypto Mining";
+"Crypto Mining" = "Crypto Minería";
 
 /* The title of a list of trackers */
-"Data Trackers" = "Data Trackers";
+"Data Trackers" = "Rastreo de Data";
 
 /* No comment provided by engineer. */
-"Disable" = "Disable";
+"Disable" = "Deshabilitar";
 
 /* No comment provided by engineer. */
-"Disable Block Log" = "Disable Block Log";
+"Disable Block Log" = "Deshabilitar el Registro de Bloqueos";
 
 /* No comment provided by engineer. */
-"Disable Block Log?" = "Disable Block Log?";
+"Disable Block Log?" = "Deshabilitar el Registro de Bloqueos?";
 
 /* The title of a list of trackers */
-"Email Trackers" = "Email Trackers";
+"Email Trackers" = "Rastreo de Correos Electrónicos";
 
 /* No comment provided by engineer. */
-"Email Us" = "Email Us";
+"Email Us" = "Envíanos un correo electrónico";
 
 /* No comment provided by engineer. */
-"Enable Block Log" = "Enable Block Log";
+"Enable Block Log" = "Habilitar el Registro de Bloqueos";
 
 /* No comment provided by engineer. */
-"Error Loading Plan: Retry" = "Error Loading Plan: Retry";
+"Error Loading Plan: Retry" = "Error al Cargar Plan: Reintentar";
 
 /* No comment provided by engineer. */
-"Error while trying to confirm your account:" = "Error while trying to confirm your account:";
+"Error while trying to confirm your account:" = "Error al intentar verificar tu cuenta:";
 
 /* The title of a list of trackers */
 "Facebook & WhatsApp" = "Facebook & WhatsApp";
 
 /* The title of a list of trackers */
-"Facebook Trackers" = "Facebook Trackers";
+"Facebook Trackers" = "Rastreo de Facebook";
 
 /* No comment provided by engineer. */
-"Failed to re-send email confirmation." = "Failed to re-send email confirmation.";
+"Failed to re-send email confirmation." = "Error al reenviar la confirmación de correo electrónico.";
 
 /* No comment provided by engineer. */
-"FAQs" = "FAQs";
+"FAQs" = "Preguntas Frequentes";
 
 /* The title of a list of trackers */
-"Game Marketing" = "Game Marketing";
+"Game Marketing" = "Marketing de Juegos";
 
 /* The title of a list of trackers */
-"General Marketing" = "General Marketing";
+"General Marketing" = "Marketing General";
 
 /* The title of a list of trackers */
 "Google Shopping" = "Google Shopping";
 
 /* No comment provided by engineer. */
-"Hi, my question or feedback for Lockdown is: " = "Hi, my question or feedback for Lockdown is: ";
+"Hi, my question or feedback for Lockdown is: " = "Hola, mi pregunta o comentario sobre Lockdown es: ";
 
 /* Used in the sentence: I blocked 500 trackers with Lockdown. */
-"I blocked" = "I blocked";
+"I blocked" = "Yo bloqueé";
 
 /* No comment provided by engineer. */
-"If this persists, please contact team@lockdownprivacy.com." = "If this persists, please contact team@lockdownprivacy.com.";
+"If this persists, please contact team@lockdownprivacy.com." = "Si esto persiste, por favor contáctanos por medio de team@lockdownprivacy.com.";
 
 /* Used in: You blocked tracker.com in your custom blocked domains. */
-"in your custom blocked domains." = "in your custom blocked domains.";
+"in your custom blocked domains." = "en tus dominios bloqueados personalizados.";
 
 /* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
-"is a part of" = "is a part of";
+"is a part of" = "es una parte de";
 
 /* Shows when loading the details of a subscription plan */
-"Loading Plan" = "Loading Plan";
+"Loading Plan" = "Cargando Plan";
 
 /* The title of a list of trackers */
-"Marketing Trackers" = "Marketing Trackers";
+"Marketing Trackers" = "Rastreo de Marketing";
 
 /* The title of a list of trackers */
-"Marketing Trackers II" = "Marketing Trackers II";
+"Marketing Trackers II" = "Rastreo de Marketing II";
 
 /* No comment provided by engineer. */
-"No additional information on this blocked domain found." = "No additional information on this blocked domain found.";
+"No additional information on this blocked domain found." = "No se encontró información adicional sobre este dominio bloqueado.";
 
 /* No comment provided by engineer. */
-"No Block Lists Enabled" = "No Block Lists Enabled";
+"No Block Lists Enabled" = "No Hay Listas de Bloqueo Habilitadas";
 
 /* No comment provided by engineer. */
-"No Info Found" = "No Info Found";
+"No Info Found" = "No Se Encontró Información";
 
 /* No comment provided by engineer. */
-"Notifications: Off" = "Notifications: Off";
+"Notifications: Off" = "Notificaciones: Apagadas";
 
 /* No comment provided by engineer. */
-"Notifications: On" = "Notifications: On";
+"Notifications: On" = "Notificaciones: Encendidas";
 
 /* No comment provided by engineer. */
 "one lowercase letter" = "una letra minúscula";
@@ -557,89 +557,89 @@
 "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "La contraseña debe tener al menos 8 caracteres, contener al menos una letra mayúscula, una letra minúscula, un número y un símbolo.";
 
 /* No comment provided by engineer. */
-"Plan: Annual Pro" = "Plan: Annual Pro";
+"Plan: Annual Pro" = "Plan: Pro Anual";
 
 /* No comment provided by engineer. */
-"Please tap Block List and enable at least one block list to activate Firewall." = "Please tap Block List and enable at least one block list to activate Firewall.";
+"Please tap Block List and enable at least one block list to activate Firewall." = "Por favor haz clic en Lista de Bloqueo y habilita al menos una lista de bloqueo para activar el servidor de seguridad.";
 
 /* The title of a list of trackers */
-"Ransomware" = "Ransomware";
+"Ransomware" = "Secuestro de datos";
 
 /* No comment provided by engineer. */
-"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.";
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Recuerda revisar nuestra sección de Preguntas Frecuentes primero, para obtener las respuestas a las preguntas más habituales.\n\nSi no encuentras tu respuesta allí, estamos felices de ayudarte y recibir comentarios mediante correo electrónico.";
 
 /* The title of a list of trackers */
-"Reporting" = "Reporting";
+"Reporting" = "Reportando";
 
 /* No comment provided by engineer. */
-"Settings" = "Settings";
+"Settings" = "Configuración";
 
 /* No comment provided by engineer. */
-"Sign Out?" = "Sign Out?";
+"Sign Out?" = "Cerrar Sesión?";
 
 /* No comment provided by engineer. */
-"Sign up below to unlock benefits of a Lockdown account." = "Sign up below to unlock benefits of a Lockdown account.";
+"Sign up below to unlock benefits of a Lockdown account." = "Registrate abajo para desbloquear los beneficios de una cuenta en Lockdown.";
 
 /* No comment provided by engineer. */
-"Signed In" = "Signed In";
+"Signed In" = "Registrado";
 
 /* No comment provided by engineer. */
-"Signed out successfully." = "Signed out successfully.";
+"Signed out successfully." = "Sesión finalizada con éxito.";
 
 /* The title of a list of trackers */
-"Snapchat Trackers" = "Snapchat Trackers";
+"Snapchat Trackers" = "Rastreo de Snapchat";
 
 /* No comment provided by engineer. */
-"Success" = "Success";
+"Success" = "Éxito";
 
 /* No comment provided by engineer. */
-"Successfully re-sent your email confirmation to " = "Successfully re-sent your email confirmation to ";
+"Successfully re-sent your email confirmation to " = "Se ha reenviado exitosamente la confirmación de tu correo electrónico a ";
 
 /* No comment provided by engineer. */
-"Support | Feedback" = "Support | Feedback";
+"Support | Feedback" = "Soporte | Comentarios";
 
 /* No comment provided by engineer. */
-"Tap to activate Lockdown Firewall and update to the newest block lists." = "Tap to activate Lockdown Firewall and update to the newest block lists.";
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "Haz clic para activar el servidor de seguridad de Lockdown, y actualizar a las nuevas listas de bloqueo.";
 
 /* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
-"Tap to see what they are." = "Tap to see what they are.";
+"Tap to see what they are." = "Haz clic para ver cuáles son.";
 
 /* No comment provided by engineer. */
-"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.";
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "El registro de bloqueos puede ser deshabilitado o limpiado manualmente. Al deshabilitar el Registro de Bloqueos, solo se deshabilita el registro de conexiones - el número de intentos de rastreo aún será mostrado.";
 
 /* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
-"To complete your signup, click the confirmation link we sent to" = "To complete your signup, click the confirmation link we sent to";
+"To complete your signup, click the confirmation link we sent to" = "Para completar tu registro, haz clic en el link de confirmación el cual enviamos a ";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
-"tracking attempts this week. Tap to update to the newest block lists." = "tracking attempts this week. Tap to update to the newest block lists.";
+"tracking attempts this week. Tap to update to the newest block lists." = "intentos de rastreo esta semana. Haz clic para actualizar a las listas de bloqueos más recientes.";
 
 /* No comment provided by engineer. */
-"View FAQs" = "View FAQs";
+"View FAQs" = "Ver Preguntas Frecuentes";
 
 /* No comment provided by engineer. */
-"View or Upgrade Plan" = "View or Upgrade Plan";
+"View or Upgrade Plan" = "Ver o Actualiza tu Suscripción";
 
 /* No comment provided by engineer. */
-"View Upgrade Options" = "View Upgrade Options";
+"View Upgrade Options" = "Ver Opciones de Actualización";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week.
    Used in: You blocked tracker.com in your custom blocked domains. */
-"You blocked" = "You blocked";
+"You blocked" = "Haz bloqueado";
 
 /* No comment provided by engineer. */
-"You blocked this domain in your custom blocked domains." = "You blocked this domain in your custom blocked domains.";
+"You blocked this domain in your custom blocked domains." = "Haz bloqueado este dominio en tu bloqueo de dominios personalizado.";
 
 /* No comment provided by engineer. */
-"You'll be signed out from this account." = "You'll be signed out from this account.";
+"You'll be signed out from this account." = "Se cerrará la sesión de esta cuenta.";
 
 /* No comment provided by engineer. */
-"You'll have to reenable it later here to start seeing blocked entries again." = "You'll have to reenable it later here to start seeing blocked entries again.";
+"You'll have to reenable it later here to start seeing blocked entries again." = "Debes volver a habilitarlo más tarde aquí, para comenzar a ver las entradas bloqueadas nuevamente.";
 
 /* No comment provided by engineer. */
-"You've just blocked 100 tracking attempts!" = "You've just blocked 100 tracking attempts!";
+"You've just blocked 100 tracking attempts!" = "Acabas de bloquear 100 intentos de rastreo!";
 
 /* No comment provided by engineer. */
-"⚠️ Not Signed In" = "⚠️ Not Signed In";
+"⚠️ Not Signed In" = "⚠️ No estás registrado";
 
 /* No comment provided by engineer. */
 "Add a domain to block" = "Agregar un dominio para bloquear";
@@ -697,3 +697,6 @@
 
 /* No comment provided by engineer. */
 "Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "Actualiza";

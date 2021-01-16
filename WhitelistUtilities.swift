@@ -95,7 +95,6 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "disneyplus.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "ebtedge.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "espn.com")
-    addLockdownWhitelistedDomainIfNotExists(domain: "espn.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "fastly.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "fastly.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "firstdata.com")

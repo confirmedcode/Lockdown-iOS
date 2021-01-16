@@ -425,121 +425,121 @@
 "🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 ファイアウォールがアクティブ化されました 🎊🎉";
 
 /* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
-" and " = " and ";
+" and " = " と ";
 
 /* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
-" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.";
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = "すべてのアプリで不要な接続をブロックするファイアウォールであるLockdownを備えたトラッカー、広告、およびバッドウェア。 lockdownprivacy.comで無料で入手してください。";
 
 /* No comment provided by engineer. */
 "at least 8 characters" = "8文字以上";
 
 /* No comment provided by engineer. */
-"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation.";
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "スパムフォルダが詰まった場合に備えて、必ず確認してください。\n\n確認の再送信をリクエストすることもできます。";
 
 /* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
-"block list" = "block list";
+"block list" = "ブロックリスト";
 
 /* No comment provided by engineer. */
-"Blocked Trackers Summary" = "Blocked Trackers Summary";
+"Blocked Trackers Summary" = "ブロックされたトラッカーの概要";
 
 /* No comment provided by engineer. */
-"Check Your Inbox" = "Check Your Inbox";
+"Check Your Inbox" = "受信箱をチェックする";
 
 /* No comment provided by engineer. */
-"Clear Block Log" = "Clear Block Log";
+"Clear Block Log" = "ブロックログをクリアする";
 
 /* The title of a list of trackers */
-"Clickbait" = "Clickbait";
+"Clickbait" = "クリックベイト";
 
 /* The title of a list of trackers */
-"Crypto Mining" = "Crypto Mining";
+"Crypto Mining" = "クリプトマイニング";
 
 /* The title of a list of trackers */
-"Data Trackers" = "Data Trackers";
+"Data Trackers" = "データトラッカー";
 
 /* No comment provided by engineer. */
-"Disable" = "Disable";
+"Disable" = "無効にする";
 
 /* No comment provided by engineer. */
-"Disable Block Log" = "Disable Block Log";
+"Disable Block Log" = "ブロックログを無効にする";
 
 /* No comment provided by engineer. */
-"Disable Block Log?" = "Disable Block Log?";
+"Disable Block Log?" = "ブロックログを無効にしますか？";
 
 /* The title of a list of trackers */
-"Email Trackers" = "Email Trackers";
+"Email Trackers" = "メールトラッカー";
 
 /* No comment provided by engineer. */
-"Email Us" = "Email Us";
+"Email Us" = "メールでのお問い合わせ";
 
 /* No comment provided by engineer. */
-"Enable Block Log" = "Enable Block Log";
+"Enable Block Log" = "ブロックログを有効にする";
 
 /* No comment provided by engineer. */
-"Error Loading Plan: Retry" = "Error Loading Plan: Retry";
+"Error Loading Plan: Retry" = "計画の読み込みエラー：再試行";
 
 /* No comment provided by engineer. */
-"Error while trying to confirm your account:" = "Error while trying to confirm your account:";
+"Error while trying to confirm your account:" = "アカウントの確認中にエラーが発生しました：";
 
 /* The title of a list of trackers */
-"Facebook & WhatsApp" = "Facebook & WhatsApp";
+"Facebook & WhatsApp" = "FacebookとWhatsApp";
 
 /* The title of a list of trackers */
-"Facebook Trackers" = "Facebook Trackers";
+"Facebook Trackers" = "Facebookトラッカー";
 
 /* No comment provided by engineer. */
-"Failed to re-send email confirmation." = "Failed to re-send email confirmation.";
+"Failed to re-send email confirmation." = "確認メールの再送信に失敗しました。";
 
 /* No comment provided by engineer. */
-"FAQs" = "FAQs";
+"FAQs" = "よくある質問";
 
 /* The title of a list of trackers */
-"Game Marketing" = "Game Marketing";
+"Game Marketing" = "ゲームマーケティング";
 
 /* The title of a list of trackers */
-"General Marketing" = "General Marketing";
+"General Marketing" = "一般的なマーケティング";
 
 /* The title of a list of trackers */
-"Google Shopping" = "Google Shopping";
+"Google Shopping" = "Googleショッピング";
 
 /* No comment provided by engineer. */
-"Hi, my question or feedback for Lockdown is: " = "Hi, my question or feedback for Lockdown is: ";
+"Hi, my question or feedback for Lockdown is: " = "こんにちは、Lockdownに関する質問や感想です。 ";
 
 /* Used in the sentence: I blocked 500 trackers with Lockdown. */
-"I blocked" = "I blocked";
+"I blocked" = "ブロックしました";
 
 /* No comment provided by engineer. */
-"If this persists, please contact team@lockdownprivacy.com." = "If this persists, please contact team@lockdownprivacy.com.";
+"If this persists, please contact team@lockdownprivacy.com." = "これが続く場合は、team @ lockdownprivacy.comに連絡してください。";
 
 /* Used in: You blocked tracker.com in your custom blocked domains. */
-"in your custom blocked domains." = "in your custom blocked domains.";
+"in your custom blocked domains." = "";
 
 /* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
-"is a part of" = "is a part of";
+"is a part of" = "";
 
 /* Shows when loading the details of a subscription plan */
-"Loading Plan" = "Loading Plan";
+"Loading Plan" = "ローディングプラン中";
 
 /* The title of a list of trackers */
-"Marketing Trackers" = "Marketing Trackers";
+"Marketing Trackers" = "マーケティングトラッカー";
 
 /* The title of a list of trackers */
-"Marketing Trackers II" = "Marketing Trackers II";
+"Marketing Trackers II" = "マーケティングトラッカーII";
 
 /* No comment provided by engineer. */
-"No additional information on this blocked domain found." = "No additional information on this blocked domain found.";
+"No additional information on this blocked domain found." = "このブロックされたドメインに関する追加情報は見つかりませんでした。";
 
 /* No comment provided by engineer. */
-"No Block Lists Enabled" = "No Block Lists Enabled";
+"No Block Lists Enabled" = "ブロックリストが有効になっていません";
 
 /* No comment provided by engineer. */
-"No Info Found" = "No Info Found";
+"No Info Found" = "情報が見つかりませんでした。";
 
 /* No comment provided by engineer. */
-"Notifications: Off" = "Notifications: Off";
+"Notifications: Off" = "通知：オフ";
 
 /* No comment provided by engineer. */
-"Notifications: On" = "Notifications: On";
+"Notifications: On" = "通知：オン";
 
 /* No comment provided by engineer. */
 "one lowercase letter" = "小文字";
@@ -557,89 +557,89 @@
 "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "パスワードは8文字以上で、大文字、小文字、数字、記号を1つ以上含む必要があります。";
 
 /* No comment provided by engineer. */
-"Plan: Annual Pro" = "Plan: Annual Pro";
+"Plan: Annual Pro" = "プラン：年間プロ";
 
 /* No comment provided by engineer. */
-"Please tap Block List and enable at least one block list to activate Firewall." = "Please tap Block List and enable at least one block list to activate Firewall.";
+"Please tap Block List and enable at least one block list to activate Firewall." = "[ブロックリスト]をタップし、少なくとも1つのブロックリストを有効にしてファイアウォールをアクティブにしてください。";
 
 /* The title of a list of trackers */
-"Ransomware" = "Ransomware";
+"Ransomware" = "ランサムウェア";
 
 /* No comment provided by engineer. */
-"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.";
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "よくある質問への回答については、最初によくある質問を確認してください。\n\n回答がない場合は、サポートを提供し、メールでフィードバックをお届けします。";
 
 /* The title of a list of trackers */
-"Reporting" = "Reporting";
+"Reporting" = "報告";
 
 /* No comment provided by engineer. */
-"Settings" = "Settings";
+"Settings" = "設定";
 
 /* No comment provided by engineer. */
-"Sign Out?" = "Sign Out?";
+"Sign Out?" = "サインアウト？";
 
 /* No comment provided by engineer. */
-"Sign up below to unlock benefits of a Lockdown account." = "Sign up below to unlock benefits of a Lockdown account.";
+"Sign up below to unlock benefits of a Lockdown account." = "Lockdownアカウントの特典のロックを解除するには、以下からサインアップしてください。";
 
 /* No comment provided by engineer. */
-"Signed In" = "Signed In";
+"Signed In" = "サインイン";
 
 /* No comment provided by engineer. */
-"Signed out successfully." = "Signed out successfully.";
+"Signed out successfully." = "正常にサインアウトしました。";
 
 /* The title of a list of trackers */
-"Snapchat Trackers" = "Snapchat Trackers";
+"Snapchat Trackers" = "Snapchatトラッカー";
 
 /* No comment provided by engineer. */
-"Success" = "Success";
+"Success" = "サクセス";
 
 /* No comment provided by engineer. */
-"Successfully re-sent your email confirmation to " = "Successfully re-sent your email confirmation to ";
+"Successfully re-sent your email confirmation to " = "サクセス";
 
 /* No comment provided by engineer. */
-"Support | Feedback" = "Support | Feedback";
+"Support | Feedback" = "サポート| フィードバック";
 
 /* No comment provided by engineer. */
-"Tap to activate Lockdown Firewall and update to the newest block lists." = "Tap to activate Lockdown Firewall and update to the newest block lists.";
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "タップしてLockdownファイアウォールをアクティブにし、最新のブロックリストに更新します。";
 
 /* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
-"Tap to see what they are." = "Tap to see what they are.";
+"Tap to see what they are." = "タップして何かを確認してください。";
 
 /* No comment provided by engineer. */
-"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.";
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "ブロックログは手動でクリアまたは無効にすることができます。ブロックログを無効にすると、接続のログが無効になるだけで、トラッキングの試行回数は表示されます。";
 
 /* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
-"To complete your signup, click the confirmation link we sent to" = "To complete your signup, click the confirmation link we sent to";
+"To complete your signup, click the confirmation link we sent to" = "サインアップを完了するには、に送信した確認リンクをクリックしてください。";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
-"tracking attempts this week. Tap to update to the newest block lists." = "tracking attempts this week. Tap to update to the newest block lists.";
+"tracking attempts this week. Tap to update to the newest block lists." = "件のトラッキングをブロックしました。タップすると最新のブロックリストに更新されます。";
 
 /* No comment provided by engineer. */
-"View FAQs" = "View FAQs";
+"View FAQs" = "よくある質問を見る";
 
 /* No comment provided by engineer. */
-"View or Upgrade Plan" = "View or Upgrade Plan";
+"View or Upgrade Plan" = "表示またはアップグレードプラン";
 
 /* No comment provided by engineer. */
-"View Upgrade Options" = "View Upgrade Options";
+"View Upgrade Options" = "アップグレードオプションを見る";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week.
    Used in: You blocked tracker.com in your custom blocked domains. */
-"You blocked" = "You blocked";
+"You blocked" = "をブロックしました";
 
 /* No comment provided by engineer. */
-"You blocked this domain in your custom blocked domains." = "You blocked this domain in your custom blocked domains.";
+"You blocked this domain in your custom blocked domains." = "カスタムブロックドメインでこのドメインをブロックしました。";
 
 /* No comment provided by engineer. */
-"You'll be signed out from this account." = "You'll be signed out from this account.";
+"You'll be signed out from this account." = "このアカウントからサインアウトされます.";
 
 /* No comment provided by engineer. */
-"You'll have to reenable it later here to start seeing blocked entries again." = "You'll have to reenable it later here to start seeing blocked entries again.";
+"You'll have to reenable it later here to start seeing blocked entries again." = "ブロックされたエントリの表示を再開するには、後でここで再度有効にする必要があります。";
 
 /* No comment provided by engineer. */
-"You've just blocked 100 tracking attempts!" = "You've just blocked 100 tracking attempts!";
+"You've just blocked 100 tracking attempts!" = "100回の追跡試行をブロックしました!";
 
 /* No comment provided by engineer. */
-"⚠️ Not Signed In" = "⚠️ Not Signed In";
+"⚠️ Not Signed In" = "⚠️ サインインしていません";
 
 /* No comment provided by engineer. */
 "Add a domain to block" = "ブロックするドメインを追加する";
@@ -697,3 +697,6 @@
 
 /* No comment provided by engineer. */
 "Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "アップグレードプラン";

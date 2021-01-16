@@ -394,7 +394,7 @@ extension SignupViewController {
     // MARK: - Functions for "Upgrade Plan" mode
     
     private func configureWithActiveSubscriptions(_ activePlans: [Subscription.PlanType]) {
-        startTrialButton.setTitle("Upgrade Plan", for: .normal)
+        startTrialButton.setTitle(NSLocalizedString("Upgrade Plan", comment: ""), for: .normal)
         
         for plan in activePlans {
             configureForUnavailable(plan, reason: .purchased)

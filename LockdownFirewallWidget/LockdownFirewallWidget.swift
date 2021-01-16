@@ -60,7 +60,7 @@ struct LockdownFirewallWidgetEntryView : View {
                     circleColor: entry.buttonColor
                 ),
                 side: entry.size.height,
-                link: "lockdown://toggleFirewall"
+                link: "lockdown://"
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isFirewallEnabled {
@@ -137,7 +137,7 @@ struct LockdownVPNWidgetEntryView : View {
                     circleColor: entry.buttonColor
                 ),
                 side: entry.size.height,
-                link: "lockdown://toggleVPN"
+                link: "lockdown://"
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isVPNEnabled {
