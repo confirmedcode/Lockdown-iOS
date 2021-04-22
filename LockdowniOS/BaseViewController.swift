@@ -149,7 +149,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func showAuditModal() {
-        self.showModalWebView(title: NSLocalizedString("Audit Reports", comment: ""), urlString: "https://openlyoperated.org/report/confirmedvpn")
+        self.showModalWebView(title: NSLocalizedString("Audit Reports", comment: ""), urlString: "https://openaudit.com/lockdownprivacy")
     }
     
     func showModalWebView(title: String, urlString: String) {

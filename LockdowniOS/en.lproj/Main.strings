@@ -37,8 +37,8 @@
 /* Class = "UILabel"; text = "World's Simplest Privacy Policy"; ObjectID = "6sx-m3-XUn"; */
 "6sx-m3-XUn.text" = "World's Simplest Privacy Policy";
 
-/* Class = "UIButton"; normalTitle = "July 23rd, 2020"; ObjectID = "7NS-46-hCo"; */
-"7NS-46-hCo.normalTitle" = "July 23rd, 2020";
+/* Class = "UIButton"; normalTitle = "April 2021"; ObjectID = "7NS-46-hCo"; */
+"7NS-46-hCo.normalTitle" = "April 2021";
 
 /* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
 "7nc-lb-z6u.normalTitle" = "Agree";
@@ -340,8 +340,8 @@
 /* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "koL-dc-mZr"; */
 "koL-dc-mZr.accessibilityLabel" = "Tap This Button To Activate Firewall";
 
-/* Class = "UILabel"; text = "VIEW AUDIT REPORT"; ObjectID = "lDV-k9-rkj"; */
-"lDV-k9-rkj.text" = "VIEW AUDIT REPORT";
+/* Class = "UILabel"; text = "VIEW OPENAUDIT REPORT"; ObjectID = "lDV-k9-rkj"; */
+"lDV-k9-rkj.text" = "VIEW OPENAUDIT REPORT";
 
 /* Class = "UILabel"; text = "You'll automatically be credited for your existing subscription."; ObjectID = "lEt-3l-yTH"; */
 "lEt-3l-yTH.text" = "You'll automatically be credited for your existing subscription.";
