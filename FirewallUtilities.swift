@@ -265,7 +265,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let generalAds = LockdownGroup.init(
-        version: 39,
+        version: 40,
         internalID: "general_ads",
         name: NSLocalizedString("General Marketing", comment: "The title of a list of trackers"),
         iconURL: "ads_icon",
@@ -282,6 +282,16 @@ func setupFirewallDefaultBlockLists() {
         domains: getDomainBlockList(filename: "reporting"),
         ipRanges: [:])
     
+    let amazonTrackers = LockdownGroup.init(
+        version: 32,
+        internalID: "amazon_trackers",
+        name: NSLocalizedString("Amazon Trackers", comment: "The title of a list of trackers"),
+        iconURL: "amazon_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "amazon_trackers"),
+        ipRanges: [:],
+        warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.")
+    
     let defaultLockdownSettings = [snapchatAnalytics,
                                    gameAds,
                                    clickbait,
@@ -295,7 +305,8 @@ func setupFirewallDefaultBlockLists() {
                                    googleShoppingAds,
                                    dataTrackers,
                                    generalAds,
-                                   reporting];
+                                   reporting,
+                                   amazonTrackers];
     
     for var defaultGroup in defaultLockdownSettings {
         if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID], current.version >= defaultGroup.version {

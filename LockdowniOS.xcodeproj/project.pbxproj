@@ -137,6 +137,7 @@
 		3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
+		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
@@ -494,6 +495,7 @@
 		3DE443FE253534C7006DF67D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		3DF2455523A306DB00E46613 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
 		428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		4C50BEAA399D6FDF2C2672C6 /* Pods-Confirmed VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.debug.xcconfig"; sourceTree = "<group>"; };
 		4D422CB6539443825E5CD91B /* Pods-Confirmed Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed Tunnels/Pods-Confirmed Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
@@ -755,6 +757,7 @@
 				A1FCDA8422CDE60800C928BC /* crypto_mining.txt */,
 				3D01D97A2480DBED003A710C /* data_trackers.txt */,
 				3D01D99C2481E241003A710C /* general_ads.txt */,
+				3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */,
 				3D01D99D2481E252003A710C /* reporting.txt */,
 				3D5F5A0923107EB8004C3860 /* snapchat_analytics.txt */,
 				A1FCDA8C22D3C50A00C928BC /* email_opens.txt */,
@@ -1618,6 +1621,7 @@
 				3D4D7FEC247F2435000369FD /* google_shopping_ads.txt in Resources */,
 				3D3BF4CC233D5E9100D0C482 /* Localizable.strings in Resources */,
 				3D752C352357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */,
 				3D752C372357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */,

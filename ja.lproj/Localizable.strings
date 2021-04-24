@@ -700,3 +700,6 @@
 
 /* No comment provided by engineer. */
 "Upgrade Plan" = "アップグレードプラン";
+
+/* The title of a list of trackers */
+"Amazon Trackers" = "Amazon Trackers";
