@@ -249,7 +249,7 @@ class SignupViewController: BaseViewController {
                     case .cloudServicePermissionDenied: errorText = NSLocalizedString("Access to cloud service information is not allowed", comment: "")
                     case .cloudServiceNetworkConnectionFailed: errorText = NSLocalizedString("Could not connect to the network", comment: "")
                     case .cloudServiceRevoked: errorText = NSLocalizedString("User has revoked permission to use this cloud service", comment: "")
-                    default: errorText = (error as NSError).localizedDescription
+                    default: errorText = skError.localizedDescription
                     }
                     self.showPopupDialog(title: NSLocalizedString("Error Starting Trial", comment: ""),
                                          message: errorText,
