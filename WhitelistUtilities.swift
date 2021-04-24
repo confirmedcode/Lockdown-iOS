@@ -64,6 +64,7 @@ func deleteUserWhitelistedDomain(domain: String) {
 // MARK: - Lockdown whitelisted domains
 
 func setupLockdownWhitelistedDomains() {
+    addLockdownWhitelistedDomainIfNotExists(domain: "3stripes.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "aiv-cdn.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "akamaihd.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "akamaized.net")
@@ -104,9 +105,11 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "gamestop.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "go.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "googlevideo.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "grindr.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbc.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbo.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hbomax.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "hotstar.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "houzz.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "hulu.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "huluim.com")
@@ -119,6 +122,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "marcopolo.me")
     addLockdownWhitelistedDomainIfNotExists(domain: "mbanking-services.mobi")
+    addLockdownWhitelistedDomainIfNotExists(domain: "meijer.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "microsoft.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "microsoftonline.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "mobile.twitter.com")
