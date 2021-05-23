@@ -122,6 +122,7 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "m.twitter.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "marcopolo.me")
     addLockdownWhitelistedDomainIfNotExists(domain: "mbanking-services.mobi")
+    addLockdownWhitelistedDomainIfNotExists(domain: "me.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "meijer.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "microsoft.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "microsoftonline.com")
