@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08799CF7AFE70CC200E47EDB /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */; };
 		1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */; };
+		1E213B9EC6BD10BD0003238D /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F352B305FA28A0EB4CE60A8 /* Pods_LockdownTunnel.framework */; };
 		20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */; };
+		313318DAA21F92D1FD79EAD9 /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE32CBE7F28551B694D5BDCD /* Pods_Lockdown.framework */; };
 		388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */; };
 		3D01D97B2480DCB3003A710C /* data_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D97A2480DBED003A710C /* data_trackers.txt */; };
 		3D01D99E2481E42B003A710C /* reporting.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D99D2481E252003A710C /* reporting.txt */; };
@@ -18,6 +19,36 @@
 		3D0711BB22FE7B5100391C6E /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0711BA22FE7B5100391C6E /* TitleViewController.swift */; };
 		3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D722EBAD1000CCD326 /* facebook_sdk.txt */; };
 		3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D0971D922EBAD4C00CCD326 /* marketing.txt */; };
+		3D201E3826CC8C5500F2CC0E /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
+		3D201E5826CC8C5800F2CC0E /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; };
+		3D201E5926CC8C5800F2CC0E /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E5F26CC8C5900F2CC0E /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; };
+		3D201E6026CC8C5900F2CC0E /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E6626CC8C5A00F2CC0E /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; };
+		3D201E6726CC8C5A00F2CC0E /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E6D26CC8C5D00F2CC0E /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; };
+		3D201E6E26CC8C5D00F2CC0E /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E7426CC8C5E00F2CC0E /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; };
+		3D201E7526CC8C5E00F2CC0E /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E7B26CC8C6000F2CC0E /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; };
+		3D201E7C26CC8C6000F2CC0E /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E8226CC8C6400F2CC0E /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
+		3D201E8B26CC8C6600F2CC0E /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; };
+		3D201E8C26CC8C6600F2CC0E /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E8D26CC8C6700F2CC0E /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; };
+		3D201E8E26CC8C6700F2CC0E /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E8F26CC8C6800F2CC0E /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; };
+		3D201E9026CC8C6800F2CC0E /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E9626CC8C6900F2CC0E /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; };
+		3D201E9726CC8C6900F2CC0E /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201E9D26CC8C6B00F2CC0E /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; };
+		3D201E9E26CC8C6B00F2CC0E /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; };
+		3D201EA526CC8C6C00F2CC0E /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201EE326CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
+		3D201EE426CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D201EFC26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
+		3D201EFD26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D3BF4CC233D5E9100D0C482 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
 		3D3BF4CD233D5E9100D0C482 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
 		3D3BF4CE233D5E9100D0C482 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
@@ -79,6 +110,10 @@
 		3D752C352357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C312357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf */; };
 		3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C322357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf */; };
 		3D752C372357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */; };
+		3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
+		3D92FF4226CB8F96008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
+		3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
+		3D92FF6126CB8FA0008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
 		3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
@@ -89,8 +124,6 @@
 		3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
 		3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
-		3D94AB0D22FE05090012B0DE /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
-		3D94AB0E22FE05090012B0DE /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
 		3D94AB0F22FE0CF60012B0DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1141A1B1F46230500F54698 /* Assets.xcassets */; };
 		3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */; };
 		3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
@@ -135,6 +168,10 @@
 		3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
 		3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
 		3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
+		3DD3D09626CC8714002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
+		3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
+		3DD3D0A026CC8730002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
@@ -142,6 +179,7 @@
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
 		601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */; };
+		63FA257E7B06B4B5117FD640 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D69A72F1C47FBC5676DE620 /* Pods_Lockdown_VPN_Widget.framework */; };
 		78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */; };
 		7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
 		7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
@@ -229,21 +267,9 @@
 		A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12473F61FE44285008493B8 /* VPNTodayViewController.swift */; };
 		A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12473F81FE44285008493B8 /* MainInterface.storyboard */; };
 		A12473FE1FE44285008493B8 /* Lockdown VPN Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A12473F31FE44284008493B8 /* Lockdown VPN Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A1342E8C20B0B87D0045E9DF /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
-		A1342E8D20B0B8870045E9DF /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
 		A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1359FD920AF6E31008C4BF7 /* LocalLogger.swift */; };
 		A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07D215C78180010FFCC /* BlockListCell.swift */; };
 		A154A080215C7A8C0010FFCC /* BlockListAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154A07F215C7A8C0010FFCC /* BlockListAddCell.swift */; };
-		A15939C0206D965D0060D945 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939B9206D965C0060D945 /* tun2socks.framework */; };
-		A15939C1206D965D0060D945 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BA206D965D0060D945 /* lwip.framework */; };
-		A15939C2206D965D0060D945 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BB206D965D0060D945 /* MMDB.framework */; };
-		A15939C3206D965D0060D945 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BC206D965D0060D945 /* NEKit.framework */; };
-		A15939C4206D965D0060D945 /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BD206D965D0060D945 /* Resolver.framework */; };
-		A15939C5206D965D0060D945 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BE206D965D0060D945 /* Yaml.framework */; };
-		A15939C6206D965D0060D945 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BF206D965D0060D945 /* Sodium.framework */; };
-		A15939E3206D982B0060D945 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E0206D982B0060D945 /* CocoaAsyncSocket.framework */; };
-		A15939E4206D982B0060D945 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
-		A15939E5206D982B0060D945 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
 		A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15F3C731F79D90500B07F03 /* LaunchScreen.storyboard */; };
 		A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174CCAD22B15B1000F1B840 /* BlockListViewController.swift */; };
 		A18B31F92087ED7900C0FFAA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E78D12207BE58C007FAE70 /* CloudKit.framework */; };
@@ -283,16 +309,6 @@
 		A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBEACA2097AE6D002B9087 /* M13CheckboxStrokeController.swift */; };
 		A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA4322C0651300C928BC /* PacketTunnelProvider.swift */; };
 		A1FCDA4922C0651300C928BC /* LockdownTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1FCDA4122C0651300C928BC /* LockdownTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A1FCDA4E22C0666A00C928BC /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E0206D982B0060D945 /* CocoaAsyncSocket.framework */; };
-		A1FCDA4F22C066B900C928BC /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E1206D982B0060D945 /* CocoaLumberjack.framework */; };
-		A1FCDA5022C066B900C928BC /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939E2206D982B0060D945 /* CocoaLumberjackSwift.framework */; };
-		A1FCDA5122C066B900C928BC /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BA206D965D0060D945 /* lwip.framework */; };
-		A1FCDA5222C066B900C928BC /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BB206D965D0060D945 /* MMDB.framework */; };
-		A1FCDA5322C066B900C928BC /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BD206D965D0060D945 /* Resolver.framework */; };
-		A1FCDA5422C066B900C928BC /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BF206D965D0060D945 /* Sodium.framework */; };
-		A1FCDA5522C066B900C928BC /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939B9206D965C0060D945 /* tun2socks.framework */; };
-		A1FCDA5622C066B900C928BC /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BE206D965D0060D945 /* Yaml.framework */; };
-		A1FCDA5722C066F300C928BC /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15939BC206D965D0060D945 /* NEKit.framework */; };
 		A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA5C22C1301900C928BC /* BlockListGroupViewController.swift */; };
 		A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FCDA5E22C14EB800C928BC /* BlockListGroupCell.swift */; };
 		A1FCDA6322C7616400C928BC /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
@@ -302,11 +318,9 @@
 		A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */; };
 		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
 		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
+		ABC9A6553B11AD4B8547BDB1 /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C81567AC8FE7D40C176DE91 /* Pods_LockdownTests.framework */; };
+		B7452B3FF9F877208559EF83 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD63A962A34A529D01CECD45 /* Pods_Lockdown_Firewall_Widget.framework */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
-		D0892ACE7DBE8147BA030522 /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E35FBEF05099C0B8784ED2E /* Pods_LockdownTests.framework */; };
-		D37198BBCE0A226BD9071F4A /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */; };
-		E0C51E8814F43CD752AB740D /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */; };
-		F6529FCC7BC553DB6372DE40 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -355,13 +369,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A15939D8206D97C40060D945 /* CopyFiles */ = {
+		3DD3D09826CC8714002238E8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3D201E7C26CC8C6000F2CC0E /* Yaml.xcframework in Embed Frameworks */,
+				3D201E7526CC8C5E00F2CC0E /* tun2socks.xcframework in Embed Frameworks */,
+				3D201EFD26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
+				3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				3D201E6E26CC8C5D00F2CC0E /* Resolver.xcframework in Embed Frameworks */,
+				3D201E5926CC8C5800F2CC0E /* lwip.xcframework in Embed Frameworks */,
+				3D201E6026CC8C5900F2CC0E /* MMDB.xcframework in Embed Frameworks */,
+				3D201E6726CC8C5A00F2CC0E /* NEKit.xcframework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD3D0A126CC8730002238E8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3D201EA526CC8C6C00F2CC0E /* Yaml.xcframework in Embed Frameworks */,
+				3D201E9E26CC8C6B00F2CC0E /* tun2socks.xcframework in Embed Frameworks */,
+				3D201EE426CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
+				3DD3D0A026CC8730002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
+				3D201E9726CC8C6900F2CC0E /* Resolver.xcframework in Embed Frameworks */,
+				3D201E8C26CC8C6600F2CC0E /* lwip.xcframework in Embed Frameworks */,
+				3D201E8E26CC8C6700F2CC0E /* MMDB.xcframework in Embed Frameworks */,
+				3D201E9026CC8C6800F2CC0E /* NEKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A18B79571F8C36460042A4EF /* Embed App Extensions */ = {
@@ -383,11 +424,13 @@
 
 /* Begin PBXFileReference section */
 		0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
-		0F0802571B0B8C954AD349E0 /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
+		0D69A72F1C47FBC5676DE620 /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-metadata.plist"; path = "Pods/Pods-Lockdown Firewall Widget-metadata.plist"; sourceTree = "<group>"; };
+		1C81567AC8FE7D40C176DE91 /* Pods_LockdownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F352B305FA28A0EB4CE60A8 /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTests-settings-metadata.plist"; sourceTree = "<group>"; };
 		2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
-		31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3088E89A22732E8AAB267B0F /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		3D01D97A2480DBED003A710C /* data_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = data_trackers.txt; sourceTree = "<group>"; };
 		3D01D99C2481E241003A710C /* general_ads.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = general_ads.txt; sourceTree = "<group>"; };
 		3D01D99D2481E252003A710C /* reporting.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = reporting.txt; sourceTree = "<group>"; };
@@ -454,6 +497,15 @@
 		3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		3D89610D253527B1006D8C12 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		3D896110253527B2006D8C12 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
+		3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
+		3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
+		3D92FEC426CB8C74008458C0 /* NEKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NEKit.xcframework; path = Carthage/Build/NEKit.xcframework; sourceTree = "<group>"; };
+		3D92FEC526CB8C74008458C0 /* MMDB.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MMDB.xcframework; path = Carthage/Build/MMDB.xcframework; sourceTree = "<group>"; };
+		3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tun2socks.xcframework; path = Carthage/Build/tun2socks.xcframework; sourceTree = "<group>"; };
+		3D92FEC726CB8C74008458C0 /* lwip.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = lwip.xcframework; path = Carthage/Build/lwip.xcframework; sourceTree = "<group>"; };
+		3D92FEC826CB8C74008458C0 /* Yaml.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Yaml.xcframework; path = Carthage/Build/Yaml.xcframework; sourceTree = "<group>"; };
+		3D92FEC926CB8C74008458C0 /* Resolver.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Resolver.xcframework; path = Carthage/Build/Resolver.xcframework; sourceTree = "<group>"; };
 		3D94AB0322FDEDEB0012B0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3D94AB1122FE3A460012B0DE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3D970DAC22EC149D00F9CC93 /* BlockLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogCell.swift; sourceTree = "<group>"; };
@@ -496,17 +548,13 @@
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		3DF2455523A306DB00E46613 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
-		428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
-		4C50BEAA399D6FDF2C2672C6 /* Pods-Confirmed VPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.debug.xcconfig"; sourceTree = "<group>"; };
-		4D422CB6539443825E5CD91B /* Pods-Confirmed Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed Tunnels/Pods-Confirmed Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
+		46006F8CEFD368CBA3D77291 /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
+		50E26E1CF4594D250915B52A /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
-		5E35FBEF05099C0B8784ED2E /* Pods_LockdownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		65F695578DAA62084B36A513 /* Pods-Lockdown Tunnels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Tunnels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Tunnels/Pods-Lockdown Tunnels.release.xcconfig"; sourceTree = "<group>"; };
-		6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C91E0B35BFA44603B7E7AE4 /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
+		6CBF8BE5CDB1732ABD87C99B /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
 		6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
-		726E8CFC747C13F896CA72B6 /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
-		7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0D11112473EE2E00A26E04 /* DomainNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameValidator.swift; sourceTree = "<group>"; };
 		7C0D111A2473FC7E00A26E04 /* LockdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LockdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0D111C2473FC7E00A26E04 /* LockdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownTests.swift; sourceTree = "<group>"; };
@@ -538,20 +586,16 @@
 		7CC8EFEC254036050005054C /* FirewallRepair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallRepair.swift; sourceTree = "<group>"; };
 		7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfoTests.swift; sourceTree = "<group>"; };
 		7CD52D80247E850D00D0530F /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
-		7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		7CE91C582521D54F009D8269 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7CE91C702521D58C009D8269 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownFirewallWidgetExtension.entitlements; sourceTree = "<group>"; };
 		7CE91C952521ED5E009D8269 /* VPNRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRegion.swift; sourceTree = "<group>"; };
 		7CE91CA7252214C9009D8269 /* CombinedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedProvider.swift; sourceTree = "<group>"; };
-		7E013E3207564A64E3A1BD49 /* Pods-Lockdown Tunnels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Tunnels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Tunnels/Pods-Lockdown Tunnels.debug.xcconfig"; sourceTree = "<group>"; };
-		8827B5DAD4A819CDC5115562 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
+		8311E8EC04659A1AE8D04BBA /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
 		8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-metadata.plist"; path = "Pods/Pods-LockdownTests-metadata.plist"; sourceTree = "<group>"; };
 		8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown VPN Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-metadata.plist"; path = "Pods/Pods-Lockdown VPN Widget-metadata.plist"; sourceTree = "<group>"; };
-		953709B6B9D85B15EF763F5B /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
-		96179E9445306C33ADBDDFAB /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
-		A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A004E4E3722CAF52500779A4 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
 		A101106C202B9D4300807612 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A1141A111F46230500F54698 /* Lockdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1141A141F46230500F54698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -635,16 +679,14 @@
 		A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
 		A1FCDA8C22D3C50A00C928BC /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
 		A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ipv6.txt; sourceTree = "<group>"; };
-		A6822C9110BC5F2F96454261 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		A75E57A0F35C50EA949FB1FE /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
-		AC978E3E9830282F26277011 /* Pods-Confirmed Tunnels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed Tunnels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed Tunnels/Pods-Confirmed Tunnels.release.xcconfig"; sourceTree = "<group>"; };
+		AE32CBE7F28551B694D5BDCD /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
-		C184E908CB776A3C52800606 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
-		D996266D8EF26A3162182E10 /* Pods-Confirmed VPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Confirmed VPN.release.xcconfig"; path = "Pods/Target Support Files/Pods-Confirmed VPN/Pods-Confirmed VPN.release.xcconfig"; sourceTree = "<group>"; };
+		DD63A962A34A529D01CECD45 /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF5141897B4A10AAD3DF3811 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
 		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
-		E74988390A21818002E44B89 /* Pods-LockdownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EE344B485CF03034ED1715B2 /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
-		FDC72127CE99C59603A65899 /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
+		FD5942CF86D9EAAC43E22FD5 /* Pods-LockdownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FEAA72D52BF688F6D8317E69 /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -652,12 +694,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D92FF6126CB8FA0008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				3DBD57CD22FD7AE400DE189F /* CloudKit.framework in Frameworks */,
-				3D94AB0D22FE05090012B0DE /* CocoaLumberjack.framework in Frameworks */,
-				3D94AB0E22FE05090012B0DE /* CocoaLumberjackSwift.framework in Frameworks */,
 				3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */,
+				3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
 				3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */,
-				08799CF7AFE70CC200E47EDB /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
+				B7452B3FF9F877208559EF83 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,7 +707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0892ACE7DBE8147BA030522 /* Pods_LockdownTests.framework in Frameworks */,
+				ABC9A6553B11AD4B8547BDB1 /* Pods_LockdownTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,20 +724,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A15939E3206D982B0060D945 /* CocoaAsyncSocket.framework in Frameworks */,
+				3D201E5F26CC8C5900F2CC0E /* MMDB.xcframework in Frameworks */,
 				A12229AB22C014CB00BFF624 /* StoreKit.framework in Frameworks */,
-				A15939E4206D982B0060D945 /* CocoaLumberjack.framework in Frameworks */,
-				A15939E5206D982B0060D945 /* CocoaLumberjackSwift.framework in Frameworks */,
-				A15939C0206D965D0060D945 /* tun2socks.framework in Frameworks */,
-				A15939C1206D965D0060D945 /* lwip.framework in Frameworks */,
-				A15939C2206D965D0060D945 /* MMDB.framework in Frameworks */,
-				A15939C3206D965D0060D945 /* NEKit.framework in Frameworks */,
-				A15939C4206D965D0060D945 /* Resolver.framework in Frameworks */,
+				3D201E3826CC8C5500F2CC0E /* CocoaLumberjack.xcframework in Frameworks */,
+				3D201EFC26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */,
+				3D201E5826CC8C5800F2CC0E /* lwip.xcframework in Frameworks */,
+				3DD3D09626CC8714002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				3D201E7426CC8C5E00F2CC0E /* tun2socks.xcframework in Frameworks */,
 				A18B31F92087ED7900C0FFAA /* CloudKit.framework in Frameworks */,
-				A15939C5206D965D0060D945 /* Yaml.framework in Frameworks */,
-				A15939C6206D965D0060D945 /* Sodium.framework in Frameworks */,
-				E0C51E8814F43CD752AB740D /* Pods_Lockdown.framework in Frameworks */,
+				3D201E6D26CC8C5D00F2CC0E /* Resolver.xcframework in Frameworks */,
+				3D201E6626CC8C5A00F2CC0E /* NEKit.xcframework in Frameworks */,
 				3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */,
+				3D201E7B26CC8C6000F2CC0E /* Yaml.xcframework in Frameworks */,
+				313318DAA21F92D1FD79EAD9 /* Pods_Lockdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,12 +744,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1342E8D20B0B8870045E9DF /* CocoaLumberjack.framework in Frameworks */,
+				3D92FF4226CB8F96008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				3DAF907A22EFD70900FB29E0 /* NetworkExtension.framework in Frameworks */,
-				A1342E8C20B0B87D0045E9DF /* CocoaLumberjackSwift.framework in Frameworks */,
 				A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */,
+				3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
 				A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */,
-				F6529FCC7BC553DB6372DE40 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
+				63FA257E7B06B4B5117FD640 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,18 +764,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FCDA5722C066F300C928BC /* NEKit.framework in Frameworks */,
+				3D201E9626CC8C6900F2CC0E /* Resolver.xcframework in Frameworks */,
+				3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */,
+				3D201E8226CC8C6400F2CC0E /* CocoaLumberjack.xcframework in Frameworks */,
+				3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */,
+				3D201E8D26CC8C6700F2CC0E /* MMDB.xcframework in Frameworks */,
+				3D201E9D26CC8C6B00F2CC0E /* tun2socks.xcframework in Frameworks */,
+				3D201EE326CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				A1FCDA6322C7616400C928BC /* NetworkExtension.framework in Frameworks */,
-				A1FCDA4E22C0666A00C928BC /* CocoaAsyncSocket.framework in Frameworks */,
-				A1FCDA4F22C066B900C928BC /* CocoaLumberjack.framework in Frameworks */,
-				A1FCDA5022C066B900C928BC /* CocoaLumberjackSwift.framework in Frameworks */,
-				A1FCDA5122C066B900C928BC /* lwip.framework in Frameworks */,
-				A1FCDA5222C066B900C928BC /* MMDB.framework in Frameworks */,
-				A1FCDA5322C066B900C928BC /* Resolver.framework in Frameworks */,
-				A1FCDA5422C066B900C928BC /* Sodium.framework in Frameworks */,
-				A1FCDA5522C066B900C928BC /* tun2socks.framework in Frameworks */,
-				A1FCDA5622C066B900C928BC /* Yaml.framework in Frameworks */,
-				D37198BBCE0A226BD9071F4A /* Pods_LockdownTunnel.framework in Frameworks */,
+				3D201E8B26CC8C6600F2CC0E /* lwip.xcframework in Frameworks */,
+				3D201E8F26CC8C6800F2CC0E /* NEKit.xcframework in Frameworks */,
+				1E213B9EC6BD10BD0003238D /* Pods_LockdownTunnel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,6 +1119,15 @@
 		A1141A421F46233600F54698 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */,
+				3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */,
+				3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */,
+				3D92FEC726CB8C74008458C0 /* lwip.xcframework */,
+				3D92FEC526CB8C74008458C0 /* MMDB.xcframework */,
+				3D92FEC426CB8C74008458C0 /* NEKit.xcframework */,
+				3D92FEC926CB8C74008458C0 /* Resolver.xcframework */,
+				3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */,
+				3D92FEC826CB8C74008458C0 /* Yaml.xcframework */,
 				A1FCDA6222C7616400C928BC /* NetworkExtension.framework */,
 				A12229AA22C014CA00BFF624 /* StoreKit.framework */,
 				A1F07D4720A37FA8007CBA1B /* AdSupport.framework */,
@@ -1094,13 +1143,13 @@
 				A15939B9206D965C0060D945 /* tun2socks.framework */,
 				A15939BE206D965D0060D945 /* Yaml.framework */,
 				A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */,
-				31E2DCBA5F0A1C82E81F2D44 /* Pods_Lockdown.framework */,
-				A0C2DF90344891424A626067 /* Pods_LockdownTunnel.framework */,
-				6A890BF9C9CF89A7E923EDDA /* Pods_Lockdown_Firewall_Widget.framework */,
-				7B555BB9C945AD99E970BE3A /* Pods_Lockdown_VPN_Widget.framework */,
-				5E35FBEF05099C0B8784ED2E /* Pods_LockdownTests.framework */,
 				7C9A936B251E1EC700DA5721 /* WidgetKit.framework */,
 				7C9A936D251E1EC700DA5721 /* SwiftUI.framework */,
+				AE32CBE7F28551B694D5BDCD /* Pods_Lockdown.framework */,
+				DD63A962A34A529D01CECD45 /* Pods_Lockdown_Firewall_Widget.framework */,
+				0D69A72F1C47FBC5676DE620 /* Pods_Lockdown_VPN_Widget.framework */,
+				1C81567AC8FE7D40C176DE91 /* Pods_LockdownTests.framework */,
+				1F352B305FA28A0EB4CE60A8 /* Pods_LockdownTunnel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1224,22 +1273,6 @@
 		D4B0457BD6E109D891101985 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4C50BEAA399D6FDF2C2672C6 /* Pods-Confirmed VPN.debug.xcconfig */,
-				D996266D8EF26A3162182E10 /* Pods-Confirmed VPN.release.xcconfig */,
-				428B4B342E5EA9720C08F150 /* Pods-Today.debug.xcconfig */,
-				96179E9445306C33ADBDDFAB /* Pods-Today.release.xcconfig */,
-				4D422CB6539443825E5CD91B /* Pods-Confirmed Tunnels.debug.xcconfig */,
-				AC978E3E9830282F26277011 /* Pods-Confirmed Tunnels.release.xcconfig */,
-				8827B5DAD4A819CDC5115562 /* Pods-Lockdown.debug.xcconfig */,
-				C184E908CB776A3C52800606 /* Pods-Lockdown.release.xcconfig */,
-				7E013E3207564A64E3A1BD49 /* Pods-Lockdown Tunnels.debug.xcconfig */,
-				65F695578DAA62084B36A513 /* Pods-Lockdown Tunnels.release.xcconfig */,
-				953709B6B9D85B15EF763F5B /* Pods-LockdownTunnel.debug.xcconfig */,
-				726E8CFC747C13F896CA72B6 /* Pods-LockdownTunnel.release.xcconfig */,
-				7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
-				FDC72127CE99C59603A65899 /* Pods-Lockdown Firewall Widget.release.xcconfig */,
-				A6822C9110BC5F2F96454261 /* Pods-Lockdown VPN Widget.debug.xcconfig */,
-				EE344B485CF03034ED1715B2 /* Pods-Lockdown VPN Widget.release.xcconfig */,
 				E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */,
 				B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */,
 				92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */,
@@ -1252,10 +1285,18 @@
 				6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */,
 				A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */,
 				2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */,
-				E74988390A21818002E44B89 /* Pods-LockdownTests.debug.xcconfig */,
-				0F0802571B0B8C954AD349E0 /* Pods-LockdownTests.release.xcconfig */,
 				8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */,
 				2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */,
+				DF5141897B4A10AAD3DF3811 /* Pods-Lockdown.debug.xcconfig */,
+				A004E4E3722CAF52500779A4 /* Pods-Lockdown.release.xcconfig */,
+				50E26E1CF4594D250915B52A /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
+				6CBF8BE5CDB1732ABD87C99B /* Pods-Lockdown Firewall Widget.release.xcconfig */,
+				3088E89A22732E8AAB267B0F /* Pods-Lockdown VPN Widget.debug.xcconfig */,
+				46006F8CEFD368CBA3D77291 /* Pods-Lockdown VPN Widget.release.xcconfig */,
+				FD5942CF86D9EAAC43E22FD5 /* Pods-LockdownTests.debug.xcconfig */,
+				FEAA72D52BF688F6D8317E69 /* Pods-LockdownTests.release.xcconfig */,
+				5C91E0B35BFA44603B7E7AE4 /* Pods-LockdownTunnel.debug.xcconfig */,
+				8311E8EC04659A1AE8D04BBA /* Pods-LockdownTunnel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1267,7 +1308,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DBD57C722FD727900DE189F /* Build configuration list for PBXNativeTarget "Lockdown Firewall Widget" */;
 			buildPhases = (
-				FCE1317D723F4940F4E41C9C /* [CP] Check Pods Manifest.lock */,
+				5AA243ABFC5B909A087E14B8 /* [CP] Check Pods Manifest.lock */,
 				3DBD57B722FD727900DE189F /* Sources */,
 				3DBD57B822FD727900DE189F /* Frameworks */,
 				3DBD57B922FD727900DE189F /* Resources */,
@@ -1285,11 +1326,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C0D11232473FC7E00A26E04 /* Build configuration list for PBXNativeTarget "LockdownTests" */;
 			buildPhases = (
-				8B0C5698745F648E72A58750 /* [CP] Check Pods Manifest.lock */,
+				4BA8614AA3FFC19AB99859AB /* [CP] Check Pods Manifest.lock */,
 				7C0D11162473FC7E00A26E04 /* Sources */,
 				7C0D11172473FC7E00A26E04 /* Frameworks */,
 				7C0D11182473FC7E00A26E04 /* Resources */,
-				B5D47BAAC494A9CF044ECFEF /* [CP] Embed Pods Frameworks */,
+				DDFE90B729B70B5D7280974C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1322,15 +1363,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1141A391F46230600F54698 /* Build configuration list for PBXNativeTarget "Lockdown" */;
 			buildPhases = (
-				08EEEAB72DD0E9CF5B6B4DE3 /* [CP] Check Pods Manifest.lock */,
+				CEBD8EA81FFABAE9C26DFA3D /* [CP] Check Pods Manifest.lock */,
 				3D94AEC12542A859005FDC0E /* ShellScript */,
 				A1141A0D1F46230500F54698 /* Sources */,
 				A1141A0E1F46230500F54698 /* Frameworks */,
 				A1141A0F1F46230500F54698 /* Resources */,
 				A18B79571F8C36460042A4EF /* Embed App Extensions */,
-				B2A70E191D2C5336B6A98613 /* [CP] Embed Pods Frameworks */,
-				A15939D8206D97C40060D945 /* CopyFiles */,
-				A1863898206FD7A200EF4511 /* ShellScript */,
+				3DD3D09826CC8714002238E8 /* Embed Frameworks */,
+				A2E63DD8F144D8CC2E89EF68 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1350,7 +1390,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Lockdown VPN Widget" */;
 			buildPhases = (
-				E20A95E02AF7431818AFB079 /* [CP] Check Pods Manifest.lock */,
+				EE0579BC7A9CC1FF6302483C /* [CP] Check Pods Manifest.lock */,
 				A12473EF1FE44284008493B8 /* Sources */,
 				A12473F01FE44284008493B8 /* Frameworks */,
 				A12473F11FE44284008493B8 /* Resources */,
@@ -1385,10 +1425,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1FCDA4A22C0651300C928BC /* Build configuration list for PBXNativeTarget "LockdownTunnel" */;
 			buildPhases = (
-				6659B63A2377451DC09AC180 /* [CP] Check Pods Manifest.lock */,
+				C2B75FB771D4BDE8AFAC2C29 /* [CP] Check Pods Manifest.lock */,
 				A1FCDA3D22C0651300C928BC /* Sources */,
 				A1FCDA3E22C0651300C928BC /* Frameworks */,
 				A1FCDA3F22C0651300C928BC /* Resources */,
+				3DD3D0A126CC8730002238E8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1681,24 +1722,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08EEEAB72DD0E9CF5B6B4DE3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3D94AEC12542A859005FDC0E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1716,29 +1739,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
 		};
-		6659B63A2377451DC09AC180 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LockdownTunnel-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B0C5698745F648E72A58750 /* [CP] Check Pods Manifest.lock */ = {
+		4BA8614AA3FFC19AB99859AB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1760,30 +1761,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A1863898206FD7A200EF4511 /* ShellScript */ = {
+		5AA243ABFC5B909A087E14B8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-		B2A70E191D2C5336B6A98613 /* [CP] Embed Pods Frameworks */ = {
+		A2E63DD8F144D8CC2E89EF68 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1821,7 +1821,51 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lockdown/Pods-Lockdown-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B5D47BAAC494A9CF044ECFEF /* [CP] Embed Pods Frameworks */ = {
+		C2B75FB771D4BDE8AFAC2C29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LockdownTunnel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEBD8EA81FFABAE9C26DFA3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDFE90B729B70B5D7280974C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1839,25 +1883,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LockdownTests/Pods-LockdownTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E20A95E02AF7431818AFB079 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown VPN Widget-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCE1317D723F4940F4E41C9C /* [CP] Check Pods Manifest.lock */ = {
+		EE0579BC7A9CC1FF6302483C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1872,7 +1898,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown VPN Widget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2209,7 +2235,7 @@
 /* Begin XCBuildConfiguration section */
 		3DBD57C822FD727900DE189F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CDB1F5AC85EB2D826BB00C2 /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
+			baseConfigurationReference = 50E26E1CF4594D250915B52A /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2227,7 +2253,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2241,7 +2271,7 @@
 		};
 		3DBD57C922FD727900DE189F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDC72127CE99C59603A65899 /* Pods-Lockdown Firewall Widget.release.xcconfig */;
+			baseConfigurationReference = 6CBF8BE5CDB1732ABD87C99B /* Pods-Lockdown Firewall Widget.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2259,7 +2289,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -2272,7 +2306,7 @@
 		};
 		7C0D11212473FC7E00A26E04 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E74988390A21818002E44B89 /* Pods-LockdownTests.debug.xcconfig */;
+			baseConfigurationReference = FD5942CF86D9EAAC43E22FD5 /* Pods-LockdownTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2283,7 +2317,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/LockdownTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownTests;
@@ -2296,7 +2334,7 @@
 		};
 		7C0D11222473FC7E00A26E04 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F0802571B0B8C954AD349E0 /* Pods-LockdownTests.release.xcconfig */;
+			baseConfigurationReference = FEAA72D52BF688F6D8317E69 /* Pods-LockdownTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2307,7 +2345,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/LockdownTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.LockdownTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2335,7 +2377,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2365,7 +2411,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -2485,7 +2535,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -2494,7 +2545,7 @@
 		};
 		A1141A3A1F46230600F54698 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8827B5DAD4A819CDC5115562 /* Pods-Lockdown.debug.xcconfig */;
+			baseConfigurationReference = DF5141897B4A10AAD3DF3811 /* Pods-Lockdown.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2515,7 +2566,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2529,7 +2583,7 @@
 		};
 		A1141A3B1F46230600F54698 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C184E908CB776A3C52800606 /* Pods-Lockdown.release.xcconfig */;
+			baseConfigurationReference = A004E4E3722CAF52500779A4 /* Pods-Lockdown.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2550,7 +2604,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2564,7 +2621,7 @@
 		};
 		A12474001FE44285008493B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6822C9110BC5F2F96454261 /* Pods-Lockdown VPN Widget.debug.xcconfig */;
+			baseConfigurationReference = 3088E89A22732E8AAB267B0F /* Pods-Lockdown VPN Widget.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -2587,7 +2644,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2602,7 +2663,7 @@
 		};
 		A12474011FE44285008493B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE344B485CF03034ED1715B2 /* Pods-Lockdown VPN Widget.release.xcconfig */;
+			baseConfigurationReference = 46006F8CEFD368CBA3D77291 /* Pods-Lockdown VPN Widget.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -2625,7 +2686,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2652,7 +2717,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2678,7 +2747,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2692,7 +2765,7 @@
 		};
 		A1FCDA4B22C0651300C928BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 953709B6B9D85B15EF763F5B /* Pods-LockdownTunnel.debug.xcconfig */;
+			baseConfigurationReference = 5C91E0B35BFA44603B7E7AE4 /* Pods-LockdownTunnel.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2710,7 +2783,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2724,7 +2801,7 @@
 		};
 		A1FCDA4C22C0651300C928BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 726E8CFC747C13F896CA72B6 /* Pods-LockdownTunnel.release.xcconfig */;
+			baseConfigurationReference = 8311E8EC04659A1AE8D04BBA /* Pods-LockdownTunnel.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2742,7 +2819,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;

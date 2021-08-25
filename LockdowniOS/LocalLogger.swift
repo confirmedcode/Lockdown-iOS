@@ -24,11 +24,9 @@ var logFileDataArray: [NSData] {
 }
 
 func setupLocalLogger() {
-    DDLog.add(DDTTYLogger.sharedInstance)
     DDLog.add(DDOSLogger.sharedInstance)
-    DDTTYLogger.sharedInstance.logFormatter = LogFormatter()
     DDOSLogger.sharedInstance.logFormatter = LogFormatter()
-    
+     
     fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
     fileLogger.logFileManager.maximumNumberOfLogFiles = 7
     fileLogger.logFormatter = LogFormatter()
