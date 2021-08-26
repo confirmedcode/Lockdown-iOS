@@ -228,7 +228,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScriptsII = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "marketing_beta_scripts",
         name: NSLocalizedString("Marketing Trackers II", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
