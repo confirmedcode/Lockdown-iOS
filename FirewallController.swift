@@ -65,18 +65,22 @@ class FirewallController: NSObject {
     }
 
     func restart(completion: @escaping (_ error: Error?) -> Void = {_ in }) {
+        DDLogInfo("FirewallController.restart called")
         // Don't let this affect userWantsFirewallOn/Off config
         FirewallController.shared.setEnabled(false, completion: {
             error in
+            DDLogInfo("FirewallController.restart completed disabling")
             // TODO: Handle the error (throw?)
             if error != nil {
                 DDLogError("Error disabling on Firewall restart: \(error!)")
             }
             // waiting for a little bit before re-enabling:
             // without it, sometimes Firewall fails to enable
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                DDLogInfo("FirewallController.restart wait completed")
                 FirewallController.shared.setEnabled(true, completion: {
                     error in
+                    DDLogInfo("FirewallController.restart completed enabling")
                     if error != nil {
                         DDLogError("Error enabling on Firewall restart: \(error!)")
                     }
@@ -142,34 +146,53 @@ class FirewallController: NSObject {
                     case .connectionFailed:
                         break;
                     }
+                    completion(nil)
                 }
                 else if let e = error {
                     DDLogError("Error saving config for enabled state: \(enabled): \(e)")
+                    completion(e)
                 }
                 else {
                     DDLogInfo("Successfully saved config for enabled state: \(enabled)")
                     // manually activate the starting of the tunnel, and also do a dummy connect to a nonexistant, invalid URL to force enabling
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        do {
-                            try self.manager!.connection.startVPNTunnel()
-                            let config = URLSessionConfiguration.default
-                            config.requestCachePolicy = .reloadIgnoringLocalCacheData
-                            config.urlCache = nil
-                            let session = URLSession.init(configuration: config)
-                            let url = URL(string: "https://nonexistant_invalid_url")
-                            let task = session.dataTask(with: url!) { (data, response, error) in
-                                return
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        if (enabled) {
+                            DDLogInfo("FirewallController.setEnabled enabled, calling startVPNTunnel")
+                            do {
+                                try self.manager!.connection.startVPNTunnel()
+                                let config = URLSessionConfiguration.default
+                                config.requestCachePolicy = .reloadIgnoringLocalCacheData
+                                config.urlCache = nil
+                                let session = URLSession.init(configuration: config)
+                                let url = URL(string: "https://nonexistant_invalid_url")
+                                let task = session.dataTask(with: url!) { (data, response, error) in
+                                    DDLogInfo("FirewallController.setEnabled response from calling nonexistant url")
+                                    return
+                                }
+                                DDLogInfo("FirewallController.setEnabled calling nonexistant url")
+                                task.resume()
+                                DDLogInfo("FirewallController.setEnabled refreshing manager")
+                                self.refreshManager(completion: { error in
+                                    if (error != nil) {
+                                        DDLogInfo("FirewallController.setEnabled error response from refreshing manager: \(error!)")
+                                    }
+                                    else {
+                                        DDLogInfo("FirewallController.setEnabled no error from refreshing manager")
+                                    }
+                                    completion(nil)
+                                })
                             }
-                            task.resume()
+                            catch {
+                                DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
+                                completion(error.localizedDescription)
+                            }
                         }
-                        catch {
-                            DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
+                        else {
+                            DDLogInfo("FirewallController.setEnabled not enabled, no need to call startVPNTunnel")
+                            completion(nil)
                         }
                     }
                 }
-                self.refreshManager(completion: { error in
-                    completion(nil)
-                })
             })
         }
     }

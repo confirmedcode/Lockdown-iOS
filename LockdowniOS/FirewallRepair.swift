@@ -120,6 +120,7 @@ enum FirewallRepair {
                             if error != nil {
                                 DDLogError("Repair \(context): Error restarting firewall on \(context): \(error!)")
                             }
+                            DDLogError("Repair \(context): Returned from restart, no error")
                             completion(.repairAttempted)
                         })
                     }.catch { error in
