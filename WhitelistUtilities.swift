@@ -88,7 +88,6 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "cdn-apple.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "citi.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cloudfront.net")
-    addLockdownWhitelistedDomainIfNotExists(domain: "cloudfront.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "coinbase.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "comcast.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "confirmedvpn.com")
