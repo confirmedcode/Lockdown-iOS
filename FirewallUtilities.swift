@@ -164,7 +164,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let gameAds = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "gameAds",
         name: NSLocalizedString("Game Marketing", comment: "The title of a list of trackers"),
         iconURL: "game_ads_icon",

@@ -34,19 +34,12 @@
 		3D201E7C26CC8C6000F2CC0E /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E8226CC8C6400F2CC0E /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
 		3D201E8B26CC8C6600F2CC0E /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; };
-		3D201E8C26CC8C6600F2CC0E /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E8D26CC8C6700F2CC0E /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; };
-		3D201E8E26CC8C6700F2CC0E /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E8F26CC8C6800F2CC0E /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; };
-		3D201E9026CC8C6800F2CC0E /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E9626CC8C6900F2CC0E /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; };
-		3D201E9726CC8C6900F2CC0E /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E9D26CC8C6B00F2CC0E /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; };
-		3D201E9E26CC8C6B00F2CC0E /* tun2socks.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; };
-		3D201EA526CC8C6C00F2CC0E /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201EE326CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
-		3D201EE426CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201EFC26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
 		3D201EFD26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D3BF4CC233D5E9100D0C482 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
@@ -171,7 +164,6 @@
 		3DD3D09626CC8714002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
 		3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
-		3DD3D0A026CC8730002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
@@ -383,24 +375,6 @@
 				3D201E5926CC8C5800F2CC0E /* lwip.xcframework in Embed Frameworks */,
 				3D201E6026CC8C5900F2CC0E /* MMDB.xcframework in Embed Frameworks */,
 				3D201E6726CC8C5A00F2CC0E /* NEKit.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3DD3D0A126CC8730002238E8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3D201EA526CC8C6C00F2CC0E /* Yaml.xcframework in Embed Frameworks */,
-				3D201E9E26CC8C6B00F2CC0E /* tun2socks.xcframework in Embed Frameworks */,
-				3D201EE426CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
-				3DD3D0A026CC8730002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
-				3D201E9726CC8C6900F2CC0E /* Resolver.xcframework in Embed Frameworks */,
-				3D201E8C26CC8C6600F2CC0E /* lwip.xcframework in Embed Frameworks */,
-				3D201E8E26CC8C6700F2CC0E /* MMDB.xcframework in Embed Frameworks */,
-				3D201E9026CC8C6800F2CC0E /* NEKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1429,7 +1403,6 @@
 				A1FCDA3D22C0651300C928BC /* Sources */,
 				A1FCDA3E22C0651300C928BC /* Frameworks */,
 				A1FCDA3F22C0651300C928BC /* Resources */,
-				3DD3D0A126CC8730002238E8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2244,7 +2217,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2280,7 +2253,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2372,7 +2345,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
@@ -2406,7 +2379,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
@@ -2553,7 +2526,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2591,7 +2564,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2635,7 +2608,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2677,7 +2650,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2712,7 +2685,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -2742,7 +2715,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -2774,7 +2747,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2810,7 +2783,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
