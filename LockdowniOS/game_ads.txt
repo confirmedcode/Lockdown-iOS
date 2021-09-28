@@ -4,4 +4,3 @@ vungle.com
 moatads.com
 tenjin.io
 voodoo-analytics.io
-chartboost.com

@@ -1,8 +1,9 @@
 events.appsflyer.com
 sdk.appsflyer.com
 t.appsflyer.com
-cdn.branch.io
-api.branch.io
+launches.appsflyer.com
+impression.appsflyer.com
+inapps.appsflyer.com
 api.instabug.com
 e.crashlytics.com
 settings.crashlytics.com
@@ -17,3 +18,5 @@ sdk.iad-05.braze.com
 sdk.iad-06.braze.com
 sdk.iad-08.braze.com
 sdk.fra-01.braze.eu
+imp.control.kochava.com
+sdk-api-v1.singular.net
