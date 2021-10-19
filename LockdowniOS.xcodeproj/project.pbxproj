@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */; };
-		1E213B9EC6BD10BD0003238D /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F352B305FA28A0EB4CE60A8 /* Pods_LockdownTunnel.framework */; };
 		20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */; };
-		313318DAA21F92D1FD79EAD9 /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE32CBE7F28551B694D5BDCD /* Pods_Lockdown.framework */; };
+		2DDD126D8F073FC42E1C6A28 /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */; };
 		388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */; };
+		39FD925FB5AC24FB6118A2E8 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1DD136CBC73DC96B7009A /* Pods_Lockdown_VPN_Widget.framework */; };
+		3B392ABD6D5830F835A8F8F5 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */; };
 		3D01D97B2480DCB3003A710C /* data_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D97A2480DBED003A710C /* data_trackers.txt */; };
 		3D01D99E2481E42B003A710C /* reporting.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D99D2481E252003A710C /* reporting.txt */; };
 		3D01D99F2481E42E003A710C /* general_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D99C2481E241003A710C /* general_ads.txt */; };
@@ -22,10 +23,6 @@
 		3D201E3826CC8C5500F2CC0E /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
 		3D201E5826CC8C5800F2CC0E /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; };
 		3D201E5926CC8C5800F2CC0E /* lwip.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3D201E5F26CC8C5900F2CC0E /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; };
-		3D201E6026CC8C5900F2CC0E /* MMDB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3D201E6626CC8C5A00F2CC0E /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; };
-		3D201E6726CC8C5A00F2CC0E /* NEKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E6D26CC8C5D00F2CC0E /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; };
 		3D201E6E26CC8C5D00F2CC0E /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E7426CC8C5E00F2CC0E /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; };
@@ -34,8 +31,6 @@
 		3D201E7C26CC8C6000F2CC0E /* Yaml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D201E8226CC8C6400F2CC0E /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
 		3D201E8B26CC8C6600F2CC0E /* lwip.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC726CB8C74008458C0 /* lwip.xcframework */; };
-		3D201E8D26CC8C6700F2CC0E /* MMDB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC526CB8C74008458C0 /* MMDB.xcframework */; };
-		3D201E8F26CC8C6800F2CC0E /* NEKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC426CB8C74008458C0 /* NEKit.xcframework */; };
 		3D201E9626CC8C6900F2CC0E /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC926CB8C74008458C0 /* Resolver.xcframework */; };
 		3D201E9D26CC8C6B00F2CC0E /* tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC626CB8C74008458C0 /* tun2socks.xcframework */; };
 		3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC826CB8C74008458C0 /* Yaml.xcframework */; };
@@ -103,6 +98,10 @@
 		3D752C352357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C312357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf */; };
 		3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C322357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf */; };
 		3D752C372357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */; };
+		3D8A254C27487B35001B99E1 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; };
+		3D8A254D27487B35001B99E1 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D8A254E27487B3C001B99E1 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; };
+		3D8A254F27487B3C001B99E1 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
 		3D92FF4226CB8F96008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
 		3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
@@ -110,10 +109,8 @@
 		3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
-		3D94AAF322FDEAC50012B0DE /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
 		3D94AAF422FDEAC80012B0DE /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
 		3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
-		3D94AAF622FDEAD60012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
 		3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
@@ -130,10 +127,17 @@
 		3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B4E22EA76420018FC09 /* clickbait.txt */; };
 		3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B5222EA988F0018FC09 /* ransomware.txt */; };
 		3DABD9FD22F7961F00480AAC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
-		3DABD9FF22F7AD4D00480AAC /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
-		3DABDA0022F7AD4D00480AAC /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
-		3DABDA0122F7AD4D00480AAC /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */; };
 		3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
+		3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
+		3DAF73532768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
+		3DAF73542768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
+		3DAF73552768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
+		3DAF73562768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
+		3DAF73602768583700D97BB0 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */; };
+		3DAF73612768584200D97BB0 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
+		3DAF73622768584500D97BB0 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
+		3DAF73632768584D00D97BB0 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */; };
+		3DAF73642768586200D97BB0 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
 		3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3DAF7C5722F456F2003C8F9C /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
 		3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
@@ -168,10 +172,10 @@
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
+		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
 		601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */; };
-		63FA257E7B06B4B5117FD640 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D69A72F1C47FBC5676DE620 /* Pods_Lockdown_VPN_Widget.framework */; };
 		78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */; };
 		7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
 		7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
@@ -310,12 +314,47 @@
 		A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */; };
 		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
 		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
-		ABC9A6553B11AD4B8547BDB1 /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C81567AC8FE7D40C176DE91 /* Pods_LockdownTests.framework */; };
-		B7452B3FF9F877208559EF83 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD63A962A34A529D01CECD45 /* Pods_Lockdown_Firewall_Widget.framework */; };
+		B05197BCB274B38A23A35CAF /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
+		E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3D8A254227487B2A001B99E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 36463A301CDCD5EB0040579C;
+			remoteInfo = "NEKit-macOS";
+		};
+		3D8A254427487B2A001B99E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 36C48D4D1CF88DED0071804F;
+			remoteInfo = "NEKit-iOS";
+		};
+		3D8A254627487B2A001B99E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 36A719981D5EEB4900DC35F5;
+			remoteInfo = NEKitDemo;
+		};
+		3D8A254827487B2A001B99E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 362347131D7D44E700A047DE;
+			remoteInfo = "NEKitTest-macOS";
+		};
+		3D8A254A27487B2A001B99E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 362347221D7D458E00A047DE;
+			remoteInfo = "NEKitTests-iOS";
+		};
 		3DBD57C422FD727900DE189F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A1141A091F46230500F54698 /* Project object */;
@@ -361,6 +400,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3D8A253727487A4F001B99E1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3D8A254F27487B3C001B99E1 /* NEKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3DD3D09826CC8714002238E8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,9 +422,8 @@
 				3D201EFD26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
 				3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
 				3D201E6E26CC8C5D00F2CC0E /* Resolver.xcframework in Embed Frameworks */,
+				3D8A254D27487B35001B99E1 /* NEKit.framework in Embed Frameworks */,
 				3D201E5926CC8C5800F2CC0E /* lwip.xcframework in Embed Frameworks */,
-				3D201E6026CC8C5900F2CC0E /* MMDB.xcframework in Embed Frameworks */,
-				3D201E6726CC8C5A00F2CC0E /* NEKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,14 +446,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B014050F770126F5808AF28 /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
 		0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
-		0D69A72F1C47FBC5676DE620 /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-metadata.plist"; path = "Pods/Pods-Lockdown Firewall Widget-metadata.plist"; sourceTree = "<group>"; };
-		1C81567AC8FE7D40C176DE91 /* Pods_LockdownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F352B305FA28A0EB4CE60A8 /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTests-settings-metadata.plist"; sourceTree = "<group>"; };
 		2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
-		3088E89A22732E8AAB267B0F /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		3D01D97A2480DBED003A710C /* data_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = data_trackers.txt; sourceTree = "<group>"; };
 		3D01D99C2481E241003A710C /* general_ads.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = general_ads.txt; sourceTree = "<group>"; };
 		3D01D99D2481E252003A710C /* reporting.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = reporting.txt; sourceTree = "<group>"; };
@@ -471,6 +518,7 @@
 		3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		3D89610D253527B1006D8C12 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		3D896110253527B2006D8C12 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NEKit.xcodeproj; path = ../NEKit/NEKit.xcodeproj; sourceTree = "<group>"; };
 		3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
 		3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
 		3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
@@ -491,7 +539,7 @@
 		3DA14D3E255DF5D400A3658E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DAA6B4E22EA76420018FC09 /* clickbait.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
 		3DAA6B5222EA988F0018FC09 /* ransomware.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
-		3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
+		3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
 		3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistViewController.swift; sourceTree = "<group>"; };
 		3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistUtilities.swift; sourceTree = "<group>"; };
@@ -522,13 +570,14 @@
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		3DF2455523A306DB00E46613 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
-		46006F8CEFD368CBA3D77291 /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
-		50E26E1CF4594D250915B52A /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
-		5C91E0B35BFA44603B7E7AE4 /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
-		6CBF8BE5CDB1732ABD87C99B /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
+		549133AE36DE5B896F995988 /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
 		6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
+		6FE1DD136CBC73DC96B7009A /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		707A358300D4A3D33EFC8749 /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
+		7435DF998DFB59C9808F1638 /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
 		7C0D11112473EE2E00A26E04 /* DomainNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameValidator.swift; sourceTree = "<group>"; };
 		7C0D111A2473FC7E00A26E04 /* LockdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LockdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0D111C2473FC7E00A26E04 /* LockdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownTests.swift; sourceTree = "<group>"; };
@@ -565,11 +614,12 @@
 		7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownFirewallWidgetExtension.entitlements; sourceTree = "<group>"; };
 		7CE91C952521ED5E009D8269 /* VPNRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRegion.swift; sourceTree = "<group>"; };
 		7CE91CA7252214C9009D8269 /* CombinedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedProvider.swift; sourceTree = "<group>"; };
-		8311E8EC04659A1AE8D04BBA /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		88E04750DB23687076871F5B /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
 		8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-metadata.plist"; path = "Pods/Pods-LockdownTests-metadata.plist"; sourceTree = "<group>"; };
 		8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown VPN Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-metadata.plist"; path = "Pods/Pods-Lockdown VPN Widget-metadata.plist"; sourceTree = "<group>"; };
-		A004E4E3722CAF52500779A4 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
+		95899949475D15BB3DB63138 /* Pods-LockdownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0BEB57F0C3C4F5746285E07 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		A101106C202B9D4300807612 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A1141A111F46230500F54698 /* Lockdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1141A141F46230500F54698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -653,14 +703,14 @@
 		A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
 		A1FCDA8C22D3C50A00C928BC /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
 		A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ipv6.txt; sourceTree = "<group>"; };
+		A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		A75E57A0F35C50EA949FB1FE /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
-		AE32CBE7F28551B694D5BDCD /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
-		DD63A962A34A529D01CECD45 /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF5141897B4A10AAD3DF3811 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
+		BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
-		FD5942CF86D9EAAC43E22FD5 /* Pods-LockdownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FEAA72D52BF688F6D8317E69 /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
+		ECA3DC3801B375B860C15978 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
+		FA3DBA07D389FDA260B448B7 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,7 +723,7 @@
 				3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */,
 				3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
 				3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */,
-				B7452B3FF9F877208559EF83 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
+				3B392ABD6D5830F835A8F8F5 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,7 +731,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABC9A6553B11AD4B8547BDB1 /* Pods_LockdownTests.framework in Frameworks */,
+				B05197BCB274B38A23A35CAF /* Pods_LockdownTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,7 +748,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D201E5F26CC8C5900F2CC0E /* MMDB.xcframework in Frameworks */,
 				A12229AB22C014CB00BFF624 /* StoreKit.framework in Frameworks */,
 				3D201E3826CC8C5500F2CC0E /* CocoaLumberjack.xcframework in Frameworks */,
 				3D201EFC26CC8CD900F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */,
@@ -707,10 +756,10 @@
 				3D201E7426CC8C5E00F2CC0E /* tun2socks.xcframework in Frameworks */,
 				A18B31F92087ED7900C0FFAA /* CloudKit.framework in Frameworks */,
 				3D201E6D26CC8C5D00F2CC0E /* Resolver.xcframework in Frameworks */,
-				3D201E6626CC8C5A00F2CC0E /* NEKit.xcframework in Frameworks */,
 				3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */,
 				3D201E7B26CC8C6000F2CC0E /* Yaml.xcframework in Frameworks */,
-				313318DAA21F92D1FD79EAD9 /* Pods_Lockdown.framework in Frameworks */,
+				3D8A254C27487B35001B99E1 /* NEKit.framework in Frameworks */,
+				2DDD126D8F073FC42E1C6A28 /* Pods_Lockdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +772,7 @@
 				A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */,
 				3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
 				A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */,
-				63FA257E7B06B4B5117FD640 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
+				39FD925FB5AC24FB6118A2E8 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,13 +791,12 @@
 				3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */,
 				3D201E8226CC8C6400F2CC0E /* CocoaLumberjack.xcframework in Frameworks */,
 				3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */,
-				3D201E8D26CC8C6700F2CC0E /* MMDB.xcframework in Frameworks */,
+				3D8A254E27487B3C001B99E1 /* NEKit.framework in Frameworks */,
 				3D201E9D26CC8C6B00F2CC0E /* tun2socks.xcframework in Frameworks */,
 				3D201EE326CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				A1FCDA6322C7616400C928BC /* NetworkExtension.framework in Frameworks */,
 				3D201E8B26CC8C6600F2CC0E /* lwip.xcframework in Frameworks */,
-				3D201E8F26CC8C6800F2CC0E /* NEKit.xcframework in Frameworks */,
-				1E213B9EC6BD10BD0003238D /* Pods_LockdownTunnel.framework in Frameworks */,
+				E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +921,18 @@
 				3D47CDAE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		3D8A253B27487B2A001B99E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D8A254327487B2A001B99E1 /* NEKit.framework */,
+				3D8A254527487B2A001B99E1 /* NEKit.framework */,
+				3D8A254727487B2A001B99E1 /* NEKitDemo.app */,
+				3D8A254927487B2A001B99E1 /* NEKitTest-macOS.xctest */,
+				3D8A254B27487B2A001B99E1 /* NEKitTests-iOS.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3D9FC67A23E521E5004122D3 /* Account */ = {
@@ -1039,6 +1099,7 @@
 		A1141A081F46230500F54698 = {
 			isa = PBXGroup;
 			children = (
+				3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */,
 				7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */,
 				3D3BF4D0233D5E9100D0C482 /* Localizable.strings */,
 				3D5464D223037CCA00AE1F73 /* Settings.bundle */,
@@ -1119,11 +1180,11 @@
 				A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */,
 				7C9A936B251E1EC700DA5721 /* WidgetKit.framework */,
 				7C9A936D251E1EC700DA5721 /* SwiftUI.framework */,
-				AE32CBE7F28551B694D5BDCD /* Pods_Lockdown.framework */,
-				DD63A962A34A529D01CECD45 /* Pods_Lockdown_Firewall_Widget.framework */,
-				0D69A72F1C47FBC5676DE620 /* Pods_Lockdown_VPN_Widget.framework */,
-				1C81567AC8FE7D40C176DE91 /* Pods_LockdownTests.framework */,
-				1F352B305FA28A0EB4CE60A8 /* Pods_LockdownTunnel.framework */,
+				4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */,
+				AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */,
+				6FE1DD136CBC73DC96B7009A /* Pods_Lockdown_VPN_Widget.framework */,
+				1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */,
+				BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1143,11 +1204,11 @@
 		A11E78A21F6A33C5007499CA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */,
 				3DCA4F2D22F190720017740D /* Client.swift */,
 				3DCA4F3022F190AE0017740D /* ClientModels.swift */,
 				3D94AB1122FE3A460012B0DE /* Environment.swift */,
 				3DCA4F4022F252720017740D /* FirewallController.swift */,
-				3DABD9FE22F7AD4D00480AAC /* FirewallUtilities.swift */,
 				3DBD57AF22FC14CC00DE189F /* Shared.swift */,
 				A1E748191F9108B6004B8021 /* SpeedTest.swift */,
 				A1DBA18921B77C80008A9322 /* VPNController.swift */,
@@ -1261,16 +1322,16 @@
 				2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */,
 				8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */,
 				2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */,
-				DF5141897B4A10AAD3DF3811 /* Pods-Lockdown.debug.xcconfig */,
-				A004E4E3722CAF52500779A4 /* Pods-Lockdown.release.xcconfig */,
-				50E26E1CF4594D250915B52A /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
-				6CBF8BE5CDB1732ABD87C99B /* Pods-Lockdown Firewall Widget.release.xcconfig */,
-				3088E89A22732E8AAB267B0F /* Pods-Lockdown VPN Widget.debug.xcconfig */,
-				46006F8CEFD368CBA3D77291 /* Pods-Lockdown VPN Widget.release.xcconfig */,
-				FD5942CF86D9EAAC43E22FD5 /* Pods-LockdownTests.debug.xcconfig */,
-				FEAA72D52BF688F6D8317E69 /* Pods-LockdownTests.release.xcconfig */,
-				5C91E0B35BFA44603B7E7AE4 /* Pods-LockdownTunnel.debug.xcconfig */,
-				8311E8EC04659A1AE8D04BBA /* Pods-LockdownTunnel.release.xcconfig */,
+				ECA3DC3801B375B860C15978 /* Pods-Lockdown.debug.xcconfig */,
+				FA3DBA07D389FDA260B448B7 /* Pods-Lockdown.release.xcconfig */,
+				A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
+				707A358300D4A3D33EFC8749 /* Pods-Lockdown Firewall Widget.release.xcconfig */,
+				A0BEB57F0C3C4F5746285E07 /* Pods-Lockdown VPN Widget.debug.xcconfig */,
+				88E04750DB23687076871F5B /* Pods-Lockdown VPN Widget.release.xcconfig */,
+				95899949475D15BB3DB63138 /* Pods-LockdownTests.debug.xcconfig */,
+				0B014050F770126F5808AF28 /* Pods-LockdownTests.release.xcconfig */,
+				549133AE36DE5B896F995988 /* Pods-LockdownTunnel.debug.xcconfig */,
+				7435DF998DFB59C9808F1638 /* Pods-LockdownTunnel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1282,7 +1343,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DBD57C722FD727900DE189F /* Build configuration list for PBXNativeTarget "Lockdown Firewall Widget" */;
 			buildPhases = (
-				5AA243ABFC5B909A087E14B8 /* [CP] Check Pods Manifest.lock */,
+				FB6DB65AD7DDFC6CFF0AB663 /* [CP] Check Pods Manifest.lock */,
 				3DBD57B722FD727900DE189F /* Sources */,
 				3DBD57B822FD727900DE189F /* Frameworks */,
 				3DBD57B922FD727900DE189F /* Resources */,
@@ -1300,11 +1361,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C0D11232473FC7E00A26E04 /* Build configuration list for PBXNativeTarget "LockdownTests" */;
 			buildPhases = (
-				4BA8614AA3FFC19AB99859AB /* [CP] Check Pods Manifest.lock */,
+				395667F7EF55688E346D7A56 /* [CP] Check Pods Manifest.lock */,
 				7C0D11162473FC7E00A26E04 /* Sources */,
 				7C0D11172473FC7E00A26E04 /* Frameworks */,
 				7C0D11182473FC7E00A26E04 /* Resources */,
-				DDFE90B729B70B5D7280974C /* [CP] Embed Pods Frameworks */,
+				6B16CD066B7776C0EE46D41D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1337,14 +1398,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1141A391F46230600F54698 /* Build configuration list for PBXNativeTarget "Lockdown" */;
 			buildPhases = (
-				CEBD8EA81FFABAE9C26DFA3D /* [CP] Check Pods Manifest.lock */,
+				64FE7C42B237022F592D9853 /* [CP] Check Pods Manifest.lock */,
 				3D94AEC12542A859005FDC0E /* ShellScript */,
 				A1141A0D1F46230500F54698 /* Sources */,
 				A1141A0E1F46230500F54698 /* Frameworks */,
 				A1141A0F1F46230500F54698 /* Resources */,
 				A18B79571F8C36460042A4EF /* Embed App Extensions */,
 				3DD3D09826CC8714002238E8 /* Embed Frameworks */,
-				A2E63DD8F144D8CC2E89EF68 /* [CP] Embed Pods Frameworks */,
+				5A300A6E89DFE7D0A22A5136 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1364,7 +1425,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Lockdown VPN Widget" */;
 			buildPhases = (
-				EE0579BC7A9CC1FF6302483C /* [CP] Check Pods Manifest.lock */,
+				8DC19F20C31126BB8D4B1222 /* [CP] Check Pods Manifest.lock */,
 				A12473EF1FE44284008493B8 /* Sources */,
 				A12473F01FE44284008493B8 /* Frameworks */,
 				A12473F11FE44284008493B8 /* Resources */,
@@ -1399,10 +1460,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1FCDA4A22C0651300C928BC /* Build configuration list for PBXNativeTarget "LockdownTunnel" */;
 			buildPhases = (
-				C2B75FB771D4BDE8AFAC2C29 /* [CP] Check Pods Manifest.lock */,
+				1883028BE10B38CE14B1FD85 /* [CP] Check Pods Manifest.lock */,
 				A1FCDA3D22C0651300C928BC /* Sources */,
 				A1FCDA3E22C0651300C928BC /* Frameworks */,
 				A1FCDA3F22C0651300C928BC /* Resources */,
+				3D8A253727487A4F001B99E1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1419,7 +1481,7 @@
 		A1141A091F46230500F54698 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Confirmed Inc.";
 				TargetAttributes = {
@@ -1557,6 +1619,12 @@
 			mainGroup = A1141A081F46230500F54698;
 			productRefGroup = A1141A121F46230500F54698 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3D8A253B27487B2A001B99E1 /* Products */;
+					ProjectRef = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A1141A101F46230500F54698 /* Lockdown */,
@@ -1569,6 +1637,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3D8A254327487B2A001B99E1 /* NEKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NEKit.framework;
+			remoteRef = 3D8A254227487B2A001B99E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D8A254527487B2A001B99E1 /* NEKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NEKit.framework;
+			remoteRef = 3D8A254427487B2A001B99E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D8A254727487B2A001B99E1 /* NEKitDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = NEKitDemo.app;
+			remoteRef = 3D8A254627487B2A001B99E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D8A254927487B2A001B99E1 /* NEKitTest-macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "NEKitTest-macOS.xctest";
+			remoteRef = 3D8A254827487B2A001B99E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D8A254B27487B2A001B99E1 /* NEKitTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "NEKitTests-iOS.xctest";
+			remoteRef = 3D8A254A27487B2A001B99E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3DBD57B922FD727900DE189F /* Resources */ = {
@@ -1695,7 +1801,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D94AEC12542A859005FDC0E /* ShellScript */ = {
+		1883028BE10B38CE14B1FD85 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1703,16 +1809,21 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LockdownTunnel-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-		4BA8614AA3FFC19AB99859AB /* [CP] Check Pods Manifest.lock */ = {
+		395667F7EF55688E346D7A56 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1734,7 +1845,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5AA243ABFC5B909A087E14B8 /* [CP] Check Pods Manifest.lock */ = {
+		3D94AEC12542A859005FDC0E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1742,21 +1853,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
 		};
-		A2E63DD8F144D8CC2E89EF68 /* [CP] Embed Pods Frameworks */ = {
+		5A300A6E89DFE7D0A22A5136 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1794,29 +1900,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lockdown/Pods-Lockdown-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2B75FB771D4BDE8AFAC2C29 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LockdownTunnel-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEBD8EA81FFABAE9C26DFA3D /* [CP] Check Pods Manifest.lock */ = {
+		64FE7C42B237022F592D9853 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1838,7 +1922,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDFE90B729B70B5D7280974C /* [CP] Embed Pods Frameworks */ = {
+		6B16CD066B7776C0EE46D41D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1856,7 +1940,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LockdownTests/Pods-LockdownTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EE0579BC7A9CC1FF6302483C /* [CP] Check Pods Manifest.lock */ = {
+		8DC19F20C31126BB8D4B1222 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1878,6 +1962,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB6DB65AD7DDFC6CFF0AB663 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1888,10 +1994,10 @@
 				3D94AAF422FDEAC80012B0DE /* WhitelistUtilities.swift in Sources */,
 				7C1AE078247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
 				7C6619BE247810EE005E8BB1 /* BlockDayLog.swift in Sources */,
-				3D94AAF322FDEAC50012B0DE /* FirewallUtilities.swift in Sources */,
 				3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */,
 				3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */,
 				7C1AE07D247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
+				3DAF73552768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */,
 				3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */,
 				7CE91C992521ED5E009D8269 /* VPNRegion.swift in Sources */,
@@ -1922,10 +2028,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C9A9384251E1F9C00DA5721 /* LoadingCircle.swift in Sources */,
+				3DAF73642768586200D97BB0 /* WhitelistUtilities.swift in Sources */,
 				7CE91CA8252214C9009D8269 /* CombinedProvider.swift in Sources */,
 				7C9A9371251E1EC700DA5721 /* LockdownFirewallWidget.swift in Sources */,
+				3DAF73622768584500D97BB0 /* BlockDayLog.swift in Sources */,
+				3DAF73612768584200D97BB0 /* PushNotifications.swift in Sources */,
+				3DAF73632768584D00D97BB0 /* PushNotificationsAuthorization.swift in Sources */,
+				3DAF73562768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				7CE91C9A2521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				7CE91C692521D566009D8269 /* UserDefaults.swift in Sources */,
+				3DAF73602768583700D97BB0 /* OneTimeActions.swift in Sources */,
 				7CE91C872521D5B8009D8269 /* Metrics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1982,7 +2094,6 @@
 				3DCA4F2E22F190720017740D /* Client.swift in Sources */,
 				A101106D202B9D4300807612 /* BaseViewController.swift in Sources */,
 				7C0D11122473EE2E00A26E04 /* DomainNameValidator.swift in Sources */,
-				3DABD9FF22F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
 				A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */,
 				A1EBEADA2097AE6E002B9087 /* M13CheckboxFillController.swift in Sources */,
 				A1EBEAD42097AE6E002B9087 /* M13CheckboxPathGenerator.swift in Sources */,
@@ -2053,6 +2164,7 @@
 				A1EBEACE2097AE6E002B9087 /* M13CheckboxExpandController.swift in Sources */,
 				3D5F5A0C23109ABB004C3860 /* WhatIsVpnViewController.swift in Sources */,
 				A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */,
+				3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2064,17 +2176,17 @@
 				3DBD57A922FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE076247FE2000000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
 				7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */,
-				3D94AAF622FDEAD60012B0DE /* FirewallController.swift in Sources */,
+				54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */,
 				A1DBA18B21B77C88008A9322 /* VPNController.swift in Sources */,
 				3DAF7C5722F456F2003C8F9C /* ClientModels.swift in Sources */,
 				7C1AE07B247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
+				3DAF73532768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3DBD57B122FC14CD00DE189F /* Shared.swift in Sources */,
 				3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */,
 				7CE91C972521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				7CD52D82247EC18800D0530F /* PushNotifications.swift in Sources */,
 				3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */,
 				7CE91C602521D564009D8269 /* UserDefaults.swift in Sources */,
-				3DABDA0022F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
 				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
 				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
 				7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */,
@@ -2094,7 +2206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DABDA0122F7AD4D00480AAC /* FirewallUtilities.swift in Sources */,
 				7CE91C852521D5B7009D8269 /* Metrics.swift in Sources */,
 				7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
@@ -2102,6 +2213,7 @@
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
 				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
+				3DAF73542768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				7C44081D2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 				7CE91C982521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */,
@@ -2208,7 +2320,7 @@
 /* Begin XCBuildConfiguration section */
 		3DBD57C822FD727900DE189F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50E26E1CF4594D250915B52A /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
+			baseConfigurationReference = A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2217,7 +2329,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2225,13 +2337,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -2244,7 +2356,7 @@
 		};
 		3DBD57C922FD727900DE189F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CBF8BE5CDB1732ABD87C99B /* Pods-Lockdown Firewall Widget.release.xcconfig */;
+			baseConfigurationReference = 707A358300D4A3D33EFC8749 /* Pods-Lockdown Firewall Widget.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2253,7 +2365,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2261,13 +2373,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2279,7 +2391,7 @@
 		};
 		7C0D11212473FC7E00A26E04 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD5942CF86D9EAAC43E22FD5 /* Pods-LockdownTests.debug.xcconfig */;
+			baseConfigurationReference = 95899949475D15BB3DB63138 /* Pods-LockdownTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2307,7 +2419,7 @@
 		};
 		7C0D11222473FC7E00A26E04 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FEAA72D52BF688F6D8317E69 /* Pods-LockdownTests.release.xcconfig */;
+			baseConfigurationReference = 0B014050F770126F5808AF28 /* Pods-LockdownTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2345,7 +2457,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
@@ -2355,7 +2467,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -2379,7 +2491,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
@@ -2389,7 +2501,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2449,7 +2561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2504,7 +2616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2518,7 +2630,7 @@
 		};
 		A1141A3A1F46230600F54698 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF5141897B4A10AAD3DF3811 /* Pods-Lockdown.debug.xcconfig */;
+			baseConfigurationReference = ECA3DC3801B375B860C15978 /* Pods-Lockdown.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2526,7 +2638,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2538,12 +2650,12 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2556,7 +2668,7 @@
 		};
 		A1141A3B1F46230600F54698 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A004E4E3722CAF52500779A4 /* Pods-Lockdown.release.xcconfig */;
+			baseConfigurationReference = FA3DBA07D389FDA260B448B7 /* Pods-Lockdown.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2564,7 +2676,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2576,12 +2688,12 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2594,7 +2706,7 @@
 		};
 		A12474001FE44285008493B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3088E89A22732E8AAB267B0F /* Pods-Lockdown VPN Widget.debug.xcconfig */;
+			baseConfigurationReference = A0BEB57F0C3C4F5746285E07 /* Pods-Lockdown VPN Widget.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -2608,7 +2720,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2616,13 +2728,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2636,7 +2748,7 @@
 		};
 		A12474011FE44285008493B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46006F8CEFD368CBA3D77291 /* Pods-Lockdown VPN Widget.release.xcconfig */;
+			baseConfigurationReference = 88E04750DB23687076871F5B /* Pods-Lockdown VPN Widget.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -2650,7 +2762,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2658,13 +2770,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2685,17 +2797,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2715,17 +2827,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2738,7 +2850,7 @@
 		};
 		A1FCDA4B22C0651300C928BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C91E0B35BFA44603B7E7AE4 /* Pods-LockdownTunnel.debug.xcconfig */;
+			baseConfigurationReference = 549133AE36DE5B896F995988 /* Pods-LockdownTunnel.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2747,7 +2859,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2755,13 +2867,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
@@ -2774,7 +2886,7 @@
 		};
 		A1FCDA4C22C0651300C928BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8311E8EC04659A1AE8D04BBA /* Pods-LockdownTunnel.release.xcconfig */;
+			baseConfigurationReference = 7435DF998DFB59C9808F1638 /* Pods-LockdownTunnel.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2783,7 +2895,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2791,13 +2903,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.5;
+				MARKETING_VERSION = 1.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

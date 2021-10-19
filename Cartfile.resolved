@@ -1,7 +1,6 @@
 github "CocoaLumberjack/CocoaLumberjack" "3.7.2"
 github "behrang/YamlSwift" "3.4.3"
-github "confirmedcode/NEKit" "882b1042a2b8d8691780a82b9f4797e3caf3985f"
-github "lexrus/MMDB-Swift" "0.5.0"
+github "confirmedcode/NEKit" "c615bf40940bb9b42f3c10cf1e887bfb921544c8"
 github "robbiehanson/CocoaAsyncSocket" "7.6.5"
 github "zhuhaow/Resolver" "0.2.0"
 github "zhuhaow/tun2socks" "0.7.0"

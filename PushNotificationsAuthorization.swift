@@ -8,7 +8,6 @@
 
 import UIKit
 import UserNotifications
-import PromiseKit
 import CocoaLumberjackSwift
 
 extension PushNotifications {

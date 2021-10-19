@@ -53,7 +53,7 @@ func metricsToString(metric : Int, commas: Bool = false) -> String {
         return "\(Int(metric / 1000))k"
     }
     else {
-        return "\(Int(metric / 1000000))m"
+        return "\(String(format: "%.2f", (Double(metric) / Double(1000000))))m"
     }
 }
 

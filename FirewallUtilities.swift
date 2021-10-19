@@ -17,7 +17,7 @@ let kUserBlockedDomains = "lockdown_domains_user"
 
 // MARK: - data structures
 
-struct IPRange : Codable {
+struct ConfirmedIPRange : Codable {
     var subnetMask : String
     var enabled : Bool
     var IPv6 : Bool
@@ -34,7 +34,7 @@ struct LockdownGroup : Codable {
     var iconURL : String
     var enabled : Bool
     var domains : Dictionary<String, Bool>
-    var ipRanges : Dictionary<String, IPRange>
+    var ipRanges : Dictionary<String, ConfirmedIPRange>
     var warning: String?
 }
 
@@ -182,13 +182,14 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let crypto = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "crypto_mining",
         name: NSLocalizedString("Crypto Mining", comment: "The title of a list of trackers"),
         iconURL: "crypto_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "crypto_mining"),
-        ipRanges: [:])
+        ipRanges: [:],
+        warning: "This block list is currently under maintenance and will be updated soon.")
     
     let emailOpens = LockdownGroup.init(
         version: 30,
@@ -200,7 +201,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let facebookInc = LockdownGroup.init(
-        version: 32,
+        version: 33,
         internalID: "facebook_inc",
         name: NSLocalizedString("Facebook & WhatsApp", comment: "The title of a list of trackers"),
         iconURL: "facebook_icon",
@@ -219,7 +220,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let marketingScripts = LockdownGroup.init(
-        version: 30,
+        version: 31,
         internalID: "marketing_scripts",
         name: NSLocalizedString("Marketing Trackers", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
@@ -237,13 +238,14 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
 
     let ransomware = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "ransomware",
         name: NSLocalizedString("Ransomware", comment: "The title of a list of trackers"),
         iconURL: "ransomware_icon",
         enabled: false,
         domains: getDomainBlockList(filename: "ransomware"),
-        ipRanges: [:])
+        ipRanges: [:],
+        warning: "This block list is currently under maintenance and will be updated soon.")
 
     let googleShoppingAds = LockdownGroup.init(
         version: 35,

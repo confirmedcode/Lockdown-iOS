@@ -1,4 +1,3 @@
-connect.facebook.net
 connect.facebook.net.edgekey.net
 ct-m-fbx.fbsbx.com
 facebook-web-clients.appspot.com

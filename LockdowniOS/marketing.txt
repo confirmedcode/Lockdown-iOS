@@ -6,7 +6,6 @@ api.mixpanel.com
 app-measurement.com
 appboy.com
 fabric.io
-facebook.net
 fb.com
 firebase.com
 google-analytics.com

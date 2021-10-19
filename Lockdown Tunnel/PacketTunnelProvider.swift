@@ -8,51 +8,6 @@
 import NetworkExtension
 import NEKit
 
-class LDObserverFactory: ObserverFactory {
-    
-    override func getObserverForProxySocket(_ socket: ProxySocket) -> Observer<ProxySocketEvent>? {
-        return LDProxySocketObserver();
-    }
-    
-    class LDProxySocketObserver: Observer<ProxySocketEvent> {
-
-        let whitelistedDomains = getAllWhitelistedDomains()
-        
-        override func signal(_ event: ProxySocketEvent) {
-            switch event {
-            case .receivedRequest(let session, let socket):
-                // this is for testing if the blocking is working correctly - always block this
-                if (session.host == testFirewallDomain) {
-                    socket.forceDisconnect()
-                    return
-                }
-                // if domain is in whitelist, just return (user probably didn't whitelist something they want to block
-                for whitelistedDomain in whitelistedDomains {
-                    if (session.host.hasSuffix("." + whitelistedDomain) || session.host == whitelistedDomain) {
-                        #if DEBUG
-                        //PacketTunnelProviderLogs.log("whitelisted \(session.host), not blocking")
-                        #endif
-                        return
-                    }
-                }
-                // else if firewall on, then block
-                if (getUserWantsFirewallEnabled()) {
-                    updateMetrics(.incrementAndLog(host: session.host), rescheduleNotifications: .withEnergySaving)
-                    #if DEBUG
-                    //PacketTunnelProviderLogs.log("session host: \(session.host)")
-                    #endif
-                    socket.forceDisconnect()
-                    return
-                }
-            default:
-                break;
-            }
-        }
-        
-    }
-    
-}
-
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
     let proxyServerPort: UInt16 = 9090;
@@ -69,20 +24,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
         self.connect(options: options, completionHandler: completionHandler)
-        
-//        if ProtectedFileAccess.isAvailable {
-//            PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
-//            #if DEBUG
-//            debugLog("startTunnel function called with protected file access")
-//            flushDebugLogsToPacketTunnelProviderLogs()
-//            #endif
-//            self.connect(options: options, completionHandler: completionHandler)
-//        } else {
-//            #if DEBUG
-//            debugLog("startTunnel called, no protected file access")
-//            #endif
-//            completionHandler(NEVPNError(.configurationInvalid))
-//        }
     }
     
     private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
@@ -97,10 +38,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
         var combined: Array<String> = getAllBlockedDomains() + [testFirewallDomain] // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
-//        if ( getUserWantsVPNEnabled() == true ) { // only add whitelist if user wants VPN active
-        // bugfix: attempting to fix issue with whitelist sometimes breaking
-             combined = combined + getAllWhitelistedDomains()
-//        }
+        combined = combined + getAllWhitelistedDomains()
         if combined.count <= 1 {
             #if DEBUG
             debugLog("PTP: COMBINED BLOCK LIST IS INVALID, LIKELY JUST RESTARTED")
@@ -114,7 +52,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
         settings.proxySettings = proxySettings;
         RawSocketFactory.TunnelProvider = self
-        ObserverFactory.currentFactory = LDObserverFactory()
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in
             guard error == nil else {

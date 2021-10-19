@@ -437,11 +437,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         switch FirewallController.shared.status() {
         case .invalid:
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
-            ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
+            //ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
         case .disconnected:
             updateFirewallButtonWithStatus(status: .connecting)
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
-            ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
+            //ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
             
             checkForAskRating()
         case .connected:
