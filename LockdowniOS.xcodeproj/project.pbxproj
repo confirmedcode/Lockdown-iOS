@@ -101,7 +101,6 @@
 		3D8A254C27487B35001B99E1 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; };
 		3D8A254D27487B35001B99E1 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D8A254E27487B3C001B99E1 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; };
-		3D8A254F27487B3C001B99E1 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8A254527487B2A001B99E1 /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
 		3D92FF4226CB8F96008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */; };
 		3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */; };
@@ -400,17 +399,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3D8A253727487A4F001B99E1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3D8A254F27487B3C001B99E1 /* NEKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3DD3D09826CC8714002238E8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1464,7 +1452,6 @@
 				A1FCDA3D22C0651300C928BC /* Sources */,
 				A1FCDA3E22C0651300C928BC /* Frameworks */,
 				A1FCDA3F22C0651300C928BC /* Resources */,
-				3D8A253727487A4F001B99E1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
