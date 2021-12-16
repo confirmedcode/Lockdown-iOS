@@ -8,6 +8,8 @@
 import NetworkExtension
 import NEKit
 
+var latestBlockedDomains = getAllBlockedDomains()
+
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
     let proxyServerPort: UInt16 = 9090;
@@ -59,7 +61,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 completionHandler(error)
                 return
             }
-            self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+            let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+            newProxyServer.setBlockedDomains(domains: getAllBlockedDomains())
+            self.proxyServer = newProxyServer
             do {
                 try self.proxyServer.start()
                 PacketTunnelProviderLogs.log("Proxy server started")
