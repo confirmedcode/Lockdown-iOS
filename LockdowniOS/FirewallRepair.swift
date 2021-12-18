@@ -97,7 +97,7 @@ enum FirewallRepair {
             DDLogInfo("Repair \(context): refreshed manager")
             DDLogInfo("Repair \(context): userWantsFirewallEnabled \(getUserWantsFirewallEnabled())")
             DDLogInfo("Repair \(context): firewallStatus \(FirewallController.shared.status())")
-            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid) {
+            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid || FirewallController.shared.status() == .disconnected) {
                 DDLogInfo("Repair \(context): user wants enabled")
                 if (appHasJustBeenUpgradedOrIsNewInstall()) {
                     DDLogInfo("Repair \(context): APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
