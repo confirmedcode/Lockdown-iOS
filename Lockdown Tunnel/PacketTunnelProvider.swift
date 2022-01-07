@@ -62,7 +62,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 return
             }
             let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
-            newProxyServer.setBlockedDomains(domains: getAllBlockedDomains())
+            newProxyServer.refreshDomains()
             self.proxyServer = newProxyServer
             do {
                 try self.proxyServer.start()
