@@ -80,6 +80,8 @@ func setupLockdownWhitelistedDomains() {
     addLockdownWhitelistedDomainIfNotExists(domain: "att.com.edgesuite.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "att.net")
     addLockdownWhitelistedDomainIfNotExists(domain: "bamgrid.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "bestbuy.com")
+    addLockdownWhitelistedDomainIfNotExists(domain: "bitwarden.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "brightcove.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cbs.com")
     addLockdownWhitelistedDomainIfNotExists(domain: "cbsaavideo.com")
