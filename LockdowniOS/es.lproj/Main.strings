@@ -37,8 +37,8 @@
 /* Class = "UILabel"; text = "World's Simplest Privacy Policy"; ObjectID = "6sx-m3-XUn"; */
 "6sx-m3-XUn.text" = "La Política De Privacidad Más Sencilla Del Mundo";
 
-/* Class = "UIButton"; normalTitle = "April 2021"; ObjectID = "7NS-46-hCo"; */
-"7NS-46-hCo.normalTitle" = "Abril de 2021";
+/* Class = "UIButton"; normalTitle = "February 2022"; ObjectID = "7NS-46-hCo"; */
+"7NS-46-hCo.normalTitle" = "Febrero 2022";
 
 /* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
 "7nc-lb-z6u.normalTitle" = "De acuerdo";
