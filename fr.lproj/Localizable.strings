@@ -38,7 +38,7 @@
 "\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n Si le problème persiste, merci de contacter team@lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
-"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n Si le probème persiste, veuillez contacter team@lockdownprivacy.com.";
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n Si ce problème persiste, veuillez contacter team@lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
 "About Lockdown VPN" = "A propos de Lockdown VPN";
@@ -128,7 +128,7 @@
 "Error Starting Trial" = "Erreur Offre d'Essai";
 
 /* No comment provided by engineer. */
-"Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "Erreur lors de la confirmation de votre compte : \(errorMessage). Si le problème persiste, merci de contacter team@lockdownprivacy.com.";
+"Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "Erreur lors de la confirmation de votre compte : \(errorMessage). Si ce problème persiste, veuillez contacter team@lockdownprivacy.com.";
 
 /* No comment provided by engineer. */
 "Firewall" = "Pare-feu";
@@ -233,7 +233,7 @@
 "Okay" = "Ok";
 
 /* No comment provided by engineer. */
-"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "Veuillez vérifier votre connexion Internet. Si cela persiste, veuillez contacter team@lockdownprivacy.com.\n\Description de l'Erreur\n";
+"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "Veuillez vérifier votre connexion Internet. Si ce problème persiste, veuillez contacter team@lockdownprivacy.com.\n\Description de l'Erreur\n";
 
 /* No comment provided by engineer. */
 "Please contact team@lockdownprivacy.com.\n\nError details:\n" = "Merci de contacter team@lockdownprivacy.com.\n\Détails de l'Erreur :\n";
@@ -509,7 +509,7 @@
 "I blocked" = "J'ai bloqué";
 
 /* No comment provided by engineer. */
-"If this persists, please contact team@lockdownprivacy.com." = "Si le problème persiste, veuillez contacter team@lockdownprivacy.com.";
+"If this persists, please contact team@lockdownprivacy.com." = "Si ce problème persiste, veuillez contacter team@lockdownprivacy.com.";
 
 /* Used in: You blocked tracker.com in your custom blocked domains. */
 "in your custom blocked domains." = "dans vos domaines bloqués personnalisés.";
