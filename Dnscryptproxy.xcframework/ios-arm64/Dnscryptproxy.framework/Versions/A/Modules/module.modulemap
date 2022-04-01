@@ -1,0 +1,8 @@
+framework module "Dnscryptproxy" {
+	header "ref.h"
+    header "Dnscryptproxy.objc.h"
+    header "Universe.objc.h"
+    header "Dnscryptproxy.h"
+
+    export *
+}

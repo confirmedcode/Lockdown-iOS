@@ -19,6 +19,7 @@ import PromiseKit
 import UserNotifications
 import WidgetKit
 import BackgroundTasks
+import Dnscryptproxy
 
 let fileLogger: DDFileLogger = DDFileLogger()
 
@@ -31,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let noInternetMessageView = MessageView.viewFromNib(layout: .statusLine)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        var fileManager = FileManager.default
+        var fileManagerUrl = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "com.confirmed.lockdown")
+        var configFile = fileManagerUrl?.appendingPathComponent("config.toml")
+        
+        var filePath = Bundle.main.url(forResource: "config", withExtension: "toml")
+
+        var dnsapp = DnscryptproxyMain(filePath?.path);
         
         // Clear local data for testing
 //         try? keychain.removeAll()
