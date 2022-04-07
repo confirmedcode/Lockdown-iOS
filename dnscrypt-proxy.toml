@@ -1,4 +1,4 @@
-server_names = [ 'cloudflare' ]
+server_names = [ 'myserver' ]
 listen_addresses = [ "127.0.0.1:53", "[::1]:53" ]
 ipv4_servers = true
 ipv6_servers = true
@@ -42,6 +42,6 @@ blacklist_file = "BLACKLIST_FILE_HERE"
 log_file = "BLACKLIST_LOG_HERE"
 log_format = "tsv"
 
-# [static]
-#   [static.'myserver']
-#   stamp = 'sdns://AQYAAAAAAAAACTI0MC4wLjAuMAAQMi5kbnNjcnlwdC1jZXJ0Lg'
+[static]
+   [static.'myserver']
+   stamp = 'sdns://AgcAAAAAAAAABzEuMC4wLjEAEmRucy5jbG91ZGZsYXJlLmNvbQovZG5zLXF1ZXJ5'

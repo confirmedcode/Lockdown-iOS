@@ -87,6 +87,9 @@ enum FirewallRepair {
     
     static func run(context: Context, completion: @escaping (FirewallRepair.Result) -> Void = { _ in }) {
         DDLogInfo("Repair \(context): Starting")
+        // FIREWALL REPAIR DISABLED FOR NOW
+        return
+        
         // Check 2 conditions for firewall restart, but reload manager first to get non-stale one
         FirewallController.shared.refreshManager(completion: { error in
             if let e = error {
