@@ -1,7 +1,7 @@
 server_names = [ 'myserver' ]
 listen_addresses = [ "127.0.0.1:53", "[::1]:53" ]
 ipv4_servers = true
-ipv6_servers = true
+ipv6_servers = false
 max_clients = 250
 dnscrypt_servers = true
 doh_servers = true
@@ -11,7 +11,7 @@ require_nofilter = false
 force_tcp = false
 timeout = 2_500
 cert_refresh_delay = 240
-block_ipv6 = false
+block_ipv6 = true
 cache = true
 cache_size = 256
 cache_min_ttl = 600
