@@ -7,91 +7,201 @@
 
 import NetworkExtension
 import NEKit
+import Dnscryptproxy
 
 var latestBlockedDomains = getAllBlockedDomains()
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
-    let proxyServerPort: UInt16 = 9090;
-    let proxyServerAddress = "127.0.0.1";
-    var proxyServer: GCDHTTPProxyServer!
+    var _dns: DNSCryptThread!;
     
     //MARK: - OVERRIDES
     
-    override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        if proxyServer != nil {
-            proxyServer.stop()
-        }
-        proxyServer = nil
+    func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         
-        PacketTunnelProviderLogs.log("startTunnel function called with protected file access")
-        self.connect(options: options, completionHandler: completionHandler)
+        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
+        
+        let dnsSettings = NEDNSSettings(servers:["127.0.0.1"])
+        dnsSettings.matchDomains = [""];
+        networkSettings.dnsSettings = dnsSettings;
+        
+        return networkSettings;
     }
     
-    private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: proxyServerAddress)
-        settings.mtu = NSNumber(value: 1500)
+    func startProxy() {
+        _dns.start()
+    }
+    
+    
+    override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+
+        // usleep(10000000)
         
-        let proxySettings = NEProxySettings()
-        proxySettings.httpEnabled = true;
-        proxySettings.httpServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
-        proxySettings.httpsEnabled = true;
-        proxySettings.httpsServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
-        proxySettings.excludeSimpleHostnames = false;
-        proxySettings.exceptionList = []
-        var combined: Array<String> = getAllBlockedDomains() + [testFirewallDomain] // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
-        combined = combined + getAllWhitelistedDomains()
-        if combined.count <= 1 {
-            #if DEBUG
-            debugLog("PTP: COMBINED BLOCK LIST IS INVALID, LIKELY JUST RESTARTED")
-            debugLog(combined.description)
-            #endif
-            completionHandler(NEVPNError(.configurationInvalid))
-            return
-        }
-        proxySettings.matchDomains = combined
+        let configFile = Bundle.main.url(forResource: "dnscrypt-proxy", withExtension: "toml")
         
-        settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
-        settings.proxySettings = proxySettings;
-        RawSocketFactory.TunnelProvider = self
+        let blocklistFile = Bundle.main.url(forResource: "blocked-names", withExtension: "txt")
         
-        self.setTunnelNetworkSettings(settings, completionHandler: { error in
-            guard error == nil else {
-                PacketTunnelProviderLogs.log("Error setting tunnel network settings \(error as Any)")
-                completionHandler(error)
-                return
-            }
-            let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
-            newProxyServer.refreshDomains()
-            self.proxyServer = newProxyServer
+        print("configFilePath")
+        print(configFile!.absoluteString)
+        print("blocklistFilepath")
+        print(blocklistFile!.absoluteString)
+        
+        var sharedDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
+        
+        // create directory if not exists
+        let filePath = sharedDir!.appendingPathComponent("dnscrypt")
+        if !FileManager.default.fileExists(atPath: filePath.path) {
             do {
-                try self.proxyServer.start()
-                PacketTunnelProviderLogs.log("Proxy server started")
-                completionHandler(nil)
-            } catch let proxyError {
-                PacketTunnelProviderLogs.log("Error starting proxy server \(proxyError)")
-                completionHandler(proxyError)
+                try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                let e = error
+            }
+        }
+
+        // copy blocklist file into shared dir and check its content
+        var newContentFile = sharedDir!.appendingPathComponent("blacklist.txt")
+        
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(
+                at: sharedDir!,
+                includingPropertiesForKeys: nil
+            )
+            var cont = ""
+            for url in directoryContents {
+                cont = cont + "\n" + url.absoluteString
+            }
+            let z = cont
+            let dfsd = "abc"
+        }
+        catch {
+            let e = error
+        }
+        
+        var errorPtr: NSErrorPointer = nil
+        DnscryptproxyFillPatternlistTrees(newContentFile.absoluteString.replacingOccurrences(of: "file://", with: ""), errorPtr)
+        if let error = errorPtr?.pointee {
+            let zz = error
+        }
+        
+        // show what pre/suff files contents
+        var prefixFile = sharedDir!.appendingPathComponent("blacklist.txt.prefixes")
+        var suffixFile = sharedDir!.appendingPathComponent("blacklist.txt.suffixes")
+        do {
+            let content = try String(contentsOf: prefixFile, encoding: .utf8)
+            let content2 = try String(contentsOf: suffixFile, encoding: .ascii)
+            let a = "blah"
+        }
+        catch {
+            var e = error
+            var zz = e
+        }
+        
+        do {
+            let content = try String(contentsOf: blocklistFile!, encoding: .utf8)
+            let a = "blah"
+            do {
+                try content.write(to: newContentFile, atomically: true, encoding: .utf8)
+            }
+            catch {
+                var e = error
+            }
+            do {
+                let blocklistFileContent = try String(contentsOf: newContentFile, encoding: .utf8)
+                let a = "blah"
+            }
+            catch {
+                var e = error
+            }
+            
+        }
+        catch {
+            var e = error
+        }
+        
+        
+        
+        var configFileText = ""
+        
+        do {
+            configFileText = try String(contentsOf: configFile!, encoding: .utf8)
+        }
+        catch {
+            let e = error
+        }
+        
+        let blockListFilePath = blocklistFile!.absoluteString.replacingOccurrences(of: "file://", with: "")
+        
+        // replace
+        let replacedConfig = configFileText.replacingOccurrences(of: "BLACKLIST_FILE_HERE", with: "\(newContentFile.path)").replacingOccurrences(of: "BLACKLIST_LOG_HERE", with: "\(sharedDir!.appendingPathComponent("blacklistlog.log").absoluteString.replacingOccurrences(of: "file://", with: ""))")
+        
+        var replacedConfigURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        // write replaced string to new file
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+            replacedConfigURL = dir.appendingPathComponent("replaced-config.toml")
+
+            //writing
+            do {
+                try replacedConfig.write(to: replacedConfigURL, atomically: false, encoding: .utf8)
+            }
+            catch {
+                var e = error
+            }
+
+            //reading blocklist  file
+            do {
+                let blocklistFileContent = try String(contentsOf: blocklistFile!, encoding: .utf8)
+                let a = "blah"
+            }
+            catch {
+                var e = error
+            }
+            
+            //reading
+            do {
+                let replacedConfigText = try String(contentsOf: replacedConfigURL, encoding: .utf8)
+                let a = "blah"
+            }
+            catch {
+                var e = error
+            }
+        }
+        
+        let networkSettings = getNetworkSettings()
+        
+        _dns = DNSCryptThread(arguments: [replacedConfigURL.path]);
+        
+        
+        startProxy();
+        
+        self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
+            if (error != nil) {
+                completionHandler(error);
+            } else {
+                completionHandler(nil);
             }
         })
+        
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        DNSServer.currentServer = nil
-        RawSocketFactory.TunnelProvider = nil
-        ObserverFactory.currentFactory = nil
-        proxyServer.stop()
-        proxyServer = nil
-        PacketTunnelProviderLogs.log("LockdownTunnel: error on stopping: \(reason.debugDescription)")
-        
-        completionHandler()
-        exit(EXIT_SUCCESS)
+        completionHandler();
+        exit(EXIT_SUCCESS);
     }
     
-    override func cancelTunnelWithError(_ error: Error?) {
-        super.cancelTunnelWithError(error)
-        PacketTunnelProviderLogs.log("Packet tunnel provider cancelled with error: \(error as Any)")
+    override func sleep(completionHandler: @escaping () -> Void) {
+        completionHandler();
     }
 
+    override func wake() {
+        // TODO: reactivate, etc
+    }
+    
+    // TODO: reachability
+    
+    // TODO: logging
+    
 }
 
 extension PacketTunnelProvider {

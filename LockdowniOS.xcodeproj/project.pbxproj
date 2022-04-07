@@ -55,16 +55,21 @@
 		3D40825227F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40824527F66C95004C146B /* CocoaLumberjackSwift.xcframework */; };
 		3D40825327F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40824527F66C95004C146B /* CocoaLumberjackSwift.xcframework */; };
 		3D40825427F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40824527F66C95004C146B /* CocoaLumberjackSwift.xcframework */; };
-		3D40825627F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */; };
-		3D40825727F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */; };
-		3D40825827F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */; };
-		3D40825927F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */; };
-		3D40825A27F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */; };
-		3D40826327F675F6004C146B /* config.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* config.toml */; };
-		3D40826427F675F6004C146B /* config.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* config.toml */; };
-		3D40826527F675F6004C146B /* config.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* config.toml */; };
-		3D40826627F675F6004C146B /* config.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* config.toml */; };
-		3D40826727F675F6004C146B /* config.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* config.toml */; };
+		3D40826327F675F6004C146B /* dnscrypt-proxy.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* dnscrypt-proxy.toml */; };
+		3D40826427F675F6004C146B /* dnscrypt-proxy.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* dnscrypt-proxy.toml */; };
+		3D40826527F675F6004C146B /* dnscrypt-proxy.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* dnscrypt-proxy.toml */; };
+		3D40826627F675F6004C146B /* dnscrypt-proxy.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* dnscrypt-proxy.toml */; };
+		3D40826727F675F6004C146B /* dnscrypt-proxy.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* dnscrypt-proxy.toml */; };
+		3D40826927F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
+		3D40826A27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
+		3D40826B27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
+		3D40826C27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
+		3D40826D27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
+		3D40826F27FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
+		3D40827027FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
+		3D40827127FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
+		3D40827227FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
+		3D40827327FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
 		3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
 		3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */; };
 		3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */; };
@@ -186,6 +191,11 @@
 		3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
 		3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3222F22CB40017740D /* HomeViewController.swift */; };
 		3DCA4F4122F252720017740D /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
+		3DCA829B27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */; };
+		3DCA829C27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */; };
+		3DCA829D27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */; };
+		3DCA829E27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */; };
+		3DCA829F27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */; };
 		3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D3BF4D0233D5E9100D0C482 /* Localizable.strings */; };
 		3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
 		3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */; };
@@ -476,8 +486,9 @@
 		3D40823E27F66C95004C146B /* lwip.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = lwip.xcframework; path = Carthage/Build/lwip.xcframework; sourceTree = "<group>"; };
 		3D40824427F66C95004C146B /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
 		3D40824527F66C95004C146B /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
-		3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Dnscryptproxy.xcframework; sourceTree = "<group>"; };
-		3D40826227F675F6004C146B /* config.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.toml; sourceTree = "<group>"; };
+		3D40826227F675F6004C146B /* dnscrypt-proxy.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dnscrypt-proxy.toml"; sourceTree = "<group>"; };
+		3D40826827F6A03F004C146B /* DNSCryptThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSCryptThread.swift; sourceTree = "<group>"; };
+		3D40826E27FD0A5B004C146B /* blocked-names.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "blocked-names.txt"; sourceTree = "<group>"; };
 		3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
@@ -574,6 +585,7 @@
 		3DCA4F3022F190AE0017740D /* ClientModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModels.swift; sourceTree = "<group>"; };
 		3DCA4F3222F22CB40017740D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3DCA4F4022F252720017740D /* FirewallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallController.swift; sourceTree = "<group>"; };
+		3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dnscryptproxy.framework; path = "Dnscryptproxy.xcframework/ios-arm64/Dnscryptproxy.framework"; sourceTree = "<group>"; };
 		3DCBC8FF25425AB200446C98 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3DCBC90025425AB200446C98 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		3DCBC90125425AB200446C98 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -737,10 +749,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D92FF6126CB8FA0008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */,
-				3D40825927F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */,
 				3DBD57CD22FD7AE400DE189F /* CloudKit.framework in Frameworks */,
 				3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */,
 				3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
+				3DCA829E27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */,
 				3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */,
 				3D40824927F66C95004C146B /* lwip.xcframework in Frameworks */,
 				3D40825327F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */,
@@ -763,8 +775,8 @@
 			files = (
 				7C9A936E251E1EC700DA5721 /* SwiftUI.framework in Frameworks */,
 				3D40824A27F66C95004C146B /* lwip.xcframework in Frameworks */,
+				3DCA829F27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */,
 				7C9A936C251E1EC700DA5721 /* WidgetKit.framework in Frameworks */,
-				3D40825A27F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */,
 				3D40825427F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				3D40824F27F66C95004C146B /* CocoaLumberjack.xcframework in Frameworks */,
 			);
@@ -783,10 +795,10 @@
 				3D201E7426CC8C5E00F2CC0E /* tun2socks.xcframework in Frameworks */,
 				A18B31F92087ED7900C0FFAA /* CloudKit.framework in Frameworks */,
 				3D40824B27F66C95004C146B /* CocoaLumberjack.xcframework in Frameworks */,
-				3D40825627F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */,
 				3D201E6D26CC8C5D00F2CC0E /* Resolver.xcframework in Frameworks */,
 				3D40824627F66C95004C146B /* lwip.xcframework in Frameworks */,
 				3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */,
+				3DCA829B27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */,
 				3D201E7B26CC8C6000F2CC0E /* Yaml.xcframework in Frameworks */,
 				3D8A254C27487B35001B99E1 /* NEKit.framework in Frameworks */,
 				2DDD126D8F073FC42E1C6A28 /* Pods_Lockdown.framework in Frameworks */,
@@ -798,10 +810,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D92FF4226CB8F96008458C0 /* CocoaLumberjackSwift.xcframework in Frameworks */,
-				3D40825727F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */,
 				3DAF907A22EFD70900FB29E0 /* NetworkExtension.framework in Frameworks */,
 				A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */,
 				3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
+				3DCA829C27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */,
 				A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */,
 				3D40824727F66C95004C146B /* lwip.xcframework in Frameworks */,
 				3D40825127F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */,
@@ -821,12 +833,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DCA829D27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */,
 				3D201E9626CC8C6900F2CC0E /* Resolver.xcframework in Frameworks */,
 				3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */,
 				3D201E8226CC8C6400F2CC0E /* CocoaLumberjack.xcframework in Frameworks */,
 				3D40825227F66C95004C146B /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				3D40824D27F66C95004C146B /* CocoaLumberjack.xcframework in Frameworks */,
-				3D40825827F66D64004C146B /* Dnscryptproxy.xcframework in Frameworks */,
 				3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */,
 				3D8A254E27487B3C001B99E1 /* NEKit.framework in Frameworks */,
 				3D40824827F66C95004C146B /* lwip.xcframework in Frameworks */,
@@ -1139,7 +1151,8 @@
 			children = (
 				3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */,
 				7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */,
-				3D40826227F675F6004C146B /* config.toml */,
+				3D40826227F675F6004C146B /* dnscrypt-proxy.toml */,
+				3D40826E27FD0A5B004C146B /* blocked-names.txt */,
 				3D3BF4D0233D5E9100D0C482 /* Localizable.strings */,
 				3D5464D223037CCA00AE1F73 /* Settings.bundle */,
 				A11E78A21F6A33C5007499CA /* Shared */,
@@ -1193,7 +1206,7 @@
 		A1141A421F46233600F54698 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3D40825527F66D64004C146B /* Dnscryptproxy.xcframework */,
+				3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */,
 				3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */,
 				3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */,
 				3D92FEC326CB8C74008458C0 /* CocoaLumberjackSwift.xcframework */,
@@ -1331,6 +1344,7 @@
 			isa = PBXGroup;
 			children = (
 				A1FCDA4322C0651300C928BC /* PacketTunnelProvider.swift */,
+				3D40826827F6A03F004C146B /* DNSCryptThread.swift */,
 				A1FCDA4522C0651300C928BC /* Info.plist */,
 				A1FCDA4622C0651300C928BC /* LockdownTunnel.entitlements */,
 			);
@@ -1725,8 +1739,9 @@
 			files = (
 				3D94AB0F22FE0CF60012B0DE /* Assets.xcassets in Resources */,
 				3D3BF4CE233D5E9100D0C482 /* Localizable.strings in Resources */,
-				3D40826627F675F6004C146B /* config.toml in Resources */,
+				3D40826627F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */,
+				3D40827227FD0A5B004C146B /* blocked-names.txt in Resources */,
 				3D5464D62303839500AE1F73 /* Settings.bundle in Resources */,
 				601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */,
 				388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */,
@@ -1752,9 +1767,10 @@
 				7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */,
 				7C0156572521C2F200670CB5 /* Montserrat-Regular.ttf in Resources */,
 				3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */,
+				3D40827327FD0A5B004C146B /* blocked-names.txt in Resources */,
 				7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */,
 				7C0156592521C2F200670CB5 /* Montserrat-Thin.ttf in Resources */,
-				3D40826727F675F6004C146B /* config.toml in Resources */,
+				3D40826727F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1798,10 +1814,11 @@
 				3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */,
 				3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */,
 				3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */,
+				3D40826F27FD0A5B004C146B /* blocked-names.txt in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
 				7C3EFA042486879800719D96 /* tracker_info.json in Resources */,
 				A1141A1A1F46230500F54698 /* Main.storyboard in Resources */,
-				3D40826327F675F6004C146B /* config.toml in Resources */,
+				3D40826327F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				3D5464D323037CCA00AE1F73 /* Settings.bundle in Resources */,
 				20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */,
 				C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */,
@@ -1814,8 +1831,9 @@
 			files = (
 				A1DD82BE1FE446CA00482632 /* Assets.xcassets in Resources */,
 				3D3BF4CD233D5E9100D0C482 /* Localizable.strings in Resources */,
-				3D40826427F675F6004C146B /* config.toml in Resources */,
+				3D40826427F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */,
+				3D40827027FD0A5B004C146B /* blocked-names.txt in Resources */,
 				3D5464D42303839200AE1F73 /* Settings.bundle in Resources */,
 				90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */,
 				1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */,
@@ -1839,9 +1857,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5464D52303839400AE1F73 /* Settings.bundle in Resources */,
+				3D40827127FD0A5B004C146B /* blocked-names.txt in Resources */,
 				5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */,
 				5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */,
-				3D40826527F675F6004C146B /* config.toml in Resources */,
+				3D40826527F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2055,6 +2074,7 @@
 				3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */,
 				3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */,
 				7CE91C862521D5B7009D8269 /* Metrics.swift in Sources */,
+				3D40826C27F6A03F004C146B /* DNSCryptThread.swift in Sources */,
 				7C44081E2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2082,6 +2102,7 @@
 				3DAF73612768584200D97BB0 /* PushNotifications.swift in Sources */,
 				3DAF73632768584D00D97BB0 /* PushNotificationsAuthorization.swift in Sources */,
 				3DAF73562768572300D97BB0 /* FirewallUtilities.swift in Sources */,
+				3D40826D27F6A03F004C146B /* DNSCryptThread.swift in Sources */,
 				7CE91C9A2521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				7CE91C692521D566009D8269 /* UserDefaults.swift in Sources */,
 				3DAF73602768583700D97BB0 /* OneTimeActions.swift in Sources */,
@@ -2098,6 +2119,7 @@
 				3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */,
 				3D47CDB622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				7C6619BC247810E2005E8BB1 /* BlockDayLog.swift in Sources */,
+				3D40826927F6A03F004C146B /* DNSCryptThread.swift in Sources */,
 				3D47CDD622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				3D5561D4230B58F30062001D /* PrivacyPolicyViewController.swift in Sources */,
 				3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
@@ -2237,6 +2259,7 @@
 				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
 				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
 				7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */,
+				3D40826A27F6A03F004C146B /* DNSCryptThread.swift in Sources */,
 				7C44081C2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2267,6 +2290,7 @@
 				7CE91C672521D565009D8269 /* UserDefaults.swift in Sources */,
 				7C6619BF247810EF005E8BB1 /* BlockDayLog.swift in Sources */,
 				7C1AE07C247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
+				3D40826B27F6A03F004C146B /* DNSCryptThread.swift in Sources */,
 				3DABD9FD22F7961F00480AAC /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2381,6 +2405,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
@@ -2417,6 +2442,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
@@ -2506,6 +2532,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2540,6 +2570,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2691,13 +2725,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2729,13 +2764,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2772,6 +2808,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
@@ -2814,6 +2851,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
@@ -2911,10 +2949,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2947,10 +2986,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

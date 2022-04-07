@@ -1,0 +1,47 @@
+server_names = [ ]
+listen_addresses = [ "127.0.0.1:53", "[::1]:53" ]
+ipv4_servers = true
+ipv6_servers = true
+max_clients = 250
+dnscrypt_servers = true
+doh_servers = true
+require_dnssec = false
+require_nolog = false
+require_nofilter = false
+force_tcp = false
+timeout = 2_500
+cert_refresh_delay = 240
+block_ipv6 = false
+cache = true
+cache_size = 256
+cache_min_ttl = 600
+cache_max_ttl = 86_400
+cache_neg_ttl = 60
+tls_disable_session_tickets = false
+dnscrypt_ephemeral_keys = false
+fallback_resolver = "9.9.9.9:53"
+ignore_system_dns = false
+log_files_max_size = 10
+log_files_max_age = 7
+log_files_max_backups = 1
+max_workers = 25
+netprobe_timeout = 0
+log_level = 2
+ios_mode = true
+retry_count = 5
+
+[sources.public-resolvers]
+urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
+cache_file = 'public-resolvers.md'
+minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+refresh_delay = 72
+prefix = ''
+
+[blacklist]
+blacklist_file = "BLACKLIST_FILE_HERE"
+log_file = "BLACKLIST_LOG_HERE"
+log_format = "tsv"
+
+[static]
+    [static.'myserver']
+    stamp = 'sdns://AQYAAAAAAAAACTI0MC4wLjAuMAAQMi5kbnNjcnlwdC1jZXJ0Lg'
