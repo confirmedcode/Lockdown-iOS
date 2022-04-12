@@ -111,13 +111,13 @@ class VPNController: NSObject {
             self.manager.isEnabled = true
             self.manager.isOnDemandEnabled = true
             var onDemandRules:[NEOnDemandRule] = [];
-            let whitelist = getAllWhitelistedDomains()
-            if whitelist.count > 0 {
-                let disconnectDomainRule = NEEvaluateConnectionRule(matchDomains: getAllWhitelistedDomains(), andAction: .neverConnect)
-                let disconnectRule = NEOnDemandRuleEvaluateConnection()
-                disconnectRule.connectionRules = [disconnectDomainRule]
-                onDemandRules.append(disconnectRule)
-            }
+//            let whitelist = getAllWhitelistedDomains()
+//            if whitelist.count > 0 {
+//                let disconnectDomainRule = NEEvaluateConnectionRule(matchDomains: getAllWhitelistedDomains(), andAction: .neverConnect)
+//                let disconnectRule = NEOnDemandRuleEvaluateConnection()
+//                disconnectRule.connectionRules = [disconnectDomainRule]
+//                onDemandRules.append(disconnectRule)
+//            }
             let connectRule = NEOnDemandRuleConnect()
             connectRule.interfaceTypeMatch = .any
             onDemandRules.append(connectRule)

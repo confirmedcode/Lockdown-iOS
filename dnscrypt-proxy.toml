@@ -38,8 +38,8 @@ refresh_delay = 72
 prefix = ''
 
 [blacklist]
-blacklist_file = "BLACKLIST_FILE_HERE"
-log_file = "BLACKLIST_LOG_HERE"
+blacklist_file = "BLOCKLIST_FILE_HERE"
+log_file = "BLOCKLIST_LOG_HERE"
 log_format = "tsv"
 
 [static]
