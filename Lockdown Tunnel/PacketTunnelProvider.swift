@@ -167,14 +167,42 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         exit(EXIT_SUCCESS);
     }
     
-//    override func sleep(completionHandler: @escaping () -> Void) {
-//        completionHandler();
-//    }
-//
-//    override func wake() {
-//        super.wake()
-//        // TODO: reactivate, etc
-//    }
+    override func sleep(completionHandler: @escaping () -> Void) {
+        completionHandler();
+    }
+
+    override func wake() {
+        super.wake()
+        reactivateTunnel()
+    }
+    
+    func reactivateTunnel() {
+        
+        reasserting = true
+        
+        _dns.closeIdleConnections()
+        _dns.stopApp()
+        _dns.start()
+        
+        let networkSettings = getNetworkSettings()
+        
+        self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
+            if (error != nil) {
+                self.reasserting = false
+            } else {
+                self.reasserting = false
+                // TODO: reload NEKit too?
+                //let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+                //self.proxyServer = newProxyServer
+//                do {
+//                    try self.proxyServer.start()
+//                    self.reasserting = false
+//                } catch let proxyError {
+//                    self.reasserting = false
+//                }
+            }
+        })
+    }
     
     // TODO: reachability
     
