@@ -23,6 +23,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         let dnsSettings = NEDNSSettings(servers:["127.0.0.1"])
         dnsSettings.matchDomains = [""];
+        
+        //var ipv4Settings = NEIPv4Settings(addresses: ["192.0.2.1"], subnetMasks: "255.255.255.0")
+        //networkSettings.ipv4Settings = ipv4Settings;
+        
         networkSettings.dnsSettings = dnsSettings;
         
         return networkSettings;
@@ -46,13 +50,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         print("blocklistFilepath")
         print(blocklistFile!.absoluteString)
         
-        var sharedDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
+        let fileManager = FileManager.default
+        
+        var sharedDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
         
         // create directory if not exists
         let filePath = sharedDir!.appendingPathComponent("dnscrypt")
         if !FileManager.default.fileExists(atPath: filePath.path) {
             do {
-                try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 let e = error
             }
@@ -60,41 +66,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
         // copy blocklist file into shared dir and check its content
         var newContentFile = sharedDir!.appendingPathComponent("blacklist.txt")
-        
-        do {
-            let directoryContents = try FileManager.default.contentsOfDirectory(
-                at: sharedDir!,
-                includingPropertiesForKeys: nil
-            )
-            var cont = ""
-            for url in directoryContents {
-                cont = cont + "\n" + url.absoluteString
+        var newContentFilePath = newContentFile.path;
+        if fileManager.fileExists(atPath: newContentFile.path){
+            do{
+                try fileManager.removeItem(atPath: newContentFile.path)
+            }catch let error {
+                print("error occurred, here are the details:\n \(error)")
             }
-            let z = cont
-            let dfsd = "abc"
-        }
-        catch {
-            let e = error
         }
         
-        var errorPtr: NSErrorPointer = nil
-        DnscryptproxyFillPatternlistTrees(newContentFile.absoluteString.replacingOccurrences(of: "file://", with: ""), errorPtr)
-        if let error = errorPtr?.pointee {
-            let zz = error
-        }
-        
-        // show what pre/suff files contents
-        var prefixFile = sharedDir!.appendingPathComponent("blacklist.txt.prefixes")
-        var suffixFile = sharedDir!.appendingPathComponent("blacklist.txt.suffixes")
-        do {
-            let content = try String(contentsOf: prefixFile, encoding: .utf8)
-            let content2 = try String(contentsOf: suffixFile, encoding: .ascii)
-            let a = "blah"
-        }
-        catch {
-            var e = error
-            var zz = e
-        }
         
         do {
             let content = try String(contentsOf: blocklistFile!, encoding: .utf8)
@@ -117,6 +97,43 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         catch {
             var e = error
         }
+        
+        //clear prefix suffix files
+        var prefixFile = sharedDir!.appendingPathComponent("blacklist.txt.prefixes")
+        var suffixFile = sharedDir!.appendingPathComponent("blacklist.txt.suffixes")
+        if fileManager.fileExists(atPath: prefixFile.path){
+            do{
+                try fileManager.removeItem(atPath: prefixFile.path)
+            }catch let error {
+                print("error occurred, here are the details:\n \(error)")
+            }
+        }
+        if fileManager.fileExists(atPath: suffixFile.path){
+            do{
+                try fileManager.removeItem(atPath: suffixFile.path)
+            }catch let error {
+                print("error occurred, here are the details:\n \(error)")
+            }
+        }
+        
+        // fill new pre/suff files
+        var errorPtr: NSErrorPointer = nil
+        DnscryptproxyFillPatternlistTrees(newContentFile.path, errorPtr)
+        if let error = errorPtr?.pointee {
+            let zz = error
+        }
+        
+        // show what pre/suff files contents
+        do {
+            let content = try String(contentsOf: prefixFile, encoding: .utf8)
+            let content2 = try String(contentsOf: suffixFile, encoding: .ascii)
+            let a = "blah"
+        }
+        catch {
+            var e = error
+            var zz = e
+        }
+        
         
         
         
@@ -168,6 +185,24 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
         }
         
+        // print the directory to see what's there
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(
+                at: sharedDir!,
+                includingPropertiesForKeys: nil
+            )
+            var cont = ""
+            for url in directoryContents {
+                cont = cont + "\n" + url.absoluteString
+            }
+            let z = cont
+            let dfsd = "abc"
+        }
+        catch {
+            let e = error
+        }
+        
+        
         let networkSettings = getNetworkSettings()
         
         _dns = DNSCryptThread(arguments: [replacedConfigURL.path]);
@@ -190,13 +225,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         exit(EXIT_SUCCESS);
     }
     
-    override func sleep(completionHandler: @escaping () -> Void) {
-        completionHandler();
-    }
-
-    override func wake() {
-        // TODO: reactivate, etc
-    }
+//    override func sleep(completionHandler: @escaping () -> Void) {
+//        completionHandler();
+//    }
+//
+//    override func wake() {
+//        super.wake()
+//        // TODO: reactivate, etc
+//    }
     
     // TODO: reachability
     
