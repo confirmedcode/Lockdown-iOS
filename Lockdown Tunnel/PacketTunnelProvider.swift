@@ -15,11 +15,28 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     var _dns: DNSCryptThread!;
     
-    //MARK: - OVERRIDES
+    var proxyServer: GCDHTTPProxyServer!
+    
+    let proxyServerPort: UInt16 = 9090;
+    let proxyServerAddress = "127.0.0.1";
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         
+        if proxyServer != nil {
+            proxyServer.stop()
+        }
+        proxyServer = nil
+        
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
+        
+        let proxySettings = NEProxySettings()
+        proxySettings.httpEnabled = true;
+        proxySettings.httpServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
+        proxySettings.httpsEnabled = true;
+        proxySettings.httpsServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
+        proxySettings.excludeSimpleHostnames = false;
+        proxySettings.exceptionList = []
+        proxySettings.matchDomains = getAllWhitelistedDomains() + [testFirewallDomain]
         
         let dnsSettings = NEDNSSettings(servers:["127.0.0.1"])
         dnsSettings.matchDomains = [""];
@@ -28,6 +45,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         //networkSettings.ipv4Settings = ipv4Settings;
         
         networkSettings.dnsSettings = dnsSettings;
+        networkSettings.proxySettings = proxySettings;
         
         return networkSettings;
     }
@@ -129,13 +147,22 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             if (error != nil) {
                 completionHandler(error);
             } else {
-                completionHandler(nil);
+                let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
+                self.proxyServer = newProxyServer
+                do {
+                    try self.proxyServer.start()
+                    completionHandler(nil);
+                } catch let proxyError {
+                    completionHandler(proxyError)
+                }
             }
         })
         
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+        proxyServer.stop()
+        proxyServer = nil
         completionHandler();
         exit(EXIT_SUCCESS);
     }
