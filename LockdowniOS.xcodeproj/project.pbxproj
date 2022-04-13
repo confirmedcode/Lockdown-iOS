@@ -202,6 +202,7 @@
 		3DD3D09626CC8714002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
 		3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
+		3DD545D628068AC5005E140C /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD545CD280681AA005E140C /* libresolv.9.tbd */; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
@@ -595,6 +596,8 @@
 		3DCBC90B25425BC900446C98 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DCBC90C25425BC900446C98 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marketing_beta.txt; sourceTree = "<group>"; };
+		3DD545CD280681AA005E140C /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		3DD545D428068233005E140C /* LockdownTunnelBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockdownTunnelBridgingHeader.h; sourceTree = "<group>"; };
 		3DE443FA25353453006DF67D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DE443FE253534C7006DF67D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
@@ -833,6 +836,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DD545D628068AC5005E140C /* libresolv.9.tbd in Frameworks */,
 				3DCA829D27FD607A00EA75CD /* Dnscryptproxy.framework in Frameworks */,
 				3D201E9626CC8C6900F2CC0E /* Resolver.xcframework in Frameworks */,
 				3D201EA426CC8C6C00F2CC0E /* Yaml.xcframework in Frameworks */,
@@ -1206,6 +1210,7 @@
 		A1141A421F46233600F54698 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DD545CD280681AA005E140C /* libresolv.9.tbd */,
 				3DCA829A27FD607A00EA75CD /* Dnscryptproxy.framework */,
 				3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */,
 				3D92FEC226CB8C74008458C0 /* CocoaLumberjack.xcframework */,
@@ -1347,6 +1352,7 @@
 				3D40826827F6A03F004C146B /* DNSCryptThread.swift */,
 				A1FCDA4522C0651300C928BC /* Info.plist */,
 				A1FCDA4622C0651300C928BC /* LockdownTunnel.entitlements */,
+				3DD545D428068233005E140C /* LockdownTunnelBridgingHeader.h */,
 			);
 			path = "Lockdown Tunnel";
 			sourceTree = "<group>";
@@ -2962,9 +2968,29 @@
 				MARKETING_VERSION = 1.3.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"PromiseKit\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SwiftyStoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "./Lockdown Tunnel/LockdownTunnelBridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2998,9 +3024,29 @@
 				);
 				MARKETING_VERSION = 1.3.3;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"PromiseKit\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SwiftyStoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "./Lockdown Tunnel/LockdownTunnelBridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

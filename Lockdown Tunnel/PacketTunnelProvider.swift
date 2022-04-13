@@ -8,6 +8,7 @@
 import NetworkExtension
 import NEKit
 import Dnscryptproxy
+import Network
 
 var latestBlockedDomains = getAllBlockedDomains()
 
@@ -20,14 +21,31 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let proxyServerPort: UInt16 = 9090;
     var proxyServer: GCDHTTPProxyServer!
     
+    let monitor = NWPathMonitor()
+    
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         // usleep(10000000)
+        
+//        monitor.pathUpdateHandler = { path in
+//            if path.status == .satisfied {
+//                print("We're connected!")
+//            } else {
+//                print("No connection.")
+//            }
+//            print(path.isExpensive)
+//
+//            let servers = Resolver().getservers().map(Resolver.getnameinfo)
+//            print(servers)
+//        }
+//
+//        let queue = DispatchQueue(label: "Monitor")
+//        monitor.start(queue: queue)
         
         let networkSettings = getNetworkSettings();
         
         initializeDns();
         initializeProxy();
-        
+
         startDns();
         if let proxyError = startProxy() {
             return completionHandler(proxyError)
@@ -71,7 +89,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.httpsServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
-        proxySettings.matchDomains = getAllWhitelistedDomains() + [testFirewallDomain]
+        proxySettings.matchDomains = getAllWhitelistedDomains()
         networkSettings.proxySettings = proxySettings;
         
         let dnsSettings = NEDNSSettings(servers: [dnsServerAddress])
@@ -257,6 +275,48 @@ extension PacketTunnelProvider {
         }
     }
     #endif
+}
+
+open class Resolver {
+
+    fileprivate var state = __res_9_state()
+
+    public init() {
+        res_9_ninit(&state)
+    }
+
+    deinit {
+        res_9_ndestroy(&state)
+    }
+
+    public final func getservers() -> [res_9_sockaddr_union] {
+
+        let maxServers = 10
+        var servers = [res_9_sockaddr_union](repeating: res_9_sockaddr_union(), count: maxServers)
+        let found = Int(res_9_getservers(&state, &servers, Int32(maxServers)))
+
+        // filter is to remove the erroneous empty entry when there's no real servers
+       return Array(servers[0 ..< found]).filter() { $0.sin.sin_len > 0 }
+    }
+}
+
+extension Resolver {
+    public static func getnameinfo(_ s: res_9_sockaddr_union) -> String {
+        var s = s
+        var hostBuffer = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+
+        let sinlen = socklen_t(s.sin.sin_len)
+        let _ = withUnsafePointer(to: &s) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                Darwin.getnameinfo($0, sinlen,
+                                   &hostBuffer, socklen_t(hostBuffer.count),
+                                   nil, 0,
+                                   NI_NUMERICHOST)
+            }
+        }
+
+        return String(cString: hostBuffer)
+    }
 }
 
 extension NEProviderStopReason: CustomDebugStringConvertible {
