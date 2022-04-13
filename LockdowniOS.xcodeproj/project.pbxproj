@@ -203,7 +203,6 @@
 		3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
 		3DD545D628068AC5005E140C /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD545CD280681AA005E140C /* libresolv.9.tbd */; };
-		3DD545D7280748DE005E140C /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
@@ -2287,7 +2286,6 @@
 				7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
 				3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */,
-				3DD545D7280748DE005E140C /* VPNController.swift in Sources */,
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
 				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,

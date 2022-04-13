@@ -23,7 +23,13 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     let monitor = NWPathMonitor()
     
+    func log(_ str: String) {
+        PacketTunnelProviderLogs.log(str)
+    }
+    
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+        log("===== startTunnel")
+        
         // usleep(10000000)
         
 //        monitor.pathUpdateHandler = { path in
@@ -48,13 +54,17 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
         startDns();
         if let proxyError = startProxy() {
+            log("ERROR - Failed to start proxy: \(proxyError)")
             return completionHandler(proxyError)
         }
         
+        log("Calling setTunnelNetworkSettings")
         self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
             if (error != nil) {
+                self.log("ERROR - StartTunnel \(error)")
                 completionHandler(error);
             } else {
+                self.log("No error on setTunnelNetworkSettings")
                 completionHandler(nil);
             }
         })
@@ -62,22 +72,21 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+        self.log("===== stopTunnel")
         stopProxyServer()
         stopDnsServer()
+        self.log("stopTunnel completionHandler, exit")
         completionHandler();
         exit(EXIT_SUCCESS);
     }
 
     override func wake() {
+        log("===== wake")
         reactivateTunnel()
     }
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
-        
-        if proxyServer != nil {
-            proxyServer.stop()
-        }
-        proxyServer = nil
+        log("===== getNetworkSettings")
         
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: dnsServerAddress)
         
@@ -102,6 +111,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     func initializeAndReturnConfigPath() -> String {
+        log("===== initializeAndReturnConfigPath")
         
         let fileManager = FileManager.default
         let configFile = Bundle.main.url(forResource: "dnscrypt-proxy", withExtension: "toml")
@@ -110,60 +120,68 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
         // remove blocklist if it exists
         let newContentFile = sharedDir!.appendingPathComponent("blocklist.txt")
-        if fileManager.fileExists(atPath: newContentFile.path){
-            do{
+        if fileManager.fileExists(atPath: newContentFile.path) {
+            log("blocklist.txt exists")
+            do {
                 try fileManager.removeItem(atPath: newContentFile.path)
-            } catch let error {
-                print("error occurred, here are the details:\n \(error)")
+                log("removed old blocklist.txt")
+            } catch {
+                log("ERROR - couldnt remove old blocklist.txt: \(error)")
             }
         }
         
         // copy blocklist file into shared dir
         do {
             let content = try String(contentsOf: blocklistFile!, encoding: .utf8)
+            log("loaded blocklist.txt")
             do {
                 try content.write(to: newContentFile, atomically: true, encoding: .utf8)
+                log("wrote content to blocklist.txt")
             }
             catch {
-                var e = error
+                log("ERROR - couldnt write content to blocklist.txt: \(error)")
             }
         }
         catch {
-            var e = error
+            log("ERROR - couldnt read blocklist.txt file: \(error)")
         }
         
         // clear prefix suffix files
         let prefixFile = sharedDir!.appendingPathComponent("blacklist.txt.prefixes")
         let suffixFile = sharedDir!.appendingPathComponent("blacklist.txt.suffixes")
         if fileManager.fileExists(atPath: prefixFile.path){
-            do{
+            log("prefix file exists at: \(prefixFile.path)")
+            do {
                 try fileManager.removeItem(atPath: prefixFile.path)
-            } catch let error {
-                print("error occurred, here are the details:\n \(error)")
+                log("prefix file removed at: \(prefixFile.path)")
+            } catch {
             }
         }
         if fileManager.fileExists(atPath: suffixFile.path){
-            do{
+            do {
                 try fileManager.removeItem(atPath: suffixFile.path)
-            } catch let error {
-                print("error occurred, here are the details:\n \(error)")
+                log("suffix file removed at: \(suffixFile.path)")
+            } catch {
+                log("ERROR - error removing suffix file: \(error)")
             }
         }
         
         // create new prefix/suffix files
         let errorPtr: NSErrorPointer = nil
+        log("filling in prefix/suffix files at: \(newContentFile.path)")
         DnscryptproxyFillPatternlistTrees(newContentFile.path, errorPtr)
         if let error = errorPtr?.pointee {
-            let e = error;
+            log("ERROR - filling in prefix/suffix files: \(error)")
         }
         
         // read config file template
         var configFileText = ""
         do {
             configFileText = try String(contentsOf: configFile!, encoding: .utf8)
+            log("Read config file template")
         }
         catch {
-            let e = error
+            log("ERROR - couldn't read config file template text at: \(configFile!.path)")
         }
         
         // replace BLOCKLIST_FILE_HERE and BLOCKLIST_LOG_HERE with urls of blocklist file/log
@@ -173,80 +191,102 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // write replaced string to new file
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             replacedConfigURL = dir.appendingPathComponent("replaced-config.toml")
+            log("replaced config file url: \(replacedConfigURL.path)")
             do {
                 try replacedConfig.write(to: replacedConfigURL, atomically: false, encoding: .utf8)
+                log("replaced config written")
             }
             catch {
-                let e = error
+                log("ERROR - couldn't write replaced config: \(error)")
             }
         }
+        log("returning replacedConfigURL \(replacedConfigURL)")
         return replacedConfigURL.path
     }
     
     func initializeDns() {
+        log("===== initialize DNS server")
         stopDnsServer()
+        log("initializing DNSCryptThread")
         _dns = DNSCryptThread(arguments: [initializeAndReturnConfigPath()]);
     }
     
     func initializeProxy() {
+        log("===== initialize proxy server")
         stopProxyServer()
+        log("initializing GCDHTTPProxyServer")
         proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
     }
     
     func startProxy() -> Error? {
+        log("===== startProxy")
         do {
             try self.proxyServer.start()
+            log("started proxyServer")
             return nil
-        } catch let proxyError {
-            return proxyError
+        } catch {
+            log("ERROR - couldnt start proxyServer")
+            return error
         }
     }
     
     func startDns() {
+        log("===== startDns")
         _dns.start()
     }
     
     func stopDnsServer() {
+        log("===== stopDnsServer")
         if (_dns != nil) {
+            log("dns is not nil")
+            log("dns closing idle connections")
             _dns.closeIdleConnections()
+            log("dns stopApp")
             _dns.stopApp()
+            log("dns set to nil")
             _dns = nil
         }
     }
     
     func stopProxyServer() {
+        log("===== stopProxyServer")
         if (proxyServer != nil) {
+            log("proxyServer is not nil")
+            log("proxyServer stop")
             proxyServer.stop()
+            log("proxyServer nil")
             proxyServer = nil
         }
     }
     
     func reactivateTunnel() {
-        
+        log("===== reactivateTunnel, reasserting true")
         reasserting = true
         
-        stopProxyServer()
         stopDnsServer()
+        stopProxyServer()
         
+        initializeDns()
         startDns()
-        if let proxyError = startProxy() {
-            // TODO: error handling
+        
+        initializeProxy()
+        if let error = startProxy() {
+            log("ERROR - failed starting proxy \(error)")
         }
         
         let networkSettings = getNetworkSettings()
         
         self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
             if (error != nil) {
-                // TODO: error
+                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error)")
             }
-            if (getUserWantsVPNEnabled()) {
-                VPNController.shared.restart()
-            }
+            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasseting false")
             self.reasserting = false
         })
     }
     
     override func cancelTunnelWithError(_ error: Error?) {
+        log("===== cancelTunnelWithError: \(error)")
         // somehow the tunnel failed. kill everything so it can restart again
         stopTunnel(with: .none, completionHandler: {} )
     }
