@@ -13,12 +13,47 @@ var latestBlockedDomains = getAllBlockedDomains()
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
+    let dnsServerAddress = "127.0.0.1"
     var _dns: DNSCryptThread!;
     
+    let proxyServerAddress = "127.0.0.1";
+    let proxyServerPort: UInt16 = 9090;
     var proxyServer: GCDHTTPProxyServer!
     
-    let proxyServerPort: UInt16 = 9090;
-    let proxyServerAddress = "127.0.0.1";
+    override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+        // usleep(10000000)
+        
+        let networkSettings = getNetworkSettings();
+        
+        initializeDns();
+        initializeProxy();
+        
+        startDns();
+        if let proxyError = startProxy() {
+            return completionHandler(proxyError)
+        }
+        
+        self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
+            if (error != nil) {
+                completionHandler(error);
+            } else {
+                completionHandler(nil);
+            }
+        })
+        
+    }
+    
+    override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+        stopProxyServer()
+        stopDnsServer()
+        completionHandler();
+        exit(EXIT_SUCCESS);
+    }
+
+    override func wake() {
+        super.wake()
+        reactivateTunnel()
+    }
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         
@@ -27,7 +62,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
         proxyServer = nil
         
-        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
+        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: dnsServerAddress)
         
         let proxySettings = NEProxySettings()
         proxySettings.httpEnabled = true;
@@ -37,44 +72,36 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
         proxySettings.matchDomains = getAllWhitelistedDomains() + [testFirewallDomain]
+        networkSettings.proxySettings = proxySettings;
         
-        let dnsSettings = NEDNSSettings(servers:["127.0.0.1"])
+        let dnsSettings = NEDNSSettings(servers: [dnsServerAddress])
         dnsSettings.matchDomains = [""];
+        networkSettings.dnsSettings = dnsSettings;
         
         //var ipv4Settings = NEIPv4Settings(addresses: ["192.0.2.1"], subnetMasks: "255.255.255.0")
         //networkSettings.ipv4Settings = ipv4Settings;
         
-        networkSettings.dnsSettings = dnsSettings;
-        networkSettings.proxySettings = proxySettings;
-        
         return networkSettings;
     }
     
-    func startProxy() {
-        _dns.start()
-    }
-    
-    
-    override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-
-        // usleep(10000000)
+    func initializeAndReturnConfigPath() -> String {
         
         let fileManager = FileManager.default
         let configFile = Bundle.main.url(forResource: "dnscrypt-proxy", withExtension: "toml")
         let blocklistFile = Bundle.main.url(forResource: "blocked-names", withExtension: "txt")
         let sharedDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
 
-        // copy blocklist file into shared dir and check its content
         // remove blocklist if it exists
         let newContentFile = sharedDir!.appendingPathComponent("blocklist.txt")
         if fileManager.fileExists(atPath: newContentFile.path){
             do{
                 try fileManager.removeItem(atPath: newContentFile.path)
-            }catch let error {
+            } catch let error {
                 print("error occurred, here are the details:\n \(error)")
             }
         }
         
+        // copy blocklist file into shared dir
         do {
             let content = try String(contentsOf: blocklistFile!, encoding: .utf8)
             do {
@@ -88,7 +115,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             var e = error
         }
         
-        //clear prefix suffix files
+        // clear prefix suffix files
         let prefixFile = sharedDir!.appendingPathComponent("blacklist.txt.prefixes")
         let suffixFile = sharedDir!.appendingPathComponent("blacklist.txt.suffixes")
         if fileManager.fileExists(atPath: prefixFile.path){
@@ -106,15 +133,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
         }
         
-        // fill new prefix/suffix files
+        // create new prefix/suffix files
         let errorPtr: NSErrorPointer = nil
         DnscryptproxyFillPatternlistTrees(newContentFile.path, errorPtr)
         if let error = errorPtr?.pointee {
             let e = error;
         }
         
+        // read config file template
         var configFileText = ""
-        
         do {
             configFileText = try String(contentsOf: configFile!, encoding: .utf8)
         }
@@ -122,7 +149,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             let e = error
         }
         
-        // replace BLOCKLIST_FILE_HERE with url of blocklist file
+        // replace BLOCKLIST_FILE_HERE and BLOCKLIST_LOG_HERE with urls of blocklist file/log
         let replacedConfig = configFileText.replacingOccurrences(of: "BLOCKLIST_FILE_HERE", with: "\(newContentFile.path)").replacingOccurrences(of: "BLOCKLIST_LOG_HERE", with: "\(sharedDir!.appendingPathComponent("blocklist.log").path)")
         var replacedConfigURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
@@ -136,53 +163,58 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 let e = error
             }
         }
-        
-        let networkSettings = getNetworkSettings()
-        
-        _dns = DNSCryptThread(arguments: [replacedConfigURL.path]);
-        
-        startProxy();
-        
-        self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
-            if (error != nil) {
-                completionHandler(error);
-            } else {
-                let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
-                self.proxyServer = newProxyServer
-                do {
-                    try self.proxyServer.start()
-                    completionHandler(nil);
-                } catch let proxyError {
-                    completionHandler(proxyError)
-                }
-            }
-        })
-        
+        return replacedConfigURL.path
     }
     
-    override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        proxyServer.stop()
-        proxyServer = nil
-        completionHandler();
-        exit(EXIT_SUCCESS);
+    func initializeDns() {
+        stopDnsServer()
+        _dns = DNSCryptThread(arguments: [initializeAndReturnConfigPath()]);
     }
     
-    override func sleep(completionHandler: @escaping () -> Void) {
-        completionHandler();
+    func initializeProxy() {
+        stopProxyServer()
+        proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
     }
-
-    override func wake() {
-        super.wake()
-        reactivateTunnel()
+    
+    func startProxy() -> Error? {
+        do {
+            try self.proxyServer.start()
+            return nil
+        } catch let proxyError {
+            return proxyError
+        }
+    }
+    
+    func startDns() {
+        _dns.start()
+    }
+    
+    func stopDnsServer() {
+        if (_dns != nil) {
+            _dns.closeIdleConnections()
+            _dns.stopApp()
+            _dns = nil
+        }
+    }
+    
+    func stopProxyServer() {
+        if (proxyServer != nil) {
+            proxyServer.stop()
+            proxyServer = nil
+        }
     }
     
     func reactivateTunnel() {
         
         reasserting = true
         
-        _dns.closeIdleConnections()
-        _dns.stopApp()
-        _dns.start()
+        stopProxyServer()
+        stopDnsServer()
+        
+        startDns()
+        if let proxyError = startProxy() {
+            // TODO: error handling
+        }
         
         let networkSettings = getNetworkSettings()
         
@@ -191,15 +223,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 self.reasserting = false
             } else {
                 self.reasserting = false
-                // TODO: reload NEKit too?
-                //let newProxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
-                //self.proxyServer = newProxyServer
-//                do {
-//                    try self.proxyServer.start()
-//                    self.reasserting = false
-//                } catch let proxyError {
-//                    self.reasserting = false
-//                }
             }
         })
     }
