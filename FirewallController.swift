@@ -124,6 +124,7 @@ class FirewallController: NSObject {
             self.manager!.protocolConfiguration?.serverAddress = kFirewallTunnelLocalizedDescription
             self.manager!.isEnabled = enabled
             self.manager!.isOnDemandEnabled = enabled
+            self.manager!.protocolConfiguration?.disconnectOnSleep = false
             
             let connectRule = NEOnDemandRuleConnect()
             connectRule.interfaceTypeMatch = .any

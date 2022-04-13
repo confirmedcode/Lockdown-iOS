@@ -69,7 +69,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
 
     override func wake() {
-        super.wake()
         reactivateTunnel()
     }
     
@@ -238,11 +237,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
             if (error != nil) {
-                self.reasserting = false
-            } else {
-                self.reasserting = false
+                // TODO: error
             }
+            if (getUserWantsVPNEnabled()) {
+                VPNController.shared.restart()
+            }
+            self.reasserting = false
         })
+    }
+    
+    override func cancelTunnelWithError(_ error: Error?) {
+        // somehow the tunnel failed. kill everything so it can restart again
+        stopTunnel(with: .none, completionHandler: {} )
     }
     
     // TODO: reachability
