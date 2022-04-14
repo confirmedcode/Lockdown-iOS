@@ -74,18 +74,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             })
         }
         let queue = DispatchQueue(label: "Monitor")
-        monitor.start(queue: queue)
+        //monitor.start(queue: queue)
         
         let networkSettings = getNetworkSettings();
-        
-        initializeDns();
-        initializeProxy();
-
-        startDns();
-        if let proxyError = startProxy() {
-            log("ERROR - Failed to start proxy: \(proxyError)")
-            return completionHandler(proxyError)
-        }
         
         log("Calling setTunnelNetworkSettings")
         self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
@@ -93,15 +84,27 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 self.log("ERROR - StartTunnel \(error!.localizedDescription)")
                 completionHandler(error);
             } else {
-                self.log("No error on setTunnelNetworkSettings")
-                completionHandler(nil);
+                self.log("No error on setTunnelNetworkSettings, starting dns and proxy")
+                
+                self.initializeDns();
+                self.initializeProxy();
+
+                self.startDns();
+                if let proxyError = self.startProxy() {
+                    self.log("ERROR - Failed to start proxy: \(proxyError)")
+                    completionHandler(proxyError)
+                }
+                else {
+                    self.log("SUCCESS - startTunnel")
+                    completionHandler(nil);
+                }
             }
         })
         
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        self.log("===== stopTunnel")
+        self.log("+++++ stopTunnel")
         stopProxyServer()
         stopDnsServer()
         self.log("stopTunnel completionHandler, exit")
