@@ -39,41 +39,41 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // usleep(10000000)
         
         // reachability equivalent
-        monitor.pathUpdateHandler = { path in
-            if (self.dateOfLastReachabilityCheck.timeIntervalSince(Date()) < 20) {
-                self.log("REACHABILITY - did this < 20 seconds ago, not calling it again")
-                return
-            }
-            self.dateOfLastReachabilityCheck = Date()
-            
-            if path.status == .satisfied {
-                self.log("REACHABILITY - We're connected!")
-            } else {
-                self.log("REACHABILITY - No connection.")
-            }
-            self.log("REACHABILITY status: \(path.status)")
-            self.log("REACHABILITY is Cellular: \(path.isExpensive)")
-            self.log("REACHABILITY supports dns: \(path.supportsDNS)")
-            self.log("REACHABILITY supports ipv4: \(path.supportsIPv4)")
-            self.log("REACHABILITY supports ipv6: \(path.supportsIPv6)")
-            for interf in path.availableInterfaces {
-                self.log("interface: \(interf.name) - \(interf.debugDescription)")
-            }
-
-            let servers = Resolver().getservers().map(Resolver.getnameinfo)
-            self.log("REACHABILITY DNS Servers: \(servers)")
-            
-            self.log("setting reasserting to true")
-            self.reasserting = true
-            self.log("setting tunnelsettings to nil")
-            self.setTunnelNetworkSettings(nil, completionHandler: {
-                error in
-                if (error != nil) {
-                    self.log("ERROR - couldnt set tunnelsettings to nil: \(error!.localizedDescription)")
-                }
-            })
-        }
-        let queue = DispatchQueue(label: "Monitor")
+//        monitor.pathUpdateHandler = { path in
+//            if (self.dateOfLastReachabilityCheck.timeIntervalSince(Date()) < 20) {
+//                self.log("REACHABILITY - did this < 20 seconds ago, not calling it again")
+//                return
+//            }
+//            self.dateOfLastReachabilityCheck = Date()
+//
+//            if path.status == .satisfied {
+//                self.log("REACHABILITY - We're connected!")
+//            } else {
+//                self.log("REACHABILITY - No connection.")
+//            }
+//            self.log("REACHABILITY status: \(path.status)")
+//            self.log("REACHABILITY is Cellular: \(path.isExpensive)")
+//            self.log("REACHABILITY supports dns: \(path.supportsDNS)")
+//            self.log("REACHABILITY supports ipv4: \(path.supportsIPv4)")
+//            self.log("REACHABILITY supports ipv6: \(path.supportsIPv6)")
+//            for interf in path.availableInterfaces {
+//                self.log("interface: \(interf.name) - \(interf.debugDescription)")
+//            }
+//
+//            let servers = Resolver().getservers().map(Resolver.getnameinfo)
+//            self.log("REACHABILITY DNS Servers: \(servers)")
+//
+//            self.log("setting reasserting to true")
+//            self.reasserting = true
+//            self.log("setting tunnelsettings to nil")
+//            self.setTunnelNetworkSettings(nil, completionHandler: {
+//                error in
+//                if (error != nil) {
+//                    self.log("ERROR - couldnt set tunnelsettings to nil: \(error!.localizedDescription)")
+//                }
+//            })
+//        }
+//        let queue = DispatchQueue(label: "Monitor")
         //monitor.start(queue: queue)
         
         let networkSettings = getNetworkSettings();
@@ -217,19 +217,16 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         // replace BLOCKLIST_FILE_HERE and BLOCKLIST_LOG_HERE with urls of blocklist file/log
         let replacedConfig = configFileText.replacingOccurrences(of: "BLOCKLIST_FILE_HERE", with: "\(newBlocklistFile.path)").replacingOccurrences(of: "BLOCKLIST_LOG_HERE", with: "\(sharedDir!.appendingPathComponent("blocklist.log").path)")
-        var replacedConfigURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         // write replaced string to new file
-        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            replacedConfigURL = dir.appendingPathComponent("replaced-config.toml")
-            log("replaced config file url: \(replacedConfigURL.path)")
-            do {
-                try replacedConfig.write(to: replacedConfigURL, atomically: false, encoding: .utf8)
-                log("replaced config written")
-            }
-            catch {
-                log("ERROR - couldn't write replaced config: \(error)")
-            }
+        let replacedConfigURL = sharedDir!.appendingPathComponent("replaced-config.toml")
+        log("replaced config file url: \(replacedConfigURL.path)")
+        do {
+            try replacedConfig.write(to: replacedConfigURL, atomically: false, encoding: .utf8)
+            log("replaced config written")
+        }
+        catch {
+            log("ERROR - couldn't write replaced config: \(error)")
         }
         log("returning replacedConfigURL \(replacedConfigURL)")
         return replacedConfigURL.path
@@ -294,24 +291,13 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         log("===== reactivateTunnel, reasserting true")
         reasserting = true
         
-//        stopDnsServer()
-//        stopProxyServer()
-//
-//        initializeDns()
-//        startDns()
-//
-//        initializeProxy()
-//        if let error = startProxy() {
-//            log("ERROR - failed starting proxy \(error)")
-//        }
-        
         _dns.closeIdleConnections()
         
         let networkSettings = getNetworkSettings()
         
         self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
             if (error != nil) {
-                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error)")
+                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error?.localizedDescription)")
             }
             self.log("reactivateTunnel setTunnelNetworkSettings complete, reasseting false")
             self.reasserting = false
@@ -320,10 +306,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             self.log("closed idle connections")
         })
     }
-    
-    // TODO: reachability
-    
-    // TODO: logging
     
 }
 
