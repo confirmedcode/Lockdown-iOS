@@ -21,31 +21,60 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let proxyServerPort: UInt16 = 9090;
     var proxyServer: GCDHTTPProxyServer!
     
+    var dateOfLastReachabilityCheck = Date()
+    
     let monitor = NWPathMonitor()
     
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
     }
     
+    override func cancelTunnelWithError(_ error: Error?) {
+        self.log("===== ERROR - cancelTunnelWithError \(error?.localizedDescription)")
+    }
+    
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        log("===== startTunnel")
+        log("+++++ startTunnel NEW")
         
         // usleep(10000000)
         
-//        monitor.pathUpdateHandler = { path in
-//            if path.status == .satisfied {
-//                print("We're connected!")
-//            } else {
-//                print("No connection.")
-//            }
-//            print(path.isExpensive)
-//
-//            let servers = Resolver().getservers().map(Resolver.getnameinfo)
-//            print(servers)
-//        }
-//
-//        let queue = DispatchQueue(label: "Monitor")
-//        monitor.start(queue: queue)
+        // reachability equivalent
+        monitor.pathUpdateHandler = { path in
+            if (self.dateOfLastReachabilityCheck.timeIntervalSince(Date()) < 20) {
+                self.log("REACHABILITY - did this < 20 seconds ago, not calling it again")
+                return
+            }
+            self.dateOfLastReachabilityCheck = Date()
+            
+            if path.status == .satisfied {
+                self.log("REACHABILITY - We're connected!")
+            } else {
+                self.log("REACHABILITY - No connection.")
+            }
+            self.log("REACHABILITY status: \(path.status)")
+            self.log("REACHABILITY is Cellular: \(path.isExpensive)")
+            self.log("REACHABILITY supports dns: \(path.supportsDNS)")
+            self.log("REACHABILITY supports ipv4: \(path.supportsIPv4)")
+            self.log("REACHABILITY supports ipv6: \(path.supportsIPv6)")
+            for interf in path.availableInterfaces {
+                self.log("interface: \(interf.name) - \(interf.debugDescription)")
+            }
+
+            let servers = Resolver().getservers().map(Resolver.getnameinfo)
+            self.log("REACHABILITY DNS Servers: \(servers)")
+            
+            self.log("setting reasserting to true")
+            self.reasserting = true
+            self.log("setting tunnelsettings to nil")
+            self.setTunnelNetworkSettings(nil, completionHandler: {
+                error in
+                if (error != nil) {
+                    self.log("ERROR - couldnt set tunnelsettings to nil: \(error!.localizedDescription)")
+                }
+            })
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
         
         let networkSettings = getNetworkSettings();
         
@@ -61,7 +90,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         log("Calling setTunnelNetworkSettings")
         self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
             if (error != nil) {
-                self.log("ERROR - StartTunnel \(error)")
+                self.log("ERROR - StartTunnel \(error!.localizedDescription)")
                 completionHandler(error);
             } else {
                 self.log("No error on setTunnelNetworkSettings")
@@ -206,14 +235,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     func initializeDns() {
         log("===== initialize DNS server")
-        stopDnsServer()
+        // stopDnsServer()
         log("initializing DNSCryptThread")
         _dns = DNSCryptThread(arguments: [initializeAndReturnConfigPath()]);
     }
     
     func initializeProxy() {
         log("===== initialize proxy server")
-        stopProxyServer()
+        // stopProxyServer()
         log("initializing GCDHTTPProxyServer")
         proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: self.proxyServerAddress), port: Port(port: self.proxyServerPort))
     }
@@ -263,16 +292,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         log("===== reactivateTunnel, reasserting true")
         reasserting = true
         
-        stopDnsServer()
-        stopProxyServer()
+//        stopDnsServer()
+//        stopProxyServer()
+//
+//        initializeDns()
+//        startDns()
+//
+//        initializeProxy()
+//        if let error = startProxy() {
+//            log("ERROR - failed starting proxy \(error)")
+//        }
         
-        initializeDns()
-        startDns()
-        
-        initializeProxy()
-        if let error = startProxy() {
-            log("ERROR - failed starting proxy \(error)")
-        }
+        _dns.closeIdleConnections()
         
         let networkSettings = getNetworkSettings()
         
@@ -282,13 +313,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
             self.log("reactivateTunnel setTunnelNetworkSettings complete, reasseting false")
             self.reasserting = false
+            
+            self._dns.closeIdleConnections()
+            self.log("closed idle connections")
         })
-    }
-    
-    override func cancelTunnelWithError(_ error: Error?) {
-        log("===== cancelTunnelWithError: \(error)")
-        // somehow the tunnel failed. kill everything so it can restart again
-        stopTunnel(with: .none, completionHandler: {} )
     }
     
     // TODO: reachability
