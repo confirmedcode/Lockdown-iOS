@@ -697,3 +697,6 @@
 
 /* The title of a list of trackers */
 "Amazon Trackers" = "Amazon Trackers";
+
+/* The title of a list of trackers */
+"Dummy Domains" = "Dummy Domains";

@@ -65,11 +65,6 @@
 		3D40826B27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
 		3D40826C27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
 		3D40826D27F6A03F004C146B /* DNSCryptThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40826827F6A03F004C146B /* DNSCryptThread.swift */; };
-		3D40826F27FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
-		3D40827027FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
-		3D40827127FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
-		3D40827227FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
-		3D40827327FD0A5B004C146B /* blocked-names.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826E27FD0A5B004C146B /* blocked-names.txt */; };
 		3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
 		3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */; };
 		3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */; };
@@ -203,6 +198,7 @@
 		3DD3D09726CC8714002238E8 /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DD3D09F26CC8730002238E8 /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D92FEC126CB8C74008458C0 /* CocoaAsyncSocket.xcframework */; };
 		3DD545D628068AC5005E140C /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD545CD280681AA005E140C /* libresolv.9.tbd */; };
+		3DD545DB2808C2F6005E140C /* 5000_dummy_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DD545DA2808C2F6005E140C /* 5000_dummy_list.txt */; };
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
@@ -489,7 +485,6 @@
 		3D40824527F66C95004C146B /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
 		3D40826227F675F6004C146B /* dnscrypt-proxy.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dnscrypt-proxy.toml"; sourceTree = "<group>"; };
 		3D40826827F6A03F004C146B /* DNSCryptThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSCryptThread.swift; sourceTree = "<group>"; };
-		3D40826E27FD0A5B004C146B /* blocked-names.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "blocked-names.txt"; sourceTree = "<group>"; };
 		3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
@@ -598,6 +593,7 @@
 		3DCFE6F924493F9000EA9B35 /* marketing_beta.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marketing_beta.txt; sourceTree = "<group>"; };
 		3DD545CD280681AA005E140C /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		3DD545D428068233005E140C /* LockdownTunnelBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockdownTunnelBridgingHeader.h; sourceTree = "<group>"; };
+		3DD545DA2808C2F6005E140C /* 5000_dummy_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5000_dummy_list.txt; sourceTree = "<group>"; };
 		3DE443FA25353453006DF67D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DE443FE253534C7006DF67D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
@@ -868,6 +864,7 @@
 		3D0971D522EBAAEE00CCD326 /* Domains */ = {
 			isa = PBXGroup;
 			children = (
+				3DD545DA2808C2F6005E140C /* 5000_dummy_list.txt */,
 				3DAA6B4E22EA76420018FC09 /* clickbait.txt */,
 				3D5F5A0723107C1E004C3860 /* game_ads.txt */,
 				A1FCDA8422CDE60800C928BC /* crypto_mining.txt */,
@@ -1156,7 +1153,6 @@
 				3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */,
 				7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */,
 				3D40826227F675F6004C146B /* dnscrypt-proxy.toml */,
-				3D40826E27FD0A5B004C146B /* blocked-names.txt */,
 				3D3BF4D0233D5E9100D0C482 /* Localizable.strings */,
 				3D5464D223037CCA00AE1F73 /* Settings.bundle */,
 				A11E78A21F6A33C5007499CA /* Shared */,
@@ -1747,7 +1743,6 @@
 				3D3BF4CE233D5E9100D0C482 /* Localizable.strings in Resources */,
 				3D40826627F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */,
-				3D40827227FD0A5B004C146B /* blocked-names.txt in Resources */,
 				3D5464D62303839500AE1F73 /* Settings.bundle in Resources */,
 				601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */,
 				388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */,
@@ -1773,7 +1768,6 @@
 				7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */,
 				7C0156572521C2F200670CB5 /* Montserrat-Regular.ttf in Resources */,
 				3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */,
-				3D40827327FD0A5B004C146B /* blocked-names.txt in Resources */,
 				7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */,
 				7C0156592521C2F200670CB5 /* Montserrat-Thin.ttf in Resources */,
 				3D40826727F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
@@ -1800,6 +1794,7 @@
 				3D01D97B2480DCB3003A710C /* data_trackers.txt in Resources */,
 				3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */,
 				A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */,
+				3DD545DB2808C2F6005E140C /* 5000_dummy_list.txt in Resources */,
 				A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */,
 				A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */,
 				3D0971D822EBAD1000CCD326 /* facebook_sdk.txt in Resources */,
@@ -1820,7 +1815,6 @@
 				3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */,
 				3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */,
 				3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */,
-				3D40826F27FD0A5B004C146B /* blocked-names.txt in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
 				7C3EFA042486879800719D96 /* tracker_info.json in Resources */,
 				A1141A1A1F46230500F54698 /* Main.storyboard in Resources */,
@@ -1839,7 +1833,6 @@
 				3D3BF4CD233D5E9100D0C482 /* Localizable.strings in Resources */,
 				3D40826427F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */,
-				3D40827027FD0A5B004C146B /* blocked-names.txt in Resources */,
 				3D5464D42303839200AE1F73 /* Settings.bundle in Resources */,
 				90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */,
 				1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */,
@@ -1863,7 +1856,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5464D52303839400AE1F73 /* Settings.bundle in Resources */,
-				3D40827127FD0A5B004C146B /* blocked-names.txt in Resources */,
 				5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */,
 				5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */,
 				3D40826527F675F6004C146B /* dnscrypt-proxy.toml in Resources */,

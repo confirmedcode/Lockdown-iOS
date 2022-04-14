@@ -154,6 +154,15 @@ func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsU
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
+    let dummyList = LockdownGroup.init(
+        version: 30,
+        internalID: "dummyList",
+        name: NSLocalizedString("Dummy Domains", comment: "The title of a list of trackers"),
+        iconURL: "clickbait_icon",
+        enabled: false,
+        domains: getDomainBlockList(filename: "5000_dummy_list"),
+        ipRanges: [:])
+    
     let snapchatAnalytics = LockdownGroup.init(
         version: 27,
         internalID: "snapchatAnalytics",
@@ -294,7 +303,8 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:],
         warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.")
     
-    let defaultLockdownSettings = [snapchatAnalytics,
+    let defaultLockdownSettings = [dummyList,
+                                   snapchatAnalytics,
                                    gameAds,
                                    clickbait,
                                    crypto,

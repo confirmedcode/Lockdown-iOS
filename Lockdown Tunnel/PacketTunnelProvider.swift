@@ -147,35 +147,34 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         let fileManager = FileManager.default
         let configFile = Bundle.main.url(forResource: "dnscrypt-proxy", withExtension: "toml")
-        let blocklistFile = Bundle.main.url(forResource: "blocked-names", withExtension: "txt")
         let sharedDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
 
         // remove blocklist if it exists
-        let newContentFile = sharedDir!.appendingPathComponent("blocklist.txt")
-        if fileManager.fileExists(atPath: newContentFile.path) {
+        let newBlocklistFile = sharedDir!.appendingPathComponent("blocklist.txt")
+        if fileManager.fileExists(atPath: newBlocklistFile.path) {
             log("blocklist.txt exists")
             do {
-                try fileManager.removeItem(atPath: newContentFile.path)
+                try fileManager.removeItem(atPath: newBlocklistFile.path)
                 log("removed old blocklist.txt")
             } catch {
                 log("ERROR - couldnt remove old blocklist.txt: \(error)")
             }
         }
         
+        // generate text for new blocklist
+        let blockedDomainsArray = getAllBlockedDomains()
+        var blockedDomains: String = testFirewallDomain
+        for blockedDomain in blockedDomainsArray {
+            blockedDomains = blockedDomains + "\n" + blockedDomain
+        }
+        
         // copy blocklist file into shared dir
         do {
-            let content = try String(contentsOf: blocklistFile!, encoding: .utf8)
-            log("loaded blocklist.txt")
-            do {
-                try content.write(to: newContentFile, atomically: true, encoding: .utf8)
-                log("wrote content to blocklist.txt")
-            }
-            catch {
-                log("ERROR - couldnt write content to blocklist.txt: \(error)")
-            }
+            try blockedDomains.write(to: newBlocklistFile, atomically: false, encoding: .utf8)
+            log("wrote content to blocklist.txt")
         }
         catch {
-            log("ERROR - couldnt read blocklist.txt file: \(error)")
+            log("ERROR - couldnt write content to blocklist.txt: \(error)")
         }
         
         // clear prefix suffix files
@@ -200,8 +199,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         // create new prefix/suffix files
         let errorPtr: NSErrorPointer = nil
-        log("filling in prefix/suffix files at: \(newContentFile.path)")
-        DnscryptproxyFillPatternlistTrees(newContentFile.path, errorPtr)
+        log("filling in prefix/suffix files at: \(newBlocklistFile.path)")
+        DnscryptproxyFillPatternlistTrees(newBlocklistFile.path, errorPtr)
         if let error = errorPtr?.pointee {
             log("ERROR - filling in prefix/suffix files: \(error)")
         }
@@ -217,7 +216,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
         
         // replace BLOCKLIST_FILE_HERE and BLOCKLIST_LOG_HERE with urls of blocklist file/log
-        let replacedConfig = configFileText.replacingOccurrences(of: "BLOCKLIST_FILE_HERE", with: "\(newContentFile.path)").replacingOccurrences(of: "BLOCKLIST_LOG_HERE", with: "\(sharedDir!.appendingPathComponent("blocklist.log").path)")
+        let replacedConfig = configFileText.replacingOccurrences(of: "BLOCKLIST_FILE_HERE", with: "\(newBlocklistFile.path)").replacingOccurrences(of: "BLOCKLIST_LOG_HERE", with: "\(sharedDir!.appendingPathComponent("blocklist.log").path)")
         var replacedConfigURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         // write replaced string to new file
