@@ -24,6 +24,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     var dateOfLastReachabilityCheck = Date()
     
     let monitor = NWPathMonitor()
+    let fileManager = FileManager.default
+    let groupContainer = "group.com.confirmed"
     
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
@@ -114,8 +116,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
     override func wake() {
         log("===== wake")
+        flushBlockLog(log: log)
         reactivateTunnel()
     }
+    
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         log("===== getNetworkSettings")
@@ -145,9 +149,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     func initializeAndReturnConfigPath() -> String {
         log("===== initializeAndReturnConfigPath")
         
-        let fileManager = FileManager.default
         let configFile = Bundle.main.url(forResource: "dnscrypt-proxy", withExtension: "toml")
-        let sharedDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
+        let sharedDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: groupContainer)
 
         // remove blocklist if it exists
         let newBlocklistFile = sharedDir!.appendingPathComponent("blocklist.txt")
@@ -376,6 +379,48 @@ extension Resolver {
         return String(cString: hostBuffer)
     }
 }
+
+//open class Resolver {
+//
+//    fileprivate var state = __res_9_state()
+//
+//    public init() {
+//        res_9_ninit(&state)
+//    }
+//
+//    deinit {
+//        res_9_ndestroy(&state)
+//    }
+//
+//    public final func getservers() -> [res_9_sockaddr_union] {
+//
+//        let maxServers = 10
+//        var servers = [res_9_sockaddr_union](repeating: res_9_sockaddr_union(), count: maxServers)
+//        let found = Int(res_9_getservers(&state, &servers, Int32(maxServers)))
+//
+//        // filter is to remove the erroneous empty entry when there's no real servers
+//       return Array(servers[0 ..< found]).filter() { $0.sin.sin_len > 0 }
+//    }
+//}
+//
+//extension Resolver {
+//    public static func getnameinfo(_ s: res_9_sockaddr_union) -> String {
+//        var s = s
+//        var hostBuffer = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+//
+//        let sinlen = socklen_t(s.sin.sin_len)
+//        let _ = withUnsafePointer(to: &s) {
+//            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+//                Darwin.getnameinfo($0, sinlen,
+//                                   &hostBuffer, socklen_t(hostBuffer.count),
+//                                   nil, 0,
+//                                   NI_NUMERICHOST)
+//            }
+//        }
+//
+//        return String(cString: hostBuffer)
+//    }
+//}
 
 extension NEProviderStopReason: CustomDebugStringConvertible {
     

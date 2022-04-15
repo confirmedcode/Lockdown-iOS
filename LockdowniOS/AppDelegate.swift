@@ -191,9 +191,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         DDLogInfo("applicationDidBecomeActive")
         PacketTunnelProviderLogs.flush()
+        flushBlockLog(log: flushBlockLogLogger)
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
         
         FirewallRepair.run(context: .homeScreenDidLoad)
+    }
+    
+    func flushBlockLogLogger(_ str: String) {
+        DDLogInfo(str)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

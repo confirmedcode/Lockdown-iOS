@@ -9,6 +9,77 @@
 import Foundation
 import CocoaLumberjackSwift
 
+func flushBlockLog( log: (String) -> Void) {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    
+    let lastFlushDateKey = "lastBlockLogFlushTimeInterval"
+    
+    let fileManager = FileManager.default
+    let sharedDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.confirmed")
+    let blockLogFile = sharedDir!.appendingPathComponent("blocklist.log")
+    
+    var blockLogFileText = ""
+    do {
+        blockLogFileText = try String(contentsOf: blockLogFile, encoding: .utf8)
+        log("Read block log file")
+    }
+    catch {
+        log("ERROR - couldn't read block log file at: \(blockLogFile.path)")
+    }
+    
+    let blockedEntries = blockLogFileText.split(separator: "\n")
+    
+    let lastFlushDate = defaults.double(forKey: lastFlushDateKey)
+    
+    for blockedEntry in blockedEntries {
+        // parse this [2022-04-14 22:23:12]    127.0.0.1    example.com    *.example.com
+        let splitLine = blockedEntry.split(separator: "\t")
+        
+        if (splitLine.count != 4) {
+            log("ERROR: invalid blocked log entry: \(splitLine)")
+            continue
+        }
+        else {
+            // [2022-04-14 22:23:12]
+            var entryDateString = String(splitLine[0])
+            if (entryDateString.count < 3) {
+                log("ERROR: invalid entryDateString - too short: \(entryDateString)")
+                continue
+            }
+            entryDateString.removeLast()
+            entryDateString.removeFirst()
+            // 2022-04-14 22:23:12
+            if let entryDate = dateFormatter.date(from: entryDateString) {
+                // if we have flushed logs more recently than the time on this log line, skip this log line
+                if entryDate.timeIntervalSince1970 < lastFlushDate {
+                    continue
+                }
+                // TODO: use the timestamp instead of current time
+                updateMetrics(.incrementAndLog(host: String(splitLine[2])), rescheduleNotifications: .withEnergySaving)
+            }
+            else {
+                log("ERROR: couldnt format entryDateString: \(entryDateString)")
+                continue
+            }
+        }
+    }
+    
+    // update the last flushed time
+    defaults.set(Date().timeIntervalSince1970, forKey: lastFlushDateKey)
+    
+//    TODO: this doesn't work bc the file is being written to at the same time
+//    log("Flushing Block Log File")
+//    do {
+//        try "".write(to: blockLogFile, atomically: true, encoding: .utf8)
+//        log("Flushed Block Log File")
+//    }
+//    catch {
+//        log("Error flushing block log file: \(error)")
+//    }
+}
+
 enum ProtectedFileAccess {
     
     private static let fileURL = FileManager.default
