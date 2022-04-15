@@ -11,8 +11,9 @@ import CocoaLumberjackSwift
 
 func flushBlockLog( log: (String) -> Void) {
     
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let logFileDateFormatter = DateFormatter()
+    logFileDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    logFileDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
     
     let lastFlushDateKey = "lastBlockLogFlushTimeInterval"
     
@@ -50,14 +51,24 @@ func flushBlockLog( log: (String) -> Void) {
             }
             entryDateString.removeLast()
             entryDateString.removeFirst()
+            
+            let host = String(splitLine[2])
+            if (host == testFirewallDomain) {
+                // skip this
+                continue
+            }
             // 2022-04-14 22:23:12
-            if let entryDate = dateFormatter.date(from: entryDateString) {
-                // if we have flushed logs more recently than the time on this log line, skip this log line
-                if entryDate.timeIntervalSince1970 < lastFlushDate {
+            if let entryDate = logFileDateFormatter.date(from: entryDateString) {
+                // only log entries that are newer than lastFlushDate
+//                log("entry line: \(blockedEntry)")
+//                log("comparing entrydatetime \(entryDate.timeIntervalSince1970) to lastFlushDate \(lastFlushDate)")
+//                log("comparing entrydatetime \(entryDate) to lastFlushDate \(Date(timeIntervalSince1970: lastFlushDate))")
+                if entryDate.timeIntervalSince1970 <= lastFlushDate {
+                //    log("entryDate is older, not logging it")
                     continue
                 }
-                // TODO: use the timestamp instead of current time
-                updateMetrics(.incrementAndLog(host: String(splitLine[2])), rescheduleNotifications: .withEnergySaving)
+                //log("entryDate is newer, logging it")
+                updateMetrics(.incrementAndLog(host: host), rescheduleNotifications: .withEnergySaving)
             }
             else {
                 log("ERROR: couldnt format entryDateString: \(entryDateString)")
