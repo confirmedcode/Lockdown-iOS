@@ -9,6 +9,8 @@ import NetworkExtension
 import NEKit
 import Dnscryptproxy
 import Network
+import Reachability
+import PromiseKit
 
 var latestBlockedDomains = getAllBlockedDomains()
 
@@ -27,6 +29,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let fileManager = FileManager.default
     let groupContainer = "group.com.confirmed"
     
+    let reachability: Reachability? = nil
+    
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
     }
@@ -35,10 +39,37 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         self.log("===== ERROR - cancelTunnelWithError \(error?.localizedDescription)")
     }
     
+    @objc func reachabilityChanged(note: NSNotification) {
+        log("===== ReachabilityChanged")
+        if let r = note.object as? Reachability {
+            log("Reachability changed to \(r.connection.description)")
+            self.reasserting = true
+            self.log("ReachabilityChanged calling reactivate tunnel")
+            self.reactivateTunnel()
+        }
+        else {
+            log("ERROR - reachability notification object invalid")
+        }
+    }
+    
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         log("+++++ startTunnel NEW")
         
         // usleep(10000000)
+        
+        // reachability
+        log("initializing reachability")
+        if let reachability = Reachability() {
+            NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+            do {
+                try reachability.startNotifier()
+            } catch {
+                log("could not start reachability notifier \(error)")
+            }
+        }
+        else {
+            log("ERROR - reachability initialization")
+        }
         
         // reachability equivalent
 //        monitor.pathUpdateHandler = { path in
@@ -64,7 +95,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 //
 //            let servers = Resolver().getservers().map(Resolver.getnameinfo)
 //            self.log("REACHABILITY DNS Servers: \(servers)")
-//
+
 //            self.log("setting reasserting to true")
 //            self.reasserting = true
 //            self.log("setting tunnelsettings to nil")
@@ -76,7 +107,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 //            })
 //        }
 //        let queue = DispatchQueue(label: "Monitor")
-        //monitor.start(queue: queue)
+//        monitor.start(queue: queue)
         
         let networkSettings = getNetworkSettings();
         
@@ -98,7 +129,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 }
                 else {
                     self.log("SUCCESS - startTunnel")
-                    completionHandler(nil);
+                    self.log("||||| startTunnel - checking availability to apple.com")
+                    self.checkNetworkConnection(callback: { completionHandler(nil) })
+                    //completionHandler(nil);
                 }
             }
         })
@@ -106,9 +139,11 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        self.log("+++++ stopTunnel")
+        self.log("+++++ stopTunnel with reason: \(reason)")
         stopProxyServer()
         stopDnsServer()
+        reachability?.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
         self.log("stopTunnel completionHandler, exit")
         completionHandler();
         exit(EXIT_SUCCESS);
@@ -117,9 +152,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     override func wake() {
         log("===== wake")
         flushBlockLog(log: log)
-        reactivateTunnel()
+        log("wake setting tunnel network settings to nil")
+        self.setTunnelNetworkSettings(nil, completionHandler: { error in
+            if (error != nil) {
+                self.log("error setting tunnelnetworksettings to nil: \(error)")
+            }
+            self.log("wake calling reactivate tunnel")
+            self.reactivateTunnel()
+        })
     }
-    
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         log("===== getNetworkSettings")
@@ -302,12 +343,46 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             if (error != nil) {
                 self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error?.localizedDescription)")
             }
-            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasseting false")
+            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasserting false")
             self.reasserting = false
             
             self._dns.closeIdleConnections()
             self.log("closed idle connections")
+            
+            self.log("||||| reactivate AFTER - checking availability to apple.com")
+            self.checkNetworkConnection(callback: { self.log("ReactivateTunnel checkNetworkConnection complete") } )
         })
+    }
+    
+    func checkNetworkConnection( callback: @escaping () -> Void ) {
+        log("===== checkNetworkConnection")
+        URLCache.shared.removeAllCachedResponses()
+        firstly {
+            URLSession.shared.dataTask(.promise, with: try Client.makeGetRequest(urlString: "https://apple.com"))
+            }
+            .map { data, response -> Void in
+                self.log("validating API response")
+                //let dataString = String(data: data, encoding: String.Encoding.utf8)
+                //self.log("RAW RESULT: \(String(describing: dataString))")
+                if let resp = response as? HTTPURLResponse {
+                    //self.log("response is HTTPURLResponse: \(resp)")
+                    if (resp.statusCode >= 400 || resp.statusCode <= 0) {
+                        self.log("response has bad status code \(resp.statusCode)")
+                        throw "response has bad status code \(resp.statusCode)"
+                    }
+                    else {
+                        self.log("response has good status code (2xx, 3xx) and no error code")
+                        callback()
+                    }
+                }
+                else {
+                    throw "Invalid URL Response received: \(response)"
+                }
+        }
+        .catch { error in
+            self.log("ERROR connecting to apple.com: \(error)")
+            callback()
+        }
     }
     
 }

@@ -603,6 +603,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension PacketTunnelProviderLogs {
     static func flush() {
         guard !PacketTunnelProviderLogs.allEntries.isEmpty else {
+            DDLogInfo("Packet Tunnel Provider Logs: EMPTY")
             return
         }
         
