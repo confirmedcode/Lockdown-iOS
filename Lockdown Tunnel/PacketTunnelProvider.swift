@@ -9,7 +9,6 @@ import NetworkExtension
 import NEKit
 import Dnscryptproxy
 import Network
-import Reachability
 import PromiseKit
 
 var latestBlockedDomains = getAllBlockedDomains()
@@ -23,13 +22,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let proxyServerPort: UInt16 = 9090;
     var proxyServer: GCDHTTPProxyServer!
     
-    var dateOfLastReachabilityCheck = Date()
-    
     let monitor = NWPathMonitor()
     let fileManager = FileManager.default
     let groupContainer = "group.com.confirmed"
-    
-    let reachability: Reachability? = nil
     
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
@@ -39,75 +34,57 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         self.log("===== ERROR - cancelTunnelWithError \(error?.localizedDescription)")
     }
     
-    @objc func reachabilityChanged(note: NSNotification) {
-        log("===== ReachabilityChanged")
-        if let r = note.object as? Reachability {
-            log("Reachability changed to \(r.connection.description)")
-            self.reasserting = true
-            self.log("ReachabilityChanged calling reactivate tunnel")
-            self.reactivateTunnel()
-        }
-        else {
-            log("ERROR - reachability notification object invalid")
-        }
-    }
-    
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         log("+++++ startTunnel NEW")
         
         // usleep(10000000)
         
-        // reachability
-        log("initializing reachability")
-        if let reachability = Reachability() {
-            NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
-            do {
-                try reachability.startNotifier()
-            } catch {
-                log("could not start reachability notifier \(error)")
-            }
-        }
-        else {
-            log("ERROR - reachability initialization")
-        }
+//        var lastReachabilityCheckKey = "lastReachabilityCheck"
+//        var defaultTime: TimeInterval = 0
+//        defaults.set(defaultTime, forKey: lastReachabilityCheckKey)
         
         // reachability equivalent
-//        monitor.pathUpdateHandler = { path in
-//            if (self.dateOfLastReachabilityCheck.timeIntervalSince(Date()) < 20) {
-//                self.log("REACHABILITY - did this < 20 seconds ago, not calling it again")
+        monitor.pathUpdateHandler = { path in
+            self.log("REACHABILITY - Connected: \(path.status == .satisfied) - NWPATH: \(path.debugDescription)")
+            // TODO: only do this check if it's called too many times
+//            let timeOfLastReachabilityCheck = defaults.double(forKey: lastReachabilityCheckKey)
+//            let dateOfLastReachabilityCheck = Date(timeIntervalSince1970: timeOfLastReachabilityCheck)
+//            let timeSinceLastReachabilityCheck = Date().timeIntervalSince(dateOfLastReachabilityCheck)
+//            if (timeSinceLastReachabilityCheck < 30) {
+//                self.log("REACHABILITY - did this < 30 seconds ago, not calling it again")
 //                return
 //            }
+//            self.log("time since last reachability: \(timeSinceLastReachabilityCheck)")
+//            if (self.dateOfLastReachabilityCheck.timeIntervalSince(Date()) < 30) {
+//
+//            }
 //            self.dateOfLastReachabilityCheck = Date()
-//
-//            if path.status == .satisfied {
-//                self.log("REACHABILITY - We're connected!")
-//            } else {
-//                self.log("REACHABILITY - No connection.")
-//            }
-//            self.log("REACHABILITY status: \(path.status)")
-//            self.log("REACHABILITY is Cellular: \(path.isExpensive)")
-//            self.log("REACHABILITY supports dns: \(path.supportsDNS)")
-//            self.log("REACHABILITY supports ipv4: \(path.supportsIPv4)")
-//            self.log("REACHABILITY supports ipv6: \(path.supportsIPv6)")
-//            for interf in path.availableInterfaces {
-//                self.log("interface: \(interf.name) - \(interf.debugDescription)")
-//            }
-//
-//            let servers = Resolver().getservers().map(Resolver.getnameinfo)
-//            self.log("REACHABILITY DNS Servers: \(servers)")
+            for interf in path.availableInterfaces {
+                self.log("interface: \(interf.name) - \(interf.debugDescription)")
+            }
 
-//            self.log("setting reasserting to true")
-//            self.reasserting = true
-//            self.log("setting tunnelsettings to nil")
-//            self.setTunnelNetworkSettings(nil, completionHandler: {
-//                error in
-//                if (error != nil) {
-//                    self.log("ERROR - couldnt set tunnelsettings to nil: \(error!.localizedDescription)")
-//                }
-//            })
-//        }
-//        let queue = DispatchQueue(label: "Monitor")
-//        monitor.start(queue: queue)
+            let servers = Resolver().getservers().map(Resolver.getnameinfo)
+            self.log("REACHABILITY DNS Servers: \(servers)")
+            
+            self.log("reachability testing network")
+            self.checkNetworkConnection { success in
+                self.log("reachability network check result: \(success)")
+                if( success == false ) {
+                    self.log("ERROR - network check failed, killing PTP")
+                    self.stopTunnel(with: .connectionFailed, completionHandler: {
+                        self.log("successfully stopped tunnel from reachability")
+                    })
+                }
+                // TODO: Infinite loop?
+                // TODO: wait a second or two if too aggressive?
+                // TODO: maybe force VPN restart too?
+            }
+
+//            self.log("ReachabilityChanged calling reactivate tunnel")
+//            self.reactivateTunnel()
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
         
         let networkSettings = getNetworkSettings();
         
@@ -130,8 +107,26 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 else {
                     self.log("SUCCESS - startTunnel")
                     self.log("||||| startTunnel - checking availability to apple.com")
-                    self.checkNetworkConnection(callback: { completionHandler(nil) })
-                    //completionHandler(nil);
+                    self.checkNetworkConnection(callback: { success in
+                        self.log("startTunnel network check result: \(success)")
+                        // TODO: handle failure?
+                        
+                        // we want it to start, then stop via exit() and see if it starts again automatically ONE time
+//                        let baconkey = "blahz0"
+//                        let bacon = defaults.integer(forKey: baconkey)
+//                        self.log("bacon value: \(bacon)")
+//                        if (bacon == 0) {
+//                            // increment again bc we dont want it to do this infinite loop
+//                            defaults.set(bacon + 1, forKey: baconkey)
+//                            self.log("bacon - tunnel stop once")
+//                            return self.stopTunnel(with: .userInitiated, completionHandler: {
+//                                self.log("bacon - stop success")
+//                            })
+//                        }
+//                        self.log("bacon not one, not stopping")
+                        completionHandler(nil)
+                        
+                    })
                 }
             }
         })
@@ -142,8 +137,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         self.log("+++++ stopTunnel with reason: \(reason)")
         stopProxyServer()
         stopDnsServer()
-        reachability?.stopNotifier()
-        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+        monitor.cancel()
         self.log("stopTunnel completionHandler, exit")
         completionHandler();
         exit(EXIT_SUCCESS);
@@ -350,11 +344,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             self.log("closed idle connections")
             
             self.log("||||| reactivate AFTER - checking availability to apple.com")
-            self.checkNetworkConnection(callback: { self.log("ReactivateTunnel checkNetworkConnection complete") } )
+            self.checkNetworkConnection(callback: { success in
+                self.log("ReactivateTunnel checkNetworkConnection result: \(success)")
+                
+            } )
         })
     }
     
-    func checkNetworkConnection( callback: @escaping () -> Void ) {
+    func checkNetworkConnection( callback: @escaping (Bool) -> Void ) {
         log("===== checkNetworkConnection")
         URLCache.shared.removeAllCachedResponses()
         firstly {
@@ -372,7 +369,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     }
                     else {
                         self.log("response has good status code (2xx, 3xx) and no error code")
-                        callback()
+                        callback(true)
                     }
                 }
                 else {
@@ -381,7 +378,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
         .catch { error in
             self.log("ERROR connecting to apple.com: \(error)")
-            callback()
+            callback(false)
         }
     }
     

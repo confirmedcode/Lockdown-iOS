@@ -145,8 +145,8 @@ enum PacketTunnelProviderLogs {
         let string = "\(dateFormatter.string(from: Date())) \(string)"
         if var array = defaults.stringArray(forKey: userDefaultsKey) {
             // don't let it get too large
-            if array.count > 2000 {
-                array = Array(array.dropFirst(800))
+            if array.count > 40000 {
+                array = Array(array.dropFirst(10000))
             }
             array.append(string)
             defaults.setValue(array, forKey: userDefaultsKey)
