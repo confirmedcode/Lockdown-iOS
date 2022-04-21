@@ -30,6 +30,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
+        NSLog("ptplog - " + str)
     }
     
     override func cancelTunnelWithError(_ error: Error?) {
@@ -55,6 +56,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     
                     // only kill PTP if it hasnt been killed in the last 30 seconds - to avoid race conditions/infinite loop
                     // TODO: maybe force VPN restart too?
+                    // TODO: maybe force wait a second on stopping?
                     // TODO: make this smarter e.g- if PTP has been killed in the last 30 seconds, wait 10 seconds to kill it
                     let timeIntervalOfLastReachabilityKill = defaults.double(forKey: self.lastReachabilityKillKey)
                     let dateOfLastReachabilityKill = Date(timeIntervalSince1970: timeIntervalOfLastReachabilityKill)
@@ -98,13 +100,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 }
                 else {
                     self.log("SUCCESS - startTunnel")
-                    self.log("||||| startTunnel - checking availability to apple.com")
-                    self.checkNetworkConnection(callback: { success in
-                        self.log("startTunnel network check result: \(success)")
-                        // failures are already handled by Reachability check
-                        completionHandler(nil)
-                        
-                    })
+                    completionHandler(nil)
+//                    self.log("||||| startTunnel - checking availability to apple.com")
+//                    self.checkNetworkConnection(callback: { success in
+//                        self.log("startTunnel network check result: \(success)")
+//                        // failures are already handled by Reachability check
+//                        completionHandler(nil)
+//
+//                    })
                 }
             }
         })
@@ -113,12 +116,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         self.log("+++++ stopTunnel with reason: \(reason)")
+        monitor.cancel()
         stopProxyServer()
         stopDnsServer()
-        monitor.cancel()
-        self.log("stopTunnel completionHandler, exit")
-        completionHandler();
-        exit(EXIT_SUCCESS);
+        self.log("wait 1.5 seconds before killing")
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 1.5) {
+            self.log("stopTunnel completionHandler, exit")
+            completionHandler();
+            exit(EXIT_SUCCESS);
+        }
     }
 
     override func wake() {
@@ -148,6 +154,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
         proxySettings.matchDomains = getAllWhitelistedDomains()
+        networkSettings.proxySettings = proxySettings;
+        
 //        proxySettings.exceptionList = ["mask.icloud.com", "mask-api.icloud.com", "mask-h2.icloud.com", "mask.apple-dns.net", "icloud.com", "apple.com"]
 //        var toMatch = getAllWhitelistedDomains()
 //        proxySettings.matchDomains = toMatch
@@ -175,7 +183,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 ////            return 'DIRECT';
 ////        }
 ////        """
-//        //networkSettings.proxySettings = proxySettings;
         
         let dnsSettings = NEDNSSettings(servers: [dnsServerAddress])
         dnsSettings.matchDomains = [""];
@@ -355,33 +362,66 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     func checkNetworkConnection( callback: @escaping (Bool) -> Void ) {
-        log("===== checkNetworkConnection")
+
+        log("===== checkNetworkConnection - attempt #1")
         URLCache.shared.removeAllCachedResponses()
         firstly {
-            URLSession.shared.dataTask(.promise, with: try Client.makeGetRequest(urlString: "https://apple.com"))
-            }
-            .map { data, response -> Void in
-                self.log("validating API response")
-                //let dataString = String(data: data, encoding: String.Encoding.utf8)
-                //self.log("RAW RESULT: \(String(describing: dataString))")
-                if let resp = response as? HTTPURLResponse {
-                    //self.log("response is HTTPURLResponse: \(resp)")
-                    if (resp.statusCode >= 400 || resp.statusCode <= 0) {
-                        self.log("response has bad status code \(resp.statusCode)")
-                        throw "response has bad status code \(resp.statusCode)"
-                    }
-                    else {
-                        self.log("response has good status code (2xx, 3xx) and no error code")
-                        callback(true)
-                    }
-                }
-                else {
-                    throw "Invalid URL Response received: \(response)"
-                }
+            try makeNetworkConnection()
+        }
+        .map { data, response -> Void in
+            try self.validateNetworkResponse(response: response)
+            callback(true)
         }
         .catch { error in
-            self.log("ERROR connecting to apple.com: \(error)")
-            callback(false)
+            self.log("ERROR - failed checkNetworkConnection attempt #1: \(error)")
+            self.log("checkNetworkConnection - attempt #2")
+            DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 3) {
+                firstly {
+                    try self.makeNetworkConnection()
+                }
+                .map { data, response -> Void in
+                    try self.validateNetworkResponse(response: response)
+                    callback(true)
+                }
+                .catch { error in
+                    self.log("ERROR - failed checkNetworkConnection attempt #2: \(error)")
+                    self.log("checkNetworkConnection - attempt #3")
+                    DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 8) {
+                        firstly {
+                            try self.makeNetworkConnection()
+                        }
+                        .map { data, response -> Void in
+                            try self.validateNetworkResponse(response: response)
+                            callback(true)
+                        }
+                        .catch { error in
+                            self.log("ERROR - failed checkNetworkConnection attempt #3: \(error)")
+                            callback(false)
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    
+    func makeNetworkConnection() throws -> Promise<(data: Data, response: URLResponse)> {
+        return URLSession.shared.dataTask(.promise, with: try Client.makeGetRequest(urlString: "https://apple.com"))
+    }
+    
+    func validateNetworkResponse(response: URLResponse?) throws {
+        self.log("validating checkNetworkConnection response")
+        if let resp = response as? HTTPURLResponse {
+            if (resp.statusCode >= 400 || resp.statusCode <= 0) {
+                self.log("response has bad status code \(resp.statusCode)")
+                throw "response has bad status code \(resp.statusCode)"
+            }
+            else {
+                self.log("response has good status code (2xx, 3xx) and no error code")
+            }
+        }
+        else {
+            throw "Invalid URL Response received: \(String(describing: response))"
         }
     }
     
