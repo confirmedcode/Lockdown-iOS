@@ -26,6 +26,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let fileManager = FileManager.default
     let groupContainer = "group.com.confirmed"
     
+    let lastReachabilityKillKey = "lastReachabilityKillTime"
+    
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
     }
@@ -39,30 +41,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         // usleep(10000000)
         
-//        var lastReachabilityCheckKey = "lastReachabilityCheck"
-//        var defaultTime: TimeInterval = 0
-//        defaults.set(defaultTime, forKey: lastReachabilityCheckKey)
-        
-        // reachability equivalent
+        // reachability check
         monitor.pathUpdateHandler = { path in
             self.log("REACHABILITY - Connected: \(path.status == .satisfied) - NWPATH: \(path.debugDescription)")
-            // TODO: only do this check if it's called too many times
-//            let timeOfLastReachabilityCheck = defaults.double(forKey: lastReachabilityCheckKey)
-//            let dateOfLastReachabilityCheck = Date(timeIntervalSince1970: timeOfLastReachabilityCheck)
-//            let timeSinceLastReachabilityCheck = Date().timeIntervalSince(dateOfLastReachabilityCheck)
-//            if (timeSinceLastReachabilityCheck < 30) {
-//                self.log("REACHABILITY - did this < 30 seconds ago, not calling it again")
-//                return
-//            }
-//            self.log("time since last reachability: \(timeSinceLastReachabilityCheck)")
-//            if (self.dateOfLastReachabilityCheck.timeIntervalSince(Date()) < 30) {
-//
-//            }
-//            self.dateOfLastReachabilityCheck = Date()
-            for interf in path.availableInterfaces {
-                self.log("interface: \(interf.name) - \(interf.debugDescription)")
-            }
-
             let servers = Resolver().getservers().map(Resolver.getnameinfo)
             self.log("REACHABILITY DNS Servers: \(servers)")
             
@@ -70,18 +51,29 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             self.checkNetworkConnection { success in
                 self.log("reachability network check result: \(success)")
                 if( success == false ) {
-                    self.log("ERROR - network check failed, killing PTP")
-                    self.stopTunnel(with: .connectionFailed, completionHandler: {
-                        self.log("successfully stopped tunnel from reachability")
-                    })
+                    self.log("ERROR - network check failed, killing PTP if not killed in the last 30 seconds")
+                    
+                    // only kill PTP if it hasnt been killed in the last 30 seconds - to avoid race conditions/infinite loop
+                    // TODO: maybe force VPN restart too?
+                    // TODO: make this smarter e.g- if PTP has been killed in the last 30 seconds, wait 10 seconds to kill it
+                    let timeIntervalOfLastReachabilityKill = defaults.double(forKey: self.lastReachabilityKillKey)
+                    let dateOfLastReachabilityKill = Date(timeIntervalSince1970: timeIntervalOfLastReachabilityKill)
+                    let timeSinceLastReachabilityKill = Date().timeIntervalSince(dateOfLastReachabilityKill)
+                    self.log("REACHABILITY kill - time since last kill: \(timeSinceLastReachabilityKill)")
+                    if (timeSinceLastReachabilityKill < 30) {
+                        self.log("REACHABILITY kill - did this < 30 seconds ago, not calling it again")
+                        return
+                    }
+                    else {
+                        // do the kill
+                        defaults.set(Date().timeIntervalSince1970, forKey: self.lastReachabilityKillKey)
+                        self.stopTunnel(with: .connectionFailed, completionHandler: {
+                            self.log("successfully stopped tunnel from reachability")
+                        })
+                    }
+                    
                 }
-                // TODO: Infinite loop?
-                // TODO: wait a second or two if too aggressive?
-                // TODO: maybe force VPN restart too?
             }
-
-//            self.log("ReachabilityChanged calling reactivate tunnel")
-//            self.reactivateTunnel()
         }
         let queue = DispatchQueue(label: "Monitor")
         monitor.start(queue: queue)
@@ -109,21 +101,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     self.log("||||| startTunnel - checking availability to apple.com")
                     self.checkNetworkConnection(callback: { success in
                         self.log("startTunnel network check result: \(success)")
-                        // TODO: handle failure?
-                        
-                        // we want it to start, then stop via exit() and see if it starts again automatically ONE time
-//                        let baconkey = "blahz0"
-//                        let bacon = defaults.integer(forKey: baconkey)
-//                        self.log("bacon value: \(bacon)")
-//                        if (bacon == 0) {
-//                            // increment again bc we dont want it to do this infinite loop
-//                            defaults.set(bacon + 1, forKey: baconkey)
-//                            self.log("bacon - tunnel stop once")
-//                            return self.stopTunnel(with: .userInitiated, completionHandler: {
-//                                self.log("bacon - stop success")
-//                            })
-//                        }
-//                        self.log("bacon not one, not stopping")
+                        // failures are already handled by Reachability check
                         completionHandler(nil)
                         
                     })
@@ -146,20 +124,21 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     override func wake() {
         log("===== wake")
         flushBlockLog(log: log)
-        log("wake setting tunnel network settings to nil")
-        self.setTunnelNetworkSettings(nil, completionHandler: { error in
-            if (error != nil) {
-                self.log("error setting tunnelnetworksettings to nil: \(error)")
-            }
-            self.log("wake calling reactivate tunnel")
-            self.reactivateTunnel()
-        })
+//        log("wake setting tunnel network settings to nil")
+//        self.setTunnelNetworkSettings(nil, completionHandler: { error in
+//            if (error != nil) {
+//                self.log("error setting tunnelnetworksettings to nil: \(error)")
+//            }
+//            self.log("wake calling reactivate tunnel")
+//            self.reactivateTunnel()
+//        })
     }
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         log("===== getNetworkSettings")
         
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: dnsServerAddress)
+        networkSettings.mtu = 1500
         
         let proxySettings = NEProxySettings()
         proxySettings.httpEnabled = true;
@@ -169,14 +148,38 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.excludeSimpleHostnames = false;
         proxySettings.exceptionList = []
         proxySettings.matchDomains = getAllWhitelistedDomains()
-        networkSettings.proxySettings = proxySettings;
+//        proxySettings.exceptionList = ["mask.icloud.com", "mask-api.icloud.com", "mask-h2.icloud.com", "mask.apple-dns.net", "icloud.com", "apple.com"]
+//        var toMatch = getAllWhitelistedDomains()
+//        proxySettings.matchDomains = toMatch
+//        proxySettings.autoProxyConfigurationEnabled = true
+//        var js = "function FindProxyForURL(url, host) { "
+////        js = js + "if (dnsDomainIs(host, \"mask.icloud.com\") || dnsDomainIs(host, \"mask-h2.icloud.com\") || dnsDomainIs(host, \"mask.apple-dns.net\") || dnsDomainIs(host, \"mask-api.icloud.com\") || dnsDomainIs(host, \"icloud.com\") || dnsDomainIs(host, \"apple.com\")) { "
+////        js = js + "return 'DIRECT'; } "
+////        js = js + "if ("
+////        for domain in getAllWhitelistedDomains() {
+////            js = js + "dnsDomainIs(host, \"\(domain)\") || "
+////        }
+////        js = js + " false )"
+////        js = js + " { return 'PROXY \(proxyServerAddress):\(proxyServerPort)'; } "
+//        js = js + "return 'PROXY \(proxyServerAddress):\(proxyServerPort)';"
+//        js = js + " }"
+//        NSLog(js)
+//        proxySettings.proxyAutoConfigurationJavaScript = js
+////        proxySettings.proxyAutoConfigurationJavaScript = """
+////        function FindProxyForURL(url, host)
+////        {
+////            if (dnsDomainIs(host, "ipchicken.com") )
+////            {
+////                return 'PROXY \(proxyServerAddress):\(proxyServerPort)';
+////            }
+////            return 'DIRECT';
+////        }
+////        """
+//        //networkSettings.proxySettings = proxySettings;
         
         let dnsSettings = NEDNSSettings(servers: [dnsServerAddress])
         dnsSettings.matchDomains = [""];
         networkSettings.dnsSettings = dnsSettings;
-        
-        //var ipv4Settings = NEIPv4Settings(addresses: ["192.0.2.1"], subnetMasks: "255.255.255.0")
-        //networkSettings.ipv4Settings = ipv4Settings;
         
         return networkSettings;
     }

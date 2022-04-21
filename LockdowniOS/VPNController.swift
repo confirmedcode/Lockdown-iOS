@@ -104,7 +104,7 @@ class VPNController: NSObject {
             p.identityDataPassword = ""
             
             if #available(iOS 13.0, *) {
-                p.enableFallback = true
+                p.enableFallback = false
             }
             
             self.manager.protocolConfiguration = p
