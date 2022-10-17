@@ -119,25 +119,22 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         monitor.cancel()
         stopProxyServer()
         stopDnsServer()
-        self.log("wait 1.5 seconds before killing")
-        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 1.5) {
             self.log("stopTunnel completionHandler, exit")
             completionHandler();
             exit(EXIT_SUCCESS);
-        }
     }
 
     override func wake() {
         log("===== wake")
         flushBlockLog(log: log)
-//        log("wake setting tunnel network settings to nil")
-//        self.setTunnelNetworkSettings(nil, completionHandler: { error in
-//            if (error != nil) {
-//                self.log("error setting tunnelnetworksettings to nil: \(error)")
-//            }
-//            self.log("wake calling reactivate tunnel")
-//            self.reactivateTunnel()
-//        })
+        log("wake setting tunnel network settings to nil")
+        self.setTunnelNetworkSettings(nil, completionHandler: { error in
+            if (error != nil) {
+                self.log("error setting tunnelnetworksettings to nil: \(error)")
+            }
+            self.log("wake calling reactivate tunnel")
+            self.reactivateTunnel()
+        })
     }
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
@@ -155,6 +152,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.exceptionList = []
         proxySettings.matchDomains = getAllWhitelistedDomains()
         networkSettings.proxySettings = proxySettings;
+        
+//        let ipv6Settings = NEIPv6Settings()
+//        ipv6Settings.includedRoutes = [NEIPv6Route(destinationAddress: "::", networkPrefixLength: 0)]
+//        networkSettings.ipv6Settings = ipv6Settings
+        
+//        let ipv4Settings = NEIPv4Settings()
+//        ipv4Settings.excludedRoutes = [NEIPv4Route(destinationAddress: "0.0.0.0", subnetMask: "128.0.0.0")]
+//        networkSettings.ipv4Settings = ipv4Settings
         
 //        proxySettings.exceptionList = ["mask.icloud.com", "mask-api.icloud.com", "mask-h2.icloud.com", "mask.apple-dns.net", "icloud.com", "apple.com"]
 //        var toMatch = getAllWhitelistedDomains()

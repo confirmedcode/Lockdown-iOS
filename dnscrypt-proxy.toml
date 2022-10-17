@@ -1,5 +1,5 @@
 server_names = [ 'myserver' ]
-listen_addresses = [ "127.0.0.1:53", "[::1]:53" ]
+listen_addresses = [ "127.0.0.1:53" ]
 ipv4_servers = true
 ipv6_servers = false
 max_clients = 250
