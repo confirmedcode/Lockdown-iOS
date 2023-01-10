@@ -10,13 +10,11 @@ import UIKit
 
 final class MainTabBarController: UITabBarController {
     
-    var homeViewController: HomeViewController {
-        return viewControllers![0] as! HomeViewController
-    }
+    var homeViewController: HomeViewController? { viewControllers![0] as? HomeViewController }
     
-    var accountViewController: AccountViewController {
-        let navigation = viewControllers![1] as! UINavigationController
-        return navigation.viewControllers[0] as! AccountViewController
+    var accountViewController: AccountViewController? {
+        guard let navigation = viewControllers![1] as? UINavigationController else { return nil }
+        return navigation.viewControllers[0] as? AccountViewController
     }
     
     var accountTabBarButton: UIView? {

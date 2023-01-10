@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="QIJ-WC-7sg" customClass="LockdownPaywallOptionCell" customModule="Lockdown" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="156" height="136"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uKN-Od-2m4">
+                <rect key="frame" x="0.0" y="0.0" width="156" height="136"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Few-sE-gXX">
+                        <rect key="frame" x="0.0" y="0.0" width="156" height="136"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngw-OL-OcO">
+                                <rect key="frame" x="12" y="12" width="132" height="47"/>
+                                <string key="text">Firewall +
+VPN</string>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="after 7 days trial" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrF-UH-yjf">
+                                <rect key="frame" x="38.5" y="115" width="79" height="13"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="$14.99/month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R1z-SK-TOt">
+                                <rect key="frame" x="12" y="88" width="132" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ngw-OL-OcO" secondAttribute="trailing" constant="12" id="7H6-KL-oNU"/>
+                            <constraint firstItem="wrF-UH-yjf" firstAttribute="top" secondItem="R1z-SK-TOt" secondAttribute="bottom" constant="7" id="Do0-rD-6bI"/>
+                            <constraint firstItem="R1z-SK-TOt" firstAttribute="trailing" secondItem="Ngw-OL-OcO" secondAttribute="trailing" id="Dpm-Fq-Vth"/>
+                            <constraint firstAttribute="bottom" secondItem="wrF-UH-yjf" secondAttribute="bottom" constant="8" id="GpG-gz-wsG"/>
+                            <constraint firstItem="Ngw-OL-OcO" firstAttribute="top" secondItem="Few-sE-gXX" secondAttribute="top" constant="12" id="bvb-mp-Yee"/>
+                            <constraint firstItem="wrF-UH-yjf" firstAttribute="centerX" secondItem="Few-sE-gXX" secondAttribute="centerX" id="gSw-Xp-gTd"/>
+                            <constraint firstItem="Ngw-OL-OcO" firstAttribute="leading" secondItem="Few-sE-gXX" secondAttribute="leading" constant="12" id="sdI-n5-VEA"/>
+                            <constraint firstItem="R1z-SK-TOt" firstAttribute="leading" secondItem="Ngw-OL-OcO" secondAttribute="leading" id="z8S-TG-LS1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Few-sE-gXX" firstAttribute="leading" secondItem="uKN-Od-2m4" secondAttribute="leading" id="EwA-l6-LkC"/>
+                    <constraint firstAttribute="trailing" secondItem="Few-sE-gXX" secondAttribute="trailing" id="KkQ-FZ-klY"/>
+                    <constraint firstItem="Few-sE-gXX" firstAttribute="top" secondItem="uKN-Od-2m4" secondAttribute="top" id="gK7-YL-sB1"/>
+                    <constraint firstAttribute="bottom" secondItem="Few-sE-gXX" secondAttribute="bottom" id="z0K-yd-iVc"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="156" height="136"/>
+            <connections>
+                <outlet property="afterTrialLabel" destination="wrF-UH-yjf" id="jOB-o9-j5m"/>
+                <outlet property="gradientView" destination="Few-sE-gXX" id="Mw3-y4-quq"/>
+                <outlet property="priceLabel" destination="R1z-SK-TOt" id="w2G-8k-unn"/>
+                <outlet property="titleLabel" destination="Ngw-OL-OcO" id="0HJ-Pv-Sbk"/>
+            </connections>
+            <point key="canvasLocation" x="-71.014492753623188" y="-318.08035714285711"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

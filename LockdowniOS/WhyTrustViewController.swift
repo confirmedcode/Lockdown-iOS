@@ -14,7 +14,7 @@ class WhyTrustViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var pages:[UIViewController] = []
+    var pages: [UIViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

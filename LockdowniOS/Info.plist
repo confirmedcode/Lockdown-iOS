@@ -49,6 +49,13 @@
 	<string>We use this to automatically select the best region for the VPN.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>You asked to save an image to your photos. This does not give access to read your photos.</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Lockdown Siri support is needed for Shortcuts functionality.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>DisableVPNIntent</string>
+		<string>EnableVPNIntent</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>

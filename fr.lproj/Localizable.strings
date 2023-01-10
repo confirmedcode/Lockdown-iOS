@@ -344,7 +344,7 @@
 "To: joe@email.com\nRe: Q4 2019 Finance Review" = "To: joe@email.com\nRe: Revue financière du 4ème trimestre 2019";
 
 /* No comment provided by engineer. */
-"Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location." = "Les traqueurs, publicités et autres scripts malveillants sont désormais bloqués dans toutes vos applications, même en dehors de Safari.\n\nObtenez une confidentialité maximale grâce à un Tunnel Sécurisé pour protéger vos connexions, anonymiser votre navigation et cacher votre localisation.";
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "Les traqueurs, publicités et autres scripts malveillants sont désormais bloqués dans toutes vos applications, même en dehors de Safari.\n\nObtenez une confidentialité maximale grâce à un Tunnel Sécurisé pour protéger vos connexions, anonymiser votre navigation et cacher votre localisation.";
 
 /* No comment provided by engineer. */
 "Tunnel" = "Tunnel";
@@ -703,3 +703,114 @@
 
 /* The title of a list of trackers */
 "Amazon Trackers" = "Amazon Trackers";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "Simple et puissant";
+"onboarding_lockdown_stops_trackers" = "Lockdown empêche les traqueurs, les malwares et autres agents malintentionnés d'accéder à vos données.";
+"onboarding_worlds_first_on_device" = "Numéro 1 mondial sur tous les appareils";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "Un pare-feu en open source et un tunnel VPN sécurisé qui fonctionne sur TOUTES vos applis et navigateurs internet.";
+"onboarding_staying_protected_is_easy_with_lockdown" = "Se protéger est facile avec Lockdown";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "Restez anonyme avec un tunnel VPN sécurisé";
+"onboarding_no_logs_fast_and_fully_audited" = "Un VPN incroyablement rapide, sans logs, centré sur la confidentialité. Le seul VPN a prouver sa politique de confidentialité et à être entièrement audité par des experts de la sécurité.";
+"onboarding_take_control_of_who_you_block" = "Contrôlez qui\nvous bloquez";
+"onboarding_when_using_our_intuitive_blocklists" = "Avec notre outil de liste de blocage intuitif.";
+"onboarding_stay_protected" = "Protégez-vous !";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "Obtenez des rapports et des mises à jour de liste de blocage hebdomadaires.";
+"onboarding_over_1_billion_trackers_blocked" = "Plus d'un milliard de traqueurs bloqués";
+"onboarding_used_by_more_than_1_million" = "Utilisé par plus d'un million de personnes soucieuses de confidentialité.";
+"onboarding_sign_up" = "S'inscrire";
+"onboarding_login" = "Se connecter";
+"continue" = "Continuer";
+"plan_annual" = "Annuelle";
+"plan_monthly" = "Mensuelle";
+
+// MARK: - SignUpViewController
+"welcome" = "Bienvenue";
+"already_have_account_login" = "Vous avez déjà un compte ? Se connecter";
+"sign_up_to_access_new_block_lists_from_trackers" = "Inscrivez-vous pour accéder aux nouvelles listes de traqueurs bloqués";
+"already_have_account_login_below" = "Vous avez déjà un compte Lockdown ?\nConnectez-vous ci-dessous.";
+"forgot_password" = "Mot de passe oublié";
+"email" = "Adresse e-mail";
+"password" = "Mot de passe";
+"access_our_curated_block_lists_and_build_your_own" = "Accédez à nos listes de blocage élaborées avec soin et créez les vôtres";
+"access_lockdown_across_all_your_devices" = "Accédez à Lockdown sur tous vos appareils";
+"firewall_and_vpn_support" = "Pare-feu et soutien VPN";
+"by_continuing_you_agree_with_our" = "En poursuivant, vous acceptez nos";
+"and" = "et";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "Rester dans la boucle";
+"once_a_week_helpful_reminders" = "Une fois par semaine, des rappels utiles sur votre sécurité et comment en profiter.";
+"enable_notifications" = "Activer les notifications";
+"maybe_later" = "Peut-être plus tard";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "Vérifier les champs";
+"email_and_password_must_not_be_empty" = "Les champs de l'adresse e-mail et du mot de passe ne doivent pas être vides";
+"Success! 🎉" = "Succès ! 🎉";
+"error_signing_in" = "Erreur de connexion";
+"confirm_your_email" = "Confirmez votre adresse e-mail";
+"you_have_successfully_sign_in" = "Vous êtes bien connecté(e).";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "J'ai bloqué %@ traqueurs, pubs, et badwares avec Lockdown, le pare-feu qui bloque les connexions indésirables sur toutes vos applis.\nObtenez-le gratuitement sur lockdownprivacy.com.";
+"check_email" = "Vérifiez vos e-mails";
+"we_have_sent_a_reset_password_email" = "Nous vous avons envoyé un e-mail pour réinitialiser votre mot de passe. Assurez-vous de vérifier qu'il ne se soit pas égaré dans votre dossier de spam.";
+"since_date" = "DEPUIS LE %@";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "Démarrer l'essai maintenant pour obtenir l'accès complet";
+"restore_purchase" = "Restaurer l'achat";
+"terms_of_service" = "Conditions d'utilisation";
+"CHOOSE_YOUR_PLAN" = "CHOISISSEZ VOTRE FORMULE";
+"skip" = "Passer";
+"save_annual_vpn_subscription" = "Économisez ~50 %";
+"save_annual_pro_subscription" = "Économisez ~30 %";
+"current_plan" = "Formule actuelle";
+"feature_table_column" = "Fonctionnalité";
+"feature_level_table_column" = "Gratuite";
+"stops_ads_and_hidden_trackers" = "Stoppe les pubs et les traqueurs cachés";
+"blocks_badware_in_all_your_apps" = "Bloque les badwares dans toutes vos applis";
+"access_our_curated_block_lists" = "Accédez à nos listes de blocage élaborées avec soin";
+"build_your_custom_block_lists" = "Créez vos listes de blocages personnalisées";
+"stops_browsing_history_tracking" = "Stoppe le tracking de l'historique des recherches";
+"anonymizing_your_browsing" = "Anonymise vos recherches";
+"hides_your_location_and_ip" = "Dissimule votre position et votre adresse IP";
+"lets_you_change_your_ip_to_other_region" = "Vous laisse choisir une autre région\npour votre adresse IP";
+"app_for_iphone_plus_ipad" = "Application pour iPhone et iPad";
+"app_for_mac" = "Application pour Mac";
+"year_after_slash" = "an";
+"month_after_slash" = "mois";
+
+// MARK: - Delete My Account
+"delete_account" = "Supprimer le compte";
+"delete_my_account" = "Supprimer mon compte";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "En poursuivant, vous allez envoyer une demande de suppression complète de votre compte, ainsi que de toutes les données personnelles associées. Une fois le compte supprimé, vous recevrez une notification de ces changements sur l'adresse e-mail de votre compte.\n\nVeuillez noter que vous perdrez la totalité de vos paramètres, y compris les options de mise à niveau, et que vous ne pourrez pas créer d'autre compte avec la même adresse e-mail.";
+"proceed" = "Poursuivre";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "Adresse e-mail non valide";
+"please_fill_in_your_email" = "Veuillez indiquer votre adresse e-mail.";
+"you_entered_con_instead_of_com" = "Vous avez entré « .con » au lieu de « .com ».";
+"no_valid_email_address_detected" = "Aucune adresse e-mail valide détectée.";
+"too_many_email_addresses_entered" = "Trop d'adresses e-mail entrées.";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "minutes";
+"seconds_genitive" = "secondes";
+"lockdowns_first_christmas_sale" = "Premières promotions\nde Noël de Lockdown";
+"subscribe_now" = "S'abonner maintenant";
+
+// MARK: - Code Redemption
+"redeem_code" = "Utiliser le code";
+"cannot_redeem_code" = "Code inutilisable";
+"the_code_could_not_be_redeemed" = "Impossible d'utiliser ce code.";
+"congratulations_excl" = "Félicitations !";
+"the_code_was_successfully_redeemed" = "Votre code a bien été pris en compte. Vous devrez peut-être redémarrer l'application pour que l'achat apparaisse.";
+

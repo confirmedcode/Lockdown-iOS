@@ -48,13 +48,14 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 32))
-        view.backgroundColor = UIColor.groupTableViewBackground
-        let label = UILabel(frame: CGRect.init(x: 12, y: 6, width: tableView.frame.size.width, height: 24))
-        label.font = fontMedium14
+        view.backgroundColor = .systemGroupedBackground
+        let isLeftToRight = traitCollection.layoutDirection == .leftToRight
+        let label = UILabel(frame: CGRect.init(x: isLeftToRight ? 12 : -12, y: 6, width: tableView.frame.size.width, height: 24))
+        label.font = .mediumLockdownFont(size: 14)
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = NSLocalizedString("Blocked Domains", comment: "")
+            label.text = .localized("Blocked Domains")
         }
         
         view.addSubview(label)
@@ -64,7 +65,9 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BlockListGroupCell", for: indexPath) as! BlockListGroupCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlockListGroupCell", for: indexPath) as? BlockListGroupCell else {
+            return UITableViewCell()
+        }
         if indexPath.section == 0 {
             if let domainKeys = lockdownGroup?.domains {
                 let keys = domainKeys.keys.sorted {$0 < $1}

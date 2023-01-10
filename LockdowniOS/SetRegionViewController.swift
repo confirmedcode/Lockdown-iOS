@@ -24,7 +24,7 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - TABLE VIEW
+    // MARK: - TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -67,14 +67,15 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vpnRegion = vpnRegions[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "setRegionCell", for: indexPath) as! SetRegionCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "setRegionCell", for: indexPath) as? SetRegionCell else {
+            return UITableViewCell()
+        }
         cell.regionFlag.text = vpnRegion.regionFlagEmoji
         cell.regionName.text = vpnRegion.regionDisplayName
         
         if vpnRegion.serverPrefix == getSavedVPNRegion().serverPrefix {
             cell.regionSelected.isHidden = false
-        }
-        else {
+        } else {
             cell.regionSelected.isHidden = true
         }
         

@@ -1,0 +1,446 @@
+/* Class = "UILabel"; text = "I agree to the"; ObjectID = "04y-ib-kAj"; */
+"04y-ib-kAj.text" = "أوافق على";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "0XQ-Qd-SAy"; */
+"0XQ-Qd-SAy.placeholder" = "كلمة المرور";
+
+/* Class = "UILabel"; text = "TODAY"; ObjectID = "0id-50-Eu3"; */
+"0id-50-Eu3.text" = "اليوم";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0m3-NA-IPB"; */
+"0m3-NA-IPB.text" = "اللقب";
+
+/* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "2I5-jL-jQr"; */
+"2I5-jL-jQr.text" = "ليس نشطًا";
+
+/* Class = "UITabBarItem"; title = "Learn"; ObjectID = "2sg-zD-KTu"; */
+"2sg-zD-KTu.title" = "تعلم";
+
+/* Class = "UILabel"; text = "Warning"; ObjectID = "3P8-IH-ggH"; */
+"3P8-IH-ggH.text" = "تحذير";
+
+/* Class = "UIButton"; normalTitle = "􀈂"; ObjectID = "3tZ-rh-ZOa"; */
+"3tZ-rh-ZOa.normalTitle" = "􀈂";
+
+/* Class = "UILabel"; text = "iOS Annual (Save ~50%)"; ObjectID = "5Ce-KH-z1j"; */
+"5Ce-KH-z1j.text" = "iOS سنويًا (توفير ~45%)";
+
+/* Class = "UILabel"; text = "A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source."; ObjectID = "6Qj-yK-k5A"; */
+"6Qj-yK-k5A.text" = "جدار حماية بسيط وقوي يوقف الاتصال بالمتعقبات والبرامج الضارة والعوامل السيئة الأخرى.  مجاني ومفتوح المصدر.";
+
+/* Class = "UILabel"; text = "Tap to agree to this"; ObjectID = "6Sd-rw-Pyl"; */
+"6Sd-rw-Pyl.text" = "اضغط للموافقة على هذا";
+
+/* Class = "UILabel"; text = "Not Whitelisted"; ObjectID = "6TE-i7-iPd"; */
+"6TE-i7-iPd.text" = "ليس في القائمة البيضاء";
+
+/* Class = "UILabel"; text = "World's Simplest Privacy Policy"; ObjectID = "6sx-m3-XUn"; */
+"6sx-m3-XUn.text" = "أبسط سياسة خصوصية عالميًا";
+
+/* Class = "UIButton"; normalTitle = "February 2022"; ObjectID = "7NS-46-hCo"; */
+"7NS-46-hCo.normalTitle" = "فبراير 2022";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
+"7nc-lb-z6u.normalTitle" = "أوافق";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "8FF-0m-G4n"; */
+"8FF-0m-G4n.normalTitle" = "إلغاء";
+
+/* Class = "UILabel"; text = "Accounts get the following benefits:"; ObjectID = "8xZ-K2-buV"; */
+"8xZ-K2-buV.text" = "تحصل الحسابات على المنافع التالية:";
+
+/* Class = "UILabel"; text = "Block Log Disabled"; ObjectID = "9Mg-Xn-BmP"; */
+"9Mg-Xn-BmP.text" = "سجل الحظر معطل";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "A3S-Ro-tUz"; */
+"A3S-Ro-tUz.normalTitle" = "لماذا تثق في Lockdown؟";
+
+/* Class = "UILabel"; text = "Pro Annual (Save ~30%)"; ObjectID = "ASZ-so-4BJ"; */
+"ASZ-so-4BJ.text" = "احترافي سنويًا (توفير ~30%)";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "AVA-H3-vX1"; */
+"AVA-H3-vX1.text" = "التسجيل";
+
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "BGP-ej-jz6"; */
+"BGP-ej-jz6.text" = "Secure Tunnel VPN";
+
+/* Class = "UIView"; accessibilityHint = "iOS Annual supports iPads and iPhones. Double tap using VoiceOver to select."; ObjectID = "BI8-xc-diY"; */
+"BI8-xc-diY.accessibilityHint" = "يدعم اشتراك iOS سنويًا أجهزة iPad و iPhone. انقر نقرًا مزدوجًا باستخدام VoiceOver للتحديد.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"iOS Annual\" Plan"; ObjectID = "BI8-xc-diY"; */
+"BI8-xc-diY.accessibilityLabel" = "ضع علامة في المربع لخطة \"iOS سنويًا\"";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "BhW-8r-pbC"; */
+"BhW-8r-pbC.normalTitle" = "لماذا تثق في Lockdown؟";
+
+/* Class = "UILabel"; accessibilityHint = "Instructs user to tap the blue circle to the left of this label to activate."; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.accessibilityHint" = "وجه المستخدم إلى النقر على الدائرة الزرقاء الموجودة على يسار هذا الوسم للتفعيل.";
+
+/* Class = "UILabel"; accessibilityLabel = "A label that says Tap To Activate. Not the actual button."; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.accessibilityLabel" = "وسم يقول اضغط للتنشيط. وليس الزر الفعلي.";
+
+/* Class = "UILabel"; text = "Tap To Activate"; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.text" = "اضغط للتنشيط";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "C0f-ye-V9U"; */
+"C0f-ye-V9U.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Cjo-hk-1dr"; */
+"Cjo-hk-1dr.normalTitle" = "إغلاق";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "Dm9-pY-Snm"; */
+"Dm9-pY-Snm.normalTitle" = "استعادة عملية الشراء";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "Dxs-1n-lKD"; */
+"Dxs-1n-lKD.normalTitle" = "نسيت كلمة المرور؟";
+
+/* Class = "UILabel"; text = "United States - West"; ObjectID = "E9c-eB-V7Z"; */
+"E9c-eB-V7Z.text" = "الولايات المتحدة - الغرب";
+
+/* Class = "UILabel"; text = "12:22 PM"; ObjectID = "G2S-PC-kMS"; */
+"G2S-PC-kMS.text" = "12:22 م";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "GBo-WQ-fTN"; */
+"GBo-WQ-fTN.normalTitle" = "إغلاق";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "J7f-4S-hHD"; */
+"J7f-4S-hHD.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UIButton"; normalTitle = "View Log"; ObjectID = "JVD-sS-lUY"; */
+"JVD-sS-lUY.normalTitle" = "عرض السجل";
+
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "Jsv-mc-ptE"; */
+"Jsv-mc-ptE.text" = "Secure Tunnel VPN";
+
+/* Class = "UILabel"; text = "Already have a Lockdown account? Sign in below."; ObjectID = "KDA-UD-f4u"; */
+"KDA-UD-f4u.text" = "لديك بالفعل حساب Lockdown؟ سجل الدخول أدناه.";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "KMj-n0-VnV"; */
+"KMj-n0-VnV.placeholder" = "عنوان البريد الإلكتروني";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "KbM-Pn-EXN"; */
+"KbM-Pn-EXN.normalTitle" = "البدء";
+
+/* Class = "UILabel"; text = "Blocking Enabled"; ObjectID = "Kd7-nB-tAb"; */
+"Kd7-nB-tAb.text" = "الحظر مفعل";
+
+/* Class = "UILabel"; text = "Set Region"; ObjectID = "KtJ-Jg-Z3X"; */
+"KtJ-Jg-Z3X.text" = "تحديد المنطقة";
+
+/* Class = "UILabel"; text = "Firewall"; ObjectID = "LE2-86-d4U"; */
+"LE2-86-d4U.text" = "جدار الحماية";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "MRU-xk-A2p"; */
+"MRU-xk-A2p.normalTitle" = "إلغاء";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Msx-Nc-p9M"; */
+"Msx-Nc-p9M.text" = "0";
+
+/* Class = "UILabel"; text = "Lockdown"; ObjectID = "NAN-dg-xBj"; */
+"NAN-dg-xBj.text" = "Lockdown";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "NvC-GW-2NJ"; */
+"NvC-GW-2NJ.normalTitle" = "إلغاء";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "O4a-yi-uRp"; */
+"O4a-yi-uRp.normalTitle" = "زر";
+
+/* Class = "UITabBarItem"; title = "Protect"; ObjectID = "O5a-jC-Mj1"; */
+"O5a-jC-Mj1.title" = "حماية";
+
+/* Class = "UILabel"; text = "Location: 🇺🇸"; ObjectID = "O6b-GR-ijA"; */
+"O6b-GR-ijA.text" = "الموقع: 🇺🇸";
+
+/* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "ODT-wN-bGo"; */
+"ODT-wN-bGo.text" = "أجهزة iPad و iPhone";
+
+/* Class = "UIButton"; normalTitle = "􀍟"; ObjectID = "OIa-zY-ALo"; */
+"OIa-zY-ALo.normalTitle" = "􀍟";
+
+/* Class = "UIButton"; normalTitle = "􀁝"; ObjectID = "OLt-18-OkW"; */
+"OLt-18-OkW.normalTitle" = "􀁝";
+
+/* Class = "UILabel"; text = "Block Invasive Tracking"; ObjectID = "PGe-EF-Ixy"; */
+"PGe-EF-Ixy.text" = "حظر التعقب الجائر";
+
+/* Class = "UIButton"; normalTitle = "􀆅"; ObjectID = "RMP-Wh-oss"; */
+"RMP-Wh-oss.normalTitle" = "􀆅";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "RTE-DP-SL6"; */
+"RTE-DP-SL6.normalTitle" = "التسجيل";
+
+/* Class = "UIButton"; normalTitle = "Whitelist"; ObjectID = "Rhb-9H-gRT"; */
+"Rhb-9H-gRT.normalTitle" = "القائمة البيضاء";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "SCr-mD-x9f"; */
+"SCr-mD-x9f.normalTitle" = "سياسة الخصوصية";
+
+/* Class = "UILabel"; text = "ALL TIME"; ObjectID = "SGD-NH-9Mo"; */
+"SGD-NH-9Mo.text" = "كل الوقت";
+
+/* Class = "UILabel"; text = "iPads, iPhones, and Macs"; ObjectID = "SLG-gG-QTX"; */
+"SLG-gG-QTX.text" = "أجهزة iPad و iPhone و Mac";
+
+/* Class = "UILabel"; text = "3421"; ObjectID = "Sar-GU-wUS"; */
+"Sar-GU-wUS.text" = "3421";
+
+/* Class = "UILabel"; text = "Lockdown Firewall is 100% on-device, so it does not collect or transmit any data to any servers - everything stays on your device."; ObjectID = "T2B-yz-40I"; */
+"T2B-yz-40I.text" = "Lockdown Firewall يوجد على الجهاز بنسبة 100٪، لذا فهو لا يجمع أو يرسل أي بيانات إلى أي خوادم - كل شيء يظل على جهازك.";
+
+/* Class = "UILabel"; text = "Protect Good Connections"; ObjectID = "TaD-Vg-S5A"; */
+"TaD-Vg-S5A.text" = "احمي الاتصالات الجيدة";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "Tls-Z3-Gnz"; */
+"Tls-Z3-Gnz.normalTitle" = "حفظ";
+
+/* Class = "UITextField"; placeholder = "domain-to-whitelist.com"; ObjectID = "U7q-Uc-gxE"; */
+"U7q-Uc-gxE.placeholder" = "domain-to-whitelist.com";
+
+/* Class = "UILabel"; text = "Lockdown VPN is 100% open source, fully audited, and has a strict no-logs policy. Proof of your data protection is in the Privacy Policy."; ObjectID = "UJ5-nt-aYy"; */
+"UJ5-nt-aYy.text" = "Lockdown VPN هو 100٪ مفتوح المصدر ومدقق بالكامل ولديه سياسة صارمة لعدم الاحتفاظ بالسجلات. يوجد الدليل على حماية بياناتك في سياسة الخصوصية.";
+
+/* Class = "UIButton"; normalTitle = "Get Started Free"; ObjectID = "VK2-VJ-AkH"; */
+"VK2-VJ-AkH.normalTitle" = "ابدأ مجانًا";
+
+/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "Vhr-9g-C3l"; */
+"Vhr-9g-C3l.normalTitle" = "اعرف المزيد";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "W3y-bX-UkA"; */
+"W3y-bX-UkA.text" = "كلمة المرور";
+
+/* Class = "UIView"; accessibilityHint = "iOS Monthly supports iPads and iPhones. Double tap using VoiceOver to select."; ObjectID = "WcD-2j-Lym"; */
+"WcD-2j-Lym.accessibilityHint" = "يدعم اشتراك iOS شهريًا أجهزة iPad و iPhone. انقر نقرًا مزدوجًا باستخدام VoiceOver للتحديد.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"iOS Monthly\" Plan"; ObjectID = "WcD-2j-Lym"; */
+"WcD-2j-Lym.accessibilityLabel" = "ضع علامة في المربع لخطة \"iOS شهريًا\"";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Wi8-F0-ahr"; */
+"Wi8-F0-ahr.normalTitle" = "إغلاق";
+
+/* Class = "UILabel"; text = "THIS WEEK"; ObjectID = "WyU-rB-hEs"; */
+"WyU-rB-hEs.text" = "هذا الأسبوع";
+
+/* Class = "UILabel"; text = "$49.99/year after (~$4.17/month)"; ObjectID = "XQI-S7-VjW"; */
+"XQI-S7-VjW.text" = "49.99 دولارًا في السنة بعد ذلك (حوالي 4.17 دولارًا في الشهر)";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "XSr-oZ-hkd"; */
+"XSr-oZ-hkd.text" = "0";
+
+/* Class = "UILabel"; text = "Block Group Title"; ObjectID = "XcQ-Zo-7hE"; */
+"XcQ-Zo-7hE.text" = "اسم مجموعة الحظر";
+
+/* Class = "UILabel"; text = "✓ Get new block lists for trackers ✓ Access Lockdown Mac and Desktop ✓ Critical announcements and features"; ObjectID = "XhT-hq-Dd2"; */
+"XhT-hq-Dd2.text" = "✓ احصل على قوائم حظر جديدة للمتعقبات ✓ تمتع بحماية Lockdown على Mac والكمبيوتر ✓ الإعلانات والميزات الهامة";
+
+/* Class = "UIButton"; normalTitle = "Block List"; ObjectID = "XvC-pH-UjX"; */
+"XvC-pH-UjX.normalTitle" = "قائمة الحظر";
+
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "Y6I-Ar-Q5y"; */
+"Y6I-Ar-Q5y.title" = "الحساب";
+
+/* Class = "UITabBarItem"; title = "Account"; ObjectID = "YAE-W9-FME"; */
+"YAE-W9-FME.title" = "الحساب";
+
+/* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "ZPf-nR-X1a"; */
+"ZPf-nR-X1a.accessibilityLabel" = "اضغط على هذا الزر لتفعيل Secure Tunnel";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "a37-qm-xpZ"; */
+"a37-qm-xpZ.normalTitle" = "سياسة الخصوصية";
+
+/* Class = "UIButton"; normalTitle = "Set Region"; ObjectID = "a4O-qT-yLk"; */
+"a4O-qT-yLk.normalTitle" = "تحديد المنطقة";
+
+/* Class = "UILabel"; text = "VPN"; ObjectID = "aXL-VV-lJa"; */
+"aXL-VV-lJa.text" = "VPN";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "anO-Te-34C"; */
+"anO-Te-34C.normalTitle" = "إلغاء";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "asx-fS-ufQ"; */
+"asx-fS-ufQ.text" = "البريد الإلكتروني";
+
+/* Class = "UILabel"; text = "🇺🇸"; ObjectID = "bDO-jU-rIH"; */
+"bDO-jU-rIH.text" = "الولايات المتحدة";
+
+/* Class = "UILabel"; text = "Pro Monthly"; ObjectID = "c6Y-nW-xhv"; */
+"c6Y-nW-xhv.text" = "احترافي شهريًا";
+
+/* Class = "UIButton"; normalTitle = "􀎬"; ObjectID = "cAQ-Dd-nCd"; */
+"cAQ-Dd-nCd.normalTitle" = "􀎬";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "cNH-31-ne4"; */
+"cNH-31-ne4.normalTitle" = "إلغاء";
+
+/* Class = "UILabel"; text = "TUNNEL OFF"; ObjectID = "cVg-HS-AW8"; */
+"cVg-HS-AW8.text" = "النفق قيد الإيقاف";
+
+/* Class = "UILabel"; text = "The connections blocked by Lockdown for the last day are shown below. As per our Privacy Policy, all the blocking is done on-device and never transmitted to any servers for processing."; ObjectID = "ccb-xf-LSM"; */
+"ccb-xf-LSM.text" = "الاتصالات التي حظرها Lockdown في آخر يوم موضحة أدناه. وفقًا لسياسة الخصوصية الخاصة بنا، يتم إجراء جميع عمليات الحظر على الجهاز ولا يتم نقلها أبدًا إلى أي خوادم للمعالجة.";
+
+/* Class = "UIView"; accessibilityHint = "Pro Annual supports iPads and iPhones and Macs. Double tap using VoiceOver to select."; ObjectID = "d44-u4-ZF6"; */
+"d44-u4-ZF6.accessibilityHint" = "يدعم اشتراك احترافي سنويًا أجهزة iPad و iPhone و Mac. انقر نقرًا مزدوجًا باستخدام VoiceOver للتحديد.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"Pro Annual\" Plan"; ObjectID = "d44-u4-ZF6"; */
+"d44-u4-ZF6.accessibilityLabel" = "ضع علامة في المربع لخطة \"احترافي سنويًا\"";
+
+/* Class = "UILabel"; text = "Enter your email below and we'll send you an email to reset your password."; ObjectID = "dLw-qu-1Oe"; */
+"dLw-qu-1Oe.text" = "أدخل بريدك الإلكتروني أدناه وسنرسل لك بريدًا إلكترونيًا لإعادة تعيين كلمة مرورك.";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "dp2-kD-Scb"; */
+"dp2-kD-Scb.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "f3K-Kz-eVg"; */
+"f3K-Kz-eVg.placeholder" = "كلمة المرور";
+
+/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "fK4-lE-dks"; */
+"fK4-lE-dks.text" = "blocked-domain.com";
+
+/* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "fRG-nx-zRG"; */
+"fRG-nx-zRG.accessibilityLabel" = "اضغط على هذا الزر لتفعيل جدار الحماية";
+
+/* Class = "UILabel"; text = "For fastest speeds, choose a region closest to you. You can also anonymize your IP through other regions."; ObjectID = "fTe-nS-2bH"; */
+"fTe-nS-2bH.text" = "للحصول على سرعات أعلى، اختر المنطقة الأقرب إليك. يمكنك أيضًا إخفاء هوية IP الخاص بك من خلال مناطق أخرى.";
+
+/* Class = "UILabel"; text = "Block Log"; ObjectID = "fmE-6E-gnc"; */
+"fmE-6E-gnc.text" = "سجل الحظر";
+
+/* Class = "UILabel"; text = "Enhanced Tracking Prevention"; ObjectID = "gHS-VV-2R1"; */
+"gHS-VV-2R1.text" = "منع محسن للتعقب";
+
+/* Class = "UILabel"; text = "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol."; ObjectID = "gJW-8m-Vk5"; */
+"gJW-8m-Vk5.text" = "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، وتحتوي على حرف كبير واحد وحرف صغير واحد ورقم واحد ورمز واحد على الأقل.";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "h6y-cc-pyT"; */
+"h6y-cc-pyT.normalTitle" = "لماذا تثق في Lockdown؟";
+
+/* Class = "UIView"; accessibilityHint = "Pro Monthly supports iPads and iPhones and Macs. Double tap using VoiceOver to select."; ObjectID = "hqL-Xy-82O"; */
+"hqL-Xy-82O.accessibilityHint" = "يدعم اشتراك احترافي شهريًا أجهزة iPad و iPhone و Mac. انقر نقرًا مزدوجًا باستخدام VoiceOver للتحديد.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"Pro Monthly\" Plan"; ObjectID = "hqL-Xy-82O"; */
+"hqL-Xy-82O.accessibilityLabel" = "ضع علامة في المربع لخطة \"احترافي شهريًا\"";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "j43-ba-oDJ"; */
+"j43-ba-oDJ.normalTitle" = "إرسال";
+
+/* Class = "UIButton"; normalTitle = "Enable Block Log"; ObjectID = "j7V-kr-ymm"; */
+"j7V-kr-ymm.normalTitle" = "تمكين سجل الحظر";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "jMa-F3-KUG"; */
+"jMa-F3-KUG.text" = "البريد الإلكتروني";
+
+/* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "jXy-3G-JaC"; */
+"jXy-3G-JaC.accessibilityLabel" = "اضغط على هذا الزر لتفعيل Secure Tunnel";
+
+/* Class = "UILabel"; text = "Private Browsing + Hide Location & IP"; ObjectID = "ked-BF-PXx"; */
+"ked-BF-PXx.text" = "تصفح خاص + إخفاء الموقع و IP";
+
+/* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "kmJ-b4-n81"; */
+"kmJ-b4-n81.text" = "ليس نشطًا";
+
+/* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "koL-dc-mZr"; */
+"koL-dc-mZr.accessibilityLabel" = "اضغط على هذا الزر لتفعيل جدار الحماية";
+
+/* Class = "UILabel"; text = "VIEW OPENAUDIT REPORT"; ObjectID = "lDV-k9-rkj"; */
+"lDV-k9-rkj.text" = "عرض تقرير التدقيق المفتوح";
+
+/* Class = "UILabel"; text = "You'll automatically be credited for your existing subscription."; ObjectID = "lEt-3l-yTH"; */
+"lEt-3l-yTH.text" = "ستتم تلقائيًا إضافة الرصيد إلى اشتراكك الحالي.";
+
+/* Class = "UIButton"; normalTitle = "Terms of Service"; ObjectID = "lOA-PB-b5V"; */
+"lOA-PB-b5V.normalTitle" = "شروط الخدمة";
+
+/* Class = "UILabel"; text = "To: joe@email.com Re: Q4 2019 Finance Review"; ObjectID = "mRH-Ie-0qb"; */
+"mRH-Ie-0qb.text" = "إلى: joe@email.com Re: المراجعة المالية للربع الرابع في 2019";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "mU9-zL-O80"; */
+"mU9-zL-O80.normalTitle" = "حفظ";
+
+/* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "naG-mg-g14"; */
+"naG-mg-g14.text" = "أجهزة iPad و iPhone";
+
+/* Class = "UILabel"; text = "Forgot Password"; ObjectID = "nu2-zq-dta"; */
+"nu2-zq-dta.text" = "نسيت كلمة المرور";
+
+/* Class = "UILabel"; text = "Secure Tunnel"; ObjectID = "nuc-D4-P1M"; */
+"nuc-D4-P1M.text" = "Secure Tunnel VPN";
+
+/* Class = "UILabel"; text = "Sign In"; ObjectID = "oPf-b7-d1V"; */
+"oPf-b7-d1V.text" = "تسجيل الدخول";
+
+/* Class = "UILabel"; text = "Blocked today:"; ObjectID = "oYx-Wf-i0q"; */
+"oYx-Wf-i0q.text" = "حُظر اليوم:";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "pMu-va-97O"; */
+"pMu-va-97O.normalTitle" = "إغلاق";
+
+/* Class = "UILabel"; text = "Some sites or apps don't work well with VPNs. The whitelist below allows you to whitelist sites so they bypass the VPN for a better experience."; ObjectID = "pVa-cX-EbQ"; */
+"pVa-cX-EbQ.text" = "لا تعمل بعض المواقع أو التطبيقات بشكل جيد مع شبكات VPN. تتيح لك القائمة البيضاء أدناه إضافة المواقع إلى القائمة البيضاء حتى تتجاوز VPN لتحظى بتجربة أفضل.";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "pXd-nf-bzR"; */
+"pXd-nf-bzR.placeholder" = "عنوان البريد الإلكتروني";
+
+/* Class = "UILabel"; text = "whitelisted-domain.com"; ObjectID = "pao-zq-e98"; */
+"pao-zq-e98.text" = "whitelisted-domain.com";
+
+/* Class = "UIButton"; normalTitle = "See How It Works"; ObjectID = "qBb-qF-2nJ"; */
+"qBb-qF-2nJ.normalTitle" = "تعرف على طريقة العمل";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "rCb-D1-AbS"; */
+"rCb-D1-AbS.text" = "كلمة المرور";
+
+/* Class = "UILabel"; text = "Over 1 Billion Trackers Blocked"; ObjectID = "rJd-Ql-Mu9"; */
+"rJd-Ql-Mu9.text" = "حُظر أكثر من 1 مليار متعقب";
+
+/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "rJk-m6-qqA"; */
+"rJk-m6-qqA.text" = "blocked-domain.com";
+
+/* Class = "UILabel"; text = "IP: 18.142.2.87"; ObjectID = "rhx-SZ-Kki"; */
+"rhx-SZ-Kki.text" = "IP: 18.142.2.87";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "syJ-Jd-iUo"; */
+"syJ-Jd-iUo.text" = "البريد الإلكتروني";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "tzL-mY-IJs"; */
+"tzL-mY-IJs.normalTitle" = "استمرار";
+
+/* Class = "UILabel"; text = "Tunnel Whitelist"; ObjectID = "uA3-l4-Qe0"; */
+"uA3-l4-Qe0.text" = "القائمة البيضاء للنفق";
+
+/* Class = "UILabel"; text = "📱"; ObjectID = "uSD-At-Csa"; */
+"uSD-At-Csa.text" = "📱";
+
+/* Class = "UILabel"; text = "Secure Tunnel encrypts your connections, anonymizes browsing history, and hides your location and unique IP address."; ObjectID = "ujS-r7-ItM"; */
+"ujS-r7-ItM.text" = "يقوم Secure Tunnel بتشفير اتصالاتك وإخفاء سجل التصفح وإخفاء موقعك وعنوان IP الفريد الخاص بك.";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "v8T-bw-mkT"; */
+"v8T-bw-mkT.normalTitle" = "سياسة الخصوصية";
+
+/* Class = "UIButton"; normalTitle = "Start 1 Week Free Trial"; ObjectID = "v8r-0N-ycQ"; */
+"v8r-0N-ycQ.normalTitle" = "ابدأ تجربة مجانية لمدة أسبوع";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "vKc-uc-qfV"; */
+"vKc-uc-qfV.text" = "-";
+
+/* Class = "UILabel"; text = "Add a domain to whitelist"; ObjectID = "w5F-U8-hnF"; */
+"w5F-U8-hnF.text" = "إضافة موقع إلى القائمة البيضاء";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "wPU-g5-s3s"; */
+"wPU-g5-s3s.placeholder" = "عنوان البريد الإلكتروني";
+
+/* Class = "UILabel"; text = "iOS Monthly"; ObjectID = "xt8-uP-JgS"; */
+"xt8-uP-JgS.text" = "iOS شهريًا";
+
+/* Class = "UILabel"; text = "Firewall"; ObjectID = "yIB-Tk-mf1"; */
+"yIB-Tk-mf1.text" = "جدار الحماية";
+
+/* Class = "UILabel"; text = "Browse Safer - Fully Audited Privacy"; ObjectID = "yXI-U1-vLz"; */
+"yXI-U1-vLz.text" = "تصفح أكثر أمانًا - خصوصية مدققة بالكامل";
+
+/* Class = "UILabel"; text = "iPad, iPhones, and Macs"; ObjectID = "yvR-wl-rIt"; */
+"yvR-wl-rIt.text" = "أجهزة iPad و iPhone و Mac";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ziI-ly-5qb"; */
+"ziI-ly-5qb.normalTitle" = "إلغاء";
+
+/* Class = "UILabel"; text = "Firewall Annual (save ~38%)"; ObjectID = "HoY-Z7-gjw"; */
+"HoY-Z7-gjw.text" = "جدار الحماية سنويًا (وفر ~38%)";

@@ -1,0 +1,446 @@
+/* Class = "UILabel"; text = "I agree to the"; ObjectID = "04y-ib-kAj"; */
+"04y-ib-kAj.text" = "Tôi đồng ý với";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "0XQ-Qd-SAy"; */
+"0XQ-Qd-SAy.placeholder" = "Mật khẩu";
+
+/* Class = "UILabel"; text = "TODAY"; ObjectID = "0id-50-Eu3"; */
+"0id-50-Eu3.text" = "HÔM NAY";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0m3-NA-IPB"; */
+"0m3-NA-IPB.text" = "Chức danh";
+
+/* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "2I5-jL-jQr"; */
+"2I5-jL-jQr.text" = "KHÔNG HOẠT ĐỘNG";
+
+/* Class = "UITabBarItem"; title = "Learn"; ObjectID = "2sg-zD-KTu"; */
+"2sg-zD-KTu.title" = "Học tập";
+
+/* Class = "UILabel"; text = "Warning"; ObjectID = "3P8-IH-ggH"; */
+"3P8-IH-ggH.text" = "Cảnh báo";
+
+/* Class = "UIButton"; normalTitle = "􀈂"; ObjectID = "3tZ-rh-ZOa"; */
+"3tZ-rh-ZOa.normalTitle" = "";
+
+/* Class = "UILabel"; text = "iOS Annual (Save ~50%)"; ObjectID = "5Ce-KH-z1j"; */
+"5Ce-KH-z1j.text" = "iOS hàng năm (Tiết kiệm ~45%)";
+
+/* Class = "UILabel"; text = "A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source."; ObjectID = "6Qj-yK-k5A"; */
+"6Qj-yK-k5A.text" = "Tường lửa đơn giản, mạnh mẽ, ngăn chặn các kết nối với trình theo dõi, phần mềm độc hại và các tác nhân xấu khác.  Mã nguồn mở và miễn phí.";
+
+/* Class = "UILabel"; text = "Tap to agree to this"; ObjectID = "6Sd-rw-Pyl"; */
+"6Sd-rw-Pyl.text" = "Nhấn để đồng ý với điều này";
+
+/* Class = "UILabel"; text = "Not Whitelisted"; ObjectID = "6TE-i7-iPd"; */
+"6TE-i7-iPd.text" = "Không có trong Danh sách trắng";
+
+/* Class = "UILabel"; text = "World's Simplest Privacy Policy"; ObjectID = "6sx-m3-XUn"; */
+"6sx-m3-XUn.text" = "Chính sách Quyền riêng tư Đơn giản nhất Thế giới";
+
+/* Class = "UIButton"; normalTitle = "February 2022"; ObjectID = "7NS-46-hCo"; */
+"7NS-46-hCo.normalTitle" = "Tháng 2/2022";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
+"7nc-lb-z6u.normalTitle" = "Đồng ý";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "8FF-0m-G4n"; */
+"8FF-0m-G4n.normalTitle" = "HỦY";
+
+/* Class = "UILabel"; text = "Accounts get the following benefits:"; ObjectID = "8xZ-K2-buV"; */
+"8xZ-K2-buV.text" = "Tài khoản nhận được những lợi ích sau:";
+
+/* Class = "UILabel"; text = "Block Log Disabled"; ObjectID = "9Mg-Xn-BmP"; */
+"9Mg-Xn-BmP.text" = "Đã tắt Nhật ký chặn";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "A3S-Ro-tUz"; */
+"A3S-Ro-tUz.normalTitle" = "Vì sao nên tin dùng Lockdown?";
+
+/* Class = "UILabel"; text = "Pro Annual (Save ~30%)"; ObjectID = "ASZ-so-4BJ"; */
+"ASZ-so-4BJ.text" = "Pro hàng năm (Tiết kiệm ~30%)";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "AVA-H3-vX1"; */
+"AVA-H3-vX1.text" = "Đăng ký";
+
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "BGP-ej-jz6"; */
+"BGP-ej-jz6.text" = "Secure Tunnel VPN";
+
+/* Class = "UIView"; accessibilityHint = "iOS Annual supports iPads and iPhones. Double tap using VoiceOver to select."; ObjectID = "BI8-xc-diY"; */
+"BI8-xc-diY.accessibilityHint" = "iOS hàng năm hỗ trợ iPad và iPhone. Nhấn đúp bằng VoiceOver để chọn.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"iOS Annual\" Plan"; ObjectID = "BI8-xc-diY"; */
+"BI8-xc-diY.accessibilityLabel" = "Hộp kiểm cho Gói \"iOS Hàng năm\"";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "BhW-8r-pbC"; */
+"BhW-8r-pbC.normalTitle" = "Vì sao nên tin dùng Lockdown?";
+
+/* Class = "UILabel"; accessibilityHint = "Instructs user to tap the blue circle to the left of this label to activate."; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.accessibilityHint" = "Hướng dẫn người dùng nhấn vào vòng tròn màu xanh ở bên trái của nhãn này để kích hoạt.";
+
+/* Class = "UILabel"; accessibilityLabel = "A label that says Tap To Activate. Not the actual button."; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.accessibilityLabel" = "Nhãn có nội dung Nhấn để kích hoạt. Không phải là nút thực tế.";
+
+/* Class = "UILabel"; text = "Tap To Activate"; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.text" = "Nhấn để kích hoạt";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "C0f-ye-V9U"; */
+"C0f-ye-V9U.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Cjo-hk-1dr"; */
+"Cjo-hk-1dr.normalTitle" = "ĐÓNG";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "Dm9-pY-Snm"; */
+"Dm9-pY-Snm.normalTitle" = "Khôi phục Mua hàng";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "Dxs-1n-lKD"; */
+"Dxs-1n-lKD.normalTitle" = "Quên mật khẩu?";
+
+/* Class = "UILabel"; text = "United States - West"; ObjectID = "E9c-eB-V7Z"; */
+"E9c-eB-V7Z.text" = "Hoa Kỳ - Miền Tây";
+
+/* Class = "UILabel"; text = "12:22 PM"; ObjectID = "G2S-PC-kMS"; */
+"G2S-PC-kMS.text" = "12:22 sáng";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "GBo-WQ-fTN"; */
+"GBo-WQ-fTN.normalTitle" = "ĐÓNG";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "J7f-4S-hHD"; */
+"J7f-4S-hHD.normalTitle" = "Đăng nhập";
+
+/* Class = "UIButton"; normalTitle = "View Log"; ObjectID = "JVD-sS-lUY"; */
+"JVD-sS-lUY.normalTitle" = "Xem nhật ký";
+
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "Jsv-mc-ptE"; */
+"Jsv-mc-ptE.text" = "Secure Tunnel VPN";
+
+/* Class = "UILabel"; text = "Already have a Lockdown account? Sign in below."; ObjectID = "KDA-UD-f4u"; */
+"KDA-UD-f4u.text" = "Đã có tài khoản Lockdown? Đăng nhập bên dưới.";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "KMj-n0-VnV"; */
+"KMj-n0-VnV.placeholder" = "Địa chỉ email";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "KbM-Pn-EXN"; */
+"KbM-Pn-EXN.normalTitle" = "Bắt đầu";
+
+/* Class = "UILabel"; text = "Blocking Enabled"; ObjectID = "Kd7-nB-tAb"; */
+"Kd7-nB-tAb.text" = "Đã bật Chặn";
+
+/* Class = "UILabel"; text = "Set Region"; ObjectID = "KtJ-Jg-Z3X"; */
+"KtJ-Jg-Z3X.text" = "Đặt khu vực";
+
+/* Class = "UILabel"; text = "Firewall"; ObjectID = "LE2-86-d4U"; */
+"LE2-86-d4U.text" = "Tường lửa";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "MRU-xk-A2p"; */
+"MRU-xk-A2p.normalTitle" = "HỦY";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Msx-Nc-p9M"; */
+"Msx-Nc-p9M.text" = "0";
+
+/* Class = "UILabel"; text = "Lockdown"; ObjectID = "NAN-dg-xBj"; */
+"NAN-dg-xBj.text" = "Lockdown";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "NvC-GW-2NJ"; */
+"NvC-GW-2NJ.normalTitle" = "HỦY";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "O4a-yi-uRp"; */
+"O4a-yi-uRp.normalTitle" = "Nút";
+
+/* Class = "UITabBarItem"; title = "Protect"; ObjectID = "O5a-jC-Mj1"; */
+"O5a-jC-Mj1.title" = "Bảo vệ";
+
+/* Class = "UILabel"; text = "Location: 🇺🇸"; ObjectID = "O6b-GR-ijA"; */
+"O6b-GR-ijA.text" = "Vị trí: ";
+
+/* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "ODT-wN-bGo"; */
+"ODT-wN-bGo.text" = "iPad và iPhone";
+
+/* Class = "UIButton"; normalTitle = "􀍟"; ObjectID = "OIa-zY-ALo"; */
+"OIa-zY-ALo.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "􀁝"; ObjectID = "OLt-18-OkW"; */
+"OLt-18-OkW.normalTitle" = "";
+
+/* Class = "UILabel"; text = "Block Invasive Tracking"; ObjectID = "PGe-EF-Ixy"; */
+"PGe-EF-Ixy.text" = "Chặn theo dõi xâm lấn";
+
+/* Class = "UIButton"; normalTitle = "􀆅"; ObjectID = "RMP-Wh-oss"; */
+"RMP-Wh-oss.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "RTE-DP-SL6"; */
+"RTE-DP-SL6.normalTitle" = "Đăng ký";
+
+/* Class = "UIButton"; normalTitle = "Whitelist"; ObjectID = "Rhb-9H-gRT"; */
+"Rhb-9H-gRT.normalTitle" = "Danh sách trắng";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "SCr-mD-x9f"; */
+"SCr-mD-x9f.normalTitle" = "Chính sách Quyền riêng tư";
+
+/* Class = "UILabel"; text = "ALL TIME"; ObjectID = "SGD-NH-9Mo"; */
+"SGD-NH-9Mo.text" = "TẤT CẢ THỜI GIAN";
+
+/* Class = "UILabel"; text = "iPads, iPhones, and Macs"; ObjectID = "SLG-gG-QTX"; */
+"SLG-gG-QTX.text" = "iPad, iPhone và Mac";
+
+/* Class = "UILabel"; text = "3421"; ObjectID = "Sar-GU-wUS"; */
+"Sar-GU-wUS.text" = "3421";
+
+/* Class = "UILabel"; text = "Lockdown Firewall is 100% on-device, so it does not collect or transmit any data to any servers - everything stays on your device."; ObjectID = "T2B-yz-40I"; */
+"T2B-yz-40I.text" = "Lockdown Firewall hoạt động 100% trên thiết bị, vì vậy nó không thu thập hoặc truyền bất kỳ dữ liệu nào đến bất kỳ máy chủ nào - mọi thứ vẫn nằm trên thiết bị của bạn.";
+
+/* Class = "UILabel"; text = "Protect Good Connections"; ObjectID = "TaD-Vg-S5A"; */
+"TaD-Vg-S5A.text" = "Bảo vệ kết nối tốt";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "Tls-Z3-Gnz"; */
+"Tls-Z3-Gnz.normalTitle" = "LƯU";
+
+/* Class = "UITextField"; placeholder = "domain-to-whitelist.com"; ObjectID = "U7q-Uc-gxE"; */
+"U7q-Uc-gxE.placeholder" = "domain-to-whitelist.com";
+
+/* Class = "UILabel"; text = "Lockdown VPN is 100% open source, fully audited, and has a strict no-logs policy. Proof of your data protection is in the Privacy Policy."; ObjectID = "UJ5-nt-aYy"; */
+"UJ5-nt-aYy.text" = "Lockdown VPN là phần mềm nguồn mở 100%, đã được kiểm tra đầy đủ và có chính sách không ghi nhật ký nghiêm ngặt. Bằng chứng về việc bảo vệ dữ liệu của bạn nằm trong Chính sách Quyền riêng tư.";
+
+/* Class = "UIButton"; normalTitle = "Get Started Free"; ObjectID = "VK2-VJ-AkH"; */
+"VK2-VJ-AkH.normalTitle" = "Bắt đầu Miễn phí";
+
+/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "Vhr-9g-C3l"; */
+"Vhr-9g-C3l.normalTitle" = "Tìm hiểu thêm";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "W3y-bX-UkA"; */
+"W3y-bX-UkA.text" = "Mật khẩu";
+
+/* Class = "UIView"; accessibilityHint = "iOS Monthly supports iPads and iPhones. Double tap using VoiceOver to select."; ObjectID = "WcD-2j-Lym"; */
+"WcD-2j-Lym.accessibilityHint" = "iOS Hàng tháng hỗ trợ iPad và iPhone. Nhấn đúp bằng VoiceOver để chọn.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"iOS Monthly\" Plan"; ObjectID = "WcD-2j-Lym"; */
+"WcD-2j-Lym.accessibilityLabel" = "Hộp kiểm cho Gói \"iOS Hàng tháng\"";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Wi8-F0-ahr"; */
+"Wi8-F0-ahr.normalTitle" = "ĐÓNG";
+
+/* Class = "UILabel"; text = "THIS WEEK"; ObjectID = "WyU-rB-hEs"; */
+"WyU-rB-hEs.text" = "TUẦN NÀY";
+
+/* Class = "UILabel"; text = "$49.99/year after (~$4.17/month)"; ObjectID = "XQI-S7-VjW"; */
+"XQI-S7-VjW.text" = "$49,99/năm sau (~$4,17/tháng)";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "XSr-oZ-hkd"; */
+"XSr-oZ-hkd.text" = "0";
+
+/* Class = "UILabel"; text = "Block Group Title"; ObjectID = "XcQ-Zo-7hE"; */
+"XcQ-Zo-7hE.text" = "Tiêu đề Nhóm chặn";
+
+/* Class = "UILabel"; text = "✓ Get new block lists for trackers ✓ Access Lockdown Mac and Desktop ✓ Critical announcements and features"; ObjectID = "XhT-hq-Dd2"; */
+"XhT-hq-Dd2.text" = "✓ Nhận danh sách chặn mới cho các trình theo dõi ✓ Truy cập Lockdown Mac và Desktop ✓ Các thông báo và tính năng quan trọng";
+
+/* Class = "UIButton"; normalTitle = "Block List"; ObjectID = "XvC-pH-UjX"; */
+"XvC-pH-UjX.normalTitle" = "Danh sách chặn";
+
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "Y6I-Ar-Q5y"; */
+"Y6I-Ar-Q5y.title" = "Tài khoản";
+
+/* Class = "UITabBarItem"; title = "Account"; ObjectID = "YAE-W9-FME"; */
+"YAE-W9-FME.title" = "Tài khoản";
+
+/* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "ZPf-nR-X1a"; */
+"ZPf-nR-X1a.accessibilityLabel" = "Nhấn nút này để kích hoạt Secure Tunnel";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "a37-qm-xpZ"; */
+"a37-qm-xpZ.normalTitle" = "Chính sách Quyền riêng tư";
+
+/* Class = "UIButton"; normalTitle = "Set Region"; ObjectID = "a4O-qT-yLk"; */
+"a4O-qT-yLk.normalTitle" = "Đặt khu vực";
+
+/* Class = "UILabel"; text = "VPN"; ObjectID = "aXL-VV-lJa"; */
+"aXL-VV-lJa.text" = "VPN";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "anO-Te-34C"; */
+"anO-Te-34C.normalTitle" = "HỦY";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "asx-fS-ufQ"; */
+"asx-fS-ufQ.text" = "Email";
+
+/* Class = "UILabel"; text = "🇺🇸"; ObjectID = "bDO-jU-rIH"; */
+"bDO-jU-rIH.text" = "";
+
+/* Class = "UILabel"; text = "Pro Monthly"; ObjectID = "c6Y-nW-xhv"; */
+"c6Y-nW-xhv.text" = "Pro Hàng tháng";
+
+/* Class = "UIButton"; normalTitle = "􀎬"; ObjectID = "cAQ-Dd-nCd"; */
+"cAQ-Dd-nCd.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "cNH-31-ne4"; */
+"cNH-31-ne4.normalTitle" = "HỦY";
+
+/* Class = "UILabel"; text = "TUNNEL OFF"; ObjectID = "cVg-HS-AW8"; */
+"cVg-HS-AW8.text" = "ĐƯỜNG HẦM ĐANG TẮT";
+
+/* Class = "UILabel"; text = "The connections blocked by Lockdown for the last day are shown below. As per our Privacy Policy, all the blocking is done on-device and never transmitted to any servers for processing."; ObjectID = "ccb-xf-LSM"; */
+"ccb-xf-LSM.text" = "Các kết nối bị Lockdown chặn trong ngày qua được hiển thị bên dưới. Theo Chính sách Quyền riêng tư của chúng tôi, tất cả hoạt động chặn được thực hiện trên thiết bị và không bao giờ được truyền đến bất kỳ máy chủ nào để xử lý.";
+
+/* Class = "UIView"; accessibilityHint = "Pro Annual supports iPads and iPhones and Macs. Double tap using VoiceOver to select."; ObjectID = "d44-u4-ZF6"; */
+"d44-u4-ZF6.accessibilityHint" = "Pro Hàng năm hỗ trợ iPad và iPhone và Mac. Nhấn đúp bằng VoiceOver để chọn.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"Pro Annual\" Plan"; ObjectID = "d44-u4-ZF6"; */
+"d44-u4-ZF6.accessibilityLabel" = "Hộp kiểm cho Gói \"Pro Hàng năm\"";
+
+/* Class = "UILabel"; text = "Enter your email below and we'll send you an email to reset your password."; ObjectID = "dLw-qu-1Oe"; */
+"dLw-qu-1Oe.text" = "Nhập email của bạn vào bên dưới và chúng tôi sẽ gửi cho bạn một email để đặt lại mật khẩu.";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "dp2-kD-Scb"; */
+"dp2-kD-Scb.normalTitle" = "Đăng nhập";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "f3K-Kz-eVg"; */
+"f3K-Kz-eVg.placeholder" = "Mật khẩu";
+
+/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "fK4-lE-dks"; */
+"fK4-lE-dks.text" = "blocked-domain.com";
+
+/* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "fRG-nx-zRG"; */
+"fRG-nx-zRG.accessibilityLabel" = "Nhấn nút này để kích hoạt Tường lửa";
+
+/* Class = "UILabel"; text = "For fastest speeds, choose a region closest to you. You can also anonymize your IP through other regions."; ObjectID = "fTe-nS-2bH"; */
+"fTe-nS-2bH.text" = "Để có tốc độ nhanh nhất, hãy chọn khu vực gần bạn nhất. Bạn cũng có thể ẩn danh IP của mình thông qua các khu vực khác.";
+
+/* Class = "UILabel"; text = "Block Log"; ObjectID = "fmE-6E-gnc"; */
+"fmE-6E-gnc.text" = "Nhật ký chặn";
+
+/* Class = "UILabel"; text = "Enhanced Tracking Prevention"; ObjectID = "gHS-VV-2R1"; */
+"gHS-VV-2R1.text" = "Tăng cường Ngăn chặn Theo dõi";
+
+/* Class = "UILabel"; text = "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol."; ObjectID = "gJW-8m-Vk5"; */
+"gJW-8m-Vk5.text" = "Mật khẩu phải có tối thiểu 8 ký tự, chứa ít nhất một chữ cái viết hoa, một chữ thường, một số và một ký hiệu.";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "h6y-cc-pyT"; */
+"h6y-cc-pyT.normalTitle" = "Vì sao nên tin dùng Lockdown?";
+
+/* Class = "UIView"; accessibilityHint = "Pro Monthly supports iPads and iPhones and Macs. Double tap using VoiceOver to select."; ObjectID = "hqL-Xy-82O"; */
+"hqL-Xy-82O.accessibilityHint" = "Pro Hàng tháng hỗ trợ iPad và iPhone và Mac. Nhấn đúp bằng VoiceOver để chọn.";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"Pro Monthly\" Plan"; ObjectID = "hqL-Xy-82O"; */
+"hqL-Xy-82O.accessibilityLabel" = "Hộp kiểm cho Gói \"Pro Hàng tháng\"";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "j43-ba-oDJ"; */
+"j43-ba-oDJ.normalTitle" = "Gửi";
+
+/* Class = "UIButton"; normalTitle = "Enable Block Log"; ObjectID = "j7V-kr-ymm"; */
+"j7V-kr-ymm.normalTitle" = "Bật Nhật ký chặn";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "jMa-F3-KUG"; */
+"jMa-F3-KUG.text" = "Email";
+
+/* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "jXy-3G-JaC"; */
+"jXy-3G-JaC.accessibilityLabel" = "Nhấn nút này để kích hoạt Secure Tunnel";
+
+/* Class = "UILabel"; text = "Private Browsing + Hide Location & IP"; ObjectID = "ked-BF-PXx"; */
+"ked-BF-PXx.text" = "Duyệt web riêng tư + Ẩn Vị trí & IP";
+
+/* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "kmJ-b4-n81"; */
+"kmJ-b4-n81.text" = "KHÔNG HOẠT ĐỘNG";
+
+/* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "koL-dc-mZr"; */
+"koL-dc-mZr.accessibilityLabel" = "Nhấn nút này để kích hoạt Tường lửa";
+
+/* Class = "UILabel"; text = "VIEW OPENAUDIT REPORT"; ObjectID = "lDV-k9-rkj"; */
+"lDV-k9-rkj.text" = "XEM BÁO CÁO KIỂM TOÁN MỞ";
+
+/* Class = "UILabel"; text = "You'll automatically be credited for your existing subscription."; ObjectID = "lEt-3l-yTH"; */
+"lEt-3l-yTH.text" = "Bạn sẽ tự động được trừ tiền cho đăng ký hiện có của mình.";
+
+/* Class = "UIButton"; normalTitle = "Terms of Service"; ObjectID = "lOA-PB-b5V"; */
+"lOA-PB-b5V.normalTitle" = "Điều khoản Dịch vụ";
+
+/* Class = "UILabel"; text = "To: joe@email.com Re: Q4 2019 Finance Review"; ObjectID = "mRH-Ie-0qb"; */
+"mRH-Ie-0qb.text" = "Tới: joe@email.com V/v: Đánh giá Tài chính Quý 4 Năm 2019";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "mU9-zL-O80"; */
+"mU9-zL-O80.normalTitle" = "LƯU";
+
+/* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "naG-mg-g14"; */
+"naG-mg-g14.text" = "iPad và iPhone";
+
+/* Class = "UILabel"; text = "Forgot Password"; ObjectID = "nu2-zq-dta"; */
+"nu2-zq-dta.text" = "Quên mật khẩu";
+
+/* Class = "UILabel"; text = "Secure Tunnel"; ObjectID = "nuc-D4-P1M"; */
+"nuc-D4-P1M.text" = "Secure Tunnel VPN";
+
+/* Class = "UILabel"; text = "Sign In"; ObjectID = "oPf-b7-d1V"; */
+"oPf-b7-d1V.text" = "Đăng nhập";
+
+/* Class = "UILabel"; text = "Blocked today:"; ObjectID = "oYx-Wf-i0q"; */
+"oYx-Wf-i0q.text" = "Đã chặn hôm nay:";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "pMu-va-97O"; */
+"pMu-va-97O.normalTitle" = "ĐÓNG";
+
+/* Class = "UILabel"; text = "Some sites or apps don't work well with VPNs. The whitelist below allows you to whitelist sites so they bypass the VPN for a better experience."; ObjectID = "pVa-cX-EbQ"; */
+"pVa-cX-EbQ.text" = "Một số trang web hoặc ứng dụng không hoạt động tốt với VPN. Danh sách trắng bên dưới cho phép bạn đưa các trang web vào danh sách trắng để chúng bỏ qua VPN để có trải nghiệm tốt hơn.";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "pXd-nf-bzR"; */
+"pXd-nf-bzR.placeholder" = "Địa chỉ email";
+
+/* Class = "UILabel"; text = "whitelisted-domain.com"; ObjectID = "pao-zq-e98"; */
+"pao-zq-e98.text" = "whitelisted-domain.com";
+
+/* Class = "UIButton"; normalTitle = "See How It Works"; ObjectID = "qBb-qF-2nJ"; */
+"qBb-qF-2nJ.normalTitle" = "Xem cách nó hoạt động";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "rCb-D1-AbS"; */
+"rCb-D1-AbS.text" = "Mật khẩu";
+
+/* Class = "UILabel"; text = "Over 1 Billion Trackers Blocked"; ObjectID = "rJd-Ql-Mu9"; */
+"rJd-Ql-Mu9.text" = "Hơn 1 tỷ Trình theo dõi bị chặn";
+
+/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "rJk-m6-qqA"; */
+"rJk-m6-qqA.text" = "blocked-domain.com";
+
+/* Class = "UILabel"; text = "IP: 18.142.2.87"; ObjectID = "rhx-SZ-Kki"; */
+"rhx-SZ-Kki.text" = "IP: 18.142.2.87";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "syJ-Jd-iUo"; */
+"syJ-Jd-iUo.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "tzL-mY-IJs"; */
+"tzL-mY-IJs.normalTitle" = "Tiếp tục";
+
+/* Class = "UILabel"; text = "Tunnel Whitelist"; ObjectID = "uA3-l4-Qe0"; */
+"uA3-l4-Qe0.text" = "Danh sách trắng Đường hầm";
+
+/* Class = "UILabel"; text = "📱"; ObjectID = "uSD-At-Csa"; */
+"uSD-At-Csa.text" = "";
+
+/* Class = "UILabel"; text = "Secure Tunnel encrypts your connections, anonymizes browsing history, and hides your location and unique IP address."; ObjectID = "ujS-r7-ItM"; */
+"ujS-r7-ItM.text" = "Secure Tunnel mã hóa các kết nối của bạn, ẩn danh lịch sử duyệt web và ẩn vị trí cũng như địa chỉ IP riêng của bạn.";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "v8T-bw-mkT"; */
+"v8T-bw-mkT.normalTitle" = "Chính sách Quyền riêng tư";
+
+/* Class = "UIButton"; normalTitle = "Start 1 Week Free Trial"; ObjectID = "v8r-0N-ycQ"; */
+"v8r-0N-ycQ.normalTitle" = "Bắt Đầu 1 Tuần Dùng Thử Miễn Phí";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "vKc-uc-qfV"; */
+"vKc-uc-qfV.text" = "-";
+
+/* Class = "UILabel"; text = "Add a domain to whitelist"; ObjectID = "w5F-U8-hnF"; */
+"w5F-U8-hnF.text" = "Thêm tên miền vào danh sách trắng";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "wPU-g5-s3s"; */
+"wPU-g5-s3s.placeholder" = "Địa chỉ email";
+
+/* Class = "UILabel"; text = "iOS Monthly"; ObjectID = "xt8-uP-JgS"; */
+"xt8-uP-JgS.text" = "iOS Hàng tháng";
+
+/* Class = "UILabel"; text = "Firewall"; ObjectID = "yIB-Tk-mf1"; */
+"yIB-Tk-mf1.text" = "Tường lửa";
+
+/* Class = "UILabel"; text = "Browse Safer - Fully Audited Privacy"; ObjectID = "yXI-U1-vLz"; */
+"yXI-U1-vLz.text" = "Duyệt web an toàn hơn - Quyền riêng tư được kiểm tra đầy đủ";
+
+/* Class = "UILabel"; text = "iPad, iPhones, and Macs"; ObjectID = "yvR-wl-rIt"; */
+"yvR-wl-rIt.text" = "iPad, iPhone và Mac";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ziI-ly-5qb"; */
+"ziI-ly-5qb.normalTitle" = "HỦY";
+
+/* Class = "UILabel"; text = "Firewall Annual (save ~38%)"; ObjectID = "HoY-Z7-gjw"; */
+"HoY-Z7-gjw.text" = "Tường lửa Hàng năm (tiết kiệm ~38%)";

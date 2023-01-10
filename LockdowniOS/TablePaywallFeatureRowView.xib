@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TablePaywallFeatureRowView" customModule="Lockdown" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="24"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Stops Ads and Hidden Trackers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOJ-Hf-Ngb">
+                    <rect key="frame" x="1" y="0.0" width="204.33333333333334" height="24"/>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="11"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="GxG-DV-8hG">
+                    <rect key="frame" x="286.66666666666669" y="0.0" width="40" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="t8t-cW-1TD"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="aOd-HR-map">
+                    <rect key="frame" x="351" y="0.0" width="40" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="hUl-9V-AHG"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6P-JN-Gys">
+                    <rect key="frame" x="213.33333333333334" y="0.0" width="40" height="24"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="WUX-2l-Y79">
+                            <rect key="frame" x="10" y="0.0" width="20" height="24"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="F6e-Fr-eLI"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="WUX-2l-Y79" secondAttribute="bottom" id="BO5-w1-s9L"/>
+                        <constraint firstAttribute="width" constant="40" id="eZW-iH-ihG"/>
+                        <constraint firstItem="WUX-2l-Y79" firstAttribute="top" secondItem="Y6P-JN-Gys" secondAttribute="top" id="qxg-iL-AXR"/>
+                        <constraint firstItem="WUX-2l-Y79" firstAttribute="centerX" secondItem="Y6P-JN-Gys" secondAttribute="centerX" id="zf4-uZ-Cf2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bOJ-Hf-Ngb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6Ce-VS-cA0"/>
+                <constraint firstItem="GxG-DV-8hG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6c2-ih-jh7"/>
+                <constraint firstItem="Y6P-JN-Gys" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6jt-7h-qfR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Y6P-JN-Gys" secondAttribute="bottom" id="8xB-uS-dYt"/>
+                <constraint firstItem="GxG-DV-8hG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IEZ-XG-X1o"/>
+                <constraint firstAttribute="trailing" secondItem="aOd-HR-map" secondAttribute="trailing" constant="2" id="MyJ-ir-Ncp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aOd-HR-map" secondAttribute="bottom" id="THg-UW-rsI"/>
+                <constraint firstItem="aOd-HR-map" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VvA-Nx-weV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GxG-DV-8hG" secondAttribute="bottom" id="awh-lY-Qcq"/>
+                <constraint firstItem="Y6P-JN-Gys" firstAttribute="leading" secondItem="bOJ-Hf-Ngb" secondAttribute="trailing" constant="8" id="e1W-Ft-znb"/>
+                <constraint firstItem="bOJ-Hf-Ngb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="1" id="ec4-9A-BKh"/>
+                <constraint firstItem="aOd-HR-map" firstAttribute="leading" secondItem="GxG-DV-8hG" secondAttribute="trailing" multiplier="1.05" constant="8" id="emD-ry-t4x"/>
+                <constraint firstItem="GxG-DV-8hG" firstAttribute="leading" secondItem="Y6P-JN-Gys" secondAttribute="trailing" multiplier="1.1" constant="8" id="ulj-Ye-QWM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bOJ-Hf-Ngb" secondAttribute="bottom" id="yiF-rA-icO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="featureLabel" destination="bOJ-Hf-Ngb" id="tfV-hu-KrR"/>
+                <outlet property="freeLevelIcon" destination="WUX-2l-Y79" id="Lr2-Rm-dd4"/>
+                <outlet property="proLevelIcon" destination="aOd-HR-map" id="02t-ON-qlO"/>
+                <outlet property="vpnLevelIcon" destination="GxG-DV-8hG" id="ehh-6j-KIW"/>
+            </connections>
+            <point key="canvasLocation" x="-31.297709923664122" y="-259.85915492957747"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Checkmark" width="20" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

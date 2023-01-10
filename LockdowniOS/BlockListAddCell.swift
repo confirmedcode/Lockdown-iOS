@@ -22,7 +22,7 @@ class BlockListAddView: UIView {
     }
     
     func didLoad() {
-        textField.font = fontRegular17
+        textField.font = .regularLockdownFont(size: 17)
         textField.placeholder = "domain-to-block.com"
         textField.clearButtonMode = .whileEditing
         textField.keyboardType = .URL
@@ -41,8 +41,8 @@ class BlockListAddView: UIView {
         textField.anchors.bottom.marginsPin(inset: 8)
         
         let label = UILabel()
-        label.text = NSLocalizedString("Add a domain to block", comment: "")
-        label.font = fontRegular14
+        label.text = .localized("Add a domain to block")
+        label.font = .regularLockdownFont(size: 14)
         addSubview(label)
         label.anchors.top.marginsPin()
         label.anchors.bottom.spacing(4, to: textField.anchors.top)

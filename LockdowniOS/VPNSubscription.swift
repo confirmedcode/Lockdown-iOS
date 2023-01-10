@@ -20,40 +20,44 @@ class VPNSubscription: NSObject {
     static let productIdAnnual = "LockdowniOSVpnAnnual"
     static let productIdMonthlyPro = "LockdowniOSVpnMonthlyPro"
     static let productIdAnnualPro = "LockdowniOSVpnAnnualPro"
-    static let productIds: Set = [productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
+    static let productIdAnnualProLTO = "LockdownProAnnualLTO"
+    
+    static let productIds: Set = [productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro, productIdAnnualProLTO]
     static var selectedProductId = productIdMonthly
     
     static var defaultPriceStringMonthly = "$7.99 per month after"
     static var defaultPriceStringMonthlyPro = "$11.99 per month after"
     static var defaultPriceStringAnnual = "$49.99/year after (~$4.17/month)"
     static var defaultPriceStringAnnualPro = "$99.99/year after (~$8.33/month)"
+    static var defaultPriceStringAnnualProLTO = "$59.99/year after (~$8.33/month)"
     
     static var defaultUpgradePriceStringMonthly = "$7.99 per month"
     static var defaultUpgradePriceStringMonthlyPro = "$11.99 per month"
     static var defaultUpgradePriceStringAnnual = "$49.99/year (~$4.17/month)"
     static var defaultUpgradePriceStringAnnualPro = "$99.99/year (~$8.33/month)"
+    static var defaultUpgradePriceStringAnnualProLTO = "$59.99/year (~$4.99/month)"
     
     static func purchase(succeeded: @escaping () -> Void, errored: @escaping (Error) -> Void) {
         DDLogInfo("purchase")
         SwiftyStoreKit.purchaseProduct(selectedProductId, atomically: true) { result in
             switch result {
-                case .success:
-                    firstly {
-                        try Client.signIn()
-                    }
-                    .then { (signin: SignIn) -> Promise<GetKey> in
-                        try Client.getKey()
-                    }
-                    .done { (getKey: GetKey) in
-                        try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                        succeeded()
-                    }
-                    .catch { error in
-                        errored(error)
-                    }
-                case .error(let error):
-                    DDLogError("purchase error: \(error)")
+            case .success:
+                firstly {
+                    try Client.signIn()
+                }
+                .then { _ in
+                    try Client.getKey()
+                }
+                .done { (getKey: GetKey) in
+                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                    succeeded()
+                }
+                .catch { error in
                     errored(error)
+                }
+            case .error(let error):
+                DDLogError("purchase error: \(error)")
+                errored(error)
             }
         }
     }
@@ -87,21 +91,22 @@ class VPNSubscription: NSObject {
         if let price = UserDefaults.standard.string(forKey: productId + "Price") {
             DDLogInfo("Got product id price for \(productId): \(price)")
             return price
-        }
-        else {
+        } else {
             DDLogError("Found no cached price for productId \(productId), returning default")
             switch productId {
-                case productIdMonthly:
-                    return defaultPriceStringMonthly
-                case productIdMonthlyPro:
-                    return defaultPriceStringMonthlyPro
-                case productIdAnnual:
-                    return defaultPriceStringAnnual
-                case productIdAnnualPro:
-                    return defaultPriceStringAnnualPro
-                default:
-                    DDLogError("Invalid product Id: \(productId)")
-                    return "Invalid Price"
+            case productIdMonthly:
+                return defaultPriceStringMonthly
+            case productIdMonthlyPro:
+                return defaultPriceStringMonthlyPro
+            case productIdAnnual:
+                return defaultPriceStringAnnual
+            case productIdAnnualPro:
+                return defaultPriceStringAnnualPro
+            case productIdAnnualProLTO:
+                return defaultPriceStringAnnualProLTO
+            default:
+                DDLogError("Invalid product Id: \(productId)")
+                return "Invalid Price"
             }
         }
     }
@@ -111,26 +116,27 @@ class VPNSubscription: NSObject {
         if let upgradePrice = UserDefaults.standard.string(forKey: productId + "UpgradePrice") {
             DDLogInfo("Got product id upgrade price for \(productId): \(upgradePrice)")
             return upgradePrice
-        }
-        else {
+        } else {
             DDLogError("Found no cached upgrade price for productId \(productId), returning default")
             switch productId {
-                case productIdMonthly:
-                    return defaultUpgradePriceStringMonthly
-                case productIdMonthlyPro:
-                    return defaultUpgradePriceStringMonthlyPro
-                case productIdAnnual:
-                    return defaultUpgradePriceStringAnnual
-                case productIdAnnualPro:
-                    return defaultUpgradePriceStringAnnualPro
-                default:
-                    DDLogError("Invalid product Id: \(productId)")
-                    return "Invalid Upgrade Price"
+            case productIdMonthly:
+                return defaultUpgradePriceStringMonthly
+            case productIdMonthlyPro:
+                return defaultUpgradePriceStringMonthlyPro
+            case productIdAnnual:
+                return defaultUpgradePriceStringAnnual
+            case productIdAnnualPro:
+                return defaultUpgradePriceStringAnnualPro
+            case productIdAnnualProLTO:
+                return defaultUpgradePriceStringAnnualProLTO
+            default:
+                DDLogError("Invalid product Id: \(productId)")
+                return "Invalid Upgrade Price"
             }
         }
     }
     
-    static func cacheLocalizedPrices() -> Void {
+    static func cacheLocalizedPrices() {
 
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
@@ -145,60 +151,65 @@ class VPNSubscription: NSObject {
                 if product.productIdentifier == productIdMonthly {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthly display price = " + product.localizedPrice!)
-                        setProductIdPrice(productId: productIdMonthly, price: "\(product.localizedPrice!) per month after")
-                        setProductIdUpgradePrice(productId: productIdMonthly, upgradePrice: "\(product.localizedPrice!) per month")
-                    }
-                    else {
+                        setProductIdPrice(productId: productIdMonthly, price: "\(product.localizedPrice!)/" + .localized("month_after_slash"))
+                        setProductIdUpgradePrice(productId: productIdMonthly,
+                                                 upgradePrice: "\(product.localizedPrice!)/" + .localized("month_after_slash"))
+                    } else {
                         DDLogError("monthly nil localizedPrice, setting default")
                         setProductIdPrice(productId: productIdMonthly, price: defaultPriceStringMonthly)
                         setProductIdUpgradePrice(productId: productIdMonthly, upgradePrice: defaultUpgradePriceStringMonthly)
                     }
-                }
-                else if product.productIdentifier == productIdMonthlyPro {
+                } else if product.productIdentifier == productIdMonthlyPro {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthlyPro display price = " + product.localizedPrice!)
-                        setProductIdPrice(productId: productIdMonthlyPro, price: "\(product.localizedPrice!) per month after")
-                        setProductIdUpgradePrice(productId: productIdMonthlyPro, upgradePrice: "\(product.localizedPrice!) per month")
-                    }
-                    else {
+                        setProductIdPrice(productId: productIdMonthlyPro, price: "\(product.localizedPrice!)/" + .localized("month_after_slash"))
+                        setProductIdUpgradePrice(productId: productIdMonthlyPro,
+                                                 upgradePrice: "\(product.localizedPrice!)/" + .localized("month_after_slash"))
+                    } else {
                         DDLogError("monthlyPro nil localizedPrice, setting default")
                         setProductIdPrice(productId: productIdMonthlyPro, price: defaultPriceStringMonthlyPro)
                         setProductIdUpgradePrice(productId: productIdMonthlyPro, upgradePrice: defaultUpgradePriceStringMonthlyPro)
                     }
-                }
-                else if product.productIdentifier == productIdAnnual {
+                } else if product.productIdentifier == productIdAnnual {
                     currencyFormatter.locale = product.priceLocale
-                    let priceMonthly = product.price.dividing(by: 12)
                     DDLogInfo("annual price = \(product.price)")
-                    if let priceString = currencyFormatter.string(from: product.price), let priceStringMonthly = currencyFormatter.string(from: priceMonthly) {
+                    if let priceString = currencyFormatter.string(from: product.price) {
                         DDLogInfo("setting annual display price = annual product price / 12 = " + priceString)
-                        setProductIdPrice(productId: productIdAnnual, price: "\(priceString)/year after (~\(priceStringMonthly)/month)")
-                        setProductIdUpgradePrice(productId: productIdAnnual, upgradePrice: "\(priceString)/year (~\(priceStringMonthly)/month)")
-                    }
-                    else {
+                        setProductIdPrice(productId: productIdAnnual, price: "\(priceString)/" + .localized("year_after_slash"))
+                        setProductIdUpgradePrice(productId: productIdAnnual, upgradePrice: "\(priceString)/" + .localized("year_after_slash"))
+                    } else {
                         DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)
                         setProductIdPrice(productId: productIdAnnual, price: defaultPriceStringAnnual)
                         setProductIdUpgradePrice(productId: productIdAnnual, upgradePrice: defaultUpgradePriceStringAnnual)
                     }
-                }
-                else if product.productIdentifier == productIdAnnualPro {
+                } else if product.productIdentifier == productIdAnnualPro {
                     currencyFormatter.locale = product.priceLocale
-                    let priceMonthly = product.price.dividing(by: 12)
                     DDLogInfo("annualPro price = \(product.price)")
-                    if let priceString = currencyFormatter.string(from: product.price), let priceStringMonthly = currencyFormatter.string(from: priceMonthly) {
+                    if let priceString = currencyFormatter.string(from: product.price) {
                         DDLogInfo("setting annualPro display price = annualPro product price / 12 = " + priceString)
-                        setProductIdPrice(productId: productIdAnnualPro, price: "\(priceString)/year after (~\(priceStringMonthly)/month)")
-                        setProductIdUpgradePrice(productId: productIdAnnualPro, upgradePrice: "\(priceString)/year (~\(priceStringMonthly)/month)")
-                    }
-                    else {
+                        setProductIdPrice(productId: productIdAnnualPro, price: "\(priceString)/" + .localized("year_after_slash"))
+                        setProductIdUpgradePrice(productId: productIdAnnualPro, upgradePrice: "\(priceString)/" + .localized("year_after_slash"))
+                    } else {
                         DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)
                         setProductIdPrice(productId: productIdAnnualPro, price: defaultPriceStringAnnualPro)
                         setProductIdUpgradePrice(productId: productIdAnnualPro, upgradePrice: defaultUpgradePriceStringAnnualPro)
                     }
+                } else if product.productIdentifier == productIdAnnualProLTO {
+                    currencyFormatter.locale = product.priceLocale
+                    DDLogInfo("annualPro price = \(product.price)")
+                    if let priceString = currencyFormatter.string(from: product.price) {
+                        DDLogInfo("setting annualPro LTO display price = annualPro product price / 12 = " + priceString)
+                        setProductIdPrice(productId: productIdAnnualProLTO, price: "\(priceString)/" + .localized("year_after_slash"))
+                        setProductIdUpgradePrice(productId: productIdAnnualProLTO, upgradePrice: "\(priceString)/" + .localized("year_after_slash"))
+                    } else {
+                        DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)
+                        setProductIdPrice(productId: productIdAnnualProLTO, price: defaultPriceStringAnnualProLTO)
+                        setProductIdUpgradePrice(productId: productIdAnnualProLTO, upgradePrice: defaultUpgradePriceStringAnnualProLTO)
+                    }
                 }
             }
             for invalidProductId in result.invalidProductIDs {
-                DDLogError("invalid product id: \(invalidProductId)");
+                DDLogError("invalid product id: \(invalidProductId)")
             }
         }
     }
@@ -216,13 +227,15 @@ extension Subscription.PlanType {
             return VPNSubscription.productIdMonthlyPro
         case .proAnnual:
             return VPNSubscription.productIdAnnualPro
+        case .proAnnualLTO:
+            return VPNSubscription.productIdAnnualProLTO
         default:
             return nil
         }
     }
     
     static var supported: [Subscription.PlanType] {
-        return [.monthly, .annual, .proMonthly, .proAnnual]
+        return [.monthly, .annual, .proMonthly, .proAnnual, .proAnnualLTO]
     }
     
     var availableUpgrades: [Subscription.PlanType]? {

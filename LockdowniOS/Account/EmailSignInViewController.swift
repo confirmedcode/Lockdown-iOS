@@ -25,8 +25,7 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
         setupToHideKeyboardOnTapOnView()
     }
     
-    func setupToHideKeyboardOnTapOnView()
-    {
+    func setupToHideKeyboardOnTapOnView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(self.dismissKeyboard))
@@ -34,16 +33,14 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
         view.addGestureRecognizer(tap)
     }
 
-    @objc func dismissKeyboard()
-    {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (textField == emailField) {
+        if textField == emailField {
             passwordField.becomeFirstResponder()
-        }
-        else if (textField == passwordField) {
+        } else if textField == passwordField {
             textField.resignFirstResponder()
             signIn()
         }
@@ -52,7 +49,7 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
     
     @IBAction func signIn() {
         guard let email = emailField.text, let password = passwordField.text else {
-            showPopupDialog(title: "Check Fields", message: "Email and password must not be empty", acceptButton: "Okay")
+            showPopupDialog(title: .localized("check_fields"), message: .localized("email_and_password_must_not_be_empty"), acceptButton: "Okay")
             return
         }
         
@@ -60,23 +57,23 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
         firstly {
             try Client.signInWithEmail(email: email, password: password)
         }
-        .done { (signin: SignIn) in
+        .done { (_: SignIn) in
             try setAPICredentials(email: email, password: password)
             setAPICredentialsConfirmed(confirmed: true)
             self.hideLoadingView()
             NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
-            self.showPopupDialog(title: "Success! 🎉", message: "You've successfully signed in.", acceptButton: "Okay") {
+            self.showPopupDialog(title: .localized("Success! 🎉"), message: "You've successfully signed in.", acceptButton: "Okay") {
                 self.presentingViewController?.dismiss(animated: true, completion: {
                     // logged in and confirmed - update this email with the receipt and refresh VPN credentials
                     firstly { () -> Promise<SubscriptionEvent> in
                         try Client.subscriptionEvent()
                     }
-                    .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                    .then { (_: SubscriptionEvent) -> Promise<GetKey> in
                         try Client.getKey()
                     }
                     .done { (getKey: GetKey) in
                         try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                        if (getUserWantsVPNEnabled() == true) {
+                        if getUserWantsVPNEnabled() {
                             VPNController.shared.restart()
                         }
                     }
@@ -94,7 +91,7 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
             if let apiError = error as? ApiError {
                 errorMessage = apiError.message
             }
-            self.showPopupDialog(title: "Error Signing In", message: errorMessage, acceptButton: "Okay") {
+            self.showPopupDialog(title: .localized("error_signing_in"), message: errorMessage, acceptButton: .localizedOkay) {
             }
         }
     }

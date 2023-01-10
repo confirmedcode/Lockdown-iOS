@@ -64,9 +64,9 @@ struct LockdownFirewallWidgetEntryView : View {
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isFirewallEnabled {
-                StatusLabel(text: NSLocalizedString("FIREWALL ON", comment: ""), color: .confirmedBlue)
+                StatusLabel(text: .localized("FIREWALL ON"), color: .confirmedBlue)
             } else {
-                StatusLabel(text: NSLocalizedString("FIREWALL OFF", comment: ""), color: .flatRed)
+                StatusLabel(text: .localized("FIREWALL OFF"), color: .flatRed)
             }
             if entry.size.height < 160 {
                 Spacer().frame(minHeight: 4)
@@ -77,7 +77,7 @@ struct LockdownFirewallWidgetEntryView : View {
                 VStack(spacing: 0) {
                     Text(entry.dayMetricsString)
                         .font(.system(size: 21, weight: .semibold))
-                    Text(NSLocalizedString("Blocked Today", comment: ""))
+                    Text(String.localized("Blocked Today"))
                         .font(.system(size: 12, weight: .medium))
                 }
                 .padding(.bottom, 12)
@@ -141,9 +141,9 @@ struct LockdownVPNWidgetEntryView : View {
             )
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 2, trailing: 0))
             if entry.isVPNEnabled {
-                StatusLabel(text: NSLocalizedString("Tunnel On", comment: "").uppercased(), color: .confirmedBlue)
+                StatusLabel(text: .localized("Tunnel On").uppercased(), color: .confirmedBlue)
             } else {
-                StatusLabel(text: NSLocalizedString("Tunnel Off", comment: "").uppercased(), color: .flatRed)
+                StatusLabel(text: .localized("Tunnel Off").uppercased(), color: .flatRed)
             }
             if entry.size.height < 160 {
                 Spacer().frame(minHeight: 4)
@@ -216,7 +216,7 @@ struct LockdownVPNWidget: Widget {
                 }
             }
         )
-        .configurationDisplayName("Secure Tunnel")
+        .configurationDisplayName("Secure Tunnel VPN")
         .supportedFamilies([.systemSmall])
     }
 }

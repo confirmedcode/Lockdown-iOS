@@ -16,17 +16,13 @@ class BlockListView: UIView {
         
         static func lockdownGroup(_ lockdownGroup: LockdownGroup) -> Contents {
             let image = UIImage(named: lockdownGroup.iconURL) ?? UIImage(named: "website_icon.png")
-            let status = lockdownGroup.enabled ?
-                NSLocalizedString("Blocked", comment: "") :
-                NSLocalizedString("Not Blocked", comment: "")
+            let status: String = lockdownGroup.enabled ? .localized("Blocked") : .localized("Not Blocked")
             return Contents(image: image, title: lockdownGroup.name, status: status)
         }
         
         static func userBlocked(domain: String, isEnabled: Bool) -> Contents {
             let image = UIImage(named: "website_icon.png")
-            let status = isEnabled ?
-                NSLocalizedString("Blocked", comment: "") :
-                NSLocalizedString("Not Blocked", comment: "")
+            let status: String = isEnabled ? .localized("Blocked", comment: "") : .localized("Not Blocked")
             return Contents(image: image, title: domain, status: status)
         }
     }
@@ -62,7 +58,7 @@ class BlockListView: UIView {
         }
         
         groupNameLabel.text = contents.title
-        groupNameLabel.font = fontRegular14
+        groupNameLabel.font = .regularLockdownFont(size: 14)
         groupNameLabel.numberOfLines = 0
         addSubview(groupNameLabel)
         do {
@@ -72,8 +68,9 @@ class BlockListView: UIView {
             groupNameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         }
         
-        statusLabel.font = fontRegular14
+        statusLabel.font = .regularLockdownFont(size: 14)
         statusLabel.text = contents.status
+        statusLabel.adjustsFontSizeToFitWidth = true
         statusLabel.textAlignment = .right
         addSubview(statusLabel)
         do {

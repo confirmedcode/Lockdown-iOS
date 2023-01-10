@@ -16,13 +16,13 @@ protocol Loadable {
 }
 
 final class LoadingView: UIView {
-    private let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        layer.cornerRadius = 5
+        layer.corners = .continuous(12)
         
         if activityIndicatorView.superview == nil {
             addSubview(activityIndicatorView)
@@ -39,8 +39,8 @@ final class LoadingView: UIView {
     }
 }
 
-fileprivate struct Constants {
-    fileprivate static let loadingViewTag = 63342
+private struct Constants {
+    static let loadingViewTag = 63342
 }
 
 extension Loadable where Self: UIViewController {
@@ -48,6 +48,7 @@ extension Loadable where Self: UIViewController {
     func showLoadingView() {
         let loadingView = LoadingView()
         view.addSubview(loadingView)
+        view.isUserInteractionEnabled = false
         
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         loadingView.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -60,6 +61,7 @@ extension Loadable where Self: UIViewController {
     }
     
     func hideLoadingView() {
+        view.isUserInteractionEnabled = true
         view.subviews.forEach { subview in
             if subview.tag == Constants.loadingViewTag {
                 subview.removeFromSuperview()

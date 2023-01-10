@@ -7,12 +7,179 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B087B07291C184C006953DA /* EnableNotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B087B06291C184C006953DA /* EnableNotificationsViewController.xib */; };
+		0B087B09291C1852006953DA /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B087B08291C1852006953DA /* EnableNotificationsViewController.swift */; };
+		0B0CCD432901B25300F5C632 /* Onboarding_launch_firewall.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B0CCD422901B25300F5C632 /* Onboarding_launch_firewall.mp4 */; };
+		0B0CCD452901B28200F5C632 /* Onboarding_showcase_vpn.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B0CCD442901B28100F5C632 /* Onboarding_showcase_vpn.mp4 */; };
+		0B1B6AC4293A9977003DCF72 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AC3293A9977003DCF72 /* UserService.swift */; };
+		0B1B6AC6293A99C1003DCF72 /* EmailComposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AC5293A99C1003DCF72 /* EmailComposable.swift */; };
+		0B1B6AC9293A9AF1003DCF72 /* DeleteMyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B6AC7293A9AF1003DCF72 /* DeleteMyAccountViewController.xib */; };
+		0B1B6ACA293A9AF1003DCF72 /* DeleteMyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AC8293A9AF1003DCF72 /* DeleteMyAccountViewController.swift */; };
+		0B1B6ACD293A9B1E003DCF72 /* TablePaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1B6ACB293A9B1E003DCF72 /* TablePaywallViewController.xib */; };
+		0B1B6ACE293A9B1E003DCF72 /* TablePaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6ACC293A9B1E003DCF72 /* TablePaywallViewController.swift */; };
+		0B1B6AD8293AA464003DCF72 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0B1B6ADA293DFB50003DCF72 /* TablePaywallFeatureRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD9293DFB50003DCF72 /* TablePaywallFeatureRowView.swift */; };
+		0B1C8ED228E44A8800E9CA57 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C8ED128E44A8800E9CA57 /* ProgressView.swift */; };
+		0B1FFD5C293E15AA0027341C /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1FFD5B293E15AA0027341C /* UIStackView+Ext.swift */; };
+		0B1FFD63293E16BF0027341C /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1FFD62293E16BF0027341C /* Separator.swift */; };
+		0B2205BE291416D4002F2562 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2205BD291416D4002F2562 /* SignUpViewController.xib */; };
+		0B2205C5291416DE002F2562 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2205C4291416DE002F2562 /* SignUpViewController.swift */; };
+		0B2205C729142601002F2562 /* FloatingTextInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2205C629142601002F2562 /* FloatingTextInputTextField.swift */; };
+		0B2205CA29142A84002F2562 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2205C929142A84002F2562 /* TextBox.swift */; };
+		0B2205CC29142AA2002F2562 /* TextInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2205CB29142AA2002F2562 /* TextInputState.swift */; };
+		0B2205CE29142ACD002F2562 /* TextBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2205CD29142ACD002F2562 /* TextBoxLabel.swift */; };
+		0B2205D02915B093002F2562 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2205CF2915B093002F2562 /* UIViewController+Ext.swift */; };
+		0B312AD42910411E00A218FB /* OnboardingPageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B312AD32910411E00A218FB /* OnboardingPageContent.swift */; };
+		0B363A2728F56B6600E881BF /* Onboarding_blocklists.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B363A2628F56B6600E881BF /* Onboarding_blocklists.mp4 */; };
+		0B3AB7EA2934EFAD00B254C0 /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB7E92934EFAD00B254C0 /* UIView+Corners.swift */; };
+		0B3AB80A293508DD00B254C0 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B3AB810293508DE00B254C0 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B3AB811293508DF00B254C0 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B3AB812293508DF00B254C0 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B3AB813293508E000B254C0 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B3AB814293508E000B254C0 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B3AB8172935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB8182935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB8192935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB81A2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB81B2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB81C2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB81D2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B3AB83C29354B9100B254C0 /* LockdownGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB83B29354B9100B254C0 /* LockdownGradient.swift */; };
+		0B3E5FCD28BFD5A500BAB0E7 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B4B8B0029412BD50060C072 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4B8AFF29412BD50060C072 /* Intents.framework */; };
+		0B4B8B0329412BD50060C072 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B8B0229412BD50060C072 /* IntentHandler.swift */; };
+		0B4B8B1829412BD50060C072 /* LockdownIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B4B8AFE29412BD50060C072 /* LockdownIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0B4B8B2029412C9C0060C072 /* IntentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B8B1F29412C9C0060C072 /* IntentService.swift */; };
+		0B4B8B242941352A0060C072 /* DisableVPNIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B8B232941352A0060C072 /* DisableVPNIntentHandler.swift */; };
+		0B4B8B26294135350060C072 /* EnableVPNIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B8B25294135350060C072 /* EnableVPNIntentHandler.swift */; };
+		0B4B8B2F294136340060C072 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD8C285A5A120023B555 /* UserDefaults.swift */; };
+		0B4B8B4A2941387F0060C072 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
+		0B4B8B512941388B0060C072 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
+		0B4E082628C8EBE000129620 /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E082528C8EBE000129620 /* SplashscreenViewController.swift */; };
+		0B4E082828C8EBED00129620 /* SplashscreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4E082728C8EBED00129620 /* SplashscreenViewController.xib */; };
+		0B4EF2A0293A98F600A32554 /* LockdownUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4EF29F293A98F600A32554 /* LockdownUser.swift */; };
+		0B564B68294368C00082C27C /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B564B67294368C00082C27C /* EmailAddress.swift */; };
+		0B6DC540292E402A00DCB8E8 /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6DC53F292E402A00DCB8E8 /* Font+Ext.swift */; };
+		0B80623F2860A1DB003EFF32 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B8445472940AF2700FA2F35 /* ConnectivityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCD08A52940AE8600DC6DD1 /* ConnectivityServiceTests.swift */; };
+		0B84454E2940BDE300FA2F35 /* EmailValidatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B84454D2940BDE300FA2F35 /* EmailValidatable.swift */; };
+		0B8445512940CE4200FA2F35 /* EmailValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B84454F2940CE2A00FA2F35 /* EmailValidatableTests.swift */; };
+		0B860F6228FE9D06006B0AA7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0B8DBDA8286482D500831AC4 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B8DBDAE286482D500831AC4 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B8DBDAF286482D600831AC4 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B8DBDB0286482D600831AC4 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B8DBDB1286482D700831AC4 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B8DBDB2286482D700831AC4 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0B99BA212948EB3E00A47A45 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AC3293A9977003DCF72 /* UserService.swift */; };
+		0B99BA272948EB4C00A47A45 /* LockdownUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4EF29F293A98F600A32554 /* LockdownUser.swift */; };
+		0B99BA282948EB5000A47A45 /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
+		0B99BA292948EB5800A47A45 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		0B99BA2A2948EB6500A47A45 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
+		0B99BA2B2948EB7300A47A45 /* AppStoreProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */; };
+		0B99BA2C2948EB7B00A47A45 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0B99BA2D2948EB8500A47A45 /* SubscriptionOfferPeriodUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */; };
+		0B99BA2E2948EBCC00A47A45 /* AccountUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9BBA252C8748004175EA /* AccountUI.swift */; };
+		0B99BA322948EDFA00A47A45 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
+		0B99BA332948FE6300A47A45 /* LockdownIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA362948FE6300A47A45 /* LockdownIntents.intentdefinition */; };
+		0B99BA342948FE6300A47A45 /* LockdownIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA362948FE6300A47A45 /* LockdownIntents.intentdefinition */; };
+		0B99BA4C294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA4D294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA4E294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA4F294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA50294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA51294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA52294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA53294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */; };
+		0B99BA58294A266800A47A45 /* ChristmasPaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BA57294A266800A47A45 /* ChristmasPaywallViewController.swift */; };
+		0B99BA61294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA62294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA63294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA64294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA65294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA66294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA67294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B99BA68294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */; };
+		0B9D69CB28E1AB2600A3EFCE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D69CA28E1AB2600A3EFCE /* OnboardingViewController.swift */; };
+		0B9D69CD28E1AB3100A3EFCE /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9D69CC28E1AB3100A3EFCE /* OnboardingViewController.xib */; };
+		0B9D69D028E1C0E700A3EFCE /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D69CF28E1C0E700A3EFCE /* OnboardingPage.swift */; };
+		0B9D69D528E1C1C700A3EFCE /* Onboarding_installation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B9D69D428E1C1C700A3EFCE /* Onboarding_installation.mp4 */; };
+		0BA24F71293DFE28007FEA9B /* TablePaywallHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BA24F70293DFE28007FEA9B /* TablePaywallHeaderView.xib */; };
+		0BA24F73293DFE3B007FEA9B /* TablePaywallHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA24F72293DFE3B007FEA9B /* TablePaywallHeaderView.swift */; };
+		0BA77E2128E44FB7007ECE45 /* Onboarding_notifications.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0BA77E2028E44FB7007ECE45 /* Onboarding_notifications.mp4 */; };
+		0BA77E2428E45C94007ECE45 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA77E2328E45C94007ECE45 /* WeakObject.swift */; };
+		0BA77E2628E45F73007ECE45 /* ArrayRestrictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA77E2528E45F73007ECE45 /* ArrayRestrictable.swift */; };
+		0BA77E2828E46F61007ECE45 /* OnboardingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA77E2728E46F61007ECE45 /* OnboardingConfiguration.swift */; };
+		0BB39F302948AD7A002C9E57 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B80623E2860A1DB003EFF32 /* String+Localized.swift */; };
+		0BB5629829437C1B00EEE4B5 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5629729437C1B00EEE4B5 /* UserDefault.swift */; };
+		0BBEEF402948C3C600F4405E /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		0BBEEF422948C3D700F4405E /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		0BBEEF602948C7E700F4405E /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
+		0BCD08A0293FDCF400DC6DD1 /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCD089F293FDCF400DC6DD1 /* ConnectivityService.swift */; };
+		0BCD08A3293FDD0A00DC6DD1 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCD08A2293FDD0A00DC6DD1 /* ConnectionState.swift */; };
+		0BDBDDE7293E287C009A1184 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0BDBDDED293E287C009A1184 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0BDBDDEE293E2880009A1184 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0BDBDDEF293E2881009A1184 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0BDBDDF0293E2881009A1184 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0BDBDDF1293E2882009A1184 /* PaywallTableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */; };
+		0BE113FA293A6B220070DC51 /* CALayer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE113F9293A6B220070DC51 /* CALayer+Ext.swift */; };
+		0BE113FD293A94930070DC51 /* TablePaywallFeatureRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE113FC293A94930070DC51 /* TablePaywallFeatureRowView.xib */; };
+		0BE9DD69285A59710023B555 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD68285A59710023B555 /* OneTimeActions.swift */; };
+		0BE9DD6A285A59710023B555 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD68285A59710023B555 /* OneTimeActions.swift */; };
+		0BE9DD6B285A59710023B555 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD68285A59710023B555 /* OneTimeActions.swift */; };
+		0BE9DD6C285A59710023B555 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD68285A59710023B555 /* OneTimeActions.swift */; };
+		0BE9DD6D285A59710023B555 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD68285A59710023B555 /* OneTimeActions.swift */; };
+		0BE9DD6F285A59930023B555 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD6E285A59930023B555 /* BlockDayLog.swift */; };
+		0BE9DD70285A59930023B555 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD6E285A59930023B555 /* BlockDayLog.swift */; };
+		0BE9DD71285A59930023B555 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD6E285A59930023B555 /* BlockDayLog.swift */; };
+		0BE9DD72285A59930023B555 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD6E285A59930023B555 /* BlockDayLog.swift */; };
+		0BE9DD73285A59930023B555 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD6E285A59930023B555 /* BlockDayLog.swift */; };
+		0BE9DD75285A59B70023B555 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */; };
+		0BE9DD76285A59B70023B555 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */; };
+		0BE9DD77285A59B70023B555 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */; };
+		0BE9DD78285A59B70023B555 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */; };
+		0BE9DD79285A59B70023B555 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */; };
+		0BE9DD7B285A59E30023B555 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD7A285A59E30023B555 /* Metrics.swift */; };
+		0BE9DD7C285A59E30023B555 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD7A285A59E30023B555 /* Metrics.swift */; };
+		0BE9DD7D285A59E30023B555 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD7A285A59E30023B555 /* Metrics.swift */; };
+		0BE9DD7E285A59E30023B555 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD7A285A59E30023B555 /* Metrics.swift */; };
+		0BE9DD7F285A59E30023B555 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD7A285A59E30023B555 /* Metrics.swift */; };
+		0BE9DD81285A59F20023B555 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD80285A59F20023B555 /* PushNotifications.swift */; };
+		0BE9DD82285A59F20023B555 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD80285A59F20023B555 /* PushNotifications.swift */; };
+		0BE9DD83285A59F20023B555 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD80285A59F20023B555 /* PushNotifications.swift */; };
+		0BE9DD84285A59F20023B555 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD80285A59F20023B555 /* PushNotifications.swift */; };
+		0BE9DD85285A59F20023B555 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD80285A59F20023B555 /* PushNotifications.swift */; };
+		0BE9DD87285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */; };
+		0BE9DD88285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */; };
+		0BE9DD89285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */; };
+		0BE9DD8A285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */; };
+		0BE9DD8B285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */; };
+		0BE9DD8D285A5A120023B555 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD8C285A5A120023B555 /* UserDefaults.swift */; };
+		0BE9DD8E285A5A120023B555 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD8C285A5A120023B555 /* UserDefaults.swift */; };
+		0BE9DD8F285A5A120023B555 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD8C285A5A120023B555 /* UserDefaults.swift */; };
+		0BE9DD90285A5A120023B555 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD8C285A5A120023B555 /* UserDefaults.swift */; };
+		0BE9DD91285A5A120023B555 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD8C285A5A120023B555 /* UserDefaults.swift */; };
+		0BE9DD93285A5A200023B555 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */; };
+		0BE9DD94285A5A200023B555 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */; };
+		0BE9DD95285A5A200023B555 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */; };
+		0BE9DD96285A5A200023B555 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */; };
+		0BE9DD97285A5A200023B555 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */; };
+		0BECE945294B712500F3BFB8 /* CountdownDisplayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE944294B712500F3BFB8 /* CountdownDisplayService.swift */; };
+		0BECE94E294D11C600F3BFB8 /* PaywallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE94D294D11C600F3BFB8 /* PaywallService.swift */; };
+		0BECE951294D1F8E00F3BFB8 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE950294D1F8E00F3BFB8 /* Date+Ext.swift */; };
+		0BECE952294D1F8E00F3BFB8 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE950294D1F8E00F3BFB8 /* Date+Ext.swift */; };
+		0BECE95D294F624B00F3BFB8 /* Keychainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE95C294F624B00F3BFB8 /* Keychainable.swift */; };
+		0BECE9652950E27700F3BFB8 /* ProductPurchasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE9642950E27700F3BFB8 /* ProductPurchasable.swift */; };
+		0BECE98B2951F3C300F3BFB8 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECE98A2951F3C300F3BFB8 /* String+URL.swift */; };
+		0BECF18228C6091D0092D430 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BECF18128C6091D0092D430 /* UICollectionView+Dequeue.swift */; };
+		0BF1E99F28C67E1700ACD0FD /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF1E99E28C67E1700ACD0FD /* NibLoadable.swift */; };
+		0BF1E9A828C696F900ACD0FD /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF1E9A728C696F900ACD0FD /* UIView+Ext.swift */; };
 		1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19DA148E491FF88E4B0B408 /* Pods-Lockdown VPN Widget-settings-metadata.plist */; };
+		200B3ACD2F983ADCB1128C42 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFF5B209ADA1F1C8193F194 /* Pods_Lockdown_VPN_Widget.framework */; };
 		20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */; };
-		2DDD126D8F073FC42E1C6A28 /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */; };
 		388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */; };
-		39FD925FB5AC24FB6118A2E8 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1DD136CBC73DC96B7009A /* Pods_Lockdown_VPN_Widget.framework */; };
-		3B392ABD6D5830F835A8F8F5 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */; };
 		3D01D97B2480DCB3003A710C /* data_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D97A2480DBED003A710C /* data_trackers.txt */; };
 		3D01D99E2481E42B003A710C /* reporting.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D99D2481E252003A710C /* reporting.txt */; };
 		3D01D99F2481E42E003A710C /* general_ads.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D01D99C2481E241003A710C /* general_ads.txt */; };
@@ -108,10 +275,8 @@
 		3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
-		3D94AAF422FDEAC80012B0DE /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
 		3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
-		3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
 		3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
 		3D94AB0F22FE0CF60012B0DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1141A1B1F46230500F54698 /* Assets.xcassets */; };
 		3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */; };
@@ -127,30 +292,15 @@
 		3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA6B5222EA988F0018FC09 /* ransomware.txt */; };
 		3DABD9FD22F7961F00480AAC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
-		3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
-		3DAF73532768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
-		3DAF73542768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
-		3DAF73552768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
-		3DAF73562768572300D97BB0 /* FirewallUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */; };
-		3DAF73602768583700D97BB0 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */; };
-		3DAF73612768584200D97BB0 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
-		3DAF73622768584500D97BB0 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
-		3DAF73632768584D00D97BB0 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */; };
-		3DAF73642768586200D97BB0 /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
 		3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F2D22F190720017740D /* Client.swift */; };
 		3DAF7C5722F456F2003C8F9C /* ClientModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F3022F190AE0017740D /* ClientModels.swift */; };
 		3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3DAF907A22EFD70900FB29E0 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FCDA6222C7616400C928BC /* NetworkExtension.framework */; };
 		3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */; };
 		3DBD57A622FBCD7A00DE189F /* WhitelistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */; };
-		3DBD57A822FBD7A100DE189F /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
-		3DBD57A922FBD7A100DE189F /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
-		3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */; };
 		3DBD57AC22FBDFE300DE189F /* WhitelistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AB22FBDFE200DE189F /* WhitelistCell.swift */; };
 		3DBD57AE22FBE04300DE189F /* WhitelistAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AD22FBE04300DE189F /* WhitelistAddCell.swift */; };
 		3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
-		3DBD57B122FC14CD00DE189F /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
-		3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
 		3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57B322FCFF2400DE189F /* SetRegionViewController.swift */; };
 		3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57B522FD00BB00DE189F /* SetRegionCell.swift */; };
 		3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */; };
@@ -171,10 +321,13 @@
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
+		510EA50D772A435C202CC370 /* Pods-LockdownIntents-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89C1B1F2419FFC1E995F10BC /* Pods-LockdownIntents-settings-metadata.plist */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
+		5B535D3E36C811A6CDFC5F61 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A28F4337A6E086CB1F96A /* Pods_Lockdown_Firewall_Widget.framework */; };
 		601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */; };
+		72251A33DE32085D77F6855E /* Pods_LockdownIntents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E68D70EBEDB6917C2C9994 /* Pods_LockdownIntents.framework */; };
 		78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */; };
 		7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
 		7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377D22DFB22600908CDC /* Montserrat-Bold.ttf */; };
@@ -185,18 +338,8 @@
 		7C0D11122473EE2E00A26E04 /* DomainNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D11112473EE2E00A26E04 /* DomainNameValidator.swift */; };
 		7C0D111D2473FC7E00A26E04 /* LockdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D111C2473FC7E00A26E04 /* LockdownTests.swift */; };
 		7C0D11252473FD6500A26E04 /* DomainNameValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D11242473FD6500A26E04 /* DomainNameValidatorTests.swift */; };
-		7C1AE073247FD82A0000A7D3 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */; };
 		7C1AE075247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE074247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift */; };
-		7C1AE076247FE2000000A7D3 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */; };
-		7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */; };
-		7C1AE078247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */; };
-		7C1AE07A247FF87F0000A7D3 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */; };
-		7C1AE07B247FF87F0000A7D3 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */; };
-		7C1AE07C247FF87F0000A7D3 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */; };
-		7C1AE07D247FF87F0000A7D3 /* OneTimeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */; };
 		7C1AE080248028F40000A7D3 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1AE07F248028F40000A7D3 /* UIKit+Extensions.swift */; };
-		7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
-		7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
 		7C3EFA0224867DEE00719D96 /* TrackerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EFA0124867DEE00719D96 /* TrackerInfo.swift */; };
 		7C3EFA042486879800719D96 /* tracker_info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C3EFA032486879800719D96 /* tracker_info.json */; };
 		7C422E97252796EE007F9C22 /* StaticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C422E96252796EE007F9C22 /* StaticTableView.swift */; };
@@ -208,10 +351,6 @@
 		7C44081D2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */; };
 		7C44081E2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */; };
 		7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D9BBA252C8748004175EA /* AccountUI.swift */; };
-		7C6619BC247810E2005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
-		7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
-		7C6619BE247810EE005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
-		7C6619BF247810EF005E8BB1 /* BlockDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */; };
 		7C798A1A25409F8100A99695 /* Mailto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C798A1925409F8100A99695 /* Mailto.swift */; };
 		7C9A936C251E1EC700DA5721 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9A936B251E1EC700DA5721 /* WidgetKit.framework */; };
 		7C9A936E251E1EC700DA5721 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9A936D251E1EC700DA5721 /* SwiftUI.framework */; };
@@ -223,18 +362,6 @@
 		7CC8EFED254036050005054C /* FirewallRepair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8EFEC254036050005054C /* FirewallRepair.swift */; };
 		7CD1435F248798D4009206A9 /* TrackerInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */; };
 		7CD52D81247E850D00D0530F /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD52D80247E850D00D0530F /* SnapshotTests.swift */; };
-		7CD52D82247EC18800D0530F /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
-		7CD52D83247EC18900D0530F /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3E8D20247D8057004B81D6 /* PushNotifications.swift */; };
-		7CE91C592521D54F009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
-		7CE91C602521D564009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
-		7CE91C672521D565009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
-		7CE91C682521D565009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
-		7CE91C692521D566009D8269 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C582521D54F009D8269 /* UserDefaults.swift */; };
-		7CE91C712521D58C009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
-		7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
-		7CE91C852521D5B7009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
-		7CE91C862521D5B7009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
-		7CE91C872521D5B8009D8269 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C702521D58C009D8269 /* Metrics.swift */; };
 		7CE91C962521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
 		7CE91C972521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
 		7CE91C982521ED5E009D8269 /* VPNRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE91C952521ED5E009D8269 /* VPNRegion.swift */; };
@@ -256,7 +383,7 @@
 		A118F64520B33FED009A64E7 /* TimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63E20B33FED009A64E7 /* TimerEx.swift */; };
 		A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F63F20B33FED009A64E7 /* SpinerLayer.swift */; };
 		A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A118F64020B33FED009A64E7 /* CGRectEx.swift */; };
-		A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12186261FB8F691007058B3 /* SignupViewController.swift */; };
+		A12186271FB8F691007058B3 /* OldSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12186261FB8F691007058B3 /* OldSignupViewController.swift */; };
 		A12229AB22C014CB00BFF624 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12229AA22C014CA00BFF624 /* StoreKit.framework */; };
 		A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */; };
 		A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12473F61FE44285008493B8 /* VPNTodayViewController.swift */; };
@@ -313,12 +440,21 @@
 		A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */; };
 		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
 		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
-		B05197BCB274B38A23A35CAF /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
-		E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */; };
+		EF0E051F58B4991FA5262206 /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE976725BA472E2F1CE7B83 /* Pods_LockdownTests.framework */; };
+		F0FA63CE72E377E80B262592 /* Pods_Lockdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087F67CEF771725FC357970 /* Pods_Lockdown.framework */; };
+		FBD19586D73B1D8573C2AD98 /* Pods-LockdownIntents-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEF3612A1027943CE53E6070 /* Pods-LockdownIntents-metadata.plist */; };
+		FF6327EF056A4C0DCA5E8123 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AF55B2F4F7EBC056DED63C /* Pods_LockdownTunnel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0B4B8B1629412BD50060C072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1141A091F46230500F54698 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B4B8AFD29412BD50060C072;
+			remoteInfo = LockdownIntents;
+		};
 		3D8A254227487B2A001B99E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3D8A253A27487B2A001B99E1 /* NEKit.xcodeproj */;
@@ -422,6 +558,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0B4B8B1829412BD50060C072 /* LockdownIntents.appex in Embed App Extensions */,
 				A1931D0420791F5900E695EB /* Lockdown Blocker.appex in Embed App Extensions */,
 				3DBD57C622FD727900DE189F /* Lockdown Firewall Widget.appex in Embed App Extensions */,
 				A12473FE1FE44285008493B8 /* Lockdown VPN Widget.appex in Embed App Extensions */,
@@ -434,10 +571,133 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B014050F770126F5808AF28 /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
+		0B087B06291C184C006953DA /* EnableNotificationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnableNotificationsViewController.xib; sourceTree = "<group>"; };
+		0B087B08291C1852006953DA /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
+		0B0CCD422901B25300F5C632 /* Onboarding_launch_firewall.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Onboarding_launch_firewall.mp4; sourceTree = "<group>"; };
+		0B0CCD442901B28100F5C632 /* Onboarding_showcase_vpn.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Onboarding_showcase_vpn.mp4; sourceTree = "<group>"; };
+		0B1B6AC3293A9977003DCF72 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		0B1B6AC5293A99C1003DCF72 /* EmailComposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailComposable.swift; sourceTree = "<group>"; };
+		0B1B6AC7293A9AF1003DCF72 /* DeleteMyAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeleteMyAccountViewController.xib; sourceTree = "<group>"; };
+		0B1B6AC8293A9AF1003DCF72 /* DeleteMyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteMyAccountViewController.swift; sourceTree = "<group>"; };
+		0B1B6ACB293A9B1E003DCF72 /* TablePaywallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TablePaywallViewController.xib; sourceTree = "<group>"; };
+		0B1B6ACC293A9B1E003DCF72 /* TablePaywallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePaywallViewController.swift; sourceTree = "<group>"; };
+		0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallTableFeature.swift; sourceTree = "<group>"; };
+		0B1B6AD9293DFB50003DCF72 /* TablePaywallFeatureRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablePaywallFeatureRowView.swift; sourceTree = "<group>"; };
+		0B1C8ED128E44A8800E9CA57 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		0B1FFD5B293E15AA0027341C /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		0B1FFD62293E16BF0027341C /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		0B2205BD291416D4002F2562 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		0B2205C4291416DE002F2562 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0B2205C629142601002F2562 /* FloatingTextInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextInputTextField.swift; sourceTree = "<group>"; };
+		0B2205C929142A84002F2562 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
+		0B2205CB29142AA2002F2562 /* TextInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputState.swift; sourceTree = "<group>"; };
+		0B2205CD29142ACD002F2562 /* TextBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxLabel.swift; sourceTree = "<group>"; };
+		0B2205CF2915B093002F2562 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		0B312AD32910411E00A218FB /* OnboardingPageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageContent.swift; sourceTree = "<group>"; };
+		0B363A2628F56B6600E881BF /* Onboarding_blocklists.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Onboarding_blocklists.mp4; sourceTree = "<group>"; };
+		0B3AB7E92934EFAD00B254C0 /* UIView+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
+		0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOfferPeriodUnit.swift; sourceTree = "<group>"; };
+		0B3AB83B29354B9100B254C0 /* LockdownGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownGradient.swift; sourceTree = "<group>"; };
+		0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreProductGroup.swift; sourceTree = "<group>"; };
+		0B4B8AF52941079D0060C072 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0B4B8AF62941079D0060C072 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		0B4B8AF72941079D0060C072 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		0B4B8AF82941079D0060C072 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		0B4B8AF92941079E0060C072 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0B4B8AFE29412BD50060C072 /* LockdownIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B4B8AFF29412BD50060C072 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		0B4B8B0229412BD50060C072 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		0B4B8B0429412BD50060C072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B4B8B0A29412BD50060C072 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		0B4B8B1F29412C9C0060C072 /* IntentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentService.swift; sourceTree = "<group>"; };
+		0B4B8B232941352A0060C072 /* DisableVPNIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableVPNIntentHandler.swift; sourceTree = "<group>"; };
+		0B4B8B25294135350060C072 /* EnableVPNIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableVPNIntentHandler.swift; sourceTree = "<group>"; };
+		0B4B8B5329420AA50060C072 /* LockdownIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownIntents.entitlements; sourceTree = "<group>"; };
+		0B4E082528C8EBE000129620 /* SplashscreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
+		0B4E082728C8EBED00129620 /* SplashscreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashscreenViewController.xib; sourceTree = "<group>"; };
+		0B4EF29F293A98F600A32554 /* LockdownUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownUser.swift; sourceTree = "<group>"; };
+		0B564B67294368C00082C27C /* EmailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAddress.swift; sourceTree = "<group>"; };
+		0B6DC53F292E402A00DCB8E8 /* Font+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Ext.swift"; sourceTree = "<group>"; };
+		0B80623E2860A1DB003EFF32 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		0B84454D2940BDE300FA2F35 /* EmailValidatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatable.swift; sourceTree = "<group>"; };
+		0B84454F2940CE2A00FA2F35 /* EmailValidatableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatableTests.swift; sourceTree = "<group>"; };
+		0B99BA352948FE6300A47A45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/LockdownIntents.intentdefinition; sourceTree = "<group>"; };
+		0B99BA382948FE7600A47A45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA3A2948FE7700A47A45 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA3C2948FE7800A47A45 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LockdownIntents.strings"; sourceTree = "<group>"; };
+		0B99BA3E2948FEBC00A47A45 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LockdownIntents.strings"; sourceTree = "<group>"; };
+		0B99BA402948FEBD00A47A45 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA422948FEBD00A47A45 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA442948FEBE00A47A45 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA462948FEBF00A47A45 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA482948FEBF00A47A45 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA4A2948FEC000A47A45 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LockdownIntents.strings; sourceTree = "<group>"; };
+		0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallDisplayConfiguration.swift; sourceTree = "<group>"; };
+		0B99BA57294A266800A47A45 /* ChristmasPaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPaywallViewController.swift; sourceTree = "<group>"; };
+		0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChristmasPaywallViewController.xib; sourceTree = "<group>"; };
+		0B9D69CA28E1AB2600A3EFCE /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		0B9D69CC28E1AB3100A3EFCE /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		0B9D69CF28E1C0E700A3EFCE /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		0B9D69D428E1C1C700A3EFCE /* Onboarding_installation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Onboarding_installation.mp4; sourceTree = "<group>"; };
+		0BA24F70293DFE28007FEA9B /* TablePaywallHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TablePaywallHeaderView.xib; sourceTree = "<group>"; };
+		0BA24F72293DFE3B007FEA9B /* TablePaywallHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablePaywallHeaderView.swift; sourceTree = "<group>"; };
+		0BA77E2028E44FB7007ECE45 /* Onboarding_notifications.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Onboarding_notifications.mp4; sourceTree = "<group>"; };
+		0BA77E2328E45C94007ECE45 /* WeakObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
+		0BA77E2528E45F73007ECE45 /* ArrayRestrictable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayRestrictable.swift; sourceTree = "<group>"; };
+		0BA77E2728E46F61007ECE45 /* OnboardingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingConfiguration.swift; sourceTree = "<group>"; };
+		0BB5629729437C1B00EEE4B5 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		0BCD089F293FDCF400DC6DD1 /* ConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
+		0BCD08A2293FDD0A00DC6DD1 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		0BCD08A52940AE8600DC6DD1 /* ConnectivityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityServiceTests.swift; sourceTree = "<group>"; };
+		0BE113F9293A6B220070DC51 /* CALayer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Ext.swift"; sourceTree = "<group>"; };
+		0BE113FC293A94930070DC51 /* TablePaywallFeatureRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TablePaywallFeatureRowView.xib; sourceTree = "<group>"; };
+		0BE9DD68285A59710023B555 /* OneTimeActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OneTimeActions.swift; path = ../nekit/src/LockdownClonedFiles/OneTimeActions.swift; sourceTree = "<group>"; };
+		0BE9DD6E285A59930023B555 /* BlockDayLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockDayLog.swift; path = ../nekit/src/LockdownClonedFiles/BlockDayLog.swift; sourceTree = "<group>"; };
+		0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirewallUtilities.swift; path = ../nekit/src/LockdownClonedFiles/FirewallUtilities.swift; sourceTree = "<group>"; };
+		0BE9DD7A285A59E30023B555 /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Metrics.swift; path = ../nekit/src/LockdownClonedFiles/Metrics.swift; sourceTree = "<group>"; };
+		0BE9DD80285A59F20023B555 /* PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotifications.swift; path = ../nekit/src/LockdownClonedFiles/PushNotifications.swift; sourceTree = "<group>"; };
+		0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushNotificationsAuthorization.swift; path = ../nekit/src/LockdownClonedFiles/PushNotificationsAuthorization.swift; sourceTree = "<group>"; };
+		0BE9DD8C285A5A120023B555 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = ../nekit/src/LockdownClonedFiles/UserDefaults.swift; sourceTree = "<group>"; };
+		0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhitelistUtilities.swift; path = ../nekit/src/LockdownClonedFiles/WhitelistUtilities.swift; sourceTree = "<group>"; };
+		0BECE944294B712500F3BFB8 /* CountdownDisplayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownDisplayService.swift; sourceTree = "<group>"; };
+		0BECE94D294D11C600F3BFB8 /* PaywallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallService.swift; sourceTree = "<group>"; };
+		0BECE950294D1F8E00F3BFB8 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		0BECE95C294F624B00F3BFB8 /* Keychainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychainable.swift; sourceTree = "<group>"; };
+		0BECE9642950E27700F3BFB8 /* ProductPurchasable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPurchasable.swift; sourceTree = "<group>"; };
+		0BECE98A2951F3C300F3BFB8 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
+		0BECF18128C6091D0092D430 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
+		0BF1E99E28C67E1700ACD0FD /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		0BF1E9A728C696F900ACD0FD /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		0BF901482938BFDF001A2F2B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0BF901492938BFE0001A2F2B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		0BF9014A2938BFE0001A2F2B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF9014B2938BFE0001A2F2B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF9014C2938BFE0001A2F2B /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0BF9014D2938BFF4001A2F2B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF9014E2938BFF4001A2F2B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0BF9014F2938BFF4001A2F2B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		0BF901502938BFF4001A2F2B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF901512938BFF4001A2F2B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0BF901522938C008001A2F2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0BF901532938C008001A2F2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		0BF901542938C008001A2F2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF901552938C008001A2F2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF901562938C008001A2F2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0BF901572938C015001A2F2B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		0BF901582938C015001A2F2B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		0BF901592938C015001A2F2B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF9015A2938C015001A2F2B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		0BF9015B2938C015001A2F2B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0BF901612938C025001A2F2B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0BF901622938C025001A2F2B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		0BF901632938C025001A2F2B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		0BF901642938C026001A2F2B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		0BF901652938C026001A2F2B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0CDA77C17BF2DEC43E3D56EA /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
+		12578876980678A072282A2E /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
 		12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-metadata.plist"; path = "Pods/Pods-Lockdown Firewall Widget-metadata.plist"; sourceTree = "<group>"; };
-		1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F90F5BA7CFAB9814D768F16 /* Pods-LockdownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.debug.xcconfig"; sourceTree = "<group>"; };
+		20E68D70EBEDB6917C2C9994 /* Pods_LockdownIntents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownIntents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTests-settings-metadata.plist"; sourceTree = "<group>"; };
 		2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		3D01D97A2480DBED003A710C /* data_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = data_trackers.txt; sourceTree = "<group>"; };
@@ -527,10 +787,8 @@
 		3DA14D3E255DF5D400A3658E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		3DAA6B4E22EA76420018FC09 /* clickbait.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = clickbait.txt; sourceTree = "<group>"; };
 		3DAA6B5222EA988F0018FC09 /* ransomware.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ransomware.txt; sourceTree = "<group>"; };
-		3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirewallUtilities.swift; sourceTree = "<group>"; };
 		3DBD57A122FBB0D900DE189F /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		3DBD57A522FBCD7A00DE189F /* WhitelistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistViewController.swift; sourceTree = "<group>"; };
-		3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistUtilities.swift; sourceTree = "<group>"; };
 		3DBD57AB22FBDFE200DE189F /* WhitelistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistCell.swift; sourceTree = "<group>"; };
 		3DBD57AD22FBE04300DE189F /* WhitelistAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistAddCell.swift; sourceTree = "<group>"; };
 		3DBD57AF22FC14CC00DE189F /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -558,24 +816,22 @@
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		3DF2455523A306DB00E46613 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
-		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		489F7CCEAADF147B19320AAE /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
+		5087F67CEF771725FC357970 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
-		549133AE36DE5B896F995988 /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
+		569A4A1747E7C83C7F07C755 /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		628519CE6C4D40332EFBFB08 /* Pods-LockdownTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.debug.xcconfig"; sourceTree = "<group>"; };
 		6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
-		6FE1DD136CBC73DC96B7009A /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		707A358300D4A3D33EFC8749 /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
-		7435DF998DFB59C9808F1638 /* Pods-LockdownTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTunnel/Pods-LockdownTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		71855E12B7B5B939F0E2EB29 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		777648CC444D5A906BBFC729 /* Pods-LockdownIntents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownIntents.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownIntents/Pods-LockdownIntents.release.xcconfig"; sourceTree = "<group>"; };
 		7C0D11112473EE2E00A26E04 /* DomainNameValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameValidator.swift; sourceTree = "<group>"; };
 		7C0D111A2473FC7E00A26E04 /* LockdownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LockdownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0D111C2473FC7E00A26E04 /* LockdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownTests.swift; sourceTree = "<group>"; };
 		7C0D111E2473FC7E00A26E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0D11242473FD6500A26E04 /* DomainNameValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNameValidatorTests.swift; sourceTree = "<group>"; };
-		7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsAuthorization.swift; sourceTree = "<group>"; };
 		7C1AE074247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsAuthorizationUI.swift; sourceTree = "<group>"; };
-		7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeActions.swift; sourceTree = "<group>"; };
 		7C1AE07F248028F40000A7D3 /* UIKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
-		7C3E8D20247D8057004B81D6 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		7C3EFA0124867DEE00719D96 /* TrackerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfo.swift; sourceTree = "<group>"; };
 		7C3EFA032486879800719D96 /* tracker_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tracker_info.json; sourceTree = "<group>"; };
 		7C422E96252796EE007F9C22 /* StaticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableView.swift; sourceTree = "<group>"; };
@@ -584,7 +840,6 @@
 		7C422EB62527A2D1007F9C22 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedFileAccess.swift; sourceTree = "<group>"; };
 		7C4D9BBA252C8748004175EA /* AccountUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUI.swift; sourceTree = "<group>"; };
-		7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDayLog.swift; sourceTree = "<group>"; };
 		7C798A1925409F8100A99695 /* Mailto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailto.swift; sourceTree = "<group>"; };
 		7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockdownFirewallWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9A936B251E1EC700DA5721 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -597,17 +852,13 @@
 		7CC8EFEC254036050005054C /* FirewallRepair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallRepair.swift; sourceTree = "<group>"; };
 		7CD1435E248798D4009206A9 /* TrackerInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfoTests.swift; sourceTree = "<group>"; };
 		7CD52D80247E850D00D0530F /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
-		7CE91C582521D54F009D8269 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		7CE91C702521D58C009D8269 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockdownFirewallWidgetExtension.entitlements; sourceTree = "<group>"; };
 		7CE91C952521ED5E009D8269 /* VPNRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRegion.swift; sourceTree = "<group>"; };
 		7CE91CA7252214C9009D8269 /* CombinedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedProvider.swift; sourceTree = "<group>"; };
-		88E04750DB23687076871F5B /* Pods-Lockdown VPN Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.release.xcconfig"; sourceTree = "<group>"; };
+		89C1B1F2419FFC1E995F10BC /* Pods-LockdownIntents-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownIntents-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownIntents-settings-metadata.plist"; sourceTree = "<group>"; };
 		8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-metadata.plist"; path = "Pods/Pods-LockdownTests-metadata.plist"; sourceTree = "<group>"; };
 		8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown VPN Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-metadata.plist"; path = "Pods/Pods-Lockdown VPN Widget-metadata.plist"; sourceTree = "<group>"; };
-		95899949475D15BB3DB63138 /* Pods-LockdownTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A0BEB57F0C3C4F5746285E07 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		A101106C202B9D4300807612 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A1141A111F46230500F54698 /* Lockdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1141A141F46230500F54698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -621,7 +872,7 @@
 		A118F63E20B33FED009A64E7 /* TimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEx.swift; sourceTree = "<group>"; };
 		A118F63F20B33FED009A64E7 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
 		A118F64020B33FED009A64E7 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
-		A12186261FB8F691007058B3 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		A12186261FB8F691007058B3 /* OldSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSignupViewController.swift; sourceTree = "<group>"; };
 		A12229AA22C014CA00BFF624 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A12473F31FE44284008493B8 /* Lockdown VPN Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lockdown VPN Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12473F61FE44285008493B8 /* VPNTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNTodayViewController.swift; sourceTree = "<group>"; };
@@ -691,17 +942,32 @@
 		A1FCDA8922D3BA1900C928BC /* facebook_inc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc.txt; sourceTree = "<group>"; };
 		A1FCDA8C22D3C50A00C928BC /* email_opens.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email_opens.txt; sourceTree = "<group>"; };
 		A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = facebook_inc_ipv6.txt; sourceTree = "<group>"; };
-		A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		A75E57A0F35C50EA949FB1FE /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
-		AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFD87C46425342AFA2F65394 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
-		BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52A28F4337A6E086CB1F96A /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBFF5B209ADA1F1C8193F194 /* Pods_Lockdown_VPN_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_VPN_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB1223BE1CDCC2555FE71352 /* Pods-LockdownIntents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownIntents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownIntents/Pods-LockdownIntents.debug.xcconfig"; sourceTree = "<group>"; };
+		D2EBAB60D2371A51A7E6A92C /* Pods-Lockdown Firewall Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.release.xcconfig"; sourceTree = "<group>"; };
+		DEA35788129374068081E375 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
+		E2AF55B2F4F7EBC056DED63C /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2ED1B8AB6C3D86D7147AF02 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
 		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
-		ECA3DC3801B375B860C15978 /* Pods-Lockdown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.debug.xcconfig"; sourceTree = "<group>"; };
-		FA3DBA07D389FDA260B448B7 /* Pods-Lockdown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown/Pods-Lockdown.release.xcconfig"; sourceTree = "<group>"; };
+		EB84A575169097A4A77345F6 /* Pods-LockdownIntentsUI-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownIntentsUI-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownIntentsUI-settings-metadata.plist"; sourceTree = "<group>"; };
+		EEF3612A1027943CE53E6070 /* Pods-LockdownIntents-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownIntents-metadata.plist"; path = "Pods/Pods-LockdownIntents-metadata.plist"; sourceTree = "<group>"; };
+		FFE976725BA472E2F1CE7B83 /* Pods_LockdownTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0B4B8AFB29412BD50060C072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B4B8B0029412BD50060C072 /* Intents.framework in Frameworks */,
+				72251A33DE32085D77F6855E /* Pods_LockdownIntents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3DBD57B822FD727900DE189F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -711,7 +977,7 @@
 				3D94AAF022FD7BFA0012B0DE /* NetworkExtension.framework in Frameworks */,
 				3D92FF5F26CB8FA0008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
 				3DBD57BC22FD727900DE189F /* NotificationCenter.framework in Frameworks */,
-				3B392ABD6D5830F835A8F8F5 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
+				5B535D3E36C811A6CDFC5F61 /* Pods_Lockdown_Firewall_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +985,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05197BCB274B38A23A35CAF /* Pods_LockdownTests.framework in Frameworks */,
+				EF0E051F58B4991FA5262206 /* Pods_LockdownTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,7 +1013,7 @@
 				3DAF907922EFD70200FB29E0 /* NetworkExtension.framework in Frameworks */,
 				3D201E7B26CC8C6000F2CC0E /* Yaml.xcframework in Frameworks */,
 				3D8A254C27487B35001B99E1 /* NEKit.framework in Frameworks */,
-				2DDD126D8F073FC42E1C6A28 /* Pods_Lockdown.framework in Frameworks */,
+				F0FA63CE72E377E80B262592 /* Pods_Lockdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,7 +1026,7 @@
 				A12473F41FE44285008493B8 /* NotificationCenter.framework in Frameworks */,
 				3D92FF4026CB8F96008458C0 /* CocoaLumberjack.xcframework in Frameworks */,
 				A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */,
-				39FD925FB5AC24FB6118A2E8 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
+				200B3ACD2F983ADCB1128C42 /* Pods_Lockdown_VPN_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,13 +1050,399 @@
 				3D201EE326CC8CD400F2CC0E /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				A1FCDA6322C7616400C928BC /* NetworkExtension.framework in Frameworks */,
 				3D201E8B26CC8C6600F2CC0E /* lwip.xcframework in Frameworks */,
-				E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */,
+				FF6327EF056A4C0DCA5E8123 /* Pods_LockdownTunnel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B087B00291C1839006953DA /* EnableNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				0B087B06291C184C006953DA /* EnableNotificationsViewController.xib */,
+				0B087B08291C1852006953DA /* EnableNotificationsViewController.swift */,
+			);
+			name = EnableNotifications;
+			sourceTree = "<group>";
+		};
+		0B1C8ECF28E44A6B00E9CA57 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				0B2205C829142A6C002F2562 /* FloatingInput */,
+				0B1C8ED028E44A7E00E9CA57 /* UIView */,
+			);
+			path = CommonUI;
+			sourceTree = "<group>";
+		};
+		0B1C8ED028E44A7E00E9CA57 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				0B1C8ED128E44A8800E9CA57 /* ProgressView.swift */,
+				0B1FFD62293E16BF0027341C /* Separator.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		0B2205C829142A6C002F2562 /* FloatingInput */ = {
+			isa = PBXGroup;
+			children = (
+				0B2205C629142601002F2562 /* FloatingTextInputTextField.swift */,
+				0B2205C929142A84002F2562 /* TextBox.swift */,
+				0B2205CB29142AA2002F2562 /* TextInputState.swift */,
+				0B2205CD29142ACD002F2562 /* TextBoxLabel.swift */,
+			);
+			path = FloatingInput;
+			sourceTree = "<group>";
+		};
+		0B28DEDA2913FA0200D35866 /* SignUpAndLogin */ = {
+			isa = PBXGroup;
+			children = (
+				0B28DEE02913FA3300D35866 /* ViewController */,
+			);
+			name = SignUpAndLogin;
+			sourceTree = "<group>";
+		};
+		0B28DEE02913FA3300D35866 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B2205BD291416D4002F2562 /* SignUpViewController.xib */,
+				0B2205C4291416DE002F2562 /* SignUpViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0B3AB82B29350B2800B254C0 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				0B3AB82D29350BCA00B254C0 /* Models */,
+				0B3AB82E29350BD100B254C0 /* Services */,
+			);
+			name = "Business Logic";
+			sourceTree = "<group>";
+		};
+		0B3AB82D29350BCA00B254C0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B4EF29F293A98F600A32554 /* LockdownUser.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0B3AB82E29350BD100B254C0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0B1B6AC3293A9977003DCF72 /* UserService.swift */,
+				0BECE944294B712500F3BFB8 /* CountdownDisplayService.swift */,
+				0BECE94D294D11C600F3BFB8 /* PaywallService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		0B3AB83329350C1400B254C0 /* DeleteAccount */ = {
+			isa = PBXGroup;
+			children = (
+				0B3AB83429350C2400B254C0 /* ViewController */,
+			);
+			name = DeleteAccount;
+			sourceTree = "<group>";
+		};
+		0B3AB83429350C2400B254C0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B1B6AC7293A9AF1003DCF72 /* DeleteMyAccountViewController.xib */,
+				0B1B6AC8293A9AF1003DCF72 /* DeleteMyAccountViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0B3AB83A29354B8500B254C0 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0B3AB83B29354B9100B254C0 /* LockdownGradient.swift */,
+				0B564B67294368C00082C27C /* EmailAddress.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		0B4B8B0129412BD50060C072 /* LockdownIntents */ = {
+			isa = PBXGroup;
+			children = (
+				0B4B8B5329420AA50060C072 /* LockdownIntents.entitlements */,
+				0B4B8B0229412BD50060C072 /* IntentHandler.swift */,
+				0B4B8B0429412BD50060C072 /* Info.plist */,
+				0B4B8B232941352A0060C072 /* DisableVPNIntentHandler.swift */,
+				0B4B8B25294135350060C072 /* EnableVPNIntentHandler.swift */,
+			);
+			path = LockdownIntents;
+			sourceTree = "<group>";
+		};
+		0B4E081E28C8EBC400129620 /* Splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				0B4E082428C8EBCE00129620 /* ViewController */,
+			);
+			name = Splashscreen;
+			sourceTree = "<group>";
+		};
+		0B4E082428C8EBCE00129620 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B4E082728C8EBED00129620 /* SplashscreenViewController.xib */,
+				0B4E082528C8EBE000129620 /* SplashscreenViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0B5CF1CF28B52A4600619E98 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0BCD08A1293FDD0200DC6DD1 /* ConnectivityService */,
+				0B1B6AC5293A99C1003DCF72 /* EmailComposable.swift */,
+				0B84454D2940BDE300FA2F35 /* EmailValidatable.swift */,
+				0BECE95C294F624B00F3BFB8 /* Keychainable.swift */,
+				0B4B8B1F29412C9C0060C072 /* IntentService.swift */,
+				0BECE9642950E27700F3BFB8 /* ProductPurchasable.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0B6C410728BCEE4800DBE368 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0B4E081E28C8EBC400129620 /* Splashscreen */,
+				0B3AB83329350C1400B254C0 /* DeleteAccount */,
+				0B9D69C328E1AA5700A3EFCE /* Onboarding */,
+				0B28DEDA2913FA0200D35866 /* SignUpAndLogin */,
+				0B087B00291C1839006953DA /* EnableNotifications */,
+				0B6C410D28BCEE5200DBE368 /* Paywalls */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		0B6C410D28BCEE5200DBE368 /* Paywalls */ = {
+			isa = PBXGroup;
+			children = (
+				0B6C411628BCEEED00DBE368 /* Model */,
+				0BE113F3293A65800070DC51 /* View */,
+				0BE5A1D628C5F38B00D180DC /* TablePaywall */,
+				0B99BA55294A261600A47A45 /* ChristmasPaywall */,
+			);
+			name = Paywalls;
+			sourceTree = "<group>";
+		};
+		0B6C411228BCEED200DBE368 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B1B6ACB293A9B1E003DCF72 /* TablePaywallViewController.xib */,
+				0B1B6ACC293A9B1E003DCF72 /* TablePaywallViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0B6C411628BCEEED00DBE368 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B3E5FCC28BFD5A500BAB0E7 /* AppStoreProductGroup.swift */,
+				0B3AB8162935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift */,
+				0B99BA4B294903F100A47A45 /* PaywallDisplayConfiguration.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0B8062372860A195003EFF32 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0BB5629129437C1300EEE4B5 /* PropertyWrappers */,
+				0B3AB83A29354B8500B254C0 /* Constants */,
+				0BA77E2228E45C8C007ECE45 /* Helpers */,
+				0B1C8ECF28E44A6B00E9CA57 /* CommonUI */,
+				0B5CF1CF28B52A4600619E98 /* Services */,
+				0B80623D2860A19F003EFF32 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0B80623D2860A19F003EFF32 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BECE9892951F3B800F3BFB8 /* String */,
+				0BECF18128C6091D0092D430 /* UICollectionView+Dequeue.swift */,
+				0BF1E99E28C67E1700ACD0FD /* NibLoadable.swift */,
+				0BF1E9A728C696F900ACD0FD /* UIView+Ext.swift */,
+				0B2205CF2915B093002F2562 /* UIViewController+Ext.swift */,
+				0B6DC53F292E402A00DCB8E8 /* Font+Ext.swift */,
+				0B3AB7E92934EFAD00B254C0 /* UIView+Corners.swift */,
+				0BE113F9293A6B220070DC51 /* CALayer+Ext.swift */,
+				0B1FFD5B293E15AA0027341C /* UIStackView+Ext.swift */,
+				0BECE950294D1F8E00F3BFB8 /* Date+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0B99BA54294A260800A47A45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B1B6AD7293AA464003DCF72 /* PaywallTableFeature.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0B99BA55294A261600A47A45 /* ChristmasPaywall */ = {
+			isa = PBXGroup;
+			children = (
+				0B99BA56294A264800A47A45 /* ViewController */,
+			);
+			name = ChristmasPaywall;
+			sourceTree = "<group>";
+		};
+		0B99BA56294A264800A47A45 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B99BA60294A266E00A47A45 /* ChristmasPaywallViewController.xib */,
+				0B99BA57294A266800A47A45 /* ChristmasPaywallViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0B9D69C328E1AA5700A3EFCE /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D69CE28E1C0CF00A3EFCE /* Model */,
+				0B9D69C928E1AA6100A3EFCE /* ViewController */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		0B9D69C928E1AA6100A3EFCE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D69CC28E1AB3100A3EFCE /* OnboardingViewController.xib */,
+				0B9D69CA28E1AB2600A3EFCE /* OnboardingViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0B9D69CE28E1C0CF00A3EFCE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D69CF28E1C0E700A3EFCE /* OnboardingPage.swift */,
+				0BA77E2728E46F61007ECE45 /* OnboardingConfiguration.swift */,
+				0B312AD32910411E00A218FB /* OnboardingPageContent.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0B9D69D128E1C13500A3EFCE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D69D228E1C18D00A3EFCE /* Videos */,
+				A1141A1B1F46230500F54698 /* Assets.xcassets */,
+				0B99BA362948FE6300A47A45 /* LockdownIntents.intentdefinition */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0B9D69D228E1C18D00A3EFCE /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D69D328E1C19E00A3EFCE /* Onboarding */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		0B9D69D328E1C19E00A3EFCE /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0B9D69D428E1C1C700A3EFCE /* Onboarding_installation.mp4 */,
+				0B0CCD422901B25300F5C632 /* Onboarding_launch_firewall.mp4 */,
+				0B0CCD442901B28100F5C632 /* Onboarding_showcase_vpn.mp4 */,
+				0B363A2628F56B6600E881BF /* Onboarding_blocklists.mp4 */,
+				0BA77E2028E44FB7007ECE45 /* Onboarding_notifications.mp4 */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0BA24F6A293DFD9D007FEA9B /* TablePaywallTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0BA24F70293DFE28007FEA9B /* TablePaywallHeaderView.xib */,
+				0BA24F72293DFE3B007FEA9B /* TablePaywallHeaderView.swift */,
+			);
+			path = TablePaywallTableHeaderView;
+			sourceTree = "<group>";
+		};
+		0BA77E2228E45C8C007ECE45 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0BA77E2328E45C94007ECE45 /* WeakObject.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0BB5629129437C1300EEE4B5 /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				0BB5629729437C1B00EEE4B5 /* UserDefault.swift */,
+				0BA77E2528E45F73007ECE45 /* ArrayRestrictable.swift */,
+			);
+			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		0BCD08A1293FDD0200DC6DD1 /* ConnectivityService */ = {
+			isa = PBXGroup;
+			children = (
+				0BCD08A2293FDD0A00DC6DD1 /* ConnectionState.swift */,
+				0BCD089F293FDCF400DC6DD1 /* ConnectivityService.swift */,
+			);
+			path = ConnectivityService;
+			sourceTree = "<group>";
+		};
+		0BCD08A42940AE6A00DC6DD1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0BCD08A52940AE8600DC6DD1 /* ConnectivityServiceTests.swift */,
+				0B84454F2940CE2A00FA2F35 /* EmailValidatableTests.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0BE113F3293A65800070DC51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BA24F6A293DFD9D007FEA9B /* TablePaywallTableHeaderView */,
+				0BE113FB293A946C0070DC51 /* TablePaywallTableRowView */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0BE113FB293A946C0070DC51 /* TablePaywallTableRowView */ = {
+			isa = PBXGroup;
+			children = (
+				0BE113FC293A94930070DC51 /* TablePaywallFeatureRowView.xib */,
+				0B1B6AD9293DFB50003DCF72 /* TablePaywallFeatureRowView.swift */,
+			);
+			name = TablePaywallTableRowView;
+			sourceTree = "<group>";
+		};
+		0BE5A1D628C5F38B00D180DC /* TablePaywall */ = {
+			isa = PBXGroup;
+			children = (
+				0B99BA54294A260800A47A45 /* Model */,
+				0B6C411228BCEED200DBE368 /* ViewController */,
+			);
+			name = TablePaywall;
+			sourceTree = "<group>";
+		};
+		0BECE9892951F3B800F3BFB8 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				0B80623E2860A1DB003EFF32 /* String+Localized.swift */,
+				0BECE98A2951F3C300F3BFB8 /* String+URL.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
 		3D0711B922FE79FF00391C6E /* Why Trust */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,7 +1602,7 @@
 		3DBD57A422FBBA4600DE189F /* VPN */ = {
 			isa = PBXGroup;
 			children = (
-				A12186261FB8F691007058B3 /* SignupViewController.swift */,
+				A12186261FB8F691007058B3 /* OldSignupViewController.swift */,
 				3DBD57B522FD00BB00DE189F /* SetRegionCell.swift */,
 				3DBD57B322FCFF2400DE189F /* SetRegionViewController.swift */,
 				3D5F5A0B23109ABB004C3860 /* WhatIsVpnViewController.swift */,
@@ -999,12 +1651,12 @@
 		7C0D11102473EDFD00A26E04 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0BE9DD68285A59710023B555 /* OneTimeActions.swift */,
+				0BE9DD6E285A59930023B555 /* BlockDayLog.swift */,
 				7C0D11112473EE2E00A26E04 /* DomainNameValidator.swift */,
-				7C6619BB247810E2005E8BB1 /* BlockDayLog.swift */,
-				7C3E8D20247D8057004B81D6 /* PushNotifications.swift */,
-				7C1AE072247FD82A0000A7D3 /* PushNotificationsAuthorization.swift */,
+				0BE9DD80285A59F20023B555 /* PushNotifications.swift */,
+				0BE9DD86285A5A070023B555 /* PushNotificationsAuthorization.swift */,
 				7C1AE074247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift */,
-				7C1AE079247FF87E0000A7D3 /* OneTimeActions.swift */,
 				7C44081A2539BCCE003FAD1E /* ProtectedFileAccess.swift */,
 			);
 			name = Services;
@@ -1013,6 +1665,7 @@
 		7C0D111B2473FC7E00A26E04 /* LockdownTests */ = {
 			isa = PBXGroup;
 			children = (
+				0BCD08A42940AE6A00DC6DD1 /* Core */,
 				7C0D111C2473FC7E00A26E04 /* LockdownTests.swift */,
 				7C0D11242473FD6500A26E04 /* DomainNameValidatorTests.swift */,
 				7C0D111E2473FC7E00A26E04 /* Info.plist */,
@@ -1098,10 +1751,10 @@
 				A12473F51FE44285008493B8 /* Today */,
 				A1FCDA4222C0651300C928BC /* Lockdown Tunnel */,
 				A1DBA19521B82F72008A9322 /* LICENSE.md */,
-				A1141A1B1F46230500F54698 /* Assets.xcassets */,
 				A1FCDA8322CDE5ED00C928BC /* Block Lists */,
 				3D44377922DFB22600908CDC /* Fonts */,
 				7C9A936F251E1EC700DA5721 /* LockdownFirewallWidget */,
+				0B4B8B0129412BD50060C072 /* LockdownIntents */,
 				A1141A421F46233600F54698 /* Frameworks */,
 				A17A6A2C202B44BB00657B9E /* Modified Pods */,
 				3DBD57CB22FD74D700DE189F /* Tests */,
@@ -1120,6 +1773,7 @@
 				3DBD57BB22FD727900DE189F /* Lockdown Firewall Widget.appex */,
 				7C0D111A2473FC7E00A26E04 /* LockdownTests.xctest */,
 				7C9A936A251E1EC700DA5721 /* LockdownFirewallWidgetExtension.appex */,
+				0B4B8AFE29412BD50060C072 /* LockdownIntents.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1127,10 +1781,14 @@
 		A1141A131F46230500F54698 /* LockdowniOS */ = {
 			isa = PBXGroup;
 			children = (
+				3DFD0F8422F0F773002A3F25 /* Main */,
+				0B9D69D128E1C13500A3EFCE /* Resources */,
+				0B3AB82B29350B2800B254C0 /* Business Logic */,
+				0B6C410728BCEE4800DBE368 /* Presentation */,
+				0B8062372860A195003EFF32 /* Core */,
 				7C422EAC25279755007F9C22 /* Screens */,
 				7C422E95252796E2007F9C22 /* Views */,
 				7C1AE07E248028E40000A7D3 /* Extensions */,
-				3DFD0F8422F0F773002A3F25 /* Main */,
 				3DBD57A322FBB97D00DE189F /* Firewall */,
 				3D0711B922FE79FF00391C6E /* Why Trust */,
 				3DBD57A422FBBA4600DE189F /* VPN */,
@@ -1168,11 +1826,14 @@
 				A1912FE91F58B2D00007F6D4 /* NotificationCenter.framework */,
 				7C9A936B251E1EC700DA5721 /* WidgetKit.framework */,
 				7C9A936D251E1EC700DA5721 /* SwiftUI.framework */,
-				4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */,
-				AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */,
-				6FE1DD136CBC73DC96B7009A /* Pods_Lockdown_VPN_Widget.framework */,
-				1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */,
-				BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */,
+				0B4B8AFF29412BD50060C072 /* Intents.framework */,
+				0B4B8B0A29412BD50060C072 /* IntentsUI.framework */,
+				5087F67CEF771725FC357970 /* Pods_Lockdown.framework */,
+				B52A28F4337A6E086CB1F96A /* Pods_Lockdown_Firewall_Widget.framework */,
+				BBFF5B209ADA1F1C8193F194 /* Pods_Lockdown_VPN_Widget.framework */,
+				20E68D70EBEDB6917C2C9994 /* Pods_LockdownIntents.framework */,
+				FFE976725BA472E2F1CE7B83 /* Pods_LockdownTests.framework */,
+				E2AF55B2F4F7EBC056DED63C /* Pods_LockdownTunnel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1192,7 +1853,7 @@
 		A11E78A21F6A33C5007499CA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3DAF734C2768572300D97BB0 /* FirewallUtilities.swift */,
+				0BE9DD74285A59B70023B555 /* FirewallUtilities.swift */,
 				3DCA4F2D22F190720017740D /* Client.swift */,
 				3DCA4F3022F190AE0017740D /* ClientModels.swift */,
 				3D94AB1122FE3A460012B0DE /* Environment.swift */,
@@ -1201,9 +1862,9 @@
 				A1E748191F9108B6004B8021 /* SpeedTest.swift */,
 				A1DBA18921B77C80008A9322 /* VPNController.swift */,
 				A1DBA18521B77C66008A9322 /* VPNSubscription.swift */,
-				3DBD57A722FBD7A100DE189F /* WhitelistUtilities.swift */,
-				7CE91C582521D54F009D8269 /* UserDefaults.swift */,
-				7CE91C702521D58C009D8269 /* Metrics.swift */,
+				0BE9DD8C285A5A120023B555 /* UserDefaults.swift */,
+				0BE9DD92285A5A200023B555 /* WhitelistUtilities.swift */,
+				0BE9DD7A285A59E30023B555 /* Metrics.swift */,
 				7CE91C952521ED5E009D8269 /* VPNRegion.swift */,
 				7C0D11102473EDFD00A26E04 /* Services */,
 			);
@@ -1310,16 +1971,21 @@
 				2DF472CA81A935DEF14D7039 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */,
 				8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */,
 				2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */,
-				ECA3DC3801B375B860C15978 /* Pods-Lockdown.debug.xcconfig */,
-				FA3DBA07D389FDA260B448B7 /* Pods-Lockdown.release.xcconfig */,
-				A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
-				707A358300D4A3D33EFC8749 /* Pods-Lockdown Firewall Widget.release.xcconfig */,
-				A0BEB57F0C3C4F5746285E07 /* Pods-Lockdown VPN Widget.debug.xcconfig */,
-				88E04750DB23687076871F5B /* Pods-Lockdown VPN Widget.release.xcconfig */,
-				95899949475D15BB3DB63138 /* Pods-LockdownTests.debug.xcconfig */,
-				0B014050F770126F5808AF28 /* Pods-LockdownTests.release.xcconfig */,
-				549133AE36DE5B896F995988 /* Pods-LockdownTunnel.debug.xcconfig */,
-				7435DF998DFB59C9808F1638 /* Pods-LockdownTunnel.release.xcconfig */,
+				EEF3612A1027943CE53E6070 /* Pods-LockdownIntents-metadata.plist */,
+				89C1B1F2419FFC1E995F10BC /* Pods-LockdownIntents-settings-metadata.plist */,
+				EB84A575169097A4A77345F6 /* Pods-LockdownIntentsUI-settings-metadata.plist */,
+				DEA35788129374068081E375 /* Pods-Lockdown.debug.xcconfig */,
+				E2ED1B8AB6C3D86D7147AF02 /* Pods-Lockdown.release.xcconfig */,
+				71855E12B7B5B939F0E2EB29 /* Pods-Lockdown Firewall Widget.debug.xcconfig */,
+				D2EBAB60D2371A51A7E6A92C /* Pods-Lockdown Firewall Widget.release.xcconfig */,
+				AFD87C46425342AFA2F65394 /* Pods-Lockdown VPN Widget.debug.xcconfig */,
+				12578876980678A072282A2E /* Pods-Lockdown VPN Widget.release.xcconfig */,
+				CB1223BE1CDCC2555FE71352 /* Pods-LockdownIntents.debug.xcconfig */,
+				777648CC444D5A906BBFC729 /* Pods-LockdownIntents.release.xcconfig */,
+				1F90F5BA7CFAB9814D768F16 /* Pods-LockdownTests.debug.xcconfig */,
+				489F7CCEAADF147B19320AAE /* Pods-LockdownTests.release.xcconfig */,
+				628519CE6C4D40332EFBFB08 /* Pods-LockdownTunnel.debug.xcconfig */,
+				569A4A1747E7C83C7F07C755 /* Pods-LockdownTunnel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1327,11 +1993,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0B4B8AFD29412BD50060C072 /* LockdownIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B4B8B1C29412BD50060C072 /* Build configuration list for PBXNativeTarget "LockdownIntents" */;
+			buildPhases = (
+				8A6BAD8C56FAFF0F3160C71F /* [CP] Check Pods Manifest.lock */,
+				0B4B8AFA29412BD50060C072 /* Sources */,
+				0B4B8AFB29412BD50060C072 /* Frameworks */,
+				0B4B8AFC29412BD50060C072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockdownIntents;
+			productName = LockdownIntents;
+			productReference = 0B4B8AFE29412BD50060C072 /* LockdownIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DBD57C722FD727900DE189F /* Build configuration list for PBXNativeTarget "Lockdown Firewall Widget" */;
 			buildPhases = (
-				FB6DB65AD7DDFC6CFF0AB663 /* [CP] Check Pods Manifest.lock */,
+				EC657542A18595AF7E0C7EF1 /* [CP] Check Pods Manifest.lock */,
 				3DBD57B722FD727900DE189F /* Sources */,
 				3DBD57B822FD727900DE189F /* Frameworks */,
 				3DBD57B922FD727900DE189F /* Resources */,
@@ -1349,11 +2033,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C0D11232473FC7E00A26E04 /* Build configuration list for PBXNativeTarget "LockdownTests" */;
 			buildPhases = (
-				395667F7EF55688E346D7A56 /* [CP] Check Pods Manifest.lock */,
+				85639EE48B7A6DB2A148D31D /* [CP] Check Pods Manifest.lock */,
 				7C0D11162473FC7E00A26E04 /* Sources */,
 				7C0D11172473FC7E00A26E04 /* Frameworks */,
 				7C0D11182473FC7E00A26E04 /* Resources */,
-				6B16CD066B7776C0EE46D41D /* [CP] Embed Pods Frameworks */,
+				CADCF2A9BF3F76AA4C2AF3DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1386,14 +2070,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1141A391F46230600F54698 /* Build configuration list for PBXNativeTarget "Lockdown" */;
 			buildPhases = (
-				64FE7C42B237022F592D9853 /* [CP] Check Pods Manifest.lock */,
+				8769C5ADEAEA8A1FFB6C5E71 /* [CP] Check Pods Manifest.lock */,
 				3D94AEC12542A859005FDC0E /* ShellScript */,
 				A1141A0D1F46230500F54698 /* Sources */,
 				A1141A0E1F46230500F54698 /* Frameworks */,
 				A1141A0F1F46230500F54698 /* Resources */,
 				A18B79571F8C36460042A4EF /* Embed App Extensions */,
 				3DD3D09826CC8714002238E8 /* Embed Frameworks */,
-				5A300A6E89DFE7D0A22A5136 /* [CP] Embed Pods Frameworks */,
+				0B8062402860BF3F003EFF32 /* Swiftlint Script */,
+				F5A6A1B34414D2FCBEE6599F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1403,6 +2088,7 @@
 				A1FCDA4822C0651300C928BC /* PBXTargetDependency */,
 				3DBD57C522FD727900DE189F /* PBXTargetDependency */,
 				7C9A9376251E1EC700DA5721 /* PBXTargetDependency */,
+				0B4B8B1729412BD50060C072 /* PBXTargetDependency */,
 			);
 			name = Lockdown;
 			productName = TrustiOS;
@@ -1413,7 +2099,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A12473FF1FE44285008493B8 /* Build configuration list for PBXNativeTarget "Lockdown VPN Widget" */;
 			buildPhases = (
-				8DC19F20C31126BB8D4B1222 /* [CP] Check Pods Manifest.lock */,
+				F4D50C9EBF70B243476CFA9D /* [CP] Check Pods Manifest.lock */,
 				A12473EF1FE44284008493B8 /* Sources */,
 				A12473F01FE44284008493B8 /* Frameworks */,
 				A12473F11FE44284008493B8 /* Resources */,
@@ -1448,7 +2134,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1FCDA4A22C0651300C928BC /* Build configuration list for PBXNativeTarget "LockdownTunnel" */;
 			buildPhases = (
-				1883028BE10B38CE14B1FD85 /* [CP] Check Pods Manifest.lock */,
+				D3515DD495DCDFE3C9225BB5 /* [CP] Check Pods Manifest.lock */,
 				A1FCDA3D22C0651300C928BC /* Sources */,
 				A1FCDA3E22C0651300C928BC /* Frameworks */,
 				A1FCDA3F22C0651300C928BC /* Resources */,
@@ -1468,10 +2154,13 @@
 		A1141A091F46230500F54698 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Confirmed Inc.";
 				TargetAttributes = {
+					0B4B8AFD29412BD50060C072 = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					3DBD57BA22FD727900DE189F = {
 						CreatedOnToolsVersion = 10.3;
 						DevelopmentTeam = V8J3Z26F6Z;
@@ -1602,6 +2291,12 @@
 				fr,
 				ja,
 				es,
+				ar,
+				de,
+				ru,
+				vi,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = A1141A081F46230500F54698;
 			productRefGroup = A1141A121F46230500F54698 /* Products */;
@@ -1621,6 +2316,7 @@
 				3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */,
 				7C0D11192473FC7E00A26E04 /* LockdownTests */,
 				7C9A9369251E1EC700DA5721 /* LockdownFirewallWidgetExtension */,
+				0B4B8AFD29412BD50060C072 /* LockdownIntents */,
 			);
 		};
 /* End PBXProject section */
@@ -1664,6 +2360,16 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0B4B8AFC29412BD50060C072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD19586D73B1D8573C2AD98 /* Pods-LockdownIntents-metadata.plist in Resources */,
+				0B99BA68294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
+				510EA50D772A435C202CC370 /* Pods-LockdownIntents-settings-metadata.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3DBD57B922FD727900DE189F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1672,6 +2378,7 @@
 				3D3BF4CE233D5E9100D0C482 /* Localizable.strings in Resources */,
 				3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */,
 				3D5464D62303839500AE1F73 /* Settings.bundle in Resources */,
+				0B99BA65294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */,
 				388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */,
 			);
@@ -1682,6 +2389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */,
+				0B99BA66294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1691,6 +2399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0156582521C2F200670CB5 /* Montserrat-Light.ttf in Resources */,
+				0B99BA67294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */,
 				7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */,
 				7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */,
@@ -1705,21 +2414,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE113FD293A94930070DC51 /* TablePaywallFeatureRowView.xib in Resources */,
+				0B0CCD452901B28200F5C632 /* Onboarding_showcase_vpn.mp4 in Resources */,
 				3D01D99F2481E42E003A710C /* general_ads.txt in Resources */,
 				A1D85F0A207C562F00B766E0 /* adBlockListTwo.json in Resources */,
+				0B9D69D528E1C1C700A3EFCE /* Onboarding_installation.mp4 in Resources */,
+				0B2205BE291416D4002F2562 /* SignUpViewController.xib in Resources */,
 				3D01D99E2481E42B003A710C /* reporting.txt in Resources */,
+				0B4E082828C8EBED00129620 /* SplashscreenViewController.xib in Resources */,
 				A1D85F0B207C562F00B766E0 /* adBlockListThree.json in Resources */,
 				A1159FCC207C228300DA4670 /* privacyBlockList.json in Resources */,
 				A1159FCD207C228300DA4670 /* socialBlockList.json in Resources */,
 				A1FCDA8722CDE8C000C928BC /* crypto_mining_ips.txt in Resources */,
 				3D752C342357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf in Resources */,
+				0BA24F71293DFE28007FEA9B /* TablePaywallHeaderView.xib in Resources */,
 				A1159FCE207C228300DA4670 /* adBlockList.json in Resources */,
 				3D44378522DFB22600908CDC /* Montserrat-Regular.ttf in Resources */,
+				0BA77E2128E44FB7007ECE45 /* Onboarding_notifications.mp4 in Resources */,
 				3D44378122DFB22600908CDC /* Montserrat-Light.ttf in Resources */,
+				0B99BA61294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				3DAA6B5322EA988F0018FC09 /* ransomware.txt in Resources */,
 				3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */,
 				3D01D97B2480DCB3003A710C /* data_trackers.txt in Resources */,
 				3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */,
+				0B0CCD432901B25300F5C632 /* Onboarding_launch_firewall.mp4 in Resources */,
 				A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */,
 				A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */,
 				A1FCDA8B22D3BA1900C928BC /* facebook_inc.txt in Resources */,
@@ -1729,6 +2447,7 @@
 				3D3BF4CC233D5E9100D0C482 /* Localizable.strings in Resources */,
 				3D752C352357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */,
+				0B087B07291C184C006953DA /* EnableNotificationsViewController.xib in Resources */,
 				3D752C372357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */,
@@ -1736,17 +2455,21 @@
 				3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */,
 				A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */,
 				A1141A1C1F46230500F54698 /* Assets.xcassets in Resources */,
+				0B363A2728F56B6600E881BF /* Onboarding_blocklists.mp4 in Resources */,
 				3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */,
 				A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */,
 				3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */,
 				3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */,
 				3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
+				0B1B6ACD293A9B1E003DCF72 /* TablePaywallViewController.xib in Resources */,
+				0B1B6AC9293A9AF1003DCF72 /* DeleteMyAccountViewController.xib in Resources */,
 				7C3EFA042486879800719D96 /* tracker_info.json in Resources */,
 				A1141A1A1F46230500F54698 /* Main.storyboard in Resources */,
 				3D5464D323037CCA00AE1F73 /* Settings.bundle in Resources */,
 				20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */,
 				C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */,
+				0B9D69CD28E1AB3100A3EFCE /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1758,6 +2481,7 @@
 				3D3BF4CD233D5E9100D0C482 /* Localizable.strings in Resources */,
 				A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */,
 				3D5464D42303839200AE1F73 /* Settings.bundle in Resources */,
+				0B99BA63294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */,
 				1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */,
 			);
@@ -1771,6 +2495,7 @@
 				A1D85F07207C4C8300B766E0 /* adBlockListTwo.json in Resources */,
 				A1D85F09207C52A000B766E0 /* adBlockListThree.json in Resources */,
 				A1159FCB207C201A00DA4670 /* privacyBlockList.json in Resources */,
+				0B99BA62294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				A1931CFE20791F5900E695EB /* adBlockList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1781,6 +2506,7 @@
 			files = (
 				3D5464D52303839400AE1F73 /* Settings.bundle in Resources */,
 				5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */,
+				0B99BA64294A266E00A47A45 /* ChristmasPaywallViewController.xib in Resources */,
 				5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1788,7 +2514,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1883028BE10B38CE14B1FD85 /* [CP] Check Pods Manifest.lock */ = {
+		0B8062402860BF3F003EFF32 /* Swiftlint Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1796,21 +2522,34 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "Swiftlint Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LockdownTunnel-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		395667F7EF55688E346D7A56 /* [CP] Check Pods Manifest.lock */ = {
+		3D94AEC12542A859005FDC0E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+		};
+		85639EE48B7A6DB2A148D31D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1832,7 +2571,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D94AEC12542A859005FDC0E /* ShellScript */ = {
+		8769C5ADEAEA8A1FFB6C5E71 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1840,16 +2579,127 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-		5A300A6E89DFE7D0A22A5136 /* [CP] Embed Pods Frameworks */ = {
+		8A6BAD8C56FAFF0F3160C71F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LockdownIntents-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CADCF2A9BF3F76AA4C2AF3DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LockdownTests/Pods-LockdownTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapshotTesting/SnapshotTesting.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapshotTesting.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LockdownTests/Pods-LockdownTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3515DD495DCDFE3C9225BB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LockdownTunnel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC657542A18595AF7E0C7EF1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4D50C9EBF70B243476CFA9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lockdown VPN Widget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5A6A1B34414D2FCBEE6599F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1887,115 +2737,63 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lockdown/Pods-Lockdown-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		64FE7C42B237022F592D9853 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B16CD066B7776C0EE46D41D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LockdownTests/Pods-LockdownTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SnapshotTesting/SnapshotTesting.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapshotTesting.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LockdownTests/Pods-LockdownTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8DC19F20C31126BB8D4B1222 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown VPN Widget-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB6DB65AD7DDFC6CFF0AB663 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lockdown Firewall Widget-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B4B8AFA29412BD50060C072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B4B8B4A2941387F0060C072 /* Environment.swift in Sources */,
+				0B99BA2C2948EB7B00A47A45 /* PaywallTableFeature.swift in Sources */,
+				0B99BA2E2948EBCC00A47A45 /* AccountUI.swift in Sources */,
+				0B99BA2D2948EB8500A47A45 /* SubscriptionOfferPeriodUnit.swift in Sources */,
+				0B4B8B242941352A0060C072 /* DisableVPNIntentHandler.swift in Sources */,
+				0B99BA212948EB3E00A47A45 /* UserService.swift in Sources */,
+				0B4B8B2F294136340060C072 /* UserDefaults.swift in Sources */,
+				0B4B8B0329412BD50060C072 /* IntentHandler.swift in Sources */,
+				0B99BA272948EB4C00A47A45 /* LockdownUser.swift in Sources */,
+				0B99BA2A2948EB6500A47A45 /* Client.swift in Sources */,
+				0B99BA292948EB5800A47A45 /* Shared.swift in Sources */,
+				0B99BA53294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0BB39F302948AD7A002C9E57 /* String+Localized.swift in Sources */,
+				0B99BA2B2948EB7300A47A45 /* AppStoreProductGroup.swift in Sources */,
+				0B99BA282948EB5000A47A45 /* ClientModels.swift in Sources */,
+				0B99BA322948EDFA00A47A45 /* VPNController.swift in Sources */,
+				0B99BA342948FE6300A47A45 /* LockdownIntents.intentdefinition in Sources */,
+				0B4B8B26294135350060C072 /* EnableVPNIntentHandler.swift in Sources */,
+				0B4B8B512941388B0060C072 /* VPNRegion.swift in Sources */,
+				0BECE952294D1F8E00F3BFB8 /* Date+Ext.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3DBD57B722FD727900DE189F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D94AAF422FDEAC80012B0DE /* WhitelistUtilities.swift in Sources */,
-				7C1AE078247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
-				7C6619BE247810EE005E8BB1 /* BlockDayLog.swift in Sources */,
+				0BE9DD84285A59F20023B555 /* PushNotifications.swift in Sources */,
 				3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */,
+				0BE9DD72285A59930023B555 /* BlockDayLog.swift in Sources */,
 				3D94AAF122FDEAC00012B0DE /* Client.swift in Sources */,
-				7C1AE07D247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
-				3DAF73552768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */,
+				0BE9DD8A285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */,
+				0BE9DD6C285A59710023B555 /* OneTimeActions.swift in Sources */,
 				3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */,
+				0BDBDDEF293E2881009A1184 /* PaywallTableFeature.swift in Sources */,
 				7CE91C992521ED5E009D8269 /* VPNRegion.swift in Sources */,
-				7CD52D83247EC18900D0530F /* PushNotifications.swift in Sources */,
 				3DBD57BF22FD727900DE189F /* FirewallTodayViewController.swift in Sources */,
-				7CE91C682521D565009D8269 /* UserDefaults.swift in Sources */,
+				0B99BA50294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0BE9DD78285A59B70023B555 /* FirewallUtilities.swift in Sources */,
+				0BE9DD7E285A59E30023B555 /* Metrics.swift in Sources */,
 				3D94AB1422FE3BA20012B0DE /* Environment.swift in Sources */,
-				3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */,
+				0B3AB812293508DF00B254C0 /* AppStoreProductGroup.swift in Sources */,
+				0BE9DD90285A5A120023B555 /* UserDefaults.swift in Sources */,
+				0B3AB81B2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
+				0BE9DD96285A5A200023B555 /* WhitelistUtilities.swift in Sources */,
+				0B8DBDB0286482D600831AC4 /* String+Localized.swift in Sources */,
 				3D94AAF222FDEAC20012B0DE /* ClientModels.swift in Sources */,
-				7CE91C862521D5B7009D8269 /* Metrics.swift in Sources */,
 				7C44081E2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
+				0BBEEF402948C3C600F4405E /* Shared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2004,9 +2802,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD1435F248798D4009206A9 /* TrackerInfoTests.swift in Sources */,
+				0B99BA51294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0B3AB81C2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
+				0BDBDDF0293E2881009A1184 /* PaywallTableFeature.swift in Sources */,
 				7C0D111D2473FC7E00A26E04 /* LockdownTests.swift in Sources */,
 				7CD52D81247E850D00D0530F /* SnapshotTests.swift in Sources */,
+				0B3AB813293508E000B254C0 /* AppStoreProductGroup.swift in Sources */,
+				0B8445512940CE4200FA2F35 /* EmailValidatableTests.swift in Sources */,
+				0B8445472940AF2700FA2F35 /* ConnectivityServiceTests.swift in Sources */,
 				7C0D11252473FD6500A26E04 /* DomainNameValidatorTests.swift in Sources */,
+				0B8DBDB1286482D700831AC4 /* String+Localized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2014,18 +2819,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE9DD79285A59B70023B555 /* FirewallUtilities.swift in Sources */,
 				7C9A9384251E1F9C00DA5721 /* LoadingCircle.swift in Sources */,
-				3DAF73642768586200D97BB0 /* WhitelistUtilities.swift in Sources */,
+				0BDBDDF1293E2882009A1184 /* PaywallTableFeature.swift in Sources */,
+				0BE9DD6D285A59710023B555 /* OneTimeActions.swift in Sources */,
+				0BE9DD73285A59930023B555 /* BlockDayLog.swift in Sources */,
+				0B8DBDB2286482D700831AC4 /* String+Localized.swift in Sources */,
 				7CE91CA8252214C9009D8269 /* CombinedProvider.swift in Sources */,
+				0BE9DD8B285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */,
 				7C9A9371251E1EC700DA5721 /* LockdownFirewallWidget.swift in Sources */,
-				3DAF73622768584500D97BB0 /* BlockDayLog.swift in Sources */,
-				3DAF73612768584200D97BB0 /* PushNotifications.swift in Sources */,
-				3DAF73632768584D00D97BB0 /* PushNotificationsAuthorization.swift in Sources */,
-				3DAF73562768572300D97BB0 /* FirewallUtilities.swift in Sources */,
+				0BE9DD91285A5A120023B555 /* UserDefaults.swift in Sources */,
+				0B3AB81D2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
+				0B99BA52294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0B3AB814293508E000B254C0 /* AppStoreProductGroup.swift in Sources */,
+				0BE9DD97285A5A200023B555 /* WhitelistUtilities.swift in Sources */,
+				0BE9DD7F285A59E30023B555 /* Metrics.swift in Sources */,
+				0BE9DD85285A59F20023B555 /* PushNotifications.swift in Sources */,
 				7CE91C9A2521ED5E009D8269 /* VPNRegion.swift in Sources */,
-				7CE91C692521D566009D8269 /* UserDefaults.swift in Sources */,
-				3DAF73602768583700D97BB0 /* OneTimeActions.swift in Sources */,
-				7CE91C872521D5B8009D8269 /* Metrics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2034,107 +2844,152 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */,
+				0BE113FA293A6B220070DC51 /* CALayer+Ext.swift in Sources */,
+				0BECE9652950E27700F3BFB8 /* ProductPurchasable.swift in Sources */,
 				A1DBA18A21B77C80008A9322 /* VPNController.swift in Sources */,
 				3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */,
 				3D47CDB622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
-				7C6619BC247810E2005E8BB1 /* BlockDayLog.swift in Sources */,
 				3D47CDD622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				3D5561D4230B58F30062001D /* PrivacyPolicyViewController.swift in Sources */,
 				3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
+				0B99BA4C294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0BE9DD7B285A59E30023B555 /* Metrics.swift in Sources */,
 				A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */,
 				3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
-				7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */,
 				A118F64320B33FED009A64E7 /* FadeTransition.swift in Sources */,
-				7CE91C592521D54F009D8269 /* UserDefaults.swift in Sources */,
 				3D47CDC822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */,
 				3DF2455623A306DB00E46613 /* Loader.swift in Sources */,
 				A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */,
+				0B1B6ACE293A9B1E003DCF72 /* TablePaywallViewController.swift in Sources */,
+				0BA77E2428E45C94007ECE45 /* WeakObject.swift in Sources */,
 				3D47CDC522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
+				0B9D69D028E1C0E700A3EFCE /* OnboardingPage.swift in Sources */,
+				0B4E082628C8EBE000129620 /* SplashscreenViewController.swift in Sources */,
 				A1EBEACD2097AE6E002B9087 /* M13CheckboxFadeController.swift in Sources */,
+				0BA77E2828E46F61007ECE45 /* OnboardingConfiguration.swift in Sources */,
 				3D47CDCF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
+				0B1B6ACA293A9AF1003DCF72 /* DeleteMyAccountViewController.swift in Sources */,
 				3D47CDC422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
-				7C1AE07A247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				A1EBEAD72097AE6E002B9087 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				0BE9DD93285A5A200023B555 /* WhitelistUtilities.swift in Sources */,
 				3D970DAD22EC149D00F9CC93 /* BlockLogCell.swift in Sources */,
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
+				0B2205C729142601002F2562 /* FloatingTextInputTextField.swift in Sources */,
+				0B80623F2860A1DB003EFF32 /* String+Localized.swift in Sources */,
+				0B312AD42910411E00A218FB /* OnboardingPageContent.swift in Sources */,
+				0B99BA332948FE6300A47A45 /* LockdownIntents.intentdefinition in Sources */,
 				3D47CDD522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				3D47CDCD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				7CAB283F254336230087AAF4 /* CustomNavigationView.swift in Sources */,
+				0BF1E9A828C696F900ACD0FD /* UIView+Ext.swift in Sources */,
 				A1EBEAD22097AE6E002B9087 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */,
 				3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */,
 				3D0711B822FE79BE00391C6E /* WhyTrustViewController.swift in Sources */,
 				A118F64520B33FED009A64E7 /* TimerEx.swift in Sources */,
 				7C422EAF252797A6007F9C22 /* AccountVC.swift in Sources */,
+				0B99BA58294A266800A47A45 /* ChristmasPaywallViewController.swift in Sources */,
 				3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				3D9FC67723E503DF004122D3 /* EmailSignInViewController.swift in Sources */,
+				0B2205CE29142ACD002F2562 /* TextBoxLabel.swift in Sources */,
 				3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */,
+				0B087B09291C1852006953DA /* EnableNotificationsViewController.swift in Sources */,
 				7CE91C962521ED5E009D8269 /* VPNRegion.swift in Sources */,
+				0BECE945294B712500F3BFB8 /* CountdownDisplayService.swift in Sources */,
 				3DCA4F4122F252720017740D /* FirewallController.swift in Sources */,
 				A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */,
+				0B2205CC29142AA2002F2562 /* TextInputState.swift in Sources */,
+				0B4EF2A0293A98F600A32554 /* LockdownUser.swift in Sources */,
 				3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				7C422EA525279724007F9C22 /* Align.swift in Sources */,
 				A118F64120B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */,
+				0BA24F73293DFE3B007FEA9B /* TablePaywallHeaderView.swift in Sources */,
 				3DBD57A622FBCD7A00DE189F /* WhitelistViewController.swift in Sources */,
 				A1EBEAD82097AE6E002B9087 /* M13CheckboxBounceController.swift in Sources */,
 				3DCA4F2E22F190720017740D /* Client.swift in Sources */,
+				0BE9DD81285A59F20023B555 /* PushNotifications.swift in Sources */,
 				A101106D202B9D4300807612 /* BaseViewController.swift in Sources */,
 				7C0D11122473EE2E00A26E04 /* DomainNameValidator.swift in Sources */,
+				0B3AB83C29354B9100B254C0 /* LockdownGradient.swift in Sources */,
 				A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */,
 				A1EBEADA2097AE6E002B9087 /* M13CheckboxFillController.swift in Sources */,
 				A1EBEAD42097AE6E002B9087 /* M13CheckboxPathGenerator.swift in Sources */,
 				A1EBEACB2097AE6E002B9087 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				3D47CDC622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
+				0B3AB8172935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
+				0B860F6228FE9D06006B0AA7 /* BuildFile in Sources */,
+				0BECE951294D1F8E00F3BFB8 /* Date+Ext.swift in Sources */,
 				3D47CDCB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
 				3D47CDCA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				7C422EB72527A2D1007F9C22 /* MainTabBarViewController.swift in Sources */,
+				0B564B68294368C00082C27C /* EmailAddress.swift in Sources */,
 				3D47CDC722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
+				0B3E5FCD28BFD5A500BAB0E7 /* AppStoreProductGroup.swift in Sources */,
 				A1E7481A1F9108B6004B8021 /* SpeedTest.swift in Sources */,
 				3D970DAF22EC15D800F9CC93 /* BlockLogViewController.swift in Sources */,
+				0B2205C5291416DE002F2562 /* SignUpViewController.swift in Sources */,
+				0B1B6AC4293A9977003DCF72 /* UserService.swift in Sources */,
 				A1EBEADB2097AE6E002B9087 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				7CC8EFED254036050005054C /* FirewallRepair.swift in Sources */,
+				0B9D69CB28E1AB2600A3EFCE /* OnboardingViewController.swift in Sources */,
 				3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
-				7CE91C712521D58C009D8269 /* Metrics.swift in Sources */,
-				A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */,
+				A12186271FB8F691007058B3 /* OldSignupViewController.swift in Sources */,
 				A1EBEAD12097AE6E002B9087 /* M13Checkbox+IB.swift in Sources */,
 				A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */,
 				A1EBEACC2097AE6E002B9087 /* M13CheckboxDotController.swift in Sources */,
+				0B1B6ADA293DFB50003DCF72 /* TablePaywallFeatureRowView.swift in Sources */,
 				7C1AE075247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift in Sources */,
+				0BECF18228C6091D0092D430 /* UICollectionView+Dequeue.swift in Sources */,
+				0BE9DD87285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */,
 				A1EBEAD92097AE6E002B9087 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */,
+				0B3AB7EA2934EFAD00B254C0 /* UIView+Corners.swift in Sources */,
 				3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */,
 				A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */,
 				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */,
 				A1EBEAD02097AE6E002B9087 /* M13CheckboxController.swift in Sources */,
+				0B1FFD5C293E15AA0027341C /* UIStackView+Ext.swift in Sources */,
 				3D47CDB322F3C3F3003BD7F7 /* NVActivityIndicatorView.swift in Sources */,
 				3D47CDBD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				3D47CDB022F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift in Sources */,
+				0BECE94E294D11C600F3BFB8 /* PaywallService.swift in Sources */,
 				3D47CDC322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				A1EBEAD52097AE6E002B9087 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				3D47CDB122F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift in Sources */,
 				A154A080215C7A8C0010FFCC /* BlockListAddCell.swift in Sources */,
+				0B1B6AD8293AA464003DCF72 /* PaywallTableFeature.swift in Sources */,
+				0B1B6AC6293A99C1003DCF72 /* EmailComposable.swift in Sources */,
+				0B2205CA29142A84002F2562 /* TextBox.swift in Sources */,
 				3D47CDB822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
-				3DBD57A822FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
+				0B6DC540292E402A00DCB8E8 /* Font+Ext.swift in Sources */,
 				3D9FC67923E521DE004122D3 /* ForgotPasswordViewController.swift in Sources */,
 				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
+				0BCD08A3293FDD0A00DC6DD1 /* ConnectionState.swift in Sources */,
 				7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */,
+				0B84454E2940BDE300FA2F35 /* EmailValidatable.swift in Sources */,
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				7C44081B2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
-				7C1AE073247FD82A0000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
 				7C798A1A25409F8100A99695 /* Mailto.swift in Sources */,
 				3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				3D47CDBA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
+				0BF1E99F28C67E1700ACD0FD /* NibLoadable.swift in Sources */,
 				A1DBA18621B77C66008A9322 /* VPNSubscription.swift in Sources */,
 				3D0711BB22FE7B5100391C6E /* TitleViewController.swift in Sources */,
 				3D47CDB222F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift in Sources */,
+				0BE9DD69285A59710023B555 /* OneTimeActions.swift in Sources */,
 				7C422E97252796EE007F9C22 /* StaticTableView.swift in Sources */,
+				0B2205D02915B093002F2562 /* UIViewController+Ext.swift in Sources */,
 				7C3EFA0224867DEE00719D96 /* TrackerInfo.swift in Sources */,
+				0BB5629829437C1B00EEE4B5 /* UserDefault.swift in Sources */,
 				A1EBEAD32097AE6E002B9087 /* M13CheckboxFlatController.swift in Sources */,
+				0BECE98B2951F3C300F3BFB8 /* String+URL.swift in Sources */,
 				3D47CDC022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
+				0B1FFD63293E16BF0027341C /* Separator.swift in Sources */,
+				0BCD08A0293FDCF400DC6DD1 /* ConnectivityService.swift in Sources */,
 				3D47CDC222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				A1EBEAD62097AE6E002B9087 /* M13CheckboxSpiralController.swift in Sources */,
 				3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
@@ -2142,16 +2997,22 @@
 				3DBD57AC22FBDFE300DE189F /* WhitelistCell.swift in Sources */,
 				3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */,
 				3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
+				0BE9DD75285A59B70023B555 /* FirewallUtilities.swift in Sources */,
+				0B4B8B2029412C9C0060C072 /* IntentService.swift in Sources */,
 				3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
+				0BA77E2628E45F73007ECE45 /* ArrayRestrictable.swift in Sources */,
 				3D47CDB722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				3D47CDD322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
+				0BE9DD6F285A59930023B555 /* BlockDayLog.swift in Sources */,
 				A1141A151F46230500F54698 /* AppDelegate.swift in Sources */,
 				3DBD57AE22FBE04300DE189F /* WhitelistAddCell.swift in Sources */,
 				3D47CDB922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				A1EBEACE2097AE6E002B9087 /* M13CheckboxExpandController.swift in Sources */,
+				0BE9DD8D285A5A120023B555 /* UserDefaults.swift in Sources */,
 				3D5F5A0C23109ABB004C3860 /* WhatIsVpnViewController.swift in Sources */,
+				0B1C8ED228E44A8800E9CA57 /* ProgressView.swift in Sources */,
+				0BECE95D294F624B00F3BFB8 /* Keychainable.swift in Sources */,
 				A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */,
-				3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2160,24 +3021,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DBD57A922FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
-				7C1AE076247FE2000000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
-				7C6619BD247810EE005E8BB1 /* BlockDayLog.swift in Sources */,
+				0BE9DD82285A59F20023B555 /* PushNotifications.swift in Sources */,
 				54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */,
+				0BE9DD70285A59930023B555 /* BlockDayLog.swift in Sources */,
 				A1DBA18B21B77C88008A9322 /* VPNController.swift in Sources */,
 				3DAF7C5722F456F2003C8F9C /* ClientModels.swift in Sources */,
-				7C1AE07B247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
-				3DAF73532768572300D97BB0 /* FirewallUtilities.swift in Sources */,
-				3DBD57B122FC14CD00DE189F /* Shared.swift in Sources */,
+				0BE9DD88285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */,
+				0BE9DD6A285A59710023B555 /* OneTimeActions.swift in Sources */,
+				0BDBDDED293E287C009A1184 /* PaywallTableFeature.swift in Sources */,
 				3DAF7C5622F4568C003C8F9C /* Client.swift in Sources */,
 				7CE91C972521ED5E009D8269 /* VPNRegion.swift in Sources */,
-				7CD52D82247EC18800D0530F /* PushNotifications.swift in Sources */,
 				3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */,
-				7CE91C602521D564009D8269 /* UserDefaults.swift in Sources */,
+				0B99BA4E294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0BE9DD76285A59B70023B555 /* FirewallUtilities.swift in Sources */,
+				0BE9DD7C285A59E30023B555 /* Metrics.swift in Sources */,
+				0B3AB810293508DE00B254C0 /* AppStoreProductGroup.swift in Sources */,
+				0BE9DD8E285A5A120023B555 /* UserDefaults.swift in Sources */,
+				0B3AB8192935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
+				0BE9DD94285A5A200023B555 /* WhitelistUtilities.swift in Sources */,
 				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
+				0B8DBDAE286482D500831AC4 /* String+Localized.swift in Sources */,
 				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
-				7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */,
 				7C44081C2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
+				0BBEEF422948C3D700F4405E /* Shared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2185,6 +3051,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B99BA4D294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
+				0B3AB80A293508DD00B254C0 /* AppStoreProductGroup.swift in Sources */,
+				0BDBDDE7293E287C009A1184 /* PaywallTableFeature.swift in Sources */,
+				0B8DBDA8286482D500831AC4 /* String+Localized.swift in Sources */,
+				0B3AB8182935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
 				A1931D0020791F5900E695EB /* ContentBlockerRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2193,27 +3064,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CE91C852521D5B7009D8269 /* Metrics.swift in Sources */,
-				7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
-				3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */,
+				0BE9DD77285A59B70023B555 /* FirewallUtilities.swift in Sources */,
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
-				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
-				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
-				3DAF73542768572300D97BB0 /* FirewallUtilities.swift in Sources */,
+				0BE9DD71285A59930023B555 /* BlockDayLog.swift in Sources */,
+				0BE9DD95285A5A200023B555 /* WhitelistUtilities.swift in Sources */,
+				0BE9DD89285A5A070023B555 /* PushNotificationsAuthorization.swift in Sources */,
+				0BE9DD7D285A59E30023B555 /* Metrics.swift in Sources */,
+				0BE9DD6B285A59710023B555 /* OneTimeActions.swift in Sources */,
+				0B99BA4F294903F100A47A45 /* PaywallDisplayConfiguration.swift in Sources */,
 				7C44081D2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
+				0B8DBDAF286482D600831AC4 /* String+Localized.swift in Sources */,
+				0BBEEF602948C7E700F4405E /* Shared.swift in Sources */,
+				0BDBDDEE293E2880009A1184 /* PaywallTableFeature.swift in Sources */,
+				0B3AB811293508DF00B254C0 /* AppStoreProductGroup.swift in Sources */,
+				0B3AB81A2935094B00B254C0 /* SubscriptionOfferPeriodUnit.swift in Sources */,
 				7CE91C982521ED5E009D8269 /* VPNRegion.swift in Sources */,
+				0BE9DD8F285A5A120023B555 /* UserDefaults.swift in Sources */,
 				3DABDA0222F7DD7700480AAC /* ClientModels.swift in Sources */,
-				7CE91C672521D565009D8269 /* UserDefaults.swift in Sources */,
-				7C6619BF247810EF005E8BB1 /* BlockDayLog.swift in Sources */,
-				7C1AE07C247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				3DABD9FD22F7961F00480AAC /* Client.swift in Sources */,
+				0BE9DD83285A59F20023B555 /* PushNotifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0B4B8B1729412BD50060C072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B4B8AFD29412BD50060C072 /* LockdownIntents */;
+			targetProxy = 0B4B8B1629412BD50060C072 /* PBXContainerItemProxy */;
+		};
 		3DBD57C522FD727900DE189F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3DBD57BA22FD727900DE189F /* Lockdown Firewall Widget */;
@@ -2247,6 +3128,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0B99BA362948FE6300A47A45 /* LockdownIntents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B99BA352948FE6300A47A45 /* Base */,
+				0B99BA382948FE7600A47A45 /* en */,
+				0B99BA3A2948FE7700A47A45 /* ar */,
+				0B99BA3C2948FE7800A47A45 /* zh-Hans */,
+				0B99BA3E2948FEBC00A47A45 /* zh-Hant */,
+				0B99BA402948FEBD00A47A45 /* fr */,
+				0B99BA422948FEBD00A47A45 /* de */,
+				0B99BA442948FEBE00A47A45 /* ja */,
+				0B99BA462948FEBF00A47A45 /* ru */,
+				0B99BA482948FEBF00A47A45 /* es */,
+				0B99BA4A2948FEC000A47A45 /* vi */,
+			);
+			name = LockdownIntents.intentdefinition;
+			sourceTree = "<group>";
+		};
 		3D3BF4D0233D5E9100D0C482 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2254,6 +3153,12 @@
 				3D896110253527B2006D8C12 /* fr */,
 				3DCBC8FF25425AB200446C98 /* ja */,
 				3DCBC90A25425BC900446C98 /* es */,
+				0BF9014C2938BFE0001A2F2B /* ar */,
+				0BF901512938BFF4001A2F2B /* de */,
+				0BF901562938C008001A2F2B /* ru */,
+				0BF9015B2938C015001A2F2B /* vi */,
+				0BF901652938C026001A2F2B /* zh-Hant */,
+				0B4B8AF92941079E0060C072 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2266,6 +3171,12 @@
 				3DCBC90125425AB200446C98 /* ja */,
 				3DCBC90B25425BC900446C98 /* es */,
 				3DA14D3C255DF5CF00A3658E /* en */,
+				0BF9014A2938BFE0001A2F2B /* ar */,
+				0BF9014D2938BFF4001A2F2B /* de */,
+				0BF901542938C008001A2F2B /* ru */,
+				0BF901592938C015001A2F2B /* vi */,
+				0BF901632938C025001A2F2B /* zh-Hant */,
+				0B4B8AF72941079D0060C072 /* zh-Hans */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -2278,6 +3189,12 @@
 				3DCBC90025425AB200446C98 /* ja */,
 				3DCBC90925425BC900446C98 /* es */,
 				3DA14D34255DF56E00A3658E /* en */,
+				0BF901492938BFE0001A2F2B /* ar */,
+				0BF9014F2938BFF4001A2F2B /* de */,
+				0BF901532938C008001A2F2B /* ru */,
+				0BF901582938C015001A2F2B /* vi */,
+				0BF901622938C025001A2F2B /* zh-Hant */,
+				0B4B8AF62941079D0060C072 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2290,6 +3207,12 @@
 				3DCBC90225425AB200446C98 /* ja */,
 				3DCBC90C25425BC900446C98 /* es */,
 				3DA14D3E255DF5D400A3658E /* en */,
+				0BF9014B2938BFE0001A2F2B /* ar */,
+				0BF901502938BFF4001A2F2B /* de */,
+				0BF901552938C008001A2F2B /* ru */,
+				0BF9015A2938C015001A2F2B /* vi */,
+				0BF901642938C026001A2F2B /* zh-Hant */,
+				0B4B8AF82941079D0060C072 /* zh-Hans */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -2298,6 +3221,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				A15F3C741F79D90500B07F03 /* Base */,
+				0BF901482938BFDF001A2F2B /* ar */,
+				0BF9014E2938BFF4001A2F2B /* de */,
+				0BF901522938C008001A2F2B /* ru */,
+				0BF901572938C015001A2F2B /* vi */,
+				0BF901612938C025001A2F2B /* zh-Hant */,
+				0B4B8AF52941079D0060C072 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2305,10 +3234,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0B4B8B1D29412BD50060C072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB1223BE1CDCC2555FE71352 /* Pods-LockdownIntents.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LockdownIntents/LockdownIntents.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1060;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LockdownIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LockdownIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Confirmed Inc. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.6.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B4B8B1E29412BD50060C072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 777648CC444D5A906BBFC729 /* Pods-LockdownIntents.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LockdownIntents/LockdownIntents.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1060;
+				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LockdownIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LockdownIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Confirmed Inc. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.6.1;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3DBD57C822FD727900DE189F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
+			baseConfigurationReference = 71855E12B7B5B939F0E2EB29 /* Pods-Lockdown Firewall Widget.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -2316,7 +3323,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2324,13 +3331,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -2343,8 +3350,9 @@
 		};
 		3DBD57C922FD727900DE189F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 707A358300D4A3D33EFC8749 /* Pods-Lockdown Firewall Widget.release.xcconfig */;
+			baseConfigurationReference = D2EBAB60D2371A51A7E6A92C /* Pods-Lockdown Firewall Widget.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -2352,7 +3360,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2360,13 +3368,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Firewall Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2378,8 +3386,9 @@
 		};
 		7C0D11212473FC7E00A26E04 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95899949475D15BB3DB63138 /* Pods-LockdownTests.debug.xcconfig */;
+			baseConfigurationReference = 1F90F5BA7CFAB9814D768F16 /* Pods-LockdownTests.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2406,8 +3415,9 @@
 		};
 		7C0D11222473FC7E00A26E04 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B014050F770126F5808AF28 /* Pods-LockdownTests.release.xcconfig */;
+			baseConfigurationReference = 489F7CCEAADF147B19320AAE /* Pods-LockdownTests.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -2436,6 +3446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
@@ -2444,8 +3455,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2454,7 +3466,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -2470,6 +3482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
@@ -2478,8 +3491,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LockdownFirewallWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2488,7 +3502,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2502,6 +3516,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2538,17 +3553,14 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2563,6 +3575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2603,7 +3616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2617,17 +3630,19 @@
 		};
 		A1141A3A1F46230600F54698 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECA3DC3801B375B860C15978 /* Pods-Lockdown.debug.xcconfig */;
+			baseConfigurationReference = DEA35788129374068081E375 /* Pods-Lockdown.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_ENTITLEMENTS = LockdowniOS/LockdowniOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2637,12 +3652,12 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2655,17 +3670,19 @@
 		};
 		A1141A3B1F46230600F54698 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA3DBA07D389FDA260B448B7 /* Pods-Lockdown.release.xcconfig */;
+			baseConfigurationReference = E2ED1B8AB6C3D86D7147AF02 /* Pods-Lockdown.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_ENTITLEMENTS = LockdowniOS/LockdowniOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2675,12 +3692,12 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2693,8 +3710,9 @@
 		};
 		A12474001FE44285008493B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0BEB57F0C3C4F5746285E07 /* Pods-Lockdown VPN Widget.debug.xcconfig */;
+			baseConfigurationReference = AFD87C46425342AFA2F65394 /* Pods-Lockdown VPN Widget.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -2707,7 +3725,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2715,13 +3733,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2735,8 +3753,9 @@
 		};
 		A12474011FE44285008493B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88E04750DB23687076871F5B /* Pods-Lockdown VPN Widget.release.xcconfig */;
+			baseConfigurationReference = 12578876980678A072282A2E /* Pods-Lockdown VPN Widget.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -2749,7 +3768,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2757,13 +3776,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Today/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2778,23 +3797,24 @@
 		A1931D0620791F5900E695EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Blocker/Lockdown Blocker.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2808,23 +3828,24 @@
 		A1931D0720791F5900E695EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "Lockdown Blocker/Lockdown Blocker.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2837,8 +3858,9 @@
 		};
 		A1FCDA4B22C0651300C928BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 549133AE36DE5B896F995988 /* Pods-LockdownTunnel.debug.xcconfig */;
+			baseConfigurationReference = 628519CE6C4D40332EFBFB08 /* Pods-LockdownTunnel.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -2846,7 +3868,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2854,13 +3876,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
@@ -2873,8 +3895,9 @@
 		};
 		A1FCDA4C22C0651300C928BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7435DF998DFB59C9808F1638 /* Pods-LockdownTunnel.release.xcconfig */;
+			baseConfigurationReference = 569A4A1747E7C83C7F07C755 /* Pods-LockdownTunnel.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -2882,7 +3905,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1060;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2890,13 +3913,13 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Tunnel/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.6.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2909,6 +3932,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B4B8B1C29412BD50060C072 /* Build configuration list for PBXNativeTarget "LockdownIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B4B8B1D29412BD50060C072 /* Debug */,
+				0B4B8B1E29412BD50060C072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3DBD57C722FD727900DE189F /* Build configuration list for PBXNativeTarget "Lockdown Firewall Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -9,18 +9,16 @@ import Foundation
 import CocoaLumberjackSwift
 
 var logFileDataArray: [NSData] {
-    get {
-        let logFilePaths = fileLogger.logFileManager.sortedLogFilePaths as [String]
-        var logFileDataArray = [NSData]()
-        for logFilePath in logFilePaths {
-            let fileURL = NSURL(fileURLWithPath: logFilePath)
-            if let logFileData = try? NSData(contentsOf: fileURL as URL, options: NSData.ReadingOptions.mappedIfSafe) {
-                // Insert at front to reverse the order, so that oldest logs appear first.
-                logFileDataArray.insert(logFileData, at: 0)
-            }
+    let logFilePaths = fileLogger.logFileManager.sortedLogFilePaths as [String]
+    var logFileDataArray = [NSData]()
+    for logFilePath in logFilePaths {
+        let fileURL = NSURL(fileURLWithPath: logFilePath)
+        if let logFileData = try? NSData(contentsOf: fileURL as URL, options: NSData.ReadingOptions.mappedIfSafe) {
+            // Insert at front to reverse the order, so that oldest logs appear first.
+            logFileDataArray.insert(logFileData, at: 0)
         }
-        return logFileDataArray
     }
+    return logFileDataArray
 }
 
 func setupLocalLogger() {

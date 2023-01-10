@@ -29,7 +29,7 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     @IBOutlet weak var toggleAnimatedCircle: NVActivityIndicatorView!
     @IBOutlet weak var button: UIButton!
     
-    var parentVC: HomeViewController? = nil
+    var parentVC: HomeViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     
     @IBAction func getStartedTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: {
-            self.parentVC?.performSegue(withIdentifier: "showSignup", sender: self)
+            guard let parentVC = self.parentVC else { return }
+            BasePaywallService.shared.showPaywall(on: parentVC)
         })
     }
     
@@ -61,14 +62,16 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let s1 = AwesomeSpotlight(withRect: getRectForView(toggleCircle).insetBy(dx: -20.0, dy: -20.0), shape: .circle, text: NSLocalizedString("Tap to see a demo of how Secure Tunnel protects and anonymizes you.", comment: ""))
+        let spotlightRect = getRectForView(toggleCircle).insetBy(dx: -20.0, dy: -20.0)
+        let spotlightText: String = .localized("Tap to see a demo of how Secure Tunnel protects and anonymizes you.")
+        let s1 = AwesomeSpotlight(withRect: spotlightRect, shape: .circle, text: spotlightText)
         let spotlightView = AwesomeSpotlightView(frame: view.frame,
                                                  spotlight: [s1])
         spotlightView.cutoutRadius = 8
-        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
+        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         spotlightView.enableArrowDown = true
-        spotlightView.textLabelFont = fontMedium16
-        spotlightView.labelSpacing = 24;
+        spotlightView.textLabelFont = .mediumLockdownFont(size: 16)
+        spotlightView.labelSpacing = 24
         spotlightView.delegate = self
         view.addSubview(spotlightView)
         spotlightView.start()
@@ -76,8 +79,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     
     func setPrivacyState(state: Bool) {
         privacyEnabled = state
-        if (state == true) {
-            vpnActiveLabel.text = NSLocalizedString("Activating", comment: "").uppercased()
+        if state == true {
+            vpnActiveLabel.text = .localized("Activating").uppercased()
             vpnActiveLabel.backgroundColor = .tunnelsBlue
             
             toggleCircle.isHidden = true
@@ -91,46 +94,45 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
                 self.toggleCircle.isHidden = false
                 self.toggleCircle.tintColor = .tunnelsBlue
                 
-                self.vpnActiveLabel.text = NSLocalizedString("Tunnel On", comment: "").uppercased()
+                self.vpnActiveLabel.text = .localized("Tunnel On").uppercased()
                 self.vpnActiveLabel.backgroundColor = .tunnelsBlue
-                self.locationLabel.text = NSLocalizedString("Location: 🇯🇵", comment: "")
-                self.ipLabel.text = NSLocalizedString("IP: [Anonymized]", comment: "")
+                self.locationLabel.text = .localized("Location: 🇯🇵")
+                self.ipLabel.text = .localized("IP: [Anonymized]")
                 self.dataLabel.text = "AC90BD4B0A53ED74543425B269\n62179C21D8DAF733EB16F4B41F"
                 self.dataFlow.primaryColor = .blue
                 self.dataFlow.secondaryColor = .tunnelsBlue
                 self.descriptionLabel.attributedText = self.add(stringList: [
-                    NSLocalizedString("Location changed and hidden", comment: ""),
-                    NSLocalizedString("Anonymize IP against trackers", comment: ""),
-                    NSLocalizedString("Encrypted, private connections", comment: "")
+                    .localized("Location changed and hidden"),
+                    .localized("Anonymize IP against trackers"),
+                    .localized("Encrypted, private connections")
                     ],
-                                                      font: fontSemiBold15_5,
-                                                      bulletFont: fontMedium18,
+                                                                font: .semiboldLockdownFont(size: 15.5),
+                                                                bulletFont: .mediumLockdownFont(size: 18),
                                                       bullet: "•",
                                                       textColor: .tunnelsBlue,
                                                       bulletColor: .tunnelsBlue)
             })
-        }
-        else {
+        } else {
             
             toggleCircle.tintColor = .lightGray
             toggleCircle.isHidden = false
             toggleAnimatedCircle.stopAnimating()
             button.tintColor = .lightGray
             
-            locationLabel.text = NSLocalizedString("Location: 🇺🇸", comment: "")
-            ipLabel.text = NSLocalizedString("IP: 18.132.2.87", comment: "")
-            dataLabel.text = NSLocalizedString("To: joe@email.com\nRe: Q4 2019 Finance Review", comment: "")
+            locationLabel.text = .localized("Location: 🇺🇸")
+            ipLabel.text = .localized("IP: 18.132.2.87")
+            dataLabel.text = .localized("To: joe@email.com\nRe: Q4 2019 Finance Review")
             dataFlow.primaryColor = .orange
             dataFlow.secondaryColor = .tunnelsWarning
-            vpnActiveLabel.text = NSLocalizedString("Tunnel Off", comment: "").uppercased()
+            vpnActiveLabel.text = .localized("Tunnel Off").uppercased()
             vpnActiveLabel.backgroundColor = .tunnelsWarning
             descriptionLabel.attributedText = add(stringList: [
-                NSLocalizedString("Precise location exposed", comment: ""),
-                NSLocalizedString("Unique IP address broadcasted", comment: ""),
-                NSLocalizedString("Readable browsing and data", comment: "")
+                .localized("Precise location exposed"),
+                .localized("Unique IP address broadcasted"),
+                .localized("Readable browsing and data")
                 ],
-                                          font: fontSemiBold15_5,
-                                          bulletFont: fontMedium18,
+                                                  font: .semiboldLockdownFont(size: 15.5),
+                                                  bulletFont: .mediumLockdownFont(size: 18),
                                           bullet: "•",
                                           textColor: .tunnelsWarning,
                                           bulletColor: .tunnelsWarning)
@@ -138,10 +140,9 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     }
     
     @IBAction func privTapped(_ sender: Any) {
-        if(privacyEnabled == true) {
+        if privacyEnabled == true {
             setPrivacyState(state: false)
-        }
-        else {
+        } else {
             setPrivacyState(state: true)
         }
     }
@@ -160,8 +161,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
              textColor: UIColor = .darkGray,
              bulletColor: UIColor = .darkGray) -> NSAttributedString {
         
-        let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: bulletFont, NSAttributedString.Key.foregroundColor: bulletColor]
+        let textAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: textColor]
+        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: bulletFont, .foregroundColor: bulletColor]
         
         let paragraphStyle = NSMutableParagraphStyle()
         let nonOptions = [NSTextTab.OptionKey: Any]()
@@ -178,15 +179,15 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
             let attributedString = NSMutableAttributedString(string: formattedString)
             
             attributedString.addAttributes(
-                [NSAttributedString.Key.paragraphStyle : paragraphStyle],
-                range: NSMakeRange(0, attributedString.length))
+                [NSAttributedString.Key.paragraphStyle: paragraphStyle],
+                range: NSRange(location: 0, length: attributedString.length))
             
             attributedString.addAttributes(
                 textAttributes,
-                range: NSMakeRange(0, attributedString.length))
+                range: NSRange(location: 0, length: attributedString.length))
             
-            let string:NSString = NSString(string: formattedString)
-            let rangeForBullet:NSRange = string.range(of: bullet)
+            let string: NSString = NSString(string: formattedString)
+            let rangeForBullet: NSRange = string.range(of: bullet)
             attributedString.addAttributes(bulletAttributes, range: rangeForBullet)
             bulletList.append(attributedString)
         }
@@ -195,4 +196,3 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     }
     
 }
-

@@ -23,7 +23,7 @@
 "3tZ-rh-ZOa.normalTitle" = "􀈂";
 
 /* Class = "UILabel"; text = "iOS Annual (Save ~50%)"; ObjectID = "5Ce-KH-z1j"; */
-"5Ce-KH-z1j.text" = "iOSの年次 (約50％割引)";
+"5Ce-KH-z1j.text" = "iOSの年次 (約45％割引)";
 
 /* Class = "UILabel"; text = "A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source."; ObjectID = "6Qj-yK-k5A"; */
 "6Qj-yK-k5A.text" = "トラッカー、マルウェア、その他の悪意のあるエージェントへの接続を停止するシンプルで強力なファイアウォール。  無料でオープンソース。";
@@ -441,3 +441,6 @@
 
 /* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ziI-ly-5qb"; */
 "ziI-ly-5qb.normalTitle" = "キャンセル";
+
+/* Class = "UILabel"; text = "Firewall Annual (save ~38%)"; ObjectID = "HoY-Z7-gjw"; */
+"HoY-Z7-gjw.text" = "Pare-Feu Annuel (Economisez ~38%)";

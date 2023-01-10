@@ -16,16 +16,16 @@ final class CustomNavigationView: UIView {
         }
     }
     
-    var buttonTitle: String = NSLocalizedString("SAVE", comment: "") {
+    var buttonTitle: String = .localized("SAVE") {
         didSet {
             button.setTitle(buttonTitle, for: .normal)
         }
     }
     
-    private(set) var buttonCallback: () -> () = { }
+    private(set) var buttonCallback: () -> Void = { }
     
     @discardableResult
-    func onButtonPressed(_ callback: @escaping () -> ()) -> CustomNavigationView {
+    func onButtonPressed(_ callback: @escaping () -> Void) -> CustomNavigationView {
         buttonCallback = callback
         return self
     }
@@ -47,7 +47,7 @@ final class CustomNavigationView: UIView {
         addSubview(titleView)
         titleView.textAlignment = .left
         titleView.text = title
-        titleView.font = fontMedium17
+        titleView.font = .mediumLockdownFont(size: 17)
         
         titleView.anchors.leading.marginsPin(inset: 20)
         titleView.anchors.width.greaterThanOrEqual(220)
@@ -55,7 +55,7 @@ final class CustomNavigationView: UIView {
         titleView.anchors.top.pin(inset: 18)
         
         addSubview(button)
-        button.titleLabel?.font = fontBold13
+        button.titleLabel?.font = .boldLockdownFont(size: 13)
         button.contentHorizontalAlignment = .trailing
         button.tintColor = .confirmedBlue
         button.setTitle(buttonTitle, for: .normal)

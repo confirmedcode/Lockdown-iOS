@@ -23,7 +23,7 @@
 "3tZ-rh-ZOa.normalTitle" = "􀈂";
 
 /* Class = "UILabel"; text = "iOS Annual (Save ~50%)"; ObjectID = "5Ce-KH-z1j"; */
-"5Ce-KH-z1j.text" = "iOS Annual (Save ~50%)";
+"5Ce-KH-z1j.text" = "iOS Annual (Save ~45%)";
 
 /* Class = "UILabel"; text = "A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source."; ObjectID = "6Qj-yK-k5A"; */
 "6Qj-yK-k5A.text" = "A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source.";
@@ -362,7 +362,7 @@
 "nu2-zq-dta.text" = "Forgot Password";
 
 /* Class = "UILabel"; text = "Secure Tunnel"; ObjectID = "nuc-D4-P1M"; */
-"nuc-D4-P1M.text" = "Secure Tunnel";
+"nuc-D4-P1M.text" = "Secure Tunnel VPN";
 
 /* Class = "UILabel"; text = "Sign In"; ObjectID = "oPf-b7-d1V"; */
 "oPf-b7-d1V.text" = "Sign In";
@@ -441,3 +441,6 @@
 
 /* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ziI-ly-5qb"; */
 "ziI-ly-5qb.normalTitle" = "CANCEL";
+
+/* Class = "UILabel"; text = "Firewall Annual (save ~38%)"; ObjectID = "HoY-Z7-gjw"; */
+"HoY-Z7-gjw.text" = "Firewall Annual (save ~38%)";

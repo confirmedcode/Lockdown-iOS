@@ -18,18 +18,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         super.viewDidLoad()
         
         // disable swipe down to dismiss
-        if #available(iOS 13.0, *) {
-            self.isModalInPresentation = true
-        }
-        
-//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(emailTeam))
-//        longPressRecognizer.minimumPressDuration = 4
-//        self.view.addGestureRecognizer(longPressRecognizer)
-        
-        //        let doubleLongPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(signoutUser))
-        //        doubleLongPressRecognizer.minimumPressDuration = 5
-        //        doubleLongPressRecognizer.numberOfTouchesRequired = 2
-        //        self.view.addGestureRecognizer(doubleLongPressRecognizer)
+        isModalInPresentation = true
     }
     
     // MARK: - AwesomeSpotlight Helper
@@ -38,7 +27,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         if let sv = v.superview {
             return sv.convert(v.frame, to: self.view)
         }
-        return CGRect.zero;
+        return CGRect.zero
     }
     
     // MARK: - Handle NSURLError and APIErrors
@@ -46,28 +35,38 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     func popupErrorAsNSURLError(_ error: Error) -> Bool {
         let nsError = error as NSError
         if nsError.domain == NSURLErrorDomain {
-            self.showPopupDialog(title: NSLocalizedString("Network Error", comment: ""), message: NSLocalizedString("Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n", comment: "") + nsError.localizedDescription, acceptButton: NSLocalizedString("Okay", comment: ""))
+            let message = """
+Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.
+
+Error Description\n
+"""
+            let title: String = .localized("Network Error")
+            self.showPopupDialog(title: title, message: .localized(message) + nsError.localizedDescription, acceptButton: .localizedOkay)
             return true
-        }
-        else {
+        } else {
             return false
         }
     }
     
     func popupErrorAsApiError(_ error: Error) -> Bool {
         if let e = error as? ApiError {
-            self.showPopupDialog(title: NSLocalizedString("Error Code ", comment: "") + "\(e.code)", message: "\(e.message)" + NSLocalizedString("\n\n If this persists, please contact team@lockdownprivacy.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+            let title = .localized("Error Code ") + "\(e.code)"
+            let message = "\(e.message)" + .localized("\n\n If this persists, please contact team@lockdownprivacy.com.")
+            self.showPopupDialog(title: title, message: message, acceptButton: .localizedOkay)
             return true
-        }
-        else {
+        } else {
             return false
         }
     }
     
     func showWhyTrustPopup() {
+        let message = """
+Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. \
+Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts.
+"""
         let popup = PopupDialog(
-            title: NSLocalizedString("Why Trust Lockdown?", comment: ""),
-            message: NSLocalizedString("Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts.", comment: ""),
+            title: .localized("Why Trust Lockdown?"),
+            message: .localized(message),
             image: UIImage(named: "whyTrustImage")!,
             buttonAlignment: .vertical,
             transitionStyle: .bounceDown,
@@ -76,27 +75,29 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             panGestureDismissal: false,
             hideStatusBar: true,
             completion: nil)
+        (popup.view as? PopupDialogContainerView)?.cornerRadius = 16
+        (popup.view as? PopupDialogContainerView)?.layer.cornerCurve = .continuous
         
-        let privacyPolicyButton = DefaultButton(title: NSLocalizedString("Privacy Policy", comment: ""), dismissOnTap: true) {
+        let privacyPolicyButton = DefaultButton(title: .localized("Privacy Policy"), dismissOnTap: true) {
             self.showPrivacyPolicyModal()
         }
         
-        let auditReportsButton = DefaultButton(title: NSLocalizedString("Audit Reports", comment: ""), dismissOnTap: true) {
+        let auditReportsButton = DefaultButton(title: .localized("Audit Reports"), dismissOnTap: true) {
             self.showAuditModal()
         }
         
-        let pressButton = DefaultButton(title: NSLocalizedString("Press & Media", comment: ""), dismissOnTap: true) {
+        let pressButton = DefaultButton(title: .localized("Press & Media"), dismissOnTap: true) {
             self.showWebsitePressModal()
         }
         
-        let okayButton = CancelButton(title: NSLocalizedString("Done", comment: ""), dismissOnTap: true) {  }
+        let okayButton = CancelButton(title: .localized("Done"), dismissOnTap: true) {  }
         popup.addButtons([privacyPolicyButton, auditReportsButton, pressButton, okayButton])
         
         self.present(popup, animated: true, completion: nil)
     }
     
     func showVPNDetails() {
-        self.showModalWebView(title: NSLocalizedString("Secure Tunnel VPN", comment: ""), urlString: "https://lockdownprivacy.com/secure-tunnel")
+        self.showModalWebView(title: .localized("Secure Tunnel VPN"), urlString: "https://lockdownprivacy.com/secure-tunnel")
 //        let popup = PopupDialog(
 //            title: NSLocalizedString("About Lockdown VPN", comment: ""),
 //            message: NSLocalizedString("Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN.", comment: ""),
@@ -129,42 +130,41 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     // MARK: - WebView
     
     func showPrivacyPolicyModal() {
-        self.showModalWebView(title: NSLocalizedString("Privacy Policy", comment: ""), urlString: "https://lockdownprivacy.com/privacy")
+        self.showModalWebView(title: .localized("Privacy Policy"), urlString: "https://lockdownprivacy.com/privacy")
     }
     
     func showTermsModal() {
-        self.showModalWebView(title: NSLocalizedString("Terms", comment: ""), urlString: "https://lockdownprivacy.com/terms")
+        self.showModalWebView(title: .localized("Terms"), urlString: "https://lockdownprivacy.com/terms")
     }
     
     func showFAQsModal() {
-        self.showModalWebView(title: NSLocalizedString("FAQs", comment: ""), urlString: "https://lockdownprivacy.com/faq")
+        self.showModalWebView(title: .localized("FAQs"), urlString: "https://lockdownprivacy.com/faq")
     }
     
     func showWebsiteModal() {
-        self.showModalWebView(title: NSLocalizedString("Website", comment: ""), urlString: "https://lockdownprivacy.com")
+        self.showModalWebView(title: .localized("Website"), urlString: "https://lockdownprivacy.com")
     }
     
     func showWebsitePressModal() {
-        self.showModalWebView(title: NSLocalizedString("Press & Media", comment: ""), urlString: "https://lockdownprivacy.com/#press")
+        self.showModalWebView(title: .localized("Press & Media"), urlString: "https://lockdownprivacy.com/#press")
     }
     
     func showAuditModal() {
-        self.showModalWebView(title: NSLocalizedString("Audit Reports", comment: ""), urlString: "https://openaudit.com/lockdownprivacy")
+        self.showModalWebView(title: .localized("Audit Reports"), urlString: "https://openaudit.com/lockdownprivacy")
     }
     
-    func showModalWebView(title: String, urlString: String) {
+    func showModalWebView(title: String, urlString: String, delegate: WebViewViewControllerDelegate? = nil) {
         if let url = URL(string: urlString) {
             let storyboardToUse = storyboard != nil ? storyboard! : UIStoryboard(name: "Main", bundle: nil)
             if let webViewVC = storyboardToUse.instantiateViewController(withIdentifier: "webview") as? WebViewViewController {
                 webViewVC.titleLabelText = title
                 webViewVC.url = url
+                webViewVC.delegate = delegate
                 self.present(webViewVC, animated: true, completion: nil)
-            }
-            else {
+            } else {
                 DDLogError("Unable to instantiate webview VC")
             }
-        }
-        else {
+        } else {
             DDLogError("Invalid URL \(urlString)")
         }
     }
@@ -187,10 +187,24 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
 
     // MARK: - Popup Helper
     
-    func showPopupDialog(title: String, message: String, acceptButton: String, completionHandler: @escaping () -> () = {}) {
-        let popup = PopupDialog(title: title.uppercased(), message: message, image: nil, transitionStyle: .bounceDown, hideStatusBar: false)
+    func showPopupDialog(title: String,
+                         message: String,
+                         transitionStyle: PopupDialogTransitionStyle = .bounceDown,
+                         acceptButton: String,
+                         tapGestureDismissal: Bool = true,
+                         panGestureDismissal: Bool = true,
+                         completionHandler: @escaping () -> Void = {}) {
+        let popup = PopupDialog(
+            title: title.uppercased(),
+            message: message, image: nil,
+            transitionStyle: transitionStyle,
+            tapGestureDismissal: tapGestureDismissal,
+            panGestureDismissal: panGestureDismissal,
+            hideStatusBar: false)
+        (popup.view as? PopupDialogContainerView)?.cornerRadius = 16
+        (popup.view as? PopupDialogContainerView)?.layer.cornerCurve = .continuous
         
-        let acceptButton = DefaultButton(title: NSLocalizedString("OK", comment: ""), dismissOnTap: true) { completionHandler() }
+        let acceptButton = DefaultButton(title: .localizedOK, dismissOnTap: true) { completionHandler() }
         popup.addButtons([acceptButton])
         
         self.present(popup, animated: true, completion: nil)
@@ -198,26 +212,30 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     
     enum PopupButton {
         case custom(PopupDialogButton)
-        case defaultAccept(completion: () -> ())
+        case defaultAccept(completion: () -> Void)
         
-        static func custom(title: String, titleColor: UIColor? = nil, completion: @escaping () -> ()) -> PopupButton {
+        static func custom(title: String, titleColor: UIColor? = nil, completion: @escaping () -> Void) -> PopupButton {
             let button = DefaultButton(title: title, dismissOnTap: true, action: completion)
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.lineBreakMode = .byClipping
+            button.contentEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 16)
+            
             if let color = titleColor {
                 button.titleColor = color
             }
             return .custom(button)
         }
         
-        static func destructive(title: String, completion: @escaping () -> ()) -> PopupButton {
+        static func destructive(title: String, completion: @escaping () -> Void) -> PopupButton {
             return .custom(title: title, titleColor: UIColor.systemRed, completion: completion)
         }
         
-        static func cancel(completion: @escaping () -> () = { }) -> PopupButton {
-            return .custom(CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true, action: completion))
+        static func cancel(completion: @escaping () -> Void = { }) -> PopupButton {
+            return .custom(CancelButton(title: .localizedCancel, dismissOnTap: true, action: completion))
         }
         
-        static func preferredCancel(completion: @escaping () -> () = { }) -> PopupButton {
-            return .custom(title: NSLocalizedString("Cancel", comment: ""), titleColor: nil, completion: completion)
+        static func preferredCancel(completion: @escaping () -> Void = { }) -> PopupButton {
+            return .custom(title: .localizedCancel, titleColor: nil, completion: completion)
         }
         
         fileprivate func makeButton() -> PopupDialogButton {
@@ -225,14 +243,30 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
             case .custom(let button):
                 return button
             case .defaultAccept(completion: let completion):
-                let acceptButton = DefaultButton(title: NSLocalizedString("OK", comment: ""), dismissOnTap: true) { completion() }
+                let acceptButton = DefaultButton(title: .localizedOK, dismissOnTap: true) { completion() }
                 return acceptButton
             }
         }
     }
     
-    func showPopupDialog(title: String?, message: String?, buttons: [PopupButton]) {
-        let popup = PopupDialog(title: title?.uppercased(), message: message, image: nil, transitionStyle: .bounceDown, tapGestureDismissal: false, panGestureDismissal: false, hideStatusBar: false)
+    func showPopupDialog(
+        title: String?,
+        message: String?,
+        buttonAlignment: NSLayoutConstraint.Axis = .vertical,
+        hideStatusBar: Bool = false,
+        buttons: [PopupButton]) {
+        let popup = PopupDialog(
+            title: title?.uppercased(),
+            message: message,
+            image: nil,
+            buttonAlignment: buttonAlignment,
+            transitionStyle: .bounceDown,
+            tapGestureDismissal: false,
+            panGestureDismissal: false,
+            hideStatusBar: hideStatusBar)
+            
+        (popup.view as? PopupDialogContainerView)?.cornerRadius = 16
+        (popup.view as? PopupDialogContainerView)?.layer.cornerCurve = .continuous
 
         for action in buttons {
             let button = action.makeButton()
@@ -242,7 +276,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         self.present(popup, animated: true, completion: nil)
     }
     
-    func showFixFirewallConnectionDialog(completion: @escaping () -> ()) {
+    func showFixFirewallConnectionDialog(completion: @escaping () -> Void) {
         VPNController.shared.isConfigurationExisting { (exists) in
             if exists {
                 // if VPN configuration exists, the system will not show an alert,
@@ -252,9 +286,13 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                 // if there is no existing VPN configuration,
                 // we need to show a dialog explaining the
                 // upcoming popup
+                let message = """
+Due to a recent iOS or Lockdown update, the Firewall needs to be refreshed to run properly.\n\nIf asked, \
+tap \"Allow\" on the next dialog to automatically complete this process.
+"""
                 self.showPopupDialog(
                     title: "Tap \"Allow\" on the Next Popup",
-                    message: "Due to a recent iOS or Lockdown update, the Firewall needs to be refreshed to run properly.\n\nIf asked, tap \"Allow\" on the next dialog to automatically complete this process.",
+                    message: message,
                     buttons: [
                         .cancel(),
                         .defaultAccept(completion: {
@@ -266,95 +304,15 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         }
     }
     
-//    func showPopupDialogSubmitError(title : String = "Sorry, An Error Occurred", message : String, error: Error?) {
-//        let popup = PopupDialog(title: title, message: message, image: nil, transitionStyle: .zoomIn, hideStatusBar: false)
-//        let acceptButton = DefaultButton(title: "Don't Submit", dismissOnTap: true) { }
-//        let submitButton = DefaultButton(title: "Submit", dismissOnTap: true) {
-//            self.emailTeam(messageBody: "Hey Lockdown Team, \nI encountered a bug while using Lockdown, and I'm reporting it here. \n (To the user: just tap Send at the top right to submit the bug report -- no need to do anything else and we'll get back to you ASAP.", messageErrorBody: error ? error! || "")
-//        }
-//        popup.addButtons([acceptButton, submitButton])
-//        self.present(popup, animated: true, completion: nil)
-//    }
-    
     // MARK: - Email Team
     
     public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
-    
-    @objc func emailTeam(messageBody: String = NSLocalizedString("Hi, my question or feedback for Lockdown is: ", comment: ""), messageErrorBody: String = "") {
-        DDLogInfo("")
-        DDLogInfo("UserId: \(keychain[kVPNCredentialsId] ?? "No User ID")")
-        DDLogInfo("UserReceipt: \(keychain[kVPNCredentialsKeyBase64] ?? "No User Receipt")")
-        
-        if (Client.hasValidCookie()) {
-            DDLogInfo("Has loaded cookie.")
-        }
-        DDLogInfo("")
-        PacketTunnelProviderLogs.flush()
-        DDLogInfo("")
-        
-        let recipient = "team@lockdownprivacy.com"
-        var appendString = ""
-        if (getUserWantsVPNEnabled()) {
-            appendString = appendString + " - S"
-        }
-        let subject = "Lockdown Question or Feedback (iOS \(Bundle.main.versionString))" + appendString
-        
-        var message = messageBody
-        if messageErrorBody != "" {
-            message = messageBody + "\n\nError Details: " + messageErrorBody
-        }
-        message += "\n\n\n"
-        
-        if MFMailComposeViewController.canSendMail() {
-            let composeVC = MFMailComposeViewController()
-            composeVC.mailComposeDelegate = self
-            composeVC.setToRecipients([recipient])
-            composeVC.setSubject(subject)
-            composeVC.setMessageBody(message, isHTML: false)
-            let attachmentData = NSMutableData()
-            for logFileData in logFileDataArray {
-                attachmentData.append(logFileData as Data)
-            }
-            composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "diagnostics.txt")
-            self.present(composeVC, animated: true, completion: nil)
-        } else {
-            
-            guard let mailtoURL = Mailto.generateURL(recipient: recipient, subject: subject, body: message) else {
-                DDLogError("Failed to generate mailto url")
-                return
-            }
-            
-            UIApplication.shared.open(mailtoURL, options: [:]) { (success) in
-                if !success {
-                    self.showPopupDialog(
-                        title: NSLocalizedString("Couldn't Find Your Email Client", comment: ""),
-                        message: NSLocalizedString("Please make sure you have added an e-mail account to your iOS device and try again.", comment: ""),
-                        acceptButton: NSLocalizedString("OK", comment: "")
-                    )
-                }
-            }
+        controller.dismiss(animated: true) { [weak self] in
+            self?.actionUponEmailComposeClosure()
         }
     }
     
-    //    @objc func signoutUser() {
-    //        // TODO: complete this debug functionality
-    //        let title = "CLEAR RECEIPT DATA?"
-    //        let message = "Would you like to clear your local receipts?"
-    //
-    //        let popup = PopupDialog(title: title, message: message, image: nil, buttonAlignment: .horizontal)
-    //
-    //        let acceptButton = DefaultButton(title: "YES", dismissOnTap: true) {
-    //           // Auth.clearCookies()
-    //           // Auth.signoutUser()
-    //        }
-    //        let cancelButton = DefaultButton(title: "CANCEL", dismissOnTap: true) { }
-    //        popup.addButtons([cancelButton, acceptButton])
-    //
-    //        self.present(popup, animated: true, completion: nil)
-    //    }
-    
+    func actionUponEmailComposeClosure() {}
 }
 
 extension UIStoryboard {

@@ -65,23 +65,19 @@ enum FirewallRepair {
     }
     
     static func reschedule() {
-        if #available(iOS 13.0, *) {
-            DDLogInfo("BGTask: Cancelling all task requests")
-            BGTaskScheduler.shared.cancelAllTaskRequests()
-            
-            let timeIntervalSeconds: Double = 3600
-            
-            let request = BGAppRefreshTaskRequest(identifier: FirewallRepair.identifier)
-            request.earliestBeginDate = Date(timeIntervalSinceNow: timeIntervalSeconds)
-            DDLogInfo("BGTask: Scheduling app refresh id: \(FirewallRepair.identifier), earliest date \(Date(timeIntervalSinceNow: TimeInterval(timeIntervalSeconds)))")
-            do {
-                try BGTaskScheduler.shared.submit(request)
-            } catch {
-                DDLogError("Could not schedule app refresh: \(error)")
-            }
-        }
-        else {
-            DDLogInfo("BGTask: Not iOS 13, not calling reschedule")
+        DDLogInfo("BGTask: Cancelling all task requests")
+        BGTaskScheduler.shared.cancelAllTaskRequests()
+        
+        let timeIntervalSeconds: Double = 3600
+        
+        let request = BGAppRefreshTaskRequest(identifier: FirewallRepair.identifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: timeIntervalSeconds)
+        let earliestDate = Date(timeIntervalSinceNow: TimeInterval(timeIntervalSeconds))
+        DDLogInfo("BGTask: Scheduling app refresh id: \(FirewallRepair.identifier), earliest date \(earliestDate)")
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            DDLogError("Could not schedule app refresh: \(error)")
         }
     }
     
@@ -97,26 +93,24 @@ enum FirewallRepair {
             DDLogInfo("Repair \(context): refreshed manager")
             DDLogInfo("Repair \(context): userWantsFirewallEnabled \(getUserWantsFirewallEnabled())")
             DDLogInfo("Repair \(context): firewallStatus \(FirewallController.shared.status())")
-            if getUserWantsFirewallEnabled() && (FirewallController.shared.status() == .connected || FirewallController.shared.status() == .invalid || FirewallController.shared.status() == .disconnected) {
+            if getUserWantsFirewallEnabled() && [.connected, .invalid, .disconnected].contains(FirewallController.shared.status()) {
                 DDLogInfo("Repair \(context): user wants enabled")
-                if (appHasJustBeenUpgradedOrIsNewInstall()) {
+                if appHasJustBeenUpgradedOrIsNewInstall() {
                     DDLogInfo("Repair \(context): APP UPGRADED, REFRESHING DEFAULT BLOCK LISTS, WHITELISTS, RESTARTING FIREWALL")
                     setupFirewallDefaultBlockLists()
                     setupLockdownWhitelistedDomains()
-                    FirewallController.shared.restart(completion: {
-                        error in
+                    FirewallController.shared.restart(completion: { error in
                         if error != nil {
                             DDLogError("Error restarting firewall on \(context): \(error!)")
                         }
                         completion(.repairAttempted)
                     })
-                }
-                else {
+                } else {
                     Client.getBlockedDomainTest().done {
-                        DDLogError("Repair \(context): Repair Fetch Test Failed: Connected to \(testFirewallDomain) even though it's supposed to be blocked")
+                        DDLogError("Repair \(context): Repair Fetch Test Failed: Connected to \(testFirewallDomain) "
+                                   + "even though it's supposed to be blocked")
                         DDLogError("Repair \(context): Doing repair")
-                        FirewallController.shared.restart(completion: {
-                            error in
+                        FirewallController.shared.restart(completion: { error in
                             if error != nil {
                                 DDLogError("Repair \(context): Error restarting firewall on \(context): \(error!)")
                             }
@@ -127,15 +121,13 @@ enum FirewallRepair {
                         let nsError = error as NSError
                         if nsError.domain == NSURLErrorDomain {
                             DDLogInfo("Repair \(context): Successful blocking of \(testFirewallDomain) with NSURLErrorDomain error: \(nsError)")
-                        }
-                        else {
+                        } else {
                             DDLogInfo("Repair \(context): Successful blocking of \(testFirewallDomain), but seeing non-NSURLErrorDomain error: \(error)")
                         }
                         completion(.repairAttempted)
                     }
                 }
-            }
-            else {
+            } else {
                 completion(.noAction)
             }
         })

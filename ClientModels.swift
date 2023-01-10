@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct IP: Codable {
     let ip: String
@@ -25,7 +26,7 @@ struct SubscriptionEvent: Codable {
     let message: String
 }
 
-struct Subscription: Codable {
+public struct Subscription: Codable {
     let planType: PlanType
     let receiptId: String
     let expirationDate: String
@@ -44,7 +45,36 @@ struct Subscription: Codable {
         static let monthly = PlanType(rawValue: "ios-monthly")
         static let annual = PlanType(rawValue: "ios-annual")
         static let proMonthly = PlanType(rawValue: "all-monthly")
-        static let proAnnual = PlanType(rawValue: "all-annual")        
+        static let proAnnual = PlanType(rawValue: "all-annual")
+        static let proAnnualLTO = PlanType(rawValue: "all-annual")
+    }
+    
+    var correspondingProductGroup: AppStoreProductGroup {
+        switch planType {
+        case .monthly, .annual:
+            return .firewallAndVpn
+        case .proMonthly, .proAnnual, .proAnnualLTO:
+            return .pro
+        default:
+            return .firewallAndVpn
+        }
+    }
+    
+    public var hasVPN: Bool { [.firewallAndVpn, .pro].contains(correspondingProductGroup) }
+    
+    var correspondingPeriodUnit: SubscriptionOfferPeriodUnit {
+        switch planType {
+        case .monthly, .proMonthly:
+            return .month
+        case .annual, .proAnnual, .proAnnualLTO:
+            return .year
+        default:
+            return .year
+        }
+    }
+    
+    func isSubscription(in group: AppStoreProductGroup, of period: SubscriptionOfferPeriodUnit) -> Bool {
+        return group == correspondingProductGroup && period == correspondingPeriodUnit
     }
 }
 

@@ -1,503 +1,519 @@
 //
-//  SignupViewController.swift
-//  Tunnels
+//  SignUpViewController.swift
+//  Lockdown
 //
-//  Copyright © 2019 Confirmed Inc. All rights reserved.
-//
+//  Created by Alexander Parshakov on 11/3/22
+//  Copyright © 2022 Confirmed Inc. All rights reserved.
+// 
 
-import UIKit
-import SwiftyStoreKit
-import NetworkExtension
-import PromiseKit
 import CocoaLumberjackSwift
-import StoreKit
+import Foundation
+import PopupDialog
+import PromiseKit
+import UIKit
 
-class SignupViewController: BaseViewController {
-
-    //MARK: - VARIABLES
+final class SignUpViewController: BaseViewController, Loadable {
     
-    var parentVC: UIViewController?
+    @IBOutlet private var closeButtonSpacer: UIView!
+    @IBOutlet private var closeButton: UIButton!
     
-    enum Mode {
-        case newSubscription
-        case upgrade(active: [Subscription.PlanType])
+    @IBOutlet private var upperLabelsStackView: UIStackView!
+    @IBOutlet private var welcomeLabel: UILabel!
+    @IBOutlet private var descriptionLabel: UILabel!
+    
+    @IBOutlet private var emailTextField: FloatingTextInputTextField!
+    @IBOutlet private var passwordTextField: FloatingTextInputTextField!
+    @IBOutlet private var passwordValidationLabel: UILabel!
+    
+    @IBOutlet private var advantageLabelOne: UILabel!
+    @IBOutlet private var advantageLabelTwo: UILabel!
+    @IBOutlet private var advantageLabelThree: UILabel!
+    
+    @IBOutlet private var alternativeActionButton: UIButton!
+    @IBOutlet private var mainButton: UIButton!
+    
+    @IBOutlet private var byContinuingLabel: UILabel!
+    @IBOutlet private var termsOfServiceLabel: UIButton!
+    @IBOutlet private var andLabel: UILabel!
+    @IBOutlet private var privacyPolicyLabel: UIButton!
+    
+    private var signUpButtonGradientLayer: CAGradientLayer?
+    
+    private var mode: AuthenticationViewControllerMode {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateScreen()
+            }
+        }
     }
     
-    var mode = Mode.newSubscription
+    private var textFieldBorderWidth: CGFloat { isDarkMode ? 2.5 : 2 }
+    private var isPasswordValid = false
+    private var didAutofillTextfield = false
     
-    @IBOutlet var monthlyPlanContainer: UIView!
-    @IBOutlet var monthlyPlanCheckbox: M13Checkbox!
+    /// For cases when user is focused on a textfield and swipes back to the previous screen.
+    private var isDisappearing = false
     
-    @IBOutlet var monthlyProPlanContainer: UIView!
-    @IBOutlet var monthlyProPlanCheckbox: M13Checkbox!
+    init(mode: AuthenticationViewControllerMode) {
+        self.mode = mode
+        
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    @IBOutlet var annualPlanContainer: UIView!
-    @IBOutlet var annualPlanCheckbox: M13Checkbox!
-    
-    @IBOutlet var annualProPlanContainer: UIView!
-    @IBOutlet var annualProPlanCheckbox: M13Checkbox!
-    
-    @IBOutlet var upgradeSubscriptionHintLabel: UILabel!
-    
-    @IBOutlet var startTrialButton: TKTransitionSubmitButton!
-    @IBOutlet var pricingSubtitle: UILabel!
-
-    @IBOutlet var restorePurchasesButton: TKTransitionSubmitButton!
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        VPNSubscription.cacheLocalizedPrices()
-        switch mode {
-        case .newSubscription:
-            selectAnnual()
-            upgradeSubscriptionHintLabel.isHidden = true
-        case .upgrade(active: let activeSubscriptions):
-            configureWithActiveSubscriptions(activeSubscriptions)
-            restorePurchasesButton.isHidden = true
-        }
-    }
-    
-    var disabledCheckboxes: Set<M13Checkbox> = []
-    
-    @objc func selectMonthly() {
-        animatedSetChecked(monthlyPlanCheckbox, .checked)
-        animatedSetChecked(monthlyProPlanCheckbox, .unchecked)
-        animatedSetChecked(annualPlanCheckbox, .unchecked)
-        animatedSetChecked(annualProPlanCheckbox, .unchecked)
-        VPNSubscription.selectedProductId = VPNSubscription.productIdMonthly
-        updatePricingSubtitle()
-    }
-    
-    @objc func selectMonthlyPro() {
-        animatedSetChecked(monthlyPlanCheckbox, .unchecked)
-        animatedSetChecked(monthlyProPlanCheckbox, .checked)
-        animatedSetChecked(annualPlanCheckbox, .unchecked)
-        animatedSetChecked(annualProPlanCheckbox, .unchecked)
-        VPNSubscription.selectedProductId = VPNSubscription.productIdMonthlyPro
-        updatePricingSubtitle()
-    }
-    
-    @IBAction func monthlyTapped(_ sender: Any) {
-        selectMonthly()
-    }
-    
-    @IBAction func monthlyProTapped(_ sender: Any) {
-        selectMonthlyPro()
-    }
-    
-    @objc func selectAnnual() {
-        animatedSetChecked(monthlyPlanCheckbox, .unchecked)
-        animatedSetChecked(monthlyProPlanCheckbox, .unchecked)
-        animatedSetChecked(annualPlanCheckbox, .checked)
-        animatedSetChecked(annualProPlanCheckbox, .unchecked)
-        VPNSubscription.selectedProductId = VPNSubscription.productIdAnnual
-        updatePricingSubtitle()
-    }
-    
-    @IBAction func annualTapped(_ sender: Any) {
-        selectAnnual()
-    }
-    
-    @objc func selectAnnualPro() {
-        animatedSetChecked(monthlyPlanCheckbox, .unchecked)
-        animatedSetChecked(monthlyProPlanCheckbox, .unchecked)
-        animatedSetChecked(annualPlanCheckbox, .unchecked)
-        animatedSetChecked(annualProPlanCheckbox, .checked)
-        VPNSubscription.selectedProductId = VPNSubscription.productIdAnnualPro
-        updatePricingSubtitle()
-    }
-    
-    @IBAction func annualProTapped(_ sender: Any) {
-        selectAnnualPro()
-    }
-    
-    @objc func updatePricingSubtitle() {
-        let context: VPNSubscription.SubscriptionContext = {
-            switch mode {
-            case .newSubscription:
-                return .new
-            case .upgrade:
-                return .upgrade
-            }
-        }()
         
-        if monthlyPlanCheckbox.checkState == .checked, monthlyPlanCheckbox.isEnabled {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly, for: context)
-        }
-        else if annualPlanCheckbox.checkState == .checked, annualPlanCheckbox.isEnabled {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual, for: context)
-        }
-        else if annualProPlanCheckbox.checkState == .checked, annualProPlanCheckbox.isEnabled {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro, for: context)
-        }
-        else if monthlyProPlanCheckbox.checkState == .checked, monthlyProPlanCheckbox.isEnabled {
-            pricingSubtitle.text = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro, for: context)
+        setupTextFields()
+        setupSkipButton()
+        setupSignUpButton()
+        
+        setupTexts()
+        
+        setupGestureRecognizers()
+        
+        updateScreen()
+        
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .label
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isDisappearing = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        isDisappearing = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        mainButton.corners = .continuous(mainButton.bounds.midY)
+        signUpButtonGradientLayer?.corners = mainButton.corners
+        signUpButtonGradientLayer?.frame = mainButton.bounds
+    }
+    
+    @IBAction private func didTapCloseButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction private func didTapAlternativeActionButton(_ sender: Any) {
+        switch mode {
+        case .login:
+            // Forgot password
+            guard let forgotPasswordViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "ForgotPasswordViewController")
+                    as? ForgotPasswordViewController else { return }
+            forgotPasswordViewController.modalPresentationStyle = .fullScreen
+            present(forgotPasswordViewController, animated: true)
+        case .signUp:
+            // I already have an account, change to login
+            mode = .login
         }
     }
     
-    @IBAction func dismissSignUpScreen() {
-        self.view.endEditing(true)
-        self.dismiss(animated: true, completion: {})
-    }
-    
-    func toggleStartTrialButton(_ enabled: Bool) {
-        if (enabled) {
-            UIView.transition(with: self.pricingSubtitle,
-                              duration: 0.15,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                                self.pricingSubtitle.alpha = 1.0
-            })
-            startTrialButton.isUserInteractionEnabled = true
-            startTrialButton.setOriginalState()
-            startTrialButton.layer.cornerRadius = 4
-            unblockUserInteraction()
-        }
-        else {
-            UIView.transition(with: self.pricingSubtitle,
-                              duration: 0.15,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                                self.pricingSubtitle.alpha = 0.0
-            })
-            startTrialButton.isUserInteractionEnabled = false
-            startTrialButton.startLoadingAnimation()
-            blockUserInteraction()
+    @IBAction private func didTapMainButton() {
+        mainButton.showAnimatedPress { [weak self] in
+            guard let self else { return }
+            switch self.mode {
+            case .signUp:
+                self.createAccount()
+            case .login:
+                self.login()
+            }
         }
     }
     
-    @IBAction func startTrial (_ sender: UIButton) {
-        toggleStartTrialButton(false)
-        VPNSubscription.purchase (
-            succeeded: {
-                self.dismiss(animated: true, completion: {
-                    if let presentingViewController = self.parentVC as? AccountViewController {
-                        presentingViewController.reloadTable()
-                    }
-                    // force refresh receipt, and sync with email if it exists, activate VPNte
-                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
-                        DDLogInfo("purchase complete: syncing with confirmed email")
-                        firstly {
-                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
-                        }
-                        .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
-                            DDLogInfo("purchase complete: signin result: \(signin)")
-                            return try Client.subscriptionEvent(forceRefresh: true)
-                        }
-                        .then { (result: SubscriptionEvent) -> Promise<GetKey> in
-                            DDLogInfo("purchase complete: subscriptionevent result: \(result)")
-                            return try Client.getKey()
-                        }
-                        .done { (getKey: GetKey) in
-                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                            DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
-                            VPNController.shared.setEnabled(true)
-                        }
-                        .catch { error in
-                            DDLogError("purchase complete: Error: \(error)")
-                            if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
-                                return
-                            }
-                            else if let apiError = error as? ApiError {
-                                switch apiError.code {
-                                default:
-                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
-                                }
-                            }
-                        }
-                    }
-                    else {
-                        firstly {
-                            try Client.signIn(forceRefresh: true) // this will fetch and set latest receipt, then submit to API to get cookie
-                        }
-                        .then { (signin: SignIn) -> Promise<GetKey> in
-                            // TODO: don't always do this -- if we already have a key, then only do it once per day max
-                            try Client.getKey()
-                        }
-                        .done { (getKey: GetKey) in
-                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                            VPNController.shared.setEnabled(true)
-                        }
-                        .catch { error in
-                            DDLogError("purchase complete - no email: Error: \(error)")
-                            if (self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)")) {
-                                return
-                            }
-                            else if let apiError = error as? ApiError {
-                                switch apiError.code {
-                                default:
-                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
-                                }
-                            }
-                        }
-                    }
-                })
-            },
-            errored: { error in
-                self.toggleStartTrialButton(true)
-                DDLogError("Start Trial Failed: \(error)")
+    @IBAction private func didTapTermsOfService(_ sender: Any) {
+        showModalWebView(title: .localized("terms_of_service"), urlString: .lockdownUrlTerms)
+    }
+    
+    @IBAction private func didTapPrivacyPolicy(_ sender: Any) {
+        showModalWebView(title: .localized("Privacy Policy"), urlString: .lockdownUrlPrivacy)
+    }
+    
+    private func setupTextFields() {
+        [emailTextField, passwordTextField].forEach {
+            $0?.titleFont = .regularLockdownFont(size: 13)
+            $0?.placeholderFont = .regularLockdownFont(size: 17)
+            $0?.titleColor = .gray
+            $0?.textColor = .black
+            $0?.corners = .continuous(8)
+            $0?.delegate = self
+            
+            if traitCollection.layoutDirection == .rightToLeft {
+                $0?.textAlignment = .right
+                $0?.semanticContentAttribute = .forceRightToLeft
+            }
+        }
+        emailTextField.addTarget(self, action: #selector(updateMainButtonState), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(validatePassword), for: .editingChanged)
+    }
+    
+    private func setupSkipButton() {
+        let skipButton = UIBarButtonItem(title: .localized("skip"), style: .plain, target: self, action: #selector(proceedToEnableNotifications))
+        
+        [.normal, .highlighted].forEach {
+            skipButton.setTitleTextAttributes([
+                .font: UIFont.regularLockdownFont(size: 17),
+                .underlineStyle: NSUnderlineStyle.single.rawValue
+            ], for: $0)
+        }
+        navigationItem.rightBarButtonItem = skipButton
+        
+        closeButtonSpacer.isHidden = navigationController != nil
+        closeButton.isHidden = navigationController != nil
+    }
+    
+    @objc private func proceedToEnableNotifications() {
+        let enableNotificationsViewController = EnableNotificationsViewController()
+        navigationController?.pushViewController(enableNotificationsViewController, animated: true)
+    }
+    
+    private func setupSignUpButton() {
+        signUpButtonGradientLayer = mainButton.applyGradient(.lightBlue)
+        updateMainButtonState()
+    }
+    
+    private func setupTexts() {
+        welcomeLabel.text = .localized("welcome")
+        descriptionLabel.text = .localized("already_have_account_login")
+        emailTextField.title = .localized("email")
+        passwordTextField.title = .localized("password")
+        
+        advantageLabelOne.text = .localized("access_our_curated_block_lists_and_build_your_own")
+        advantageLabelTwo.text = .localized("access_lockdown_across_all_your_devices")
+        advantageLabelThree.text = .localized("firewall_and_vpn_support")
+        
+        mainButton.setTitle(.localized("onboarding_sign_up"), for: .normal)
+        
+        byContinuingLabel.text = .localized("by_continuing_you_agree_with_our")
+        privacyPolicyLabel.setTitle(.localized("Privacy Policy"), for: .normal)
+        andLabel.text = .localized("and")
+        termsOfServiceLabel.setTitle(.localized("terms_of_service"), for: .normal)
+    }
+    
+    private func setupGestureRecognizers() {
+        let tapOutsideTextfields = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapOutsideTextfields)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension SignUpViewController {
+    
+    private func updateScreen() {
+        switch mode {
+        case .signUp:
+            updateForSignUp()
+        case .login:
+            updateForLogin()
+        }
+    }
+    
+    private func updateForSignUp() {
+        // So that the textfields won't trigger autofill suggestions
+        // https://developer.apple.com/forums/thread/108085
+        emailTextField.textContentType = .oneTimeCode
+        passwordTextField.textContentType = .oneTimeCode
+        
+        transition(with: upperLabelsStackView) { [weak self] in
+            self?.descriptionLabel.text = .localized("sign_up_to_access_new_block_lists_from_trackers")
+        }
+        alternativeActionButton.setTitle(.localized("already_have_account_login"), for: .normal)
+    }
+    
+    private func updateForLogin() {
+        emailTextField.textContentType = .username
+        passwordTextField.textContentType = .password
+        
+        validatePassword()
+        
+        transition(with: upperLabelsStackView) { [weak self] in
+            self?.descriptionLabel.text = .localized("already_have_account_login_below")
+        }
+        transition(with: alternativeActionButton) { [weak self] in
+            self?.alternativeActionButton.setTitle(.localized("forgot_password"), for: .normal)
+        }
+        transition(with: mainButton) { [weak self] in
+            self?.mainButton.setTitle(.localized("onboarding_login"), for: .normal)
+        }
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate, EmailValidatable {
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        // If the range is {0,0} and the string count > 1, then user copy paste text or used password autofill.
+        didAutofillTextfield = range == NSRange(location: 0, length: 0) && string.count > 1 && mode == .login
+        
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        // If autofilled, don't show keyboard
+        if mode == .login && didAutofillTextfield {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.didAutofillTextfield = false
+            }
+            
+            DispatchQueue.main.async {
+                self.view.endEditing(true)
                 
-                if let skError = error as? SKError {
-                    var errorText = ""
-                    switch skError.code {
-                    case .unknown: errorText = NSLocalizedString("Unknown error. Please contact support at team@lockdownprivacy.com.", comment: "")
-                    case .clientInvalid: errorText = NSLocalizedString("Not allowed to make the payment", comment: "")
-                    case .paymentCancelled: errorText = NSLocalizedString("Payment was cancelled", comment: "")
-                    case .paymentInvalid: errorText = NSLocalizedString("The purchase identifier was invalid", comment: "")
-                    case .paymentNotAllowed: errorText = NSLocalizedString("Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again.", comment: "")
-                    case .storeProductNotAvailable: errorText = NSLocalizedString("The product is not available in the current storefront", comment: "")
-                    case .cloudServicePermissionDenied: errorText = NSLocalizedString("Access to cloud service information is not allowed", comment: "")
-                    case .cloudServiceNetworkConnectionFailed: errorText = NSLocalizedString("Could not connect to the network", comment: "")
-                    case .cloudServiceRevoked: errorText = NSLocalizedString("User has revoked permission to use this cloud service", comment: "")
-                    default: errorText = skError.localizedDescription
-                    }
-                    self.showPopupDialog(title: NSLocalizedString("Error Starting Trial", comment: ""),
-                                         message: errorText,
-                        acceptButton: "Okay")
-                }
-                else if (self.popupErrorAsNSURLError(error)) {
-                    return
-                }
-                else if (self.popupErrorAsApiError(error)) {
-                    return
-                }
-                else {
-                    self.showPopupDialog(title: NSLocalizedString("Error Starting Trial", comment: ""),
-                                         message: NSLocalizedString("Please contact team@lockdownprivacy.com.\n\nError details:\n", comment: "") + "\(error)",
-                        acceptButton: "Okay")
-                }
-        })
+                // Color somehow falls back to default, fixing it
+                textField.textColor = .black
+            }
+            
+            return false
+        }
+        
+        textField.animateBorderWidth(toValue: textFieldBorderWidth)
+        return true
     }
     
-    func toggleRestorePurchasesButton(_ enabled: Bool) {
-        if (enabled) {
-            restorePurchasesButton.isUserInteractionEnabled = true
-            restorePurchasesButton.setOriginalState()
-            restorePurchasesButton.layer.cornerRadius = 4
-            unblockUserInteraction()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            emailTextField.animateBorderWidth(toValue: 0)
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.animateBorderWidth(toValue: textFieldBorderWidth)
+            dismissKeyboard()
         }
-        else {
-            restorePurchasesButton.isUserInteractionEnabled = false
-            restorePurchasesButton.startLoadingAnimation()
-            blockUserInteraction()
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        guard !isDisappearing else { return }
+        
+        if textField == passwordTextField, textField.text?.count ?? 0 > 0, !isPasswordValid {
+            textField.animateBorderWidth(toValue: textFieldBorderWidth, color: .tunnelsWarning)
+        } else if textField == emailTextField, let emailError = errorValidatingEmail(emailTextField.text) {
+            showPopupDialog(title: .localized("invalid_email_address"),
+                            message: emailError.localizedDescription,
+                            transitionStyle: .fadeIn,
+                            acceptButton: .localizedOkay)
+            textField.animateBorderWidth(toValue: textFieldBorderWidth, color: .tunnelsWarning)
+        } else {
+            textField.animateBorderWidth(toValue: 0)
         }
     }
     
-    @IBAction func restorePurchases(_ sender: Any) {
-        //toggleRestorePurchasesButton(false)
+    @objc private func validatePassword() {
+        updateMainButtonState()
+        
+        guard mode == .signUp else {
+            passwordTextField.animateBorderWidth(toValue: 0)
+            passwordValidationLabel.isHidden = true
+            isPasswordValid = true
+            return
+        }
+        
+        let passwordRequirements = """
+Password must be at least 8 characters, contain at least one uppercase letter, \
+one lowercase letter, one number, and one symbol.
+"""
+        let attrStr = NSMutableAttributedString(
+            string: .localized(passwordRequirements),
+            attributes: [
+                .font: UIFont.mediumLockdownFont(size: 13),
+                .foregroundColor: UIColor.lightGray
+            ])
+        
+        if let txt = passwordTextField.text {
+                isPasswordValid = true
+                attrStr.addAttributes(setupAttributeColor(if: (txt.count >= 8)),
+                                      range: findRange(in: attrStr.string, for: .localized("at least 8 characters")))
+                attrStr.addAttributes(setupAttributeColor(if: (txt.rangeOfCharacter(from: CharacterSet.uppercaseLetters) != nil)),
+                                      range: findRange(in: attrStr.string, for: .localized("one uppercase letter")))
+                attrStr.addAttributes(setupAttributeColor(if: (txt.rangeOfCharacter(from: CharacterSet.lowercaseLetters) != nil)),
+                                      range: findRange(in: attrStr.string, for: .localized("one lowercase letter")))
+                attrStr.addAttributes(setupAttributeColor(if: (txt.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil)),
+                                      range: findRange(in: attrStr.string, for: .localized("one number")))
+            attrStr.addAttributes(setupAttributeColor(if: ((txt.rangeOfCharacter(from: CharacterSet.symbols) != nil)
+                                                           || (txt.rangeOfCharacter(from: CharacterSet.punctuationCharacters) != nil))),
+                                  range: findRange(in: attrStr.string, for: .localized("one symbol")))
+            } else {
+                isPasswordValid = false
+            }
+        
+        passwordValidationLabel.attributedText = attrStr
+        passwordValidationLabel.isHidden = isPasswordValid
+        
+        updateMainButtonState()
+    }
+    
+    private func setupAttributeColor(if isValid: Bool) -> [NSAttributedString.Key: Any] {
+        if isValid {
+            return [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        } else {
+            isPasswordValid = false
+            return [NSAttributedString.Key.foregroundColor: UIColor.red]
+        }
+    }
+    
+    private func findRange(in baseString: String, for substring: String) -> NSRange {
+        if let range = baseString.localizedStandardRange(of: substring) {
+            let startIndex = baseString.distance(from: baseString.startIndex, to: range.lowerBound)
+            let length = substring.count
+            return NSRange(location: startIndex, length: length)
+        } else {
+            print("Range does not exist in the base string.")
+            return NSRange(location: 0, length: 0)
+        }
+    }
+    
+    @objc private func updateMainButtonState() {
+        if mode == .signUp {
+            mainButton.isUserInteractionEnabled = emailTextField.text?.count ?? 0 > 0 && isPasswordValid
+        } else {
+            mainButton.isUserInteractionEnabled = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        }
+        mainButton.isEnabled = mainButton.isUserInteractionEnabled
+        signUpButtonGradientLayer?.isHidden = !mainButton.isUserInteractionEnabled
+    }
+}
+
+// MARK: - Backend
+extension SignUpViewController {
+    
+    private func createAccount() {
+        // Do /signup (do subscription-event later, user needs to confirm email first though)
+        showLoadingView()
+        
+        // TODO: client side preliminary password fields, email validation - server does additional checking later
+        
         firstly {
-            try Client.signIn(forceRefresh: true)
+            try Client.signup(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
         }
-        .then { (signin: SignIn) -> Promise<GetKey> in
+        .catch { error in
+            self.hideLoadingView()
+            if self.popupErrorAsNSURLError(error) {
+                return
+            } else if let apiError = error as? ApiError {
+                switch apiError.code {
+                case kApiCodeEmailNotConfirmed:
+                    // This is the "correct" case for /signup, we are expecting "1" = email confirmation sent
+                    do {
+                        try setAPICredentials(email: self.emailTextField.text!, password: self.passwordTextField.text!)
+                        setAPICredentialsConfirmed(confirmed: false)
+                        let message = """
+To finish signup, click the confirmation link in the email we just sent. \
+If you don't see it, check if it's stuck in your spam folder.
+"""
+                        let popup = PopupDialog(title: .localized("confirm_your_email"),
+                                                message: .localized(message),
+                                                image: nil,
+                                                buttonAlignment: .horizontal,
+                                                transitionStyle: .bounceDown,
+                                                preferredWidth: 270,
+                                                tapGestureDismissal: true,
+                                                panGestureDismissal: false,
+                                                hideStatusBar: false,
+                                                completion: nil)
+                        popup.addButtons([
+                            DefaultButton(title: .localizedOkay, dismissOnTap: true) {
+                                self.hideLoadingView()
+                                self.proceedToEnableNotifications()
+                           }
+                        ])
+                        self.present(popup, animated: true, completion: nil)
+                        NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
+                    } catch {
+                        self.showPopupDialog(
+                            title: "Error Saving Credentials",
+                            message: "Couldn't save credentials to local keychain. Please report this error to team@lockdownprivacy.com.",
+                            acceptButton: .localizedOkay)
+                    }
+                default:
+                    _ = self.popupErrorAsApiError(error)
+                }
+            } else {
+                self.showPopupDialog(title: .localized("Error Creating Email Account"),
+                                     message: "\(error)",
+                                     acceptButton: .localizedOkay)
+            }
+        }
+    }
+    
+    private func login() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            showPopupDialog(title: .localized("check_fields"), message: .localized("email_and_password_must_not_be_empty"), acceptButton: .localizedOkay)
+            return
+        }
+        
+        showLoadingView()
+        firstly {
+            try Client.signInWithEmail(email: email, password: password)
+        }
+        .done { (_: SignIn) in
+            try setAPICredentials(email: email, password: password)
+            setAPICredentialsConfirmed(confirmed: true)
+            self.hideLoadingView()
+            NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
+            self.showPopupDialog(title: .localized("Success! 🎉"),
+                                 message: .localized("you_have_successfully_sign_in"),
+                                 acceptButton: .localizedOkay,
+                                 tapGestureDismissal: false,
+                                 panGestureDismissal: false) {
+                if let navigationController = self.navigationController {
+                    let enableNotificationsViewController = EnableNotificationsViewController()
+                    navigationController.isNavigationBarHidden = true
+                    navigationController.setViewControllers([enableNotificationsViewController], animated: true)
+                    self.processSuccessfulLogin()
+                } else {
+                    self.presentingViewController?.dismiss(animated: true) {
+                        self.processSuccessfulLogin()
+                    }
+                }
+            }
+        }
+        .catch { error in
+            self.hideLoadingView()
+            var errorMessage = error.localizedDescription
+            if let apiError = error as? ApiError {
+                errorMessage = apiError.message
+            }
+            self.showPopupDialog(
+                title: .localized("error_signing_in"),
+                message: errorMessage,
+                transitionStyle: .zoomIn,
+                acceptButton: .localizedOkay) {}
+        }
+    }
+    
+    private func processSuccessfulLogin() {
+        // logged in and confirmed - update this email with the receipt and refresh VPN credentials
+        firstly { () -> Promise<SubscriptionEvent> in
+            try Client.subscriptionEvent()
+        }
+        .then { (_: SubscriptionEvent) -> Promise<GetKey> in
             try Client.getKey()
         }
         .done { (getKey: GetKey) in
-            // we were able to get key, so subscription is valid -- follow pathway from HomeViewController to associate this with the email account if there is one
-            let presentingViewController = self.presentingViewController as? HomeViewController
-            self.dismiss(animated: true, completion: {
-                if presentingViewController != nil {
-                    presentingViewController?.toggleVPN("me")
-                }
-                else {
-                    VPNController.shared.setEnabled(true)
-                }
-            })
+            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+            if getUserWantsVPNEnabled() {
+                VPNController.shared.restart()
+            }
         }
         .catch { error in
-            self.toggleRestorePurchasesButton(true)
-            DDLogError("Restore Failed: \(error)")
-            if let apiError = error as? ApiError {
-                switch apiError.code {
-                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                    // now try email if it exists
-                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
-                        DDLogInfo("restore: have confirmed API credentials, using them")
-                        self.toggleRestorePurchasesButton(false)
-                        firstly {
-                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
-                        }
-                        .then { (signin: SignIn) -> Promise<GetKey> in
-                            DDLogInfo("restore: signin result: \(signin)")
-                            return try Client.getKey()
-                        }
-                        .done { (getKey: GetKey) in
-                            self.toggleRestorePurchasesButton(true)
-                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                            DDLogInfo("restore: setting VPN creds with ID and Dismissing: \(getKey.id)")
-                            let presentingViewController = self.presentingViewController as? HomeViewController
-                            self.dismiss(animated: true, completion: {
-                                if presentingViewController != nil {
-                                    presentingViewController?.toggleVPN("me")
-                                }
-                                else {
-                                    VPNController.shared.setEnabled(true)
-                                }
-                            })
-                        }
-                        .catch { error in
-                            self.toggleRestorePurchasesButton(true)
-                            DDLogError("restore: Error doing restore with email-login: \(error)")
-                            if (self.popupErrorAsNSURLError(error)) {
-                                return
-                            }
-                            else if let apiError = error as? ApiError {
-                                switch apiError.code {
-                                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                                    self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
-                                                    message: NSLocalizedString("Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
-                                                    acceptButton: NSLocalizedString("OK", comment: ""))
-                                default:
-                                    _ = self.popupErrorAsApiError(error)
-                                }
-                            }
-                        }
-                    }
-                    else {
-                        self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
-                                        message: NSLocalizedString("Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
-                                        acceptButton: NSLocalizedString("OK", comment: ""))
-                    }
-                default:
-                    self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
-                                         message: NSLocalizedString("Please email team@lockdownprivacy.com with the following Error Code ", comment: "") + "\(apiError.code) : \(apiError.message)",
-                                         acceptButton: NSLocalizedString("OK", comment: ""))
-                }
-            }
-            else {
-                self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
-                                     message: NSLocalizedString("Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: ", comment: "") + "\(error)",
-                    acceptButton: NSLocalizedString("OK", comment: ""))
-            }
-        }
-    }
-    
-    @IBAction func openPrivacyPolicy (_ sender: Any) {
-        self.showPrivacyPolicyModal()
-    }
-    
-    @IBAction func openTermsAndConditions (_ sender: Any) {
-        self.showTermsModal()
-    }
-    
-    @IBAction func cancelButtonPressed (_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-}
-
-extension SignupViewController {
-    
-    // MARK: - Functions for "Upgrade Plan" mode
-    
-    private func configureWithActiveSubscriptions(_ activePlans: [Subscription.PlanType]) {
-        startTrialButton.setTitle(NSLocalizedString("Upgrade Plan", comment: ""), for: .normal)
-        
-        for plan in activePlans {
-            configureForUnavailable(plan, reason: .purchased)
-            if let unavailableToUpgrade = plan.unavailableToUpgrade {
-                for unavailable in unavailableToUpgrade where unavailable != plan {
-                    configureForUnavailable(unavailable, reason: .lowerTierThanPurchased)
-                }
-            }
-        }
-        
-        selectAnnualOrFirstAvailable()
-    }
-    
-    enum UnavailableReason {
-        case purchased
-        case lowerTierThanPurchased
-    }
-    
-    private func configureForUnavailable(_ subscriptionPlanType: Subscription.PlanType, reason: UnavailableReason) {
-        switch subscriptionPlanType {
-        case .monthly:
-            markAsUnavailable(monthlyPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: monthlyPlanContainer)
-        case .proMonthly:
-            markAsUnavailable(monthlyProPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: monthlyProPlanContainer)
-        case .annual:
-            markAsUnavailable(annualPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: annualPlanContainer)
-        case .proAnnual:
-            markAsUnavailable(annualProPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: annualProPlanContainer)
-        default:
-            break
-        }
-    }
-    
-    private func markAsUnavailable(_ checkbox: M13Checkbox, plan: Subscription.PlanType, reason: UnavailableReason, container: UIView) {
-        disabledCheckboxes.insert(checkbox)
-        checkbox.isEnabled = false
-        
-        switch reason {
-        case .lowerTierThanPurchased:
-            container.isHidden = true
-        case .purchased:
-            container.alpha = 0.4
-            checkbox.setCheckState(.checked, animated: false)
-            checkbox.tintColor = UIColor.gray
-            checkbox.secondaryTintColor = UIColor.gray
-            checkbox.isEnabled = false
-            checkbox.accessibilityLabel = Accessibility.currentPlanCheckboxLabel(for: plan)
-            checkbox.accessibilityHint = Accessibility.currentPlanCheckboxHint()
-        }
-    }
-    
-    private func animatedSetChecked(_ checkbox: M13Checkbox, _ state: M13Checkbox.CheckState) {
-        if disabledCheckboxes.contains(checkbox) {
-            return
-        } else {
-            checkbox.setCheckState(state, animated: true)
-        }
-    }
-    
-    func selectAnnualOrFirstAvailable() {
-        if disabledCheckboxes.contains(annualPlanCheckbox) {
-            // Annual is unavailable, find first available option to select
-            if monthlyPlanCheckbox.isEnabled {
-                selectMonthly()
-            } else if annualPlanCheckbox.isEnabled {
-                selectAnnual()
-            } else if monthlyProPlanCheckbox.isEnabled {
-                selectMonthlyPro()
-            } else if annualProPlanCheckbox.isEnabled {
-                selectAnnualPro()
-            } else {
-                selectAnnualPro()
-                startTrialButton.isEnabled = false
-                startTrialButton.backgroundColor = UIColor.gray
-                startTrialButton.isUserInteractionEnabled = false
-                startTrialButton.alpha = 0.5
-                pricingSubtitle.alpha = 0.3
-            }
-        } else {
-            selectAnnual()
+            // it's okay for this to error out with "no subscription in receipt"
+            DDLogError("HomeViewController ConfirmEmail subscriptionevent error (ok for it to be \"no subscription in receipt\"): \(error)")
         }
     }
 }
 
-extension SignupViewController {
-    enum Accessibility {
-        static func currentPlanCheckboxLabel(for plan: Subscription.PlanType) -> String? {
-            switch plan {
-            case .monthly:
-                return NSLocalizedString("\"iOS Monthly\" is your current plan", comment: "")
-            case .proMonthly:
-                return NSLocalizedString("\"Pro Monthly\" is your current plan", comment: "")
-            case .annual:
-                return NSLocalizedString("\"iOS Annual\" is your current plan", comment: "")
-            case .proAnnual:
-                return NSLocalizedString("\"Pro Annual\" is your current plan", comment: "")
-            default:
-                return "\"\(plan.rawValue)\" is your current plan"
-            }
-        }
-        
-        static func currentPlanCheckboxHint() -> String? {
-            return nil
-        }
-    }
+enum AuthenticationViewControllerMode {
+    case login, signUp
 }

@@ -1,0 +1,811 @@
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = "和 ";
+
+/* refers to number of connections blocked today, as in '34 Blocked Today' */
+" Blocked Today" = " 今天已阻止";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"" = " 不是有效的输入项。请仅输入您想添加到白名单的域主机。例如：\"google.com\"，不带\"https://\"";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"" = " 不是有效的输入项。请仅输入您想阻止的域主机。例如：\"google.com\"，不带\"https://\"";
+
+/* No comment provided by engineer. */
+" Off" = " 关闭";
+
+/* No comment provided by engineer. */
+" On" = " 打开";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " 追踪器、广告和恶意软件，该防火墙可阻止您的所有应用程序中的多余连接。请在 lockdownprivacy.com 免费获取。";
+
+/* No comment provided by engineer. */
+"1 Week Free" = "一周免费";
+
+/* No comment provided by engineer. */
+"\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block." = "\"阻止列表\" 让您选择想要阻止的内容（例如 Facebook、点击诱饵等）。您也可以自行设置要阻止的域。";
+
+/* No comment provided by engineer. */
+"\"iOS Annual\" is your current plan" = "\"年度 iOS\"是您的当前套餐";
+
+/* No comment provided by engineer. */
+"\"iOS Monthly\" is your current plan" = "\"月度 iOS\"是您的当前套餐";
+
+/* No comment provided by engineer. */
+"\"Pro Annual\" is your current plan" = "\"年度 Pro\"是您的当前套餐";
+
+/* No comment provided by engineer. */
+"\"Pro Monthly\" is your current plan" = "\"月度 Pro\"是您的当前套餐";
+
+/* No comment provided by engineer. */
+"\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you." = "\"查看日志\"显示过去一天阻止了哪些连接。此日志在午夜清除并保留在设备上，因此只有您才能看到。";
+
+/* No comment provided by engineer. */
+"\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n 如果此错误仍然存在，请与 team@lockdownprivacy.com 联系。";
+
+/* No comment provided by engineer. */
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n 如果这种情况仍然存在，请与 team@lockdownprivacy.com 联系。";
+
+/* No comment provided by engineer. */
+"About Lockdown VPN" = "关于 Lockdown VPN";
+
+/* No comment provided by engineer. */
+"Activate Firewall with this button." = "使用此按钮激活防火墙。";
+
+/* No comment provided by engineer. */
+"Activating" = "正在激活";
+
+/* No comment provided by engineer. */
+"Anonymize IP against trackers" = "使 IP 对追踪器匿名";
+
+/* No comment provided by engineer. */
+"Apple Outage" = "Apple 中断";
+
+/* No comment provided by engineer. */
+"at least 8 characters" = "至少 8 个字符";
+
+/* No comment provided by engineer. */
+"Audit Reports" = "审计报告";
+
+/* No comment provided by engineer. */
+"Australia" = "澳大利亚";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "请务必检查您的垃圾邮件文件夹，看看它是否卡在那里。\n\n您也可以请求重新发送确认信息。";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "阻止列表";
+
+/* No comment provided by engineer. */
+"Blocked" = "已阻止";
+
+/* No comment provided by engineer. */
+"Blocked Domains" = "已阻止的域";
+
+/* No comment provided by engineer. */
+"Blocked Today" = "今天已阻止";
+
+/* No comment provided by engineer. */
+"Blocked Trackers Summary" = "所阻止的追踪器摘要";
+
+/* No comment provided by engineer. */
+"Brazil" = "巴西";
+
+/* No comment provided by engineer. */
+"Canada" = "加拿大";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "检查您的收件箱";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "清除阻止日志";
+
+/* The title of a list of trackers */
+"Clickbait" = "点击诱饵";
+
+/* No comment provided by engineer. */
+"Confirm Email" = "确认电子邮件";
+
+/* No comment provided by engineer. */
+"Confirmed Site" = "已确认的网站";
+
+/* No comment provided by engineer. */
+"Couldn't Find Your Email Client" = "无法找到您的电子邮件客户端";
+
+/* The title of a list of trackers */
+"Crypto Mining" = "加密货币挖矿";
+
+/* No comment provided by engineer. */
+"Custom Settings (Advanced)" = "自定义设置（高级）";
+
+/* The title of a list of trackers */
+"Data Trackers" = "数据追踪器";
+
+/* No comment provided by engineer. */
+"Deactivating" = "正在停用";
+
+/* No comment provided by engineer. */
+"Disable" = "禁用";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "禁用阻止日志";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "禁用阻止日志？";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
+"Email Support" = "电子邮件支持";
+
+/* The title of a list of trackers */
+"Email Trackers" = "电子邮件追踪器";
+
+/* No comment provided by engineer. */
+"Email Us" = "电邮我们";
+
+/* No comment provided by engineer. */
+"Enable" = "启用";
+
+/* No comment provided by engineer. */
+"Enable Block Log" = "启用阻止日志";
+
+/* No comment provided by engineer. */
+"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "启用通知以获取每周一次的摘要报告和最新阻止列表。您可以随时禁用此功能。";
+
+/* No comment provided by engineer. */
+"Encrypted, private connections" = "加密的专用连接";
+
+/* No comment provided by engineer. */
+"Error Code " = "错误代码 ";
+
+/* No comment provided by engineer. */
+"Error Creating Email Account" = "创建电子邮件帐户时出错";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "加载套餐时出错：重试";
+
+/* No comment provided by engineer. */
+"Error Re-sending Email Confirmation" = "重新发送电子邮件确认时出错";
+
+/* No comment provided by engineer. */
+"Error Restoring Subscription" = "恢复订阅时出错";
+
+/* No comment provided by engineer. */
+"Error Signing In To Verify Subscription" = "登录以验证订阅时出错";
+
+/* No comment provided by engineer. */
+"Error Starting Trial" = "开始试用时出错";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "Facebook 和 WhatsApp";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "Facebook 追踪器";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "无法重新发送电子邮件确认。";
+
+/* No comment provided by engineer. */
+"FAQs" = "常见问题";
+
+/* No comment provided by engineer. */
+"Firewall" = "防火墙";
+
+/* No comment provided by engineer. */
+"Firewall Active" = "防火墙已激活";
+
+/* No comment provided by engineer. */
+"Firewall Not Active" = "防火墙未激活";
+
+/* No comment provided by engineer. */
+"FIREWALL OFF" = "防火墙关闭";
+
+/* No comment provided by engineer. */
+"FIREWALL ON" = "防火墙打开";
+
+/* No comment provided by engineer. */
+"For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP." = "为了最大限度地保护隐私，请激活 Secure Tunnel，它使用银行级加密来保护连接，让您匿名浏览，并隐藏您的位置和 IP。";
+
+/* No comment provided by engineer. */
+"France" = "法国";
+
+/* The title of a list of trackers */
+"Game Marketing" = "游戏营销";
+
+/* The title of a list of trackers */
+"General Marketing" = "一般营销";
+
+/* No comment provided by engineer. */
+"Germany" = "德国";
+
+/* The title of a list of trackers */
+"Google Shopping" = "谷歌购物";
+
+/* No comment provided by engineer. */
+"Hey Lockdown Team, \nI have a question, issue, or suggestion - " = "嗨，Lockdown 团队，\n我有疑问、问题或建议 - ";
+
+/* No comment provided by engineer. */
+"Hi, my question or feedback for Lockdown is: " = "嗨，我对 Lockdown 的疑问或反馈是： ";
+
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "我用 Lockdown 阻止了";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "在您的自定义阻止域中。";
+
+/* No comment provided by engineer. */
+"India" = "印度";
+
+/* No comment provided by engineer. */
+"Invalid domain" = "无效的域";
+
+/* No comment provided by engineer. */
+"IP: 18.132.2.87" = "IP：18.132.2.87";
+
+/* No comment provided by engineer. */
+"IP: [Anonymized]" = "IP：[匿名]";
+
+/* No comment provided by engineer. */
+"Ireland" = "爱尔兰";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "属于";
+
+/* No comment provided by engineer. */
+"Japan" = "日本";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "正在加载套餐";
+
+/* No comment provided by engineer. */
+"Location changed and hidden" = "位置已更改和隐藏";
+
+/* No comment provided by engineer. */
+"Location: 🇯🇵" = "位置：日本";
+
+/* No comment provided by engineer. */
+"Location: 🇺🇸" = "位置：美国";
+
+/* No comment provided by engineer. */
+"Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari." = "Lockdown Firewall 可阻止您的所有应用中的不良和不可信连接 - 而不仅限于 Safari。";
+
+/* No comment provided by engineer. */
+"Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts." = "Lockdown 是开源且完全透明的，这意味着任何人都能确切地看到它在做什么。此外，Lockdown Firewall 具有简单、严格的隐私政策，且 Lockdown VPN 得到安全专家的全面审核。
+";
+
+/* No comment provided by engineer. */
+"Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN." = "Lockdown VPN 由 Confirmed VPN 提供支持，为开源、无日志和经全面审核的 VPN。";
+
+/* The title of a list of trackers */
+"Marketing Trackers" = "营销追踪器";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "营销追踪器 II";
+
+/* No comment provided by engineer. */
+"Network Error" = "网络错误";
+
+/* No comment provided by engineer. */
+"Next" = "下一步";
+
+/* No comment provided by engineer. */
+"Nice" = "良好";
+
+/* No comment provided by engineer. */
+"No" = "否";
+
+/* No comment provided by engineer. */
+"No Active Subscription" = "无有效订阅";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "未找到关于此被阻止域的其他信息。";
+
+/* No comment provided by engineer. */
+"No Block Lists Enabled" = "未启用阻止列表";
+
+/* No comment provided by engineer. */
+"No Info Found" = "未找到信息";
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "无互联网连接";
+
+/* No comment provided by engineer. */
+"No stored API credentials found. Please contact team@lockdownprivacy.com about this error." = "未找到存储的 API 凭证。关于此错误，请与 team@lockdownprivacy.com 联系。";
+
+/* No comment provided by engineer. */
+"Not Blocked" = "未阻止";
+
+/* No comment provided by engineer. */
+"Not Now" = "以后再说";
+
+/* No comment provided by engineer. */
+"Not Whitelisted" = "未列入白名单";
+
+/* No comment provided by engineer. */
+"Notifications: Off" = "通知：关闭";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "通知：打开";
+
+/* No comment provided by engineer. */
+"OK" = "确定";
+
+/* No comment provided by engineer. */
+"Okay" = "确定";
+
+/* No comment provided by engineer. */
+"one lowercase letter" = "一个小写字母";
+
+/* No comment provided by engineer. */
+"one number" = "一个数字";
+
+/* No comment provided by engineer. */
+"one symbol" = "一个符号";
+
+/* No comment provided by engineer. */
+"one uppercase letter" = "一个大写字母";
+
+/* No comment provided by engineer. */
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "密码必须至少为 8 个字符，至少包含一个大写字母、一个小写字母、一个数字和一个符号。";
+
+/* No comment provided by engineer. */
+"Plan: Annual Pro" = "套餐：年度专业版";
+
+/* No comment provided by engineer. */
+"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "请检查您的互联网连接。如果这种情况仍然存在，请联系 team@lockdownprivacy.com。\n\n错误描述\n";
+
+/* No comment provided by engineer. */
+"Please contact team@lockdownprivacy.com.\n\nError details:\n" = "请联系 team@lockdownprivacy.com。\n\n错误详情：\n";
+
+/* No comment provided by engineer. */
+"Please email team@lockdownprivacy.com with the following Error Code " = "请发送电子邮件至 team@lockdownprivacy.com 并附上以下错误代码";
+
+/* No comment provided by engineer. */
+"Please first go to your iOS Settings > Notifications > Lockdown to enable notifications" = "请先进入您的 iOS 设置 > 通知 > Lockdown 以启用通知";
+
+/* No comment provided by engineer. */
+"Please make sure you have added an e-mail account to your iOS device and try again." = "请确保您已将电子邮件帐户添加到您的 iOS 设备，然后重试。";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "请确保您的互联网连接处于活动状态，并且您有有效的订阅。否则，请开始您的免费试用，或发送电子邮件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: " = "请确保您的互联网连接处于活动状态。如果此错误仍然存在，请发送电子邮件至 team@lockdownprivacy.com，并附上以下错误消息：";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to activate the Secure Tunnel." = "请续订您的订阅以激活 Secure Tunnel。";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to re-activate the VPN." = "请续订您的订阅以重新激活 VPN。";
+
+/* No comment provided by engineer. */
+"Please tap Block List and enable at least one block list to activate Firewall." = "请点击\"阻止列表\"，并启用至少一个阻止列表以激活防火墙。";
+
+/* No comment provided by engineer. */
+"Pre-configured Block Lists" = "预配置的阻止列表";
+
+/* No comment provided by engineer. */
+"Pre-configured Suggestions" = "预配置建议";
+
+/* No comment provided by engineer. */
+"Precise location exposed" = "已暴露的精确位置";
+
+/* No comment provided by engineer. */
+"Press & Media" = "新闻与媒体";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "隐私政策";
+
+/* The title of a list of trackers */
+"Ransomware" = "勒索软件";
+
+/* No comment provided by engineer. */
+"Re-send" = "重新发送";
+
+/* No comment provided by engineer. */
+"Readable browsing and data" = "可读的浏览和数据";
+
+/* No comment provided by engineer. */
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "请务必先查看我们的常见问题解答，以获取最常见问题的答案。\n\n如果那里没有答案，我们很乐意通过电子邮件提供支持并获取反馈。";
+
+/* The title of a list of trackers */
+"Reporting" = "报告";
+
+/* No comment provided by engineer. */
+"Secure Tunnel VPN" = "Secure Tunnel VPN";
+
+/* No comment provided by engineer. */
+"See live metrics for how many bad connections Firewall has blocked." = "查看实时指标，了解防火墙已阻止的不良连接数量。";
+
+/* No comment provided by engineer. */
+"Settings" = "设置";
+
+/* No comment provided by engineer. */
+"Share your anonymized metrics and show other people how to block invasive tracking." = "分享您的匿名指标，并向他人展示如何阻止侵入性跟踪。";
+
+/* No comment provided by engineer. */
+"Share Your Stats" = "分享您的统计数据";
+
+/* No comment provided by engineer. */
+"SHOW" = "显示";
+
+/* No comment provided by engineer. */
+"Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step." = "显示当前应用的侵入性有多强，并帮助他人阻止追踪器和恶意软件。\n\n不会显示您的阻止日志 - 仅显示上图。在下一步中选择分享位置。";
+
+/* No comment provided by engineer. */
+"Sign Out" = "注销";
+
+/* No comment provided by engineer. */
+"Sign Out?" = "注销？";
+
+/* No comment provided by engineer. */
+"Sign Up  |  Sign In" = "注册  |  登录";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "在下方注册以解锁 Lockdown 帐户的福利。";
+
+/* No comment provided by engineer. */
+"Signed In" = "已登录";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "已成功注销。";
+
+/* No comment provided by engineer. */
+"Singapore" = "新加坡";
+
+/* No comment provided by engineer. */
+"Skip Trial" = "跳过试用";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "Snapchat 追踪器";
+
+/* No comment provided by engineer. */
+"South Korea" = "韩国";
+
+/* No comment provided by engineer. */
+"Stay Protected" = "继续受到保护";
+
+/* No comment provided by engineer. */
+"Subscription Expired" = "订阅已过期";
+
+/* No comment provided by engineer. */
+"Success" = "成功";
+
+/* No comment provided by engineer. */
+"Success!" = "成功！";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "已成功将您的电子邮件确认重新发送至 ";
+
+/* No comment provided by engineer. */
+"Support | Feedback" = "支持 | 反馈";
+
+/* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "点击以激活 Lockdown Firewall 并更新至最新的阻止列表。";
+
+/* No comment provided by engineer. */
+"Tap to see a demo of how Secure Tunnel protects and anonymizes you." = "点击查看演示，了解 Secure Tunnel 如何保护您并让您匿名。";
+
+/* No comment provided by engineer. */
+"Tap to see the blocked tracking attempts." = "点击查看被阻止的跟踪尝试。";
+
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "点击查看它们是何方神圣。";
+
+/* No comment provided by engineer. */
+"Terms" = "术语";
+
+/* No comment provided by engineer. */
+"Thanks for helping to increase privacy and tracking awareness." = "感谢您帮助人们提高隐私和反跟踪意识。";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "阻止日志可以手动清除或禁用。禁用阻止日志只会禁用连接日志 - 仍会显示跟踪尝试的次数。";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "要完成注册，请点击我们发送的确认链接";
+
+/* No comment provided by engineer. */
+"To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder." = "要完成注册，请点击我们刚发送的电子邮件中的确认链接。如果您没有看到该电子邮件，请检查它是否卡在您的垃圾邮件文件夹中。";
+
+/* No comment provided by engineer. */
+"To see this tutorial again, open the Account tab." = "若要再次查看本教程，请打开\"帐户\"选项卡。";
+
+/* No comment provided by engineer. */
+"To: joe@email.com\nRe: Q4 2019 Finance Review" = "收件人：joe@email.com\n回复：2019 年第四季度财务回顾";
+
+/* No comment provided by engineer. */
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "现已在您的所有应用（甚至 Safari 之外的应用）中阻止追踪器、广告和其他恶意脚本。\n\n通过 Secure Tunnel 最大限度地保护您的隐私：它可以保护连接，让您匿名浏览，并隐藏您的位置。";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "本周的跟踪尝试。点击以更新至最新的阻止列表。";
+
+/* No comment provided by engineer. */
+"Tunnel" = "隧道";
+
+/* No comment provided by engineer. */
+"Tunnel Off" = "隧道关闭";
+
+/* No comment provided by engineer. */
+"Tunnel On" = "隧道打开";
+
+/* No comment provided by engineer. */
+"Tutorial" = "教程";
+
+/* No comment provided by engineer. */
+"Unique IP address broadcasted" = "广播的唯一 IP 地址";
+
+/* No comment provided by engineer. */
+"United Kingdom" = "英国";
+
+/* No comment provided by engineer. */
+"United States - East" = "美国 - 东部";
+
+/* No comment provided by engineer. */
+"United States - West" = "美国 - 西部";
+
+/* No comment provided by engineer. */
+"Update Success" = "更新成功";
+
+/* No comment provided by engineer. */
+"Updating Block Lists" = "正在更新阻止列表";
+
+/* No comment provided by engineer. */
+"USA East" = "美国东部";
+
+/* No comment provided by engineer. */
+"USA West" = "美国西部";
+
+/* No comment provided by engineer. */
+"View FAQs" = "查看常见问题";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "查看或升级套餐";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "查看升级选项";
+
+/* No comment provided by engineer. */
+"VPN Active" = "VPN 已激活";
+
+/* No comment provided by engineer. */
+"VPN Not Active" = "VPN 未激活";
+
+/* No comment provided by engineer. */
+"VPN Subscription Expired" = "VPN 订阅已过期";
+
+/* No comment provided by engineer. */
+"Website" = "网站";
+
+/* No comment provided by engineer. */
+"Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue." = "欢迎观看 Lockdown 教程。\n\n点击任意位置以继续。";
+
+/* No comment provided by engineer. */
+"What is VPN?" = "什么是 VPN？";
+
+/* No comment provided by engineer. */
+"Whitelisted" = "已列入白名单";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown" = "为什么要信任 Lockdown";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown?" = "为什么要信任 Lockdown？";
+
+/* No comment provided by engineer. */
+"Why Use VPN?" = "为什么使用 VPN？";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "您阻止了";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "您阻止了此域，它在您的自定义受阻止域中。";
+
+/* No comment provided by engineer. */
+"You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)" = "如果您想分享，可在稍后点击此按钮。\n（点击任意位置即可取消）";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "您将退出此帐户。";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "您必须稍后在此处重新启用它，才能重新开始看到阻止记录。";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "您刚刚阻止了 100 次跟踪尝试！";
+
+/* No comment provided by engineer. */
+"Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements." = "已确认您的帐户，您现已登录。您将获得最新阻止列表，可以访问 Lockdown Mac，并获悉重要公告。";
+
+/* No comment provided by engineer. */
+"Your Settings" = "您的设置";
+
+/* No comment provided by engineer. */
+"⚠️ Not Signed In" = "⚠️ 未登录";
+
+/* No comment provided by engineer. */
+"🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 防火墙已激活🎊🎉";
+
+/* No comment provided by engineer. */
+"Error while trying to confirm your account:" = "尝试确认您的帐户时出错：";
+
+/* No comment provided by engineer. */
+"If this persists, please contact team@lockdownprivacy.com." = "如果这种情况仍然存在，请联系 team@lockdownprivacy.com。";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "添加一个要阻止的域";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "阻止您的所有应用连接到以下域和网站。为您的方便起见，Lockdown 还提供了预配置建议。";
+
+/* No comment provided by engineer. */
+"Block Lists" = "阻止列表";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "配置阻止";
+
+/* No comment provided by engineer. */
+"Custom" = "自定义";
+
+/* No comment provided by engineer. */
+"SAVE" = "保存";
+
+/* No comment provided by engineer. */
+"Access to cloud service information is not allowed" = "不允许访问云服务信息";
+
+/* No comment provided by engineer. */
+"Could not connect to the network" = "无法连接到网络";
+
+/* No comment provided by engineer. */
+"Not allowed to make the payment" = "不允许付款";
+
+/* No comment provided by engineer. */
+"Payment was cancelled" = "付款已取消";
+
+/* No comment provided by engineer. */
+"The device is not allowed to make the payment" = "设备不允许付款";
+
+/* No comment provided by engineer. */
+"The product is not available in the current storefront" = "产品在当前店面中不可用";
+
+/* No comment provided by engineer. */
+"The purchase identifier was invalid" = "购买标识符无效";
+
+/* No comment provided by engineer. */
+"Unknown error. Please contact support at team@lockdownprivacy.com." = "未知错误。请通过 team@lockdownprivacy.com 联系支持人员。";
+
+/* No comment provided by engineer. */
+"User has revoked permission to use this cloud service" = "用户已撤销使用此云服务的权限";
+
+/* No comment provided by engineer. */
+"Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "请确认您有有效订阅。如果您尝试从同一帐户共享订阅，则需要使用相同的电子邮件地址登录。否则，请开始您的免费试用，或发送电子邮件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "应用内购买已被禁用。请进入设置应用 -> 屏幕时间 -> 限制 -> 应用商店 -> 应用内购买，允许应用内购买。然后重试。";
+
+/* No comment provided by engineer. */
+"Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "不允许付款。\n不允许此设备进行购买，或者已禁用应用内购买。
+请进入设置应用 -> 屏幕时间 -> 限制 -> 应用商店 - > 应用内购买，允许应用内购买。然后重试。";
+
+/* No comment provided by engineer. */
+"Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "请确保您有有效订阅。如果你尝试从同一帐户共享订阅，则需要使用相同的电子邮件地址登录。否则，请开始您的免费试用，或发送电子邮件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "升级套餐";
+
+/* The title of a list of trackers */
+"Amazon Trackers" = "亚马逊追踪器";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "简单而强大";
+"onboarding_lockdown_stops_trackers" = "Lockdown 可以阻止追踪器、恶意软件和其他恶意代理访问您的数据。";
+"onboarding_worlds_first_on_device" = "世界首创的设备端应用";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "开源防火墙和安全隧道 VPN，为您的所有应用和网页浏览保驾护航。";
+"onboarding_staying_protected_is_easy_with_lockdown" = "使用 Lockdown 保护数据轻松无比";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "使用 Secure Tunnel VPN 保持匿名";
+"onboarding_no_logs_fast_and_fully_audited" = "无日志、速度超快、隐私至上的 VPN。唯一一个证明其隐私政策，并经安全专家全面审计的 VPN。";
+"onboarding_take_control_of_who_you_block" = "使用我们直观好用的\n阻止列表创建工具";
+"onboarding_when_using_our_intuitive_blocklists" = "轻松调整您要阻止的人。";
+"onboarding_stay_protected" = "继续受到保护！";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "获取每周摘要和阻止列表更新。";
+"onboarding_over_1_billion_trackers_blocked" = "已阻止逾 10 亿追踪器";
+"onboarding_used_by_more_than_1_million" = "拥有逾百万注重隐私的用户。";
+"onboarding_sign_up" = "注册";
+"onboarding_login" = "登录";
+"continue" = "继续";
+"plan_annual" = "年度套餐";
+"plan_monthly" = "月度套餐";
+
+// MARK: - SignUpViewController
+"welcome" = "欢迎";
+"already_have_account_login" = "已有一个帐户？登录";
+"sign_up_to_access_new_block_lists_from_trackers" = "注册以访问新的追踪器阻止列表";
+"already_have_account_login_below" = "已有 Lockdown 帐户？\n在下方登录。";
+"forgot_password" = "忘记密码";
+"email" = "电子邮件";
+"password" = "密码";
+"access_our_curated_block_lists_and_build_your_own" = "访问我们预设的阻止列表以及建立您自己的阻止列表";
+"access_lockdown_across_all_your_devices" = "在您的所有设备上访问 Lockdown";
+"firewall_and_vpn_support" = "防火墙和 VPN 支持";
+"by_continuing_you_agree_with_our" = "继续即表明您同意我们的";
+"and" = "和";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "随时了解最新动态";
+"once_a_week_helpful_reminders" = "一周一次的有用安全提醒以及如何充分利用它。";
+"enable_notifications" = "启用通知";
+"maybe_later" = "以后再说";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "检查字段";
+"email_and_password_must_not_be_empty" = "电子邮件和密码不能为空";
+"Success! 🎉" = "成功！🎉";
+"error_signing_in" = "登录错误";
+"confirm_your_email" = "确认您的电子邮件";
+"you_have_successfully_sign_in" = "您已成功登录。";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "我用 Lockdown 阻止了 %@ 个追踪器、广告和恶意软件，该防火墙可阻止您的所有应用程序中的多余连接。\n请在 lockdownprivacy.com 免费获取。";
+"check_email" = "请检查电子邮件";
+"we_have_sent_a_reset_password_email" = "我们给您发送了一封重置密码电子邮件。请务必检查所有垃圾邮件文件夹，因为它可能会卡在那里。";
+"since_date" = "自从 %@";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "立即开始试用即可获得完整功能";
+"restore_purchase" = "恢复购买";
+"terms_of_service" = "服务条款";
+"CHOOSE_YOUR_PLAN" = "选择您的套餐";
+"skip" = "跳过";
+"save_annual_vpn_subscription" = "优惠约 50%";
+"save_annual_pro_subscription" = "优惠约 30%";
+"current_plan" = "当前套餐";
+"feature_table_column" = "特点";
+"feature_level_table_column" = "免费";
+"stops_ads_and_hidden_trackers" = "阻止广告和隐藏追踪器";
+"blocks_badware_in_all_your_apps" = "阻止您的所有应用中的恶意软件";
+"access_our_curated_block_lists" = "访问我们预设的阻止列表";
+"build_your_custom_block_lists" = "使用您的自定义阻止列表";
+"stops_browsing_history_tracking" = "阻止浏览历史记录跟踪";
+"anonymizing_your_browsing" = "匿名您的浏览";
+"hides_your_location_and_ip" = "隐藏您的位置和 IP";
+"lets_you_change_your_ip_to_other_region" = "让您将自己的 IP 更改为\n其他地区";
+"app_for_iphone_plus_ipad" = "适用于 iPhone + iPad 的应用";
+"app_for_mac" = "适用于 Mac 的应用";
+"year_after_slash" = "年";
+"month_after_slash" = "月";
+
+// MARK: - Delete My Account
+"delete_account" = "删除帐户";
+"delete_my_account" = "删除我的帐户";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "如果继续，您就会提交一项请求，从而删除您的整个帐户记录，以及相关个人数据。一旦帐户被删除，您将通过您的帐户电子邮件收到有关这些变更的通知。请注意，您将丢失您的所有设置，包括升级选项，且将无法使用同一电子邮件地址创建帐户。";
+"proceed" = "继续";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "无效电子邮件地址";
+"please_fill_in_your_email" = "请填写您的电子邮件。";
+"you_entered_con_instead_of_com" = "您输入了 .con 而不是 .com。";
+"no_valid_email_address_detected" = "检测到无效电子邮件地址。";
+"too_many_email_addresses_entered" = "输入的电子邮件地址过多。";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "分钟";
+"seconds_genitive" = "秒钟";
+"lockdowns_first_christmas_sale" = "Lockdown首次圣诞节销售";
+"subscribe_now" = "立即订阅";
+
+// MARK: - Code Redemption
+"redeem_code" = "兑换代码";
+"cannot_redeem_code" = "无法兑换代码";
+"the_code_could_not_be_redeemed" = "代码不能被兑换。";
+"congratulations_excl" = "恭喜！";
+"the_code_was_successfully_redeemed" = "已成功兑换代码。你可能需要重新启动应用才能让购买生效。";

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="Lockdown" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="btN-7v-Hno" id="Mh8-1w-iSB"/>
+                <outlet property="imageContentLeadingConstraint" destination="Qcn-Iy-m7l" id="l6h-FK-h0P"/>
+                <outlet property="imageContentTrailingConstraint" destination="I92-l9-L6Q" id="zAr-rP-pcA"/>
+                <outlet property="imageView" destination="jcG-YD-3KO" id="Giv-fg-BSl"/>
+                <outlet property="infoLabelStackView" destination="Jwd-H0-mBT" id="8h9-ay-KeJ"/>
+                <outlet property="leftTapGestureView" destination="c4b-K6-4Dr" id="d3Y-8r-JFX"/>
+                <outlet property="loginButton" destination="8CF-bq-CzW" id="lgI-Uj-ral"/>
+                <outlet property="progressBarStackView" destination="d3m-aG-2oi" id="oJx-KF-Ezn"/>
+                <outlet property="rightTapGestureView" destination="2Zu-oS-VFi" id="8mP-q4-i8M"/>
+                <outlet property="signUpButton" destination="AAa-QN-3Qa" id="A6G-OW-GWa"/>
+                <outlet property="titleLabel" destination="PPr-cP-aDd" id="F0b-Ra-Sh5"/>
+                <outlet property="videoContentBorderView" destination="ZJo-dT-0E1" id="I6Q-df-pIt"/>
+                <outlet property="videoContentVerticalCenterConstraint" destination="A3O-C7-HRl" id="2ii-1L-CDR"/>
+                <outlet property="videoContentView" destination="KTj-8b-UHk" id="53X-w6-Xdn"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JEE-W0-zgn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="d3m-aG-2oi">
+                    <rect key="frame" x="24" y="47" width="342" height="4"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="3G9-Vl-bdn">
+                            <rect key="frame" x="0.0" y="0.0" width="47" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="oYA-sO-1EJ">
+                            <rect key="frame" x="49" y="0.0" width="47.333333333333343" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sfo-be-M6D">
+                            <rect key="frame" x="98.333333333333329" y="0.0" width="46.999999999999986" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ldp-Bd-WcB">
+                            <rect key="frame" x="147.33333333333334" y="0.0" width="47.333333333333343" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J59-Qo-J2M">
+                            <rect key="frame" x="196.66666666666666" y="0.0" width="47" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q9N-rO-eqd">
+                            <rect key="frame" x="245.66666666666671" y="0.0" width="47.333333333333343" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tcb-Hv-4fZ">
+                            <rect key="frame" x="295" y="0.0" width="47" height="4"/>
+                            <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </progressView>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteLock" translatesAutoresizingMaskIntoConstraints="NO" id="qIn-3E-1tX">
+                    <rect key="frame" x="24" y="67" width="13" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="13" id="THX-hi-Hxh"/>
+                        <constraint firstAttribute="height" constant="17" id="weT-bu-SlL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lockdown Privacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkQ-h7-vc3">
+                    <rect key="frame" x="42.000000000000014" y="64" width="172.33333333333337" height="22"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Jwd-H0-mBT">
+                    <rect key="frame" x="25" y="96" width="342" height="77.666666666666686"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" text="Over 1 Billion Trackers Blocked" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="PPr-cP-aDd">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="32"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="No-logs, blazing-fast, privacy-first VPN. The only VPN to prove its Privacy Policy and be fully audited by security experts." textAlignment="natural" lineBreakMode="clip" numberOfLines="0" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="btN-7v-Hno">
+                            <rect key="frame" x="0.0" y="36" width="342" height="41.666666666666657"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="PPr-cP-aDd" secondAttribute="trailing" id="T3I-7H-jqH"/>
+                        <constraint firstItem="PPr-cP-aDd" firstAttribute="leading" secondItem="Jwd-H0-mBT" secondAttribute="leading" id="ytM-oS-Eoi"/>
+                    </constraints>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Onboarding_apple_logo" translatesAutoresizingMaskIntoConstraints="NO" id="jcG-YD-3KO">
+                    <rect key="frame" x="20" y="223.66666666666666" width="350" height="476.33333333333337"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="700" id="yKR-ID-FJK"/>
+                    </constraints>
+                </imageView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJo-dT-0E1">
+                    <rect key="frame" x="44" y="346.33333333333326" width="302" height="348.66666666666674"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTj-8b-UHk">
+                            <rect key="frame" x="8" y="8" width="286" height="332.66666666666669"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="KTj-8b-UHk" secondAttribute="bottom" constant="8" id="8aO-0r-YGb"/>
+                        <constraint firstAttribute="trailing" secondItem="KTj-8b-UHk" secondAttribute="trailing" constant="8" id="Kg7-oX-5AB"/>
+                        <constraint firstItem="KTj-8b-UHk" firstAttribute="leading" secondItem="ZJo-dT-0E1" secondAttribute="leading" constant="8" id="Wbb-22-Iz8"/>
+                        <constraint firstItem="KTj-8b-UHk" firstAttribute="top" secondItem="ZJo-dT-0E1" secondAttribute="top" constant="8" id="dbY-eA-BY1"/>
+                        <constraint firstAttribute="width" secondItem="ZJo-dT-0E1" secondAttribute="height" multiplier="284:328" id="gMx-Lh-Btb"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="yIm-IA-reA">
+                    <rect key="frame" x="24" y="750" width="342" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAa-QN-3Qa">
+                            <rect key="frame" x="0.0" y="0.0" width="165" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="Alo-uY-N8x"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Sign Up"/>
+                            <connections>
+                                <action selector="didTapSignUp:" destination="-1" eventType="touchUpInside" id="Z3h-t0-7pl"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CF-bq-CzW">
+                            <rect key="frame" x="177" y="0.0" width="165" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="CHP-zW-mvM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Login">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapLogin:" destination="-1" eventType="touchUpInside" id="TKz-QA-szw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="KqX-Fg-g37"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4b-K6-4Dr">
+                    <rect key="frame" x="0.0" y="84" width="80" height="666"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Zu-oS-VFi">
+                    <rect key="frame" x="310" y="84" width="80" height="666"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="Confirmed Blue"/>
+            <constraints>
+                <constraint firstItem="ZJo-dT-0E1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jwd-H0-mBT" secondAttribute="bottom" constant="20" id="4uh-0D-j1T"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yIm-IA-reA" secondAttribute="trailing" priority="999" constant="24" id="5iO-j1-Sfg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jwd-H0-mBT" secondAttribute="trailing" constant="23" id="5mH-pr-Vec"/>
+                <constraint firstItem="yIm-IA-reA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="999" constant="24" id="7ap-Xx-Uif"/>
+                <constraint firstItem="jcG-YD-3KO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="750" id="8N0-6e-aUm"/>
+                <constraint firstItem="ZJo-dT-0E1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="750" id="A3O-C7-HRl"/>
+                <constraint firstItem="Jwd-H0-mBT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="By6-qm-mVL"/>
+                <constraint firstAttribute="trailing" secondItem="Jwd-H0-mBT" secondAttribute="trailing" constant="23" id="F7q-TX-zD9"/>
+                <constraint firstItem="2Zu-oS-VFi" firstAttribute="width" secondItem="c4b-K6-4Dr" secondAttribute="width" id="FV9-Qf-g64"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jcG-YD-3KO" secondAttribute="trailing" constant="20" id="I92-l9-L6Q"/>
+                <constraint firstItem="ZJo-dT-0E1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="999" constant="44" id="Ixd-Js-PCs"/>
+                <constraint firstItem="2Zu-oS-VFi" firstAttribute="top" secondItem="c4b-K6-4Dr" secondAttribute="top" id="J73-W9-PE1"/>
+                <constraint firstItem="2Zu-oS-VFi" firstAttribute="bottom" secondItem="c4b-K6-4Dr" secondAttribute="bottom" id="Jib-OF-a0g"/>
+                <constraint firstItem="jcG-YD-3KO" firstAttribute="top" secondItem="Jwd-H0-mBT" secondAttribute="bottom" priority="750" constant="50" id="K5O-le-QQ5"/>
+                <constraint firstItem="HkQ-h7-vc3" firstAttribute="leading" secondItem="qIn-3E-1tX" secondAttribute="trailing" constant="5" id="NLH-86-yKT"/>
+                <constraint firstItem="jcG-YD-3KO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Qcn-Iy-m7l"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="d3m-aG-2oi" secondAttribute="trailing" constant="24" id="Qw0-Yt-ajH"/>
+                <constraint firstItem="d3m-aG-2oi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="SZ0-G2-9CY"/>
+                <constraint firstItem="c4b-K6-4Dr" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.205128" id="VXX-F9-MBm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZJo-dT-0E1" secondAttribute="trailing" priority="999" constant="44" id="Vwl-fh-lbs"/>
+                <constraint firstItem="qIn-3E-1tX" firstAttribute="leading" secondItem="d3m-aG-2oi" secondAttribute="leading" id="X4q-HZ-ZSd"/>
+                <constraint firstItem="qIn-3E-1tX" firstAttribute="top" secondItem="d3m-aG-2oi" secondAttribute="bottom" constant="16" id="Xuy-kD-swh"/>
+                <constraint firstItem="yIm-IA-reA" firstAttribute="top" secondItem="ZJo-dT-0E1" secondAttribute="bottom" priority="752" constant="55" id="aPE-Zx-VSO"/>
+                <constraint firstItem="yIm-IA-reA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="caR-Jw-f3K"/>
+                <constraint firstItem="HkQ-h7-vc3" firstAttribute="centerY" secondItem="qIn-3E-1tX" secondAttribute="centerY" constant="-0.5" id="dNJ-RO-i3b"/>
+                <constraint firstItem="ZJo-dT-0E1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fPS-jN-etb"/>
+                <constraint firstItem="ZJo-dT-0E1" firstAttribute="height" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.55" id="gQd-Dn-57o"/>
+                <constraint firstItem="yIm-IA-reA" firstAttribute="top" secondItem="c4b-K6-4Dr" secondAttribute="bottom" id="hNh-nR-vaB"/>
+                <constraint firstItem="c4b-K6-4Dr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iOc-ar-c0a"/>
+                <constraint firstAttribute="bottom" secondItem="yIm-IA-reA" secondAttribute="bottom" constant="46" id="iQZ-lL-TWd"/>
+                <constraint firstItem="Jwd-H0-mBT" firstAttribute="top" secondItem="HkQ-h7-vc3" secondAttribute="bottom" constant="10" id="o5T-Yc-YVd"/>
+                <constraint firstItem="yIm-IA-reA" firstAttribute="top" secondItem="jcG-YD-3KO" secondAttribute="bottom" constant="50" id="plW-gH-GHT"/>
+                <constraint firstItem="c4b-K6-4Dr" firstAttribute="top" secondItem="qIn-3E-1tX" secondAttribute="bottom" id="vUF-7c-4ut"/>
+                <constraint firstItem="d3m-aG-2oi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="vUo-Vp-jMO"/>
+                <constraint firstItem="2Zu-oS-VFi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wSD-kV-NKw"/>
+            </constraints>
+            <point key="canvasLocation" x="-69.230769230769226" y="20.616113744075829"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Onboarding_apple_logo" width="817" height="557"/>
+        <image name="WhiteLock" width="18" height="22"/>
+        <namedColor name="Confirmed Blue">
+            <color red="0.0" green="0.67450980392156867" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

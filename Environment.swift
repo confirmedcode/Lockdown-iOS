@@ -9,11 +9,35 @@
 import Foundation
 import CocoaLumberjackSwift
 
-let vpnSourceID = "-111818" //getEnvironmentVariable(key: "vpnSourceID", default: "-111818")
-let vpnDomain = "confirmedvpn.com" //getEnvironmentVariable(key: "vpnDomain", default: "confirmedvpn.com")
+// getEnvironmentVariable(key: "vpnSourceID", default: "-111818")
+let vpnSourceID: String = {
+    #if DEBUG
+        return "-111618"
+    #else
+        return "-111818"
+    #endif
+}()
+
+// getEnvironmentVariable(key: "vpnDomain", default: "confirmedvpn.com")
+let vpnDomain: String = {
+    #if DEBUG
+        return "trusty-ap.science"
+    #else
+        return "confirmedvpn.com"
+    #endif
+}()
+
 let vpnRemoteIdentifier = "www" + vpnSourceID + "." + vpnDomain
 
-let mainDomain = "confirmedvpn.com" //getEnvironmentVariable(key: "mainDomain", default: "confirmedvpn.com")
+// getEnvironmentVariable(key: "mainDomain", default: "confirmedvpn.com")
+let mainDomain: String = {
+    #if DEBUG
+        return "trusty-ap.science"
+    #else
+        return "confirmedvpn.com"
+    #endif
+}()
+
 let mainURL = "https://www." + mainDomain
 
 let testFirewallDomain = "example.com"

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>INEnums</key>
+	<array/>
+	<key>INIntentDefinitionModelVersion</key>
+	<string>1.2</string>
+	<key>INIntentDefinitionNamespace</key>
+	<string>1KWK8L</string>
+	<key>INIntentDefinitionSystemVersion</key>
+	<string>22A400</string>
+	<key>INIntentDefinitionToolsBuildVersion</key>
+	<string>14B47b</string>
+	<key>INIntentDefinitionToolsVersion</key>
+	<string>14.1</string>
+	<key>INIntents</key>
+	<array>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>generic</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDefaultImageName</key>
+			<string>lockdown_icon</string>
+			<key>INIntentDescription</key>
+			<string>Turns off Lockdown's Secure Tunnel (VPN)</string>
+			<key>INIntentDescriptionID</key>
+			<string>T5pK8z</string>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Disable VPN</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>RTZHc5</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>DisableVPN</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>Turns off Lockdown's VPN</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>UeXEBO</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Disable VPN</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>LE8gnO</string>
+				</dict>
+			</dict>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>VPN successfully disabled!</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>aMNv5r</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>VPN successfully disabled!</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>4ANXnv</string>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Sorry, VPN is already disabled.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>bOKxTL</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Sorry, VPN is already disabled.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>bBQS0s</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Disable VPN</string>
+			<key>INIntentTitleID</key>
+			<string>idl2ou</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>generic</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDefaultImageName</key>
+			<string>lockdown_icon</string>
+			<key>INIntentDescription</key>
+			<string>Turns on Lockdown's Secure Tunnel (VPN)</string>
+			<key>INIntentDescriptionID</key>
+			<string>HpId4o</string>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Enable VPN</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>qT3LPw</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>EnableVPN</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>Turns on Lockdown's VPN</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>FeCNfk</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Enable VPN</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>RscSJF</string>
+				</dict>
+			</dict>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>VPN successfully enabled!</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>1t7xfA</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>VPN successfully enabled!</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>PvV4bc</string>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Sorry, VPN is already enabled.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>LXbqDZ</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Sorry, VPN is already enabled.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>e4VeOj</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>VPN is not available. Subscribe to one of our plans to access VPN.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>8X2Bt8</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>VPN is not available. Subscribe to one of our plans to access VPN.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>EwLFUJ</string>
+						<key>INIntentResponseCodeName</key>
+						<string>notVpnSubscriber</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>1</integer>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Enable VPN</string>
+			<key>INIntentTitleID</key>
+			<string>C99L7t</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Do</string>
+		</dict>
+	</array>
+	<key>INTypes</key>
+	<array/>
+</dict>
+</plist>

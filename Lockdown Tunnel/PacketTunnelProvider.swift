@@ -12,13 +12,13 @@ var latestBlockedDomains = getAllBlockedDomains()
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
-    let proxyServerPort: UInt16 = 9090;
-    let proxyServerAddress = "127.0.0.1";
+    let proxyServerPort: UInt16 = 9090
+    let proxyServerAddress = "127.0.0.1"
     var proxyServer: GCDHTTPProxyServer!
     
-    //MARK: - OVERRIDES
+    // MARK: - OVERRIDES
     
-    override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+    override func startTunnel(options: [String: NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         if proxyServer != nil {
             proxyServer.stop()
         }
@@ -28,19 +28,20 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         self.connect(options: options, completionHandler: completionHandler)
     }
     
-    private func connect(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+    private func connect(options: [String: NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: proxyServerAddress)
         settings.mtu = NSNumber(value: 1500)
         
         let proxySettings = NEProxySettings()
-        proxySettings.httpEnabled = true;
+        proxySettings.httpEnabled = true
         proxySettings.httpServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
-        proxySettings.httpsEnabled = true;
+        proxySettings.httpsEnabled = true
         proxySettings.httpsServer = NEProxyServer(address: proxyServerAddress, port: Int(proxyServerPort))
-        proxySettings.excludeSimpleHostnames = false;
+        proxySettings.excludeSimpleHostnames = false
         proxySettings.exceptionList = []
-        var combined: Array<String> = getAllBlockedDomains() + [testFirewallDomain] // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
-        combined = combined + getAllWhitelistedDomains()
+        // probably not blocking whitelisted so this is safe, example.com is used to ensure firewall is still working
+        var combined: [String] = getAllBlockedDomains() + [testFirewallDomain]
+        combined += getAllWhitelistedDomains()
         if combined.count <= 1 {
             #if DEBUG
             debugLog("PTP: COMBINED BLOCK LIST IS INVALID, LIKELY JUST RESTARTED")
@@ -52,7 +53,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.matchDomains = combined
         
         settings.dnsSettings = NEDNSSettings(servers: ["127.0.0.1"])
-        settings.proxySettings = proxySettings;
+        settings.proxySettings = proxySettings
         RawSocketFactory.TunnelProvider = self
         
         self.setTunnelNetworkSettings(settings, completionHandler: { error in

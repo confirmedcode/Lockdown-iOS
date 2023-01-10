@@ -1,0 +1,809 @@
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = " и";
+
+/* refers to number of connections blocked today, as in '34 Blocked Today' */
+" Blocked Today" = " Заблокировано сегодня";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"" = " не является допустимым объектом. Указывайте только домен, который хотите добавить в белый список. Например, \«google.com\» без \«https://\»";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"" = " не является допустимым объектом. Указывайте только домен, который хотите заблокировать. Например, \«google.com\» без \«https://\»";
+
+/* No comment provided by engineer. */
+" Off" = " Откл.";
+
+/* No comment provided by engineer. */
+" On" = " Вкл.";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " трекеры, рекламу и вредоносное ПО с Lockdown, брандмауэром, который блокирует нежелательные соединения во всех ваших приложениях. Скачайте его бесплатно на сайте lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"1 Week Free" = "1 неделя бесплатно";
+
+/* No comment provided by engineer. */
+"\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block." = "Функция \«Чёрный список\» позволяет выбрать, какие объекты вы хотите заблокировать (напр., Facebook, провокационные ссылки и т. д.). Вы также можете самостоятельно указать заблокированные домены.";
+
+/* No comment provided by engineer. */
+"\"iOS Annual\" is your current plan" = "Ваш текущий тарифный план - \«iOS (ежегодный)\»";
+
+/* No comment provided by engineer. */
+"\"iOS Monthly\" is your current plan" = "Ваш текущий тарифный план - \«iOS (ежемесячный)\»";
+
+/* No comment provided by engineer. */
+"\"Pro Annual\" is your current plan" = "Ваш текущий тарифный план - \«PRO (ежегодный)\»";
+
+/* No comment provided by engineer. */
+"\"Pro Monthly\" is your current plan" = "Ваш текущий тарифный план - \«PRO (ежемесячный)\»";
+
+/* No comment provided by engineer. */
+"\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you." = "Функция \«Открыть журнал\» показывает, какие именно соединения были заблокированы в предыдущий день. В полночь журнал очищается. Он хранится на вашем устройстве, поэтому просмотреть его можете только вы.";
+
+/* No comment provided by engineer. */
+"\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n Если ошибка сохраняется, напишите нам на team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n Если проблема сохраняется, напишите нам на team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"About Lockdown VPN" = "О Lockdown VPN";
+
+/* No comment provided by engineer. */
+"Activate Firewall with this button." = "Активируйте брандмауэр, нажав на эту кнопку.";
+
+/* No comment provided by engineer. */
+"Activating" = "Активация";
+
+/* No comment provided by engineer. */
+"Anonymize IP against trackers" = "Скрывайте IP-адрес для борьбы с трекерами";
+
+/* No comment provided by engineer. */
+"Apple Outage" = "Сбой в работе Apple";
+
+/* No comment provided by engineer. */
+"at least 8 characters" = "не меньше 8 знаков";
+
+/* No comment provided by engineer. */
+"Audit Reports" = "Отчёты о проверке";
+
+/* No comment provided by engineer. */
+"Australia" = "Австралия";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Проверьте, не попало ли письмо в папку «Спам».\n\nВы также можете повторно запросить письмо с подтверждением.";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "чёрный список";
+
+/* No comment provided by engineer. */
+"Blocked" = "Заблокировано";
+
+/* No comment provided by engineer. */
+"Blocked Domains" = "Заблокированные домены";
+
+/* No comment provided by engineer. */
+"Blocked Today" = "Заблокировано сегодня";
+
+/* No comment provided by engineer. */
+"Blocked Trackers Summary" = "Отчёт о заблокированных трекерах";
+
+/* No comment provided by engineer. */
+"Brazil" = "Бразилия";
+
+/* No comment provided by engineer. */
+"Canada" = "Канада";
+
+/* No comment provided by engineer. */
+"Cancel" = "Отменить";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "Проверьте свой почтовый ящик";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "Очистить журнал блокировок";
+
+/* The title of a list of trackers */
+"Clickbait" = "Провокационные ссылки";
+
+/* No comment provided by engineer. */
+"Confirm Email" = "Подтвердить адрес электронной почты";
+
+/* No comment provided by engineer. */
+"Confirmed Site" = "Подтверждённый сайт";
+
+/* No comment provided by engineer. */
+"Couldn't Find Your Email Client" = "Не удается найти ваш почтовый клиент";
+
+/* The title of a list of trackers */
+"Crypto Mining" = "Майнинг криптовалюты";
+
+/* No comment provided by engineer. */
+"Custom Settings (Advanced)" = "Пользовательские настройки (для опытных пользователей)";
+
+/* The title of a list of trackers */
+"Data Trackers" = "Трекеры данных";
+
+/* No comment provided by engineer. */
+"Deactivating" = "Деактивация";
+
+/* No comment provided by engineer. */
+"Disable" = "Отключить";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "Отключить журнал блокировок";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "Отключить журнал блокировок?";
+
+/* No comment provided by engineer. */
+"Done" = "Готово";
+
+/* No comment provided by engineer. */
+"Email Support" = "Написать в службу поддержки";
+
+/* The title of a list of trackers */
+"Email Trackers" = "Трекеры электронной почты";
+
+/* No comment provided by engineer. */
+"Email Us" = "Написать нам";
+
+/* No comment provided by engineer. */
+"Enable" = "Включить";
+
+/* No comment provided by engineer. */
+"Enable Block Log" = "Включить журнал блокировок";
+
+/* No comment provided by engineer. */
+"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "Включите уведомления, чтобы получать еженедельные отчёты и последние обновления чёрного списка. Вы можете в любое время отключить данную функцию.";
+
+/* No comment provided by engineer. */
+"Encrypted, private connections" = "Зашифрованные, частные соединения";
+
+/* No comment provided by engineer. */
+"Error Code " = "Код ошибки";
+
+/* No comment provided by engineer. */
+"Error Creating Email Account" = "Ошибка при создании электронной почты";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "Ошибка при загрузке тарифного плана: попробуйте ещё раз";
+
+/* No comment provided by engineer. */
+"Error Re-sending Email Confirmation" = "Ошибка при повторной отправке письма с подтверждением";
+
+/* No comment provided by engineer. */
+"Error Restoring Subscription" = "Ошибка при восстановлении подписки";
+
+/* No comment provided by engineer. */
+"Error Signing In To Verify Subscription" = "Ошибка при входе для подтверждения подписки";
+
+/* No comment provided by engineer. */
+"Error Starting Trial" = "Ошибка активации пробной версии";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "Facebook и WhatsApp";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "Трекеры Facebook";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "Не удалось повторно отправить письмо с подтверждением";
+
+/* No comment provided by engineer. */
+"FAQs" = "Вопросы и ответы";
+
+/* No comment provided by engineer. */
+"Firewall" = "Брандмауэр";
+
+/* No comment provided by engineer. */
+"Firewall Active" = "Брандмауэр активен";
+
+/* No comment provided by engineer. */
+"Firewall Not Active" = "Брандмауэр неактивен";
+
+/* No comment provided by engineer. */
+"FIREWALL OFF" = "БРАНДМАУЭР ОТКЛЮЧЕН";
+
+/* No comment provided by engineer. */
+"FIREWALL ON" = "БРАНДМАУЭР ВКЛЮЧЕН";
+
+/* No comment provided by engineer. */
+"For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP." = "Для максимальной конфиденциальности активируйте функцию Secure Tunnel, использующую шифрование на уровне банковских систем для защиты соединений, анонимизации ваших действий в сети и сокрытия вашего местоположения и IP-адреса.";
+
+/* No comment provided by engineer. */
+"France" = "Франция";
+
+/* The title of a list of trackers */
+"Game Marketing" = "Маркетинг видеоигр";
+
+/* The title of a list of trackers */
+"General Marketing" = "Общий маркетинг";
+
+/* No comment provided by engineer. */
+"Germany" = "Германия";
+
+/* The title of a list of trackers */
+"Google Shopping" = "Google Покупки";
+
+/* No comment provided by engineer. */
+"Hey Lockdown Team, \nI have a question, issue, or suggestion - " = " Привет, разработчики Lockdown,\nу меня есть вопрос, проблема или предложение -";
+
+/* No comment provided by engineer. */
+"Hi, my question or feedback for Lockdown is: " = " Привет, у меня есть вопрос или предложение для Lockdown:";
+
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "Я заблокировал";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "в настроенных вами заблокированных доменах.";
+
+/* No comment provided by engineer. */
+"India" = "Индия";
+
+/* No comment provided by engineer. */
+"Invalid domain" = "Недопустимый домен";
+
+/* No comment provided by engineer. */
+"IP: 18.132.2.87" = "IP: 18.132.2.87";
+
+/* No comment provided by engineer. */
+"IP: [Anonymized]" = "IP: [скрыт]";
+
+/* No comment provided by engineer. */
+"Ireland" = "Ирландия";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "является частью";
+
+/* No comment provided by engineer. */
+"Japan" = "Япония";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "Загрузка тарифного плана";
+
+/* No comment provided by engineer. */
+"Location changed and hidden" = "Местоположение изменено и скрыто";
+
+/* No comment provided by engineer. */
+"Location: 🇯🇵" = "Местоположение: 🇯🇵";
+
+/* No comment provided by engineer. */
+"Location: 🇺🇸" = "Местоположение: 🇺🇸";
+
+/* No comment provided by engineer. */
+"Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari." = "Lockdown Firewall блокирует вредоносные и сомнительные соединения во всех ваших приложениях, а не только в Safari.";
+
+/* No comment provided by engineer. */
+"Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts." = "Lockdown - это полностью прозрачный проект с открытым исходным кодом, а это значит, что каждый может посмотреть, что именно делает наше приложение. Кроме того, у Lockdown Firewall простая и строгая политика конфиденциальности, а Lockdown VPN проверяют эксперты по безопасности.";
+
+/* No comment provided by engineer. */
+"Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN." = "Lockdown VPN создан на базе Confirmed VPN - VPN с открытым исходным кодом, который не ведёт журналы и проверяется экспертами по безопасности.";
+
+/* The title of a list of trackers */
+"Marketing Trackers" = "Маркетинговые трекеры";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "Маркетинговые трекеры II";
+
+/* No comment provided by engineer. */
+"Network Error" = "Ошибка сети";
+
+/* No comment provided by engineer. */
+"Next" = "Далее";
+
+/* No comment provided by engineer. */
+"Nice" = "Отлично";
+
+/* No comment provided by engineer. */
+"No" = "Нет";
+
+/* No comment provided by engineer. */
+"No Active Subscription" = "Нет активной подписки";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "Дополнительная информация о заблокированном домене не найдена.";
+
+/* No comment provided by engineer. */
+"No Block Lists Enabled" = "Нет включённых чёрных списков";
+
+/* No comment provided by engineer. */
+"No Info Found" = "Информация не найдена";
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "Интернет-соединение отсутствует";
+
+/* No comment provided by engineer. */
+"No stored API credentials found. Please contact team@lockdownprivacy.com about this error." = "Не найдено сохранённых учетных данных API. Сообщите об этой ошибке по адресу team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Not Blocked" = "Не заблокировано";
+
+/* No comment provided by engineer. */
+"Not Now" = "Не сейчас";
+
+/* No comment provided by engineer. */
+"Not Whitelisted" = "Отсутствует в белом списке";
+
+/* No comment provided by engineer. */
+"Notifications: Off" = "Уведомления: откл.";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "Уведомления: вкл.";
+
+/* No comment provided by engineer. */
+"OK" = "Хорошо";
+
+/* No comment provided by engineer. */
+"Okay" = "Ладно";
+
+/* No comment provided by engineer. */
+"one lowercase letter" = "одну букву нижнего регистра";
+
+/* No comment provided by engineer. */
+"one number" = "одну цифра";
+
+/* No comment provided by engineer. */
+"one symbol" = "один символ";
+
+/* No comment provided by engineer. */
+"one uppercase letter" = "одну буква верхнего регистра";
+
+/* No comment provided by engineer. */
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Пароль должен быть не короче 8 знаков и должен содержать минимум одну букву верхнего регистра, одну букву нижнего регистра, одну цифру и один символ.";
+
+/* No comment provided by engineer. */
+"Plan: Annual Pro" = "Тарифный план: Pro (ежегодный)";
+
+/* No comment provided by engineer. */
+"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "Проверьте интернет-соединение. Если проблема сохраняется, напишите нам на team@lockdownprivacy.com.\n\nОписание ошибки\n";
+
+/* No comment provided by engineer. */
+"Please contact team@lockdownprivacy.com.\n\nError details:\n" = "Напишите нам на team@lockdownprivacy.com.\n\nПодробности об ошибке:\n";
+
+/* No comment provided by engineer. */
+"Please email team@lockdownprivacy.com with the following Error Code " = " Отправьте электронное письмо на team@lockdownprivacy.com с указанием кода ошибки";
+
+/* No comment provided by engineer. */
+"Please first go to your iOS Settings > Notifications > Lockdown to enable notifications" = "Для начала зайдите в настройки iOS > Уведомления > Lockdown, чтобы включить уведомления";
+
+/* No comment provided by engineer. */
+"Please make sure you have added an e-mail account to your iOS device and try again." = "Убедитесь, что вы добавили учетную запись с адресом электронной почты к устройству на базе iOS, и повторите попытку.";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "Убедитесь в наличии активного интернет-соединения и активной подписки. Также вы можете воспользоваться бесплатной пробной версией либо отправить электронное письмо на team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: " = "  Убедитесь в наличии активного интернет-соединения. Если проблема сохраняется, отправьте на team@lockdownprivacy.com электронное письмо со следующим сообщением об ошибке:";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to activate the Secure Tunnel." = "Продлите подписку, чтобы активировать Secure Tunnel.";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to re-activate the VPN." = "Продлите подписку, чтобы активировать VPN.";
+
+/* No comment provided by engineer. */
+"Please tap Block List and enable at least one block list to activate Firewall." = "Чтобы активировать брандмауэр, нажмите на «Чёрный список» и активируйте хотя бы один чёрный список.";
+
+/* No comment provided by engineer. */
+"Pre-configured Block Lists" = "Заранее настроенные чёрные списки";
+
+/* No comment provided by engineer. */
+"Pre-configured Suggestions" = "Шаблоны";
+
+/* No comment provided by engineer. */
+"Precise location exposed" = "Точное местоположение не защищено";
+
+/* No comment provided by engineer. */
+"Press & Media" = "Пресса и СМИ";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "Политика конфиденциальности";
+
+/* The title of a list of trackers */
+"Ransomware" = "Программы-вымогатели";
+
+/* No comment provided by engineer. */
+"Re-send" = "Отправить повторно";
+
+/* No comment provided by engineer. */
+"Readable browsing and data" = "Считываемые данные и история действий в сети";
+
+/* No comment provided by engineer. */
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Не забудьте сначала проверить раздел с ответами на самые часто задаваемые вопросы.\n\nЕсли вы не нашли там ответа, мы с радостью поможем вам и примем обратную связь по электронной почте.";
+
+/* The title of a list of trackers */
+"Reporting" = "Отправка отчёта";
+
+/* No comment provided by engineer. */
+"Secure Tunnel VPN" = "Secure Tunnel VPN";
+
+/* No comment provided by engineer. */
+"See live metrics for how many bad connections Firewall has blocked." = "Посмотрите обновляемую в реальном времени статистику о количестве заблокированных брандмауэром вредоносных соединений.";
+
+/* No comment provided by engineer. */
+"Settings" = "Настройки";
+
+/* No comment provided by engineer. */
+"Share your anonymized metrics and show other people how to block invasive tracking." = "Отправьте анонимную статистику и покажите другим людям, как блокировать назойливые трекеры.";
+
+/* No comment provided by engineer. */
+"Share Your Stats" = "Отправить статистику";
+
+/* No comment provided by engineer. */
+"SHOW" = "ПОКАЗАТЬ";
+
+/* No comment provided by engineer. */
+"Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step." = "Покажите, насколько назойливы современные приложения, и помогите другим людям блокировать трекеры и вредоносное ПО.\n\nВаш журнал блокировок показан не будет - только приведённое выше изображение. Далее вы можете выбрать, где вы хотите поделиться статистикой.";
+
+/* No comment provided by engineer. */
+"Sign Out" = "Выйти";
+
+/* No comment provided by engineer. */
+"Sign Out?" = "Выйти?";
+
+/* No comment provided by engineer. */
+"Sign Up  |  Sign In" = "Зарегистрироваться  |  Войти";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "Зарегистрируйтесь ниже, чтобы открыть для себя все преимущества учётной записи Lockdown.";
+
+/* No comment provided by engineer. */
+"Signed In" = "Осуществлён вход";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "Выход завершен успешно";
+
+/* No comment provided by engineer. */
+"Singapore" = "Сингапур";
+
+/* No comment provided by engineer. */
+"Skip Trial" = "Пропустить пробную версию";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "Трекеры Snapchat";
+
+/* No comment provided by engineer. */
+"South Korea" = "Южная Корея";
+
+/* No comment provided by engineer. */
+"Stay Protected" = "Оставайтесь под защитой";
+
+/* No comment provided by engineer. */
+"Subscription Expired" = "Подписка истекла";
+
+/* No comment provided by engineer. */
+"Success" = "Успешно";
+
+/* No comment provided by engineer. */
+"Success!" = "Успешно!";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "Электронное письмо с подтверждением успешно отправлено по адресу ";
+
+/* No comment provided by engineer. */
+"Support | Feedback" = "Поддержка | Обратная связь";
+
+/* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "Нажмите, чтобы активировать Lockdown Firewall и загрузить обновленные чёрные списки.";
+
+/* No comment provided by engineer. */
+"Tap to see a demo of how Secure Tunnel protects and anonymizes you." = "Нажмите, чтобы посмотреть, как Secure Tunnel защищает вас и сохраняет вашу анонимность.";
+
+/* No comment provided by engineer. */
+"Tap to see the blocked tracking attempts." = "Нажмите, чтобы посмотреть заблокированные попытки отслеживания.";
+
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "Нажмите, чтобы узнать подробности.";
+
+/* No comment provided by engineer. */
+"Terms" = "Условия";
+
+/* No comment provided by engineer. */
+"Thanks for helping to increase privacy and tracking awareness." = "Спасибо, что сообщаете нам о конфиденциальности и устройствах отслеживания.";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "Вы можете вручную очистить или отключить журнал блокировок. Отключение журнала блокировок отключает только журнал соединений. Количество попыток отслеживания по-прежнему будет отображаться.";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "Чтобы завершить регистрацию, нажмите на ссылку-подтверждение, отправленную по адресу";
+
+/* No comment provided by engineer. */
+"To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder." = "Чтобы завершить регистрацию, нажмите на ссылку-подтверждение в отправленном вам электронном письме. Если вы не можете его найти, проверьте папку «Спам».";
+
+/* No comment provided by engineer. */
+"To see this tutorial again, open the Account tab." = "Чтобы ещё раз ознакомиться с этим руководством, откройте вкладку «Учётная запись».";
+
+/* No comment provided by engineer. */
+"To: joe@email.com\nRe: Q4 2019 Finance Review" = "Кому: joe@email.com\nТема: Финансовый отчёт за 4-й квартал 2019 г.";
+
+/* No comment provided by engineer. */
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "Теперь трекеры, реклама и прочие вредоносные скрипты заблокированы во всех ваших приложениях, а не только в Safari.\n\nДля максимальной конфиденциальности воспользуйтесь Secure Tunnel. Это защитит ваши соединения, сохранит вашу анонимность в сети и скроет ваше местоположение.";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "попыток отслеживания на этой неделе. Нажмите, чтобы получить обновленные чёрные списки.";
+
+/* No comment provided by engineer. */
+"Tunnel" = "Туннель";
+
+/* No comment provided by engineer. */
+"Tunnel Off" = "Туннель отключен";
+
+/* No comment provided by engineer. */
+"Tunnel On" = "Туннель включен";
+
+/* No comment provided by engineer. */
+"Tutorial" = "Руководство";
+
+/* No comment provided by engineer. */
+"Unique IP address broadcasted" = "Уникальный IP-адрес общедоступен";
+
+/* No comment provided by engineer. */
+"United Kingdom" = "Великобритания";
+
+/* No comment provided by engineer. */
+"United States - East" = "США (Восток)";
+
+/* No comment provided by engineer. */
+"United States - West" = "США (Запад)";
+
+/* No comment provided by engineer. */
+"Update Success" = "Обновление успешно";
+
+/* No comment provided by engineer. */
+"Updating Block Lists" = "Обновление чёрных списков";
+
+/* No comment provided by engineer. */
+"USA East" = "США (Восток)";
+
+/* No comment provided by engineer. */
+"USA West" = "США (Запад)";
+
+/* No comment provided by engineer. */
+"View FAQs" = "Посмотреть раздел «Вопросы и ответы»";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "Просмотреть или улучшить тарифный план";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "Посмотреть возможные улучшения";
+
+/* No comment provided by engineer. */
+"VPN Active" = "VPN включен";
+
+/* No comment provided by engineer. */
+"VPN Not Active" = "VPN отключен";
+
+/* No comment provided by engineer. */
+"VPN Subscription Expired" = "Подписка на VPN истекла";
+
+/* No comment provided by engineer. */
+"Website" = "Сайт";
+
+/* No comment provided by engineer. */
+"Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue." = "Добро пожаловать в руководство по Lockdown.\n\nЧтобы продолжить, нажмите в любом месте.";
+
+/* No comment provided by engineer. */
+"What is VPN?" = "Что такое VPN?";
+
+/* No comment provided by engineer. */
+"Whitelisted" = "В белом списке";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown" = "Почему Lockdown можно доверять";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown?" = "Почему Lockdown можно доверять?";
+
+/* No comment provided by engineer. */
+"Why Use VPN?" = "Зачем пользоваться VPN?";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "Вы заблокировали";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "Вы заблокировали этот домен в заданном вами списке заблокированных доменов.";
+
+/* No comment provided by engineer. */
+"You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)" = "Если позже вы захотите поделиться с другими, нажмите здесь.\n(Чтобы пропустить, нажмите в любом месте)";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "Вы выйдете из этой учётной записи.";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "Чтобы снова видеть заблокированные объекты, вам необходимо будет заново активировать эту функцию.";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "Вы только что заблокировали сотую попытку отслеживания!";
+
+/* No comment provided by engineer. */
+"Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements." = "Ваша учётная запись подтверждена, и вход в неё осуществлен. Вы получите доступ к новым чёрным спискам и Lockdown Mac, а также сможете получать важные оповещения.";
+
+/* No comment provided by engineer. */
+"Your Settings" = "Ваши настройки";
+
+/* No comment provided by engineer. */
+"⚠️ Not Signed In" = "⚠️ Вы не вошли в систему";
+
+/* No comment provided by engineer. */
+"🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Брандмауэр активирован 🎊🎉";
+
+/* No comment provided by engineer. */
+"Error while trying to confirm your account:" = "Ошибка при попытке подтвердить учётную запись:";
+
+/* No comment provided by engineer. */
+"If this persists, please contact team@lockdownprivacy.com." = "Если проблема сохраняется, напишите нам на team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "Заблокировать домен";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "Запретите вашим приложениям устанавливать соединения с указанными ниже доменами и сайтами. Для вашего удобства Lockdown также предлагает заранее подготовленные шаблоны.";
+
+/* No comment provided by engineer. */
+"Block Lists" = "Чёрные списки";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "Настроить блокировку";
+
+/* No comment provided by engineer. */
+"Custom" = "Выборочно";
+
+/* No comment provided by engineer. */
+"SAVE" = "СОХРАНИТЬ";
+
+/* No comment provided by engineer. */
+"Access to cloud service information is not allowed" = "Доступ к информации облачного сервиса запрещён";
+
+/* No comment provided by engineer. */
+"Could not connect to the network" = "Не удаётся подключиться к сети";
+
+/* No comment provided by engineer. */
+"Not allowed to make the payment" = "Платеж запрещён";
+
+/* No comment provided by engineer. */
+"Payment was cancelled" = "Платеж отменён";
+
+/* No comment provided by engineer. */
+"The device is not allowed to make the payment" = "Невозможно совершить платёж с этого устройства";
+
+/* No comment provided by engineer. */
+"The product is not available in the current storefront" = "Продукт не доступен в этом магазине";
+
+/* No comment provided by engineer. */
+"The purchase identifier was invalid" = "Недопустимый идентификатор покупки";
+
+/* No comment provided by engineer. */
+"Unknown error. Please contact support at team@lockdownprivacy.com." = "Неизвестная ошибка. Свяжитесь с нами по адресу team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"User has revoked permission to use this cloud service" = "Пользователь отозвал разрешение на использование данного облачного сервиса";
+
+/* No comment provided by engineer. */
+"Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "Убедитесь в наличии у вас активной подписки. Если вы хотите пользоваться подпиской вместе с кем-то ещё, используя одну и ту же учётную запись, вам необходимо войти с того же самого адреса электронной почты. Либо воспользуйтесь бесплатной пробной версией или напишите нам на team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "Покупки в приложении отключены. Вам необходимо разрешить их. Настройки -> Экранное время -> Ограничения -> App Store -> Покупки в приложении. После этого повторите попытку.";
+
+/* No comment provided by engineer. */
+"Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "Платеж запрещён.\nЛибо с этого устройства нельзя сделать платеж, либо у вас отключены покупки в приложении. Вам необходимо разрешить их. Настройки -> Экранное время -> Ограничения -> App Store -> Покупки в приложении. После этого повторите попытку.";
+
+/* No comment provided by engineer. */
+"Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "Убедитесь в наличии у вас активной подписки. Если вы хотите пользоваться подпиской вместе с кем-то ещё, используя одну и ту же учётную запись, вам необходимо войти с того же самого адреса электронной почты. Либо воспользуйтесь бесплатной пробной версией или напишите нам на team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "Улучшить тарифный план";
+
+/* The title of a list of trackers */
+"Amazon Trackers" = "Трекеры Amazon";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "Простота и эффективность";
+"onboarding_lockdown_stops_trackers" = "Lockdown останавливает попытки отслеживания, вредоносные программы и недоброжелателей, заинтересованных в ваших данных.";
+"onboarding_worlds_first_on_device" = "Первый в мире брандмауэр для мобильных устройств";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "Брандмауэр с открытым исходным кодом и VPN, который работает на ВСЕХ ваших устройствах и веб-страницах.";
+"onboarding_staying_protected_is_easy_with_lockdown" = "Обезопасить себя с помощью Lockdown очень легко";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "Сохраняйте анонимность благодаря Secure Tunnel VPN";
+"onboarding_no_logs_fast_and_fully_audited" = "VPN, который не ведет журнал вашей активности, действует быстро и ставит конфиденциальность на первое место. Единственный VPN, который соблюдает политику конфиденциальности и прошел проверку экспертами по сетевой безопасности.";
+"onboarding_take_control_of_who_you_block" = "Вы сами решаете, кого\nвнести в черный список";
+"onboarding_when_using_our_intuitive_blocklists" = "При использовании наших интуитивно понятных инструментов";
+"onboarding_stay_protected" = "Оставайтесь под защитой!";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "Получайте еженедельные отчеты и обновления для черного списка";
+"onboarding_over_1_billion_trackers_blocked" = "Заблокировано более 1 миллиарда попыток отслеживания";
+"onboarding_used_by_more_than_1_million" = "Нашей программой пользуется более 1 миллиона людей, ценящих свою конфиденциальность";
+"onboarding_sign_up" = "Зарегистрироваться";
+"onboarding_login" = "Войти";
+"continue" = "Продолжить";
+"plan_annual" = "Годовой";
+"plan_monthly" = "Месячный";
+
+// MARK: - SignUpViewController
+"welcome" = "Добро пожаловать";
+"already_have_account_login" = "Уже есть учетная запись? Войдите";
+"sign_up_to_access_new_block_lists_from_trackers" = "Зарегистрируйтесь, чтобы получить доступ к новым спискам";
+"already_have_account_login_below" = "У вас уже есть учетная запись Lockdown?\nВойдите.";
+"forgot_password" = "Забыли пароль?";
+"email" = "Email";
+"password" = "Пароль";
+"access_our_curated_block_lists_and_build_your_own" = "Получите доступ к нашим черным спискам и составьте собственный";
+"access_lockdown_across_all_your_devices" = "Используйте Lockdown на всех ваших устройствах";
+"firewall_and_vpn_support" = "Брандмауэр и поддержка VPN";
+"by_continuing_you_agree_with_our" = "Продолжив, вы выражаете согласие со следующими документами:";
+"and" = "и";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "Всегда будьте в курсе событий";
+"once_a_week_helpful_reminders" = "Еженедельные напоминания о том, как можно улучшить свою безопасность.";
+"enable_notifications" = "Включить уведомления";
+"maybe_later" = "В другой раз";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "Проверьте поля";
+"email_and_password_must_not_be_empty" = "Поля «E-mail» и «Пароль» не могут быть пустыми";
+"Success! 🎉" = "Успех! 🎉";
+"error_signing_in" = "Ошибка при входе";
+"confirm_your_email" = "Подтвердите E-mail";
+"you_have_successfully_sign_in" = "Вы благополучно вошли в систему.";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "Мне удалось заблокировать %@ трекеров, рекламных объявлений и вредоносного ПО благодаря Lockdown, брандмауэру, который блокирует нежелательные соединения во всех ваших приложениях.\nСкачайте его бесплатно на сайте lockdownprivacy.com.";
+"check_email" = "Проверьте почту";
+"we_have_sent_a_reset_password_email" = "Мы отправили вам письмо, которое позволит сбросить пароль. На всякий случай не забудьте заглянуть в папку для спама.";
+"since_date" = "С %@";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "Начните пробный период\nи получите полный доступ";
+"restore_purchase" = "Восстановить покупки";
+"terms_of_service" = "Пользовательское соглашение";
+"CHOOSE_YOUR_PLAN" = "ВЫБЕРИТЕ ТАРИФНЫЙ ПЛАН";
+"skip" = "Пропустить";
+"save_annual_vpn_subscription" = "Экономия ~50%";
+"save_annual_pro_subscription" = "Экономия ~30%";
+"current_plan" = "Текущий тариф";
+"feature_table_column" = "Функция";
+"feature_level_table_column" = "Бесплатно";
+"stops_ads_and_hidden_trackers" = "Останавливает рекламу и скрытые попытки отслеживания";
+"blocks_badware_in_all_your_apps" = "Блокирует вредоносные скрипты во всех приложениях";
+"access_our_curated_block_lists" = "Включает настроенные нами черные списки";
+"build_your_custom_block_lists" = "Позволяет создать собственный черный список";
+"stops_browsing_history_tracking" = "Скрывает историю посещенных страниц";
+"anonymizing_your_browsing" = "Позволяет анонимный просмотр веб-страниц";
+"hides_your_location_and_ip" = "Скрывает ваше местонахождение и IP-адрес";
+"lets_you_change_your_ip_to_other_region" = "Позволяет выдать ваш IP\nза адрес другого региона";
+"app_for_iphone_plus_ipad" = "Приложение для iPhone + iPad";
+"app_for_mac" = "Приложение для Mac";
+"year_after_slash" = "год";
+"month_after_slash" = "месяц";
+
+// MARK: - Delete My Account
+"delete_account" = "Удалить учетную запись";
+"delete_my_account" = "Удалить мою учетную запись";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "Выполнив это действие, вы подадите запрос на удаление своей учетной записи, а также всех связанных с ней личных данных. После удаления учетной записи вы будете уведомлены об этих изменениях по электронной почте.\n\nПожалуйста, имейте в виду, что вы потеряете все настройки, включая приобретенные ранее услуги, и не сможете повторно создать учетную запись с тем же адресом электронной почты.";
+"proceed" = "Продолжить";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "Недействительный email-адрес";
+"please_fill_in_your_email" = "Укажите ваш email-адрес";
+"you_entered_con_instead_of_com" = "Вы ввели .con вместо .com.";
+"no_valid_email_address_detected" = "Email-адрес не обнаружен.";
+"too_many_email_addresses_entered" = "Слишком много email-адресов.";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "мин.";
+"seconds_genitive" = "сек.";
+"lockdowns_first_christmas_sale" = "Первая рождественская\nраспродажа Lockdown";
+"subscribe_now" = "Оформить подписку";
+
+// MARK: - Code Redemption
+"redeem_code" = "Использовать код";
+"cannot_redeem_code" = "Не удалось использовать код";
+"the_code_could_not_be_redeemed" = "The code could not be redeemed.";
+"congratulations_excl" = "Поздравляем!";
+"the_code_was_successfully_redeemed" = "Код использован. Возможно, придется перезапустить приложение, чтобы покупка активировалась.";

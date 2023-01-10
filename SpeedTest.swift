@@ -21,10 +21,10 @@ public class SpeedTest: NSObject, URLSessionDelegate, URLSessionDataDelegate {
     var bytesReceived: Int!
     
     var fileName = "10MB.bin"
-    var fileSizeBytes:Double = 10485760
+    var fileSizeBytes: Double = 10485760
     
     public func testDownloadSpeedWithTimeout(timeout: TimeInterval) -> Promise<Double> {
-        if let r = reachability, r.connection == .wifi {
+        if reachability?.connection == .wifi {
             fileName = "50MB.bin"
             fileSizeBytes = 52428800
         } else {

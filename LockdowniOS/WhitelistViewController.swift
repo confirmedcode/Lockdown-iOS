@@ -52,17 +52,20 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
             tableView.reloadData()
         case .notValid(let reason):
             DDLogWarn("Custom whitelist domain not valid - \(userEnteredDomainName), reason - \(reason)")
+            let notValidEntry: String = .localized("""
+ is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. \
+For example, \"google.com\" without \"https://\"
+""")
             showPopupDialog(
-                title: NSLocalizedString("Invalid domain", comment: ""),
-                message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"", comment: ""),
-                acceptButton: NSLocalizedString("Okay", comment: "")
-            ) {
+                title: .localized("Invalid domain"),
+                message: "\"\(userEnteredDomainName)\"" + notValidEntry,
+                acceptButton: .localizedOkay) {
                 self.addDomainTextField?.becomeFirstResponder()
             }
         }
     }
     
-    //MARK: - TABLE VIEW
+    // MARK: - TABLE VIEW
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -81,12 +84,10 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
             // Add Domain row
             if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
                 return 75
-            }
-            else {
+            } else {
                 return 50
             }
-        }
-        else {
+        } else {
             return 50
         }
     }
@@ -94,24 +95,23 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return getUserWhitelistedDomains().count + 1
-        }
-        else {
+        } else {
             return getLockdownWhitelistedDomains().count
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 45))
-        view.backgroundColor = UIColor.groupTableViewBackground
-        let label = UILabel(frame: CGRect.init(x: 20, y: 20, width: tableView.frame.size.width, height: 24))
-        label.font = fontMedium14
+        view.backgroundColor = .systemGroupedBackground
+        let isLeftToRight = traitCollection.layoutDirection == .leftToRight
+        let label = UILabel(frame: CGRect.init(x: isLeftToRight ? 20 : -20, y: 20, width: tableView.frame.size.width, height: 24))
+        label.font = .mediumLockdownFont(size: 14)
         label.textColor = UIColor.darkGray
         
         if section == 0 {
-            label.text = NSLocalizedString("Your Settings", comment: "")
-        }
-        else {
-            label.text = NSLocalizedString("Pre-configured Suggestions", comment: "")
+            label.text = .localized("Your Settings")
+        } else {
+            label.text = .localized("Pre-configured Suggestions")
         }
         
         view.addSubview(label)
@@ -122,7 +122,7 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
         tableView.deselectRow(at: indexPath, animated: true)
         
         didMakeChange = true
-        var domains: Dictionary<String, Any>;
+        var domains: [String: Any]
         if indexPath.section == 0 {
             if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
                 // Do nothing for add domain row
@@ -133,20 +133,17 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
             if domainArray.count > indexPath.row {
                 if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
                     setUserWhitelistedDomain(domain: domainArray[indexPath.row].key, enabled: false)
-                }
-                else {
+                } else {
                     setUserWhitelistedDomain(domain: domainArray[indexPath.row].key, enabled: true)
                 }
             }
-        }
-        else {
+        } else {
             domains = getLockdownWhitelistedDomains()
             let domainArray = domains.sorted {$0.key < $1.key}
             if domainArray.count > indexPath.row {
                 if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
                     setLockdownWhitelistedDomain(domain: domainArray[indexPath.row].key, enabled: false)
-                }
-                else {
+                } else {
                     setLockdownWhitelistedDomain(domain: domainArray[indexPath.row].key, enabled: true)
                 }
             }
@@ -170,8 +167,8 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let cell = tableView.cellForRow(at: indexPath) as! WhitelistCell
+        if editingStyle == .delete,
+        let cell = tableView.cellForRow(at: indexPath) as? WhitelistCell {
             let domainLabel = cell.whitelistDomain
             
             didMakeChange = true
@@ -185,35 +182,32 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var domains: Dictionary<String, Any>;
+        var domains: [String: Any]
         
         if indexPath.section == 0 {
             // Add Domain
-            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "whitelistAddCell", for: indexPath) as! WhitelistAddCell
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1,
+               let cell = tableView.dequeueReusableCell(withIdentifier: "whitelistAddCell", for: indexPath) as? WhitelistAddCell {
                 let textfield = cell.addWhitelistDomain
                 textfield?.addTarget(self, action: #selector(textFieldDidEndOnExit), for: .editingDidEndOnExit)
                 textfield?.addTarget(self, action: #selector(didSelectTextField), for: .editingDidBegin)
                 addDomainTextField = textfield
                 return cell
-            }
-            else {
+            } else {
                 domains = getUserWhitelistedDomains()
             }
-        }
-        else {
+        } else {
             domains = getLockdownWhitelistedDomains()
         }
         
         let domainArray = domains.sorted {$0.key < $1.key}
-        if domainArray.count > indexPath.row {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "whitelistCell", for: indexPath) as! WhitelistCell
+        if domainArray.count > indexPath.row,
+           let cell = tableView.dequeueReusableCell(withIdentifier: "whitelistCell", for: indexPath) as? WhitelistCell {
             cell.whitelistDomain?.text = domainArray[indexPath.row].key
             if let status = domainArray[indexPath.row].value as? NSNumber, status.boolValue == true {
-                cell.whitelistStatus?.text = NSLocalizedString("Whitelisted", comment: "")
-            }
-            else {
-                cell.whitelistStatus?.text = NSLocalizedString("Not Whitelisted", comment: "")
+                cell.whitelistStatus?.text = .localized("Whitelisted")
+            } else {
+                cell.whitelistStatus?.text = .localized("Not Whitelisted")
             }
             return cell
         }

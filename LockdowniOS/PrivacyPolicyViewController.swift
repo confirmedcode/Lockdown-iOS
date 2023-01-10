@@ -22,7 +22,7 @@ class PrivacyPolicyViewController: BaseViewController {
     @IBOutlet weak var privacyPolicyWrap: UIView!
     @IBOutlet weak var whyTrustButton: UIButton!
     
-    var parentVC: HomeViewController? = nil
+    var parentVC: HomeViewController?
     var privacyPolicyKey = kHasAgreedToFirewallPrivacyPolicy
     
     override func viewDidLoad() {
@@ -32,12 +32,11 @@ class PrivacyPolicyViewController: BaseViewController {
     
     @IBAction func getStartedTapped(_ sender: Any) {
         defaults.set(true, forKey: privacyPolicyKey)
-        if (privacyPolicyKey == kHasAgreedToFirewallPrivacyPolicy) {
+        if privacyPolicyKey == kHasAgreedToFirewallPrivacyPolicy {
             self.dismiss(animated: true, completion: {
                 self.parentVC?.toggleFirewall(self)
             })
-        }
-        else {
+        } else {
             self.dismiss(animated: true, completion: {
                 self.parentVC?.toggleVPN(self)
             })

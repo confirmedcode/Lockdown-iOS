@@ -29,15 +29,14 @@ class VPNController: NSObject {
     
     func restart() {
         // Don't let this affect userWantsVPNOn/Off config
-        VPNController.shared.setEnabled(false, completion: {
-            error in
+        VPNController.shared.setEnabled(false) { _ in
             // TODO: Handle the error
             VPNController.shared.setEnabled(true)
-        })
+        }
     }
     
-    func isConfigurationExisting(_ completion: @escaping (Bool) -> ()) {
-        manager.loadFromPreferences { (error) in
+    func isConfigurationExisting(_ completion: @escaping (Bool) -> Void) {
+        manager.loadFromPreferences { (_) in
             completion(self.manager.protocolConfiguration != nil)
         }
     }
@@ -48,12 +47,11 @@ class VPNController: NSObject {
         if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
             WidgetCenter.shared.reloadAllTimelines()
         }
-        if (enabled) {
+        if enabled {
             setUpAndEnableVPN { error in
                 completion(error)
             }
-        }
-        else {
+        } else {
             manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in
                 self.manager.isEnabled = false
                 self.manager.isOnDemandEnabled = false
@@ -88,6 +86,9 @@ class VPNController: NSObject {
             p.useExtendedAuthentication = false
             p.disconnectOnSleep = false
             p.enablePFS = true
+//            if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
+//                p.includeAllNetworks = true
+//            }
             
             p.childSecurityAssociationParameters.diffieHellmanGroup = NEVPNIKEv2DiffieHellmanGroup.group19
             p.childSecurityAssociationParameters.encryptionAlgorithm = NEVPNIKEv2EncryptionAlgorithm.algorithmAES128GCM
@@ -118,17 +119,15 @@ class VPNController: NSObject {
             self.manager.saveToPreferences(completionHandler: {(_ error: Error?) -> Void in
                 if let e = error {
                     DDLogError("Saving VPN Error \(e)")
-                    if ((e as NSError).code == 4) { // if config is stale, probably multithreading bug
+                    if (e as NSError).code == 4 { // if config is stale, probably multithreading bug
                         DDLogInfo("Stale config, trying again")
                         self.setUpAndEnableVPN(completion: { error in
                             completion(error)
                         })
-                    }
-                    else {
+                    } else {
                         completion(e)
                     }
-                }
-                else {
+                } else {
                     do {
                         // manually activate the starting of the tunnel, and also do a dummy connect to a nonexistant, invalid URL to force enabling
                         try self.manager.connection.startVPNTunnel()
@@ -137,12 +136,11 @@ class VPNController: NSObject {
                         config.urlCache = nil
                         let session = URLSession.init(configuration: config)
                         let url = URL(string: "https://nonexistant_invalid_url")
-                        let task = session.dataTask(with: url!) { (data, response, error) in
+                        let task = session.dataTask(with: url!) { (_, _, _) in
                             return
                         }
                         task.resume()
-                    }
-                    catch {
+                    } catch {
                         DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
                     }
                     completion(nil)

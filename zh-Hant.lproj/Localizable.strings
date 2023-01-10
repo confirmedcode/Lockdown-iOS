@@ -1,0 +1,809 @@
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = "及";
+
+/* refers to number of connections blocked today, as in '34 Blocked Today' */
+" Blocked Today" = "今日已封鎖";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"" = "並非有效的條目。請只輸入想要加至白名單的網域主機。例如：\"google.com\" 而不加上 \"https://\"";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"" = "並非有效的條目。請只輸入想要封鎖的網域主機。例如：\"google.com\" 而不加上 \"https://\"";
+
+/* No comment provided by engineer. */
+" Off" = "關閉";
+
+/* No comment provided by engineer. */
+" On" = "開啟";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = "Lockdown 可阻擋追蹤器、廣告及具惡意軟體，是道能在您所有應用程式中封鎖垃圾連結的防火牆。立即於 lockdownprivacy.com 免費取得。";
+
+/* No comment provided by engineer. */
+"1 Week Free" = "1 週免費";
+
+/* No comment provided by engineer. */
+"\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block." = "\"封鎖清單\"讓您能選擇想要封鎖的內容（例如 Facebook、點擊誘餌等）。您也可以自訂想要封鎖的網域。";
+
+/* No comment provided by engineer. */
+"\"iOS Annual\" is your current plan" = "\"iOS 年度方案\"為您目前的方案";
+
+/* No comment provided by engineer. */
+"\"iOS Monthly\" is your current plan" = "\"iOS 月度方案\"為您目前的方案";
+
+/* No comment provided by engineer. */
+"\"Pro Annual\" is your current plan" = "\"Pro 年度方案\"為您目前的方案";
+
+/* No comment provided by engineer. */
+"\"Pro Monthly\" is your current plan" = "\"Pro 月度方案\"為您目前的方案";
+
+/* No comment provided by engineer. */
+"\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you." = "\"檢視紀錄\"顯示出過去數日確實已封鎖的連結。此紀錄會於午夜時分清除，並保留於裝置上，所以僅有您能查閱。";
+
+/* No comment provided by engineer. */
+"\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n 若此問題持續發生，請聯繫 team@lockdownprivacy.com。";
+
+/* No comment provided by engineer. */
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n 若持續發生，請聯繫 team@lockdownprivacy.com。";
+
+/* No comment provided by engineer. */
+"About Lockdown VPN" = "關於 Lockdown VPN";
+
+/* No comment provided by engineer. */
+"Activate Firewall with this button." = "使用此按鈕啟動 Firewall。";
+
+/* No comment provided by engineer. */
+"Activating" = "正在啟動中";
+
+/* No comment provided by engineer. */
+"Anonymize IP against trackers" = "匿名 IP 以阻擋追蹤器";
+
+/* No comment provided by engineer. */
+"Apple Outage" = "Apple 大當機";
+
+/* No comment provided by engineer. */
+"at least 8 characters" = "至少 8 個字元";
+
+/* No comment provided by engineer. */
+"Audit Reports" = "稽核報告";
+
+/* No comment provided by engineer. */
+"Australia" = "澳大利亞";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "請務必確認您的垃圾郵件資料夾，以免郵件卡在該處。\n\n您也能請求重新發送確認郵件。";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "封鎖清單";
+
+/* No comment provided by engineer. */
+"Blocked" = "已封鎖";
+
+/* No comment provided by engineer. */
+"Blocked Domains" = "已封鎖的網域";
+
+/* No comment provided by engineer. */
+"Blocked Today" = "今日已封鎖";
+
+/* No comment provided by engineer. */
+"Blocked Trackers Summary" = "已封鎖的追蹤器摘要";
+
+/* No comment provided by engineer. */
+"Brazil" = "巴西";
+
+/* No comment provided by engineer. */
+"Canada" = "加拿大";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "確認您的收件夾";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "清除封鎖紀錄";
+
+/* The title of a list of trackers */
+"Clickbait" = "點擊誘餌";
+
+/* No comment provided by engineer. */
+"Confirm Email" = "確認郵件";
+
+/* No comment provided by engineer. */
+"Confirmed Site" = "已確認的網站";
+
+/* No comment provided by engineer. */
+"Couldn't Find Your Email Client" = "找不到您的電子郵件客戶";
+
+/* The title of a list of trackers */
+"Crypto Mining" = "加密貨幣挖礦";
+
+/* No comment provided by engineer. */
+"Custom Settings (Advanced)" = "自訂設定（進階）";
+
+/* The title of a list of trackers */
+"Data Trackers" = "資料追蹤器";
+
+/* No comment provided by engineer. */
+"Deactivating" = "正在關閉";
+
+/* No comment provided by engineer. */
+"Disable" = "停用";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "停用封鎖清單";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "停用封鎖清單？";
+
+/* No comment provided by engineer. */
+"Done" = "已完成";
+
+/* No comment provided by engineer. */
+"Email Support" = "電子郵件支援";
+
+/* The title of a list of trackers */
+"Email Trackers" = "電子郵件追蹤器";
+
+/* No comment provided by engineer. */
+"Email Us" = "寄信給我們";
+
+/* No comment provided by engineer. */
+"Enable" = "啟用";
+
+/* No comment provided by engineer. */
+"Enable Block Log" = "啟用封鎖清單";
+
+/* No comment provided by engineer. */
+"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "啟用提醒以取得一週一次的摘要，以及最新的封鎖清單更新。您可隨以隨時停用此功能。";
+
+/* No comment provided by engineer. */
+"Encrypted, private connections" = "已加密、私密的連結";
+
+/* No comment provided by engineer. */
+"Error Code " = "錯誤代碼";
+
+/* No comment provided by engineer. */
+"Error Creating Email Account" = "建立電子郵件帳號發生錯誤";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "載入方案發生錯誤：重試";
+
+/* No comment provided by engineer. */
+"Error Re-sending Email Confirmation" = "重新發送確認郵件發生錯誤";
+
+/* No comment provided by engineer. */
+"Error Restoring Subscription" = "恢復訂閱發生錯誤";
+
+/* No comment provided by engineer. */
+"Error Signing In To Verify Subscription" = "登入確認訂閱發生錯誤";
+
+/* No comment provided by engineer. */
+"Error Starting Trial" = "開始試用發生錯誤";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "Facebook 及 WhatsApp";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "Facebook 追蹤器";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "無法重新發送確認郵件。";
+
+/* No comment provided by engineer. */
+"FAQs" = "常見問題集";
+
+/* No comment provided by engineer. */
+"Firewall" = "Firewall";
+
+/* No comment provided by engineer. */
+"Firewall Active" = "Firewall 已啟動";
+
+/* No comment provided by engineer. */
+"Firewall Not Active" = "Firewall 未啟動";
+
+/* No comment provided by engineer. */
+"FIREWALL OFF" = "Firewall 已關閉";
+
+/* No comment provided by engineer. */
+"FIREWALL ON" = "Firewall 已開啟";
+
+/* No comment provided by engineer. */
+"For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP." = "為達到最大的隱私，請啟動 Secure Tunnel，此程式會使用銀行等級的加密行為以保護連結、匿名您的瀏覽行為，並隱藏您的位置及 IP。";
+
+/* No comment provided by engineer. */
+"France" = "法國";
+
+/* The title of a list of trackers */
+"Game Marketing" = "遊戲行銷";
+
+/* The title of a list of trackers */
+"General Marketing" = "一般行銷";
+
+/* No comment provided by engineer. */
+"Germany" = "德國";
+
+/* The title of a list of trackers */
+"Google Shopping" = "Google 購物";
+
+/* No comment provided by engineer. */
+"Hey Lockdown Team, \nI have a question, issue, or suggestion - " = "Lockdown 團隊您好：\n我有一個疑問、問題或建議--";
+
+/* No comment provided by engineer. */
+"Hi, my question or feedback for Lockdown is: " = "您好，我對 Lockdown 的問題或意見回饋為：";
+
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "我已封鎖";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "在您自訂已封鎖的網域中。";
+
+/* No comment provided by engineer. */
+"India" = "印度";
+
+/* No comment provided by engineer. */
+"Invalid domain" = "無效的網域";
+
+/* No comment provided by engineer. */
+"IP: 18.132.2.87" = "IP：18.132.2.87";
+
+/* No comment provided by engineer. */
+"IP: [Anonymized]" = "IP：[已匿名]";
+
+/* No comment provided by engineer. */
+"Ireland" = "愛爾蘭";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "為一部分";
+
+/* No comment provided by engineer. */
+"Japan" = "日本";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "正在載入方案";
+
+/* No comment provided by engineer. */
+"Location changed and hidden" = "已改變及隱藏地點";
+
+/* No comment provided by engineer. */
+"Location: 🇯🇵" = "地點：🇯🇵";
+
+/* No comment provided by engineer. */
+"Location: 🇺🇸" = "地點：🇺🇸";
+
+/* No comment provided by engineer. */
+"Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari." = "Lockdown Firewall 會封鎖您所有應用程式中未受信任的連結--不僅僅 Safari 可以做到這點。";
+
+/* No comment provided by engineer. */
+"Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts." = "Lockdown 為開放來源且完全透明，代表任何人都能看到此程式正在執行的動作。另外，Lockdown Firewall 有個簡單又嚴格的隱私權政策，且 Lockdown VPN 完全由安全專家稽查。";
+
+/* No comment provided by engineer. */
+"Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN." = "Lockdown VPN 的提供者為 Confirmed VPN，為開放來源、無紀錄且完全受稽查的 VPN。";
+
+/* The title of a list of trackers */
+"Marketing Trackers" = "行銷追蹤器";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "行銷追蹤器 II";
+
+/* No comment provided by engineer. */
+"Network Error" = "網路錯誤";
+
+/* No comment provided by engineer. */
+"Next" = "下一個";
+
+/* No comment provided by engineer. */
+"Nice" = "很好";
+
+/* No comment provided by engineer. */
+"No" = "沒有";
+
+/* No comment provided by engineer. */
+"No Active Subscription" = "沒有啟動的訂閱";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "在這個已封鎖的網域上找不到額外的資訊。";
+
+/* No comment provided by engineer. */
+"No Block Lists Enabled" = "未啟用封鎖清單";
+
+/* No comment provided by engineer. */
+"No Info Found" = "找不到資訊";
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "沒有網路連線";
+
+/* No comment provided by engineer. */
+"No stored API credentials found. Please contact team@lockdownprivacy.com about this error." = "找不到已儲存的 API 認證。請聯繫 team@lockdownprivacy.com 以告知這項錯誤。";
+
+/* No comment provided by engineer. */
+"Not Blocked" = "未封鎖";
+
+/* No comment provided by engineer. */
+"Not Now" = "現在先不要";
+
+/* No comment provided by engineer. */
+"Not Whitelisted" = "未放入白名單";
+
+/* No comment provided by engineer. */
+"Notifications: Off" = "提醒：關閉";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "提醒：開啟";
+
+/* No comment provided by engineer. */
+"OK" = "好的";
+
+/* No comment provided by engineer. */
+"Okay" = "好的";
+
+/* No comment provided by engineer. */
+"one lowercase letter" = "一個小寫字母";
+
+/* No comment provided by engineer. */
+"one number" = "一個數字";
+
+/* No comment provided by engineer. */
+"one symbol" = "一個符號";
+
+/* No comment provided by engineer. */
+"one uppercase letter" = "一個大寫字母";
+
+/* No comment provided by engineer. */
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "密碼必須至少為 8 個字元，須包含至少一個大寫字母、一個小寫字母、一個數字及一個符號。";
+
+/* No comment provided by engineer. */
+"Plan: Annual Pro" = "方案：年度 Pro";
+
+/* No comment provided by engineer. */
+"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "請確認您的網路連線。若持續發生，請聯繫 team@lockdownprivacy.com。\n\n錯誤說明\n";
+
+/* No comment provided by engineer. */
+"Please contact team@lockdownprivacy.com.\n\nError details:\n" = "請聯繫 team@lockdownprivacy.com。\n\n錯誤詳情：\n";
+
+/* No comment provided by engineer. */
+"Please email team@lockdownprivacy.com with the following Error Code " = "請連同下列的錯誤代碼發送電子郵件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Please first go to your iOS Settings > Notifications > Lockdown to enable notifications" = "首先請前往您的 iOS 設定 > 提醒 > Lockdown 以啟用提醒";
+
+/* No comment provided by engineer. */
+"Please make sure you have added an e-mail account to your iOS device and try again." = "請確保您已在您的 iOS 裝置上加入一個電子郵件帳號並再試一次";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "請確保您的網路連線正常啟動，且您有已啟用的訂閱。否則，請開始您的免費試用或發送電子郵件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: " = "請確保您的網路連線正常啟動。若此錯誤持續發生，請連同以下的錯誤訊息發送電子郵件至 team@lockdownprivacy.com：";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to activate the Secure Tunnel." = "請續訂您的訂閱，以啟動 Secure Tunnel。";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to re-activate the VPN." = "請續訂您的訂閱，以重啟 VPN。";
+
+/* No comment provided by engineer. */
+"Please tap Block List and enable at least one block list to activate Firewall." = "請點選封鎖清單，並啟用至少一個封鎖清單以啟動 Firewall。";
+
+/* No comment provided by engineer. */
+"Pre-configured Block Lists" = "預先設定的封鎖清單";
+
+/* No comment provided by engineer. */
+"Pre-configured Suggestions" = "預先設定的建議";
+
+/* No comment provided by engineer. */
+"Precise location exposed" = "已暴露精確的地點";
+
+/* No comment provided by engineer. */
+"Press & Media" = "新聞媒體";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "隱私權政策";
+
+/* The title of a list of trackers */
+"Ransomware" = "勒索軟體";
+
+/* No comment provided by engineer. */
+"Re-send" = "重新發送";
+
+/* No comment provided by engineer. */
+"Readable browsing and data" = "可讀的瀏覽及資料";
+
+/* No comment provided by engineer. */
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "請記得先確認我們的常見問題集，以在其中找到最常詢問之問題解答。\n\n若仍無法找到解答，我們很樂意提供支援並透過電子郵件收到意見回饋。";
+
+/* The title of a list of trackers */
+"Reporting" = "正在回報問題";
+
+/* No comment provided by engineer. */
+"Secure Tunnel VPN" = "Secure Tunnel VPN";
+
+/* No comment provided by engineer. */
+"See live metrics for how many bad connections Firewall has blocked." = "查看即時計量，以了解 Firewall 已封鎖多少不良連結。";
+
+/* No comment provided by engineer. */
+"Settings" = "設定";
+
+/* No comment provided by engineer. */
+"Share your anonymized metrics and show other people how to block invasive tracking." = "分享您的匿名計量，並向其他人展示如何封鎖侵入式的追蹤。";
+
+/* No comment provided by engineer. */
+"Share Your Stats" = "分享您的統計資料";
+
+/* No comment provided by engineer. */
+"SHOW" = "顯示";
+
+/* No comment provided by engineer. */
+"Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step." = "顯示出現今的應用程式入侵性有多強烈，並也能協助其他人封鎖追蹤器及惡意軟體。\n\n未包含您的封鎖紀錄--僅有上方的圖案。在下一步選擇要分享在哪個地方。";
+
+/* No comment provided by engineer. */
+"Sign Out" = "登出";
+
+/* No comment provided by engineer. */
+"Sign Out?" = "登出？";
+
+/* No comment provided by engineer. */
+"Sign Up  |  Sign In" = "註冊  |  登入";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "在下方註冊，以解鎖 Lockdown 帳號的所有好處。";
+
+/* No comment provided by engineer. */
+"Signed In" = "已登入";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "已成功登出";
+
+/* No comment provided by engineer. */
+"Singapore" = "新加坡";
+
+/* No comment provided by engineer. */
+"Skip Trial" = "跳過試用";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "Snapchat 追蹤器";
+
+/* No comment provided by engineer. */
+"South Korea" = "南韓";
+
+/* No comment provided by engineer. */
+"Stay Protected" = "維持受到保護";
+
+/* No comment provided by engineer. */
+"Subscription Expired" = "訂閱已過期";
+
+/* No comment provided by engineer. */
+"Success" = "成功";
+
+/* No comment provided by engineer. */
+"Success!" = "成功！";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "已成功重新發送您的確認郵件至 ";
+
+/* No comment provided by engineer. */
+"Support | Feedback" = "服務支援 | 意見回饋";
+
+/* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "點選以啟動 Lockdown Firewall，並更新至最新的封鎖名單。";
+
+/* No comment provided by engineer. */
+"Tap to see a demo of how Secure Tunnel protects and anonymizes you." = "點選以查看 Secure Tunnel 如何保護及將您匿名的演示。";
+
+/* No comment provided by engineer. */
+"Tap to see the blocked tracking attempts." = "點選以查看遭封鎖的追蹤嘗試。";
+
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "點選以查看內容。";
+
+/* No comment provided by engineer. */
+"Terms" = "條款";
+
+/* No comment provided by engineer. */
+"Thanks for helping to increase privacy and tracking awareness." = "感謝您協助提升隱私及追蹤意識。";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "可手動清除或停用封鎖紀錄。停用封鎖紀錄僅會停用連結的紀錄--仍會顯示追蹤器嘗試的次數。";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "若想完成您的註冊，請點擊我們傳送至此處的確認連結：";
+
+/* No comment provided by engineer. */
+"To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder." = "若想完成註冊，請點擊我們稍早發送至電子郵件的確認連結。若您尚未看到，請確認是否卡在您的垃圾郵件夾中。";
+
+/* No comment provided by engineer. */
+"To see this tutorial again, open the Account tab." = "若想再次觀看此教學，請開啟帳號分頁。";
+
+/* No comment provided by engineer. */
+"To: joe@email.com\nRe: Q4 2019 Finance Review" = "收件者：joe@email.com\n回覆：Q4 2019 財務報告";
+
+/* No comment provided by engineer. */
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "您所有應用程式中的追蹤器、廣告及其他惡意內容已遭封鎖，就連 Safari 外的亦是如此。\n\n利用保護連結的 Secure Tunnel 來取得最大的隱私效益、匿名您的瀏覽並隱藏您的地點。";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "本週的追蹤嘗試。點選以更新至最新的封鎖清單。";
+
+/* No comment provided by engineer. */
+"Tunnel" = "Tunnel";
+
+/* No comment provided by engineer. */
+"Tunnel Off" = "Tunnel 關閉";
+
+/* No comment provided by engineer. */
+"Tunnel On" = "Tunnel 開啟";
+
+/* No comment provided by engineer. */
+"Tutorial" = "教學";
+
+/* No comment provided by engineer. */
+"Unique IP address broadcasted" = "已廣播獨特的 IP 位址";
+
+/* No comment provided by engineer. */
+"United Kingdom" = "英國";
+
+/* No comment provided by engineer. */
+"United States - East" = "美國--東部";
+
+/* No comment provided by engineer. */
+"United States - West" = "美國--西部";
+
+/* No comment provided by engineer. */
+"Update Success" = "更新成功";
+
+/* No comment provided by engineer. */
+"Updating Block Lists" = "正在更新封鎖清單";
+
+/* No comment provided by engineer. */
+"USA East" = "美東地區";
+
+/* No comment provided by engineer. */
+"USA West" = "美西地區";
+
+/* No comment provided by engineer. */
+"View FAQs" = "檢視常見問題集";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "檢視或更新方案";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "檢視更新選項";
+
+/* No comment provided by engineer. */
+"VPN Active" = "VPN 已啟動";
+
+/* No comment provided by engineer. */
+"VPN Not Active" = "VPN 未啟動";
+
+/* No comment provided by engineer. */
+"VPN Subscription Expired" = "VPN 訂閱已過期";
+
+/* No comment provided by engineer. */
+"Website" = "網站";
+
+/* No comment provided by engineer. */
+"Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue." = "歡迎來到 Lockdown 教學。\n\n點選任一處以繼續。";
+
+/* No comment provided by engineer. */
+"What is VPN?" = "VPN 是什麼？";
+
+/* No comment provided by engineer. */
+"Whitelisted" = "已加入白名單";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown" = "為什麼要信任 Lockdown";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown?" = "為什麼要信任 Lockdown？";
+
+/* No comment provided by engineer. */
+"Why Use VPN?" = "為什麼要使用 VPN？";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "您已封鎖";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "您已在自訂已封鎖的網域中封鎖了這個網域。";
+
+/* No comment provided by engineer. */
+"You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)" = "若您想要分享，可於稍後點選此處。\n（點選任意處以關閉）";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "您將從此帳號登出。";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "您稍後會需要於此重新啟用，才能再次開始看見已封鎖的條目。";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "您剛才已封鎖了 100 次追蹤嘗試！";
+
+/* No comment provided by engineer. */
+"Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements." = "已確認您的帳號，且您已登入。您會取得最新的封鎖清單、可存取 Lockdown Mac，並獲得重要的公告。";
+
+/* No comment provided by engineer. */
+"Your Settings" = "您的設定";
+
+/* No comment provided by engineer. */
+"⚠️ Not Signed In" = "⚠️ 未登入";
+
+/* No comment provided by engineer. */
+"🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 已啟動 Firewall 🎊🎉";
+
+/* No comment provided by engineer. */
+"Error while trying to confirm your account:" = "嘗試確認您的帳號時發生了錯誤：";
+
+/* No comment provided by engineer. */
+"If this persists, please contact team@lockdownprivacy.com." = "若持續發生，請聯繫 team@lockdownprivacy.com。";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "新增一個想要封鎖的網域";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "阻擋您所有的應用程式連結至以下的網域及網站。為了您的方便起見，Lockdown 亦預先設定了一些建議。";
+
+/* No comment provided by engineer. */
+"Block Lists" = "封鎖清單";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "設定封鎖";
+
+/* No comment provided by engineer. */
+"Custom" = "自訂";
+
+/* No comment provided by engineer. */
+"SAVE" = "儲存";
+
+/* No comment provided by engineer. */
+"Access to cloud service information is not allowed" = "不允許存取雲端服務資訊";
+
+/* No comment provided by engineer. */
+"Could not connect to the network" = "無法連線至網路";
+
+/* No comment provided by engineer. */
+"Not allowed to make the payment" = "不允許進行支付";
+
+/* No comment provided by engineer. */
+"Payment was cancelled" = "支付已遭取消";
+
+/* No comment provided by engineer. */
+"The device is not allowed to make the payment" = "不允許此裝置進行支付";
+
+/* No comment provided by engineer. */
+"The product is not available in the current storefront" = "目前的店面買不到此產品";
+
+/* No comment provided by engineer. */
+"The purchase identifier was invalid" = "產品辨識碼無效";
+
+/* No comment provided by engineer. */
+"Unknown error. Please contact support at team@lockdownprivacy.com." = "發生未知的錯誤。請發送電子郵件至 team@lockdownprivacy.com 以連繫服務支援。";
+
+/* No comment provided by engineer. */
+"User has revoked permission to use this cloud service" = "使用者已撤銷使用此雲端服務的權限";
+
+/* No comment provided by engineer. */
+"Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "請確保您已有啟用的訂閱。若您正嘗試使用相同的帳號分享訂閱，您會需要使用相同的電子郵件地址登入。否則，請開始您的免費試用，或發送電子郵件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "應用程式內購功能已停用。請至設定應用程式 -> 螢幕時間 -> 限制 -> App Store -> 應用程式內購來允許此功能。之後再試一次。";
+
+/* No comment provided by engineer. */
+"Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "未受允許支付。\n原因可能為此裝置未受允許進行購買，或應用程式內購功能已停用。請至設定應用程式 -> 螢幕時間 -> 限制 -> App Store -> 應用程式內購來允許此功能。之後再試一次。";
+
+/* No comment provided by engineer. */
+"Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "請確保您已有啟用的訂閱。若您正嘗試使用相同的帳號分享訂閱，您會需要使用相同的電子郵件地址登入。否則，請開始您的免費試用，或發送電子郵件至 team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "更新方案";
+
+/* The title of a list of trackers */
+"Amazon Trackers" = "Amazon 追蹤器";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "簡易又強大";
+"onboarding_lockdown_stops_trackers" = "Lockdown 可阻止追蹤器、惡意軟體及其他代理程式存取您的資料。";
+"onboarding_worlds_first_on_device" = "世界首創的裝置端應用程式";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "能在所有應用程式及網站瀏覽運作的開放來源 Firewall 及 Secure Tunnel VPN。";
+"onboarding_staying_protected_is_easy_with_lockdown" = "使用 Lockdown 就能輕鬆受到保護";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "使用 Secure Tunnel VPN 就能維持匿名";
+"onboarding_no_logs_fast_and_fully_audited" = "無紀錄、速度超快、隱私至上的 VPN。是唯一能證明自己的隱私權政策，且完全受到安全專家稽核的 VPN。";
+"onboarding_take_control_of_who_you_block" = "使用我們直覺式的封鎖清單建立工具時，";
+"onboarding_when_using_our_intuitive_blocklists" = "可自由掌控\n想要封鎖的對象。";
+"onboarding_stay_protected" = "維持受到保護！";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "獲得每週摘要，及封鎖清單更新。";
+"onboarding_over_1_billion_trackers_blocked" = "已封鎖超過 10 億個追蹤器";
+"onboarding_used_by_more_than_1_million" = "已有超過 100 萬名對隱私有警覺的使用者使用";
+"onboarding_sign_up" = "註冊";
+"onboarding_login" = "登入";
+"continue" = "繼續";
+"plan_annual" = "年度";
+"plan_monthly" = "月度";
+
+// MARK: - SignUpViewController
+"welcome" = "歡迎";
+"already_have_account_login" = "已有帳號？請登入";
+"sign_up_to_access_new_block_lists_from_trackers" = "註冊就能存取追蹤器中新的已封鎖清單";
+"already_have_account_login_below" = "已有 Lockdown 帳號？\n在下方登入。";
+"forgot_password" = "忘記密碼";
+"email" = "電子郵件";
+"password" = "密碼";
+"access_our_curated_block_lists_and_build_your_own" = "存取我們所建立的封鎖清單，並建立自己的封鎖清單";
+"access_lockdown_across_all_your_devices" = "在所有的裝置上存取 Lockdown";
+"firewall_and_vpn_support" = "Firewall 及 VPN 支援";
+"by_continuing_you_agree_with_our" = "只要繼續，表示您同意我們的";
+"and" = "及";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "隨時掌握資訊";
+"once_a_week_helpful_reminders" = "每週一次，有助於提醒您安全性，及如何多加利用。";
+"enable_notifications" = "啟用提醒";
+"maybe_later" = "稍後再說";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "確認欄位";
+"email_and_password_must_not_be_empty" = "電子郵件及密碼不得為空白";
+"Success! 🎉" = "成功！🎉";
+"error_signing_in" = "登入時發生錯誤";
+"confirm_your_email" = "確認您的電子郵件";
+"you_have_successfully_sign_in" = "您已成功登入。";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "我已使用了 Lockdown 封鎖 %@ 個追蹤器、廣告及惡意程式，此防火牆可封鎖應用程式中所有多餘的連線。\n立即在 lockdownprivacy.com 免費取得。";
+"check_email" = "確認電子郵件";
+"we_have_sent_a_reset_password_email" = "我們已寄給了您一封重設密碼的電子郵件。請務必確認任何垃圾郵件資料夾，以免卡在該處。";
+"since_date" = "自 %@ 起";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "立即開始試用，以完整存取";
+"restore_purchase" = "恢復購買";
+"terms_of_service" = "服務條款";
+"CHOOSE_YOUR_PLAN" = "選擇您的方案";
+"skip" = "跳過";
+"save_annual_vpn_subscription" = "省下約 50%";
+"save_annual_pro_subscription" = "省下約 30%";
+"current_plan" = "目前的方案";
+"feature_table_column" = "功能";
+"feature_level_table_column" = "免費";
+"stops_ads_and_hidden_trackers" = "阻擋廣告及隱藏的追蹤器";
+"blocks_badware_in_all_your_apps" = "封鎖應用程式中的惡意軟體";
+"access_our_curated_block_lists" = "存取我們已建立的封鎖清單";
+"build_your_custom_block_lists" = "建立自訂的封鎖清單";
+"stops_browsing_history_tracking" = "阻擋瀏覽歷史紀錄追蹤";
+"anonymizing_your_browsing" = "匿名您的瀏覽";
+"hides_your_location_and_ip" = "隱藏您的地點及 IP";
+"lets_you_change_your_ip_to_other_region" = "讓您變更自己的 IP\n至其他地區";
+"app_for_iphone_plus_ipad" = "適合 iPhone + iPad 的應用程式";
+"app_for_mac" = "適合 Mac 的應用程式";
+"year_after_slash" = "年";
+"month_after_slash" = "月";
+
+// MARK: - Delete My Account
+"delete_account" = "刪除帳號";
+"delete_my_account" = "刪除我的帳號";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "若執行，便會提交刪除整個帳號紀錄以及相關個人資料的請求。刪除帳號後，將透過您的帳號電子郵件通知這些變更。\n\n請留意，您將會遺失包括升級選項等所有設定內容，且無法再使用相同的電子郵件建立帳號。";
+"proceed" = "執行";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "無效的電子郵件地址";
+"please_fill_in_your_email" = "請填入您的電子郵件。";
+"you_entered_con_instead_of_com" = "您輸入了 .con 而非 .com。";
+"no_valid_email_address_detected" = "未偵測到有效的電子郵件地址。";
+"too_many_email_addresses_entered" = "已輸入太多電子郵件地址。";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "分";
+"seconds_genitive" = "秒";
+"lockdowns_first_christmas_sale" = "Lockdown 的首個聖誕促銷";
+"subscribe_now" = "立即訂閱";
+
+// MARK: - Code Redemption
+"redeem_code" = "兌換代碼";
+"cannot_redeem_code" = "無法兌換代碼";
+"the_code_could_not_be_redeemed" = "此代碼無法用來兌換。";
+"congratulations_excl" = "恭喜！";
+"the_code_was_successfully_redeemed" = "已成功兌換代碼。您可能需要重新開啟應用程式，此次購買才會生效。";
