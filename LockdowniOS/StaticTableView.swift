@@ -30,7 +30,7 @@ final class StaticTableView: UITableView {
     }
     
     @discardableResult
-    func addRow(insert: Insert = .last, _ configure: (UIView) -> ()) -> SelectableTableViewCell {
+    func addRow(insert: Insert = .last, _ configure: (UIView) -> Void) -> SelectableTableViewCell {
         let cell = SelectableTableViewCell()
         cell.selectionStyle = .none
         cell.backgroundColor = nil
@@ -40,7 +40,7 @@ final class StaticTableView: UITableView {
     }
     
     @discardableResult
-    func addRowCell(insert: Insert = .last, _ configure: (UITableViewCell) -> ()) -> SelectableTableViewCell {
+    func addRowCell(insert: Insert = .last, _ configure: (UITableViewCell) -> Void) -> SelectableTableViewCell {
         let cell = SelectableTableViewCell()
         cell.selectionStyle = .none
         configure(cell)
@@ -90,28 +90,28 @@ final class StaticTableView: UITableView {
 }
 
 class SelectableTableViewCell: UITableViewCell {
-    var selectionCallback: () -> () = { }
-    var deletionCallback: (() -> ())?
+    var selectionCallback: () -> Void = {}
+    var deletionCallback: (() -> Void)?
     
     enum Action {
         case toggleCheckmark
     }
     
     @discardableResult
-    func onSelect(callback: @escaping () -> ()) -> Self {
+    func onSelect(callback: @escaping () -> Void) -> Self {
         selectionStyle = .default
         selectionCallback = callback
         return self
     }
     
     @discardableResult
-    func onSwipeToDelete(callback: @escaping () -> ()) -> Self {
+    func onSwipeToDelete(callback: @escaping () -> Void) -> Self {
         deletionCallback = callback
         return self
     }
     
     @discardableResult
-    func onSelect(_ action: Action, callback: @escaping () -> () = { }) -> Self {
+    func onSelect(_ action: Action, callback: @escaping () -> Void = {}) -> Self {
         selectionCallback = { [unowned self] in
             switch action {
             case .toggleCheckmark:
@@ -181,7 +181,7 @@ extension StaticTableView: UITableViewDelegate {
 }
 
 extension UIViewController {
-    func addTableView(_ tableView: UITableView, layout: (UIView) -> ()) {
+    func addTableView(_ tableView: UITableView, layout: (UIView) -> Void) {
         // adding UITableView as UITableViewController will enable
         // UIKit's own "scroll to text field when keyboard appears"
         let tableViewController = StaticTableViewController()

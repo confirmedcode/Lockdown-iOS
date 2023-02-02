@@ -5,20 +5,17 @@
 //  Copyright © 2018 Confirmed, Inc. All rights reserved.
 //
 
-import UIKit
-import NetworkExtension
-import SwiftyStoreKit
-import KeychainAccess
-import SafariServices
-import SwiftMessages
-import StoreKit
+import AVFoundation
+import BackgroundTasks
 import CloudKit
 import CocoaLumberjackSwift
+import NetworkExtension
+import SafariServices
+import SwiftMessages
+import SwiftyStoreKit
 import PopupDialog
 import PromiseKit
-import UserNotifications
 import WidgetKit
-import BackgroundTasks
 
 let fileLogger: DDFileLogger = DDFileLogger()
 
@@ -28,7 +25,10 @@ let kHasShownTitlePage: String = "kHasShownTitlePage"
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let noInternetMessageView = MessageView.viewFromNib(layout: .statusLine)
+    
+    private let connectivityService = ConnectivityService()
+    private let paywallService = BasePaywallService.shared
+    private let userService = BaseUserService.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -49,51 +49,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up PopupDialog
         let dialogAppearance = PopupDialogDefaultView.appearance()
-        if #available(iOS 13.0, *) {
-            dialogAppearance.backgroundColor = .systemBackground
-            dialogAppearance.titleColor = .label
-            dialogAppearance.messageColor = .label
-        } else {
-            dialogAppearance.backgroundColor = .white
-            dialogAppearance.titleColor = .black
-            dialogAppearance.messageColor = .darkGray
-        }
-        dialogAppearance.titleFont            = fontBold15
+        dialogAppearance.backgroundColor = .systemBackground
+        dialogAppearance.titleColor = .label
+        dialogAppearance.messageColor = .label
+        dialogAppearance.titleFont            = .boldLockdownFont(size: 15)
         dialogAppearance.titleTextAlignment   = .center
-        dialogAppearance.messageFont          = fontMedium15
+        dialogAppearance.messageFont          = .mediumLockdownFont(size: 15)
         dialogAppearance.messageTextAlignment = .center
         let buttonAppearance = DefaultButton.appearance()
-        if #available(iOS 13.0, *) {
-            buttonAppearance.buttonColor = .systemBackground
-            buttonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
-        }
-        else {
-            buttonAppearance.buttonColor    = .clear
-            buttonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
-        }
-        buttonAppearance.titleFont      = fontSemiBold17
+        buttonAppearance.buttonColor = .systemBackground
+        buttonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
+        buttonAppearance.titleFont      = .semiboldLockdownFont(size: 17)
         buttonAppearance.titleColor     = UIColor.tunnelsBlue
         let dynamicButtonAppearance = DynamicButton.appearance()
-        if #available(iOS 13.0, *) {
-            dynamicButtonAppearance.buttonColor = .systemBackground
-            dynamicButtonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
-        }
-        else {
-            dynamicButtonAppearance.buttonColor    = .clear
-            dynamicButtonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
-        }
-        dynamicButtonAppearance.titleFont      = fontSemiBold17
+        dynamicButtonAppearance.buttonColor = .systemBackground
+        dynamicButtonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
+        dynamicButtonAppearance.titleFont      = .semiboldLockdownFont(size: 17)
         dynamicButtonAppearance.titleColor     = UIColor.tunnelsBlue
         let cancelButtonAppearance = CancelButton.appearance()
-        if #available(iOS 13.0, *) {
-            cancelButtonAppearance.buttonColor = .systemBackground
-            cancelButtonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
-        }
-        else {
-            cancelButtonAppearance.buttonColor    = .clear
-            cancelButtonAppearance.separatorColor = UIColor(white: 0.9, alpha: 1)
-        }
-        cancelButtonAppearance.titleFont      = fontSemiBold17
+        cancelButtonAppearance.buttonColor = .systemBackground
+        cancelButtonAppearance.separatorColor = UIColor(white: 0.2, alpha: 1)
+        cancelButtonAppearance.titleFont      = .semiboldLockdownFont(size: 17)
         cancelButtonAppearance.titleColor     = UIColor.lightGray
 
         // Lockdown default lists
@@ -102,26 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Whitelist default domains
         setupLockdownWhitelistedDomains()
         
-        // Show indicator at top when internet not reachable
-        reachability?.whenReachable = { reachability in
-            SwiftMessages.hide()
-        }
-        reachability?.whenUnreachable = { _ in
-            DDLogInfo("Internet not reachable")
-            self.noInternetMessageView.backgroundView.backgroundColor = UIColor.orange
-            self.noInternetMessageView.bodyLabel?.textColor = UIColor.white
-            self.noInternetMessageView.configureContent(body: NSLocalizedString("No Internet Connection", comment: ""))
-            var noInternetMessageViewConfig = SwiftMessages.defaultConfig
-            noInternetMessageViewConfig.presentationContext = .window(windowLevel: UIWindow.Level(rawValue: 0))
-            noInternetMessageViewConfig.preferredStatusBarStyle = .lightContent
-            noInternetMessageViewConfig.duration = .forever
-            SwiftMessages.show(config: noInternetMessageViewConfig, view: self.noInternetMessageView)
-        }
-        do {
-            try reachability?.startNotifier()
-        } catch {
-            DDLogError("Unable to start reachability notifier")
-        }
+        IntentService.donateIntents()
+        
+        connectivityService.startObservingConnectivity()
         
         // Content Blocker
         SFContentBlockerManager.reloadContentBlocker( withIdentifier: "com.confirmed.lockdown.Confirmed-Blocker") { (_ error: Error?) -> Void in
@@ -134,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VPNSubscription.cacheLocalizedPrices()
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
-                DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)");
+                DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)")
                 if purchase.transaction.transactionState == .purchased || purchase.transaction.transactionState == .restored {
                     if purchase.needsFinishTransaction {
                         DDLogInfo("Finishing transaction for purchase: \(purchase)")
@@ -145,40 +104,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Periodically check if the firewall is functioning correctly - every 2.5 hours
-        if #available(iOS 13.0, *) {
-            DDLogInfo("BGTask: Registering BGTask id \(FirewallRepair.identifier)")
-            BGTaskScheduler.shared.register(forTaskWithIdentifier: FirewallRepair.identifier, using: nil) { task in
-                DDLogInfo("BGTask: Task starting")
-                FirewallRepair.handleAppRefresh(task)
-            }
-        }
-        else {
-            UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        DDLogInfo("BGTask: Registering BGTask id \(FirewallRepair.identifier)")
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: FirewallRepair.identifier, using: nil) { task in
+            DDLogInfo("BGTask: Task starting")
+            FirewallRepair.handleAppRefresh(task)
         }
 
         // WORKAROUND: allows the widget to toggle VPN
         application.registerForRemoteNotifications()
         setupWidgetToggleWorkaround()
         
-        // If not yet agreed to privacy policy, set initial view controller to TitleViewController
-        if (defaults.bool(forKey: kHasShownTitlePage) == false) {
-            // TODO: removed this check because this was causing crashes possibly due to Locale
-            // don't show onboarding page for anyone who installed before Aug 16th
-        //            let formatter = DateFormatter()
-        //            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        //            let tutorialCutoffDate = formatter.date(from: "2019/08/16 00:00")!.timeIntervalSince1970;
-        //            if let appInstall = appInstallDate, appInstall.timeIntervalSince1970 < tutorialCutoffDate {
-        //                print("Not showing onboarding page, installation epoch \(appInstall.timeIntervalSince1970)")
-        //            }
-        //            else {
-                DDLogInfo("Showing onboarding page")
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController
-                self.window?.rootViewController = viewController
-                self.window?.makeKeyAndVisible()
-        //            }
-        }
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = SplashscreenViewController()
+        window?.makeKeyAndVisible()
+        
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default, options: .mixWithOthers)
         
         return true
     }
@@ -189,6 +129,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        showRedemptionCodeResultIfNeeded()
+        
         DDLogInfo("applicationDidBecomeActive")
         PacketTunnelProviderLogs.flush()
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
@@ -232,6 +174,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    private func showRedemptionCodeResultIfNeeded() {
+        DDLogInfo("After code redemption, paywall context is: \(paywallService.context).")
+        guard paywallService.context == .redeemOfferCode else { return }
+        paywallService.context = .normal
+        DDLogInfo("Going further, making context \(paywallService.context).")
+        
+        DDLogInfo("After code redemption, searching topViewController.")
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        guard var topController = keyWindow?.rootViewController else { return }
+        while let presentedViewController = topController.presentedViewController {
+            topController = presentedViewController
+        }
+        DDLogInfo("topViewController is: \(String(describing: type(of: topController)))")
+        
+        guard let topController = topController as? BaseViewController else {
+            DDLogInfo("topViewController is not of type BaseViewController.")
+            return
+        }
+        
+        let previousSubscription = userService.user.currentSubscription
+        DDLogInfo("Previous subscription is: \(String(describing: previousSubscription))")
+        
+        (topController as? Loadable)?.showLoadingView()
+        userService.updateUserSubscription { newSubscription in
+            DDLogInfo("Updated subscription is: \(String(describing: previousSubscription))")
+            (topController as? Loadable)?.hideLoadingView()
+            
+            if previousSubscription?.planType == newSubscription?.planType {
+                DDLogInfo("Subscription is the same, showing failure popup.")
+                topController.showPopupDialog(title: .localized("cannot_redeem_code"),
+                                              message: .localized("the_code_could_not_be_redeemed"),
+                                              acceptButton: .localizedOK,
+                                              tapGestureDismissal: false,
+                                              panGestureDismissal: false)
+            } else {
+                DDLogInfo("Subscription is different, showing success popup.")
+                topController.showPopupDialog(title: .localized("congratulations_excl"),
+                                              message: .localized("the_code_was_successfully_redeemed"),
+                                              acceptButton: .localizedOK,
+                                              tapGestureDismissal: false,
+                                              panGestureDismissal: false) { [weak topController] in
+                    topController?.dismiss(animated: true)
+                }
+            }
+        }
+    }
 
     // MARK: - WIDGET TOGGLE WORKAROUND
     func setupWidgetToggleWorkaround() {
@@ -240,17 +229,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clearDatabaseForRecord(recordName: kCloseFirewallTunnelRecord)
         clearDatabaseForRecord(recordName: kRestartFirewallTunnelRecord)
         let privateDatabase = CKContainer(identifier: kICloudContainer).privateCloudDatabase
-        privateDatabase.fetchAllSubscriptions(completionHandler: { subscriptions, error in
+        privateDatabase.fetchAllSubscriptions(completionHandler: { _, _ in
             // always set up cloudkit subscriptions - no downside to doing it
 //            if error == nil, let subs = subscriptions {
-////                for sub in subs {
-////                    print("deleting sub: \(sub.subscriptionID)")
-////                    privateDatabase.delete(withSubscriptionID: sub.subscriptionID, completionHandler: {
-////                        result, error in
-////                        print("result: \(result)")
-////                    })
-////                }
-////                return
+//                for sub in subs {
+//                    print("deleting sub: \(sub.subscriptionID)")
+//                    privateDatabase.delete(withSubscriptionID: sub.subscriptionID, completionHandler: {
+//                        result, error in
+//                        print("result: \(result)")
+//                    })
+//                }
+//                return
 //                var isSubscribedToOpen = false
 //                var isSubscribedToClose = false
 //                var isSubscribedToRestart = false
@@ -294,16 +283,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationInfo.shouldBadge = false
         notificationInfo.category = categoryName
         subscription.notificationInfo = notificationInfo
-        privateDatabase.save(subscription,
-                             completionHandler: ({returnRecord, error in
+        privateDatabase.save(subscription) { _, error in
                                 if let err = error {
                                     DDLogInfo("Could not save CloudKit subscription (not signed in?) \(err)")
                                 } else {
-                                    DispatchQueue.main.async() {
+                                    DispatchQueue.main.async {
                                         DDLogInfo("Successfully saved CloudKit subscription")
                                     }
                                 }
-                             }))
+                             }
     }
     
     func clearDatabaseForRecord(recordName: String) {
@@ -316,7 +304,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DDLogError("Error querying for CKRecordType: \(recordName) - \(err)")
             }
             for aRecord in record! {
-                privateDatabase.delete(withRecordID: aRecord.recordID, completionHandler: { (recordID, error) in
+                privateDatabase.delete(withRecordID: aRecord.recordID, completionHandler: { _, _ in
                     DDLogInfo("Deleting record \(aRecord.recordID)")
                 })
             }
@@ -324,20 +312,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         DDLogInfo("Receiving remote notification")
         if let aps = userInfo["aps"] as? NSDictionary {
             if let message = aps["category"] as? NSString {
                 if message.contains(kCloseFirewallTunnelRecord) {
                     FirewallController.shared.setEnabled(false, isUserExplicitToggle: true, completion: { _ in })
-                }
-                else if message.contains(kOpenFirewallTunnelRecord) {
+                } else if message.contains(kOpenFirewallTunnelRecord) {
                     FirewallController.shared.setEnabled(true, isUserExplicitToggle: true, completion: { _ in })
-                }
-                else if message.contains(kRestartFirewallTunnelRecord) {
-                    FirewallController.shared.restart(completion: {
-                        error in
+                } else if message.contains(kRestartFirewallTunnelRecord) {
+                    FirewallController.shared.restart(completion: { error in
                         if error != nil {
                             DDLogError("Error restarting firewall on RemoteNotification: \(error!)")
                         }
@@ -353,7 +338,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
 
         guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
             let host = components.host else {
@@ -361,9 +346,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
         }
         
-        if (host == "resetsuccessful") {
-            let popup = PopupDialog(title: "Password Reset Successfully",
-                                    message: "Please Sign In With Your New Password",
+        if host == "resetsuccessful" {
+            let popup = PopupDialog(title: .localized("password_reset_successfully"),
+                                    message: .localized("please_sign_in_with_new_password"),
                                     image: nil,
                                     buttonAlignment: .horizontal,
                                     transitionStyle: .bounceDown,
@@ -373,55 +358,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     hideStatusBar: false,
                                     completion: nil)
             popup.addButtons([
-                DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
+                DefaultButton(title: .localizedOkay, dismissOnTap: true) {
                     if let hvc = self.getCurrentViewController() as? HomeViewController {
-                        AccountUI.presentSignInToAccount(on: hvc)
+                        let signUpViewController = SignUpViewController(mode: .login)
+                        hvc.present(signUpViewController, animated: true)
                     }
                 }
             ])
             self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
             return true
-        }
-        
-        else if (host == "changeVPNregion") {
+        } else if host == "changeVPNregion" {
             if let home = self.getCurrentViewController() as? HomeViewController {
                 home.showSetRegion(self)
             }
-        }
-        
-        else if (host == "showMetrics") {
+        } else if host == "showMetrics" {
             if let home = self.getCurrentViewController() as? HomeViewController {
                 home.showBlockLog(self)
             }
-        }
-        
-        else if (host == "toggleFirewall") {
+        } else if host == "toggleFirewall" {
             if let home = self.getCurrentViewController() as? HomeViewController {
                 home.toggleFirewall(self)
             }
-        }
-        
-        else if (host == "toggleVPN") {
+        } else if host == "toggleVPN" {
             if let home = self.getCurrentViewController() as? HomeViewController {
                 home.toggleVPN(self)
             }
-        }
-        
-        else if (host == "emailconfirmed") {
+        } else if host == "emailconfirmed" {
             // test the stored login
             guard let apiCredentials = getAPICredentials() else {
-                let popup = PopupDialog(title: "Error",
-                                        message: NSLocalizedString("No stored API credentials found. Please contact team@lockdownprivacy.com about this error.", comment: ""),
-                                        image: nil,
-                                        buttonAlignment: .horizontal,
-                                        transitionStyle: .bounceDown,
-                                        preferredWidth: 270,
-                                        tapGestureDismissal: true,
-                                        panGestureDismissal: false,
-                                        hideStatusBar: false,
-                                        completion: nil)
+                let popup = PopupDialog(
+                    title: "Error",
+                    message: .localized("No stored API credentials found. Please contact team@lockdownprivacy.com about this error."),
+                    image: nil,
+                    buttonAlignment: .horizontal,
+                    transitionStyle: .bounceDown,
+                    preferredWidth: 270,
+                    tapGestureDismissal: true,
+                    panGestureDismissal: false,
+                    hideStatusBar: false,
+                    completion: nil)
                 popup.addButtons([
-                   DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
+                    DefaultButton(title: .localizedOkay, dismissOnTap: true) {}
                 ])
                 getCurrentViewController()?.present(popup, animated: true, completion: nil)
                 return true
@@ -429,19 +406,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             firstly {
                 try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
             }
-            .done { (signin: SignIn) in
+            .done { (_: SignIn) in
                 // successfully signed in with no errors, show confirmation success
                 setAPICredentialsConfirmed(confirmed: true)
                 // logged in and confirmed - update this email with the receipt and refresh VPN credentials
                 firstly { () -> Promise<SubscriptionEvent> in
                     try Client.subscriptionEvent()
                 }
-                .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                .then { (_: SubscriptionEvent) -> Promise<GetKey> in
                     try Client.getKey()
                 }
                 .done { (getKey: GetKey) in
                     try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                    if (getUserWantsVPNEnabled() == true) {
+                    if getUserWantsVPNEnabled() == true {
                         VPNController.shared.restart()
                     }
                 }
@@ -449,8 +426,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // it's okay for this to error out with "no subscription in receipt"
                     DDLogError("HomeViewController ConfirmEmail subscriptionevent error (ok for it to be \"no subscription in receipt\"): \(error)")
                 }
-                let popup = PopupDialog(title: "Success! 🎉",
-                                        message: NSLocalizedString("Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements.", comment: ""),
+                let message = """
+Your account has been confirmed and you're now signed in. You'll get the latest block lists, \
+access to Lockdown Mac, and get critical announcements.
+"""
+                let popup = PopupDialog(title: .localized("Success! 🎉"),
+                                        message: .localized(message),
                                         image: nil,
                                         buttonAlignment: .horizontal,
                                         transitionStyle: .bounceDown,
@@ -460,7 +441,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         hideStatusBar: false,
                                         completion: nil)
                 popup.addButtons([
-                   DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
+                    DefaultButton(title: .localizedOkay, dismissOnTap: true) {}
                 ])
                 self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
                 DispatchQueue.main.async {
@@ -474,8 +455,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     errorMessage = apiError.message
                 }
                 
+                let confirmError: String = .localized("Error while trying to confirm your account:")
+                let persistsHelp: String = .localized("If this persists, please contact team@lockdownprivacy.com.")
                 let popup = PopupDialog(title: "Error Confirming Account",
-                                        message: "\(NSLocalizedString("Error while trying to confirm your account:", comment: "")) \(errorMessage). \(NSLocalizedString("If this persists, please contact team@lockdownprivacy.com.", comment: ""))",
+                                        message: "\(confirmError) \(errorMessage). \(persistsHelp)",
                                         image: nil,
                                         buttonAlignment: .horizontal,
                                         transitionStyle: .bounceDown,
@@ -485,7 +468,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         hideStatusBar: false,
                                         completion: nil)
                 popup.addButtons([
-                   DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {}
+                    DefaultButton(title: .localizedOkay, dismissOnTap: true) {}
                 ])
                 self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
             }
@@ -517,7 +500,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var currentController: UIViewController! = rootController
             // Each ViewController keeps track of the view it has presented, so we
             // can move from the head to the tail, which will always be the current view
-            while( currentController.presentedViewController != nil ) {
+            while  currentController.presentedViewController != nil {
                 currentController = currentController.presentedViewController
             }
             return currentController
@@ -536,11 +519,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter, willPresent
+        notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void) {
         let identifier = PushNotifications.Identifier(rawValue: response.notification.request.identifier)
         if identifier.isWeeklyUpdate {
             showUpdateBlockListsFlow()
@@ -572,7 +561,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     private func showUpdatingBlockListsLoader() {
         let activity = ActivityData(
-            message: NSLocalizedString("Updating Block Lists", comment: ""),
+            message: .localized("Updating Block Lists"),
             messageFont: UIFont(name: "Montserrat-Bold", size: 18),
             type: .ballSpinFadeLoader,
             backgroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
@@ -586,11 +575,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     private func showBlockListsUpdatedPopup() {
         let popup = PopupDialog(
-            title: NSLocalizedString("Update Success", comment: ""),
+            title: .localized("Update Success"),
             message: "You're now protected against the latest trackers. 🎉"
         )
-        popup.addButton(DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap:
-        true, action: nil))
+        popup.addButton(DefaultButton(title: .localizedOkay, dismissOnTap: true, action: nil))
         self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
     }
 }

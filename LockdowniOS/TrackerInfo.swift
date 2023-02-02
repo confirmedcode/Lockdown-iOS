@@ -10,8 +10,8 @@ import Foundation
 import CocoaLumberjackSwift
 
 struct TrackerInfo: Decodable {
-    private var trackerIds: [String : String]
-    private var descriptions: [String : TrackerDescription]
+    private var trackerIds: [String: String]
+    private var descriptions: [String: TrackerDescription]
     
     func description(forDomain domain: String) -> TrackerDescription? {
         if let trackerId = trackerIds[domain] {
@@ -53,9 +53,14 @@ final class TrackerInfoRegistry {
         
         let userBlocked = getUserBlockedDomains()
         if userBlocked.keys.contains(domain) {
-            return TrackerDescription(title: domain, description: NSLocalizedString("You blocked this domain in your custom blocked domains.", comment: ""))
+            return TrackerDescription(title: domain, description: .localized("You blocked this domain in your custom blocked domains."))
         } else if let match = userBlocked.keys.first(where: { domain.hasSuffix($0) }) {
-            return TrackerDescription(title: domain, description: "\(NSLocalizedString("You blocked", comment: "Used in: You blocked tracker.com in your custom blocked domains.")) \(match) \(NSLocalizedString("in your custom blocked domains.", comment: "Used in: You blocked tracker.com in your custom blocked domains."))")
+            let youBlocked: String = .localized("You blocked", comment: "Used in: You blocked tracker.com in your custom blocked domains.")
+            let customDomains: String = .localized("in your custom blocked domains.",
+                                                   comment: "Used in: You blocked tracker.com in your custom blocked domains.")
+            return TrackerDescription(
+                title: domain,
+                description: "\(youBlocked) \(match) \(customDomains)")
         }
         
         let blocked = getLockdownBlockedDomains().lockdownDefaults
@@ -68,11 +73,12 @@ final class TrackerInfoRegistry {
         let groupsFormatted = TrackerInfoRegistry.formatList(strings: groups)
         
         if !groups.isEmpty {
-            return TrackerDescription(title: domain,
-                                      description: "\(domain) \(NSLocalizedString("is a part of", comment: "Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list")) \(groupsFormatted) \(NSLocalizedString("block list", comment: "Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list"))")
+            let partOf: String = .localized("is a part of", comment: "Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list")
+            let blocklist: String = .localized("block list", comment: "Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list")
+            return TrackerDescription(title: domain, description: "\(domain) \(partOf) \(groupsFormatted) \(blocklist)")
         }
         
-        return TrackerDescription(title: NSLocalizedString("No Info Found", comment: ""), description: NSLocalizedString("No additional information on this blocked domain found.", comment: ""))
+        return TrackerDescription(title: .localized("No Info Found"), description: .localized("No additional information on this blocked domain found."))
     }
     
     static private func formatList(strings: [String]) -> String {
@@ -85,7 +91,7 @@ final class TrackerInfoRegistry {
         
         let last = strings.removeLast()
         return strings
-            .joined(separator: ", ") + NSLocalizedString(" and ", comment: "Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com") + last
+            .joined(separator: ", ") + .localized(" and ", comment: "Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com") + last
     }
     
     private func getTrackerInfoDoc() throws -> TrackerInfo {

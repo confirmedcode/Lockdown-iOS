@@ -50,7 +50,7 @@ class TitleViewController: BaseViewController {
             self.titleLabel.shine(animated: true, completion: {
                 UIView.animate(withDuration: 1.5, animations: {
                     self.descriptionLabel.alpha = 1
-                }, completion: { e in
+                }, completion: { _ in
                     UIView.animate(withDuration: 1.5, animations: {
                         self.getStartedButton.alpha = 1
                         self.whyTrustButton.alpha = 1
@@ -67,7 +67,7 @@ class TitleViewController: BaseViewController {
         defaults.set(true, forKey: kHasShownTitlePage)
         
         PushNotifications.Authorization.requestWeeklyUpdateAuthorization(presentingDialogOn: self).done { _ in
-            OneTimeActions.markAsSeen(.notificationAuthorizationRequestPopup)
+            OneTimeActions.markAsSeen(.welcomeScreen)
             self.performSegue(withIdentifier: "getStartedTapped", sender: self)
         }.catch { error in
             DDLogWarn(error.localizedDescription)

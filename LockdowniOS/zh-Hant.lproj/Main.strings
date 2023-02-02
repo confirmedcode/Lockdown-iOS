@@ -1,0 +1,446 @@
+/* Class = "UILabel"; text = "I agree to the"; ObjectID = "04y-ib-kAj"; */
+"04y-ib-kAj.text" = "我同意";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "0XQ-Qd-SAy"; */
+"0XQ-Qd-SAy.placeholder" = "密碼";
+
+/* Class = "UILabel"; text = "TODAY"; ObjectID = "0id-50-Eu3"; */
+"0id-50-Eu3.text" = "今日";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0m3-NA-IPB"; */
+"0m3-NA-IPB.text" = "標題";
+
+/* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "2I5-jL-jQr"; */
+"2I5-jL-jQr.text" = "未啟動";
+
+/* Class = "UITabBarItem"; title = "Learn"; ObjectID = "2sg-zD-KTu"; */
+"2sg-zD-KTu.title" = "了解";
+
+/* Class = "UILabel"; text = "Warning"; ObjectID = "3P8-IH-ggH"; */
+"3P8-IH-ggH.text" = "警告";
+
+/* Class = "UIButton"; normalTitle = "􀈂"; ObjectID = "3tZ-rh-ZOa"; */
+"3tZ-rh-ZOa.normalTitle" = "􀈂";
+
+/* Class = "UILabel"; text = "iOS Annual (Save ~50%)"; ObjectID = "5Ce-KH-z1j"; */
+"5Ce-KH-z1j.text" = "iOS 年度方案（可省下大約 45% 的價格）";
+
+/* Class = "UILabel"; text = "A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source."; ObjectID = "6Qj-yK-k5A"; */
+"6Qj-yK-k5A.text" = "簡易、強大的防火牆，可阻止追蹤器、惡意軟體及其他惡意代理程式的連結。  免費且為開放來源。";
+
+/* Class = "UILabel"; text = "Tap to agree to this"; ObjectID = "6Sd-rw-Pyl"; */
+"6Sd-rw-Pyl.text" = "點選以同意";
+
+/* Class = "UILabel"; text = "Not Whitelisted"; ObjectID = "6TE-i7-iPd"; */
+"6TE-i7-iPd.text" = "未放入白名單";
+
+/* Class = "UILabel"; text = "World's Simplest Privacy Policy"; ObjectID = "6sx-m3-XUn"; */
+"6sx-m3-XUn.text" = "世界上最簡易的隱私權政策";
+
+/* Class = "UIButton"; normalTitle = "February 2022"; ObjectID = "7NS-46-hCo"; */
+"7NS-46-hCo.normalTitle" = "2022 年 2 月";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
+"7nc-lb-z6u.normalTitle" = "同意";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "8FF-0m-G4n"; */
+"8FF-0m-G4n.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Accounts get the following benefits:"; ObjectID = "8xZ-K2-buV"; */
+"8xZ-K2-buV.text" = "帳號可獲得以下好處：";
+
+/* Class = "UILabel"; text = "Block Log Disabled"; ObjectID = "9Mg-Xn-BmP"; */
+"9Mg-Xn-BmP.text" = "封鎖紀錄已關閉";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "A3S-Ro-tUz"; */
+"A3S-Ro-tUz.normalTitle" = "為什麼要信任 Lockdown？";
+
+/* Class = "UILabel"; text = "Pro Annual (Save ~30%)"; ObjectID = "ASZ-so-4BJ"; */
+"ASZ-so-4BJ.text" = "Pro 年度方案（可省下大約 30% 的價格）";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "AVA-H3-vX1"; */
+"AVA-H3-vX1.text" = "註冊";
+
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "BGP-ej-jz6"; */
+"BGP-ej-jz6.text" = "Secure Tunnel VPN";
+
+/* Class = "UIView"; accessibilityHint = "iOS Annual supports iPads and iPhones. Double tap using VoiceOver to select."; ObjectID = "BI8-xc-diY"; */
+"BI8-xc-diY.accessibilityHint" = "iOS 年度方案可支援 iPads 及 iPhones。使用 VoiceOver 點選兩次以選取。";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"iOS Annual\" Plan"; ObjectID = "BI8-xc-diY"; */
+"BI8-xc-diY.accessibilityLabel" = "\"iOS 年度\"方案的核取方塊";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "BhW-8r-pbC"; */
+"BhW-8r-pbC.normalTitle" = "為什麼要信任 Lockdown？";
+
+/* Class = "UILabel"; accessibilityHint = "Instructs user to tap the blue circle to the left of this label to activate."; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.accessibilityHint" = "指示使用者點選此標籤左方的藍色圓圈以啟動。";
+
+/* Class = "UILabel"; accessibilityLabel = "A label that says Tap To Activate. Not the actual button."; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.accessibilityLabel" = "寫著「點選以啟動」的標籤，而非真正的按鈕。";
+
+/* Class = "UILabel"; text = "Tap To Activate"; ObjectID = "BoV-0k-BS5"; */
+"BoV-0k-BS5.text" = "點選以啟動";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "C0f-ye-V9U"; */
+"C0f-ye-V9U.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Cjo-hk-1dr"; */
+"Cjo-hk-1dr.normalTitle" = "關閉";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "Dm9-pY-Snm"; */
+"Dm9-pY-Snm.normalTitle" = "恢復購買";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "Dxs-1n-lKD"; */
+"Dxs-1n-lKD.normalTitle" = "忘記密碼？";
+
+/* Class = "UILabel"; text = "United States - West"; ObjectID = "E9c-eB-V7Z"; */
+"E9c-eB-V7Z.text" = "美國--西部";
+
+/* Class = "UILabel"; text = "12:22 PM"; ObjectID = "G2S-PC-kMS"; */
+"G2S-PC-kMS.text" = "12:22 PM";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "GBo-WQ-fTN"; */
+"GBo-WQ-fTN.normalTitle" = "關閉";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "J7f-4S-hHD"; */
+"J7f-4S-hHD.normalTitle" = "登入";
+
+/* Class = "UIButton"; normalTitle = "View Log"; ObjectID = "JVD-sS-lUY"; */
+"JVD-sS-lUY.normalTitle" = "檢視紀錄";
+
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "Jsv-mc-ptE"; */
+"Jsv-mc-ptE.text" = "Secure Tunnel VPN";
+
+/* Class = "UILabel"; text = "Already have a Lockdown account? Sign in below."; ObjectID = "KDA-UD-f4u"; */
+"KDA-UD-f4u.text" = "已有 Lockdown 帳號？ 在下方登入。";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "KMj-n0-VnV"; */
+"KMj-n0-VnV.placeholder" = "電子郵件地址";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "KbM-Pn-EXN"; */
+"KbM-Pn-EXN.normalTitle" = "開始使用";
+
+/* Class = "UILabel"; text = "Blocking Enabled"; ObjectID = "Kd7-nB-tAb"; */
+"Kd7-nB-tAb.text" = "已啟用封鎖";
+
+/* Class = "UILabel"; text = "Set Region"; ObjectID = "KtJ-Jg-Z3X"; */
+"KtJ-Jg-Z3X.text" = "設定區域";
+
+/* Class = "UILabel"; text = "Firewall"; ObjectID = "LE2-86-d4U"; */
+"LE2-86-d4U.text" = "Firewall";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "MRU-xk-A2p"; */
+"MRU-xk-A2p.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Msx-Nc-p9M"; */
+"Msx-Nc-p9M.text" = "0";
+
+/* Class = "UILabel"; text = "Lockdown"; ObjectID = "NAN-dg-xBj"; */
+"NAN-dg-xBj.text" = "Lockdown";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "NvC-GW-2NJ"; */
+"NvC-GW-2NJ.normalTitle" = "取消";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "O4a-yi-uRp"; */
+"O4a-yi-uRp.normalTitle" = "按鈕";
+
+/* Class = "UITabBarItem"; title = "Protect"; ObjectID = "O5a-jC-Mj1"; */
+"O5a-jC-Mj1.title" = "保護";
+
+/* Class = "UILabel"; text = "Location: 🇺🇸"; ObjectID = "O6b-GR-ijA"; */
+"O6b-GR-ijA.text" = "地點：🇺🇸";
+
+/* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "ODT-wN-bGo"; */
+"ODT-wN-bGo.text" = "iPads 及 iPhones";
+
+/* Class = "UIButton"; normalTitle = "􀍟"; ObjectID = "OIa-zY-ALo"; */
+"OIa-zY-ALo.normalTitle" = "􀁝";
+
+/* Class = "UIButton"; normalTitle = "􀁝"; ObjectID = "OLt-18-OkW"; */
+"OLt-18-OkW.normalTitle" = "􀁝";
+
+/* Class = "UILabel"; text = "Block Invasive Tracking"; ObjectID = "PGe-EF-Ixy"; */
+"PGe-EF-Ixy.text" = "封鎖侵入式追蹤";
+
+/* Class = "UIButton"; normalTitle = "􀆅"; ObjectID = "RMP-Wh-oss"; */
+"RMP-Wh-oss.normalTitle" = "􀆅";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "RTE-DP-SL6"; */
+"RTE-DP-SL6.normalTitle" = "註冊";
+
+/* Class = "UIButton"; normalTitle = "Whitelist"; ObjectID = "Rhb-9H-gRT"; */
+"Rhb-9H-gRT.normalTitle" = "白名單";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "SCr-mD-x9f"; */
+"SCr-mD-x9f.normalTitle" = "隱私權政策";
+
+/* Class = "UILabel"; text = "ALL TIME"; ObjectID = "SGD-NH-9Mo"; */
+"SGD-NH-9Mo.text" = "無時無刻";
+
+/* Class = "UILabel"; text = "iPads, iPhones, and Macs"; ObjectID = "SLG-gG-QTX"; */
+"SLG-gG-QTX.text" = "iPads、iPhones 及 Macs";
+
+/* Class = "UILabel"; text = "3421"; ObjectID = "Sar-GU-wUS"; */
+"Sar-GU-wUS.text" = "3421";
+
+/* Class = "UILabel"; text = "Lockdown Firewall is 100% on-device, so it does not collect or transmit any data to any servers - everything stays on your device."; ObjectID = "T2B-yz-40I"; */
+"T2B-yz-40I.text" = "Lockdown Firewall 100% 在裝置上，所以不需要收集或傳送任何資料至任何伺服器--所有內容皆在你的裝置上。";
+
+/* Class = "UILabel"; text = "Protect Good Connections"; ObjectID = "TaD-Vg-S5A"; */
+"TaD-Vg-S5A.text" = "保護良好的連線";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "Tls-Z3-Gnz"; */
+"Tls-Z3-Gnz.normalTitle" = "儲存";
+
+/* Class = "UITextField"; placeholder = "domain-to-whitelist.com"; ObjectID = "U7q-Uc-gxE"; */
+"U7q-Uc-gxE.placeholder" = "domain-to-whitelist.com";
+
+/* Class = "UILabel"; text = "Lockdown VPN is 100% open source, fully audited, and has a strict no-logs policy. Proof of your data protection is in the Privacy Policy."; ObjectID = "UJ5-nt-aYy"; */
+"UJ5-nt-aYy.text" = "Lockdown VPN 為 100% 開放來源、完全受到稽核，且有嚴格的無紀錄政策。為隱私權政策中資料保護的證明。";
+
+/* Class = "UIButton"; normalTitle = "Get Started Free"; ObjectID = "VK2-VJ-AkH"; */
+"VK2-VJ-AkH.normalTitle" = "開始免費使用";
+
+/* Class = "UIButton"; normalTitle = "Learn More"; ObjectID = "Vhr-9g-C3l"; */
+"Vhr-9g-C3l.normalTitle" = "了解更多";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "W3y-bX-UkA"; */
+"W3y-bX-UkA.text" = "密碼";
+
+/* Class = "UIView"; accessibilityHint = "iOS Monthly supports iPads and iPhones. Double tap using VoiceOver to select."; ObjectID = "WcD-2j-Lym"; */
+"WcD-2j-Lym.accessibilityHint" = "iOS 月度方案可支援 iPads 及 iPhones。使用 VoiceOver 點選兩次以選取。";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"iOS Monthly\" Plan"; ObjectID = "WcD-2j-Lym"; */
+"WcD-2j-Lym.accessibilityLabel" = "\"iOS 月度\"方案的核取方塊";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "Wi8-F0-ahr"; */
+"Wi8-F0-ahr.normalTitle" = "關閉";
+
+/* Class = "UILabel"; text = "THIS WEEK"; ObjectID = "WyU-rB-hEs"; */
+"WyU-rB-hEs.text" = "本週";
+
+/* Class = "UILabel"; text = "$49.99/year after (~$4.17/month)"; ObjectID = "XQI-S7-VjW"; */
+"XQI-S7-VjW.text" = "以下時間後每年 $49.99（約為每月 $4.17）：";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "XSr-oZ-hkd"; */
+"XSr-oZ-hkd.text" = "0";
+
+/* Class = "UILabel"; text = "Block Group Title"; ObjectID = "XcQ-Zo-7hE"; */
+"XcQ-Zo-7hE.text" = "封鎖群組標題";
+
+/* Class = "UILabel"; text = "✓ Get new block lists for trackers ✓ Access Lockdown Mac and Desktop ✓ Critical announcements and features"; ObjectID = "XhT-hq-Dd2"; */
+"XhT-hq-Dd2.text" = "✓ 取得全新的追蹤器封鎖清單 ✓ 存取 Mac 及 Desktop 版 Lockdown ✓ 重要公告及功能";
+
+/* Class = "UIButton"; normalTitle = "Block List"; ObjectID = "XvC-pH-UjX"; */
+"XvC-pH-UjX.normalTitle" = "封鎖清單";
+
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "Y6I-Ar-Q5y"; */
+"Y6I-Ar-Q5y.title" = "帳號";
+
+/* Class = "UITabBarItem"; title = "Account"; ObjectID = "YAE-W9-FME"; */
+"YAE-W9-FME.title" = "帳號";
+
+/* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "ZPf-nR-X1a"; */
+"ZPf-nR-X1a.accessibilityLabel" = "點選此按鈕以啟動 Secure Tunnel";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "a37-qm-xpZ"; */
+"a37-qm-xpZ.normalTitle" = "隱私權政策";
+
+/* Class = "UIButton"; normalTitle = "Set Region"; ObjectID = "a4O-qT-yLk"; */
+"a4O-qT-yLk.normalTitle" = "設定區域";
+
+/* Class = "UILabel"; text = "VPN"; ObjectID = "aXL-VV-lJa"; */
+"aXL-VV-lJa.text" = "VPN";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "anO-Te-34C"; */
+"anO-Te-34C.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "asx-fS-ufQ"; */
+"asx-fS-ufQ.text" = "電子郵件";
+
+/* Class = "UILabel"; text = "🇺🇸"; ObjectID = "bDO-jU-rIH"; */
+"bDO-jU-rIH.text" = "🇺🇸";
+
+/* Class = "UILabel"; text = "Pro Monthly"; ObjectID = "c6Y-nW-xhv"; */
+"c6Y-nW-xhv.text" = "Pro 月度";
+
+/* Class = "UIButton"; normalTitle = "􀎬"; ObjectID = "cAQ-Dd-nCd"; */
+"cAQ-Dd-nCd.normalTitle" = "􀎬";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "cNH-31-ne4"; */
+"cNH-31-ne4.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "TUNNEL OFF"; ObjectID = "cVg-HS-AW8"; */
+"cVg-HS-AW8.text" = "TUNNEL 關閉";
+
+/* Class = "UILabel"; text = "The connections blocked by Lockdown for the last day are shown below. As per our Privacy Policy, all the blocking is done on-device and never transmitted to any servers for processing."; ObjectID = "ccb-xf-LSM"; */
+"ccb-xf-LSM.text" = "前一天遭 Lockdown 封鎖的連線已顯示於下方。根據我們的隱私權政策，所有的封鎖皆在裝置上完成，且永遠不會傳送至任何伺服器進行處理。";
+
+/* Class = "UIView"; accessibilityHint = "Pro Annual supports iPads and iPhones and Macs. Double tap using VoiceOver to select."; ObjectID = "d44-u4-ZF6"; */
+"d44-u4-ZF6.accessibilityHint" = "Pro 年度方案可支援 iPads、iPhones 及 Macs。使用 VoiceOver 點選兩次以選取。";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"Pro Annual\" Plan"; ObjectID = "d44-u4-ZF6"; */
+"d44-u4-ZF6.accessibilityLabel" = "\"Pro 年度\"方案的核取方塊";
+
+/* Class = "UILabel"; text = "Enter your email below and we'll send you an email to reset your password."; ObjectID = "dLw-qu-1Oe"; */
+"dLw-qu-1Oe.text" = "請在下方輸入您的電子郵件，我們將會寄給您一封電子郵件，以讓您重設密碼。";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "dp2-kD-Scb"; */
+"dp2-kD-Scb.normalTitle" = "登入";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "f3K-Kz-eVg"; */
+"f3K-Kz-eVg.placeholder" = "密碼";
+
+/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "fK4-lE-dks"; */
+"fK4-lE-dks.text" = "blocked-domain.com";
+
+/* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "fRG-nx-zRG"; */
+"fRG-nx-zRG.accessibilityLabel" = "點選此按鈕以啟動 Firewall";
+
+/* Class = "UILabel"; text = "For fastest speeds, choose a region closest to you. You can also anonymize your IP through other regions."; ObjectID = "fTe-nS-2bH"; */
+"fTe-nS-2bH.text" = "若想體驗最快的速度，請選擇最接近您的區域。您也能透過其他區域來匿名您的 IP。";
+
+/* Class = "UILabel"; text = "Block Log"; ObjectID = "fmE-6E-gnc"; */
+"fmE-6E-gnc.text" = "封鎖紀錄";
+
+/* Class = "UILabel"; text = "Enhanced Tracking Prevention"; ObjectID = "gHS-VV-2R1"; */
+"gHS-VV-2R1.text" = "強化的追蹤防護";
+
+/* Class = "UILabel"; text = "Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol."; ObjectID = "gJW-8m-Vk5"; */
+"gJW-8m-Vk5.text" = "密碼必須至少為 8 個字元，須包含至少一個大寫字母、一個小寫字母、一個數字及一個符號。";
+
+/* Class = "UIButton"; normalTitle = "Why Trust Lockdown?"; ObjectID = "h6y-cc-pyT"; */
+"h6y-cc-pyT.normalTitle" = "為什麼要信任 Lockdown？";
+
+/* Class = "UIView"; accessibilityHint = "Pro Monthly supports iPads and iPhones and Macs. Double tap using VoiceOver to select."; ObjectID = "hqL-Xy-82O"; */
+"hqL-Xy-82O.accessibilityHint" = "Pro 月度方案可支援 iPads、iPhones 及 Macs。使用 VoiceOver 點選兩次以選取。";
+
+/* Class = "UIView"; accessibilityLabel = "Checkbox for \"Pro Monthly\" Plan"; ObjectID = "hqL-Xy-82O"; */
+"hqL-Xy-82O.accessibilityLabel" = "\"Pro 月度\"方案的核取方塊";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "j43-ba-oDJ"; */
+"j43-ba-oDJ.normalTitle" = "提交";
+
+/* Class = "UIButton"; normalTitle = "Enable Block Log"; ObjectID = "j7V-kr-ymm"; */
+"j7V-kr-ymm.normalTitle" = "啟用封鎖清單";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "jMa-F3-KUG"; */
+"jMa-F3-KUG.text" = "電子郵件";
+
+/* Class = "UIButton"; accessibilityLabel = "Tap This Button To Activate Secure Tunnel"; ObjectID = "jXy-3G-JaC"; */
+"jXy-3G-JaC.accessibilityLabel" = "點選此按鈕以啟動 Secure Tunnel";
+
+/* Class = "UILabel"; text = "Private Browsing + Hide Location & IP"; ObjectID = "ked-BF-PXx"; */
+"ked-BF-PXx.text" = "隱私瀏覽 + 隱藏地點及 IP";
+
+/* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "kmJ-b4-n81"; */
+"kmJ-b4-n81.text" = "未啟動";
+
+/* Class = "UIView"; accessibilityLabel = "Tap This Button To Activate Firewall"; ObjectID = "koL-dc-mZr"; */
+"koL-dc-mZr.accessibilityLabel" = "點選此按鈕以啟動 Firewall";
+
+/* Class = "UILabel"; text = "VIEW OPENAUDIT REPORT"; ObjectID = "lDV-k9-rkj"; */
+"lDV-k9-rkj.text" = "檢視開啟稽核報告";
+
+/* Class = "UILabel"; text = "You'll automatically be credited for your existing subscription."; ObjectID = "lEt-3l-yTH"; */
+"lEt-3l-yTH.text" = "將自動存入至您既有的訂閱內容。";
+
+/* Class = "UIButton"; normalTitle = "Terms of Service"; ObjectID = "lOA-PB-b5V"; */
+"lOA-PB-b5V.normalTitle" = "服務條款";
+
+/* Class = "UILabel"; text = "To: joe@email.com Re: Q4 2019 Finance Review"; ObjectID = "mRH-Ie-0qb"; */
+"mRH-Ie-0qb.text" = "收件者：joe@email.com 回覆：Q4 2019 財務報告";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "mU9-zL-O80"; */
+"mU9-zL-O80.normalTitle" = "儲存";
+
+/* Class = "UILabel"; text = "iPads and iPhones"; ObjectID = "naG-mg-g14"; */
+"naG-mg-g14.text" = "iPads 及 iPhones";
+
+/* Class = "UILabel"; text = "Forgot Password"; ObjectID = "nu2-zq-dta"; */
+"nu2-zq-dta.text" = "忘記密碼";
+
+/* Class = "UILabel"; text = "Secure Tunnel"; ObjectID = "nuc-D4-P1M"; */
+"nuc-D4-P1M.text" = "Secure Tunnel VPN";
+
+/* Class = "UILabel"; text = "Sign In"; ObjectID = "oPf-b7-d1V"; */
+"oPf-b7-d1V.text" = "登入";
+
+/* Class = "UILabel"; text = "Blocked today:"; ObjectID = "oYx-Wf-i0q"; */
+"oYx-Wf-i0q.text" = "今日已封鎖：";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "pMu-va-97O"; */
+"pMu-va-97O.normalTitle" = "關閉";
+
+/* Class = "UILabel"; text = "Some sites or apps don't work well with VPNs. The whitelist below allows you to whitelist sites so they bypass the VPN for a better experience."; ObjectID = "pVa-cX-EbQ"; */
+"pVa-cX-EbQ.text" = "有些網站或應用程式與 VPN 無法正常互動。下方的白名單將能讓您前往白名單網站，並能略過 VPN，以獲得更佳的遊戲體驗。";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "pXd-nf-bzR"; */
+"pXd-nf-bzR.placeholder" = "電子郵件地址";
+
+/* Class = "UILabel"; text = "whitelisted-domain.com"; ObjectID = "pao-zq-e98"; */
+"pao-zq-e98.text" = "whitelisted-domain.com";
+
+/* Class = "UIButton"; normalTitle = "See How It Works"; ObjectID = "qBb-qF-2nJ"; */
+"qBb-qF-2nJ.normalTitle" = "來瞧瞧如何運作";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "rCb-D1-AbS"; */
+"rCb-D1-AbS.text" = "密碼";
+
+/* Class = "UILabel"; text = "Over 1 Billion Trackers Blocked"; ObjectID = "rJd-Ql-Mu9"; */
+"rJd-Ql-Mu9.text" = "已封鎖超過 10 億個追蹤器";
+
+/* Class = "UILabel"; text = "blocked-domain.com"; ObjectID = "rJk-m6-qqA"; */
+"rJk-m6-qqA.text" = "blocked-domain.com";
+
+/* Class = "UILabel"; text = "IP: 18.142.2.87"; ObjectID = "rhx-SZ-Kki"; */
+"rhx-SZ-Kki.text" = "IP：18.132.2.87";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "syJ-Jd-iUo"; */
+"syJ-Jd-iUo.text" = "電子郵件";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "tzL-mY-IJs"; */
+"tzL-mY-IJs.normalTitle" = "繼續";
+
+/* Class = "UILabel"; text = "Tunnel Whitelist"; ObjectID = "uA3-l4-Qe0"; */
+"uA3-l4-Qe0.text" = "Tunnel 白名單";
+
+/* Class = "UILabel"; text = "📱"; ObjectID = "uSD-At-Csa"; */
+"uSD-At-Csa.text" = "📱";
+
+/* Class = "UILabel"; text = "Secure Tunnel encrypts your connections, anonymizes browsing history, and hides your location and unique IP address."; ObjectID = "ujS-r7-ItM"; */
+"ujS-r7-ItM.text" = "Secure Tunnel 會加密您的連線、匿名瀏覽紀錄，並隱藏您的地點及獨特的 IP 位址。";
+
+/* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "v8T-bw-mkT"; */
+"v8T-bw-mkT.normalTitle" = "隱私權政策";
+
+/* Class = "UIButton"; normalTitle = "Start 1 Week Free Trial"; ObjectID = "v8r-0N-ycQ"; */
+"v8r-0N-ycQ.normalTitle" = "開始 1 週免費試用";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "vKc-uc-qfV"; */
+"vKc-uc-qfV.text" = "-";
+
+/* Class = "UILabel"; text = "Add a domain to whitelist"; ObjectID = "w5F-U8-hnF"; */
+"w5F-U8-hnF.text" = "將一個網域加入白名單";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "wPU-g5-s3s"; */
+"wPU-g5-s3s.placeholder" = "電子郵件地址";
+
+/* Class = "UILabel"; text = "iOS Monthly"; ObjectID = "xt8-uP-JgS"; */
+"xt8-uP-JgS.text" = "iOS 月度";
+
+/* Class = "UILabel"; text = "Firewall"; ObjectID = "yIB-Tk-mf1"; */
+"yIB-Tk-mf1.text" = "Firewall";
+
+/* Class = "UILabel"; text = "Browse Safer - Fully Audited Privacy"; ObjectID = "yXI-U1-vLz"; */
+"yXI-U1-vLz.text" = "瀏覽更為安全--完全受到稽核的隱私";
+
+/* Class = "UILabel"; text = "iPad, iPhones, and Macs"; ObjectID = "yvR-wl-rIt"; */
+"yvR-wl-rIt.text" = "iPads、iPhones 及 Macs";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ziI-ly-5qb"; */
+"ziI-ly-5qb.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Firewall Annual (save ~38%)"; ObjectID = "HoY-Z7-gjw"; */
+"HoY-Z7-gjw.text" = "Firewall 年度方案（可省下大約 38% 的價格）";

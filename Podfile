@@ -1,7 +1,15 @@
 inhibit_all_warnings!
 use_frameworks!
 
-platform :ios, '11.0'
+platform :ios, '13.0'
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
+end
 
 target :'Lockdown' do
   plugin 'cocoapods-acknowledgements', :settings_bundle => true
@@ -13,8 +21,11 @@ target :'Lockdown' do
   pod 'PromiseKit'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'KeychainAccess'
-  pod 'CocoaLumberjack', '3.5.2'
+  pod 'CocoaLumberjack'
   pod 'PopupDialog', '~> 0.9'
+  
+  #Linter
+  pod 'SwiftLint'
 end
 
 target :'LockdownTunnel' do
@@ -28,7 +39,7 @@ target :'Lockdown VPN Widget' do
   pod 'PromiseKit'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'KeychainAccess'
-  pod 'CocoaLumberjack', '3.5.2'
+  pod 'CocoaLumberjack'
   pod 'ReachabilitySwift', '4.3.1'
 end
 
@@ -36,9 +47,17 @@ target :'Lockdown Firewall Widget' do
   pod 'PromiseKit'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'KeychainAccess'
-  pod 'CocoaLumberjack', '3.5.2'
+  pod 'CocoaLumberjack'
   pod 'ReachabilitySwift', '4.3.1'
 end
+
+target :'LockdownIntents' do
+   pod 'PromiseKit'
+   pod 'SwiftyStoreKit', '0.13.1'
+   pod 'KeychainAccess'
+   pod 'CocoaLumberjack'
+   pod 'ReachabilitySwift', '4.3.1'
+ end
 
 target :'LockdownTests' do
   # see https://github.com/pointfreeco/swift-snapshot-testing/pull/308

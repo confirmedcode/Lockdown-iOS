@@ -25,9 +25,9 @@ class BlockListViewController: BaseViewController {
         var localizedTitle: String {
             switch self {
             case .blockLists:
-                return NSLocalizedString("Block Lists", comment: "")
+                return .localized("Block Lists")
             case .custom:
-                return NSLocalizedString("Custom", comment: "")
+                return .localized("Custom")
             }
         }
     }
@@ -48,8 +48,8 @@ class BlockListViewController: BaseViewController {
         super.viewDidLoad()
         
         let customNavigationView = CustomNavigationView()
-        customNavigationView.title = NSLocalizedString("Configure Blocking", comment: "")
-        customNavigationView.buttonTitle = NSLocalizedString("SAVE", comment: "")
+        customNavigationView.title = .localized("Configure Blocking")
+        customNavigationView.buttonTitle = .localized("SAVE")
         customNavigationView.onButtonPressed { [unowned self] in
             self.save()
         }
@@ -63,10 +63,12 @@ class BlockListViewController: BaseViewController {
         view.addGestureRecognizer(tap)
         
         do {
-            explanationLabel.font = fontRegular14
+            explanationLabel.font = .regularLockdownFont(size: 14)
             explanationLabel.numberOfLines = 0
-            explanationLabel.text = NSLocalizedString("Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions.", comment: "")
-            
+            explanationLabel.text = .localized("""
+Block all your apps from connecting to the domains and sites below. For your convenience, \
+Lockdown also has pre-configured suggestions.
+""")
             view.addSubview(explanationLabel)
             explanationLabel.anchors.top.spacing(0, to: customNavigationView.anchors.bottom)
             explanationLabel.anchors.leading.readableContentPin(inset: 3)
@@ -79,11 +81,9 @@ class BlockListViewController: BaseViewController {
             segmented.anchors.top.spacing(12, to: explanationLabel.anchors.bottom)
             segmented.anchors.leading.readableContentPin()
             segmented.anchors.trailing.readableContentPin()
-            segmented.setTitleTextAttributes([.font: fontMedium14], for: .normal)
-            if #available(iOS 13.0, *) {
-                segmented.selectedSegmentTintColor = .tunnelsBlue
-                segmented.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-            }
+            segmented.setTitleTextAttributes([.font: UIFont.mediumLockdownFont(size: 14)], for: .normal)
+            segmented.selectedSegmentTintColor = .tunnelsBlue
+            segmented.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             
             segmented.addTarget(self, action: #selector(segmentedControlDidChangeValue), for: .valueChanged)
         }
@@ -236,11 +236,14 @@ class BlockListViewController: BaseViewController {
             reloadUserBlockedDomains()
         case .notValid(let reason):
             DDLogWarn("Custom domain is not valid - \(userEnteredDomainName), reason - \(reason)")
+            let notValidEntry: String = .localized("""
+ is not a valid entry. Please only enter the host of the domain you want to block. \
+For example, \"google.com\" without \"https://\"
+""")
             showPopupDialog(
-                title: NSLocalizedString("Invalid domain", comment: ""),
-                message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"", comment: ""),
-                acceptButton: NSLocalizedString("Okay", comment: "")
-            ) {
+                title: .localized("Invalid domain"),
+                message: "\"\(userEnteredDomainName)\"" + notValidEntry,
+                acceptButton: .localizedOkay) {
                 self.addDomainTextField.becomeFirstResponder()
             }
         }
@@ -248,10 +251,10 @@ class BlockListViewController: BaseViewController {
     
     func save() {
         self.dismiss(animated: true, completion: {
-            if (self.didMakeChange == true) {
+            if self.didMakeChange == true {
                 if getIsCombinedBlockListEmpty() {
                     FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
-                } else if (FirewallController.shared.status() == .connected) {
+                } else if FirewallController.shared.status() == .connected {
                     FirewallController.shared.restart()
                 }
             }

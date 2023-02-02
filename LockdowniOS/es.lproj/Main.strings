@@ -23,7 +23,7 @@
 "3tZ-rh-ZOa.normalTitle" = "􀈂";
 
 /* Class = "UILabel"; text = "iOS Annual (Save ~50%)"; ObjectID = "5Ce-KH-z1j"; */
-"5Ce-KH-z1j.text" = "iOS Anual (Ahorre ~50%)";
+"5Ce-KH-z1j.text" = "iOS Anual (Ahorre ~45%)";
 
 /* Class = "UILabel"; text = "Un firewall simple y potente que detiene las conexiones a rastreadores, malware y otros agentes maliciosos.  Free and open source."; ObjectID = "6Qj-yK-k5A"; */
 "6Qj-yK-k5A.text" = "Un firewall simple y potente que detiene las conexiones a rastreadores, malware y otros agentes maliciosos.  Libre y de código abierto.";
@@ -441,3 +441,6 @@
 
 /* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ziI-ly-5qb"; */
 "ziI-ly-5qb.normalTitle" = "CANCELAR";
+
+/* Class = "UILabel"; text = "Firewall Annual (save ~38%)"; ObjectID = "HoY-Z7-gjw"; */
+"HoY-Z7-gjw.text" = "Firewall Anual (Ahorre ~38%)";

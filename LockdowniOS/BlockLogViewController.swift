@@ -18,7 +18,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     //
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dayLogTime.count;
+        return dayLogTime.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,10 +34,12 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "blockLogCell", for: indexPath) as! BlockLogCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "blockLogCell", for: indexPath) as? BlockLogCell else {
+            return UITableViewCell()
+        }
         
-        cell.time.text = dayLogTime[indexPath.row];
-        cell.logHost?.text = dayLogHost[indexPath.row];
+        cell.time.text = dayLogTime[indexPath.row]
+        cell.logHost?.text = dayLogHost[indexPath.row]
         
         return cell
     }
@@ -53,11 +55,11 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         blockDayCounterLabel.text = getDayMetricsString(commas: true)
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
+        refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
         
         configureObservers()
         
-        refreshData(self);
+        refreshData(self)
     }
     
     deinit {
@@ -66,7 +68,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func configureObservers() {
-        kvoObservationToken = defaults.observe(\.LockdownDayLogs, options: [.new, .old]) { [weak self] (defaults, change) in
+        kvoObservationToken = defaults.observe(\.LockdownDayLogs, options: [.new, .old]) { [weak self] (defaults, _) in
             DispatchQueue.main.async {
                 self?.debouncer.debounce {
                     self?.refreshData(defaults)
@@ -93,10 +95,10 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
             dayLogHost = []
             if let dayLogs = BlockDayLog.shared.strings?.reversed() {
                 for log in dayLogs {
-                    let sp = log.components(separatedBy: "_");
+                    let sp = log.components(separatedBy: "_")
                     if sp.count == 2 {
-                        dayLogTime.append(sp[0]);
-                        dayLogHost.append(sp[1]);
+                        dayLogTime.append(sp[0])
+                        dayLogHost.append(sp[1])
                     }
                 }
             }
@@ -106,7 +108,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
                 let indexPaths = (0 ..< diff).map({ IndexPath(row: $0, section: 0) })
                 tableView.performBatchUpdates {
                     tableView.insertRows(at: indexPaths, with: .top)
-                } completion: { (finished) in
+                } completion: { (_) in
                     return
                 }
             } else {
@@ -129,30 +131,40 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBAction func showMenu() {
         let isBlockEnabled = BlockDayLog.shared.isEnabled
         
-        showPopupDialog(title: NSLocalizedString("Settings", comment: ""), message: NSLocalizedString("The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed.", comment: ""), buttons: [
-                            .custom(title: isBlockEnabled ? NSLocalizedString("Disable Block Log" , comment: "") : NSLocalizedString("Enable Block Log", comment: ""), completion: {
-                if isBlockEnabled {
-                    self.showDisableBlockLog()
-                } else {
-                    self.enableBlockLog()
-                }
-            }),
-                            .custom(title: NSLocalizedString("Clear Block Log", comment: ""), completion: {
-                BlockDayLog.shared.clear()
-                defaults.set(0, forKey: kDayMetrics)
-                self.refreshData(self)
-            }),
-            .cancel()
+        let message = """
+The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - \
+the number of tracking attempts will still be displayed.
+"""
+        showPopupDialog(
+            title: .localized("Settings"),
+            message: .localized(message),
+            buttons: [
+                .custom(title: isBlockEnabled ? .localized("Disable Block Log") : .localized("Enable Block Log")) {
+                    if isBlockEnabled {
+                        self.showDisableBlockLog()
+                    } else {
+                        self.enableBlockLog()
+                    }
+                },
+                .custom(title: .localized("Clear Block Log")) {
+                    BlockDayLog.shared.clear()
+                    defaults.set(0, forKey: kDayMetrics)
+                    self.refreshData(self)
+                },
+                .cancel()
         ])
     }
     
     func showDisableBlockLog() {
-        showPopupDialog(title: NSLocalizedString("Disable Block Log?", comment: ""), message: NSLocalizedString("You'll have to reenable it later here to start seeing blocked entries again.", comment: ""), buttons: [
-                            .destructive(title: NSLocalizedString("Disable", comment: ""), completion: {
-                BlockDayLog.shared.disable(shouldClear: true)
-                self.refreshData(self)
-            }),
-            .preferredCancel()
+        showPopupDialog(
+            title: .localized("Disable Block Log?"),
+            message: .localized("You'll have to reenable it later here to start seeing blocked entries again."),
+            buttons: [
+                .destructive(title: .localized("Disable")) {
+                    BlockDayLog.shared.disable(shouldClear: true)
+                    self.refreshData(self)
+                },
+                .preferredCancel()
         ])
     }
     

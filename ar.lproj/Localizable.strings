@@ -1,0 +1,809 @@
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = " و ";
+
+/* refers to number of connections blocked today, as in '34 Blocked Today' */
+" Blocked Today" = " حُظر اليوم";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"" = " ليس إدخالاً صالحًا. الرجاء إدخال مضيف النطاق الذي تريد إضافته إلى القائمة البيضاء فقط. على سبيل المثال، \"google.com\" بدون \"https://\"";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"" = " ليس إدخالاً صالحًا. الرجاء إدخال مضيف النطاق الذي تريد حظره فقط. على سبيل المثال، \"google.com\" بدون \"https://\"";
+
+/* No comment provided by engineer. */
+" Off" = " إيقاف";
+
+/* No comment provided by engineer. */
+" On" = " تشغيل";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " أدوات التتبع والإعلانات والبرامج الضارة باستخدام Lockdown، وهو جدار الحماية الذي يمنع الاتصالات غير المرغوب فيها في جميع تطبيقاتك. احصل عليه مجانًا من lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"1 Week Free" = "1 أسبوع مجانًا";
+
+/* No comment provided by engineer. */
+"\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block." = "\"قائمة الحظر\" تتيح لك اختيار ما تريد حظره (على سبيل المثال، Facebook، محتوى جذب النقرات، إلخ). يمكنك أيضًا تعيين نطاقات مخصصة لحظرها.";
+
+/* No comment provided by engineer. */
+"\"iOS Annual\" is your current plan" = "\"iOS Annual\" هي خطتك الحالية";
+
+/* No comment provided by engineer. */
+"\"iOS Monthly\" is your current plan" = "\"iOS Monthly\" هي خطتك الحالية";
+
+/* No comment provided by engineer. */
+"\"Pro Annual\" is your current plan" = "\"Pro Annual\" هي خطتك الحالية";
+
+/* No comment provided by engineer. */
+"\"Pro Monthly\" is your current plan" = "\"Pro Monthly\" هي خطتك الحالية";
+
+/* No comment provided by engineer. */
+"\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you." = "\"عرض السجل\" يظهر بالضبط ما الاتصالات التي تم حظرها في اليوم الماضي. يُمسح هذا السجل في منتصف الليل ويظل على الجهاز، لذا فهو مرئي لك فقط.";
+
+/* No comment provided by engineer. */
+"\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n إذا استمرت المشكلة، فيرجى التواصل مع team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n إذا استمر هذا، فيرجى التواصل مع team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"About Lockdown VPN" = "حول Lockdown VPN";
+
+/* No comment provided by engineer. */
+"Activate Firewall with this button." = "قم بتنشيط جدار الحماية باستخدام هذا الزر.";
+
+/* No comment provided by engineer. */
+"Activating" = "جارٍ التنشيط";
+
+/* No comment provided by engineer. */
+"Anonymize IP against trackers" = "إخفاء هوية IP أمام أدوات التتبع";
+
+/* No comment provided by engineer. */
+"Apple Outage" = "انقطاع Apple";
+
+/* No comment provided by engineer. */
+"at least 8 characters" = "8 أحرف على الأقل";
+
+/* No comment provided by engineer. */
+"Audit Reports" = "تقارير المراجعة";
+
+/* No comment provided by engineer. */
+"Australia" = "استراليا";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "تأكد من فحص مجلد البريد العشوائي الخاص بك في حالة وجوده هناك.\n\nيمكنك أيضًا طلب إعادة إرسال التأكيد.";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "قائمة الحظر";
+
+/* No comment provided by engineer. */
+"Blocked" = "حُظر";
+
+/* No comment provided by engineer. */
+"Blocked Domains" = "النطاقات المحظورة";
+
+/* No comment provided by engineer. */
+"Blocked Today" = "حُظر اليوم";
+
+/* No comment provided by engineer. */
+"Blocked Trackers Summary" = "موجز أدوات التتبع المحظورة";
+
+/* No comment provided by engineer. */
+"Brazil" = "البرازيل";
+
+/* No comment provided by engineer. */
+"Canada" = "كندا";
+
+/* No comment provided by engineer. */
+"Cancel" = "إلغاء";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "تحقق من صندوق بريدك";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "مسح سجل الحظر";
+
+/* The title of a list of trackers */
+"Clickbait" = "محتوى جذب النقرات";
+
+/* No comment provided by engineer. */
+"Confirm Email" = "تأكيد عنوان البريد الإلكتروني";
+
+/* No comment provided by engineer. */
+"Confirmed Site" = "موقع تم تأكيده";
+
+/* No comment provided by engineer. */
+"Couldn't Find Your Email Client" = "تعذر العثور على برنامج بريدك الإلكتروني";
+
+/* The title of a list of trackers */
+"Crypto Mining" = "تعدين العملات الرقمية";
+
+/* No comment provided by engineer. */
+"Custom Settings (Advanced)" = "إعدادات مخصصة (متقدمة)";
+
+/* The title of a list of trackers */
+"Data Trackers" = "أدوات تتبع البيانات";
+
+/* No comment provided by engineer. */
+"Deactivating" = "جارٍ إلغاء التنشيط";
+
+/* No comment provided by engineer. */
+"Disable" = "تعطيل";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "تعطيل سجل الحظر";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "تعطيل سجل الحظر؟";
+
+/* No comment provided by engineer. */
+"Done" = "تم";
+
+/* No comment provided by engineer. */
+"Email Support" = "دعم البريد الإلكتروني";
+
+/* The title of a list of trackers */
+"Email Trackers" = "أدوات تتبع البريد الإلكتروني";
+
+/* No comment provided by engineer. */
+"Email Us" = "راسلنا عبر البريد الإلكتروني";
+
+/* No comment provided by engineer. */
+"Enable" = "تمكين";
+
+/* No comment provided by engineer. */
+"Enable Block Log" = "تمكين سجل الحظر";
+
+/* No comment provided by engineer. */
+"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "قم بتمكين الإشعارات للحصول على ملخص مرة في الأسبوع وآخر تحديثات قائمة الحظر. يمكنك تعطيل هذا في أي وقت.";
+
+/* No comment provided by engineer. */
+"Encrypted, private connections" = "اتصالات خاصة مشفرة";
+
+/* No comment provided by engineer. */
+"Error Code " = "رمز الخطأ ";
+
+/* No comment provided by engineer. */
+"Error Creating Email Account" = "خطأ في إنشاء حساب بريد إلكتروني";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "خطأ في تحميل الخطة: أعد المحاولة";
+
+/* No comment provided by engineer. */
+"Error Re-sending Email Confirmation" = "خطأ في إعادة إرسال رسالة تأكيد البريد الإلكتروني";
+
+/* No comment provided by engineer. */
+"Error Restoring Subscription" = "خطأ في استعادة الاشتراك";
+
+/* No comment provided by engineer. */
+"Error Signing In To Verify Subscription" = "خطأ في تسجيل الدخول للتحقق من الاشتراك";
+
+/* No comment provided by engineer. */
+"Error Starting Trial" = "خطأ في بدء الفترة التجريبية";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "Facebook و WhatsApp";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "أدوات Facebook التتبعية";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "فشل في إعادة إرسال رسالة تأكيد البريد الإلكتروني.";
+
+/* No comment provided by engineer. */
+"FAQs" = "الأسئلة الشائعة";
+
+/* No comment provided by engineer. */
+"Firewall" = "جدار الحماية";
+
+/* No comment provided by engineer. */
+"Firewall Active" = "جدار الحماية نشط";
+
+/* No comment provided by engineer. */
+"Firewall Not Active" = "جدار الحماية ليس نشطًا";
+
+/* No comment provided by engineer. */
+"FIREWALL OFF" = "جدار الحماية مقفل";
+
+/* No comment provided by engineer. */
+"FIREWALL ON" = "جدار الحماية قيد التشغيل";
+
+/* No comment provided by engineer. */
+"For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP." = "للحصول على أقصى قدر من الخصوصية، نشط Secure Tunnel، والذي يستخدم تشفير من مستوى بنكي لحماية الاتصالات وإخفاء هوية تصفحك وإخفاء موقعك وعنوان IP الخاص بك.";
+
+/* No comment provided by engineer. */
+"France" = "فرنسا";
+
+/* The title of a list of trackers */
+"Game Marketing" = "تسويق الألعاب";
+
+/* The title of a list of trackers */
+"General Marketing" = "تسويق عام";
+
+/* No comment provided by engineer. */
+"Germany" = "ألمانيا";
+
+/* The title of a list of trackers */
+"Google Shopping" = "Google Shopping";
+
+/* No comment provided by engineer. */
+"Hey Lockdown Team, \nI have a question, issue, or suggestion - " = "مرحبًا يا فريق Lockdown، \nلدي سؤال أو مشكلة أو اقتراح - ";
+
+/* No comment provided by engineer. */
+"Hi, my question or feedback for Lockdown is: " = "مرحبًا، سؤالي أو ملاحظاتي على Lockdown هي: ";
+
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "لقد حظرت";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "في نطاقات حظرك المخصصة.";
+
+/* No comment provided by engineer. */
+"India" = "الهند";
+
+/* No comment provided by engineer. */
+"Invalid domain" = "نطاق خطأ";
+
+/* No comment provided by engineer. */
+"IP: 18.132.2.87" = "IP: 18.132.2.87";
+
+/* No comment provided by engineer. */
+"IP: [Anonymized]" = "IP: [تم تجهيله]";
+
+/* No comment provided by engineer. */
+"Ireland" = "أيرلندا";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "كجزء من";
+
+/* No comment provided by engineer. */
+"Japan" = "اليابان";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "جارِ تحميل الخطة";
+
+/* No comment provided by engineer. */
+"Location changed and hidden" = "تم تغيير الموقع وإخفائه";
+
+/* No comment provided by engineer. */
+"Location: 🇯🇵" = "الموقع: 🇯🇵";
+
+/* No comment provided by engineer. */
+"Location: 🇺🇸" = "الموقع: 🇺🇸";
+
+/* No comment provided by engineer. */
+"Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari." = "يحظر Lockdown Firewall الاتصالات السيئة وغير الموثوق بها في جميع تطبيقاتك - وليس Safari فقط.";
+
+/* No comment provided by engineer. */
+"Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts." = "يُعد Lockdown مفتوح المصدر وشفافًا تمامًا، مما يعني أن أي شخص يمكنه رؤية ما يفعله بالضبط. أيضًا، يحتوي Lockdown Firewall على سياسة خصوصية بسيطة وصارمة، بينما يخضع Lockdown VPN للتدقيق الكامل من قبل خبراء الأمن.";
+
+/* No comment provided by engineer. */
+"Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN." = "يعمل Lockdown VPN بواسطة Confirmed VPN، الشبكة الافتراضية الخاصة (VPN) المفتوحة المصدر وبدون سجلات والمدققة بالكامل.";
+
+/* The title of a list of trackers */
+"Marketing Trackers" = "أدوات المسوقين التتبعية";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "أدوات المسوقين التتبعية 2";
+
+/* No comment provided by engineer. */
+"Network Error" = "خطأ في الشبكة";
+
+/* No comment provided by engineer. */
+"Next" = "التالي";
+
+/* No comment provided by engineer. */
+"Nice" = "جيد";
+
+/* No comment provided by engineer. */
+"No" = "لا";
+
+/* No comment provided by engineer. */
+"No Active Subscription" = "لا يوجد اشتراك نشط";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "لم يتم العثور على معلومات إضافية حول هذا النطاق المحظور.";
+
+/* No comment provided by engineer. */
+"No Block Lists Enabled" = "لا توجد قوائم حظر مفعلة";
+
+/* No comment provided by engineer. */
+"No Info Found" = "لم يتم العثور على معلومات";
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "لا يوجد اتصال بالإنترنت";
+
+/* No comment provided by engineer. */
+"No stored API credentials found. Please contact team@lockdownprivacy.com about this error." = "لم يتم العثور على بيانات اعتماد API مخزنة. يرجى التواصل مع team@lockdownprivacy.com بخصوص هذا الخطأ.";
+
+/* No comment provided by engineer. */
+"Not Blocked" = "غير محظور";
+
+/* No comment provided by engineer. */
+"Not Now" = "ليس الآن";
+
+/* No comment provided by engineer. */
+"Not Whitelisted" = "ليس في القائمة البيضاء";
+
+/* No comment provided by engineer. */
+"Notifications: Off" = "الإشعارات: قيد الإيقاف";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "الإشعارات: قيد التشغيل";
+
+/* No comment provided by engineer. */
+"OK" = "موافق";
+
+/* No comment provided by engineer. */
+"Okay" = "حسنًا";
+
+/* No comment provided by engineer. */
+"one lowercase letter" = "حرف صغير";
+
+/* No comment provided by engineer. */
+"one number" = "عدد";
+
+/* No comment provided by engineer. */
+"one symbol" = "رمز";
+
+/* No comment provided by engineer. */
+"one uppercase letter" = "حرف كبير";
+
+/* No comment provided by engineer. */
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، وتحتوي على حرف كبير واحد وحرف صغير واحد ورقم واحد ورمز واحد على الأقل.";
+
+/* No comment provided by engineer. */
+"Plan: Annual Pro" = "الخطة: Annual Pro";
+
+/* No comment provided by engineer. */
+"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "الرجاء التحقق من اتصال الإنترنت الخاص بك. إذا استمر ذلك، فيرجى التواصل مع team@lockdownprivacy.com.\n\nوصف الخطأ\n";
+
+/* No comment provided by engineer. */
+"Please contact team@lockdownprivacy.com.\n\nError details:\n" = "إذا استمر هذا، فيرجى التواصل مع team@lockdownprivacy.com.\n\nتفاصيل الخطأ\n";
+
+/* No comment provided by engineer. */
+"Please email team@lockdownprivacy.com with the following Error Code " = "يرجى إرسال رسالة إلى team@lockdownprivacy.com مع رمز الخطأ التالي ";
+
+/* No comment provided by engineer. */
+"Please first go to your iOS Settings > Notifications > Lockdown to enable notifications" = "يُرجى أولاً الانتقال إلى iOS Settings > Notifications > Lockdown لتمكين الإشعارات";
+
+/* No comment provided by engineer. */
+"Please make sure you have added an e-mail account to your iOS device and try again." = "يرجى التأكد من إضافة حساب بريد إلكتروني إلى جهاز iOS الخاص بك والمحاولة مرة أخرى.";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "يرجى التأكد من أن اتصالك بالإنترنت نشط وأن لديك اشتراكًا نشطًا. بخلاف ذلك، يرجى بدء فترتك التجريبية المجانية أو إرسال بريد إلكتروني إلى team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: " = "يرجى التأكد من أن اتصالك بالإنترنت نشط. إذا استمر هذا الخطأ، فأرسل بريدًا إلكترونيًا إلى team@lockdownprivacy.com برسالة الخطأ التالية: ";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to activate the Secure Tunnel." = "يرجى تجديد اشتراكك لتفعيل Secure Tunnel.";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to re-activate the VPN." = "يرجى تجديد اشتراكك لإعادة تنشيط VPN.";
+
+/* No comment provided by engineer. */
+"Please tap Block List and enable at least one block list to activate Firewall." = "يرجى النقر فوق قائمة الحظر وتمكين قائمة حظر واحدة على الأقل لتنشيط جدار الحماية.";
+
+/* No comment provided by engineer. */
+"Pre-configured Block Lists" = "قوائم حظر مُعدّة مسبقًا";
+
+/* No comment provided by engineer. */
+"Pre-configured Suggestions" = "اقتراحات مُعدّة مسبقًا";
+
+/* No comment provided by engineer. */
+"Precise location exposed" = "الموقع الدقيق مكشوف";
+
+/* No comment provided by engineer. */
+"Press & Media" = "الصحافة والإعلام";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "سياسة الخصوصية";
+
+/* The title of a list of trackers */
+"Ransomware" = "برامج الفدية";
+
+/* No comment provided by engineer. */
+"Re-send" = "إعادة إرسال";
+
+/* No comment provided by engineer. */
+"Readable browsing and data" = "تصفح وبيانات قابلة للقراءة";
+
+/* No comment provided by engineer. */
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "تذكر أن تتحقق من الأسئلة الشائعة أولاً، للحصول على إجابات عن الأسئلة الأكثر شيوعًا.\n\nإذا لم تجد الإجابة هناك، فيسعدنا تقديم الدعم وتلقي الملاحظات عبر البريد الإلكتروني.";
+
+/* The title of a list of trackers */
+"Reporting" = "الإبلاغ";
+
+/* No comment provided by engineer. */
+"Secure Tunnel VPN" = "Secure Tunnel VPN";
+
+/* No comment provided by engineer. */
+"See live metrics for how many bad connections Firewall has blocked." = "اطلع على المقاييس اللحظية لمعرفة عدد الاتصالات السيئة التي حظرها جدار الحماية.";
+
+/* No comment provided by engineer. */
+"Settings" = "الإعدادات";
+
+/* No comment provided by engineer. */
+"Share your anonymized metrics and show other people how to block invasive tracking." = "شارك مقاييسك المجهلة ووضح للآخرين كيفية منع التتبع التطفلي.";
+
+/* No comment provided by engineer. */
+"Share Your Stats" = "شارك احصائياتك";
+
+/* No comment provided by engineer. */
+"SHOW" = "عرض";
+
+/* No comment provided by engineer. */
+"Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step." = "أظهر مدى تطفل تطبيقات اليوم، وساعد الآخرين على حظر أدوات التتبع والبرامج الضارة أيضًا.\n\nلم يتم تضمين سجل الحظر الخاص بك - فقط الصورة أعلاه. اختر مكان المشاركة في الخطوة التالية.";
+
+/* No comment provided by engineer. */
+"Sign Out" = "تسجيل الخروج";
+
+/* No comment provided by engineer. */
+"Sign Out?" = "تسجيل الخروج؟";
+
+/* No comment provided by engineer. */
+"Sign Up  |  Sign In" = "التسجيل  |  تسجيل الدخول";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "قم بالتسجيل أدناه لفتح مزايا حساب Lockdown.";
+
+/* No comment provided by engineer. */
+"Signed In" = "تم تسجيل الدخول";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "تم تسجيل الخروج بنجاح.";
+
+/* No comment provided by engineer. */
+"Singapore" = "سنغافورة";
+
+/* No comment provided by engineer. */
+"Skip Trial" = "تخطي الفترة التجريبية";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "أدوات Snapchat التتبعية";
+
+/* No comment provided by engineer. */
+"South Korea" = "كوريا الجنوبية";
+
+/* No comment provided by engineer. */
+"Stay Protected" = "ابق محميًا";
+
+/* No comment provided by engineer. */
+"Subscription Expired" = "انتهت صلاحية الاشتراك";
+
+/* No comment provided by engineer. */
+"Success" = "تم بنجاح";
+
+/* No comment provided by engineer. */
+"Success!" = "تم بنجاح!";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "تم بنجاح إعادة إرسال تأكيد البريد الإلكتروني الخاص بك إلى ";
+
+/* No comment provided by engineer. */
+"Support | Feedback" = "الدعم| الملاحظات";
+
+/* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "اضغط لتنشيط Lockdown Firewall والتحديث إلى أحدث قوائم الحظر.";
+
+/* No comment provided by engineer. */
+"Tap to see a demo of how Secure Tunnel protects and anonymizes you." = "اضغط لمشاهدة عرض توضيحي عن كيفية حماية Secure Tunnel لك وإخفائه لهويتك.";
+
+/* No comment provided by engineer. */
+"Tap to see the blocked tracking attempts." = "اضغط لرؤية محاولات التتبع التي حظرت.";
+
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "اضغط لمعرفة تفاصيلها.";
+
+/* No comment provided by engineer. */
+"Terms" = "الشروط";
+
+/* No comment provided by engineer. */
+"Thanks for helping to increase privacy and tracking awareness." = "شكرًا للمساعدة في زيادة الوعي بالخصوصية والتتبع.";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "يمكن مسح سجل الحظر يدويًا أو تعطيله. يؤدي تعطيل سجل الحظر إلى تعطيل سجل الاتصالات فقط - وسيظل عدد محاولات التعقب معروضًا.";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "لإكمال تسجيلك، انقر فوق ارتباط التأكيد الذي أرسلناه إلى";
+
+/* No comment provided by engineer. */
+"To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder." = "لإنهاء التسجيل، انقر فوق ارتباط التأكيد في البريد الإلكتروني الذي أرسلناه للتو. إذا لم تره، فتحقق مما إذا كان عالقًا في مجلد البريد العشوائي.";
+
+/* No comment provided by engineer. */
+"To see this tutorial again, open the Account tab." = "لمشاهدة هذا البرنامج التعليمي مرة أخرى، افتح علامة التبويب \"الحساب\".";
+
+/* No comment provided by engineer. */
+"To: joe@email.com\nRe: Q4 2019 Finance Review" = "إلى: joe@email.com\nRe: المراجعة المالية للربع الرابع في 2019";
+
+/* No comment provided by engineer. */
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "تم الآن حظر أدوات التتبع والإعلانات والبرامج النصية الضارة الأخرى في جميع تطبيقاتك، حتى خارج Safari.\n\nاحصل على أقصى قدر من الخصوصية مع Secure Tunnel الذي يحمي الاتصالات ويجعل تصفحك مجهلاً ويخفي موقعك.";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "محاولات التتبع لهذا الأسبوع. انقر للتحديث إلى أحدث قوائم الحظر.";
+
+/* No comment provided by engineer. */
+"Tunnel" = "النفق";
+
+/* No comment provided by engineer. */
+"Tunnel Off" = "النفق قيد الإيقاف";
+
+/* No comment provided by engineer. */
+"Tunnel On" = "النفق قيد التشغيل";
+
+/* No comment provided by engineer. */
+"Tutorial" = "البرنامج التعليمي";
+
+/* No comment provided by engineer. */
+"Unique IP address broadcasted" = "تم بث عنوان IP فريد";
+
+/* No comment provided by engineer. */
+"United Kingdom" = "المملكة المتحدة";
+
+/* No comment provided by engineer. */
+"United States - East" = "الولايات المتحدة - الشرق";
+
+/* No comment provided by engineer. */
+"United States - West" = "الولايات المتحدة - الغرب";
+
+/* No comment provided by engineer. */
+"Update Success" = "نجح التحديث";
+
+/* No comment provided by engineer. */
+"Updating Block Lists" = "قوائم الحظر قيد التحديث";
+
+/* No comment provided by engineer. */
+"USA East" = "الولايات المتحدة الشرق";
+
+/* No comment provided by engineer. */
+"USA West" = "الولايات المتحدة الغرب";
+
+/* No comment provided by engineer. */
+"View FAQs" = "عرض الأسئلة الشائعة";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "عرض الخطة أو ترقيتها";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "عرض خيارات التحديث";
+
+/* No comment provided by engineer. */
+"VPN Active" = "VPN نشط";
+
+/* No comment provided by engineer. */
+"VPN Not Active" = "VPN ليس نشطًا";
+
+/* No comment provided by engineer. */
+"VPN Subscription Expired" = "انتهت صلاحية اشتراك VPN";
+
+/* No comment provided by engineer. */
+"Website" = "موقع الويب";
+
+/* No comment provided by engineer. */
+"Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue." = "مرحبًا بك في البرنامج التعليمي لـ Lockdown.\n\nاضغط في أي مكان للمتابعة.";
+
+/* No comment provided by engineer. */
+"What is VPN?" = "ما هو الـ VPN؟";
+
+/* No comment provided by engineer. */
+"Whitelisted" = "في القائمة البيضاء";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown" = "لماذا تثق في Lockdown";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown?" = "لماذا تثق في Lockdown؟";
+
+/* No comment provided by engineer. */
+"Why Use VPN?" = "لماذا استخدم VPN؟";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "لقد حظرت";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "لقد حظرت هذا النطاق في نطاقات حظرك المخصصة.";
+
+/* No comment provided by engineer. */
+"You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)" = "يمكنك الضغط فوق هذا لاحقًا إذا كنت ترغب في المشاركة.\n(اضغط في أي مكان للتجاهل)";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "سيتم تسجيل خروجك من هذا الحساب.";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "سيتعين عليك إعادة تمكينه لاحقًا هنا لبدء مشاهدة الإدخالات المحظورة مرة أخرى.";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "لقد منعت للتو 100 محاولة تتبع!";
+
+/* No comment provided by engineer. */
+"Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements." = "تم تأكيد حسابك وقمت بتسجيل الدخول الآن. ستحصل على أحدث قوائم الحظر، والوصول إلى Lockdown Mac، والحصول على إعلانات مهمة.";
+
+/* No comment provided by engineer. */
+"Your Settings" = "إعداداتك";
+
+/* No comment provided by engineer. */
+"⚠️ Not Signed In" = "⚠️ ليس مسجلاً الدخول";
+
+/* No comment provided by engineer. */
+"🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 تم تنشيط جدار الحماية 🎊🎉";
+
+/* No comment provided by engineer. */
+"Error while trying to confirm your account:" = "خطأ أثناء محاولة تأكيد حسابك:";
+
+/* No comment provided by engineer. */
+"If this persists, please contact team@lockdownprivacy.com." = "إذا استمر هذا، فيرجى التواصل مع team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "إضافة نطاق لحظره";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "امنع جميع تطبيقاتك من الاتصال بالنطاقات والمواقع أدناه. لراحتك، يحتوي Lockdown أيضًا على اقتراحات معدة مسبقًا.";
+
+/* No comment provided by engineer. */
+"Block Lists" = "قوائم الحظر";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "تهيئة الحظر";
+
+/* No comment provided by engineer. */
+"Custom" = "مخصص";
+
+/* No comment provided by engineer. */
+"SAVE" = "حفظ";
+
+/* No comment provided by engineer. */
+"Access to cloud service information is not allowed" = "الوصول إلى معلومات الخدمة السحابية غير مسموح به";
+
+/* No comment provided by engineer. */
+"Could not connect to the network" = "تعذر الاتصال بالشبكة";
+
+/* No comment provided by engineer. */
+"Not allowed to make the payment" = "غير مسموح بإجراء عملية الدفع";
+
+/* No comment provided by engineer. */
+"Payment was cancelled" = "تم إلغاء عملية الدفع";
+
+/* No comment provided by engineer. */
+"The device is not allowed to make the payment" = "هذا الجهاز غير مسموح له بإجراء عملية الدفع";
+
+/* No comment provided by engineer. */
+"The product is not available in the current storefront" = "المنتج غير متوفر في واجهة المتجر الحالية";
+
+/* No comment provided by engineer. */
+"The purchase identifier was invalid" = "معرّف الشراء غير صالح";
+
+/* No comment provided by engineer. */
+"Unknown error. Please contact support at team@lockdownprivacy.com." = "خطأ غير معروف، يرجى التواصل مع الدعم على team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"User has revoked permission to use this cloud service" = "ألغى المستخدم الإذن لاستخدام هذه الخدمة السحابية";
+
+/* No comment provided by engineer. */
+"Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "يرجى أن يكون لديك اشتراك نشط. إذا كنت تحاول مشاركة اشتراك من نفس الحساب، فستحتاج إلى تسجيل الدخول باستخدام نفس عنوان البريد الإلكتروني. بخلاف ذلك، يرجى بدء فترتك التجريبية المجانية أو إرسال بريد إلكتروني إلى team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "تم تعطيل عمليات الشراء داخل التطبيق. يرجى السماح لها في Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. ثم أعد المحاولة.";
+
+/* No comment provided by engineer. */
+"Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "الدفع غير مسموح به.\nإما أن هذا الجهاز غير مسموح له بإجراء عمليات شراء، أو تم تعطيل عمليات الشراء داخل التطبيق. يرجى السماح لها في Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. ثم أعد المحاولة.";
+
+/* No comment provided by engineer. */
+"Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "يرجى التأكد من أن لديك اشتراك نشط. إذا كنت تحاول مشاركة اشتراك من نفس الحساب، فستحتاج إلى تسجيل الدخول باستخدام نفس عنوان البريد الإلكتروني. بخلاف ذلك، ابدأ فترتك التجريبية المجانية أو إرسال بريد إلكتروني إلى team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "ترقية الخطة";
+
+/* The title of a list of trackers */
+"Amazon Trackers" = "أدوات Amazon التتبعية";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "بسيط وقوي";
+"onboarding_lockdown_stops_trackers" = "يمنع Lockdown المتعقبات والبرامج الضارة والعوامل السيئة الأخرى من الوصول إلى بياناتك.";
+"onboarding_worlds_first_on_device" = "الأول في العالم على الأجهزة";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "جدار حماية مفتوح المصدر و Secure Tunnel VPN يعمل عبر جميع تطبيقاتك وعند تصفح الويب.";
+"onboarding_staying_protected_is_easy_with_lockdown" = "البقاء محميًا هو أمر سهل للغاية مع Lockdown";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "ابق مجهولاً مع Secure Tunnel VPN";
+"onboarding_no_logs_fast_and_fully_audited" = "VPN لا يحتفظ بسجلات، وتوفر سرعة خارقة، وموجه للخصوصية أولاً. VPN الوحيد الذي يثبت سياسة الخصوصية الخاصة به ويخضع للتدقيق الكامل من قبل خبراء الأمن.";
+"onboarding_take_control_of_who_you_block" = "تحكم في من الذي\nتحظره";
+"onboarding_when_using_our_intuitive_blocklists" = "عند استخدام أداة إنشاء قائمة الحظر سهلة الاستخدام.";
+"onboarding_stay_protected" = "ابق محميًا!";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "احصل على ملخصات أسبوعية وتحديثات لقائمة الحظر.";
+"onboarding_over_1_billion_trackers_blocked" = "حُظر أكثر من 1 مليار متعقب";
+"onboarding_used_by_more_than_1_million" = "يستخدمه أكثر من مليون شخص مهتم بالخصوصية.";
+"onboarding_sign_up" = "التسجيل";
+"onboarding_login" = "تسجيل الدخول";
+"continue" = "استمرار";
+"plan_annual" = "سنوي";
+"plan_monthly" = "شهري";
+
+// MARK: - SignUpViewController
+"welcome" = "مرحبًا";
+"already_have_account_login" = "لديك حساب بالفعل؟ سجل الدخول";
+"sign_up_to_access_new_block_lists_from_trackers" = "اشترك للوصول إلى قوائم حظر جديدة من أدوات التعقب";
+"already_have_account_login_below" = "لديك بالفعل حساب Lockdown؟\nسجل الدخول أدناه.";
+"forgot_password" = "نسيت كلمة المرور";
+"email" = "البريد الإلكتروني";
+"password" = "كلمة المرور";
+"access_our_curated_block_lists_and_build_your_own" = "احظى بالوصول إلى قوائم الحظر المنسقة الخاصة بنا وابنِ قوائمك الخاصة";
+"access_lockdown_across_all_your_devices" = "تمتع بالوصول إلى Lockdown عبر جميع أجهزتك";
+"firewall_and_vpn_support" = "دعم جدار الحماية و VPN";
+"by_continuing_you_agree_with_our" = "من خلال الاستمرار فإنك توافق على";
+"and" = "و";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "ابق مطلعًا";
+"once_a_week_helpful_reminders" = "مرة في الأسبوع احصل على تذكيرات مفيدة حول أمانك وكيفية تحقيق أقصى استفادة منه.";
+"enable_notifications" = "تمكين الإشعارات";
+"maybe_later" = "ربما لاحقًا";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "تحقق من الحقول";
+"email_and_password_must_not_be_empty" = "يجب ألا يكون حقلي البريد الإلكتروني وكلمة المرور فارغين";
+"Success! 🎉" = "تم بنجاح! 🎉";
+"error_signing_in" = "خطأ في تسجيل الدخول";
+"confirm_your_email" = "راجع بريدك الإلكتروني";
+"you_have_successfully_sign_in" = "لقد سجلت الدخول بنجاح.";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "لقد منعت %@ من المتعقبات والإعلانات والبرامج الضارة باستخدام Lockdown، وهو جدار الحماية الذي يمنع الاتصالات غير المرغوب فيها في جميع تطبيقاتك.\nاحصل عليه مجانًا من lockdownprivacy.com.";
+"check_email" = "تحقق من البريد الإلكتروني";
+"we_have_sent_a_reset_password_email" = "لقد أرسلنا إليك بريدًا إلكترونيًا لإعادة تعيين كلمة المرور. تأكد من فحص أي مجلدات للبريد غير المرغوب، في حال وجوده به.";
+"since_date" = "منذ %@";
+"password_reset_successfully" = "تم تغيير كلمة المرور";
+"please_sign_in_with_new_password" = "سجل دخول بكلمة المرور الجديدة";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "ابدأ فترة التجربة الآن للحصول على وصول كامل";
+"restore_purchase" = "استعادة عملية الشراء";
+"terms_of_service" = "شروط الخدمة";
+"CHOOSE_YOUR_PLAN" = "اختر خطة اشتراكك";
+"skip" = "تخطي";
+"save_annual_vpn_subscription" = "وفر ~50%";
+"save_annual_pro_subscription" = "وفر ~30%";
+"current_plan" = "الخطة الحالية";
+"feature_table_column" = "الميزات";
+"feature_level_table_column" = "مجاني";
+"stops_ads_and_hidden_trackers" = "يوقف الإعلانات والمتعقبات الخفية";
+"blocks_badware_in_all_your_apps" = "يحجب التعليمات البرمجية الضارة في جميع تطبيقاتك";
+"access_our_curated_block_lists" = "احظى بالوصول إلى قوائم الحظر المنسقة الخاصة بنا";
+"build_your_custom_block_lists" = "قم ببناء قوائم الحظر المخصصة";
+"stops_browsing_history_tracking" = "يوقف تتبع سجل التصفح";
+"anonymizing_your_browsing" = "يُخفي هويتك أثناء التصفح";
+"hides_your_location_and_ip" = "يُخفي موقعك وعنوان IP الخاص بك";
+"lets_you_change_your_ip_to_other_region" = "يُمكنك من تغيير عنوان IP\nإلى منطقة أخرى";
+"app_for_iphone_plus_ipad" = "تطبيق لأجهزة iPhone + iPad";
+"app_for_mac" = "تطبيق لأجهزة Mac";
+"year_after_slash" = "السنة";
+"month_after_slash" = "الشهر";
+
+// MARK: - Delete My Account
+"delete_account" = "حذف حساب";
+"delete_my_account" = "حذف حسابي";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "عبر الاستمرار، سترسل طلبًا لحذف سجل حسابك بالكامل، إلى جانب البيانات الشخصية المرتبطة به. بمجرد حذف الحساب، سيتم إخطارك بهذه التغييرات عبر البريد الإلكتروني لحسابك.\n\nيرجى العلم أنك ستفقد جميع إعداداتك بما في ذلك خيارات الترقية ولن تتمكن من إنشاء حساب بنفس البريد الإلكتروني.";
+"proceed" = "استمرار";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "عنوان البريد الإلكتروني غير صالح";
+"please_fill_in_your_email" = "يرجى كتابة بريدك الإلكتروني.";
+"you_entered_con_instead_of_com" = "لقد كتبت .con بدلاً من .com.";
+"no_valid_email_address_detected" = "لم يتم اكتشاف عنوان بريد إلكتروني صالح.";
+"too_many_email_addresses_entered" = "تم إدخال عدد كبير جدًا من عناوين البريد الإلكتروني.";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "قائمة الحظر هي قيد الصيانة حاليًا وسيتم تحديثها قريبًا.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "تهدف هذه القائمة إلى حظر التطبيقات المملوكة لـ Facebook تمامًا. لا تقم بتفعيلها إذا كنت تستخدم تطبيقات مملوكة لـ Facebook مثل WhatsApp و Facebook Messenger و Instagram.";
+"this_blocks_background_google_tracking" = "هذا يحظر تعقب Google في الخلفية ، كما و يحظر أيضًا نتائج التسوق في بحث Google. يتم تفعيل هذه الحظر تلقائياً للحصول على أقصى قدر من الخصوصية ، ولكن إذا كنت تحب نتائج Google Shopping ، فيمكنك إيقاف الحظر.";
+"this_blocks_amazon_referral_link_tracking" = "هذا يحظر تعقب رابط إحالة Amazon أيضًا ، لذلك تفعيل هذه القائمة قد يتسبب بأخطاء عند متابعة روابط Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "دقيقة";
+"seconds_genitive" = "ثانية";
+"lockdowns_first_christmas_sale" = "عرض خاص\n لمناسبة عيد الميلاد";
+"subscribe_now" = "اشترك الآن";
+
+// MARK: - Code Redemption
+"redeem_code" = "استخدام الرمز";
+"cannot_redeem_code" = "لا يمكن استخدام الرمز";
+"the_code_could_not_be_redeemed" = "لم يمكن استخدام الرمز.";
+"congratulations_excl" = "تهانينا!";
+"the_code_was_successfully_redeemed" = "تم استخدام الرمز بنجاح. قد تحتاج إلى إعادة تشغيل التطبيق حتى تصبح عملية الشراء سارية المفعول.";

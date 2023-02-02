@@ -11,7 +11,7 @@ import UIKit
 import PopupDialog
 import PromiseKit
 
-class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loadable {
+final class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loadable {
     
     @IBOutlet weak var emailField: UITextField!
     
@@ -21,8 +21,7 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
         setupToHideKeyboardOnTapOnView()
     }
     
-    func setupToHideKeyboardOnTapOnView()
-    {
+    func setupToHideKeyboardOnTapOnView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(self.dismissKeyboard))
@@ -30,13 +29,12 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
         view.addGestureRecognizer(tap)
     }
 
-    @objc func dismissKeyboard()
-    {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (textField == emailField) {
+        if textField == emailField {
             textField.resignFirstResponder()
             submit()
         }
@@ -45,16 +43,19 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
     
     @IBAction func submit() {
         guard let email = emailField.text else {
-            showPopupDialog(title: "Check Fields", message: "Email must not be empty", acceptButton: "Okay")
+            showPopupDialog(title: .localized("check_fields"), message: "Email must not be empty", acceptButton: .localizedOK)
             return
         }
         showLoadingView()
         firstly {
             try Client.forgotPassword(email: email)
         }
-        .done { (success: Bool) in
+        .done { _ in
             self.hideLoadingView()
-            self.showPopupDialog(title: "Check Email", message: "We've sent a reset password email to you. Be sure to check any spam/junk folders, in case it got stuck there.", acceptButton: "Okay") {
+            self.showPopupDialog(
+                title: .localized("check_email"),
+                message: .localized("we_have_sent_a_reset_password_email"),
+                acceptButton: .localizedOK) {
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -64,8 +65,7 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
             if let apiError = error as? ApiError {
                 errorMessage = apiError.message
             }
-            self.showPopupDialog(title: "Error Sending Reset Password Email", message: errorMessage, acceptButton: "Okay") {
-            }
+            self.showPopupDialog(title: "Error Sending Reset Password Email", message: errorMessage, acceptButton: .localizedOK)
         }
     }
     

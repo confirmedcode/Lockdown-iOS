@@ -19,7 +19,7 @@ import AwesomeSpotlightView
 class CircularView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = self.bounds.size.width * 0.50
+        corners = .continuous(bounds.midX)
     }
     
     @IBInspectable var shadowUIColor: UIColor? {
@@ -40,7 +40,8 @@ class CircularView: UIView {
 
 let kHasSeenEmailSignup = "hasSeenEmailSignup"
 
-class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Loadable {
+// swiftlint:disable type_body_length
+class HomeViewController: BaseViewController, Loadable {
     
     let kHasViewedTutorial = "hasViewedTutorial"
     let kHasSeenInitialFirewallConnectedDialog = "hasSeenInitialFirewallConnectedDialog11"
@@ -62,7 +63,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @IBOutlet weak var dailyMetrics: UILabel?
     @IBOutlet weak var weeklyMetrics: UILabel?
     @IBOutlet weak var allTimeMetrics: UILabel?
-    var metricsTimer : Timer?
+    var metricsTimer: Timer?
     @IBOutlet weak var firewallSettingsButton: UIButton!
     @IBOutlet weak var firewallViewLogButton: UIButton!
     @IBOutlet weak var firewallShareButton: UIButton!
@@ -77,6 +78,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @IBOutlet weak var vpnRegionLabel: UILabel!
     @IBOutlet weak var vpnWhitelistButton: UIButton!
     
+    private let paywallService = BasePaywallService.shared
+    private var countdownDisplayService: CountdownDisplayService { paywallService.countdownDisplayService }
+    
+    private var ltoButton: UIButton?
+    
     var activePlans: [Subscription.PlanType] = []
     
     override func viewDidLoad() {
@@ -88,47 +94,48 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             metricsTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateMetrics), userInfo: nil, repeats: true)
             metricsTimer?.fire()
         }
-        firewallViewLogButton.layer.cornerRadius = 8
+        firewallViewLogButton.corners = .continuous(8)
         firewallViewLogButton.layer.maskedCorners = [.layerMinXMaxYCorner]
-        firewallSettingsButton.layer.cornerRadius = 8
+        firewallSettingsButton.corners = .continuous(8)
         firewallSettingsButton.layer.maskedCorners = [.layerMaxXMaxYCorner]
 
         updateVPNButtonWithStatus(status: VPNController.shared.status())
         //updateIP()
-        vpnWhitelistButton.layer.cornerRadius = 8
+        vpnWhitelistButton.corners = .continuous(8)
         vpnWhitelistButton.layer.maskedCorners = [.layerMinXMaxYCorner]
-        vpnSetRegionButton.layer.cornerRadius = 8
+        vpnSetRegionButton.corners = .continuous(8)
         vpnSetRegionButton.layer.maskedCorners = [.layerMaxXMaxYCorner]
         updateVPNRegionLabel()
         
         updateStackViewAxis(basedOn: view.frame.size)
         
         // Check Subscription - if VPN active but not subscribed, then disconnect and show dialog (don't do this if connection error)
-        if (VPNController.shared.status() == .connected) {
+        if VPNController.shared.status() == .connected {
             firstly {
                 try Client.signIn()
             }
-            .done { (signin: SignIn) in
+            .done { _ in
                 // successfully signed in with no subscription errors, do nothing
             }
             .catch { error in
-                if (self.popupErrorAsNSURLError(error)) {
+                if self.popupErrorAsNSURLError(error) {
                     return
-                }
-                else if let apiError = error as? ApiError {
+                } else if let apiError = error as? ApiError {
                     switch apiError.code {
                     case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                        self.showPopupDialog(title: NSLocalizedString("VPN Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to re-activate the VPN.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
-                            self.performSegue(withIdentifier: "showSignup", sender: self)
-                        })
+                        self.showPopupDialog(
+                            title: .localized("VPN Subscription Expired"),
+                            message: .localized("Please renew your subscription to re-activate the VPN."),
+                            acceptButton: .localizedOkay) {
+                            self.showPaywallIfNoSubscription()
+                        }
                     default:
                         _ = self.popupErrorAsApiError(error)
                     }
-                }
-                else {
-                    self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
+                } else {
+                    self.showPopupDialog(title: .localized("Error Signing In To Verify Subscription"),
                                          message: "\(error)",
-                        acceptButton: "Okay")
+                                         acceptButton: .localizedOkay)
                 }
             }
         }
@@ -150,58 +157,65 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         // Used for debugging signup
         //performSegue(withIdentifier: "showSignup", sender: nil)
         
-        if (defaults.bool(forKey: kHasViewedTutorial) == false) {
+        if defaults.bool(forKey: kHasViewedTutorial) == false {
             startTutorial()
-        }
-        else if (defaults.bool(forKey: kHasSeenEmailSignup) == false) {
-            AccountUI.presentCreateAccount(on: self)
+        } else if OneTimeActions.hasSeen(.newFancyOnboarding),
+                  !OneTimeActions.hasSeen(.newEnableNotificationsController) {
+            showEnableNotifications()
+        } else if UserDefaults.hasSeenPaywallOnHomeScreen == false {
+            showPaywallIfNoSubscription()
+        } else if Calendar.hasExceededLapse(between: Date(), and: UserDefaults.lastPaywallDisplayDate) {
+            showPaywallIfNoSubscription()
         }
         
         if defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
             tapToActivateFirewallLabel.isHidden = false
         }
         
-        OneTimeActions.performOnce(ifHasNotSeen: .notificationAuthorizationRequestPopup) {
-            PushNotifications.Authorization.requestWeeklyUpdateAuthorization(presentingDialogOn: self).done { status in
-                DDLogInfo("Updated notifications status: \(status)")
-            }.catch { error in
-                DDLogWarn(error.localizedDescription)
-            }
-        }
-        
         // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
-        if (getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) != true) {
+        if getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) == false {
             defaults.set(true, forKey: kHasSeenShare)
-            let popup = PopupDialog(title: "You've blocked over 1000 trackers! 🎊",
-                                     message: NSLocalizedString("Share your anonymized metrics and show other people how to block invasive tracking.", comment: ""),
-                                     image: nil,
-                                     buttonAlignment: .horizontal,
-                                     transitionStyle: .bounceDown,
-                                     preferredWidth: 270,
-                                     tapGestureDismissal: true,
-                                     panGestureDismissal: false,
-                                     hideStatusBar: false,
-                                     completion: nil)
+            let popup = PopupDialog(
+                title: "You've blocked over 1000 trackers! 🎊",
+                message: .localized("Share your anonymized metrics and show other people how to block invasive tracking."),
+                image: nil,
+                buttonAlignment: .horizontal,
+                transitionStyle: .bounceDown,
+                preferredWidth: 270,
+                tapGestureDismissal: true,
+                panGestureDismissal: false,
+                hideStatusBar: false,
+                completion: nil)
              popup.addButtons([
-                CancelButton(title: NSLocalizedString("Not Now", comment: ""), dismissOnTap: true) {
-                    let s0 = AwesomeSpotlight(withRect: self.getRectForView(self.firewallShareButton).insetBy(dx: -13.0, dy: -13.0), shape: .roundRectangle, text: NSLocalizedString("You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)", comment: ""))
-                    let spotlightView = AwesomeSpotlightView(frame: self.view.frame,
-                                                             spotlight: [s0])
+                CancelButton(title: .localized("Not Now"), dismissOnTap: true) {
+                    let s0 = AwesomeSpotlight(
+                        withRect: self.getRectForView(self.firewallShareButton).insetBy(dx: -13.0, dy: -13.0),
+                        shape: .roundRectangle,
+                        text: .localized("You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)"))
+                    let spotlightView = AwesomeSpotlightView(frame: self.view.frame, spotlight: [s0])
                     spotlightView.cutoutRadius = 8
-                    spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
+                    spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
                     spotlightView.enableArrowDown = true
-                    spotlightView.textLabelFont = fontMedium16
-                    spotlightView.labelSpacing = 24;
+                    spotlightView.textLabelFont = .mediumLockdownFont(size: 16)
+                    spotlightView.labelSpacing = 24
                     spotlightView.delegate = self
                     self.view.addSubview(spotlightView)
                     spotlightView.start()
                 },
-                DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
+                DefaultButton(title: .localized("Next"), dismissOnTap: true) {
                     self.shareFirewallMetricsTapped("")
                 }
              ])
              self.present(popup, animated: true, completion: nil)
         }
+        
+        if paywallService.context == .followUpLimitedTimeOffer {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.showLTOButtonIfEligible()
+            }
+        }
+        
+        addLTOButtonIfEligible()
     }
     
     func updateStackViewAxis(basedOn size: CGSize) {
@@ -223,6 +237,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         
         coordinator.animate { [unowned self] _ in
+            self.updateLtoButtonFrame()
             self.updateStackViewAxis(basedOn: size)
         } completion: { (_) in
             return
@@ -242,10 +257,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             hideStatusBar: true,
             completion: nil)
         
-        let getEnhancedPrivacyButton = DefaultButton(title: NSLocalizedString("1 Week Free", comment: ""), dismissOnTap: true) {
-            self.performSegue(withIdentifier: "showSignup", sender: self)
+        let getEnhancedPrivacyButton = DefaultButton(title: .localized("1 Week Free"), dismissOnTap: true) {
+            self.showPaywallIfNoSubscription()
         }
-        let laterButton = CancelButton(title: NSLocalizedString("Skip Trial", comment: ""), dismissOnTap: true) { }
+        let laterButton = CancelButton(title: .localized("Skip Trial"), dismissOnTap: true) { }
         
         popup.addButtons([laterButton, getEnhancedPrivacyButton])
         
@@ -256,32 +271,32 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @objc func tunnelStatusDidChange(_ notification: Notification) {
         // Firewall
         if let tunnelProviderSession = notification.object as? NETunnelProviderSession {
-            DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.description)");
-            if (!getUserWantsFirewallEnabled()) {
+            DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.description)")
+            if !getUserWantsFirewallEnabled() {
                 updateFirewallButtonWithStatus(status: .disconnected)
-            }
-            else {
+            } else {
                 updateFirewallButtonWithStatus(status: tunnelProviderSession.status)
-                if (tunnelProviderSession.status == .connected && defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false) {
+                if tunnelProviderSession.status == .connected && defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
                     defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
                     self.tapToActivateFirewallLabel.isHidden = true
-                    if (VPNController.shared.status() == .invalid) {
-                        self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.", comment: ""))
+                    if VPNController.shared.status() == .invalid {
+                        guard BaseUserService.shared.user.currentSubscription == nil else { return }
+                        let message = "trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy"
+                        self.showVPNSubscriptionDialog(title: .localized("🔥🧱 Firewall Activated 🎊🎉"), message: .localized(message))
                     }
                 }
             }
         }
         // VPN
         else if let neVPNConnection = notification.object as? NEVPNConnection {
-            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.description)");
-            updateVPNButtonWithStatus(status: neVPNConnection.status);
+            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.description)")
+            updateVPNButtonWithStatus(status: neVPNConnection.status)
             updateVPNRegionLabel()
             if NEVPNManager.shared().connection.status == .connected || NEVPNManager.shared().connection.status == .disconnected {
                 //self.updateIP();
             }
-        }
-        else {
-            DDLogInfo("VPNStatusDidChange neither TunnelProviderSession nor NEVPNConnection");
+        } else {
+            DDLogInfo("VPNStatusDidChange neither TunnelProviderSession nor NEVPNConnection")
         }
     }
     
@@ -290,16 +305,47 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     func startTutorial() {
         var spotlights: [AwesomeSpotlight] = []
         let centerPoint = UIScreen.main.bounds.center
-        let s0 = AwesomeSpotlight(withRect: CGRect(x: centerPoint.x, y: centerPoint.y - 100, width: 0, height: 0), shape: .circle, text: NSLocalizedString("Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue.", comment: ""))
-        let s1 = AwesomeSpotlight(withRect: getRectForView(firewallTitleLabel).insetBy(dx: -13.0, dy: -13.0), shape: .roundRectangle, text: NSLocalizedString("Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari.", comment: ""))
-        let s2 = AwesomeSpotlight(withRect: getRectForView(firewallToggleCircle).insetBy(dx: -10.0, dy: -10.0), shape: .circle, text: NSLocalizedString("Activate Firewall with this button.", comment: ""))
-        let s3 = AwesomeSpotlight(withRect: getRectForView(metricsStack).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("See live metrics for how many bad connections Firewall has blocked.", comment: ""))
-        let s4 = AwesomeSpotlight(withRect: getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you.", comment: ""))
-        let s5 = AwesomeSpotlight(withRect: getRectForView(firewallSettingsButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block.", comment: ""))
-        let s6 = AwesomeSpotlight(withRect: getRectForView(vpnHeaderView).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP.", comment: ""))
+        
+        let spotlight0Message: String = .localized("Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue.")
+        let s0 = AwesomeSpotlight(withRect: CGRect(x: centerPoint.x, y: centerPoint.y - 100, width: 0, height: 0), shape: .circle, text: spotlight0Message)
+        
+        let spotlight1Message: String = .localized("Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari.")
+        let firewallTitleLabelRect = getRectForView(firewallTitleLabel).insetBy(dx: -13.0, dy: -30.0)
+        let s1 = AwesomeSpotlight(withRect: firewallTitleLabelRect, shape: .roundRectangle, text: spotlight1Message)
+        
+        let spotlight2Message: String = .localized("Activate Firewall with this button.")
+        let s2 = AwesomeSpotlight(withRect: getRectForView(firewallToggleCircle).insetBy(dx: -10.0, dy: -10.0), shape: .circle, text: spotlight2Message)
+        
+        let spotlight3Message: String = .localized("See live metrics for how many bad connections Firewall has blocked.")
+        let s3 = AwesomeSpotlight(withRect: getRectForView(metricsStack).insetBy(dx: -10.0, dy: 0.0), shape: .roundRectangle, text: spotlight3Message)
+        
+        let spotlight4Message = """
+\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, \
+so it's only visible to you.
+"""
+        let firewallLogButtonRect = getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0)
+        let s4 = AwesomeSpotlight(withRect: firewallLogButtonRect, shape: .roundRectangle, text: .localized(spotlight4Message))
+        
+        let spotlight5Message = """
+\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). \
+You can also set custom domains to block.
+"""
+        let firewallSettingButtonRect = getRectForView(firewallSettingsButton).insetBy(dx: -10.0, dy: -10.0)
+        let s5 = AwesomeSpotlight(withRect: firewallSettingButtonRect, shape: .roundRectangle, text: .localized(spotlight5Message))
+        
+        let spotlight6Message = """
+For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, \
+and hide your location and IP.
+"""
+        let headerViewRect = getRectForView(vpnHeaderView).insetBy(dx: -10.0, dy: -10.0)
+        let s6 = AwesomeSpotlight(withRect: headerViewRect, shape: .roundRectangle, text: .localized(spotlight6Message))
+        
         spotlights.append(contentsOf: [s0, s1, s2, s3, s4, s5, s6])
+        
         if let tabBarButton = (tabBarController as? MainTabBarController)?.accountTabBarButton {
-            let s7 = AwesomeSpotlight(withRect: getRectForView(tabBarButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("To see this tutorial again, open the Account tab.", comment: ""))
+            let spotlight7Message: String = .localized("To see this tutorial again, open the Account tab.")
+            let tabBarButtonRect = getRectForView(tabBarButton).insetBy(dx: -10.0, dy: -10.0)
+            let s7 = AwesomeSpotlight(withRect: tabBarButtonRect, shape: .roundRectangle, text: spotlight7Message)
             spotlights.append(s7)
         }
         
@@ -307,10 +353,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                                  spotlight: spotlights)
         spotlightView.accessibilityIdentifier = "tutorial"
         spotlightView.cutoutRadius = 8
-        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
+        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         spotlightView.enableArrowDown = true
-        spotlightView.textLabelFont = fontMedium16
-        spotlightView.labelSpacing = 24;
+        spotlightView.textLabelFont = .mediumLockdownFont(size: 16)
+        spotlightView.labelSpacing = 24
         spotlightView.delegate = self
         tabBarController?.view.addSubview(spotlightView)
         spotlightView.start()
@@ -322,12 +368,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         
         defaults.set(true, forKey: kHasViewedTutorial)
-        if getAPICredentials() != nil {
-            // already has email signup pending or confirmed, don't show create account
-        }
-        else {
-            AccountUI.presentCreateAccount(on: self)
-        }
     }
     
     @IBAction func shareFirewallMetricsTapped(_ sender: Any) {
@@ -337,7 +377,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         let imageSize = CGSize(width: 720, height: 420)
         let renderer = UIGraphicsImageRenderer(size: imageSize)
+        
         let image = renderer.image { ctx in
+            
             let rectangle = CGRect(origin: CGPoint.zero, size: imageSize)
             ctx.cgContext.setFillColor(UIColor.white.cgColor)
             ctx.cgContext.addRect(rectangle)
@@ -348,32 +390,58 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             
-            let sinceAttrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .semibold), NSAttributedString.Key.paragraphStyle: paragraphStyle, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 0.59)]
+            let sinceAttrs = [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30, weight: .semibold),
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 0.59)
+            ]
             let sinceY = 90
             
             var date = "INSTALL"
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMM d YYYY"
+            formatter.setLocalizedDateFormatFromTemplate("MMM d YYYY")
             if let appInstall = appInstallDate {
                 date = formatter.string(from: appInstall).uppercased()
             }
             
-            "SINCE \(date)".draw(with: CGRect(origin: CGPoint(x: 0, y: sinceY), size: CGSize(width: 720, height: 50)), options: .usesLineFragmentOrigin, attributes: sinceAttrs, context: nil)
+            "since_date".localized(inserting: date).draw(
+                with: CGRect(origin: CGPoint(x: 0, y: sinceY), size: CGSize(width: 720, height: 50)),
+                options: .usesLineFragmentOrigin, attributes: sinceAttrs, context: nil)
             
-            let attrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 46, weight: .bold), NSAttributedString.Key.paragraphStyle: paragraphStyle,  NSAttributedString.Key.foregroundColor: UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1.0)]
+            let attributes = [
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 46, weight: .bold),
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.foregroundColor: UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1.0)
+            ]
             
             let countSize = CGSize(width: 240, height: 50)
             let countY = 216
             
-            thousandsFormatter.string(for: getDayMetrics())!.draw(with: CGRect(origin: CGPoint(x: 0, y: countY), size: countSize), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
-            thousandsFormatter.string(for: getWeekMetrics())!.draw(with: CGRect(origin: CGPoint(x: 240, y: countY), size: countSize), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
-            thousandsFormatter.string(for: getTotalMetrics())!.draw(with: CGRect(origin: CGPoint(x: 480, y: countY), size: countSize), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
-         
+            thousandsFormatter.string(for: getDayMetrics())!.draw(
+                with: CGRect(origin: CGPoint(x: 0, y: countY), size: countSize),
+                options: .usesLineFragmentOrigin,
+                attributes: attributes,
+                context: nil)
+            thousandsFormatter.string(for: getWeekMetrics())!.draw(
+                with: CGRect(origin: CGPoint(x: 240, y: countY), size: countSize),
+                options: .usesLineFragmentOrigin,
+                attributes: attributes,
+                context: nil)
+            thousandsFormatter.string(for: getTotalMetrics())!.draw(
+                with: CGRect(origin: CGPoint(x: 480, y: countY), size: countSize),
+                options: .usesLineFragmentOrigin,
+                attributes: attributes,
+                context: nil)
         }
 
+        let message = """
+Show how invasive today's apps are, and help other people block trackers and badware, too.
+
+Your block log is not included - only the image above. Choose where to share in the next step.
+"""
         let popup = PopupDialog(
-            title: NSLocalizedString("Share Your Stats", comment: ""),
-            message: NSLocalizedString("Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step.", comment: ""),
+            title: .localized("Share Your Stats"),
+            message: .localized(message),
             image: image,
             buttonAlignment: .horizontal,
             transitionStyle: .bounceDown,
@@ -383,17 +451,23 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             hideStatusBar: true,
             completion: nil)
         
-        let cancelButton = CancelButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {  }
+        let cancelButton = CancelButton(title: .localizedCancel, dismissOnTap: true) {  }
         
-        let shareButton = DefaultButton(title: NSLocalizedString("Next", comment: ""), dismissOnTap: true) {
-            let shareText = "\(NSLocalizedString("I blocked", comment: "Used in the sentence: I blocked 500 trackers with Lockdown.")) \(thousandsFormatter.string(for: getTotalMetrics())!)\(NSLocalizedString(" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com.", comment: "Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com."))"
+        let shareButton = DefaultButton(title: .localized("Next"), dismissOnTap: true) {
+            
+            let metrics = thousandsFormatter.string(for: getTotalMetrics())!
+            let shareText = "i_blocked_trackers_ads_and_badware_with_lockdown".localized(inserting: metrics)
+            
             let vc = UIActivityViewController(activityItems: [LockdownCustomActivityItemProvider(text: shareText), image], applicationActivities: [])
-            vc.completionWithItemsHandler = { (activity, success, items, error) in
-                if (success) {
-                    self.showPopupDialog(title: NSLocalizedString("Success!", comment: ""), message: NSLocalizedString("Thanks for helping to increase privacy and tracking awareness.", comment: ""), acceptButton: NSLocalizedString("Nice", comment: "Used as a button text in a popup. Like 'OK' except more excited."))
+            vc.completionWithItemsHandler = { (_, success, _, _) in
+                if success {
+                    self.showPopupDialog(
+                        title: .localized("Success!"),
+                        message: .localized("Thanks for helping to increase privacy and tracking awareness."),
+                        acceptButton: .localized("Nice", comment: "Used as a button text in a popup. Like 'OK' except more excited."))
                 }
             }
-            vc.excludedActivityTypes = [ UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.print ]
+            vc.excludedActivityTypes = [.assignToContact, .addToReadingList, .openInIBooks, .postToVimeo, .print]
             
             if let popoverPC = vc.popoverPresentationController {
                 popoverPC.sourceView = self.firewallShareButton
@@ -419,9 +493,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     @IBAction func toggleFirewall(_ sender: Any) {
-        if (defaults.bool(forKey: kHasAgreedToFirewallPrivacyPolicy) == false) {
+        if defaults.bool(forKey: kHasAgreedToFirewallPrivacyPolicy) == false {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "firewallPrivacyPolicyViewController") as! PrivacyPolicyViewController
+            let identifier = "firewallPrivacyPolicyViewController"
+            guard let viewController = storyboard.instantiateViewController(withIdentifier: identifier) as? PrivacyPolicyViewController else { return }
             viewController.privacyPolicyKey = kHasAgreedToFirewallPrivacyPolicy
             viewController.parentVC = self
             self.present(viewController, animated: true, completion: nil)
@@ -430,7 +505,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         if getIsCombinedBlockListEmpty() {
             FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
-            self.showPopupDialog(title: NSLocalizedString("No Block Lists Enabled", comment: ""), message: NSLocalizedString("Please tap Block List and enable at least one block list to activate Firewall.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+            self.showPopupDialog(
+                title: .localized("No Block Lists Enabled"),
+                message: .localized("Please tap Block List and enable at least one block list to activate Firewall."),
+                acceptButton: .localizedOkay)
             return
         }
         
@@ -448,13 +526,13 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             updateFirewallButtonWithStatus(status: .disconnecting)
             FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
         case .connecting, .disconnecting, .reasserting:
-            break;
+            break
         }
     }
     
     func ensureFirewallWorkingAfterEnabling(waitingSeconds: TimeInterval) {
         FirewallController.shared.existingManagerCount { (count) in
-            if let count = count, count > 0 {
+            if count ?? 0 > 0 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + waitingSeconds) {
                     DDLogInfo("\(waitingSeconds) seconds passed, checking if Firewall is enabled")
                     guard getUserWantsFirewallEnabled() else {
@@ -472,7 +550,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     case .connected:
                         // all good
                         DDLogInfo("Firewall is connected, no action")
-                        break
                     case .disconnected, .invalid:
                         // we suppose that the connection is somehow broken, trying to fix
                         DDLogInfo("Firewall is not connected even though it should be, attempting to fix")
@@ -504,62 +581,72 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      toggleCircle: firewallToggleCircle,
                                      toggleAnimatedCircle: firewallToggleAnimatedCircle,
                                      button: firewallButton,
-                                     prefixText: NSLocalizedString("Firewall", comment: "").uppercased())
+                                     prefixText: .localized("Firewall").uppercased())
     }
     
-    func updateToggleButtonWithStatus(lastStatus: NEVPNStatus?, newStatus: NEVPNStatus, activeLabel: UILabel, toggleCircle: UIButton, toggleAnimatedCircle: NVActivityIndicatorView, button: UIButton, prefixText: String) {
+    // swiftlint:disable function_parameter_count
+    func updateToggleButtonWithStatus(
+        lastStatus: NEVPNStatus?,
+        newStatus: NEVPNStatus,
+        activeLabel: UILabel,
+        toggleCircle: UIButton,
+        toggleAnimatedCircle: NVActivityIndicatorView,
+        button: UIButton,
+        prefixText: String) {
+            
         DDLogInfo("UpdateToggleButton")
-        if (newStatus == lastStatus) {
-            DDLogInfo("No status change from last time, ignoring.");
-        }
-        else {
-            DispatchQueue.main.async() {
+        if newStatus == lastStatus {
+            DDLogInfo("No status change from last time, ignoring.")
+        } else {
+            DispatchQueue.main.async {
                 switch newStatus {
                 case .connected:
-                    activeLabel.text = "\(prefixText)\(NSLocalizedString(" On", comment: "").uppercased())"
+                    activeLabel.text = "\(prefixText)\(String.localized(" On").uppercased())"
                     activeLabel.backgroundColor = UIColor.tunnelsBlue
                     toggleCircle.tintColor = .tunnelsBlue
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .tunnelsBlue
                 case .connecting:
-                    activeLabel.text = NSLocalizedString("Activating", comment: "").uppercased()
+                    activeLabel.text = .localized("Activating").uppercased()
                     activeLabel.backgroundColor = .tunnelsBlue
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .tunnelsBlue
                     toggleAnimatedCircle.startAnimating()
                     button.tintColor = .tunnelsBlue
                 case .disconnected, .invalid:
-                    activeLabel.text = "\(prefixText)\(NSLocalizedString(" Off", comment: "").uppercased())"
+                    activeLabel.text = "\(prefixText)\(String.localized(" Off").uppercased())"
                     activeLabel.backgroundColor = .tunnelsWarning
                     toggleCircle.tintColor = .lightGray
                     toggleCircle.isHidden = false
                     toggleAnimatedCircle.stopAnimating()
                     button.tintColor = .lightGray
                 case .disconnecting:
-                    activeLabel.text = NSLocalizedString("Deactivating", comment: "").uppercased()
+                    activeLabel.text = .localized("Deactivating").uppercased()
                     activeLabel.backgroundColor = .lightGray
                     toggleCircle.isHidden = true
                     toggleAnimatedCircle.color = .lightGray
                     toggleAnimatedCircle.startAnimating()
                     button.tintColor = .lightGray
                 case .reasserting:
-                    break;
+                    break
                 }
             }
         }
     }
     
     func highlightBlockLog() {
-        let blockLogSpotlight = AwesomeSpotlight(withRect: getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0), shape: .roundRectangle, text: NSLocalizedString("Tap to see the blocked tracking attempts.", comment: ""))
+        let logButtonRect = getRectForView(firewallViewLogButton).insetBy(dx: -10.0, dy: -10.0)
+        let logButtonSpotlightText: String = .localized("Tap to see the blocked tracking attempts.")
+        let blockLogSpotlight = AwesomeSpotlight(withRect: logButtonRect, shape: .roundRectangle, text: logButtonSpotlightText)
         
         let spotlightView = AwesomeSpotlightView(frame: view.frame, spotlight: [blockLogSpotlight])
         spotlightView.accessibilityIdentifier = "highlightBlockLog"
         spotlightView.cutoutRadius = 8
-        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75);
+        spotlightView.spotlightMaskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         spotlightView.enableArrowDown = true
-        spotlightView.textLabelFont = fontMedium16
-        spotlightView.labelSpacing = 24;
+        spotlightView.textLabelFont = .mediumLockdownFont(size: 16)
+        spotlightView.labelSpacing = 24
         view.addSubview(spotlightView)
         spotlightView.start()
     }
@@ -587,7 +674,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      toggleCircle: vpnToggleCircle,
                                      toggleAnimatedCircle: vpnToggleAnimatedCircle,
                                      button: vpnButton,
-                                     prefixText: NSLocalizedString("Tunnel", comment: "").uppercased())
+                                     prefixText: .localized("Tunnel").uppercased())
     }
     
     @IBAction func toggleVPN(_ sender: Any) {
@@ -623,10 +710,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 .catch { error in
                     DDLogError("Error doing email-login -> subscription-event: \(error)")
                     self.updateVPNButtonWithStatus(status: .disconnected)
-                    if (self.popupErrorAsNSURLError(error)) {
+                    if self.popupErrorAsNSURLError(error) {
                         return
-                    }
-                    else if let apiError = error as? ApiError {
+                    } else if let apiError = error as? ApiError {
                         switch apiError.code {
                         case kApiCodeInvalidAuth, kApiCodeIncorrectLogin:
                             let confirm = PopupDialog(title: "Incorrect Login",
@@ -640,34 +726,39 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                                        hideStatusBar: false,
                                                        completion: nil)
                             confirm.addButtons([
-                               DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
+                               DefaultButton(title: .localizedCancel, dismissOnTap: true) {
                                },
-                               DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                               DefaultButton(title: .localizedSignOut, dismissOnTap: true) {
                                 URLCache.shared.removeAllCachedResponses()
                                 Client.clearCookies()
                                 clearAPICredentials()
                                 setAPICredentialsConfirmed(confirmed: false)
-                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                                self.showPopupDialog(
+                                    title: .localized("Success"),
+                                    message: .localized("Signed out successfully."),
+                                    acceptButton: .localizedOkay)
                                },
                             ])
                             self.present(confirm, animated: true, completion: nil)
                         case kApiCodeNoSubscriptionInReceipt:
-                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                            self.showPaywallIfNoSubscription()
                         case kApiCodeNoActiveSubscription:
-                            self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
-                                self.performSegue(withIdentifier: "showSignup", sender: self)
-                            })
+                            self.showPopupDialog(
+                                title: .localized("Subscription Expired"),
+                                message: .localized("Please renew your subscription to activate the Secure Tunnel."),
+                                acceptButton: .localizedOkay) {
+                                    self.showPaywallIfNoSubscription()
+                                }
                         default:
                             _ = self.popupErrorAsApiError(error)
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 firstly {
                     try Client.signIn() // this will fetch and set latest receipt, then submit to API to get cookie
                 }
-                .then { (signin: SignIn) -> Promise<GetKey> in
+                .then { _ -> Promise<GetKey> in
                     // TODO: don't always do this -- if we already have a key, then only do it once per day max
                     try Client.getKey()
                 }
@@ -677,37 +768,44 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 }
                 .catch { error in
                     self.updateVPNButtonWithStatus(status: .disconnected)
-                    if (self.popupErrorAsNSURLError(error)) {
+                    
+                    if self.popupErrorAsNSURLError(error) {
                         return
-                    }
-                    else if let apiError = error as? ApiError {
+                    } else if let apiError = error as? ApiError {
                         switch apiError.code {
                         case kApiCodeNoSubscriptionInReceipt:
-                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                            self.showPaywallIfNoSubscription()
                         case kApiCodeNoActiveSubscription:
-                            self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
-                                self.performSegue(withIdentifier: "showSignup", sender: self)
-                            })
+                            self.showPopupDialog(
+                                title: .localized("Subscription Expired"),
+                                message: .localized("Please renew your subscription to activate the Secure Tunnel."),
+                                acceptButton: .localizedOkay) {
+                                    self.showPaywallIfNoSubscription()
+                                }
                         default:
-                            if (apiError.code == kApiCodeNegativeError) {
-                                if (getVPNCredentials() != nil) {
+                            if apiError.code == kApiCodeNegativeError {
+                                if getVPNCredentials() != nil {
                                     DDLogError("Unknown error -1 from API, but VPNCredentials exists, so activating anyway.")
                                     self.updateVPNButtonWithStatus(status: .connecting)
                                     VPNController.shared.setEnabled(true)
+                                } else {
+                                    let message = """
+There is currently an outage at Apple which is preventing Secure Tunnel from activating. \
+This will likely by resolved by Apple soon, and we apologize for this issue in the meantime.
+""" + .localized("\n\n If this error persists, please contact team@lockdownprivacy.com.")
+                                    self.showPopupDialog(
+                                        title: .localized("Apple Outage"),
+                                        message: message,
+                                        acceptButton: .localizedOkay)
                                 }
-                                else {
-                                    self.showPopupDialog(title: NSLocalizedString("Apple Outage", comment: ""), message: "There is currently an outage at Apple which is preventing Secure Tunnel from activating. This will likely by resolved by Apple soon, and we apologize for this issue in the meantime." + NSLocalizedString("\n\n If this error persists, please contact team@lockdownprivacy.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
-                                }
-                            }
-                            else {
+                            } else {
                                 _ = self.popupErrorAsApiError(error)
                             }
                         }
-                    }
-                    else {
-                        self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
+                    } else {
+                        self.showPopupDialog(title: .localized("Error Signing In To Verify Subscription"),
                                              message: "\(error)",
-                            acceptButton: NSLocalizedString("Okay", comment: ""))
+                                             acceptButton: .localizedOkay)
                     }
                 }
             }
@@ -742,7 +840,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 vc.parentVC = self
             }
         case "showUpgradePlan":
-            if let vc = segue.destination as? SignupViewController {
+            if let vc = segue.destination as? OldSignupViewController {
                 if activePlans.isEmpty {
                     vc.mode = .newSubscription
                 } else {
@@ -766,23 +864,24 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         DDLogInfo("Incrementing Rating Count: " + String(ratingCount))
         defaults.set(ratingCount, forKey: ratingCountKey)
         // not testflight
-        if (isTestFlight) {
+        if isTestFlight {
             DDLogInfo("Not doing rating for TestFlight")
             return
         }
         // greater than 3 days since install
-        if let installDate = appInstallDate, let daysSinceInstall = Calendar.current.dateComponents([.day], from: installDate, to: Date()).day, daysSinceInstall <= 3 {
+        if let installDate = appInstallDate,
+            let daysSinceInstall = Calendar.current.dateComponents([.day], from: installDate, to: Date()).day, daysSinceInstall <= 3 {
             DDLogInfo("Rating Check: Skipping - App was installed on \(installDate), fewer than 4 days since install - \(daysSinceInstall) days")
             return
         }
         // only check every 8th time connecting to this version
-        if (ratingCount % 8 != 0) {
+        if ratingCount % 8 != 0 {
             DDLogInfo("Rating Check: Skipping - ratingCount % 8 != 0: \(ratingCount)")
             return
         }
         // hasn't asked for this version 2 times already
         let ratingTriggered = defaults.integer(forKey: ratingTriggeredKey)
-        if (ratingTriggered >= 3) {
+        if ratingTriggered >= 3 {
             DDLogInfo("Rating Check: Skipping - ratingTriggered greater or equal to 3: \(ratingTriggered)")
             return
         }
@@ -792,10 +891,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             SKStoreReviewController.requestReview()
         }
     }
-    
 }
 
-class LockdownCustomActivityItemProvider : UIActivityItemProvider {
+class LockdownCustomActivityItemProvider: UIActivityItemProvider {
 
     let shareText: String
     
@@ -804,20 +902,44 @@ class LockdownCustomActivityItemProvider : UIActivityItemProvider {
         super.init(placeholderItem: text)
     }
     
-    override func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        if let type = activityType {
-            switch type {
-                case UIActivity.ActivityType.postToTwitter:
+    override func activityViewController(
+        _ activityViewController: UIActivityViewController,
+        itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+            if let type = activityType {
+                switch type {
+                case .postToTwitter:
                     return shareText + " @lockdown_hq"
                 default:
                     return shareText
+                }
+            } else {
+                return shareText
             }
         }
-        else {
-            return shareText
-        }
-    }
+}
 
+// MARK: - Paywalling
+extension HomeViewController: PaywallViewControllerCloseDelegate {
+    func didClosePaywall() {
+        guard UserDefaults.hasSeenLTO == false else { return }
+        
+        showLTOButtonIfEligible()
+    }
+    
+    private func showEnableNotifications() {
+        let enableNotificationsViewController = EnableNotificationsViewController()
+        enableNotificationsViewController.modalPresentationStyle = .overFullScreen
+        present(enableNotificationsViewController, animated: true)
+    }
+    
+    private func showPaywallIfNoSubscription() {
+        guard BaseUserService.shared.user.currentSubscription == nil else { return }
+        guard BasePaywallService.shared.context == .normal else { return }
+        
+        BasePaywallService.shared.showPaywall(on: self)
+        
+        UserDefaults.hasSeenPaywallOnHomeScreen = true
+    }
 }
 
 fileprivate extension PopupDialogButton {
@@ -845,15 +967,13 @@ fileprivate extension PopupDialogButton {
 }
 
 final class DynamicButton: PopupDialogButton {
-    var onTap: ((DynamicButton) -> ())?
+    var onTap: ((DynamicButton) -> Void)?
     
     override var buttonAction: PopupDialogButton.PopupDialogButtonAction? {
-        get {
-            if let onTap = onTap {
-                return { [weak self] in if let value = self { return onTap(value) } }
-            } else {
-                return nil
-            }
+        if let onTap = onTap {
+            return { [weak self] in if let value = self { return onTap(value) } }
+        } else {
+            return nil
         }
     }
 }
@@ -877,4 +997,96 @@ extension NEVPNStatus: CustomStringConvertible {
         }
     }
     
+}
+
+extension HomeViewController: AwesomeSpotlightViewDelegate {
+    func spotlightView(_ spotlightView: AwesomeSpotlightView, willNavigateToIndex index: Int) {
+        let accountTabSpotlightIndex = 7
+        
+        if index == accountTabSpotlightIndex {
+            spotlightView.backgroundColor = .white.withAlphaComponent(0.2)
+            spotlightView.spotlightMaskColor = .clear.withAlphaComponent(0.8)
+        }
+    }
+}
+
+// MARK: - LTO
+extension HomeViewController: LTOViewControllerCloseDelegate, CountdownDisplayDelegate {
+    func didFinishCountdown() {
+        DDLogInfo("Removing lto button.")
+        UIView.animate(withDuration: 0.4, animations: {
+            self.ltoButton?.transform = .init(scaleX: 0.001, y: 0.001)
+            self.ltoButton?.titleLabel?.alpha = 0
+        }) { _ in
+            self.ltoButton?.removeFromSuperview()
+            self.ltoButton = nil
+        }
+    }
+    
+    func didCloseLTOPaywall() {
+        guard let ltoButton else { return }
+        countdownDisplayService.startUpdating(button: ltoButton)
+    }
+    
+    func showLTOButtonIfEligible() {
+        // To check for case when when user has redeemed code and has got a subscription.
+        // In this case, the button has already been created, but we should remove it and show nothing.
+        guard BaseUserService.shared.user.currentSubscription == nil else {
+            DDLogInfo("Removing lto button when user has redeemed code but button has been created.")
+            ltoButton?.removeFromSuperview()
+            ltoButton = nil
+            return
+        }
+        guard let ltoButton = self.ltoButton else { return }
+        
+        countdownDisplayService.startUpdating(button: ltoButton)
+        countdownDisplayService.delegates.append(WeakObject(self))
+        
+        DDLogInfo("Showing lto button.")
+        ltoButton.showAnimatedPress(duration: 0.4, withScale: 1.2) {
+            UserDefaults.hasSeenLTO = true
+        }
+    }
+    
+    private func addLTOButtonIfEligible() {
+        guard UserDefaults.hasSeenLTO == false else { return }
+        guard LimitedTimeOffer() != nil else { return }
+        guard ltoButton == nil else { return }
+        
+        DDLogInfo("Creating lto button")
+        ltoButton = UIButton()
+        
+        guard let ltoButton else { return }
+        updateLtoButtonFrame()
+        
+        ltoButton.addTarget(self, action: #selector(didTapLTOButton), for: .touchUpInside)
+        
+        view.addSubview(ltoButton)
+        
+        ltoButton.backgroundColor = .fromHex("#F93B58")
+        ltoButton.corners = .continuous(ltoButton.frame.height / 2)
+        
+        ltoButton.titleLabel?.font = .boldLockdownFont(size: 18)
+        ltoButton.transform = .init(scaleX: 0, y: 0)
+        ltoButton.applyGradient(.ltoButtonOnHomePage, corners: ltoButton.corners)
+    }
+    
+    private func updateLtoButtonFrame() {
+        guard let tabBarButton = (tabBarController as? MainTabBarController)?.accountTabBarButton else { return }
+        
+        let buttonHeight: CGFloat = 64
+        let buttonWidth: CGFloat = 100
+        let buttonTrailingOffset: CGFloat = 16
+        let buttonBottomOffset: CGFloat = 50
+        ltoButton?.frame = .init(origin: .init(x: tabBarButton.frame.maxX - buttonWidth - buttonTrailingOffset,
+                                                        y: view.frame.maxY - tabBarButton.frame.height - buttonBottomOffset - buttonHeight),
+                                          size: .init(width: buttonWidth, height: buttonHeight))
+    }
+    
+    @objc private func didTapLTOButton() {
+        ltoButton?.showAnimatedPress { [weak self] in
+            guard let self else { return }
+            self.paywallService.showPaywall(on: self, forceSpecialOffer: true)
+        }
+    }
 }

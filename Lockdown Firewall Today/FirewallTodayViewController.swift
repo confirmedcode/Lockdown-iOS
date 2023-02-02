@@ -85,7 +85,7 @@ class FirewallTodayViewController: UIViewController, NCWidgetProviding {
     
     @objc func updateMetrics() {
         DispatchQueue.main.async {
-            self.blockedTodayLabel.text = getDayMetricsString() + NSLocalizedString(" Blocked Today", comment: "refers to number of connections blocked today, as in '34 Blocked Today'")
+            self.blockedTodayLabel.text = getDayMetricsString() + .localized(" Blocked Today", comment: "refers to number of connections blocked today, as in '34 Blocked Today'")
         }
     }
     
@@ -132,23 +132,23 @@ class FirewallTodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func setFirewallButtonConnected() {
-        firewallStatusLabel.text = NSLocalizedString("Firewall Active", comment: "")
+        firewallStatusLabel.text = .localized("Firewall Active")
         toggleFirewall?.tintColor = .tunnelsBlue
         toggleFirewall.layer.borderColor = UIColor.tunnelsBlue.cgColor
     }
     
     func setFirewallButtonDisconnected() {
-        firewallStatusLabel.text = NSLocalizedString("Firewall Not Active", comment: "")
+        firewallStatusLabel.text = .localized("Firewall Not Active")
         toggleFirewall?.tintColor = UIColor.darkGray
         toggleFirewall?.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     func setFirewallButtonConnecting() {
-        firewallStatusLabel.text = NSLocalizedString("Activating", comment: "")
+        firewallStatusLabel.text = .localized("Activating")
     }
     
     func setFirewallButtonDisconnecting() {
-        firewallStatusLabel.text = NSLocalizedString("Deactivating", comment: "")
+        firewallStatusLabel.text = .localized("Deactivating")
     }
     
     // MARK: - Helpers

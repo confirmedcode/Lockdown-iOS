@@ -1,0 +1,71 @@
+warning_threshold: 1
+
+disabled_rules:
+  - unused_setter_value
+  - trailing_whitespace
+  - comment_spacing
+  - vertical_whitespace
+  - colon
+  - function_body_length
+  - cyclomatic_complexity
+  - weak_delegate
+  - multiple_closures_with_trailing_closure
+  - compiler_protocol_init
+  - todo
+  - trailing_comma
+  - notification_center_detachment
+  - identifier_name
+  - block_based_kvo
+  - empty_enum_arguments
+  - inclusive_language
+
+opt_in_rules: # some rules are only opt-in
+  #- control_statement
+  - empty_count
+  #- trailing_newline
+  #- colon
+  #- comma
+  - empty_string
+  - unused_declaration
+  - explicit_self
+  
+included: # paths to include during linting. `--path` is ignored if present.
+  - LockdowniOS
+  
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - lockdownTests
+  
+line_length:
+    warning: 155
+    ignores_comments: true
+
+force_try:
+  severity: warning
+
+type_body_length:
+  warning: 500
+  error: 1000
+
+file_length:
+  warning: 1200
+  error: 1200
+
+large_tuple:
+  warning: 7
+  error: 10
+  
+function_parameter_count:
+  warning: 5
+   
+type_name:
+  min_length: 3
+  max_length: 40
+  
+deployment_target:
+  iOS_deployment_target: 11.0
+  
+unused_declaration:
+  include_public_and_open: true
+  
+reporter: "xcode"

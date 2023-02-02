@@ -90,23 +90,23 @@ class VPNTodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func setVPNButtonConnected() {
-        vpnStatusLabel.text = NSLocalizedString("VPN Active", comment: "")
+        vpnStatusLabel.text = .localized("VPN Active")
         toggleVPN?.tintColor = .tunnelsBlue
         toggleVPN.layer.borderColor = UIColor.tunnelsBlue.cgColor
     }
     
     func setVPNButtonDisconnected() {
-        vpnStatusLabel.text = NSLocalizedString("VPN Not Active", comment: "")
+        vpnStatusLabel.text = .localized("VPN Not Active")
         toggleVPN?.tintColor = UIColor.darkGray
         toggleVPN?.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     func setVPNButtonConnecting() {
-        vpnStatusLabel.text = NSLocalizedString("Activating", comment: "")
+        vpnStatusLabel.text = .localized("Activating")
     }
     
     func setVPNButtonDisconnecting() {
-        vpnStatusLabel.text = NSLocalizedString("Deactivating", comment: "")
+        vpnStatusLabel.text = .localized("Deactivating")
     }
     
     // MARK: - Helpers

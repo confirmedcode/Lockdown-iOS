@@ -518,7 +518,7 @@
 "To: joe@email.com\nRe: Q4 2019 Finance Review" = "To: joe@email.com\nRe: Q4 2019 Finance Review";
 
 /* No comment provided by engineer. */
-"Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location." = "Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.";
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.";
 
 /* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
 "tracking attempts this week. Tap to update to the newest block lists." = "tracking attempts this week. Tap to update to the newest block lists.";
@@ -697,3 +697,113 @@
 
 /* The title of a list of trackers */
 "Amazon Trackers" = "Amazon Trackers";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "Simple and Powerful";
+"onboarding_lockdown_stops_trackers" = "Lockdown stops trackers, malware and other bad agents from accessing your data.";
+"onboarding_worlds_first_on_device" = "World's First on Device";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "Open Source Firewall and secure tunnel VPN that works across ALL your apps and web browsing.";
+"onboarding_staying_protected_is_easy_with_lockdown" = "Staying Protected is so easy with Lockdown";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "Remain Anonymous with Secure Tunnel VPN";
+"onboarding_no_logs_fast_and_fully_audited" = "No-logs, blazing-fast, privacy-first VPN. The only VPN to prove its Privacy Policy and be fully audited by security experts.";
+"onboarding_take_control_of_who_you_block" = "Take control of who\nyou Block";
+"onboarding_when_using_our_intuitive_blocklists" = "When using our intuitive block list building tool.";
+"onboarding_stay_protected" = "Stay Protected!";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "Get weekly summaries and block list updates.";
+"onboarding_over_1_billion_trackers_blocked" = "Over 1 Billion Trackers Blocked";
+"onboarding_used_by_more_than_1_million" = "Used by more than one million privacy-conscious people.";
+"onboarding_sign_up" = "Sign Up";
+"onboarding_login" = "Login";
+"continue" = "Continue";
+"plan_annual" = "Annual";
+"plan_monthly" = "Monthly";
+
+// MARK: - SignUpViewController
+"welcome" = "Welcome";
+"already_have_account_login" = "Already have an account? Login";
+"sign_up_to_access_new_block_lists_from_trackers" = "Sign up to access new blocked lists from trackers";
+"already_have_account_login_below" = "Already have Lockdown account?\nLogin below.";
+"forgot_password" = "Forgot Password";
+"email" = "Email";
+"password" = "Password";
+"access_our_curated_block_lists_and_build_your_own" = "Access our curated block lists and build your own";
+"access_lockdown_across_all_your_devices" = "Access Lockdown across all your devices";
+"firewall_and_vpn_support" = "Firewall and VPN support";
+"by_continuing_you_agree_with_our" = "By continuing you agree with our";
+"and" = "and";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "Stay in the Loop";
+"once_a_week_helpful_reminders" = "Once a week helpful reminders about your security and how to make most of it.";
+"enable_notifications" = "Enable Notifications";
+"maybe_later" = "Maybe Later";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "Check Fields";
+"email_and_password_must_not_be_empty" = "Email and password must not be empty";
+"Success! 🎉" = "Success! 🎉";
+"error_signing_in" = "Error Signing In";
+"confirm_your_email" = "Confirm Your Email";
+"you_have_successfully_sign_in" = "You've successfully signed in.";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "I blocked %@ trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps.\nGet it free at lockdownprivacy.com.";
+"check_email" = "Check Email";
+"we_have_sent_a_reset_password_email" = "We've sent a reset password email to you. Be sure to check any spam/junk folders, in case it got stuck there.";
+"since_date" = "SINCE %@";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "Start Trial Now to Get Full Access";
+"restore_purchase" = "Restore Purchase";
+"terms_of_service" = "Terms of Service";
+"CHOOSE_YOUR_PLAN" = "CHOOSE YOUR PLAN";
+"skip" = "Skip";
+"save_annual_vpn_subscription" = "Save ~50%";
+"save_annual_pro_subscription" = "Save ~30%";
+"current_plan" = "Current Plan";
+"feature_table_column" = "Feature";
+"feature_level_table_column" = "Free";
+"stops_ads_and_hidden_trackers" = "Stops Ads and Hidden Trackers";
+"blocks_badware_in_all_your_apps" = "Blocks Badware in All Your Apps";
+"access_our_curated_block_lists" = "Access Our Curated Block Lists";
+"build_your_custom_block_lists" = "Build Your Custom Block Lists";
+"stops_browsing_history_tracking" = "Stops Browsing History Tracking";
+"anonymizing_your_browsing" = "Anonymizing Your Browsing";
+"hides_your_location_and_ip" = "Hides Your Location and IP";
+"lets_you_change_your_ip_to_other_region" = "Lets You Change Your IP\nto Other Region";
+"app_for_iphone_plus_ipad" = "App for iPhone + iPad";
+"app_for_mac" = "App for Mac";
+"year_after_slash" = "year";
+"month_after_slash" = "month";
+
+// MARK: - Delete My Account
+"delete_account" = "Delete Account";
+"delete_my_account" = "Delete My Account";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "By proceeding you will submit a request to delete your entire account record, along with associated personal data. Once the account has been deleted, you will be notified of these changes via your account email.\n\nPlease, be aware that you will lose all of your settings including upgrade options and will not be able to create an account with the same email.";
+"proceed" = "Proceed";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "Invalid email address";
+"please_fill_in_your_email" = "Please fill in your email.";
+"you_entered_con_instead_of_com" = "You entered .con instead of .com.";
+"no_valid_email_address_detected" = "No valid email address detected.";
+"too_many_email_addresses_entered" = "Too many email addresses entered.";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "minutes";
+"seconds_genitive" = "seconds";
+"lockdowns_first_christmas_sale" = "Lockdown’s First Christmas Sale";
+"subscribe_now" = "Subscribe Now";
+
+// MARK: - Code Redemption
+"redeem_code" = "Redeem Code";
+"cannot_redeem_code" = "Cannot Redeem Code";
+"the_code_could_not_be_redeemed" = "The code could not be redeemed.";
+"congratulations_excl" = "Congratulations!";
+"the_code_was_successfully_redeemed" = "The code was successfully redeemed. You may need to restart the app for the purchase to take effect.";

@@ -344,7 +344,7 @@
 "To: joe@email.com\nRe: Q4 2019 Finance Review" = "宛先: joe@email.com\nRe: Q4 2019 財務レビュー";
 
 /* No comment provided by engineer. */
-"Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location." = "トラッカー、　アド、　その他の悪意のあるスクリプトがすべてのアプリでブロックされるようになりました、 Safariの外でも。\n\n接続を保護し、ブラウジングを匿名化し、位置情報を非表示にするセキュアなトンネルで、最大限のプライバシーを確保します。";
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "トラッカー、　アド、　その他の悪意のあるスクリプトがすべてのアプリでブロックされるようになりました、 Safariの外でも。\n\n接続を保護し、ブラウジングを匿名化し、位置情報を非表示にするセキュアなトンネルで、最大限のプライバシーを確保します。";
 
 /* No comment provided by engineer. */
 "Tunnel" = "トンネル";
@@ -703,3 +703,113 @@
 
 /* The title of a list of trackers */
 "Amazon Trackers" = "Amazon Trackers";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "シンプルでパワフル";
+"onboarding_lockdown_stops_trackers" = "Lockdownはトラッカー、マルウェア、その他あらゆる不適切なエージェントがあなたのデータにアクセスするのをブロックします。";
+"onboarding_worlds_first_on_device" = "世界初のオンデバイスソリューション";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "オープンソースファイヤーウォールとセキュアトンネルVPNで、すべてのアプリとWebブラウジングを保護。";
+"onboarding_staying_protected_is_easy_with_lockdown" = "Lockdownなら常時保護も簡単";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "セキュアトンネルVPNでプライバシーを保護";
+"onboarding_no_logs_fast_and_fully_audited" = "ログを残さ図、プライバシーを最優先する超高速VPN。セキュリティ専門家の厳重な監査でプライバシーポリシーを証明する唯一のVPN。";
+"onboarding_take_control_of_who_you_block" = "何をブロックするのかを\n完全にコントロール";
+"onboarding_when_using_our_intuitive_blocklists" = "直感的なブロックリスト作成ツールを提供。";
+"onboarding_stay_protected" = "常にプロテクト！";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "週次のサマリーとブロックリスト更新。";
+"onboarding_over_1_billion_trackers_blocked" = "10億以上のトラッカーをブロック済み";
+"onboarding_used_by_more_than_1_million" = "100万人以上のセキュリティを重視するユーザーが利用中。";
+"onboarding_sign_up" = "サインアップ";
+"onboarding_login" = "ログイン";
+"continue" = "継続";
+"plan_annual" = "年次";
+"plan_monthly" = "月次";
+
+// MARK: - SignUpViewController
+"welcome" = "ようこそ";
+"already_have_account_login" = "既にアカウントをお持ちですか？ ログイン";
+"sign_up_to_access_new_block_lists_from_trackers" = "サインアップしてトラッカーのブロックリストを新たに取得";
+"already_have_account_login_below" = "Lockdownのアカウントを既にお持ちですか？\n以下からログインしてください。";
+"forgot_password" = "パスワードを忘れた場合";
+"email" = "メール";
+"password" = "パスワード";
+"access_our_curated_block_lists_and_build_your_own" = "当社独自のキュレーションによるブロックリストを取得してカスタマイズ";
+"access_lockdown_across_all_your_devices" = "お使いのすべてのデバイスからLockdownを利用可能";
+"firewall_and_vpn_support" = "ファイヤーウォールとVPNサポート";
+"by_continuing_you_agree_with_our" = "継続すると以下に同意することになります：";
+"and" = "および";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "常に最新情報を取得";
+"once_a_week_helpful_reminders" = "週に一度の便利なセキュリティリマインダーで防護を最大限に。";
+"enable_notifications" = "通知を有効化";
+"maybe_later" = "後にする";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "フィールドをチェック";
+"email_and_password_must_not_be_empty" = "メールとパスワードは空欄にできません";
+"Success! 🎉" = "成功！ 🎉";
+"error_signing_in" = "サインインエラー";
+"confirm_your_email" = "メールを確認";
+"you_have_successfully_sign_in" = "サインインが正常に完了しました。";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "ファイヤーウォールですべてのアプリについて不必要な接続をブロックしてくれるLockdownによって、%@トラッカー、広告、マルウェアブロックしました。\nlockdownprivacy.com で無料でダウンロードできます。";
+"check_email" = "メールをチェック";
+"we_have_sent_a_reset_password_email" = "パスワードリセット用のメールを送りました。スパムやジャンク用のフォルダに振り分けられていることもありますので、確認してみてください。";
+"since_date" = "％@以来";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "今すぐトライアルですべての機能を使ってみる";
+"restore_purchase" = "購入対象の復元";
+"terms_of_service" = "利用規約";
+"CHOOSE_YOUR_PLAN" = "プランを選択してください";
+"skip" = "スキップ";
+"save_annual_vpn_subscription" = "50%お得";
+"save_annual_pro_subscription" = "30%お得";
+"current_plan" = "現在のプラン";
+"feature_table_column" = "特徴";
+"feature_level_table_column" = "無料";
+"stops_ads_and_hidden_trackers" = "広告と隠されたトラッカーをブロック";
+"blocks_badware_in_all_your_apps" = "すべてのアプリをマルウェアから保護";
+"access_our_curated_block_lists" = "当社独自管理のブロックリストへのアクセス";
+"build_your_custom_block_lists" = "自分だけのブロックリストをカスタマイズ";
+"stops_browsing_history_tracking" = "ブラウズ履歴追跡をブロック";
+"anonymizing_your_browsing" = "ブラウジングを匿名化";
+"hides_your_location_and_ip" = "位置情報とIPを秘匿";
+"lets_you_change_your_ip_to_other_region" = "IPを変更して\n別の地域をカモフラージュ";
+"app_for_iphone_plus_ipad" = "iPhoneおよびiPad向けアプリ";
+"app_for_mac" = "Mac用アプリ";
+"year_after_slash" = "年";
+"month_after_slash" = "月";
+
+// MARK: - Delete My Account
+"delete_account" = "アカウントを削除";
+"delete_my_account" = "自分のアカウントを削除";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "続行すると、あなたのアカウントに関するすべての記録と関連する個人情報を消去する要求を送信することになります。アカウントが削除された時点で、その処理について、アカウントのメールアドレスに通知が送られます。\n\nアップグレードオプションを含むすべての設定も合わせて消去されることにご注意ください。また同一のメールアドレスでアカウントを作成することはできなくなります。";
+"proceed" = "続行";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "無効なメールアドレス";
+"please_fill_in_your_email" = "メールアドレスを入力してください。";
+"you_entered_con_instead_of_com" = ".comではなく.conと入力されています。";
+"no_valid_email_address_detected" = "有効なメールアドレスが検出されませんでした。";
+"too_many_email_addresses_entered" = "入力されたメールアドレスが多すぎます。";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "分";
+"seconds_genitive" = "秒";
+"lockdowns_first_christmas_sale" = "Lockdown初のクリスマスセール";
+"subscribe_now" = "今すぐ登録";
+
+// MARK: - Code Redemption
+"redeem_code" = "コードを引き換える";
+"cannot_redeem_code" = "コードを引き換えられません";
+"the_code_could_not_be_redeemed" = "このコードは使用できませんでした。";
+"congratulations_excl" = "おめでとうございます！";
+"the_code_was_successfully_redeemed" = "コードの引き換えに成功しました。なお、購入品を反映するために、アプリを再起動する必要がある場合があります。";

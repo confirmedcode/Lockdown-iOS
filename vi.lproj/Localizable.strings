@@ -1,0 +1,809 @@
+/* Used in: tracker1.com 'and' tracker2.com 'and' tracker3.com */
+" and " = " và ";
+
+/* refers to number of connections blocked today, as in '34 Blocked Today' */
+" Blocked Today" = " Đã chặn hôm nay";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to add to a whitelist. For example, \"google.com\" without \"https://\"" = " không phải là mục nhập hợp lệ. Vui lòng chỉ nhập máy chủ của miền bạn muốn thêm vào danh sách trắng. Ví dụ: \"google.com\" mà không có \"https://\"";
+
+/* No comment provided by engineer. */
+" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"" = " không phải là mục nhập hợp lệ. Vui lòng chỉ nhập máy chủ của miền bạn muốn chặn. Ví dụ: \"google.com\" mà không có \"https://\"";
+
+/* No comment provided by engineer. */
+" Off" = " Tắt";
+
+/* No comment provided by engineer. */
+" On" = " Bật";
+
+/* Used in the sentence: I blocked 500 trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com. */
+" trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps. Get it free at lockdownprivacy.com." = " công cụ theo dõi, quảng cáo và phần mềm độc hại với Lockdown, tường lửa chặn các kết nối không mong muốn trong tất cả các ứng dụng của bạn. Tải về miễn phí tại lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"1 Week Free" = "1 Tuần Miễn Phí";
+
+/* No comment provided by engineer. */
+"\"Block List\" lets you choose what you want to block (e.g, Facebook, clickbait, etc). You can also set custom domains to block." = "\"Danh sách chặn\" cho phép bạn chọn những gì bạn muốn chặn (ví dụ: Facebook, clickbait, v.v.). Bạn cũng có thể đặt các miền tùy chỉnh để chặn.";
+
+/* No comment provided by engineer. */
+"\"iOS Annual\" is your current plan" = "\"iOS Hàng năm\" là gói hiện tại của bạn";
+
+/* No comment provided by engineer. */
+"\"iOS Monthly\" is your current plan" = "\"iOS Hàng tháng\" là gói hiện tại của bạn";
+
+/* No comment provided by engineer. */
+"\"Pro Annual\" is your current plan" = "\"Pro Hàng năm\" là gói hiện tại của bạn";
+
+/* No comment provided by engineer. */
+"\"Pro Monthly\" is your current plan" = "\"Pro Hàng tháng\" là gói hiện tại của bạn";
+
+/* No comment provided by engineer. */
+"\"View Log\" shows exactly what connections were blocked in the past day. This log is cleared at midnight and stays on-device, so it's only visible to you." = "\"Xem Nhật ký\" hiển thị chính xác những kết nối đã bị chặn trong ngày hôm qua. Nhật ký này được xóa vào lúc nửa đêm và lưu trong thiết bị, vì vậy nhật ký chỉ hiển thị với bạn.";
+
+/* No comment provided by engineer. */
+"\n\n If this error persists, please contact team@lockdownprivacy.com." = "\n\n Nếu lỗi này vẫn tiếp diễn, vui lòng liên hệ với team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"\n\n If this persists, please contact team@lockdownprivacy.com." = "\n\n Nếu điều này vẫn tiếp diễn, vui lòng liên hệ team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"About Lockdown VPN" = "Giới thiệu về Lockdown VPN";
+
+/* No comment provided by engineer. */
+"Activate Firewall with this button." = "Kích hoạt Tường lửa bằng nút này.";
+
+/* No comment provided by engineer. */
+"Activating" = "Đang kích hoạt";
+
+/* No comment provided by engineer. */
+"Anonymize IP against trackers" = "Ẩn danh IP đối với công cụ theo dõi";
+
+/* No comment provided by engineer. */
+"Apple Outage" = "Apple ngừng hoạt động";
+
+/* No comment provided by engineer. */
+"at least 8 characters" = "tối thiểu 8 ký tự";
+
+/* No comment provided by engineer. */
+"Audit Reports" = "Báo cáo Kiểm toán";
+
+/* No comment provided by engineer. */
+"Australia" = "Úc";
+
+/* No comment provided by engineer. */
+"Be sure to check your spam folder in case it got stuck there.\n\nYou can also request a re-send of the confirmation." = "Hãy nhớ kiểm tra thư mục thư rác của bạn để đề phòng trường hợp nó bị kẹt ở đó.\n\nBạn cũng có thể yêu cầu gửi lại xác nhận.";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"block list" = "danh sách chặn";
+
+/* No comment provided by engineer. */
+"Blocked" = "Bị chặn";
+
+/* No comment provided by engineer. */
+"Blocked Domains" = "Miền bị chặn";
+
+/* No comment provided by engineer. */
+"Blocked Today" = "Đã chặn hôm nay";
+
+/* No comment provided by engineer. */
+"Blocked Trackers Summary" = "Tóm tắt Công cụ theo dõi bị chặn";
+
+/* No comment provided by engineer. */
+"Brazil" = "Brazil";
+
+/* No comment provided by engineer. */
+"Canada" = "Canada";
+
+/* No comment provided by engineer. */
+"Cancel" = "Hủy";
+
+/* No comment provided by engineer. */
+"Check Your Inbox" = "Kiểm tra Hộp thư";
+
+/* No comment provided by engineer. */
+"Clear Block Log" = "Xóa Nhật ký chặn";
+
+/* The title of a list of trackers */
+"Clickbait" = "Clickbait";
+
+/* No comment provided by engineer. */
+"Confirm Email" = "Xác nhận Email";
+
+/* No comment provided by engineer. */
+"Confirmed Site" = "Trang đã xác nhận";
+
+/* No comment provided by engineer. */
+"Couldn't Find Your Email Client" = "Không tìm thấy ứng dụng email của bạn";
+
+/* The title of a list of trackers */
+"Crypto Mining" = "Khai thác tiền điện tử";
+
+/* No comment provided by engineer. */
+"Custom Settings (Advanced)" = "Cài đặt tùy chỉnh (Nâng cao)";
+
+/* The title of a list of trackers */
+"Data Trackers" = "Công cụ theo dõi dữ liệu";
+
+/* No comment provided by engineer. */
+"Deactivating" = "Hủy kích hoạt";
+
+/* No comment provided by engineer. */
+"Disable" = "Tắt";
+
+/* No comment provided by engineer. */
+"Disable Block Log" = "Tắt Nhật ký chặn";
+
+/* No comment provided by engineer. */
+"Disable Block Log?" = "Tắt Nhật ký chặn?";
+
+/* No comment provided by engineer. */
+"Done" = "Xong";
+
+/* No comment provided by engineer. */
+"Email Support" = "Hỗ trợ Email";
+
+/* The title of a list of trackers */
+"Email Trackers" = "Công cụ theo dõi Email";
+
+/* No comment provided by engineer. */
+"Email Us" = "Email cho chúng tôi";
+
+/* No comment provided by engineer. */
+"Enable" = "Bật";
+
+/* No comment provided by engineer. */
+"Enable Block Log" = "Bật Nhật ký chặn";
+
+/* No comment provided by engineer. */
+"Enable notifications to get a once-a-week summary and the latest block list updates. You can disable this anytime." = "Bật thông báo để nhận tóm tắt mỗi tuần một lần và cập nhật danh sách chặn mới nhất. Bạn có thể tắt tính năng này bất cứ lúc nào.";
+
+/* No comment provided by engineer. */
+"Encrypted, private connections" = "Kết nối riêng tư được mã hóa";
+
+/* No comment provided by engineer. */
+"Error Code " = "Mã lỗi ";
+
+/* No comment provided by engineer. */
+"Error Creating Email Account" = "Lỗi khi tạo tài khoản email";
+
+/* No comment provided by engineer. */
+"Error Loading Plan: Retry" = "Lỗi khi tải gói: Thử lại";
+
+/* No comment provided by engineer. */
+"Error Re-sending Email Confirmation" = "Lỗi khi gửi lại xác nhận email";
+
+/* No comment provided by engineer. */
+"Error Restoring Subscription" = "Lỗi khi khôi phục đăng ký";
+
+/* No comment provided by engineer. */
+"Error Signing In To Verify Subscription" = "Lỗi khi đăng nhập để xác minh đăng ký";
+
+/* No comment provided by engineer. */
+"Error Starting Trial" = "Lỗi khi bắt đầu dùng thử";
+
+/* The title of a list of trackers */
+"Facebook & WhatsApp" = "Facebook & WhatsApp";
+
+/* The title of a list of trackers */
+"Facebook Trackers" = "Công cụ theo dõi Facebook";
+
+/* No comment provided by engineer. */
+"Failed to re-send email confirmation." = "Không gửi lại được email xác nhận.";
+
+/* No comment provided by engineer. */
+"FAQs" = "Câu hỏi thường gặp";
+
+/* No comment provided by engineer. */
+"Firewall" = "Tường lửa";
+
+/* No comment provided by engineer. */
+"Firewall Active" = "Tường lửa đang hoạt động";
+
+/* No comment provided by engineer. */
+"Firewall Not Active" = "Tường lửa không hoạt động";
+
+/* No comment provided by engineer. */
+"FIREWALL OFF" = "TƯỜNG LỬA ĐANG TẮT";
+
+/* No comment provided by engineer. */
+"FIREWALL ON" = "TƯỜNG LỬA ĐANG BẬT";
+
+/* No comment provided by engineer. */
+"For maximum privacy, activate Secure Tunnel, which uses bank-level encryption to protect connections, anonymize your browsing, and hide your location and IP." = "Để bảo đảm tối đa quyền riêng tư, hãy kích hoạt Secure Tunnel, sử dụng mã hóa cấp độ ngân hàng để bảo vệ các kết nối, ẩn danh hoạt động duyệt web cũng như ẩn vị trí và IP của bạn.";
+
+/* No comment provided by engineer. */
+"France" = "Pháp";
+
+/* The title of a list of trackers */
+"Game Marketing" = "Tiếp thị trò chơi";
+
+/* The title of a list of trackers */
+"General Marketing" = "Tiếp thị chung";
+
+/* No comment provided by engineer. */
+"Germany" = "Đức";
+
+/* The title of a list of trackers */
+"Google Shopping" = "Google Shopping";
+
+/* No comment provided by engineer. */
+"Hey Lockdown Team, \nI have a question, issue, or suggestion - " = "Xin chào Đội ngũ Lockdown, \nTôi có một câu hỏi, vấn đề hoặc đề xuất - ";
+
+/* No comment provided by engineer. */
+"Hi, my question or feedback for Lockdown is: " = "Xin chào, câu hỏi hoặc phản hồi của tôi cho Lockdown là: ";
+
+/* Used in the sentence: I blocked 500 trackers with Lockdown. */
+"I blocked" = "Tôi đã chặn";
+
+/* Used in: You blocked tracker.com in your custom blocked domains. */
+"in your custom blocked domains." = "trong các miền bị chặn tùy chỉnh của bạn.";
+
+/* No comment provided by engineer. */
+"India" = "Ấn Độ";
+
+/* No comment provided by engineer. */
+"Invalid domain" = "Miền không hợp lệ";
+
+/* No comment provided by engineer. */
+"IP: 18.132.2.87" = "IP: 18.132.2.87";
+
+/* No comment provided by engineer. */
+"IP: [Anonymized]" = "IP: [Ẩn danh]";
+
+/* No comment provided by engineer. */
+"Ireland" = "Ireland";
+
+/* Used in the sentence: 'tracker.com' is a part of 'Marketing Trackers' block list */
+"is a part of" = "là một phần của";
+
+/* No comment provided by engineer. */
+"Japan" = "Nhật Bản";
+
+/* Shows when loading the details of a subscription plan */
+"Loading Plan" = "Đang tải gói";
+
+/* No comment provided by engineer. */
+"Location changed and hidden" = "Đã thay đổi và ẩn vị trí";
+
+/* No comment provided by engineer. */
+"Location: 🇯🇵" = "Vị trí: 🇯🇵";
+
+/* No comment provided by engineer. */
+"Location: 🇺🇸" = "Vị trí: 🇺🇸";
+
+/* No comment provided by engineer. */
+"Lockdown Firewall blocks bad and untrusted connections in all your apps - not just Safari." = "Lockdown Firewall chặn các kết nối xấu và không đáng tin cậy trong tất cả các ứng dụng của bạn - không chỉ Safari.";
+
+/* No comment provided by engineer. */
+"Lockdown is open source and fully transparent, which means anyone can see exactly what it's doing. Also, Lockdown Firewall has a simple, strict Privacy Policy, while Lockdown VPN is fully audited by security experts." = "Lockdown sử dụng mã nguồn mở và hoàn toàn minh bạch, có nghĩa là mọi người đều có thể thấy chính xác những gì nó đang làm. Ngoài ra, Lockdown Firewall có Chính sách Quyền riêng tư đơn giản, nghiêm ngặt, và Lockdown VPN đã được các chuyên gia bảo mật kiểm tra đầy đủ.";
+
+/* No comment provided by engineer. */
+"Lockdown VPN is powered by Confirmed VPN, the open source, no-logs, and fully audited VPN." = "Lockdown VPN được cung cấp bởi Confirmed VPN, một VPN mã nguồn mở, không lưu nhật ký và đã được kiểm tra đầy đủ.";
+
+/* The title of a list of trackers */
+"Marketing Trackers" = "Công cụ theo dõi tiếp thị";
+
+/* The title of a list of trackers */
+"Marketing Trackers II" = "Công cụ theo dõi tiếp thị II";
+
+/* No comment provided by engineer. */
+"Network Error" = "Lỗi mạng";
+
+/* No comment provided by engineer. */
+"Next" = "Tiếp theo";
+
+/* No comment provided by engineer. */
+"Nice" = "Tốt";
+
+/* No comment provided by engineer. */
+"No" = "Không";
+
+/* No comment provided by engineer. */
+"No Active Subscription" = "Không có Đăng ký đang hoạt động";
+
+/* No comment provided by engineer. */
+"No additional information on this blocked domain found." = "Không tìm thấy thông tin bổ sung nào về miền bị chặn này.";
+
+/* No comment provided by engineer. */
+"No Block Lists Enabled" = "Không có Danh sách chặn nào được kích hoạt";
+
+/* No comment provided by engineer. */
+"No Info Found" = "Không tìm thấy thông tin";
+
+/* No comment provided by engineer. */
+"No Internet Connection" = "Không có kết nối Internet";
+
+/* No comment provided by engineer. */
+"No stored API credentials found. Please contact team@lockdownprivacy.com about this error." = "Không tìm thấy thông tin đăng nhập API nào được lưu trữ. Vui lòng liên hệ với team@lockdownprivacy.com về lỗi này.";
+
+/* No comment provided by engineer. */
+"Not Blocked" = "Không bị chặn";
+
+/* No comment provided by engineer. */
+"Not Now" = "Lúc khác";
+
+/* No comment provided by engineer. */
+"Not Whitelisted" = "Không có trong Danh sách trắng";
+
+/* No comment provided by engineer. */
+"Notifications: Off" = "Thông báo: Tắt";
+
+/* No comment provided by engineer. */
+"Notifications: On" = "Thông báo: Bật";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Okay" = "OK";
+
+/* No comment provided by engineer. */
+"one lowercase letter" = "một chữ cái thường";
+
+/* No comment provided by engineer. */
+"one number" = "một số";
+
+/* No comment provided by engineer. */
+"one symbol" = "một ký hiệu";
+
+/* No comment provided by engineer. */
+"one uppercase letter" = "một chữ cái viết hoa";
+
+/* No comment provided by engineer. */
+"Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol." = "Mật khẩu phải có tối thiểu 8 ký tự, chứa ít nhất một chữ cái viết hoa, một chữ thường, một số và một ký hiệu.";
+
+/* No comment provided by engineer. */
+"Plan: Annual Pro" = "Gói: Pro Hàng năm";
+
+/* No comment provided by engineer. */
+"Please check your internet connection. If this persists, please contact team@lockdownprivacy.com.\n\nError Description\n" = "Vui lòng kiểm tra kết nối Internet của bạn. Nếu điều này vẫn tiếp diễn, vui lòng liên hệ với team@lockdownprivacy.com.\n\nMô tả lỗi\n";
+
+/* No comment provided by engineer. */
+"Please contact team@lockdownprivacy.com.\n\nError details:\n" = "Vui lòng liên hệ với team@lockdownprivacy.com.\n\nChi tiết lỗi:\n";
+
+/* No comment provided by engineer. */
+"Please email team@lockdownprivacy.com with the following Error Code " = "Vui lòng gửi email đến team@lockdownprivacy.com với Mã lỗi sau ";
+
+/* No comment provided by engineer. */
+"Please first go to your iOS Settings > Notifications > Lockdown to enable notifications" = "Trước tiên, vui lòng đi đến Cài đặt iOS > Thông báo > Lockdown để bật thông báo";
+
+/* No comment provided by engineer. */
+"Please make sure you have added an e-mail account to your iOS device and try again." = "Hãy bảo đảm rằng bạn đã thêm tài khoản e-mail vào thiết bị iOS của mình và thử lại.";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active and that you have an active subscription. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "Hãy bảo đảm rằng kết nối Internet của bạn đang hoạt động và bạn có đăng ký đang hoạt động. Nếu không, vui lòng bắt đầu bản dùng thử miễn phí hoặc gửi e-mail đến team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: " = "Hãy bảo đảm rằng kết nối Internet của bạn đang hoạt động. Nếu lỗi này vẫn tiếp diễn, hãy gửi email tới team@lockdownprivacy.com với thông báo lỗi sau: ";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to activate the Secure Tunnel." = "Vui lòng gia hạn đăng ký để kích hoạt Secure Tunnel.";
+
+/* No comment provided by engineer. */
+"Please renew your subscription to re-activate the VPN." = "Vui lòng gia hạn đăng ký để kích hoạt lại VPN.";
+
+/* No comment provided by engineer. */
+"Please tap Block List and enable at least one block list to activate Firewall." = "Vui lòng nhấn Danh sách chặn và bật ít nhất một danh sách chặn để kích hoạt Tường lửa.";
+
+/* No comment provided by engineer. */
+"Pre-configured Block Lists" = "Danh sách chặn được định cấu hình trước";
+
+/* No comment provided by engineer. */
+"Pre-configured Suggestions" = "Đề xuất được định cấu hình trước";
+
+/* No comment provided by engineer. */
+"Precise location exposed" = "Đã để lộ vị trí chính xác";
+
+/* No comment provided by engineer. */
+"Press & Media" = "Báo chí & Truyền thông";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "Chính sách Quyền riêng tư";
+
+/* The title of a list of trackers */
+"Ransomware" = "Phần mềm tống tiền";
+
+/* No comment provided by engineer. */
+"Re-send" = "Gửi lại";
+
+/* No comment provided by engineer. */
+"Readable browsing and data" = "Duyệt web và dữ liệu có thể đọc được";
+
+/* No comment provided by engineer. */
+"Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email." = "Hãy nhớ kiểm tra Câu hỏi thường gặp của chúng tôi trước để biết câu trả lời cho những câu hỏi thường gặp nhất.\n\nNếu không có câu trả lời ở đó, chúng tôi sẵn lòng hỗ trợ và gửi phản hồi qua email.";
+
+/* The title of a list of trackers */
+"Reporting" = "Báo cáo";
+
+/* No comment provided by engineer. */
+"Secure Tunnel VPN" = "Secure Tunnel VPN";
+
+/* No comment provided by engineer. */
+"See live metrics for how many bad connections Firewall has blocked." = "Xem số liệu trực tiếp để biết Tường lửa đã chặn bao nhiêu kết nối xấu.";
+
+/* No comment provided by engineer. */
+"Settings" = "Cài đặt";
+
+/* No comment provided by engineer. */
+"Share your anonymized metrics and show other people how to block invasive tracking." = "Chia sẻ các số liệu ẩn danh của bạn và chỉ cho những người khác cách chặn theo dõi xâm phạm.";
+
+/* No comment provided by engineer. */
+"Share Your Stats" = "Chia sẻ Số liệu của Bạn";
+
+/* No comment provided by engineer. */
+"SHOW" = "HIỆN";
+
+/* No comment provided by engineer. */
+"Show how invasive today's apps are, and help other people block trackers and badware, too.\n\nYour block log is not included - only the image above. Choose where to share in the next step." = "Cho biết các ứng dụng ngày nay xâm phạm như thế nào, đồng thời giúp người khác chặn các công cụ theo dõi và phần mềm độc hại.\n\nKhông bao gồm nhật ký chặn - chỉ có hình ảnh ở trên. Chọn nơi để chia sẻ trong bước tiếp theo.";
+
+/* No comment provided by engineer. */
+"Sign Out" = "Đăng xuất";
+
+/* No comment provided by engineer. */
+"Sign Out?" = "Đăng xuất?";
+
+/* No comment provided by engineer. */
+"Sign Up  |  Sign In" = "Đăng ký  |  Đăng nhập";
+
+/* No comment provided by engineer. */
+"Sign up below to unlock benefits of a Lockdown account." = "Đăng ký bên dưới để mở khóa các quyền lợi của tài khoản Lockdown.";
+
+/* No comment provided by engineer. */
+"Signed In" = "Đã đăng nhập";
+
+/* No comment provided by engineer. */
+"Signed out successfully." = "Đã đăng xuất thành công.";
+
+/* No comment provided by engineer. */
+"Singapore" = "Singapore";
+
+/* No comment provided by engineer. */
+"Skip Trial" = "Bỏ qua Dùng thử";
+
+/* The title of a list of trackers */
+"Snapchat Trackers" = "Công cụ theo dõi Snapchat";
+
+/* No comment provided by engineer. */
+"South Korea" = "Hàn Quốc";
+
+/* No comment provided by engineer. */
+"Stay Protected" = "Luôn được bảo vệ";
+
+/* No comment provided by engineer. */
+"Subscription Expired" = "Đăng ký hết hạn";
+
+/* No comment provided by engineer. */
+"Success" = "Thành công";
+
+/* No comment provided by engineer. */
+"Success!" = "Thành công!";
+
+/* No comment provided by engineer. */
+"Successfully re-sent your email confirmation to " = "Đã gửi lại thành công xác nhận email của bạn tới ";
+
+/* No comment provided by engineer. */
+"Support | Feedback" = "Hỗ trợ | Phản hồi";
+
+/* No comment provided by engineer. */
+"Tap to activate Lockdown Firewall and update to the newest block lists." = "Nhấn để kích hoạt Lockdown Firewall và cập nhật lên danh sách chặn mới nhất.";
+
+/* No comment provided by engineer. */
+"Tap to see a demo of how Secure Tunnel protects and anonymizes you." = "Nhấn để xem giới thiệu về cách Secure Tunnel bảo vệ và ẩn danh bạn.";
+
+/* No comment provided by engineer. */
+"Tap to see the blocked tracking attempts." = "Nhấn để xem những lần cố gắng theo dõi bị chặn.";
+
+/* Used in the paragraph: You've just blocked 100 tracking attempts! Tap to see what they are. */
+"Tap to see what they are." = "Nhấn để xem chúng là gì.";
+
+/* No comment provided by engineer. */
+"Terms" = "Điều khoản";
+
+/* No comment provided by engineer. */
+"Thanks for helping to increase privacy and tracking awareness." = "Cảm ơn bạn đã giúp nâng cao nhận thức về quyền riêng tư và theo dõi.";
+
+/* No comment provided by engineer. */
+"The block log can be manually cleared or disabled. Disabling the Block Log only disables the log of connections - the number of tracking attempts will still be displayed." = "Nhật ký chặn có thể được xóa hoặc vô hiệu hóa theo cách thủ công. Vô hiệu hóa Nhật ký chặn sẽ chỉ tắt nhật ký kết nối - số lần cố gắng theo dõi sẽ vẫn được hiển thị.";
+
+/* Used in To complete your signup, click the confirmation link we sent to you@gmail.com */
+"To complete your signup, click the confirmation link we sent to" = "Để hoàn tất quá trình đăng ký, hãy bấm vào liên kết xác nhận mà chúng tôi đã gửi đến";
+
+/* No comment provided by engineer. */
+"To finish signup, click the confirmation link in the email we just sent. If you don't see it, check if it's stuck in your spam folder." = "Để hoàn tất quá trình đăng ký, hãy bấm vào liên kết xác nhận trong email chúng tôi vừa gửi. Nếu bạn không thấy, hãy kiểm tra xem nó có bị kẹt trong mục thư rác hay không.";
+
+/* No comment provided by engineer. */
+"To see this tutorial again, open the Account tab." = "Để xem lại hướng dẫn này, hãy mở tab Tài khoản.";
+
+/* No comment provided by engineer. */
+"To: joe@email.com\nRe: Q4 2019 Finance Review" = "Tới: joe@email.com\nV/v: Đánh giá Tài chính Quý 4 Năm 2019";
+
+/* No comment provided by engineer. */
+"trackers_ads_and_malicious_scripts_are_now_blocked_get_max_privacy" = "Công cụ theo dõi, quảng cáo và các tập lệnh độc hại khác hiện đã bị chặn trong tất cả các ứng dụng của bạn, ngay cả bên ngoài Safari.\n\nBảo đảm quyền riêng tư tối đa với Secure Tunnel bảo vệ các kết nối, ẩn danh hoạt động duyệt web và ẩn vị trí của bạn.";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week. Tap to update to the newsst block lists. */
+"tracking attempts this week. Tap to update to the newest block lists." = "lần cố gắng theo dõi trong tuần này. Nhấn để cập nhật danh sách chặn mới nhất.";
+
+/* No comment provided by engineer. */
+"Tunnel" = "Đường hầm";
+
+/* No comment provided by engineer. */
+"Tunnel Off" = "Đường hầm đang Tắt";
+
+/* No comment provided by engineer. */
+"Tunnel On" = "Đường hầm đang Bật";
+
+/* No comment provided by engineer. */
+"Tutorial" = "Hướng dẫn";
+
+/* No comment provided by engineer. */
+"Unique IP address broadcasted" = "Đã phát địa chỉ IP riêng";
+
+/* No comment provided by engineer. */
+"United Kingdom" = "Vương quốc Anh";
+
+/* No comment provided by engineer. */
+"United States - East" = "Hoa Kỳ - Miền Đông";
+
+/* No comment provided by engineer. */
+"United States - West" = "Hoa Kỳ - Miền Tây";
+
+/* No comment provided by engineer. */
+"Update Success" = "Cập nhật thành công";
+
+/* No comment provided by engineer. */
+"Updating Block Lists" = "Cập nhật Danh sách chặn";
+
+/* No comment provided by engineer. */
+"USA East" = "Miền Đông Hoa Kỳ";
+
+/* No comment provided by engineer. */
+"USA West" = "Miền Tây Hoa Kỳ";
+
+/* No comment provided by engineer. */
+"View FAQs" = "Xem Câu hỏi thường gặp";
+
+/* No comment provided by engineer. */
+"View or Upgrade Plan" = "Xem hoặc nâng cấp Gói";
+
+/* No comment provided by engineer. */
+"View Upgrade Options" = "Xem Tùy chọn Nâng cấp";
+
+/* No comment provided by engineer. */
+"VPN Active" = "VPN đang hoạt động";
+
+/* No comment provided by engineer. */
+"VPN Not Active" = "VPN không hoạt động";
+
+/* No comment provided by engineer. */
+"VPN Subscription Expired" = "Đăng ký VPN hết hạn";
+
+/* No comment provided by engineer. */
+"Website" = "Trang web";
+
+/* No comment provided by engineer. */
+"Welcome to the Lockdown Tutorial.\n\nTap anywhere to continue." = "Chào mừng bạn đến phần Hướng dẫn của Lockdown.\n\nNhấn vào bất kỳ đâu để tiếp tục.";
+
+/* No comment provided by engineer. */
+"What is VPN?" = "VPN là gì?";
+
+/* No comment provided by engineer. */
+"Whitelisted" = "Đã vào danh sách trắng";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown" = "Vì sao nên tin dùng Lockdown";
+
+/* No comment provided by engineer. */
+"Why Trust Lockdown?" = "Vì sao nên tin dùng Lockdown?";
+
+/* No comment provided by engineer. */
+"Why Use VPN?" = "Vì sao nên sử dụng VPN?";
+
+/* Used in the sentence: You blocked 500 tracking attempts this week.
+   Used in: You blocked tracker.com in your custom blocked domains. */
+"You blocked" = "Bạn đã chặn";
+
+/* No comment provided by engineer. */
+"You blocked this domain in your custom blocked domains." = "Bạn đã chặn miền này trong các miền bị chặn tùy chỉnh của mình.";
+
+/* No comment provided by engineer. */
+"You can tap this later if you feel like sharing.\n(Tap anywhere to dismiss)" = "Bạn có thể nhấn vào phần này sau nếu muốn chia sẻ.\n(Nhấn vào bất kỳ đâu để loại bỏ)";
+
+/* No comment provided by engineer. */
+"You'll be signed out from this account." = "Bạn sẽ đăng xuất khỏi tài khoản này.";
+
+/* No comment provided by engineer. */
+"You'll have to reenable it later here to start seeing blocked entries again." = "Sau này bạn sẽ phải kích hoạt lại nó tại đây để bắt đầu xem lại được các mục bị chặn.";
+
+/* No comment provided by engineer. */
+"You've just blocked 100 tracking attempts!" = "Bạn vừa chặn 100 lần cố gắng theo dõi!";
+
+/* No comment provided by engineer. */
+"Your account has been confirmed and you're now signed in. You'll get the latest block lists, access to Lockdown Mac, and get critical announcements." = "Tài khoản của bạn đã được xác nhận và bạn hiện đã đăng nhập. Bạn sẽ nhận được danh sách chặn mới nhất, quyền truy cập Lockdown Mac và nhận các thông báo quan trọng.";
+
+/* No comment provided by engineer. */
+"Your Settings" = "Cài đặt của bạn";
+
+/* No comment provided by engineer. */
+"⚠️ Not Signed In" = "⚠️ Chưa đăng nhập";
+
+/* No comment provided by engineer. */
+"🔥🧱 Firewall Activated 🎊🎉" = "🔥🧱 Đã kích hoạt Tường lửa 🎊🎉";
+
+/* No comment provided by engineer. */
+"Error while trying to confirm your account:" = "Lỗi khi cố gắng xác nhận tài khoản của bạn:";
+
+/* No comment provided by engineer. */
+"If this persists, please contact team@lockdownprivacy.com." = "Nếu điều này vẫn tiếp diễn, vui lòng liên hệ team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"Add a domain to block" = "Thêm miền để chặn";
+
+/* No comment provided by engineer. */
+"Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "Chặn tất cả các ứng dụng của bạn kết nối với các miền và trang web bên dưới. Để thuận tiện cho bạn, Lockdown cũng có các đề xuất được định cấu hình trước.";
+
+/* No comment provided by engineer. */
+"Block Lists" = "Danh sách chặn";
+
+/* No comment provided by engineer. */
+"Configure Blocking" = "Cấu hình chặn";
+
+/* No comment provided by engineer. */
+"Custom" = "Tùy chỉnh";
+
+/* No comment provided by engineer. */
+"SAVE" = "LƯU";
+
+/* No comment provided by engineer. */
+"Access to cloud service information is not allowed" = "Không được phép truy cập thông tin dịch vụ đám mây";
+
+/* No comment provided by engineer. */
+"Could not connect to the network" = "Không thể kết nối với mạng";
+
+/* No comment provided by engineer. */
+"Not allowed to make the payment" = "Không được phép thanh toán";
+
+/* No comment provided by engineer. */
+"Payment was cancelled" = "Thanh toán đã bị hủy";
+
+/* No comment provided by engineer. */
+"The device is not allowed to make the payment" = "Thiết bị không được phép thực hiện thanh toán";
+
+/* No comment provided by engineer. */
+"The product is not available in the current storefront" = "Sản phẩm không có sẵn trong cửa hàng hiện tại";
+
+/* No comment provided by engineer. */
+"The purchase identifier was invalid" = "Giá trị nhận dạng mua hàng không hợp lệ";
+
+/* No comment provided by engineer. */
+"Unknown error. Please contact support at team@lockdownprivacy.com." = "Lỗi không xác định. Vui lòng liên hệ với bộ phận hỗ trợ tại team@lockdownprivacy.com.";
+
+/* No comment provided by engineer. */
+"User has revoked permission to use this cloud service" = "Người dùng đã thu hồi quyền sử dụng dịch vụ đám mây này";
+
+/* No comment provided by engineer. */
+"Please that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, please start your free trial or e-mail team@lockdownprivacy.com" = "Hãy bảo đảm rằng bạn có một gói đăng ký đang hoạt động. Nếu bạn đang cố gắng chia sẻ đăng ký từ cùng một tài khoản, bạn cần đăng nhập bằng cùng một địa chỉ email. Nếu không, vui lòng bắt đầu bản dùng thử miễn phí hoặc gửi e-mail đến team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "Mua hàng trong ứng dụng đã bị tắt. Vui lòng cho phép chúng trong Ứng dụng Cài đặt -> Thời gian sử dụng -> Hạn chế -> Cửa hàng ứng dụng -> Mua hàng trong ứng dụng. Sau đó thử lại.";
+
+/* No comment provided by engineer. */
+"Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again." = "Thanh toán không được phép.\nThiết bị này không được phép mua hàng hoặc Mua hàng trong ứng dụng đã bị tắt. Vui lòng cho phép chúng trong Ứng dụng Cài đặt -> Thời gian sử dụng -> Hạn chế -> Cửa hàng ứng dụng -> Mua hàng trong ứng dụng. Sau đó thử lại.";
+
+/* No comment provided by engineer. */
+"Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com" = "Hãy bảo đảm rằng bạn có một gói đăng ký đang hoạt động. Nếu bạn đang cố gắng chia sẻ đăng ký từ cùng một tài khoản, bạn cần đăng nhập bằng cùng một địa chỉ email. Nếu không, vui bắt đầu bản dùng thử miễn phí hoặc gửi e-mail đến team@lockdownprivacy.com";
+
+/* No comment provided by engineer. */
+"Upgrade Plan" = "Nâng cấp Gói";
+
+/* The title of a list of trackers */
+"Amazon Trackers" = "Công cụ theo dõi Amazon";
+
+// MARK: - Onboarding
+"onboarding_simple_and_powerful" = "Đơn giản và Mạnh mẽ";
+"onboarding_lockdown_stops_trackers" = "Lockdown chặn các trình theo dõi, phần mềm độc hại và các tác nhân xấu khác truy cập vào dữ liệu của bạn.";
+"onboarding_worlds_first_on_device" = "Đầu tiên trên thế giới trên thiết bị";
+"onboarding_firewall_and_vpn_work_across_all_apps" = "Tường lửa nguồn mở và secure tunnel VPN hoạt động trên TẤT CẢ các ứng dụng và duyệt web của bạn.";
+"onboarding_staying_protected_is_easy_with_lockdown" = "Luôn được Bảo vệ thật dễ dàng với Lockdown";
+"onboarding_remain_anonymous_with_secure_tunnel_vpn" = "Duy trì ẩn danh với Secure Tunnel VPN";
+"onboarding_no_logs_fast_and_fully_audited" = "VPN không cần nhật ký, cực nhanh, ưu tiên quyền riêng tư. VPN duy nhất chứng minh được Chính sách Quyền riêng tư của mình và được kiểm tra đầy đủ bởi các chuyên gia bảo mật.";
+"onboarding_take_control_of_who_you_block" = "Kiểm soát người\nmà bạn Chặn";
+"onboarding_when_using_our_intuitive_blocklists" = "Khi sử dụng công cụ xây dựng danh sách chặn trực quan của chúng tôi.";
+"onboarding_stay_protected" = "Luôn được bảo vệ!";
+"onboarding_get_weekly_summary_and_blocklist_updates" = "Nhận tóm tắt hàng tuần và cập nhật danh sách chặn.";
+"onboarding_over_1_billion_trackers_blocked" = "Hơn 1 tỷ Trình theo dõi bị chặn";
+"onboarding_used_by_more_than_1_million" = "Được sử dụng bởi hơn một triệu người quan tâm về quyền riêng tư.";
+"onboarding_sign_up" = "Đăng ký";
+"onboarding_login" = "Đăng nhập";
+"continue" = "Tiếp tục";
+"plan_annual" = "Hàng năm";
+"plan_monthly" = "Hàng tháng";
+
+// MARK: - SignUpViewController
+"welcome" = "Chào mừng";
+"already_have_account_login" = "Bạn đã có tài khoản? Đăng nhập";
+"sign_up_to_access_new_block_lists_from_trackers" = "Đăng ký để truy cập danh sách chặn mới từ các trình theo dõi";
+"already_have_account_login_below" = "Đã có tài khoản Lockdown?\nĐăng nhập bên dưới.";
+"forgot_password" = "Quên mật khẩu";
+"email" = "Email";
+"password" = "Mật khẩu";
+"access_our_curated_block_lists_and_build_your_own" = "Truy cập danh sách chặn được tuyển chọn của chúng tôi và tạo danh sách chặn của riêng bạn";
+"access_lockdown_across_all_your_devices" = "Truy cập Lockdown từ mọi thiết bị của bạn";
+"firewall_and_vpn_support" = "Hỗ trợ tường lửa và VPN";
+"by_continuing_you_agree_with_our" = "Bằng cách tiếp tục, bạn đồng ý với";
+"and" = "và";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "Duy trì cập nhật";
+"once_a_week_helpful_reminders" = "Mỗi tuần một lời nhắc hữu ích về bảo mật và cách tận dụng tối đa.";
+"enable_notifications" = "Bật thông báo";
+"maybe_later" = "Có lẽ để sau";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "Kiểm tra các trường";
+"email_and_password_must_not_be_empty" = "Email và mật khẩu không được để trống";
+"Success! 🎉" = "Thành công! 🎉";
+"error_signing_in" = "Lỗi khi đăng nhập";
+"confirm_your_email" = "Xác nhận email của bạn";
+"you_have_successfully_sign_in" = "Bạn đã đăng nhập thành công.";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "Tôi đã chặn %@ công cụ theo dõi, quảng cáo và phần mềm độc hại bằng Lockdown, tường lửa chặn các kết nối không mong muốn trong tất cả các ứng dụng của bạn.\nTải về miễn phí tại lockdownprivacy.com.";
+"check_email" = "Kiểm tra Email";
+"we_have_sent_a_reset_password_email" = "Chúng tôi đã gửi email đặt lại mật khẩu cho bạn. Hãy nhớ kiểm tra mọi thư mục thư rác, phòng trường hợp thư bị chuyển vào đó.";
+"since_date" = "KỂ TỪ %@";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - TablePaywallViewController
+"start_trial_now_to_get_full_access" = "Bắt đầu dùng thử ngay để sử dụng đầy đủ tính năng";
+"restore_purchase" = "Khôi phục Mua hàng";
+"terms_of_service" = "Điều khoản Dịch vụ";
+"CHOOSE_YOUR_PLAN" = "CHỌN GÓI";
+"skip" = "Bỏ qua";
+"save_annual_vpn_subscription" = "Tiết kiệm ~50%";
+"save_annual_pro_subscription" = "Tiết kiệm ~30%";
+"current_plan" = "Gói hiện tại";
+"feature_table_column" = "Tính năng";
+"feature_level_table_column" = "Miễn phí";
+"stops_ads_and_hidden_trackers" = "Dừng quảng cáo và công cụ theo dõi ẩn";
+"blocks_badware_in_all_your_apps" = "Chặn phần mềm xấu trong tất cả ứng dụng của bạn";
+"access_our_curated_block_lists" = "Sử dụng danh sách chặn được tuyển chọn của chúng tôi";
+"build_your_custom_block_lists" = "Tạo danh sách chặn tùy chỉnh của riêng bạn";
+"stops_browsing_history_tracking" = "Dừng theo dõi lịch sử duyệt web";
+"anonymizing_your_browsing" = "Ẩn danh trình duyệt";
+"hides_your_location_and_ip" = "Ẩn vị trí và địa chỉ IP";
+"lets_you_change_your_ip_to_other_region" = "Cho phép bạn thay đổi IP\nsang khu vực khác";
+"app_for_iphone_plus_ipad" = "Ứng dụng cho iPhone + iPad";
+"app_for_mac" = "Ứng dụng cho Mac";
+"year_after_slash" = "năm";
+"month_after_slash" = "tháng";
+
+// MARK: - Delete My Account
+"delete_account" = "Xóa tài khoản";
+"delete_my_account" = "Xóa tài khoản của tôi";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "Nếu tiếp tục, bạn sẽ gửi yêu cầu xóa toàn bộ hồ sơ tài khoản của mình, cùng với dữ liệu cá nhân có liên quan. Khi tài khoản được xóa, bạn sẽ được thông báo về những thay đổi này qua email tài khoản của mình.\n\nXin lưu ý rằng bạn sẽ mất tất cả cài đặt, bao gồm cả các tùy chọn nâng cấp và sẽ không thể tạo tài khoản với email đó nữa.";
+"proceed" = "Tiếp tục";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "Địa chỉ email không hợp lệ";
+"please_fill_in_your_email" = "Vui lòng điền email của bạn.";
+"you_entered_con_instead_of_com" = "Bạn đã nhập .con thay vì .com.";
+"no_valid_email_address_detected" = "Không tìm thấy địa chỉ email hợp lệ.";
+"too_many_email_addresses_entered" = "Đã nhập quá nhiều địa chỉ email.";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - Limited Time Offer
+"minutes_genitive" = "phút";
+"seconds_genitive" = "giây";
+"lockdowns_first_christmas_sale" = "Giảm giá Giáng sinh đầu tiên của Lockdown";
+"subscribe_now" = "Đăng ký ngay";
+
+// MARK: - Code Redemption
+"redeem_code" = "Đổi mã";
+"cannot_redeem_code" = "Không thể đổi mã";
+"the_code_could_not_be_redeemed" = "Không thể đổi mã này.";
+"congratulations_excl" = "Xin chúc mừng!";
+"the_code_was_successfully_redeemed" = "Mã đã được đổi thành công. Bạn có thể sẽ cần khởi động lại ứng dụng để giao dịch mua có hiệu lực.";
