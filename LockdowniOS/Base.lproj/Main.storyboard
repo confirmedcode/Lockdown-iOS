@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yjd-Jn-wK5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yjd-Jn-wK5">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,14 +73,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockLogCell" rowHeight="36" id="7rY-DO-9Xs" customClass="BlockLogCell" customModule="Lockdown" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="36"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7rY-DO-9Xs" id="UVQ-Eg-TEO">
-                                            <rect key="frame" x="0.0" y="0.0" width="338.5" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="36"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blocked-domain.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK4-lE-dks">
-                                                    <rect key="frame" x="80" y="2" width="250.5" height="32"/>
+                                                    <rect key="frame" x="80" y="2" width="247" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="zEd-KO-LRd"/>
                                                     </constraints>
@@ -1024,7 +1024,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="riC-go-Ask">
-                                <rect key="frame" x="130" y="633" width="115.5" height="26"/>
+                                <rect key="frame" x="129.5" y="633" width="116.5" height="26"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
@@ -1231,7 +1231,7 @@
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlockListGroupCell" rowHeight="72" id="c8H-rF-8EP" customClass="BlockListGroupCell" customModule="Lockdown" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c8H-rF-8EP" id="dd5-EL-ZlQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
@@ -1983,7 +1983,7 @@
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whitelistCell" rowHeight="50" id="p4O-VD-BkX" customClass="WhitelistCell" customModule="Lockdown" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p4O-VD-BkX" id="IOc-y9-wTO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -2021,7 +2021,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whitelistAddCell" rowHeight="70" id="DFr-ug-B3V" customClass="WhitelistAddCell" customModule="Lockdown" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="105.5" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DFr-ug-B3V" id="sWh-7F-ENN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -2139,7 +2139,7 @@
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="setRegionCell" rowHeight="55" id="zQM-w2-Vaa" customClass="SetRegionCell" customModule="Lockdown" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zQM-w2-Vaa" id="Fea-7c-exq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -2785,14 +2785,14 @@
                                         <rect key="frame" x="0.0" y="151" width="343" height="107"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRI-86-Bas">
-                                                <rect key="frame" x="45.5" y="0.0" width="252" height="107"/>
+                                                <rect key="frame" x="57" y="0.0" width="229" height="107"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="•">
                                                         <attributes>
                                                             <color key="NSColor" red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" size="15" name="Montserrat-Medium"/>
+                                                            <font key="NSFont" metaFont="system" size="15"/>
                                                             <real key="NSKern" value="0.0"/>
-                                                            <font key="NSOriginalFont" size="15" name="Montserrat-Medium"/>
+                                                            <font key="NSOriginalFont" metaFont="system" size="15"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" headIndent="12" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                                             <color key="NSStrokeColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </attributes>
@@ -2800,8 +2800,8 @@
                                                     <fragment content=" Location exposed and trackable">
                                                         <attributes>
                                                             <color key="NSColor" red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" size="15" name="Montserrat-Medium"/>
-                                                            <font key="NSOriginalFont" size="15" name="Montserrat-Medium"/>
+                                                            <font key="NSFont" metaFont="system" size="15"/>
+                                                            <font key="NSOriginalFont" metaFont="system" size="15"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" headIndent="12" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -3543,8 +3543,8 @@
         <image name="blue_circle" width="156" height="156"/>
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="globe" width="120" height="120"/>
-        <image name="lock.shield.fill" catalog="system" width="128" height="118"/>
-        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="lock.shield.fill" catalog="system" width="128" height="119"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
         <image name="power" width="284" height="284"/>
         <namedColor name="Confirmed Blue">
             <color red="0.0" green="0.67799997329711914" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

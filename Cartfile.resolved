@@ -1,6 +1,4 @@
-github "CocoaLumberjack/CocoaLumberjack" "3.7.4"
-github "behrang/YamlSwift" "3.4.3"
-github "confirmedcode/NEKit" "c615bf40940bb9b42f3c10cf1e887bfb921544c8"
+github "CocoaLumberjack/CocoaLumberjack" "3.8.0"
+github "confirmedcode/NEKit" "a7af11ccc67684484d9a933707e7be7b5c7a7fd3"
 github "robbiehanson/CocoaAsyncSocket" "7.6.5"
 github "zhuhaow/Resolver" "0.2.0"
-github "zhuhaow/tun2socks" "0.7.0"
