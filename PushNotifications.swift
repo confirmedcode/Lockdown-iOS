@@ -324,5 +324,4 @@ extension PushNotifications {
             return false
         }
     }
-    
 }

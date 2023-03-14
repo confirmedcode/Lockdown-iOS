@@ -80,5 +80,4 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
         
         return cell
     }
-    
 }

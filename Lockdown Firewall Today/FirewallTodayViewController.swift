@@ -193,5 +193,4 @@ class FirewallTodayViewController: UIViewController, NCWidgetProviding {
     @IBAction func openLockdown(sender: UIButton) {
         openApp()
     }
-    
 }

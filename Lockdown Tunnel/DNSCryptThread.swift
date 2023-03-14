@@ -81,5 +81,4 @@ class DNSCryptThread: Thread, DnscryptproxyCloakCallbackProtocol {
     func logFatal(_ str: String) {
         _dnsApp.logFatal(str)
     }
-    
 }

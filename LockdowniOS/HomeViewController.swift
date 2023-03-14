@@ -876,5 +876,4 @@ extension NEVPNStatus: CustomStringConvertible {
             return "disconnecting"
         }
     }
-    
 }

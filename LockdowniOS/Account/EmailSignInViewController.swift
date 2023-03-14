@@ -102,5 +102,4 @@ class EmailSignInViewController: BaseViewController, UITextFieldDelegate, Loadab
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

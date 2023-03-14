@@ -72,5 +72,4 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

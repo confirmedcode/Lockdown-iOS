@@ -391,5 +391,4 @@ class Client {
             throw "Invalid URL Response received"
         }
     }
-    
 }

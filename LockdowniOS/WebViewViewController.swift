@@ -44,5 +44,4 @@ class WebViewViewController: BaseViewController, WKNavigationDelegate {
     @IBAction func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

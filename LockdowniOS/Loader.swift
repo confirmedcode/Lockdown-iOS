@@ -66,5 +66,4 @@ extension Loadable where Self: UIViewController {
             }
         }
     }
-    
 }

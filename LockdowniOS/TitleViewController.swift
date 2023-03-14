@@ -78,5 +78,4 @@ class TitleViewController: BaseViewController {
     @IBAction func whyTrustTapped(_ sender: Any) {
         showWhyTrustPopup()
     }
-    
 }

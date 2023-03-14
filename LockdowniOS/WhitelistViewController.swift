@@ -235,5 +235,4 @@ class WhitelistViewController: BaseViewController, UITableViewDataSource, UITabl
         let addDomainRow = tableView.numberOfRows(inSection: 0) - 1
         self.tableView.scrollToRow(at: IndexPath.init(row: addDomainRow, section: 0), at: .middle, animated: true)
     }
-    
 }

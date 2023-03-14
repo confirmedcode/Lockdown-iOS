@@ -38,7 +38,6 @@ struct StatusLabel: View {
                     .stroke(color, lineWidth: 4)
             )
     }
-    
 }
 
 struct LoadingCircle: View {

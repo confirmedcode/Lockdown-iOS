@@ -11,5 +11,4 @@ class BlockLogCell: UITableViewCell {
     
     @IBOutlet weak var logHost: UILabel?
     @IBOutlet weak var time: UILabel!
-    
 }

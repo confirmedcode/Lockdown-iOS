@@ -34,7 +34,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func cancelTunnelWithError(_ error: Error?) {
-        self.log("===== ERROR - cancelTunnelWithError \(error?.localizedDescription)")
+        self.log("===== ERROR - cancelTunnelWithError \(error?.localizedDescription ?? "")")
     }
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
@@ -73,7 +73,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                             self.log("successfully stopped tunnel from reachability")
                         })
                     }
-                    
                 }
             }
         }

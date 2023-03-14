@@ -22,5 +22,4 @@ enum Mailto {
         
         return mailtoURL
     }
-    
 }

@@ -197,5 +197,4 @@ class FirewallController: NSObject {
             })
         }
     }
-    
 }

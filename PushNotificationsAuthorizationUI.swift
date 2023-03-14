@@ -130,7 +130,6 @@ extension PushNotifications.Authorization {
                     resolver.fulfill(.undetermined)
                 }
             }
-            
         }
     }
 }

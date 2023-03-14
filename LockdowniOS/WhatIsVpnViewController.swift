@@ -193,6 +193,5 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
         
         return bulletList
     }
-    
 }
 

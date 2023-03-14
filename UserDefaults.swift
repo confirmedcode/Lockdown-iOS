@@ -35,7 +35,6 @@ enum LatestKnowledge {
             defaults.setValue(newValue, forKey: kLatestKnowledgeIsVPNEnabled)
         }
     }
-    
 }
 
 func setUserWantsFirewallEnabled(_ enabled: Bool) {

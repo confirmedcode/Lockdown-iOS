@@ -76,6 +76,5 @@ struct CombinedProvider<Main: TimelineProvider, Supplemental: TimelineProvider>:
             let timeline = Timeline<Entry>(entries: zippedEntries.map({ Entry.init(main: $0, supplemental: $1) }), policy: leftTimeline!.policy)
             completion(timeline)
         }
-
     }
 }

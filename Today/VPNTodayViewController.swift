@@ -118,5 +118,4 @@ class VPNTodayViewController: UIViewController, NCWidgetProviding {
     @IBAction func openLockdown(sender: UIButton) {
         openApp()
     }
-    
 }

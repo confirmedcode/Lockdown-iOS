@@ -11,5 +11,4 @@ class WhitelistCell: UITableViewCell {
 
     @IBOutlet weak var whitelistDomain: UILabel?
     @IBOutlet weak var whitelistStatus: UILabel?
-    
 }

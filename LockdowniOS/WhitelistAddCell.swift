@@ -20,5 +20,4 @@ class WhitelistAddCell: UITableViewCell {
     }
 
     @IBOutlet weak var addWhitelistDomain: UITextField!
-    
 }

@@ -94,5 +94,4 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
         blockListVC?.reloadBlockLists()
         self.navigationController?.popViewController(animated: true)
     }
-
 }

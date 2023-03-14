@@ -70,5 +70,4 @@ public class SpeedTest: NSObject, URLSessionDelegate, URLSessionDataDelegate {
             throw "Invalid URL string: \(urlString)"
         }
     }
-    
 }
