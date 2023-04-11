@@ -203,6 +203,7 @@ extension UIColor {
     static let tunnelsBlue = UIColor(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 1.0)
     static let tunnelsWarning = UIColor(red: 231/255.0, green: 76/255.0, blue: 68/255.0, alpha: 1.0)
     static let tunnelsDarkBlue = UIColor(red: 0/255.0, green: 117/255.0, blue: 157/255.0, alpha: 1.0)
+    static let tunnelsLightBlue = UIColor(red: 223/255.0, green: 243/255.0, blue: 251/255.0, alpha: 1.0)
 }
 
 extension UnicodeScalar {

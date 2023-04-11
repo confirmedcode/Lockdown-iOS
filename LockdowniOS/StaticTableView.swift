@@ -10,11 +10,23 @@ import UIKit
 
 final class StaticTableView: UITableView {
     
+    // Resizing UITableView to fit content
+    override var contentSize: CGSize {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        layoutIfNeeded()
+        return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height)
+    }
+    
     var rows: [SelectableTableViewCell] = []
     var deselectsCellsAutomatically: Bool = false
     
     override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: style)
+        super.init(frame: frame, style: .insetGrouped)
         setup()
     }
     
@@ -124,6 +136,10 @@ extension StaticTableView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

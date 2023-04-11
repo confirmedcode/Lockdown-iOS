@@ -642,7 +642,7 @@
 "Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions.";
 
 /* No comment provided by engineer. */
-"Block Lists" = "Block Lists";
+"Curated" = "Curated";
 
 /* No comment provided by engineer. */
 "Configure Blocking" = "Configure Blocking";
@@ -652,6 +652,11 @@
 
 /* No comment provided by engineer. */
 "SAVE" = "SAVE";
+
+/* No comment provided by engineer. */
+"CLOSE" = "CLOSE";
+
+
 
 /* No comment provided by engineer. */
 "Access to cloud service information is not allowed" = "Access to cloud service information is not allowed";
@@ -700,3 +705,9 @@
 
 /* The title of a list of trackers */
 "Dummy Domains" = "Dummy Domains";
+
+// BlockListViewController
+"No lists yet" = "No lists yet";
+"Create a list" = "Create a list";
+"No custom domains yet" = "No custom domains yet";
+"Add a domain" = "Add a domain";
