@@ -463,7 +463,6 @@ extension BlockListViewController {
     }
     
     func deleteList(list: String) {
-        print("deleteDomains btn pressed ....")
         let alert = UIAlertController(title: NSLocalizedString("Delete List?", comment: ""),
                                       message: NSLocalizedString("Are you sure you want to remove this list?", comment: ""),
                                       preferredStyle: .alert)
@@ -494,11 +493,9 @@ extension BlockListViewController {
     
     @objc func importBlockList() {
         listsSubmenuView.isHidden = true
-        print("importBlockList ....")
     }
     
     @objc func addDomain() {
-        print("Alert is on")
         
         let tableView = customBlockedDomainsTableView
         
@@ -512,7 +509,6 @@ extension BlockListViewController {
                 }
                 
                 self.reloadCustomBlockedDomains()
-                print("Domain==>" + text + "added")
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
@@ -527,6 +523,5 @@ extension BlockListViewController {
     @objc func editDomains() {
         let controller = EditDomainsViewController()
         self.present(controller, animated: true)
-        print("editDomains .....")
     }
 }

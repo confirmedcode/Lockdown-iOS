@@ -185,8 +185,6 @@ private extension MoveToLsisViewController {
                 blockListView.anchors.edges.pin()
             }.onSelect { [unowned blockListView] in
                 self.didMakeChange = true
-                // TODO: - move domains to list
-
             }
             
             cell.accessoryType = .none
@@ -213,12 +211,10 @@ private extension MoveToLsisViewController {
     }
     
     @objc func backButtonClicked() {
-        print("back btn pressed ....")
         dismiss(animated: true)
     }
     
     @objc func cancelButtonClicked() {
-        print("cancel btn pressed ....")
         dismiss(animated: true)
     }
     
