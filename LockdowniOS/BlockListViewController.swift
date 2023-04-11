@@ -525,6 +525,8 @@ extension BlockListViewController {
     }
     
     @objc func editDomains() {
+        let controller = EditDomainsViewController()
+        self.present(controller, animated: true)
         print("editDomains .....")
     }
 }

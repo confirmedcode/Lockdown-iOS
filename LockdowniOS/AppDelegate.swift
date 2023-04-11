@@ -160,6 +160,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         setupWidgetToggleWorkaround()
         
+        // TODO: - Remove after testing viewcontrollers
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = EditDomainsViewController()
+//        self.window?.makeKeyAndVisible()
+        
         // If not yet agreed to privacy policy, set initial view controller to TitleViewController
         if (defaults.bool(forKey: kHasShownTitlePage) == false) {
             // TODO: removed this check because this was causing crashes possibly due to Locale

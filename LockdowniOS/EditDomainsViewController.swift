@@ -12,7 +12,7 @@ final class EditDomainsViewController: UIViewController {
     // MARK: - Properties
     private var didMakeChange = false
     
-    private var customBlockedDomains: [(String, Bool)] = []
+    var customBlockedDomains: [(String, Bool)] = []
     
     private var titleName = NSLocalizedString("Edit Domains", comment: "")
     
@@ -21,10 +21,6 @@ final class EditDomainsViewController: UIViewController {
         view.titleLabel.text = NSLocalizedString(titleName, comment: "")
         view.leftNavButton.setTitle(NSLocalizedString("CLOSE", comment: ""), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(closeButtonClicked), for: .touchUpInside)
-        view.rightNavButton.setTitle(NSLocalizedString("DONE", comment: ""), for: .normal)
-        view.rightNavButton.titleLabel?.font = fontBold13
-        view.rightNavButton.tintColor = .gray
-        view.rightNavButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         return view
     }()
     
@@ -115,15 +111,19 @@ private extension EditDomainsViewController {
         }
         
         for (domain, status) in customBlockedDomains {
+            var checkedStatus = status
             let blockListView = EditDomainsCell()
-//            var statusChecked = status.toggle()
-            blockListView.contents = .userBlocked(domain: domain, isSelected: status)
+            blockListView.contents = .userBlocked(domain: domain, isUnselected: status)
             
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
             }.onSelect { [unowned blockListView] in
                 self.didMakeChange = true
+                checkedStatus.toggle()
+                blockListView.contents = .userBlocked(domain: domain, isUnselected: checkedStatus)
+                self.bottomMenu.middleButton.setTitleColor(.tunnelsBlue, for: .normal)
+                self.bottomMenu.rightButton.setTitleColor(.red, for: .normal)
                 // TODO: - move domains to list
 
             }
@@ -133,27 +133,18 @@ private extension EditDomainsViewController {
     }
     
     @objc func closeButtonClicked() {
-        print("Close btn pressed ....")
         dismiss(animated: true)
     }
     
-    @objc func doneButtonClicked() {
-        print("doneButtonTapped btn pressed ....")
-    }
-    
     @objc func selectAllddDomains() {
-//        let cell = CheckboxTableViewCell()
-//        cell.isChecked = false
-//        tableView.reloadData()
-        print("selectAllddDomains btn pressed ....")
+        let tableView = customBlockedDomainsTableView
+        tableView.reloadData()
     }
     
     @objc func moveToList() {
-        print("moveToList btn pressed ....")
     }
     
     @objc func deleteDomains() {
-        print("deleteDomains btn pressed ....")
         let alert = UIAlertController(title: NSLocalizedString("Delete Entries?", comment: ""),
                                       message: NSLocalizedString("Are you sure you want to remove these domains?", comment: ""),
                                       preferredStyle: .alert)
@@ -164,10 +155,10 @@ private extension EditDomainsViewController {
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, Delete", comment: ""),
                                       style: UIAlertAction.Style.destructive,
-                                      handler: {(_: UIAlertAction!) in
-            // Delete action
-            //  tableView.clear()
-            //  tableView.reloadData()
+                                      handler: { [weak self] (_) in
+            guard let self else { return }
+            self.customBlockedDomainsTableView.clear()
+            self.customBlockedDomainsTableView.reloadData()
         }))
         self.present(alert, animated: true, completion: nil)
     }
