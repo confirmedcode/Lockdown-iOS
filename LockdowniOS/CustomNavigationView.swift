@@ -16,7 +16,7 @@ final class CustomNavigationView: UIView {
         }
     }
     
-    var buttonTitle: String = NSLocalizedString("SAVE", comment: "") {
+    var buttonTitle: String = NSLocalizedString("CLOSE", comment: "") {
         didSet {
             button.setTitle(buttonTitle, for: .normal)
         }
@@ -45,26 +45,22 @@ final class CustomNavigationView: UIView {
     
     func didLoad() {
         addSubview(titleView)
-        titleView.textAlignment = .left
+        titleView.textAlignment = .center
         titleView.text = title
         titleView.font = fontMedium17
         
-        titleView.anchors.leading.marginsPin(inset: 20)
-        titleView.anchors.width.greaterThanOrEqual(220)
-        titleView.anchors.height.equal(24)
+        titleView.anchors.centerX.align()
         titleView.anchors.top.pin(inset: 18)
         
         addSubview(button)
         button.titleLabel?.font = fontBold13
-        button.contentHorizontalAlignment = .trailing
+        button.contentHorizontalAlignment = .leading
         button.tintColor = .confirmedBlue
         button.setTitle(buttonTitle, for: .normal)
         
         button.anchors.centerY.equal(titleView.anchors.centerY)
-        button.anchors.trailing.marginsPin(inset: 8)
+        button.anchors.leading.marginsPin(inset: 8)
         button.anchors.bottom.marginsPin()
-        button.anchors.height.equal(39)
-        button.anchors.width.greaterThanOrEqual(60)
         
         button.addTarget(self, action: #selector(buttonDidPress), for: .touchUpInside)
     }

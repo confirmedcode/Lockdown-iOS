@@ -648,7 +648,7 @@
 "Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "以下のドメインとサイトへの接続からすべてのアプリをブロックします。便利なように、Lockdownには事前に設定された提案もあります。";
 
 /* No comment provided by engineer. */
-"Block Lists" = "されたブロックリスト";
+"Curated" = "されたブロックリスト";
 
 /* No comment provided by engineer. */
 "Configure Blocking" = "ブロッキングを設定する";
@@ -658,6 +658,9 @@
 
 /* No comment provided by engineer. */
 "SAVE" = "セーブ";
+
+/* No comment provided by engineer. */
+"CLOSE" = "CLOSE";
 
 /* No comment provided by engineer. */
 "Access to cloud service information is not allowed" = "Access to cloud service information is not allowed";

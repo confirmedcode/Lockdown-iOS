@@ -91,7 +91,7 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
     }
 
     @IBAction func dismiss() {
-        blockListVC?.reloadBlockLists()
+        blockListVC?.reloadCuratedBlockDomains()
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -14,6 +14,7 @@ import WidgetKit
 
 let kLockdownBlockedDomains = "lockdown_domains"
 let kUserBlockedDomains = "lockdown_domains_user"
+let kUserBlockedLists = "lockdown_lists_user"
 
 // MARK: - data structures
 
@@ -40,6 +41,21 @@ struct LockdownGroup : Codable {
 
 struct LockdownDefaults : Codable {
     var lockdownDefaults : Dictionary<String, LockdownGroup>
+}
+
+struct UserBlockListsGroup: Codable {
+//    var version : Int
+//    var internalID: String
+    var name: String
+//    var iconURL : String
+    var enabled : Bool
+    var domains : Dictionary<String, Bool>
+    var ipRanges : Dictionary<String, ConfirmedIPRange>
+    var warning: String?
+}
+
+struct UserBlockListsDefaults: Codable {
+    var userBlockListsDefaults: Dictionary<String, UserBlockListsGroup>
 }
 
 // MARK: - Block Metrics & Block Log
@@ -385,6 +401,33 @@ func getIsCombinedBlockListEmpty() -> Bool {
     return (getAllBlockedDomains() + getAllWhitelistedDomains()).isEmpty
 }
 
+// MARK: - User blocked lists
+
+func getUserBlockedList() -> Dictionary<String, Any> {
+    if let lists = defaults.dictionary(forKey: kUserBlockedLists) {
+        return lists
+    }
+    return Dictionary()
+}
+
+func addUserBlockedList(list: String) {
+    var lists = getUserBlockedList()
+    lists[list] = NSNumber(value: true)
+    defaults.set(lists, forKey: kUserBlockedLists)
+}
+
+func setUserBlockedList(list: String, enabled: Bool) {
+    var lists = getUserBlockedList()
+    lists[list] = NSNumber(value: enabled)
+    defaults.set(lists, forKey: kUserBlockedLists)
+}
+
+func deleteUserBlockedList(list: String) {
+    var lists = getUserBlockedList()
+    lists[list] = nil
+    defaults.set(lists, forKey: kUserBlockedLists)
+}
+
 // MARK: - User blocked domains
 
 func getUserBlockedDomains() -> Dictionary<String, Any> {
@@ -423,3 +466,14 @@ func getLockdownBlockedDomains() -> LockdownDefaults {
     }
     return lockdownDefaults
 }
+
+func getUserBlockedLists() -> UserBlockListsDefaults {
+    guard let blockListsdefaultsData = defaults.object(forKey: kUserBlockedLists) as? Data else {
+        return UserBlockListsDefaults(userBlockListsDefaults: [:])
+    }
+    guard let blockListsdefaults = try? PropertyListDecoder().decode(UserBlockListsDefaults.self, from: blockListsdefaultsData) else {
+        return UserBlockListsDefaults(userBlockListsDefaults: [:])
+    }
+    return blockListsdefaults
+}
+

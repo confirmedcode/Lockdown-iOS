@@ -648,7 +648,7 @@
 "Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions." = "Bloquea todas tus aplicaciones para que no se conecten a los dominios y sitios a continuación. Para su comodidad, Lockdown también tiene sugerencias preconfiguradas.";
 
 /* No comment provided by engineer. */
-"Block Lists" = "Listas De Bloqueos";
+"Curated" = "Listas De Bloqueos";
 
 /* No comment provided by engineer. */
 "Configure Blocking" = "Configurar Bloqueo";
@@ -658,6 +658,9 @@
 
 /* No comment provided by engineer. */
 "SAVE" = "GUARDAR";
+
+/* No comment provided by engineer. */
+"CLOSE" = "CLOSE";
 
 /* No comment provided by engineer. */
 "Access to cloud service information is not allowed" = "Access to cloud service information is not allowed";
