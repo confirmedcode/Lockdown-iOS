@@ -150,9 +150,7 @@ private extension EditDomainsViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("No, Return", comment: ""),
                                       style: UIAlertAction.Style.default,
-                                      handler: { _ in
-            print("Return")
-        }))
+                                      handler: nil))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, Delete", comment: ""),
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [weak self] (_) in
