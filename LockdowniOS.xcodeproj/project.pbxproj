@@ -206,6 +206,12 @@
 		402D24B829D59B4400A5AB60 /* EmptyListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24B729D59B4400A5AB60 /* EmptyListsView.swift */; };
 		402D24CB29D87B5A00A5AB60 /* ListsSubmenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24CA29D87B5A00A5AB60 /* ListsSubmenuView.swift */; };
 		402D24D429D87F4500A5AB60 /* CustomBlockedTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24D329D87F4500A5AB60 /* CustomBlockedTableHeader.swift */; };
+		402D251629E514CF00A5AB60 /* MoveToLsisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D251529E514CF00A5AB60 /* MoveToLsisViewController.swift */; };
+		402D251929E517E100A5AB60 /* ConfiguredNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D251829E517E100A5AB60 /* ConfiguredNavigationView.swift */; };
+		402D251B29E519B500A5AB60 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D251A29E519B500A5AB60 /* CustomTableView.swift */; };
+		402D251F29E52D6A00A5AB60 /* EditDomainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D251E29E52D6A00A5AB60 /* EditDomainsViewController.swift */; };
+		402D252129E52D7600A5AB60 /* BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252029E52D7600A5AB60 /* BottomMenu.swift */; };
+		402D252329E5473E00A5AB60 /* EditDomainsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252229E5473E00A5AB60 /* EditDomainsCell.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
@@ -607,6 +613,12 @@
 		402D24B729D59B4400A5AB60 /* EmptyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListsView.swift; sourceTree = "<group>"; };
 		402D24CA29D87B5A00A5AB60 /* ListsSubmenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsSubmenuView.swift; sourceTree = "<group>"; };
 		402D24D329D87F4500A5AB60 /* CustomBlockedTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBlockedTableHeader.swift; sourceTree = "<group>"; };
+		402D251529E514CF00A5AB60 /* MoveToLsisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveToLsisViewController.swift; sourceTree = "<group>"; };
+		402D251829E517E100A5AB60 /* ConfiguredNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguredNavigationView.swift; sourceTree = "<group>"; };
+		402D251A29E519B500A5AB60 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		402D251E29E52D6A00A5AB60 /* EditDomainsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDomainsViewController.swift; sourceTree = "<group>"; };
+		402D252029E52D7600A5AB60 /* BottomMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenu.swift; sourceTree = "<group>"; };
+		402D252229E5473E00A5AB60 /* EditDomainsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDomainsCell.swift; sourceTree = "<group>"; };
 		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -1069,6 +1081,7 @@
 		402D24CE29D87EF300A5AB60 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				402D251129E5142A00A5AB60 /* Edit Domains */,
 				402D24CF29D87EF900A5AB60 /* Configure Blocking */,
 			);
 			name = Scenes;
@@ -1108,6 +1121,35 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		402D251129E5142A00A5AB60 /* Edit Domains */ = {
+			isa = PBXGroup;
+			children = (
+				402D251729E515D300A5AB60 /* Views */,
+				402D251229E5144300A5AB60 /* Controllers */,
+			);
+			name = "Edit Domains";
+			sourceTree = "<group>";
+		};
+		402D251229E5144300A5AB60 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				402D251E29E52D6A00A5AB60 /* EditDomainsViewController.swift */,
+				402D251529E514CF00A5AB60 /* MoveToLsisViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		402D251729E515D300A5AB60 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				402D252029E52D7600A5AB60 /* BottomMenu.swift */,
+				402D251A29E519B500A5AB60 /* CustomTableView.swift */,
+				402D251829E517E100A5AB60 /* ConfiguredNavigationView.swift */,
+				402D252229E5473E00A5AB60 /* EditDomainsCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		7C0D11102473EDFD00A26E04 /* Services */ = {
@@ -2174,6 +2216,7 @@
 				3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */,
 				3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				402D251B29E519B500A5AB60 /* CustomTableView.swift in Sources */,
 				7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */,
 				A118F64320B33FED009A64E7 /* FadeTransition.swift in Sources */,
@@ -2205,12 +2248,15 @@
 				3DCA4F4122F252720017740D /* FirewallController.swift in Sources */,
 				A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */,
 				3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
+				402D251929E517E100A5AB60 /* ConfiguredNavigationView.swift in Sources */,
 				7C422EA525279724007F9C22 /* Align.swift in Sources */,
 				A118F64120B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */,
 				3DBD57A622FBCD7A00DE189F /* WhitelistViewController.swift in Sources */,
+				402D252129E52D7600A5AB60 /* BottomMenu.swift in Sources */,
 				A1EBEAD82097AE6E002B9087 /* M13CheckboxBounceController.swift in Sources */,
 				3DCA4F2E22F190720017740D /* Client.swift in Sources */,
 				A101106D202B9D4300807612 /* BaseViewController.swift in Sources */,
+				402D251F29E52D6A00A5AB60 /* EditDomainsViewController.swift in Sources */,
 				7C0D11122473EE2E00A26E04 /* DomainNameValidator.swift in Sources */,
 				A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */,
 				A1EBEADA2097AE6E002B9087 /* M13CheckboxFillController.swift in Sources */,
@@ -2229,6 +2275,7 @@
 				3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				7CE91C712521D58C009D8269 /* Metrics.swift in Sources */,
 				402D24B829D59B4400A5AB60 /* EmptyListsView.swift in Sources */,
+				402D252329E5473E00A5AB60 /* EditDomainsCell.swift in Sources */,
 				A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */,
 				A1EBEAD12097AE6E002B9087 /* M13Checkbox+IB.swift in Sources */,
 				A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */,
@@ -2274,6 +2321,7 @@
 				3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
 				7C1AE080248028F40000A7D3 /* UIKit+Extensions.swift in Sources */,
 				3DBD57AC22FBDFE300DE189F /* WhitelistCell.swift in Sources */,
+				402D251629E514CF00A5AB60 /* MoveToLsisViewController.swift in Sources */,
 				3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */,
 				3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
