@@ -17,11 +17,11 @@ final class MoveToLsisViewController: UIViewController {
         didSet {
             let domains = getUserBlockedDomains()
             numberOfdomains.text = NSLocalizedString("\(domains.count) domains", comment: "")
-            domainsList.text = domains.map{$0.0}.joined(separator: ", ")
+            domainsList.text = domains.map(\.0).joined(separator: ", ")
         }
     }
     
-    private var customBlockedLists: [(String, Bool)] = []
+    private var customBlockedLists: [UserBlockListsGroup] = []
     
     private let customBlockedListsTableView = CustomTableView()
     
@@ -146,14 +146,9 @@ private extension MoveToLsisViewController {
     func reloadCustomBlockedLists() {
         customBlockedListsTableView.clear()
         customBlockedLists = {
-            let lists = getUserBlockedList()
-            return lists.sorted(by: { $0.key < $1.key }).map { (key, value) -> (String, Bool) in
-                if let status = value as? NSNumber {
-                    return (key, status.boolValue)
-                } else {
-                    return (key, false)
-                }
-            }
+            let lists = getUserBlockedLists().userBlockListsDefaults
+            let sorted = lists.sorted(by: { $0.key < $1.key })
+            return Array(sorted.map(\.value))
         }()
         
         createUserBlockedListsRows()
@@ -176,9 +171,9 @@ private extension MoveToLsisViewController {
             plusButton.anchors.bottom.marginsPin()
         }
         
-        for (list, status) in customBlockedLists {
+        for list in customBlockedLists {
             let blockListView = BlockListView()
-            blockListView.contents = .listsBlocked(listName: list, isEnabled: status)
+            blockListView.contents = .listsBlocked(list)
             
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)

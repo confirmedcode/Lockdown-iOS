@@ -23,7 +23,7 @@ final class DomainsBlockedTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var label: UILabel = {
+    lazy var label: UILabel = {
         let label = UILabel()
         label.font = fontRegular14
         label.textColor = .label
@@ -31,7 +31,7 @@ final class DomainsBlockedTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var statusLabel: UILabel = {
+    lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.font = fontRegular14
         label.text = isBlocked ? "Blocked" : "Not Blocked"
@@ -80,10 +80,5 @@ final class DomainsBlockedTableViewCell: UITableViewCell {
         
         contentView.clipsToBounds = true
         accessoryType = .none
-    }
-    
-    func configure(with model: ListSettingsStaticOption) {
-        label.text = model.title
-        isBlocked = model.isBlocked
     }
 }

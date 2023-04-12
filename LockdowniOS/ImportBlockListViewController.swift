@@ -144,9 +144,18 @@ private extension ImportBlockListViewController {
         dismiss(animated: true)
     }
     
+    // returns your application folder
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
     @objc func selectFromFiles() {
-        
-        // TODO: access to users Document folder
+        let path = getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
+        let url = URL(string: path)!
+
+        UIApplication.shared.open(url)
     }
     
     @objc func blockPastedDomains() {

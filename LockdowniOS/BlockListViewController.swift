@@ -16,8 +16,7 @@ final class BlockListViewController: BaseViewController {
     var lockdownBlockLists: [LockdownGroup] = []
     var customBlockedDomains: [(String, Bool)] = []
 
-    // TODO: - change data structure [[userListBlockedDomains], Bool]
-    var customBlockedLists: [(String, Bool)] = []
+    var customBlockedLists: [UserBlockListsGroup] = []
     
     let curatedBlockedDomainsTableView = StaticTableView()
     let customBlockedListsTableView = StaticTableView()
@@ -237,14 +236,9 @@ final class BlockListViewController: BaseViewController {
     func reloadCustomBlockedLists() {
         customBlockedListsTableView.clear()
         customBlockedLists = {
-            let lists = getUserBlockedList()
-            return lists.sorted(by: { $0.key < $1.key }).map { (key, value) -> (String, Bool) in
-                if let status = value as? NSNumber {
-                    return (key, status.boolValue)
-                } else {
-                    return (key, false)
-                }
-            }
+            let lists = getUserBlockedLists().userBlockListsDefaults
+            let sorted = lists.sorted(by: { $0.key < $1.key })
+            return Array(sorted.map(\.value))
         }()
         createCustomBlockedListsRows()
         customBlockedListsTableView.reloadData()
@@ -321,8 +315,9 @@ final class BlockListViewController: BaseViewController {
     }
     
     func saveNewList(userEnteredListName: String) {
+        didMakeChange = true
         DDLogInfo("Adding custom list - \(userEnteredListName)")
-        addUserBlockedList(list: userEnteredListName.lowercased())
+        addUserBlockedList(list: userEnteredListName)
         reloadCustomBlockedLists()
     }
     
@@ -346,6 +341,7 @@ final class BlockListViewController: BaseViewController {
         }
     }
 }
+
 // MARK: - Functions
 extension BlockListViewController {
     
@@ -362,30 +358,24 @@ extension BlockListViewController {
             }
         }
         
-        for (list, status) in customBlockedLists {
-//            var currentEnabledStatus = status
+        for list in customBlockedLists {
             let blockListView = BlockListView()
-            blockListView.contents = .listsBlocked(listName: list, isEnabled: status)
+            blockListView.contents = .listsBlocked(list)
             
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
-            }.onSelect { [unowned blockListView, unowned self] in
+            }.onSelect { [unowned self] in
                 self.didMakeChange = true
                 let vc = ListSettingsViewController()
-                vc.titleName = list
+                vc.titleName = list.name
+                vc.blockedList = list
+                vc.blockListVC = self
                 navigationController?.pushViewController(vc, animated: true)
-//                let target = storyboard.instantiate(BlockListGroupViewController.self)
-//                target.lockdownGroup = lockdownGroup
-//                target.blockListVC = self
-//                self.navigationController?.pushViewController(target, animated: true)
-//                currentEnabledStatus.toggle()
-//                blockListView.contents = .listsBlocked(listName: list, isEnabled: currentEnabledStatus)
-//                setUserBlockedList(list: list, enabled: currentEnabledStatus)
             }.onSwipeToDelete { [unowned self] in
                 self.didMakeChange = true
-                deleteList(list: list)
-                DDLogInfo("Deleting custom list - \(list)")
+                deleteList(list: list.name)
+                DDLogInfo("Deleting custom list - \(list.name)")
             }
             cell.accessoryType = .disclosureIndicator
         }
@@ -477,7 +467,7 @@ extension BlockListViewController {
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     //  list name validation code method
@@ -514,7 +504,7 @@ extension BlockListViewController {
             self.customBlockedListsTableView.clear()
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func showSubmenu() {
@@ -570,12 +560,12 @@ extension BlockListViewController {
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc func editDomains() {
         let controller = EditDomainsViewController()
-        self.present(controller, animated: true)
+        present(controller, animated: true)
     }
     
     func showSuccessAlert() {
@@ -585,7 +575,7 @@ extension BlockListViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
                                       style: .default,
                                       handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func showErrorAlert() {
@@ -595,6 +585,6 @@ extension BlockListViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
                                       style: .default,
                                       handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }

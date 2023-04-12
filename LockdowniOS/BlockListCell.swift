@@ -88,11 +88,11 @@ class BlockListView: UIView {
 
 extension BlockListView.Contents {
     
-    static func listsBlocked(listName: String, isEnabled: Bool) -> Self {
+    static func listsBlocked(_ userBlockListsGroup: UserBlockListsGroup) -> Self {
         let image = UIImage(named: "icn_list_lock")
-        let status = isEnabled ?
+        let status = userBlockListsGroup.enabled ?
             NSLocalizedString("On", comment: "") :
             NSLocalizedString("Off", comment: "")
-        return Self(image: image, title: listName, status: status)
+        return Self(image: image, title: userBlockListsGroup.name, status: status)
     }
 }

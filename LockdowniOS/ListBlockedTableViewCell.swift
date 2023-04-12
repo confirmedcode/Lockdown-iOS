@@ -13,7 +13,7 @@ final class ListBlockedTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "ListBlockedTableViewCell"
     
-    private lazy var label: UILabel = {
+    lazy var label: UILabel = {
         let label = UILabel()
         label.font = fontRegular14
         label.textColor = .label
@@ -46,9 +46,5 @@ final class ListBlockedTableViewCell: UITableViewCell {
         
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
-    }
-    
-    func configure(with model: ListSettingsOption) {
-        label.text = model.title
     }
 }

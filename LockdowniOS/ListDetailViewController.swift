@@ -73,10 +73,11 @@ private extension ListDetailViewController {
     }
     
     @objc func returnBack() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func doneButtonClicked() {
+        navigationController?.popViewController(animated: true)
         // TODO: - add new list name to defaults if changed
     }
     

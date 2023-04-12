@@ -10,19 +10,10 @@ import UIKit
 
 final class EditDomainsCell: UIView {
     
-    struct Contents {
-        let checkMark: UIImage?
-        let icon: UIImage?
-        let title: String?
-        let status: String?
-        
-        static func userBlocked(domain: String, isUnselected: Bool) -> Contents {
-            let checkMark = isUnselected ? UIImage(systemName: "circle") : UIImage(systemName: "checkmark.circle.fill")
-            let image = UIImage(named: "website_icon.png")
-            let status = NSLocalizedString("Blocked", comment: "")
-            return Contents(checkMark: checkMark, icon: image, title: domain, status: status)
-        }
-    }
+    private let checkMarkView = UIImageView()
+    private let imageView = UIImageView()
+    private let groupNameLabel = UILabel()
+    private let statusLabel = UILabel()
     
     var contents: Contents = Contents(checkMark: nil, icon: nil, title: nil, status: nil) {
         didSet {
@@ -33,21 +24,17 @@ final class EditDomainsCell: UIView {
         }
     }
     
-    private let checkMarkView = UIImageView()
-    private let imageView = UIImageView()
-    private let groupNameLabel = UILabel()
-    private let statusLabel = UILabel()
-    
     init() {
         super.init(frame: .zero)
-        self.didLoad()
+        configure()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func didLoad() {
+    private func configure() {
         addSubview(checkMarkView)
         checkMarkView.anchors.size.equal(.init(width: 24, height: 24))
         checkMarkView.anchors.leading.marginsPin(inset: 8)
@@ -78,5 +65,21 @@ final class EditDomainsCell: UIView {
         statusLabel.anchors.leading.spacing(0, to: groupNameLabel.anchors.trailing)
         statusLabel.anchors.centerY.equal(groupNameLabel.anchors.centerY)
         statusLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+    }
+}
+
+extension EditDomainsCell {
+    struct Contents {
+        let checkMark: UIImage?
+        let icon: UIImage?
+        let title: String?
+        let status: String?
+        
+        static func userBlocked(domain: String, isUnselected: Bool) -> Contents {
+            let checkMark = isUnselected ? UIImage(systemName: "circle") : UIImage(systemName: "checkmark.circle.fill")
+            let image = UIImage(named: "website_icon.png")
+            let status = NSLocalizedString("Blocked", comment: "")
+            return Contents(checkMark: checkMark, icon: image, title: domain, status: status)
+        }
     }
 }
