@@ -32,7 +32,7 @@ final class SwitchBlockingView: UIView {
     lazy var switchView: UISwitch = {
         let view = UISwitch()
         view.onTintColor = .tunnelsBlue
-        view.isOn = true
+//        view.isOn = true
         return view
     }()
     

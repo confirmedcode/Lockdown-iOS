@@ -45,13 +45,18 @@ struct LockdownDefaults : Codable {
 
 struct UserBlockListsGroup: Codable {
     var name: String
-    var enabled : Bool
-    var domains : Dictionary<String, Bool>
+    var enabled : Bool = true
+    var domains : [Domains] = []
     var description: String?
 }
 
 struct UserBlockListsDefaults: Codable {
     var userBlockListsDefaults: Dictionary<String, UserBlockListsGroup>
+}
+
+struct Domains: Codable {
+    var name: String
+    var isBlocked: Bool = true
 }
 
 // MARK: - Block Metrics & Block Log
@@ -438,38 +443,70 @@ func deleteUserBlockedDomain(domain: String) {
 
 // MARK: - User blocked lists
 
-func getUserBlockedList() -> Dictionary<String, Any> {
-    if let lists = defaults.dictionary(forKey: kUserBlockedLists) {
-        return lists
-    }
-    return Dictionary()
-}
-
-func addUserBlockedList(list: String) {
-    var lists = getUserBlockedList()
-    lists[list] = NSNumber(value: true)
-    defaults.set(lists, forKey: kUserBlockedLists)
-}
-
-func setUserBlockedList(list: String, enabled: Bool) {
-    var lists = getUserBlockedList()
-    lists[list] = NSNumber(value: enabled)
-    defaults.set(lists, forKey: kUserBlockedLists)
-}
-
-func deleteUserBlockedList(list: String) {
-    var lists = getUserBlockedList()
-    lists[list] = nil
-    defaults.set(lists, forKey: kUserBlockedLists)
-}
-
-func getUserBlockedLists() -> UserBlockListsDefaults {
-    guard let blockListsdefaultsData = defaults.object(forKey: kUserBlockedLists) as? Data else {
+func getBlockedLists() -> UserBlockListsDefaults {
+    guard let listsDefaultsData = defaults.object(forKey: kUserBlockedLists) as? Data else {
         return UserBlockListsDefaults(userBlockListsDefaults: [:])
     }
-    guard let blockListsdefaults = try? PropertyListDecoder().decode(UserBlockListsDefaults.self, from: blockListsdefaultsData) else {
+    
+    guard let listDefaults = try? JSONDecoder().decode(UserBlockListsDefaults.self, from: listsDefaultsData) else {
         return UserBlockListsDefaults(userBlockListsDefaults: [:])
     }
-    return blockListsdefaults
+    return listDefaults
 }
 
+func addBlockedList(listName: String) {
+    var data = getBlockedLists()
+    data.userBlockListsDefaults[listName] = UserBlockListsGroup(name: listName, enabled: false)
+    let encodedData = try? JSONEncoder().encode(data)
+    defaults.set(encodedData, forKey: kUserBlockedLists)
+}
+
+func deleteBlockedList(listName: String) {
+    var data = getBlockedLists()
+    data.userBlockListsDefaults[listName] = nil
+    let encodedData = try? JSONEncoder().encode(data)
+    defaults.set(encodedData, forKey: kUserBlockedLists)
+}
+
+func addDomainToBlockedList(domain: String, for listName: String) {
+    var data = getBlockedLists()
+    data.userBlockListsDefaults[listName]?.domains.append(Domains(name: domain))
+    let encodedData = try? JSONEncoder().encode(data)
+    defaults.set(encodedData, forKey: kUserBlockedLists)
+}
+
+extension Domains {
+    func exportToURL() -> URL? {
+      guard let encoded = try? JSONEncoder().encode(self) else { return nil }
+      
+      let documents = FileManager.default.urls(
+        for: .documentDirectory,
+        in: .userDomainMask
+      ).first
+      
+      guard let path = documents?.appendingPathComponent("/\(name).csv") else {
+        return nil
+      }
+      
+      do {
+        try encoded.write(to: path, options: .atomicWrite)
+        return path
+      } catch {
+        print(error.localizedDescription)
+        return nil
+      }
+    }
+    
+    static func importData(from url: URL) {
+      guard
+        let data = try? Data(contentsOf: url),
+        let domain = try? JSONDecoder().decode(Domains.self, from: data)
+            
+            
+        else { return }
+        addDomainToBlockedList(domain: domain.name, for: "oop")
+        
+      
+      try? FileManager.default.removeItem(at: url)
+    }
+}

@@ -85,7 +85,7 @@ final class CustomTableView: UITableView {
     var headerView = TableViewHeader()
     
     override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: .insetGrouped)
+        super.init(frame: frame, style: .grouped)
         setup()
     }
     
