@@ -15,6 +15,7 @@ target :'Lockdown' do
   pod 'KeychainAccess'
   pod 'CocoaLumberjack', '3.5.2'
   pod 'PopupDialog', '~> 0.9'
+  pod 'SwiftCSV'
 end
 
 target :'LockdownTunnel' do

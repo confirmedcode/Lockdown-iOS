@@ -11,19 +11,25 @@ final class BottomMenu: UIView {
     
     private(set) var buttonCallback: () -> () = { }
     
-    @discardableResult
-    func onButtonPressed(_ callback: @escaping () -> ()) -> Self {
-        buttonCallback = callback
-        return self
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = 8
+    }
+    
+    @discardableResult
+    func onButtonPressed(_ callback: @escaping () -> ()) -> Self {
+        buttonCallback = callback
+        return self
     }
     
     lazy var leftButton: UIButton = {
@@ -68,7 +74,7 @@ final class BottomMenu: UIView {
         return stackView
     }()
     
-    func configure() {
+    private func configure() {
         addSubview(backgroundView)
         backgroundView.anchors.height.equal(60)
         backgroundView.anchors.leading.pin()
@@ -77,10 +83,5 @@ final class BottomMenu: UIView {
 
         addSubview(stackView)
         stackView.anchors.edges.pin()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = 8
     }
 }

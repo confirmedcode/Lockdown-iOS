@@ -13,6 +13,7 @@ final class EditDomainsViewController: UIViewController {
     private var didMakeChange = false
     
     var customBlockedDomains: [(String, Bool)] = []
+    var selectedBlockedDomains: [(String, Bool)] = []
     
     private var titleName = NSLocalizedString("Edit Domains", comment: "")
     
@@ -122,6 +123,7 @@ private extension EditDomainsViewController {
                 self.didMakeChange = true
                 checkedStatus.toggle()
                 blockListView.contents = .userBlocked(domain: domain, isUnselected: checkedStatus)
+                
                 self.bottomMenu.middleButton.setTitleColor(.tunnelsBlue, for: .normal)
                 self.bottomMenu.rightButton.setTitleColor(.red, for: .normal)
                 // TODO: - move domains to list
@@ -142,6 +144,11 @@ private extension EditDomainsViewController {
     }
     
     @objc func moveToList() {
+//        var arr: [(String, Bool)] = []
+//        arr = selectedBlockedDomains.filter { (_, checked) in
+//            checked == true
+//        }
+//        print(arr)
     }
     
     @objc func deleteDomains() {

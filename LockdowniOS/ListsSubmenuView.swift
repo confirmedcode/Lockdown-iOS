@@ -19,7 +19,7 @@ final class ListsSubmenuView: UIView {
     
     // MARK: - Properties
     
-    lazy var createNewListButton: UIButton = {
+    lazy var topButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .tunnelsBlue
         button.setTitle("Create New List...", for: .normal)
@@ -29,7 +29,7 @@ final class ListsSubmenuView: UIView {
         return button
     }()
     
-    lazy var importBlockListButton: UIButton = {
+    lazy var bottomButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .tunnelsBlue
         button.setTitle("Import Block List...", for: .normal)
@@ -41,8 +41,8 @@ final class ListsSubmenuView: UIView {
     
     lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
-        stackView.addArrangedSubview(createNewListButton)
-        stackView.addArrangedSubview(importBlockListButton)
+        stackView.addArrangedSubview(topButton)
+        stackView.addArrangedSubview(bottomButton)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .leading

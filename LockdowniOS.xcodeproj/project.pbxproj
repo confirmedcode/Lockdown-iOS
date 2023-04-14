@@ -202,7 +202,6 @@
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
-		402D24B129D590F700A5AB60 /* CustomHeadersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24B029D590F700A5AB60 /* CustomHeadersTableView.swift */; };
 		402D24B829D59B4400A5AB60 /* EmptyListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24B729D59B4400A5AB60 /* EmptyListsView.swift */; };
 		402D24CB29D87B5A00A5AB60 /* ListsSubmenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24CA29D87B5A00A5AB60 /* ListsSubmenuView.swift */; };
 		402D24D429D87F4500A5AB60 /* CustomBlockedTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D24D329D87F4500A5AB60 /* CustomBlockedTableHeader.swift */; };
@@ -212,6 +211,13 @@
 		402D251F29E52D6A00A5AB60 /* EditDomainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D251E29E52D6A00A5AB60 /* EditDomainsViewController.swift */; };
 		402D252129E52D7600A5AB60 /* BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252029E52D7600A5AB60 /* BottomMenu.swift */; };
 		402D252329E5473E00A5AB60 /* EditDomainsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252229E5473E00A5AB60 /* EditDomainsCell.swift */; };
+		402D252729E5843300A5AB60 /* ImportBlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252629E5843300A5AB60 /* ImportBlockListViewController.swift */; };
+		402D252929E632F300A5AB60 /* ListSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252829E632F300A5AB60 /* ListSettingsViewController.swift */; };
+		402D252B29E6335100A5AB60 /* SwitchBlockingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252A29E6335100A5AB60 /* SwitchBlockingView.swift */; };
+		402D252D29E6346900A5AB60 /* ListBlockedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252C29E6346900A5AB60 /* ListBlockedTableViewCell.swift */; };
+		402D252F29E6357700A5AB60 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D252E29E6357700A5AB60 /* ListDetailViewController.swift */; };
+		402D253129E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D253029E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift */; };
+		402D253329E6588000A5AB60 /* ListDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D253229E6588000A5AB60 /* ListDescriptionViewController.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
@@ -609,7 +615,6 @@
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		3DF2455523A306DB00E46613 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
-		402D24B029D590F700A5AB60 /* CustomHeadersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeadersTableView.swift; sourceTree = "<group>"; };
 		402D24B729D59B4400A5AB60 /* EmptyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListsView.swift; sourceTree = "<group>"; };
 		402D24CA29D87B5A00A5AB60 /* ListsSubmenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsSubmenuView.swift; sourceTree = "<group>"; };
 		402D24D329D87F4500A5AB60 /* CustomBlockedTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBlockedTableHeader.swift; sourceTree = "<group>"; };
@@ -619,6 +624,13 @@
 		402D251E29E52D6A00A5AB60 /* EditDomainsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDomainsViewController.swift; sourceTree = "<group>"; };
 		402D252029E52D7600A5AB60 /* BottomMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenu.swift; sourceTree = "<group>"; };
 		402D252229E5473E00A5AB60 /* EditDomainsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDomainsCell.swift; sourceTree = "<group>"; };
+		402D252629E5843300A5AB60 /* ImportBlockListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportBlockListViewController.swift; sourceTree = "<group>"; };
+		402D252829E632F300A5AB60 /* ListSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSettingsViewController.swift; sourceTree = "<group>"; };
+		402D252A29E6335100A5AB60 /* SwitchBlockingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchBlockingView.swift; sourceTree = "<group>"; };
+		402D252C29E6346900A5AB60 /* ListBlockedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBlockedTableViewCell.swift; sourceTree = "<group>"; };
+		402D252E29E6357700A5AB60 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		402D253029E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsBlockedTableViewCell.swift; sourceTree = "<group>"; };
+		402D253229E6588000A5AB60 /* ListDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescriptionViewController.swift; sourceTree = "<group>"; };
 		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -1081,6 +1093,7 @@
 		402D24CE29D87EF300A5AB60 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				402D252429E5840500A5AB60 /* Import Block List */,
 				402D251129E5142A00A5AB60 /* Edit Domains */,
 				402D24CF29D87EF900A5AB60 /* Configure Blocking */,
 			);
@@ -1103,7 +1116,9 @@
 				402D24CA29D87B5A00A5AB60 /* ListsSubmenuView.swift */,
 				402D24D329D87F4500A5AB60 /* CustomBlockedTableHeader.swift */,
 				402D24B729D59B4400A5AB60 /* EmptyListsView.swift */,
-				402D24B029D590F700A5AB60 /* CustomHeadersTableView.swift */,
+				402D252A29E6335100A5AB60 /* SwitchBlockingView.swift */,
+				402D252C29E6346900A5AB60 /* ListBlockedTableViewCell.swift */,
+				402D253029E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1112,6 +1127,9 @@
 			isa = PBXGroup;
 			children = (
 				A174CCAD22B15B1000F1B840 /* BlockListViewController.swift */,
+				402D252829E632F300A5AB60 /* ListSettingsViewController.swift */,
+				402D252E29E6357700A5AB60 /* ListDetailViewController.swift */,
+				402D253229E6588000A5AB60 /* ListDescriptionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1150,6 +1168,22 @@
 				402D252229E5473E00A5AB60 /* EditDomainsCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		402D252429E5840500A5AB60 /* Import Block List */ = {
+			isa = PBXGroup;
+			children = (
+				402D252529E5842100A5AB60 /* Controllers */,
+			);
+			name = "Import Block List";
+			sourceTree = "<group>";
+		};
+		402D252529E5842100A5AB60 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				402D252629E5843300A5AB60 /* ImportBlockListViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		7C0D11102473EDFD00A26E04 /* Services */ = {
@@ -2035,6 +2069,7 @@
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RQShineLabel/RQShineLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftCSV/SwiftCSV.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 			);
@@ -2049,6 +2084,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RQShineLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCSV.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 			);
@@ -2247,6 +2283,7 @@
 				7CE91C962521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				3DCA4F4122F252720017740D /* FirewallController.swift in Sources */,
 				A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */,
+				402D252929E632F300A5AB60 /* ListSettingsViewController.swift in Sources */,
 				3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				402D251929E517E100A5AB60 /* ConfiguredNavigationView.swift in Sources */,
 				7C422EA525279724007F9C22 /* Align.swift in Sources */,
@@ -2256,6 +2293,7 @@
 				A1EBEAD82097AE6E002B9087 /* M13CheckboxBounceController.swift in Sources */,
 				3DCA4F2E22F190720017740D /* Client.swift in Sources */,
 				A101106D202B9D4300807612 /* BaseViewController.swift in Sources */,
+				402D252B29E6335100A5AB60 /* SwitchBlockingView.swift in Sources */,
 				402D251F29E52D6A00A5AB60 /* EditDomainsViewController.swift in Sources */,
 				7C0D11122473EE2E00A26E04 /* DomainNameValidator.swift in Sources */,
 				A1EBEADD2097AE6E002B9087 /* M13CheckboxStrokeController.swift in Sources */,
@@ -2289,19 +2327,20 @@
 				3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */,
 				A1EBEAD02097AE6E002B9087 /* M13CheckboxController.swift in Sources */,
-				402D24B129D590F700A5AB60 /* CustomHeadersTableView.swift in Sources */,
 				3D47CDB322F3C3F3003BD7F7 /* NVActivityIndicatorView.swift in Sources */,
 				3D47CDBD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				3D47CDB022F3C3F3003BD7F7 /* NVActivityIndicatorPresenter.swift in Sources */,
 				3D47CDC322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				A1EBEAD52097AE6E002B9087 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				3D47CDB122F3C3F3003BD7F7 /* NVActivityIndicatorViewable.swift in Sources */,
+				402D253329E6588000A5AB60 /* ListDescriptionViewController.swift in Sources */,
 				A154A080215C7A8C0010FFCC /* BlockListAddCell.swift in Sources */,
 				3D47CDB822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				3DBD57A822FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				3D9FC67923E521DE004122D3 /* ForgotPasswordViewController.swift in Sources */,
 				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
+				402D253129E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift in Sources */,
 				7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */,
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				7C44081B2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
@@ -2314,9 +2353,11 @@
 				3D47CDB222F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift in Sources */,
 				7C422E97252796EE007F9C22 /* StaticTableView.swift in Sources */,
 				7C3EFA0224867DEE00719D96 /* TrackerInfo.swift in Sources */,
+				402D252D29E6346900A5AB60 /* ListBlockedTableViewCell.swift in Sources */,
 				A1EBEAD32097AE6E002B9087 /* M13CheckboxFlatController.swift in Sources */,
 				3D47CDC022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				3D47CDC222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
+				402D252F29E6357700A5AB60 /* ListDetailViewController.swift in Sources */,
 				A1EBEAD62097AE6E002B9087 /* M13CheckboxSpiralController.swift in Sources */,
 				3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
 				7C1AE080248028F40000A7D3 /* UIKit+Extensions.swift in Sources */,
@@ -2336,6 +2377,7 @@
 				A174CCAE22B15B1000F1B840 /* BlockListViewController.swift in Sources */,
 				3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
+				402D252729E5843300A5AB60 /* ImportBlockListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2833,6 +2875,7 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2872,6 +2915,7 @@
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/LockdowniOS/Info.plist";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

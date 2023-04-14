@@ -16,8 +16,7 @@ final class BlockListViewController: BaseViewController {
     var lockdownBlockLists: [LockdownGroup] = []
     var customBlockedDomains: [(String, Bool)] = []
 
-    // TODO: - change data structure [[userListBlockedDomains], Bool]
-    var customBlockedLists: [(String, Bool)] = []
+    var customBlockedLists: [UserBlockListsGroup] = []
     
     let curatedBlockedDomainsTableView = StaticTableView()
     let customBlockedListsTableView = StaticTableView()
@@ -25,8 +24,8 @@ final class BlockListViewController: BaseViewController {
     
     private lazy var listsSubmenuView: ListsSubmenuView = {
         let view = ListsSubmenuView()
-        view.createNewListButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
-        view.importBlockListButton.addTarget(self, action: #selector(importBlockList), for: .touchUpInside)
+        view.topButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
+        view.bottomButton.addTarget(self, action: #selector(importBlockList), for: .touchUpInside)
         return view
     }()
     
@@ -183,7 +182,7 @@ final class BlockListViewController: BaseViewController {
         addNewListButton.anchors.trailing.marginsPin()
         
         addTableView(customBlockedListsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(0, to: listsLabel.anchors.bottom)
+            tableView.anchors.top.spacing(8, to: listsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
         })
@@ -212,7 +211,7 @@ final class BlockListViewController: BaseViewController {
         editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
         
         addTableView(customBlockedDomainsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(0, to: domainsLabel.anchors.bottom)
+            tableView.anchors.top.spacing(8, to: domainsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
         })
@@ -237,14 +236,9 @@ final class BlockListViewController: BaseViewController {
     func reloadCustomBlockedLists() {
         customBlockedListsTableView.clear()
         customBlockedLists = {
-            let lists = getUserBlockedList()
-            return lists.sorted(by: { $0.key < $1.key }).map { (key, value) -> (String, Bool) in
-                if let status = value as? NSNumber {
-                    return (key, status.boolValue)
-                } else {
-                    return (key, false)
-                }
-            }
+            let lists = getUserBlockedLists().userBlockListsDefaults
+            let sorted = lists.sorted(by: { $0.key < $1.key })
+            return Array(sorted.map(\.value))
         }()
         createCustomBlockedListsRows()
         customBlockedListsTableView.reloadData()
@@ -321,8 +315,9 @@ final class BlockListViewController: BaseViewController {
     }
     
     func saveNewList(userEnteredListName: String) {
+        didMakeChange = true
         DDLogInfo("Adding custom list - \(userEnteredListName)")
-        addUserBlockedList(list: userEnteredListName.lowercased())
+        addUserBlockedList(list: userEnteredListName)
         reloadCustomBlockedLists()
     }
     
@@ -346,6 +341,7 @@ final class BlockListViewController: BaseViewController {
         }
     }
 }
+
 // MARK: - Functions
 extension BlockListViewController {
     
@@ -362,28 +358,24 @@ extension BlockListViewController {
             }
         }
         
-        for (list, status) in customBlockedLists {
-//            var currentEnabledStatus = status
+        for list in customBlockedLists {
             let blockListView = BlockListView()
-            blockListView.contents = .listsBlocked(listName: list, isEnabled: status)
+            blockListView.contents = .listsBlocked(list)
             
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
-            }.onSelect { [unowned blockListView, unowned self] in
+            }.onSelect { [unowned self] in
                 self.didMakeChange = true
-                let storyboard = UIStoryboard.main
-//                let target = storyboard.instantiate(BlockListGroupViewController.self)
-//                target.lockdownGroup = lockdownGroup
-//                target.blockListVC = self
-//                self.navigationController?.pushViewController(target, animated: true)
-//                currentEnabledStatus.toggle()
-//                blockListView.contents = .listsBlocked(listName: list, isEnabled: currentEnabledStatus)
-//                setUserBlockedList(list: list, enabled: currentEnabledStatus)
+                let vc = ListSettingsViewController()
+                vc.titleName = list.name
+                vc.blockedList = list
+                vc.blockListVC = self
+                navigationController?.pushViewController(vc, animated: true)
             }.onSwipeToDelete { [unowned self] in
                 self.didMakeChange = true
-                deleteList(list: list)
-                DDLogInfo("Deleting custom list - \(list)")
+                deleteList(list: list.name)
+                DDLogInfo("Deleting custom list - \(list.name)")
             }
             cell.accessoryType = .disclosureIndicator
         }
@@ -437,8 +429,11 @@ extension BlockListViewController {
     }
     
     @objc func addList() {
+        
         let tableView = customBlockedListsTableView
+
         let alertController = UIAlertController(title: "Create New List", message: nil, preferredStyle: .alert)
+        
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
             if let txtField = alertController.textFields?.first, let text = txtField.text {
                 guard let self else { return }
@@ -450,37 +445,66 @@ extension BlockListViewController {
                 self.listsSubmenuView.isHidden = true
             }
         }
+        
+        saveAction.isEnabled = false
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
             guard let self else { return }
             self.listsSubmenuView.isHidden = true
         }
+        
         alertController.addTextField { (textField) in
             textField.placeholder = NSLocalizedString("List Name", comment: "")
         }
+        
+        NotificationCenter.default.addObserver(
+            forName: UITextField.textDidChangeNotification,
+            object: alertController.textFields?.first,
+            queue: .main) { (notification) -> Void in
+                guard let textFieldText = alertController.textFields?.first?.text else { return }
+                saveAction.isEnabled = self.isValidListName(text: textFieldText) && !textFieldText.isEmpty
+            }
+        
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //  list name validation code method
+    func isValidListName(text: String) -> Bool {
+        let regEx = "^[a-zA-Z0-9]{1,20}$"
+        return text.range(of: "\(regEx)", options: .regularExpression) != nil
+    }
+    
+    //  domain name validation code method
+    func isValidDomainName(text: String) -> Bool {
+        let regEx = "^([a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+.*)$"
+        return text.range(of: "\(regEx)", options: .regularExpression) != nil
     }
     
     func deleteList(list: String) {
+        
         let alert = UIAlertController(title: NSLocalizedString("Delete List?", comment: ""),
                                       message: NSLocalizedString("Are you sure you want to remove this list?", comment: ""),
                                       preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: NSLocalizedString("No, Return", comment: ""),
-                                      style: UIAlertAction.Style.default,
+                                      style: .default,
                                       handler: { [weak self] (_) in
             guard let self else { return }
             self.reloadCustomBlockedLists()
             print("Return")
         }))
+        
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, Delete", comment: ""),
-                                      style: UIAlertAction.Style.destructive,
+                                      style: .destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
             deleteUserBlockedList(list: list)
             self.customBlockedListsTableView.clear()
         }))
-        self.present(alert, animated: true, completion: nil)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func showSubmenu() {
@@ -493,13 +517,18 @@ extension BlockListViewController {
     
     @objc func importBlockList() {
         listsSubmenuView.isHidden = true
+        let vc = ImportBlockListViewController()
+        navigationController?.present(vc, animated: true)
     }
     
     @objc func addDomain() {
         
         let tableView = customBlockedDomainsTableView
         
-        let alertController = UIAlertController(title: "Add a Domain to Block", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("Add a Domain to Block", comment: ""),
+                                                message: nil,
+                                                preferredStyle: .alert)
+        
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
             if let txtField = alertController.textFields?.first, let text = txtField.text {
                 guard let self else { return }
@@ -511,17 +540,51 @@ extension BlockListViewController {
                 self.reloadCustomBlockedDomains()
             }
         }
+        
+        saveAction.isEnabled = false
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
         alertController.addTextField { (textField) in
+            textField.keyboardType = .URL
             textField.placeholder = "domain-to-block URL"
         }
+        
+        NotificationCenter.default.addObserver(
+            forName: UITextField.textDidChangeNotification,
+            object: alertController.textFields?.first,
+            queue: .main) { (notification) -> Void in
+                guard let textFieldText = alertController.textFields?.first?.text else { return }
+                saveAction.isEnabled = self.isValidDomainName(text: textFieldText) && !textFieldText.isEmpty
+            }
+        
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc func editDomains() {
         let controller = EditDomainsViewController()
-        self.present(controller, animated: true)
+        present(controller, animated: true)
+    }
+    
+    func showSuccessAlert() {
+        let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""),
+                                      message: NSLocalizedString("The list has been imported successfully. You can start blocking the list's domains", comment: ""),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                      style: .default,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""),
+                                      message: NSLocalizedString("Unable to import the list. Please try again or contact support for assistance", comment: ""),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                      style: .default,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
