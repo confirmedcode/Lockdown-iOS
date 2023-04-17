@@ -359,6 +359,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        guard url.pathExtension == "csv" else { return false }
+        Domains.importData(from: url)
 
         guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
             let host = components.host else {

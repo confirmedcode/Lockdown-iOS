@@ -10,6 +10,8 @@ import UIKit
 
 final class ListDetailViewController: UIViewController {
     
+    var listName = ""
+    
     // MARK: - Properties
     private lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView()
@@ -25,7 +27,7 @@ final class ListDetailViewController: UIViewController {
     
     private lazy var listNameTextField: UITextField = {
         let view = UITextField()
-        view.text = "My List 1"
+        view.text = listName
         view.font = fontMedium17
         view.textColor = .label
         view.backgroundColor = .systemBackground

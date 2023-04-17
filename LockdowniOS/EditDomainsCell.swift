@@ -75,8 +75,8 @@ extension EditDomainsCell {
         let title: String?
         let status: String?
         
-        static func userBlocked(domain: String, isUnselected: Bool) -> Contents {
-            let checkMark = isUnselected ? UIImage(systemName: "circle") : UIImage(systemName: "checkmark.circle.fill")
+        static func userBlocked(domain: String, isSelected: Bool) -> Contents {
+            let checkMark = isSelected ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
             let image = UIImage(named: "website_icon.png")
             let status = NSLocalizedString("Blocked", comment: "")
             return Contents(checkMark: checkMark, icon: image, title: domain, status: status)

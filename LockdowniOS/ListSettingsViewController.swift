@@ -13,17 +13,18 @@ final class ListSettingsViewController: UIViewController {
     
     // MARK: - Properties
     
+    var listName = ""
+    var descriptionText = ""
+    
     var blockedList: UserBlockListsGroup?
     
     weak var blockListVC: BlockListViewController?
-    
-    var titleName = ""
     
     var didMakeChange = false
     
     lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView()
-        view.titleLabel.text = titleName
+        view.titleLabel.text = listName
         view.leftNavButton.setTitle(NSLocalizedString("BACK", comment: ""), for: .normal)
         view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
@@ -36,6 +37,7 @@ final class ListSettingsViewController: UIViewController {
     private lazy var switchBlockingView: SwitchBlockingView = {
         let view = SwitchBlockingView()
         view.titleLabel.text = NSLocalizedString("Blocking", comment: "")
+        view.switchView.addTarget(self, action: #selector(toggleBlocking), for: .valueChanged)
         return view
     }()
     
@@ -43,6 +45,7 @@ final class ListSettingsViewController: UIViewController {
         let view = ListsSubmenuView()
         view.topButton.setTitle(NSLocalizedString("Export List...", comment: ""), for: .normal)
         view.topButton.setImage(UIImage(named: "icn_export_folder"), for: .normal)
+        view.topButton.addTarget(self, action: #selector(exportList), for: .touchUpInside)
         view.bottomButton.setTitle(NSLocalizedString("Delete List...", comment: ""), for: .normal)
         view.bottomButton.setImage(UIImage(named: "icn_trash"), for: .normal)
         view.bottomButton.addTarget(self, action: #selector(deleteList), for: .touchUpInside)
@@ -55,6 +58,10 @@ final class ListSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
+        if let list = blockedList {
+            switchBlockingView.switchView.isOn = list.enabled
+        }
+        
         configureUI()
         configureTableView()
     }
@@ -84,8 +91,9 @@ final class ListSettingsViewController: UIViewController {
         subMenu.anchors.trailing.marginsPin()
         subMenu.isHidden = true
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(hideSubmenu))
-//        view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideSubmenu))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     func configureTableView() {
@@ -144,10 +152,12 @@ extension ListSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let userBlockedLists = getBlockedLists().userBlockListsDefaults
+        let numberOfDomains = userBlockedLists[listName]?.domains.count
         
         switch section {
         case 0, 1: return 1
-        case 2: return getUserBlockedDomains().count
+        case 2: return numberOfDomains ?? 0
         default: return 0
         }
     }
@@ -157,27 +167,29 @@ extension ListSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let domains = getUserBlockedDomains()
+        let userBlockedLists = getBlockedLists().userBlockListsDefaults
+        let domains = userBlockedLists[listName]?.domains
         
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ListBlockedTableViewCell.identifier, for: indexPath) as? ListBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            cell.label.text = title
+            cell.label.text = userBlockedLists[listName]?.name
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ListBlockedTableViewCell.identifier, for: indexPath) as? ListBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            cell.label.text = "Description"
+            
+            cell.label.text = userBlockedLists[listName]?.description ?? "Description"
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DomainsBlockedTableViewCell.identifier, for: indexPath) as? DomainsBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            cell.label.text = "reroi.com"
+            cell.label.text = domains?[indexPath.row].name
             return cell
         default:
             return UITableViewCell()
@@ -189,9 +201,11 @@ extension ListSettingsViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let vc = ListDetailViewController()
+            vc.listName = listName
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = ListDescriptionViewController()
+            vc.listName = listName
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
@@ -213,7 +227,13 @@ extension ListSettingsViewController {
     func saveNewDomain(userEnteredDomainName: String) {
         didMakeChange = true
         DDLogInfo("Adding custom domain - \(userEnteredDomainName)")
-        addUserBlockedDomain(domain: userEnteredDomainName.lowercased())
+        
+        let domains = getBlockedLists().userBlockListsDefaults
+        let userList = domains[listName]
+        
+        if let list = userList {
+            addDomainToBlockedList(domain: userEnteredDomainName, for: list.name.lowercased())
+        }
         tableView.reloadData()
     }
     
@@ -253,8 +273,51 @@ extension ListSettingsViewController {
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
-            self.tableView.reloadData()
+            if let vc = self.blockListVC {
+                vc.didMakeChange = true
+            }
+            
+            
+            if let list = self.blockedList {
+            deleteBlockedList(listName: list.name)
+            }
+            self.backButtonClicked()
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func toggleBlocking(sender: UISwitch) {
+        let sender = switchBlockingView.switchView
+        setBlockingEnabled(sender.isOn)
+    }
+    
+    func setBlockingEnabled(_ isEnabled: Bool) {
+        if let vc = self.blockListVC {
+            vc.didMakeChange = true
+        }
+        
+        let domains = getBlockedLists().userBlockListsDefaults
+        var userList = domains[listName]
+
+        userList?.enabled = isEnabled
+
+        var data = getBlockedLists()
+        data.userBlockListsDefaults[listName] = userList
+        let encodedData = try? JSONEncoder().encode(data)
+        defaults.set(encodedData, forKey: kUserBlockedLists)
+    }
+    
+    @objc func exportList(_ sender: UIButton) {
+        let domains = getBlockedLists().userBlockListsDefaults
+        var domainsList = domains[listName]?.domains
+        
+        guard let url = domainsList?.first?.exportToURL() else { return }
+        
+        let activity = UIActivityViewController(
+          activityItems: ["Export your domains", url],
+          applicationActivities: nil
+        )
+        activity.popoverPresentationController?.sourceView = sender
+        present(activity, animated: true, completion: nil)
     }
 }

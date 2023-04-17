@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import UniformTypeIdentifiers
 
-final class ImportBlockListViewController: UIViewController {
+final class ImportBlockListViewController: UIViewController, UIDocumentPickerDelegate {
     
     // MARK: - Properties
     
@@ -151,11 +152,57 @@ private extension ImportBlockListViewController {
         return documentsDirectory
     }
     
+    //  list name validation code method
+    func isValidListName(text: String) -> Bool {
+        let regEx = "^[a-zA-Z0-9]{1,20}$"
+        return text.range(of: "\(regEx)", options: .regularExpression) != nil
+    }
+    
     @objc func selectFromFiles() {
-        let path = getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
-        let url = URL(string: path)!
+        
+        let alertController = UIAlertController(title: "Create New List", message: nil, preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
+            if let txtField = alertController.textFields?.first, let text = txtField.text {
+                guard let self else { return }
+                
+                addBlockedList(listName: text)
+                let path = self.getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
+                let url = URL(string: path)!
+                
+                UIApplication.shared.open(url)
+                
+            }
+        }
+        
+        saveAction.isEnabled = false
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
+            guard let self else { return }
+        }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = NSLocalizedString("List Name", comment: "")
+        }
+        
+        NotificationCenter.default.addObserver(
+            forName: UITextField.textDidChangeNotification,
+            object: alertController.textFields?.first,
+            queue: .main) { (notification) -> Void in
+                guard let textFieldText = alertController.textFields?.first?.text else { return }
+                saveAction.isEnabled = self.isValidListName(text: textFieldText) && !textFieldText.isEmpty
+            }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
 
-        UIApplication.shared.open(url)
     }
     
     @objc func blockPastedDomains() {

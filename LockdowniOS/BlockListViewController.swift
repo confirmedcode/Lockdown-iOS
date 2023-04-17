@@ -137,10 +137,19 @@ final class BlockListViewController: BaseViewController {
         
         view.backgroundColor = .secondarySystemBackground
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
         configure()
         configureCuratedBlockedDomainsTableView()
         configureCustomBlockedListsTableView()
         configureCustomBlockedDomainsTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadCustomBlockedLists()
     }
     
     private func configure() {
@@ -192,8 +201,6 @@ final class BlockListViewController: BaseViewController {
         listsSubmenuView.anchors.top.spacing(60, to: paragraphLabel.anchors.bottom)
         
         customBlockedListsTableView.deselectsCellsAutomatically = true
-        
-        reloadCustomBlockedLists()
     }
     
     private func configureCustomBlockedDomainsTableView() {
@@ -236,7 +243,7 @@ final class BlockListViewController: BaseViewController {
     func reloadCustomBlockedLists() {
         customBlockedListsTableView.clear()
         customBlockedLists = {
-            let lists = getUserBlockedLists().userBlockListsDefaults
+            let lists = getBlockedLists().userBlockListsDefaults
             let sorted = lists.sorted(by: { $0.key < $1.key })
             return Array(sorted.map(\.value))
         }()
@@ -317,7 +324,7 @@ final class BlockListViewController: BaseViewController {
     func saveNewList(userEnteredListName: String) {
         didMakeChange = true
         DDLogInfo("Adding custom list - \(userEnteredListName)")
-        addUserBlockedList(list: userEnteredListName)
+        addBlockedList(listName: userEnteredListName)
         reloadCustomBlockedLists()
     }
     
@@ -368,7 +375,7 @@ extension BlockListViewController {
             }.onSelect { [unowned self] in
                 self.didMakeChange = true
                 let vc = ListSettingsViewController()
-                vc.titleName = list.name
+                vc.listName = list.name
                 vc.blockedList = list
                 vc.blockListVC = self
                 navigationController?.pushViewController(vc, animated: true)
@@ -438,9 +445,9 @@ extension BlockListViewController {
             if let txtField = alertController.textFields?.first, let text = txtField.text {
                 guard let self else { return }
                 self.saveNewList(userEnteredListName: text)
-                if !getUserBlockedList().isEmpty {
-                    tableView.clear()
-                }
+//                if !getBlockedLists().isEmpty {
+//                    tableView.clear()
+//                }
                 self.reloadCustomBlockedLists()
                 self.listsSubmenuView.isHidden = true
             }
@@ -500,8 +507,9 @@ extension BlockListViewController {
                                       style: .destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
-            deleteUserBlockedList(list: list)
+            deleteBlockedList(listName: list)
             self.customBlockedListsTableView.clear()
+            self.reloadCustomBlockedLists()
         }))
         
         present(alert, animated: true, completion: nil)
@@ -564,8 +572,8 @@ extension BlockListViewController {
     }
     
     @objc func editDomains() {
-        let controller = EditDomainsViewController()
-        present(controller, animated: true)
+        let vc = EditDomainsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showSuccessAlert() {

@@ -57,9 +57,9 @@ final class DomainsBlockedTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconImageView.image = nil
+//        iconImageView.image = nil
         label.text = nil
-        statusLabel.text = nil
+//        statusLabel.text = nil
     }
     
     private func confugureUI() {

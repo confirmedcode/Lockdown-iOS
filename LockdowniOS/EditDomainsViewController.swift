@@ -12,8 +12,10 @@ final class EditDomainsViewController: UIViewController {
     // MARK: - Properties
     private var didMakeChange = false
     
+    private var checkedStatus = false
+    
     var customBlockedDomains: [(String, Bool)] = []
-    var selectedBlockedDomains: [(String, Bool)] = []
+    var selectedBlockedDomains: Dictionary<String, Bool> = [:]
     
     private var titleName = NSLocalizedString("Edit Domains", comment: "")
     
@@ -43,8 +45,6 @@ final class EditDomainsViewController: UIViewController {
     
     private let customBlockedDomainsTableView = CustomTableView()
     
-    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +68,9 @@ final class EditDomainsViewController: UIViewController {
     }
     
     private func configureDomainsTableView() {
+        
         addTableView(customBlockedDomainsTableView) { tableView in
-            tableView.anchors.top.spacing(16, to: navigationView.anchors.bottom)
+            tableView.anchors.top.spacing(24, to: navigationView.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
         }
@@ -111,23 +112,25 @@ private extension EditDomainsViewController {
             tableTitle.anchors.bottom.marginsPin()
         }
         
-        for (domain, status) in customBlockedDomains {
-            var checkedStatus = status
+        for (domain, _) in customBlockedDomains {
             let blockListView = EditDomainsCell()
-            blockListView.contents = .userBlocked(domain: domain, isUnselected: status)
+            blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
             
+            self.selectedBlockedDomains[domain] = checkedStatus
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
-            }.onSelect { [unowned blockListView] in
+                
+            }.onSelect { [unowned blockListView, unowned self] in
                 self.didMakeChange = true
+                
                 checkedStatus.toggle()
-                blockListView.contents = .userBlocked(domain: domain, isUnselected: checkedStatus)
+                blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
+                
+                self.selectedBlockedDomains[domain] = checkedStatus
                 
                 self.bottomMenu.middleButton.setTitleColor(.tunnelsBlue, for: .normal)
                 self.bottomMenu.rightButton.setTitleColor(.red, for: .normal)
-                // TODO: - move domains to list
-
             }
             
             cell.accessoryType = .none
@@ -139,16 +142,16 @@ private extension EditDomainsViewController {
     }
     
     @objc func selectAllddDomains() {
-        let tableView = customBlockedDomainsTableView
-        tableView.reloadData()
+        checkedStatus = true
+        reloadCustomBlockedDomains()
     }
     
     @objc func moveToList() {
-//        var arr: [(String, Bool)] = []
-//        arr = selectedBlockedDomains.filter { (_, checked) in
-//            checked == true
-//        }
-//        print(arr)
+        let sortedDomains = selectedBlockedDomains.filter({ $0.value == true })
+        
+        let vc = MoveToListViewController()
+        vc.selectedDomains = sortedDomains
+        present(vc, animated: true)
     }
     
     @objc func deleteDomains() {
@@ -162,8 +165,13 @@ private extension EditDomainsViewController {
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
-            self.customBlockedDomainsTableView.clear()
-            self.customBlockedDomainsTableView.reloadData()
+            let sortedDomains = self.selectedBlockedDomains.filter({ $0.value == true })
+            
+            for domain in sortedDomains.keys {
+                deleteUserBlockedDomain(domain: domain)
+            }
+            
+            self.reloadCustomBlockedDomains()
         }))
         self.present(alert, animated: true, completion: nil)
     }

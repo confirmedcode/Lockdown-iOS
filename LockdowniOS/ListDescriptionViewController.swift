@@ -10,6 +10,10 @@ import UIKit
 
 final class ListDescriptionViewController: UIViewController {
     
+    var listName = ""
+    
+    var domains = getBlockedLists().userBlockListsDefaults
+    
     // MARK: - Properties
     private lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView()
@@ -26,6 +30,7 @@ final class ListDescriptionViewController: UIViewController {
     private lazy var descriptionTextField: UITextField = {
         let view = UITextField()
         view.placeholder = "No Description"
+        view.text = domains[listName]?.description
         view.font = fontMedium17
         view.textColor = .label
         view.backgroundColor = .systemBackground
@@ -77,8 +82,17 @@ private extension ListDescriptionViewController {
     }
     
     @objc func doneButtonClicked() {
+        let domains = getBlockedLists().userBlockListsDefaults
+        var userList = domains[listName]
+
+        userList?.description = descriptionTextField.text
+
+        var data = getBlockedLists()
+        data.userBlockListsDefaults[listName] = userList
+        let encodedData = try? JSONEncoder().encode(data)
+        defaults.set(encodedData, forKey: kUserBlockedLists)
+        
         navigationController?.popViewController(animated: true)
-        // TODO: - add new list name to defaults if changed
     }
     
     @objc func dismissKeyboard() {

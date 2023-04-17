@@ -8,16 +8,19 @@
 import UIKit
 import CocoaLumberjackSwift
 
-final class MoveToLsisViewController: UIViewController {
+final class MoveToListViewController: UIViewController {
     
     // MARK: - Properties
     private var didMakeChange = false
     
-    private var customBlockedDomains: [(String, Bool)] = [] {
+    var selectedDomains: Dictionary<String, Bool> = [:] {
         didSet {
-            let domains = getUserBlockedDomains()
-            numberOfdomains.text = NSLocalizedString("\(domains.count) domains", comment: "")
-            domainsList.text = domains.map(\.0).joined(separator: ", ")
+            if selectedDomains.count == 1 {
+                numberOfdomains.text = "\(selectedDomains.count) " + NSLocalizedString("domain", comment: "")
+            } else {
+                numberOfdomains.text = "\(selectedDomains.count) " + NSLocalizedString("domains", comment: "")
+            }
+            domainsList.text = selectedDomains.map(\.0).joined(separator: ", ")
         }
     }
     
@@ -141,12 +144,12 @@ final class MoveToLsisViewController: UIViewController {
 }
 
 // MARK: - Private functions
-private extension MoveToLsisViewController {
+private extension MoveToListViewController {
     
     func reloadCustomBlockedLists() {
         customBlockedListsTableView.clear()
         customBlockedLists = {
-            let lists = getUserBlockedLists().userBlockListsDefaults
+            let lists = getBlockedLists().userBlockListsDefaults
             let sorted = lists.sorted(by: { $0.key < $1.key })
             return Array(sorted.map(\.value))
         }()
@@ -156,6 +159,9 @@ private extension MoveToLsisViewController {
     }
     
     func createUserBlockedListsRows() {
+        let userBlockedLists = getBlockedLists().userBlockListsDefaults
+        
+        
         let tableView = customBlockedListsTableView
         tableView.separatorStyle = .singleLine
         
@@ -178,8 +184,16 @@ private extension MoveToLsisViewController {
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
-            }.onSelect { [unowned blockListView] in
+            }.onSelect { [unowned self] in
                 self.didMakeChange = true
+                
+                let blockedList = userBlockedLists[list.name]
+                
+                if let blockedList = blockedList {
+                    for domain in self.selectedDomains.keys {
+                        addDomainToBlockedList(domain: domain, for: blockedList.name)
+                    }
+                }
             }
             
             cell.accessoryType = .none
@@ -188,7 +202,7 @@ private extension MoveToLsisViewController {
     
     func saveNewList(userEnteredListName: String) {
         DDLogInfo("Adding custom list - \(userEnteredListName)")
-        addUserBlockedList(list: userEnteredListName.lowercased())
+        addBlockedList(listName: userEnteredListName)
         reloadCustomBlockedLists()
     }
     
@@ -220,15 +234,13 @@ private extension MoveToLsisViewController {
             if let txtField = alertController.textFields?.first, let text = txtField.text {
                 guard let self else { return }
                 self.saveNewList(userEnteredListName: text)
-                if !getUserBlockedList().isEmpty {
-                    tableView.clear()
-                }
+//                if !getBlockedLists().isEmpty {
+//                    tableView.clear()
+//                }
                 self.reloadCustomBlockedLists()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
-            guard let self else { return }
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addTextField { (textField) in
             textField.placeholder = NSLocalizedString("List Name", comment: "")
         }
