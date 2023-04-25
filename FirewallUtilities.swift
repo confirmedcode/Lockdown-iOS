@@ -461,6 +461,15 @@ func addBlockedList(listName: String) {
     defaults.set(encodedData, forKey: kUserBlockedLists)
 }
 
+func changeBlockedListName(from listName: String, to newListName: String) {
+    var data = getBlockedLists()
+    data.userBlockListsDefaults[newListName] = data.userBlockListsDefaults[listName]
+    data.userBlockListsDefaults[newListName]?.name = newListName
+    data.userBlockListsDefaults[listName] = nil
+    let encodedData = try? JSONEncoder().encode(data)
+    defaults.set(encodedData, forKey: kUserBlockedLists)
+}
+
 func deleteBlockedList(listName: String) {
     var data = getBlockedLists()
     data.userBlockListsDefaults[listName] = nil

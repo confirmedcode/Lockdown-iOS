@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ListDescriptionViewControllerDelegate {
+    func changeListDescription(description: String)
+}
+
 final class ListDescriptionViewController: UIViewController {
     
     var listName = ""
+    
+    var delegate: ListDescriptionViewControllerDelegate?
     
     var domains = getBlockedLists().userBlockListsDefaults
     
@@ -23,7 +29,6 @@ final class ListDescriptionViewController: UIViewController {
         view.leftNavButton.addTarget(self, action: #selector(returnBack), for: .touchUpInside)
         view.rightNavButton.setTitle("DONE", for: .normal)
         view.rightNavButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
-        view.rightNavButton.tintColor = .gray
         return view
     }()
     
@@ -36,7 +41,17 @@ final class ListDescriptionViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: .zero))
         view.leftViewMode = .always
+        view.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return view
+    }()
+    
+    private lazy var validationPrompt: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.font = fontRegular14
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        return label
     }()
     
     // MARK: - Lifecycle
@@ -46,6 +61,7 @@ final class ListDescriptionViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
         configureUI()
     }
     
@@ -61,6 +77,11 @@ final class ListDescriptionViewController: UIViewController {
         descriptionTextField.anchors.leading.marginsPin()
         descriptionTextField.anchors.trailing.marginsPin()
         descriptionTextField.anchors.height.equal(40)
+        
+        view.addSubview(validationPrompt)
+        validationPrompt.anchors.top.spacing(8, to: descriptionTextField.anchors.bottom)
+        validationPrompt.anchors.leading.marginsPin()
+        validationPrompt.anchors.trailing.marginsPin()
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,9 +93,15 @@ final class ListDescriptionViewController: UIViewController {
 // MARK: - Functions
 private extension ListDescriptionViewController {
     
-    func isValidListName(_ text: String) -> Bool {
-        let regEx = "^[a-zA-Z0-9]{1,20}$"
-        return text.range(of: "\(regEx)", options: .regularExpression) != nil
+    @objc func handleTextChange() {
+        guard let text = descriptionTextField.text else { return }
+        if text.isValid(.listDescription) {
+            navigationView.rightNavButton.isEnabled = true
+            validationPrompt.text = ""
+        } else {
+            navigationView.rightNavButton.isEnabled = false
+            validationPrompt.text = "Invalid Description. Please use only letters and digits. The maximum number of symbols is 500."
+        }
     }
     
     @objc func returnBack() {
@@ -82,6 +109,10 @@ private extension ListDescriptionViewController {
     }
     
     @objc func doneButtonClicked() {
+        
+        guard let newDescription = descriptionTextField.text else { return }
+        delegate?.changeListDescription(description: newDescription)
+        
         let domains = getBlockedLists().userBlockListsDefaults
         var userList = domains[listName]
 
@@ -97,25 +128,5 @@ private extension ListDescriptionViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-// MARK: - TextField delegate methods
-extension ListDescriptionViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-        if textField == descriptionTextField {
-            
-            if let text = descriptionTextField.text {
-                if self.isValidListName(text) == true {
-                    navigationView.rightNavButton.isEnabled = true
-                    navigationView.rightNavButton.setTitleColor(.tunnelsBlue, for: .normal)
-                } else {
-                    navigationView.rightNavButton.isEnabled = false
-                    navigationView.rightNavButton.setTitleColor(.gray, for: .normal)
-                }
-            }
-        }
-        return true
     }
 }

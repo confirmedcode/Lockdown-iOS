@@ -162,11 +162,13 @@ final class BlockListViewController: BaseViewController {
         paragraphLabel.anchors.top.spacing(0, to: customNavigationView.anchors.bottom)
         paragraphLabel.anchors.leading.readableContentPin(inset: 3)
         paragraphLabel.anchors.trailing.readableContentPin(inset: 3)
+        paragraphLabel.anchors.height.equal(60)
         
         view.addSubview(segmented)
         segmented.anchors.top.spacing(12, to: paragraphLabel.anchors.bottom)
         segmented.anchors.leading.readableContentPin()
         segmented.anchors.trailing.readableContentPin()
+        segmented.anchors.height.equal(40)
     }
     
     private func configureCuratedBlockedDomainsTableView() {
@@ -174,6 +176,7 @@ final class BlockListViewController: BaseViewController {
             tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.pin()
         })
         
         reloadCuratedBlockDomains()
@@ -185,7 +188,7 @@ final class BlockListViewController: BaseViewController {
         view.addSubview(listsLabel)
         listsLabel.anchors.top.spacing(24, to: segmented.anchors.bottom)
         listsLabel.anchors.leading.marginsPin()
-        
+
         view.addSubview(addNewListButton)
         addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
         addNewListButton.anchors.trailing.marginsPin()
@@ -376,7 +379,6 @@ extension BlockListViewController {
                 self.didMakeChange = true
                 let vc = ListSettingsViewController()
                 vc.listName = list.name
-                vc.blockedList = list
                 vc.blockListVC = self
                 navigationController?.pushViewController(vc, animated: true)
             }.onSwipeToDelete { [unowned self] in
