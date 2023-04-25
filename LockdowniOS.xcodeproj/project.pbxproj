@@ -225,9 +225,9 @@
 		402D253B29E8F9A400A5AB60 /* JSONSerialization+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D253A29E8F9A400A5AB60 /* JSONSerialization+Extensions.swift */; };
 		402D254829EE112E00A5AB60 /* LDFirewallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254729EE112E00A5AB60 /* LDFirewallViewController.swift */; };
 		402D254A29EE1C6E00A5AB60 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254929EE1C6E00A5AB60 /* DescriptionLabel.swift */; };
-		402D254C29EE32F300A5AB60 /* FirewallSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254B29EE32F300A5AB60 /* FirewallSegmentedControl.swift */; };
 		402D254E29EE598D00A5AB60 /* TrackersGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254D29EE598D00A5AB60 /* TrackersGroupView.swift */; };
 		402D255029EE78D600A5AB60 /* OverallStatiscticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */; };
+		408E7A9429F88C9200B2F587 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */; };
 		40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC414229F74C7900BD7396 /* String+Extensions.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
@@ -649,9 +649,9 @@
 		402D253A29E8F9A400A5AB60 /* JSONSerialization+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONSerialization+Extensions.swift"; sourceTree = "<group>"; };
 		402D254729EE112E00A5AB60 /* LDFirewallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDFirewallViewController.swift; sourceTree = "<group>"; };
 		402D254929EE1C6E00A5AB60 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
-		402D254B29EE32F300A5AB60 /* FirewallSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirewallSegmentedControl.swift; sourceTree = "<group>"; };
 		402D254D29EE598D00A5AB60 /* TrackersGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersGroupView.swift; sourceTree = "<group>"; };
 		402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallStatiscticView.swift; sourceTree = "<group>"; };
+		408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISwitch.swift; sourceTree = "<group>"; };
 		40FC414229F74C7900BD7396 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -1283,9 +1283,9 @@
 			isa = PBXGroup;
 			children = (
 				402D254929EE1C6E00A5AB60 /* DescriptionLabel.swift */,
-				402D254B29EE32F300A5AB60 /* FirewallSegmentedControl.swift */,
 				402D254D29EE598D00A5AB60 /* TrackersGroupView.swift */,
 				402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */,
+				408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2392,6 +2392,7 @@
 				3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */,
 				3D0711B822FE79BE00391C6E /* WhyTrustViewController.swift in Sources */,
 				A118F64520B33FED009A64E7 /* TimerEx.swift in Sources */,
+				408E7A9429F88C9200B2F587 /* CustomUISwitch.swift in Sources */,
 				7C422EAF252797A6007F9C22 /* AccountVC.swift in Sources */,
 				4015B50329F16E1A004102E0 /* LDConfigurationViewController.swift in Sources */,
 				3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
@@ -2500,7 +2501,6 @@
 				3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				402D253B29E8F9A400A5AB60 /* JSONSerialization+Extensions.swift in Sources */,
 				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
-				402D254C29EE32F300A5AB60 /* FirewallSegmentedControl.swift in Sources */,
 				402D252729E5843300A5AB60 /* ImportBlockListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

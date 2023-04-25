@@ -121,13 +121,9 @@ final class LDVpnViewController: UIViewController {
         return stack
     }()
     
-    private let segmented: FirewallSegmentedControl = {
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .regular, scale: .large)
-        let image = UIImage()
-        let text = "Swipe to Activate Firewall"
-        let items = [image, text]
-        let control = FirewallSegmentedControl(items: items)
-        return control
+    private let switchControl: CustomUISwitch = {
+        let uiSwitch = CustomUISwitch()
+        return uiSwitch
     }()
     
     // MARK: - LifeCycle
@@ -174,11 +170,11 @@ final class LDVpnViewController: UIViewController {
         regionCard.anchors.width.equal(view.bounds.width / 2 - 20)
         regionCard.anchors.height.equal(view.bounds.width / 2 - 20)
         
-        view.addSubview(segmented)
-        segmented.anchors.bottom.safeAreaPin()
-        segmented.anchors.leading.marginsPin()
-        segmented.anchors.trailing.marginsPin()
-        segmented.anchors.height.equal(56)
+        view.addSubview(switchControl)
+        switchControl.anchors.bottom.safeAreaPin()
+        switchControl.anchors.leading.marginsPin()
+        switchControl.anchors.trailing.marginsPin()
+        switchControl.anchors.height.equal(56)
     }
 }
 
