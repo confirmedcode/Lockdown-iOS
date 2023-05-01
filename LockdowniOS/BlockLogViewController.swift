@@ -11,6 +11,15 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var blockDayCounterLabel: UILabel!
     
+//    lazy var blockDayCounterLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "233"
+//        label.textColor = .label
+//        label.font = fontRegular14
+//        label.textAlignment = .center
+//        return label
+//    }()
+    
     // -- SUPPORTING LIVE UPDATES
     var timer: Timer?
     var kvoObservationToken: Any?

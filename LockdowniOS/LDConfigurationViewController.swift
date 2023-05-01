@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjackSwift
 
 final class LDConfigurationViewController: UIViewController {
     
@@ -17,6 +18,12 @@ final class LDConfigurationViewController: UIViewController {
         view.title.text = "Activity"
         view.iconImageView.image = UIImage(named: "icn_activity")
         view.isUserInteractionEnabled = true
+        view.setOnClickListener { [weak self] in
+            guard let self else { return }
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "blockLogViewController") as! BlockLogViewController
+            self.present(vc, animated: true, completion: nil)
+        }
         return view
     }()
     
@@ -26,6 +33,12 @@ final class LDConfigurationViewController: UIViewController {
         view.title.numberOfLines = 0
         view.iconImageView.image = UIImage(named: "icn_configure_blocking")
         view.isUserInteractionEnabled = true
+        view.setOnClickListener { [weak self] in
+            guard let self else { return }
+            let navController = UINavigationController(rootViewController: BlockListViewController())
+            navController.navigationBar.isHidden = true
+            self.present(navController, animated: true)
+        }
         return view
     }()
     
@@ -35,6 +48,12 @@ final class LDConfigurationViewController: UIViewController {
         view.title.numberOfLines = 0
         view.iconImageView.image = UIImage(named: "icn_personalized_blocking")
         view.isUserInteractionEnabled = true
+        view.setOnClickListener { [weak self] in
+            guard let self else { return }
+            let navController = UINavigationController(rootViewController: BlockListViewController())
+            navController.navigationBar.isHidden = true
+            self.present(navController, animated: true)
+        }
         return view
     }()
     
@@ -44,6 +63,11 @@ final class LDConfigurationViewController: UIViewController {
         view.title.numberOfLines = 0
         view.iconImageView.image = UIImage(named: "icn_import")
         view.isUserInteractionEnabled = true
+        view.setOnClickListener { [weak self] in
+            guard let self else { return }
+            let vc = ImportBlockListViewController()
+            self.present(vc, animated: true)
+        }
         return view
     }()
     
@@ -91,10 +115,10 @@ final class LDConfigurationViewController: UIViewController {
     
     private lazy var viewAuditReportButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("View audit report (Feb 2023)", for: .normal)
+        button.setTitle("View audit report (Feb, 2023)", for: .normal)
         button.setTitleColor(.tunnelsBlue, for: .normal)
         button.titleLabel?.font = fontBold15
-        button.addTarget(self, action: #selector(viewAccountSettings), for: .touchUpInside)
+        button.addTarget(self, action: #selector(viewAuditReport), for: .touchUpInside)
         return button
     }()
     
@@ -144,12 +168,30 @@ final class LDConfigurationViewController: UIViewController {
 private extension LDConfigurationViewController {
     
     @objc func viewAccountSettings() {
-        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func viewAuditReport() {
-        
+        showModalWebView(title: NSLocalizedString("Audit Reports", comment: ""), urlString: "https://openaudit.com/lockdownprivacy")
+    }
+    
+    func showModalWebView(title: String, urlString: String) {
+        if let url = URL(string: urlString) {
+            let storyboardToUse = storyboard != nil ? storyboard! : UIStoryboard(name: "Main", bundle: nil)
+            if let webViewVC = storyboardToUse.instantiateViewController(withIdentifier: "webview") as? WebViewViewController {
+                webViewVC.titleLabelText = title
+                webViewVC.url = url
+                self.present(webViewVC, animated: true, completion: nil)
+            }
+            else {
+                DDLogError("Unable to instantiate webview VC")
+            }
+        }
+        else {
+            DDLogError("Invalid URL \(urlString)")
+        }
     }
 }
-
-

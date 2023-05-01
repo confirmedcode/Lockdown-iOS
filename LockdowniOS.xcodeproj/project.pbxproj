@@ -202,6 +202,17 @@
 		3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */; };
 		3DF2455623A306DB00E46613 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2455523A306DB00E46613 /* Loader.swift */; };
 		3DF5D75F2633B1E100F77D79 /* amazon_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */; };
+		40098E2629FDA67700886474 /* AdvancedPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E2329FDA67600886474 /* AdvancedPaywallView.swift */; };
+		40098E2729FDA67700886474 /* UniversalPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E2429FDA67600886474 /* UniversalPaywallView.swift */; };
+		40098E2829FDA67700886474 /* AnonymousPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E2529FDA67700886474 /* AnonymousPaywallView.swift */; };
+		40098E2A29FDA6A800886474 /* BulletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E2929FDA6A800886474 /* BulletView.swift */; };
+		40098E2C29FDA6CC00886474 /* PaywallDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E2B29FDA6CC00886474 /* PaywallDescriptionLabel.swift */; };
+		40098E2E29FDA6E500886474 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E2D29FDA6E500886474 /* PlanView.swift */; };
+		40098E3129FDA73300886474 /* VPNPaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E3029FDA73200886474 /* VPNPaywallViewController.swift */; };
+		40098E3B29FF378F00886474 /* FirewallPaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E3529FF378F00886474 /* FirewallPaywallViewController.swift */; };
+		40098E3C29FF378F00886474 /* AnnualPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E3829FF378F00886474 /* AnnualPlanView.swift */; };
+		40098E3D29FF378F00886474 /* MonthlyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E3929FF378F00886474 /* MonthlyPlanView.swift */; };
+		40098E3E29FF378F00886474 /* AdvancedPlansViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40098E3A29FF378F00886474 /* AdvancedPlansViews.swift */; };
 		4015B4F729EFD9AC004102E0 /* AccessLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015B4F629EFD9AC004102E0 /* AccessLevelView.swift */; };
 		4015B4FD29F00DD8004102E0 /* LDVpnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015B4FC29F00DD8004102E0 /* LDVpnViewController.swift */; };
 		4015B4FF29F14C95004102E0 /* LDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4015B4FE29F14C95004102E0 /* LDCardView.swift */; };
@@ -228,6 +239,7 @@
 		402D254E29EE598D00A5AB60 /* TrackersGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254D29EE598D00A5AB60 /* TrackersGroupView.swift */; };
 		402D255029EE78D600A5AB60 /* OverallStatiscticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */; };
 		408E7A9429F88C9200B2F587 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */; };
+		408E7A9729FA698C00B2F587 /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9629FA698C00B2F587 /* UIVIew+Extensions.swift */; };
 		40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC414229F74C7900BD7396 /* String+Extensions.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
@@ -626,6 +638,17 @@
 		3DF2455323A2F8A400E46613 /* EmailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewController.swift; sourceTree = "<group>"; };
 		3DF2455523A306DB00E46613 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3DF5D75E2633B1E100F77D79 /* amazon_trackers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = amazon_trackers.txt; sourceTree = "<group>"; };
+		40098E2329FDA67600886474 /* AdvancedPaywallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPaywallView.swift; sourceTree = "<group>"; };
+		40098E2429FDA67600886474 /* UniversalPaywallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalPaywallView.swift; sourceTree = "<group>"; };
+		40098E2529FDA67700886474 /* AnonymousPaywallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnonymousPaywallView.swift; sourceTree = "<group>"; };
+		40098E2929FDA6A800886474 /* BulletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletView.swift; sourceTree = "<group>"; };
+		40098E2B29FDA6CC00886474 /* PaywallDescriptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaywallDescriptionLabel.swift; sourceTree = "<group>"; };
+		40098E2D29FDA6E500886474 /* PlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		40098E3029FDA73200886474 /* VPNPaywallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNPaywallViewController.swift; sourceTree = "<group>"; };
+		40098E3529FF378F00886474 /* FirewallPaywallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirewallPaywallViewController.swift; sourceTree = "<group>"; };
+		40098E3829FF378F00886474 /* AnnualPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnualPlanView.swift; sourceTree = "<group>"; };
+		40098E3929FF378F00886474 /* MonthlyPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyPlanView.swift; sourceTree = "<group>"; };
+		40098E3A29FF378F00886474 /* AdvancedPlansViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPlansViews.swift; sourceTree = "<group>"; };
 		4015B4F629EFD9AC004102E0 /* AccessLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessLevelView.swift; sourceTree = "<group>"; };
 		4015B4FC29F00DD8004102E0 /* LDVpnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDVpnViewController.swift; sourceTree = "<group>"; };
 		4015B4FE29F14C95004102E0 /* LDCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDCardView.swift; sourceTree = "<group>"; };
@@ -652,6 +675,7 @@
 		402D254D29EE598D00A5AB60 /* TrackersGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersGroupView.swift; sourceTree = "<group>"; };
 		402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallStatiscticView.swift; sourceTree = "<group>"; };
 		408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUISwitch.swift; sourceTree = "<group>"; };
+		408E7A9629FA698C00B2F587 /* UIVIew+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extensions.swift"; sourceTree = "<group>"; };
 		40FC414229F74C7900BD7396 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -1112,6 +1136,80 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		40098E1A29FDA61900886474 /* Paywalls */ = {
+			isa = PBXGroup;
+			children = (
+				40098E3329FF376900886474 /* FirewallPaywall */,
+				40098E2029FDA63100886474 /* VPNPaywall */,
+			);
+			name = Paywalls;
+			sourceTree = "<group>";
+		};
+		40098E2029FDA63100886474 /* VPNPaywall */ = {
+			isa = PBXGroup;
+			children = (
+				40098E2F29FDA6F400886474 /* Controllers */,
+				40098E2229FDA66100886474 /* Views */,
+			);
+			name = VPNPaywall;
+			sourceTree = "<group>";
+		};
+		40098E2229FDA66100886474 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				40098E2D29FDA6E500886474 /* PlanView.swift */,
+				40098E2B29FDA6CC00886474 /* PaywallDescriptionLabel.swift */,
+				40098E2929FDA6A800886474 /* BulletView.swift */,
+				40098E2329FDA67600886474 /* AdvancedPaywallView.swift */,
+				40098E2529FDA67700886474 /* AnonymousPaywallView.swift */,
+				40098E2429FDA67600886474 /* UniversalPaywallView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		40098E2F29FDA6F400886474 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40098E3029FDA73200886474 /* VPNPaywallViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		40098E3329FF376900886474 /* FirewallPaywall */ = {
+			isa = PBXGroup;
+			children = (
+				40098E3429FF378F00886474 /* Controllers */,
+				40098E3629FF378F00886474 /* Models */,
+				40098E3729FF378F00886474 /* Views */,
+			);
+			name = FirewallPaywall;
+			sourceTree = "<group>";
+		};
+		40098E3429FF378F00886474 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40098E3529FF378F00886474 /* FirewallPaywallViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		40098E3629FF378F00886474 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40098E3729FF378F00886474 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				40098E3829FF378F00886474 /* AnnualPlanView.swift */,
+				40098E3929FF378F00886474 /* MonthlyPlanView.swift */,
+				40098E3A29FF378F00886474 /* AdvancedPlansViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4015B4F829F00D74004102E0 /* VPN */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1262,7 @@
 		402D24CE29D87EF300A5AB60 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				40098E1A29FDA61900886474 /* Paywalls */,
 				4015B50029F16DD9004102E0 /* Configuration */,
 				4015B4F829F00D74004102E0 /* VPN */,
 				402D253E29EE10A100A5AB60 /* Firewall */,
@@ -1330,6 +1429,7 @@
 				7C422EA425279724007F9C22 /* Align.swift */,
 				402D253A29E8F9A400A5AB60 /* JSONSerialization+Extensions.swift */,
 				40FC414229F74C7900BD7396 /* String+Extensions.swift */,
+				408E7A9629FA698C00B2F587 /* UIVIew+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2357,6 +2457,7 @@
 				3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */,
 				A1DBA18A21B77C80008A9322 /* VPNController.swift in Sources */,
 				3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */,
+				40098E2829FDA67700886474 /* AnonymousPaywallView.swift in Sources */,
 				3D47CDB622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				7C6619BC247810E2005E8BB1 /* BlockDayLog.swift in Sources */,
 				3D40826927F6A03F004C146B /* DNSCryptThread.swift in Sources */,
@@ -2366,12 +2467,15 @@
 				A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */,
 				3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				402D251B29E519B500A5AB60 /* CustomTableView.swift in Sources */,
+				40098E2729FDA67700886474 /* UniversalPaywallView.swift in Sources */,
 				7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */,
+				40098E2629FDA67700886474 /* AdvancedPaywallView.swift in Sources */,
 				3DBD57A222FBB0D900DE189F /* WebViewViewController.swift in Sources */,
 				402D255029EE78D600A5AB60 /* OverallStatiscticView.swift in Sources */,
 				A118F64320B33FED009A64E7 /* FadeTransition.swift in Sources */,
 				7CE91C592521D54F009D8269 /* UserDefaults.swift in Sources */,
 				3D47CDC822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */,
+				40098E2C29FDA6CC00886474 /* PaywallDescriptionLabel.swift in Sources */,
 				3DF2455623A306DB00E46613 /* Loader.swift in Sources */,
 				A118F64720B33FED009A64E7 /* SpinerLayer.swift in Sources */,
 				4015B4FF29F14C95004102E0 /* LDCardView.swift in Sources */,
@@ -2384,6 +2488,7 @@
 				A1EBEAD72097AE6E002B9087 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				3D970DAD22EC149D00F9CC93 /* BlockLogCell.swift in Sources */,
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
+				40098E3129FDA73300886474 /* VPNPaywallViewController.swift in Sources */,
 				3D47CDD522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				3D47CDCD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				7CAB283F254336230087AAF4 /* CustomNavigationView.swift in Sources */,
@@ -2402,6 +2507,7 @@
 				3DCA4F4122F252720017740D /* FirewallController.swift in Sources */,
 				A1359FDA20AF6E32008C4BF7 /* LocalLogger.swift in Sources */,
 				402D252929E632F300A5AB60 /* ListSettingsViewController.swift in Sources */,
+				40098E3E29FF378F00886474 /* AdvancedPlansViews.swift in Sources */,
 				3D47CDD122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				402D251929E517E100A5AB60 /* ConfiguredNavigationView.swift in Sources */,
 				7C422EA525279724007F9C22 /* Align.swift in Sources */,
@@ -2432,13 +2538,16 @@
 				7CC8EFED254036050005054C /* FirewallRepair.swift in Sources */,
 				3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				7CE91C712521D58C009D8269 /* Metrics.swift in Sources */,
+				40098E2A29FDA6A800886474 /* BulletView.swift in Sources */,
 				402D24B829D59B4400A5AB60 /* EmptyListsView.swift in Sources */,
 				402D252329E5473E00A5AB60 /* EditDomainsCell.swift in Sources */,
 				A12186271FB8F691007058B3 /* SignupViewController.swift in Sources */,
 				A1EBEAD12097AE6E002B9087 /* M13Checkbox+IB.swift in Sources */,
 				A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */,
+				40098E3B29FF378F00886474 /* FirewallPaywallViewController.swift in Sources */,
 				A1EBEACC2097AE6E002B9087 /* M13CheckboxDotController.swift in Sources */,
 				7C1AE075247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift in Sources */,
+				40098E3C29FF378F00886474 /* AnnualPlanView.swift in Sources */,
 				A1EBEAD92097AE6E002B9087 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */,
 				3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */,
@@ -2481,12 +2590,15 @@
 				402D252F29E6357700A5AB60 /* ListDetailViewController.swift in Sources */,
 				A1EBEAD62097AE6E002B9087 /* M13CheckboxSpiralController.swift in Sources */,
 				3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
+				40098E3D29FF378F00886474 /* MonthlyPlanView.swift in Sources */,
+				408E7A9729FA698C00B2F587 /* UIVIew+Extensions.swift in Sources */,
 				7C1AE080248028F40000A7D3 /* UIKit+Extensions.swift in Sources */,
 				3DBD57AC22FBDFE300DE189F /* WhitelistCell.swift in Sources */,
 				402D251629E514CF00A5AB60 /* MoveToListViewController.swift in Sources */,
 				3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */,
 				3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
+				40098E2E29FDA6E500886474 /* PlanView.swift in Sources */,
 				3D47CDB722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				3D47CDD322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				A1141A151F46230500F54698 /* AppDelegate.swift in Sources */,
@@ -2667,7 +2779,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2704,7 +2816,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2797,7 +2909,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2835,7 +2947,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2986,7 +3098,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3026,7 +3138,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3072,7 +3184,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3115,7 +3227,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3151,7 +3263,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3181,7 +3293,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3213,7 +3325,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3270,7 +3382,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -71,28 +71,29 @@ final class AccessLevelslView: UIView {
     
     private let basicView: AccessLevelView = {
         let view = AccessLevelView()
-        view.accessLevelIv.image = UIImage(named: "basic")
+        view.accessLevelIv.image = UIImage(named: "basic_active")
         view.accessLevelName.text = "Basic"
+        view.accessLevelName.textColor = .tunnelsBlue
         return view
     }()
     
     private let advancedView: AccessLevelView = {
         let view = AccessLevelView()
-        view.accessLevelIv.image = UIImage(named: "advanced")
+        view.accessLevelIv.image = UIImage(named: "anonymous_nonactive")
         view.accessLevelName.text = "Advanced"
         return view
     }()
     
     let anonymousView: AccessLevelView = {
         let view = AccessLevelView()
-        view.accessLevelIv.image = UIImage(named: "anonymous")
+        view.accessLevelIv.image = UIImage(named: "anonymous_nonactive")
         view.accessLevelName.text = "Anonymous"
         return view
     }()
     
     private let universalView: AccessLevelView = {
         let view = AccessLevelView()
-        view.accessLevelIv.image = UIImage(named: "universal")
+        view.accessLevelIv.image = UIImage(named: "universal_nonactive")
         view.accessLevelName.text = "Universal"
         return view
     }()

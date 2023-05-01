@@ -107,8 +107,11 @@ extension ListDetailViewController {
     @objc func doneButtonClicked() {
 
         guard let newListName = listNameTextField.text else { return }
+        
         delegate?.changeListName(name: newListName)
-        changeBlockedListName(from: listName, to: newListName)
+        if listName != newListName {
+            changeBlockedListName(from: listName, to: newListName)
+        }
         navigationController?.popViewController(animated: true)
     }
     

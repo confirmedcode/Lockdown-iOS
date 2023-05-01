@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LDVpnViewController: UIViewController {
+final class LDVpnViewController: BaseViewController {
     
     // MARK: - Properties
     
@@ -31,7 +31,7 @@ final class LDVpnViewController: UIViewController {
     
     private lazy var firewallTitle: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Get complete protection", comment: "")
+        label.text = NSLocalizedString("Get Anonymous protection", comment: "")
         label.font = fontBold24
         label.numberOfLines = 0
         label.textColor = .label
@@ -99,6 +99,12 @@ final class LDVpnViewController: UIViewController {
         view.title.text = "Whitelist"
         view.iconImageView.image = UIImage(named: "icn_whitelist")
         view.isUserInteractionEnabled = true
+        view.setOnClickListener { [weak self] in
+            guard let self else { return }
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "WhitelistViewController") as! WhitelistViewController
+            self.present(vc, animated: true, completion: nil)
+        }
         return view
     }()
     
@@ -106,8 +112,14 @@ final class LDVpnViewController: UIViewController {
         let view = LDCardView()
         view.title.text = "Region"
         view.iconImageView.image = UIImage(named: "icn_globe")
-        view.subTitle.text = "USA West"
+        view.subTitle.text = getSavedVPNRegion().regionDisplayNameShort
         view.isUserInteractionEnabled = true
+        view.setOnClickListener { [weak self] in
+            guard let self else { return }
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "SetRegionViewController") as! SetRegionViewController
+            self.present(vc, animated: true, completion: nil)
+        }
         return view
     }()
     
@@ -121,8 +133,8 @@ final class LDVpnViewController: UIViewController {
         return stack
     }()
     
-    private let switchControl: CustomUISwitch = {
-        let uiSwitch = CustomUISwitch()
+    private lazy var switchControl: CustomUISwitch = {
+        let uiSwitch = CustomUISwitch(onImage: UIImage(named: "vpn-on-image")!, offImage: UIImage(named: "vpn-off-image")!)
         return uiSwitch
     }()
     
@@ -134,15 +146,21 @@ final class LDVpnViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(accessLevelslView)
-        accessLevelslView.anchors.top.safeAreaPin(inset: 18)
+        accessLevelslView.anchors.top.safeAreaPin(inset: 0)
         accessLevelslView.anchors.leading.marginsPin()
         accessLevelslView.anchors.trailing.marginsPin()
+        
+        view.addSubview(switchControl)
+        switchControl.anchors.bottom.safeAreaPin()
+        switchControl.anchors.leading.marginsPin()
+        switchControl.anchors.trailing.marginsPin()
+        switchControl.anchors.height.equal(56)
         
         view.addSubview(scrollView)
         scrollView.anchors.top.spacing(18, to: accessLevelslView.anchors.bottom)
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
-        scrollView.anchors.bottom.pin()
+        scrollView.anchors.bottom.spacing(8, to: switchControl.anchors.top)
         
         scrollView.addSubview(contentView)
         contentView.anchors.top.pin()
@@ -169,12 +187,11 @@ final class LDVpnViewController: UIViewController {
         
         regionCard.anchors.width.equal(view.bounds.width / 2 - 20)
         regionCard.anchors.height.equal(view.bounds.width / 2 - 20)
-        
-        view.addSubview(switchControl)
-        switchControl.anchors.bottom.safeAreaPin()
-        switchControl.anchors.leading.marginsPin()
-        switchControl.anchors.trailing.marginsPin()
-        switchControl.anchors.height.equal(56)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        regionCard.subTitle.text = getSavedVPNRegion().regionDisplayNameShort
     }
 }
 
@@ -183,7 +200,12 @@ final class LDVpnViewController: UIViewController {
 private extension LDVpnViewController {
     
     @objc func upgrade() {
-        
+        let vc = VPNPaywallViewController()
+        present(vc, animated: true)
     }
+    
+//    func updateVPNRegionLabel() {
+//        vpnRegionLabel.text = getSavedVPNRegion().regionDisplayNameShort
+//    }
 }
 

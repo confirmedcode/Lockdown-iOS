@@ -10,18 +10,21 @@ import UIKit
 
 import CoreMotion
 
-class CustomUISwitch: UIButton {
-
+final class CustomUISwitch: UIButton {
+    
     var status: Bool = false {
         didSet {
             self.update()
         }
     }
-    var onImage = UIImage(named: "on-image")
-    var offImage = UIImage(named: "off-image")
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    var onImage: UIImage?
+    var offImage: UIImage?
+    
+    init(onImage: UIImage, offImage: UIImage) {
+        self.onImage = onImage
+        self.offImage = offImage
+        super.init(frame: CGRect.zero)
         self.setStatus(false)
     }
     
@@ -34,6 +37,7 @@ class CustomUISwitch: UIButton {
             self.status ? self.setImage(self.onImage, for: .normal) : self.setImage(self.offImage, for: .normal)
         }, completion: nil)
     }
+    
     func toggle() {
         self.status ? self.setStatus(false) : self.setStatus(true)
     }
@@ -53,5 +57,4 @@ class CustomUISwitch: UIButton {
         impactFeedbackgenerator.prepare()
         impactFeedbackgenerator.impactOccurred()
     }
-    
 }

@@ -193,10 +193,16 @@ final class BlockListViewController: BaseViewController {
         addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
         addNewListButton.anchors.trailing.marginsPin()
         
+        view.addSubview(domainsLabel)
+        domainsLabel.anchors.top.spacing(300, to: segmented.anchors.bottom)
+        domainsLabel.anchors.height.equal(30)
+        domainsLabel.anchors.leading.marginsPin()
+        
         addTableView(customBlockedListsTableView, layout: { tableView in
             tableView.anchors.top.spacing(8, to: listsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.spacing(8, to: domainsLabel.anchors.top)
         })
         
         view.addSubview(listsSubmenuView)
@@ -207,10 +213,6 @@ final class BlockListViewController: BaseViewController {
     }
     
     private func configureCustomBlockedDomainsTableView() {
-        
-        view.addSubview(domainsLabel)
-        domainsLabel.anchors.top.spacing(16, to: customBlockedListsTableView.anchors.bottom)
-        domainsLabel.anchors.leading.marginsPin()
         
         view.addSubview(addNewDomainButton)
         addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
@@ -471,18 +473,12 @@ extension BlockListViewController {
             object: alertController.textFields?.first,
             queue: .main) { (notification) -> Void in
                 guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = self.isValidListName(text: textFieldText) && !textFieldText.isEmpty
+                saveAction.isEnabled = textFieldText.isValid(.listName)
             }
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
-    }
-    
-    //  list name validation code method
-    func isValidListName(text: String) -> Bool {
-        let regEx = "^[a-zA-Z0-9]{1,20}$"
-        return text.range(of: "\(regEx)", options: .regularExpression) != nil
     }
     
     //  domain name validation code method
@@ -565,7 +561,7 @@ extension BlockListViewController {
             object: alertController.textFields?.first,
             queue: .main) { (notification) -> Void in
                 guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = self.isValidDomainName(text: textFieldText) && !textFieldText.isEmpty
+                saveAction.isEnabled = textFieldText.isValid(.domainName) && !textFieldText.isEmpty
             }
         
         alertController.addAction(saveAction)

@@ -84,28 +84,28 @@ final class OverallStatiscticView: UIView {
     
     private let enabledBoxView: BoxLabelView = {
         let box = BoxLabelView()
-        box.numberLabel.text = "15"
+        box.numberLabel.text = "7"
         box.boxTitle.text = "Enabled"
         return box
     }()
     
     private let disabledBoxView: BoxLabelView = {
         let box = BoxLabelView()
-        box.numberLabel.text = "1"
+        box.numberLabel.text = "3"
         box.boxTitle.text = "Disabled"
         return box
     }()
     
     private let requestsBoxView: BoxLabelView = {
         let box = BoxLabelView()
-        box.numberLabel.text = "2.3M"
+        box.numberLabel.text = "0.9K"
         box.boxTitle.text = "Requests"
         return box
     }()
     
     private let blockedBoxView: BoxLabelView = {
         let box = BoxLabelView()
-        box.numberLabel.text = "2.4K"
+        box.numberLabel.text = "0.2K"
         box.boxTitle.text = "Blocked"
         return box
     }()

@@ -161,6 +161,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWidgetToggleWorkaround()
         
         // If not yet agreed to privacy policy, set initial view controller to TitleViewController
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = LDFirewallViewController()
+//        self.window?.rootViewController = LDConfigurationViewController()
+//        self.window?.rootViewController = ListSettingsViewController()
+//        self.window?.makeKeyAndVisible()
+        
         if (defaults.bool(forKey: kHasShownTitlePage) == false) {
             // TODO: removed this check because this was causing crashes possibly due to Locale
             // don't show onboarding page for anyone who installed before Aug 16th

@@ -23,7 +23,7 @@ final class LDFirewallViewController: UIViewController {
     
     private lazy var contentView: UIView = {
         let view = UIView()
-        view.anchors.height.equal(1000)
+        view.anchors.height.equal(800)
         return view
     }()
     
@@ -68,9 +68,10 @@ final class LDFirewallViewController: UIViewController {
     
     private lazy var cpTitle: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Only blocked with complete protection", comment: "")
+        label.text = NSLocalizedString("Don't let those trackers know your every move – Upgrade to Advanced now!", comment: "")
         label.textColor = .label
         label.font = fontBold15
+        label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
@@ -79,6 +80,7 @@ final class LDFirewallViewController: UIViewController {
         let view = TrackersGroupView()
         view.placeNumber.text = "#1"
         view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_game_marketing")!, title: "Game Marketing", number: 4678))
+        view.number.isHidden = true
         return view
     }()
     
@@ -86,6 +88,7 @@ final class LDFirewallViewController: UIViewController {
         let view = TrackersGroupView()
         view.placeNumber.text = "#2"
         view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_marketing_trackers")!, title: "Marketing Trackers", number: 3432))
+        view.number.isHidden = true
         return view
     }()
     
@@ -93,6 +96,7 @@ final class LDFirewallViewController: UIViewController {
         let view = TrackersGroupView()
         view.placeNumber.text = "#3"
         view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_email_trackers")!, title: "Email Trackers", number: 2756))
+        view.number.isHidden = true
         return view
     }()
     
@@ -137,7 +141,8 @@ final class LDFirewallViewController: UIViewController {
         let view = TrackersGroupView()
         view.placeNumber.text = "#1"
         view.number.textColor = .label
-        view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_facebook_trackers")!, title: "Facebook Trackers", number: 764))
+        view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_facebook_trackers")!, title: "Facebook Trackers", number: 89))
+        view.lockImage.isHidden = true
         return view
     }()
     
@@ -145,7 +150,8 @@ final class LDFirewallViewController: UIViewController {
         let view = TrackersGroupView()
         view.placeNumber.text = "#2"
         view.number.textColor = .label
-        view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_data_trackers")!, title: "Data Trackers", number: 330))
+        view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_data_trackers")!, title: "Data Trackers", number: 32))
+        view.lockImage.isHidden = true
         return view
     }()
     
@@ -153,7 +159,8 @@ final class LDFirewallViewController: UIViewController {
         let view = TrackersGroupView()
         view.placeNumber.text = "#3"
         view.number.textColor = .label
-        view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_clickbait_trackers")!, title: "Clickbait", number: 106))
+        view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_clickbait_trackers")!, title: "Clickbait", number: 21))
+        view.lockImage.isHidden = true
         return view
     }()
     
@@ -178,7 +185,7 @@ final class LDFirewallViewController: UIViewController {
     }()
     
     private let switchControl: CustomUISwitch = {
-        let uiSwitch = CustomUISwitch()
+        let uiSwitch = CustomUISwitch(onImage: UIImage(named: "firewall-on-image")!, offImage: UIImage(named: "firewall-off-image")!)
         return uiSwitch
     }()
     
@@ -188,15 +195,21 @@ final class LDFirewallViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(accessLevelslView)
-        accessLevelslView.anchors.top.safeAreaPin(inset: 18)
+        accessLevelslView.anchors.top.safeAreaPin()
         accessLevelslView.anchors.leading.marginsPin()
         accessLevelslView.anchors.trailing.marginsPin()
+        
+        view.addSubview(switchControl)
+        switchControl.anchors.bottom.safeAreaPin()
+        switchControl.anchors.leading.marginsPin()
+        switchControl.anchors.trailing.marginsPin()
+        switchControl.anchors.height.equal(56)
         
         view.addSubview(scrollView)
         scrollView.anchors.top.spacing(18, to: accessLevelslView.anchors.bottom)
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
-        scrollView.anchors.bottom.pin()
+        scrollView.anchors.bottom.spacing(8, to: switchControl.anchors.top)
         
         scrollView.addSubview(contentView)
         contentView.anchors.top.pin()
@@ -228,18 +241,13 @@ final class LDFirewallViewController: UIViewController {
         statisitcsView.anchors.top.spacing(18, to: maStackView.anchors.bottom)
         statisitcsView.anchors.leading.marginsPin()
         statisitcsView.anchors.trailing.marginsPin()
-        
-        view.addSubview(switchControl)
-        switchControl.anchors.bottom.safeAreaPin()
-        switchControl.anchors.leading.marginsPin()
-        switchControl.anchors.trailing.marginsPin()
-        switchControl.anchors.height.equal(56)
     }
 }
 
 private extension LDFirewallViewController {
     
     @objc func upgrade() {
-        
+        let vc = FirewallPaywallViewController()
+        present(vc, animated: true)
     }
 }

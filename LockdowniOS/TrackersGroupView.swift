@@ -58,7 +58,7 @@ final class TrackersGroupView: UIView {
         return label
     }()
     
-    private lazy var lockImage: UIImageView = {
+    lazy var lockImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .right
         image.layer.masksToBounds = true
@@ -71,7 +71,7 @@ final class TrackersGroupView: UIView {
         stackView.addArrangedSubview(placeNumber)
         stackView.addArrangedSubview(trackersImage)
         stackView.addArrangedSubview(titleLabel)
-//        stackView.addArrangedSubview(number)
+        stackView.addArrangedSubview(number)
         stackView.addArrangedSubview(lockImage)
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
