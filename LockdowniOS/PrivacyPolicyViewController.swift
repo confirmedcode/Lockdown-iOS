@@ -23,6 +23,8 @@ class PrivacyPolicyViewController: BaseViewController {
     @IBOutlet weak var whyTrustButton: UIButton!
     
     var parentVC: HomeViewController? = nil
+    var parentVC1: LDFirewallViewController? = nil
+    
     var privacyPolicyKey = kHasAgreedToFirewallPrivacyPolicy
     
     override func viewDidLoad() {

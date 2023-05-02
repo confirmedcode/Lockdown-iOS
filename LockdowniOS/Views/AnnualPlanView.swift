@@ -105,8 +105,6 @@ final class AnnualPlanView: UIView {
         return label
     }()
     
-    
-    
     //MARK: Initialization
       override init(frame: CGRect) {
         super.init(frame: frame)
@@ -139,7 +137,6 @@ final class AnnualPlanView: UIView {
         contentView.anchors.bottom.pin()
         
         contentView.addSubview(bulletsStackView)
-       // bulletsStackView.anchors.top.marginsPin()
         bulletsStackView.anchors.leading.marginsPin()
         bulletsStackView.anchors.trailing.marginsPin()
         
@@ -153,6 +150,5 @@ final class AnnualPlanView: UIView {
         titleLabel.anchors.leading.marginsPin()
         titleLabel.anchors.trailing.marginsPin()
         titleLabel.anchors.top.marginsPin()
-        
     }
 }

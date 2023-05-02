@@ -131,20 +131,22 @@ final class FirewallPaywallViewController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 0
         let attributedText = NSMutableAttributedString(string: NSLocalizedString("By continuing you agree with our ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey])
-           attributedText.append(NSAttributedString(string: NSLocalizedString("Terms of Service", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://www.apple.com")!]))
-           attributedText.append(NSAttributedString(string: NSLocalizedString(" and ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey]))
-           attributedText.append(NSAttributedString(string: NSLocalizedString("Privacy Policy", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://www.apple.com")!]))
-           
-           let paragraphStyle = NSMutableParagraphStyle()
-           paragraphStyle.alignment = .center
-           attributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedText.length))
-           label.attributedText = attributedText
-        
-           label.isUserInteractionEnabled = true
-           
-           let tapGesture = UITapGestureRecognizer(target: self, action: #selector(privacyLabelTapped))
-           label.addGestureRecognizer(tapGesture)
-        return label
+            let termsRange = NSRange(location: attributedText.length, length: NSLocalizedString("Terms of Service", comment: "").count)
+            attributedText.append(NSAttributedString(string: NSLocalizedString("Terms of Service", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://lockdownprivacy.com/terms")!]))
+            attributedText.append(NSAttributedString(string: NSLocalizedString(" and ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey]))
+            let privacyRange = NSRange(location: attributedText.length, length: NSLocalizedString("Privacy Policy", comment: "").count)
+            attributedText.append(NSAttributedString(string: NSLocalizedString("Privacy Policy", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://lockdownprivacy.com/privacy")!]))
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            attributedText.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: attributedText.length))
+            label.attributedText = attributedText
+            
+            label.isUserInteractionEnabled = true
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
+            label.addGestureRecognizer(tapGesture)
+            return label
     }()
     
     //MARK: Lificycle
@@ -213,25 +215,43 @@ final class FirewallPaywallViewController: UIViewController {
         
     }
     
-    @objc func privacyLabelTapped() {
-        guard let privacyPolicyURL = URL(string: "https://www.apple.com") else { return }
-        guard let termsOfServiceURL = URL(string: "https://developer.apple.com") else { return }
-            
-        let attributedString = privacyLabel.attributedText as NSAttributedString?
-        let location = privacyLabel.text?.count ?? 0
-            
-        if let attributedString = attributedString {
-                let selectedRange = NSRange(location: location - 20, length: 20)
-                
-            if selectedRange.location >= 0 {
-                let string = attributedString.attributedSubstring(from: selectedRange).string
-                    
-                if string == "Privacy Policy" {
-                    UIApplication.shared.open(privacyPolicyURL, options: [:], completionHandler: nil)
-                    } else if string == "Terms of Service" {
-                        UIApplication.shared.open(termsOfServiceURL, options: [:], completionHandler: nil)
-                }
-            }
+    @objc private func labelTapped(sender: UITapGestureRecognizer) {
+        let termsRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Terms of Service", comment: "").count - 18, length: NSLocalizedString("Terms of Service", comment: "").count)
+        let privacyRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Privacy Policy", comment: "").count, length: NSLocalizedString("Privacy Policy", comment: "").count)
+        
+        if sender.didTapAttributedTextInLabel(label: privacyLabel, inRange: privacyRange),
+            let url = URL(string: "https://lockdownprivacy.com/privacy") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else if sender.didTapAttributedTextInLabel(label: privacyLabel, inRange: termsRange),
+            let url = URL(string: "https://lockdownprivacy.com/terms") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+}
+
+extension UITapGestureRecognizer {
+    func didTapAttributedTextInLabel(label: UILabel, inRange targetRange: NSRange) -> Bool {
+    guard let attributedText = label.attributedText else { return false }
+        
+        let layoutManager = NSLayoutManager()
+        let textContainer = NSTextContainer(size: CGSize.zero)
+        let textStorage = NSTextStorage(attributedString: attributedText)
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+        
+        textContainer.lineFragmentPadding = 0.0
+        textContainer.lineBreakMode = label.lineBreakMode
+        textContainer.maximumNumberOfLines = label.numberOfLines
+        textContainer.size = label.bounds.size
+        let locationOfTouchInLabel = self.location(in: label)
+        let textBoundingBox = layoutManager.usedRect(for: textContainer)
+        let textContainerOffset = CGPoint(x: (label.bounds.width - textBoundingBox.width) * 0.5 - textBoundingBox.minX,
+                                           y: (label.bounds.height - textBoundingBox.height) * 0.5 - textBoundingBox.minY)
+        let locationOfTouchInTextContainer = CGPoint(x: locationOfTouchInLabel.x - textContainerOffset.x,
+                                                      y: locationOfTouchInLabel.y - textContainerOffset.y)
+        let index = layoutManager.characterIndex(for: locationOfTouchInTextContainer,
+                                                  in: textContainer,
+                                                  fractionOfDistanceBetweenInsertionPoints: nil)
+        return NSLocationInRange(index, targetRange)
     }
 }

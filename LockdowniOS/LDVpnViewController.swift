@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import CocoaLumberjackSwift
+import PromiseKit
+import NetworkExtension
+import PopupDialog
 
 final class LDVpnViewController: BaseViewController {
     
     // MARK: - Properties
+    
+    var lastVPNStatus: NEVPNStatus?
     
     lazy var accessLevelslView: AccessLevelslView = {
         let view = AccessLevelslView()
@@ -112,7 +118,6 @@ final class LDVpnViewController: BaseViewController {
         let view = LDCardView()
         view.title.text = "Region"
         view.iconImageView.image = UIImage(named: "icn_globe")
-        view.subTitle.text = getSavedVPNRegion().regionDisplayNameShort
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [weak self] in
             guard let self else { return }
@@ -133,8 +138,11 @@ final class LDVpnViewController: BaseViewController {
         return stack
     }()
     
-    private lazy var switchControl: CustomUISwitch = {
+    private lazy var vpnSwitchControl: CustomUISwitch = {
         let uiSwitch = CustomUISwitch(onImage: UIImage(named: "vpn-on-image")!, offImage: UIImage(named: "vpn-off-image")!)
+        uiSwitch.setOnClickListener {
+            self.toggleVPN()
+        }
         return uiSwitch
     }()
     
@@ -150,17 +158,17 @@ final class LDVpnViewController: BaseViewController {
         accessLevelslView.anchors.leading.marginsPin()
         accessLevelslView.anchors.trailing.marginsPin()
         
-        view.addSubview(switchControl)
-        switchControl.anchors.bottom.safeAreaPin()
-        switchControl.anchors.leading.marginsPin()
-        switchControl.anchors.trailing.marginsPin()
-        switchControl.anchors.height.equal(56)
+        view.addSubview(vpnSwitchControl)
+        vpnSwitchControl.anchors.bottom.safeAreaPin()
+        vpnSwitchControl.anchors.leading.marginsPin()
+        vpnSwitchControl.anchors.trailing.marginsPin()
+        vpnSwitchControl.anchors.height.equal(56)
         
         view.addSubview(scrollView)
         scrollView.anchors.top.spacing(18, to: accessLevelslView.anchors.bottom)
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
-        scrollView.anchors.bottom.spacing(8, to: switchControl.anchors.top)
+        scrollView.anchors.bottom.spacing(8, to: vpnSwitchControl.anchors.top)
         
         scrollView.addSubview(contentView)
         contentView.anchors.top.pin()
@@ -187,25 +195,232 @@ final class LDVpnViewController: BaseViewController {
         
         regionCard.anchors.width.equal(view.bounds.width / 2 - 20)
         regionCard.anchors.height.equal(view.bounds.width / 2 - 20)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        regionCard.subTitle.text = getSavedVPNRegion().regionDisplayNameShort
+        
+        updateVPNButtonWithStatus(status: VPNController.shared.status())
+        updateVPNRegionLabel()
+        
+        if (VPNController.shared.status() == .connected) {
+            firstly {
+                try Client.signIn()
+            }
+            .done { (signin: SignIn) in
+                // successfully signed in with no subscription errors, do nothing
+            }
+            .catch { error in
+                if (self.popupErrorAsNSURLError(error)) {
+                    return
+                }
+                else if let apiError = error as? ApiError {
+                    switch apiError.code {
+                    case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                        self.showPopupDialog(title: NSLocalizedString("VPN Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to re-activate the VPN.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
+                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                        })
+                    default:
+                        _ = self.popupErrorAsApiError(error)
+                    }
+                }
+                else {
+                    self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
+                                         message: "\(error)",
+                        acceptButton: "Okay")
+                }
+            }
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
     }
 }
 
 // MARK: - Private functions
 
-private extension LDVpnViewController {
+extension LDVpnViewController {
     
     @objc func upgrade() {
         let vc = VPNPaywallViewController()
         present(vc, animated: true)
     }
     
-//    func updateVPNRegionLabel() {
-//        vpnRegionLabel.text = getSavedVPNRegion().regionDisplayNameShort
-//    }
+    func toggleVPN() {
+        
+        DDLogInfo("Toggle VPN")
+        switch VPNController.shared.status() {
+        case .connected, .connecting, .reasserting:
+            DDLogInfo("Toggle VPN: on currently, turning it off")
+            updateVPNButtonWithStatus(status: .disconnecting)
+            VPNController.shared.setEnabled(false)
+        case .disconnected, .disconnecting, .invalid:
+            DDLogInfo("Toggle VPN: off currently, turning it on")
+            updateVPNButtonWithStatus(status: .connecting)
+            // if there's a confirmed email, use that and sync the receipt with it
+            if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                DDLogInfo("have confirmed API credentials, using them")
+                firstly {
+                    try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                }
+                .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
+                    DDLogInfo("signin result: \(signin)")
+                    return try Client.subscriptionEvent()
+                }
+                .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                    DDLogInfo("subscriptionevent result: \(result)")
+                    return try Client.getKey()
+                }
+                .done { (getKey: GetKey) in
+                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                    DDLogInfo("setting VPN creds with ID: \(getKey.id)")
+                    VPNController.shared.setEnabled(true)
+                }
+                .catch { error in
+                    DDLogError("Error doing email-login -> subscription-event: \(error)")
+                    self.updateVPNButtonWithStatus(status: .disconnected)
+                    if (self.popupErrorAsNSURLError(error)) {
+                        return
+                    }
+                    else if let apiError = error as? ApiError {
+                        switch apiError.code {
+                        case kApiCodeInvalidAuth, kApiCodeIncorrectLogin:
+                            let confirm = PopupDialog(title: "Incorrect Login",
+                                                       message: "Your saved login credentials are incorrect. Please sign out and try again.",
+                                                       image: nil,
+                                                       buttonAlignment: .horizontal,
+                                                       transitionStyle: .bounceDown,
+                                                       preferredWidth: 270,
+                                                       tapGestureDismissal: true,
+                                                       panGestureDismissal: false,
+                                                       hideStatusBar: false,
+                                                       completion: nil)
+                            confirm.addButtons([
+                               DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
+                               },
+                               DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) {
+                                URLCache.shared.removeAllCachedResponses()
+                                Client.clearCookies()
+                                clearAPICredentials()
+                                setAPICredentialsConfirmed(confirmed: false)
+                                self.showPopupDialog(title: "Success", message: "Signed out successfully.", acceptButton: NSLocalizedString("Okay", comment: ""))
+                               },
+                            ])
+                            self.present(confirm, animated: true, completion: nil)
+                        case kApiCodeNoSubscriptionInReceipt:
+                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                        case kApiCodeNoActiveSubscription:
+                            self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
+                                self.performSegue(withIdentifier: "showSignup", sender: self)
+                            })
+                        default:
+                            _ = self.popupErrorAsApiError(error)
+                        }
+                    }
+                }
+            }
+            else {
+                firstly {
+                    try Client.signIn() // this will fetch and set latest receipt, then submit to API to get cookie
+                }
+                .then { (signin: SignIn) -> Promise<GetKey> in
+                    // TODO: don't always do this -- if we already have a key, then only do it once per day max
+                    try Client.getKey()
+                }
+                .done { (getKey: GetKey) in
+                    try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                    VPNController.shared.setEnabled(true)
+                }
+                .catch { error in
+                    self.updateVPNButtonWithStatus(status: .disconnected)
+                    if (self.popupErrorAsNSURLError(error)) {
+                        return
+                    }
+                    else if let apiError = error as? ApiError {
+                        switch apiError.code {
+                        case kApiCodeNoSubscriptionInReceipt:
+                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                        case kApiCodeNoActiveSubscription:
+                            self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
+                                self.performSegue(withIdentifier: "showSignup", sender: self)
+                            })
+                        default:
+                            if (apiError.code == kApiCodeNegativeError) {
+                                if (getVPNCredentials() != nil) {
+                                    DDLogError("Unknown error -1 from API, but VPNCredentials exists, so activating anyway.")
+                                    self.updateVPNButtonWithStatus(status: .connecting)
+                                    VPNController.shared.setEnabled(true)
+                                }
+                                else {
+                                    self.showPopupDialog(title: NSLocalizedString("Apple Outage", comment: ""), message: "There is currently an outage at Apple which is preventing Secure Tunnel from activating. This will likely by resolved by Apple soon, and we apologize for this issue in the meantime." + NSLocalizedString("\n\n If this error persists, please contact team@lockdownprivacy.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+                                }
+                            }
+                            else {
+                                _ = self.popupErrorAsApiError(error)
+                            }
+                        }
+                    }
+                    else {
+                        self.showPopupDialog(title: NSLocalizedString("Error Signing In To Verify Subscription", comment: ""),
+                                             message: "\(error)",
+                            acceptButton: NSLocalizedString("Okay", comment: ""))
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateVPNButtonWithStatus(status: NEVPNStatus) {
+        DDLogInfo("UpdateVPNButton")
+        switch status {
+        case .connected:
+            LatestKnowledge.isVPNEnabled = true
+        case .disconnected:
+            LatestKnowledge.isVPNEnabled = false
+        default:
+            break
+        }
+        updateToggleButtonWithStatus(lastStatus: lastVPNStatus,
+                                     newStatus: status,
+                                     switchControl: vpnSwitchControl)
+    }
+    
+    func updateToggleButtonWithStatus(lastStatus: NEVPNStatus?,
+                                      newStatus: NEVPNStatus,
+                                      switchControl: CustomUISwitch) {
+        DDLogInfo("UpdateToggleButton")
+        if (newStatus == lastStatus) {
+            DDLogInfo("No status change from last time, ignoring.");
+        }
+        else {
+            DispatchQueue.main.async() {
+                switch newStatus {
+                case .connected:
+                    switchControl.status = true
+                case .connecting:
+                    switchControl.status = true
+                case .disconnected, .invalid:
+                    switchControl.status = false
+                case .disconnecting:
+                    switchControl.status = false
+                case .reasserting:
+                    break;
+                }
+            }
+        }
+    }
+    
+    func updateVPNRegionLabel() {
+        regionCard.subTitle.text = getSavedVPNRegion().regionDisplayNameShort
+    }
+    
+    @objc func tunnelStatusDidChange(_ notification: Notification) {
+        if let neVPNConnection = notification.object as? NEVPNConnection {
+            DDLogInfo("VPNStatusDidChange as NEVPNConnection with status: \(neVPNConnection.status.description)");
+            updateVPNButtonWithStatus(status: neVPNConnection.status);
+            updateVPNRegionLabel()
+            if NEVPNManager.shared().connection.status == .connected || NEVPNManager.shared().connection.status == .disconnected {
+                //self.updateIP();
+            }
+        }
+        else {
+            DDLogInfo("VPNStatusDidChange neither TunnelProviderSession nor NEVPNConnection");
+        }
+    }
 }
 

@@ -35,12 +35,12 @@ final class TrackersGroupView: UIView {
     
     private lazy var trackersImage: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .center
+        image.contentMode = .left
         image.layer.masksToBounds = true
         return image
     }()
     
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.font = fontMedium15
@@ -107,6 +107,11 @@ final class TrackersGroupView: UIView {
         stackView.anchors.bottom.pin()
         stackView.anchors.leading.marginsPin()
         stackView.anchors.trailing.marginsPin()
+        
+        trackersImage.anchors.leading.pin(inset: 35)
+        trackersImage.anchors.centerY.equal(placeNumber.anchors.centerY)
+        
+        titleLabel.anchors.leading.pin(inset: 70)
     }
     
     func configure(with model: TrackersGroupViewModel) {

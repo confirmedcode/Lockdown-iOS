@@ -13,6 +13,8 @@ final class BlockListViewController: BaseViewController {
     // MARK: - Properties
     var didMakeChange = false
     
+    var chosenBlocking = 0
+    
     var lockdownBlockLists: [LockdownGroup] = []
     var customBlockedDomains: [(String, Bool)] = []
 
@@ -26,6 +28,7 @@ final class BlockListViewController: BaseViewController {
         let view = ListsSubmenuView()
         view.topButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
         view.bottomButton.addTarget(self, action: #selector(importBlockList), for: .touchUpInside)
+        view.isHidden = true
         return view
     }()
     
@@ -55,7 +58,7 @@ final class BlockListViewController: BaseViewController {
     
     private lazy var segmented: UISegmentedControl = {
         let view = UISegmentedControl(items: Page.allCases.map(\.localizedTitle))
-        view.selectedSegmentIndex = 0
+        view.selectedSegmentIndex = chosenBlocking
         view.setTitleTextAttributes([.font: fontMedium14], for: .normal)
         view.selectedSegmentTintColor = .tunnelsBlue
         view.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -180,7 +183,7 @@ final class BlockListViewController: BaseViewController {
         })
         
         reloadCuratedBlockDomains()
-        transition(toPage: .curated)
+        chosenBlocking == 0 ? transition(toPage: .curated) : transition(toPage: .custom)
     }
     
     private func configureCustomBlockedListsTableView() {

@@ -7,11 +7,6 @@
 
 import UIKit
 
-//// MARK: ClickListener
-//class ClickListener: UITapGestureRecognizer {
-//  var onClick : (() -> Void)? = nil
-//}
-
 final class AdvancedPlansViews: UIView {
     
     //MARK: Properties
@@ -65,7 +60,6 @@ final class AdvancedPlansViews: UIView {
     
     lazy var discountImageView: UIImageView = {
         let imageView = UIImageView()
-        //imageView.image = UIImage(named: "saveDiscount")
         imageView.contentMode = .scaleAspectFit
         return imageView
         }()
@@ -99,11 +93,10 @@ final class AdvancedPlansViews: UIView {
         stackView.addArrangedSubview(titleStackView)
         stackView.addArrangedSubview(detailsStackView)
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
         stackView.alignment = .leading
         stackView.spacing = 8
         stackView.anchors.height.equal(74)
-        stackView.anchors.width.equal(150)
         return stackView
     }()
     
@@ -134,6 +127,5 @@ final class AdvancedPlansViews: UIView {
         addSubview(discountImageView)
         discountImageView.anchors.top.spacing(-14, to: backgroundView.anchors.bottom)
         discountImageView.anchors.centerX.equal(backgroundView.anchors.centerX)
-        
     }
 }

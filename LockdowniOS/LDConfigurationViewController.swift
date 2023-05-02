@@ -50,7 +50,9 @@ final class LDConfigurationViewController: UIViewController {
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [weak self] in
             guard let self else { return }
-            let navController = UINavigationController(rootViewController: BlockListViewController())
+            let vc = BlockListViewController()
+            vc.chosenBlocking = 1
+            let navController = UINavigationController(rootViewController: vc)
             navController.navigationBar.isHidden = true
             self.present(navController, animated: true)
         }

@@ -131,12 +131,27 @@ final class VPNPaywallViewController: UIViewController {
     
     private lazy var privacyLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("By continuing you agree with our Terms of Service and Privacy Policy", comment: "")
-        label.textColor = .lightGray
-        label.font = fontMedium11
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
+            label.font = fontMedium11
+            label.textAlignment = .center
+            label.numberOfLines = 0
+            
+        let attributedText = NSMutableAttributedString(string: NSLocalizedString("By continuing you agree with our ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey])
+            let termsRange = NSRange(location: attributedText.length, length: NSLocalizedString("Terms of Service", comment: "").count)
+            attributedText.append(NSAttributedString(string: NSLocalizedString("Terms of Service", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://lockdownprivacy.com/terms")!]))
+            attributedText.append(NSAttributedString(string: NSLocalizedString(" and ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey]))
+            let privacyRange = NSRange(location: attributedText.length, length: NSLocalizedString("Privacy Policy", comment: "").count)
+            attributedText.append(NSAttributedString(string: NSLocalizedString("Privacy Policy", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://lockdownprivacy.com/privacy")!]))
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            attributedText.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: attributedText.length))
+            label.attributedText = attributedText
+            
+            label.isUserInteractionEnabled = true
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
+            label.addGestureRecognizer(tapGesture)
+            return label
     }()
     
     //MARK: Lificycle
@@ -199,5 +214,18 @@ final class VPNPaywallViewController: UIViewController {
     
     @objc func restoreButtonClicked() {
         
+    }
+    
+    @objc private func labelTapped(sender: UITapGestureRecognizer) {
+        let termsRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Terms of Service", comment: "").count - 18, length: NSLocalizedString("Terms of Service", comment: "").count)
+        let privacyRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Privacy Policy", comment: "").count, length: NSLocalizedString("Privacy Policy", comment: "").count)
+        
+        if sender.didTapAttributedTextInLabel(label: privacyLabel, inRange: privacyRange),
+            let url = URL(string: "https://lockdownprivacy.com/privacy") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else if sender.didTapAttributedTextInLabel(label: privacyLabel, inRange: termsRange),
+            let url = URL(string: "https://lockdownprivacy.com/terms") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }
