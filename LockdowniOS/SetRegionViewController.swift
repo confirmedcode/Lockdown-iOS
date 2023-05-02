@@ -15,6 +15,10 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
     
     var homeVC: HomeViewController?
     
+    var vpnVC: LDVpnViewController?
+    
+    var firewall: LDFirewallViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
@@ -54,8 +58,9 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
         if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
             WidgetCenter.shared.reloadAllTimelines()
         }
-        if homeVC != nil {
-            homeVC!.updateVPNRegionLabel()
+
+        if vpnVC != nil {
+            vpnVC!.updateVPNRegionLabel()
         }
         
         dismiss(animated: true, completion: {

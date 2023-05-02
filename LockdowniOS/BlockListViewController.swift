@@ -13,6 +13,8 @@ final class BlockListViewController: BaseViewController {
     // MARK: - Properties
     var didMakeChange = false
     
+    var chosenBlocking = 0
+    
     var lockdownBlockLists: [LockdownGroup] = []
     var customBlockedDomains: [(String, Bool)] = []
 
@@ -26,6 +28,7 @@ final class BlockListViewController: BaseViewController {
         let view = ListsSubmenuView()
         view.topButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
         view.bottomButton.addTarget(self, action: #selector(importBlockList), for: .touchUpInside)
+        view.isHidden = true
         return view
     }()
     
@@ -55,7 +58,7 @@ final class BlockListViewController: BaseViewController {
     
     private lazy var segmented: UISegmentedControl = {
         let view = UISegmentedControl(items: Page.allCases.map(\.localizedTitle))
-        view.selectedSegmentIndex = 0
+        view.selectedSegmentIndex = chosenBlocking
         view.setTitleTextAttributes([.font: fontMedium14], for: .normal)
         view.selectedSegmentTintColor = .tunnelsBlue
         view.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
@@ -162,11 +165,13 @@ final class BlockListViewController: BaseViewController {
         paragraphLabel.anchors.top.spacing(0, to: customNavigationView.anchors.bottom)
         paragraphLabel.anchors.leading.readableContentPin(inset: 3)
         paragraphLabel.anchors.trailing.readableContentPin(inset: 3)
+        paragraphLabel.anchors.height.equal(60)
         
         view.addSubview(segmented)
         segmented.anchors.top.spacing(12, to: paragraphLabel.anchors.bottom)
         segmented.anchors.leading.readableContentPin()
         segmented.anchors.trailing.readableContentPin()
+        segmented.anchors.height.equal(40)
     }
     
     private func configureCuratedBlockedDomainsTableView() {
@@ -174,10 +179,11 @@ final class BlockListViewController: BaseViewController {
             tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.pin()
         })
         
         reloadCuratedBlockDomains()
-        transition(toPage: .curated)
+        chosenBlocking == 0 ? transition(toPage: .curated) : transition(toPage: .custom)
     }
     
     private func configureCustomBlockedListsTableView() {
@@ -185,15 +191,21 @@ final class BlockListViewController: BaseViewController {
         view.addSubview(listsLabel)
         listsLabel.anchors.top.spacing(24, to: segmented.anchors.bottom)
         listsLabel.anchors.leading.marginsPin()
-        
+
         view.addSubview(addNewListButton)
         addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
         addNewListButton.anchors.trailing.marginsPin()
+        
+        view.addSubview(domainsLabel)
+        domainsLabel.anchors.top.spacing(300, to: segmented.anchors.bottom)
+        domainsLabel.anchors.height.equal(30)
+        domainsLabel.anchors.leading.marginsPin()
         
         addTableView(customBlockedListsTableView, layout: { tableView in
             tableView.anchors.top.spacing(8, to: listsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.spacing(8, to: domainsLabel.anchors.top)
         })
         
         view.addSubview(listsSubmenuView)
@@ -204,10 +216,6 @@ final class BlockListViewController: BaseViewController {
     }
     
     private func configureCustomBlockedDomainsTableView() {
-        
-        view.addSubview(domainsLabel)
-        domainsLabel.anchors.top.spacing(16, to: customBlockedListsTableView.anchors.bottom)
-        domainsLabel.anchors.leading.marginsPin()
         
         view.addSubview(addNewDomainButton)
         addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
@@ -376,7 +384,6 @@ extension BlockListViewController {
                 self.didMakeChange = true
                 let vc = ListSettingsViewController()
                 vc.listName = list.name
-                vc.blockedList = list
                 vc.blockListVC = self
                 navigationController?.pushViewController(vc, animated: true)
             }.onSwipeToDelete { [unowned self] in
@@ -469,18 +476,12 @@ extension BlockListViewController {
             object: alertController.textFields?.first,
             queue: .main) { (notification) -> Void in
                 guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = self.isValidListName(text: textFieldText) && !textFieldText.isEmpty
+                saveAction.isEnabled = textFieldText.isValid(.listName)
             }
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
-    }
-    
-    //  list name validation code method
-    func isValidListName(text: String) -> Bool {
-        let regEx = "^[a-zA-Z0-9]{1,20}$"
-        return text.range(of: "\(regEx)", options: .regularExpression) != nil
     }
     
     //  domain name validation code method
@@ -563,7 +564,7 @@ extension BlockListViewController {
             object: alertController.textFields?.first,
             queue: .main) { (notification) -> Void in
                 guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = self.isValidDomainName(text: textFieldText) && !textFieldText.isEmpty
+                saveAction.isEnabled = textFieldText.isValid(.domainName) && !textFieldText.isEmpty
             }
         
         alertController.addAction(saveAction)

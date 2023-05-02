@@ -204,6 +204,14 @@ extension UIColor {
     static let tunnelsWarning = UIColor(red: 231/255.0, green: 76/255.0, blue: 68/255.0, alpha: 1.0)
     static let tunnelsDarkBlue = UIColor(red: 0/255.0, green: 117/255.0, blue: 157/255.0, alpha: 1.0)
     static let tunnelsLightBlue = UIColor(red: 223/255.0, green: 243/255.0, blue: 251/255.0, alpha: 1.0)
+    static let paywallOrange = UIColor(red: 255/255, green: 171/255, blue: 0/255, alpha: 1)
+    static let paywallNew = UIColor(red: 0.225, green: 0.219, blue: 0.6, alpha: 1.0)
+    static let borderGray = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+    static let borderBlue = UIColor(red: 0, green: 0.678, blue: 0.906, alpha: 1)
+    static let smallGrey = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    static var purplePaywall = UIColor(red: 134/255.0, green: 26/255.0, blue: 201/255.0, alpha: 1)
+    static var purplePaywall2 = UIColor(red: 103/255.0, green: 26/255.0, blue: 201/255.0, alpha: 1)
+    static var extraLightGray = UIColor(red: 242/255.0, green: 244/255.0, blue: 245/255.0, alpha: 1)
 }
 
 extension UnicodeScalar {
@@ -282,13 +290,24 @@ struct Config {
 let fontRegular14 = UIFont(name: "Montserrat-Regular", size: 14)!
 let fontRegular17 = UIFont(name: "Montserrat-Regular", size: 17)!
 let fontMedium14 = UIFont(name: "Montserrat-Medium", size: 14)!
+let fontMedium11 = UIFont(name: "Montserrat-Medium", size: 11)!
+let fontMedium13 = UIFont(name: "Montserrat-Medium", size: 13)!
 let fontMedium15 = UIFont(name: "Montserrat-Medium", size: 15)!
 let fontMedium16 = UIFont(name: "Montserrat-Medium", size: 16)!
 let fontMedium17 = UIFont(name: "Montserrat-Medium", size: 17)!
 let fontMedium18 = UIFont(name: "Montserrat-Medium", size: 18)!
+let fontSemiBold13 = UIFont(name: "Montserrat-SemiBold", size: 13)!
+let fontSemiBold15 = UIFont(name: "Montserrat-SemiBold", size: 15)!
 let fontSemiBold15_5 = UIFont(name: "Montserrat-SemiBold", size: 15.5)!
 let fontSemiBold17 = UIFont(name: "Montserrat-SemiBold", size: 17)!
+let fontSemiBold22 = UIFont(name: "Montserrat-SemiBold", size: 22)!
 let fontBold11 = UIFont(name: "Montserrat-Bold", size: 11)!
 let fontBold13 = UIFont(name: "Montserrat-Bold", size: 13)!
 let fontBold15 = UIFont(name: "Montserrat-Bold", size: 15)!
+let fontBold17 = UIFont(name: "Montserrat-Bold", size: 17)!
 let fontBold18 = UIFont(name: "Montserrat-Bold", size: 18)!
+let fontBold22 = UIFont(name: "Montserrat-Bold", size: 22)!
+let fontBold24 = UIFont(name: "Montserrat-Bold", size: 24)!
+let fontBold26 = UIFont(name: "Montserrat-Bold", size: 26)!
+let fontBold28 = UIFont(name: "Montserrat-Bold", size: 28)!
+let fontBold34 = UIFont(name: "Montserrat-Bold", size: 34)!

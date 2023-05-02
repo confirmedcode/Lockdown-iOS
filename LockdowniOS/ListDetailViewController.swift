@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ListDetailViewControllerDelegate {
+    func changeListName(name: String)
+}
+
 final class ListDetailViewController: UIViewController {
+    
+    var delegate: ListDetailViewControllerDelegate?
     
     var listName = ""
     
@@ -21,11 +27,10 @@ final class ListDetailViewController: UIViewController {
         view.leftNavButton.addTarget(self, action: #selector(returnBack), for: .touchUpInside)
         view.rightNavButton.setTitle("DONE", for: .normal)
         view.rightNavButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
-        view.rightNavButton.tintColor = .gray
         return view
     }()
     
-    private lazy var listNameTextField: UITextField = {
+    lazy var listNameTextField: UITextField = {
         let view = UITextField()
         view.text = listName
         view.font = fontMedium17
@@ -33,7 +38,17 @@ final class ListDetailViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: .zero))
         view.leftViewMode = .always
+        view.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return view
+    }()
+    
+    private lazy var validationPrompt: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.font = fontRegular14
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        return label
     }()
     
     // MARK: - Lifecycle
@@ -58,6 +73,11 @@ final class ListDetailViewController: UIViewController {
         listNameTextField.anchors.leading.marginsPin()
         listNameTextField.anchors.trailing.marginsPin()
         listNameTextField.anchors.height.equal(40)
+        
+        view.addSubview(validationPrompt)
+        validationPrompt.anchors.top.spacing(8, to: listNameTextField.anchors.bottom)
+        validationPrompt.anchors.leading.marginsPin()
+        validationPrompt.anchors.trailing.marginsPin()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,11 +87,17 @@ final class ListDetailViewController: UIViewController {
 }
 
 // MARK: - Functions
-private extension ListDetailViewController {
+extension ListDetailViewController {
     
-    func isValidListName(_ text: String) -> Bool {
-        let regEx = "^[a-zA-Z0-9]{1,20}$"
-        return text.range(of: "\(regEx)", options: .regularExpression) != nil
+    @objc func handleTextChange() {
+        guard let text = listNameTextField.text else { return }
+        if text.isValid(.listName) {
+            navigationView.rightNavButton.isEnabled = true
+            validationPrompt.text = ""
+        } else {
+            navigationView.rightNavButton.isEnabled = false
+            validationPrompt.text = "Invalid name. Please use only letters and digits. The maximum number of symbols is 20."
+        }
     }
     
     @objc func returnBack() {
@@ -79,31 +105,17 @@ private extension ListDetailViewController {
     }
     
     @objc func doneButtonClicked() {
+
+        guard let newListName = listNameTextField.text else { return }
+        
+        delegate?.changeListName(name: newListName)
+        if listName != newListName {
+            changeBlockedListName(from: listName, to: newListName)
+        }
         navigationController?.popViewController(animated: true)
-        // TODO: - add new list name to defaults if changed
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-// MARK: - TextField delegate methods
-extension ListDetailViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-        if textField == listNameTextField {
-            
-            if let text = listNameTextField.text {
-                if self.isValidListName(text) == true {
-                    navigationView.rightNavButton.isEnabled = true
-                    navigationView.rightNavButton.setTitleColor(.tunnelsBlue, for: .normal)
-                } else {
-                    navigationView.rightNavButton.isEnabled = false
-                    navigationView.rightNavButton.setTitleColor(.gray, for: .normal)
-                }
-            }
-        }
-        return true
     }
 }

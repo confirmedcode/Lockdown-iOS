@@ -13,19 +13,38 @@ import CocoaLumberjackSwift
 
 final class AccountViewController: BaseViewController, Loadable {
     
-    let tableView = StaticTableView(frame: .zero, style: .plain)
+    // MARK: - Properties
+    private lazy var navigationView: ConfiguredNavigationView = {
+        let view = ConfiguredNavigationView()
+        view.leftNavButton.setTitle("BACK", for: .normal)
+        view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        view.leftNavButton.addTarget(self, action: #selector(returnBack), for: .touchUpInside)
+        return view
+    }()
+    
+    let tableView = StaticTableView(frame: .zero, style: .grouped)
     var activePlans: [Subscription.PlanType] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
+        
         do {
+            view.addSubview(navigationView)
+            navigationView.anchors.top.safeAreaPin()
+            navigationView.anchors.leading.pin()
+            navigationView.anchors.trailing.pin()
+            navigationView.anchors.height.equal(40)
+            
             view.addSubview(tableView)
-            tableView.anchors.edges.pin()
+            tableView.anchors.top.spacing(0, to: navigationView.anchors.bottom)
+            tableView.anchors.leading.pin()
+            tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.pin()
             tableView.separatorStyle = .singleLine
             tableView.cellLayoutMarginsFollowReadableWidth = true
             tableView.deselectsCellsAutomatically = true
-            tableView.contentInset.top += 12
             tableView.tableFooterView = UIView()
             
             tableView.clear()
@@ -407,9 +426,9 @@ final class AccountViewController: BaseViewController, Loadable {
         }
         
         let otherCells = [
-            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
-                self.startTutorial()
-            },
+//            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
+//                self.startTutorial()
+//            },
             DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: "")) {
                 self.showWhyTrustPopup()
             },
@@ -550,5 +569,11 @@ fileprivate extension _DefaultButtonCell {
                 indicator.removeFromSuperview()
             }
         }
+    }
+}
+
+private extension AccountViewController {
+    @objc func returnBack() {
+        dismiss(animated: true)
     }
 }

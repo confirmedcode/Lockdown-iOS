@@ -12,11 +12,9 @@ import CocoaLumberjackSwift
 final class ListSettingsViewController: UIViewController {
     
     // MARK: - Properties
+    private var blockedList: UserBlockListsGroup?
     
     var listName = ""
-    var descriptionText = ""
-    
-    var blockedList: UserBlockListsGroup?
     
     weak var blockListVC: BlockListViewController?
     
@@ -24,7 +22,7 @@ final class ListSettingsViewController: UIViewController {
     
     lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView()
-        view.titleLabel.text = listName
+        view.titleLabel.text = "List Settings"
         view.leftNavButton.setTitle(NSLocalizedString("BACK", comment: ""), for: .normal)
         view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
@@ -64,6 +62,12 @@ final class ListSettingsViewController: UIViewController {
         
         configureUI()
         configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userBlockedLists = getBlockedLists().userBlockListsDefaults
+        blockedList = userBlockedLists[listName]
     }
     
     // MARK: - Configure UI
@@ -152,8 +156,7 @@ extension ListSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let userBlockedLists = getBlockedLists().userBlockListsDefaults
-        let numberOfDomains = userBlockedLists[listName]?.domains.count
+        let numberOfDomains = blockedList?.domains.count
         
         switch section {
         case 0, 1: return 1
@@ -167,29 +170,25 @@ extension ListSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let userBlockedLists = getBlockedLists().userBlockListsDefaults
-        let domains = userBlockedLists[listName]?.domains
         
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ListBlockedTableViewCell.identifier, for: indexPath) as? ListBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            cell.label.text = userBlockedLists[listName]?.name
+            cell.label.text = listName
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ListBlockedTableViewCell.identifier, for: indexPath) as? ListBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            
-            cell.label.text = userBlockedLists[listName]?.description ?? "Description"
-            
+            cell.label.text = blockedList?.description ?? "Description"
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DomainsBlockedTableViewCell.identifier, for: indexPath) as? DomainsBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            cell.label.text = domains?[indexPath.row].name
+            cell.label.text = blockedList?.domains[indexPath.row].name
             return cell
         default:
             return UITableViewCell()
@@ -201,10 +200,13 @@ extension ListSettingsViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let vc = ListDetailViewController()
+            vc.delegate = self
             vc.listName = listName
             navigationController?.pushViewController(vc, animated: true)
+            
         case 1:
             let vc = ListDescriptionViewController()
+            vc.delegate = self
             vc.listName = listName
             navigationController?.pushViewController(vc, animated: true)
         default:
@@ -227,13 +229,10 @@ extension ListSettingsViewController {
     func saveNewDomain(userEnteredDomainName: String) {
         didMakeChange = true
         DDLogInfo("Adding custom domain - \(userEnteredDomainName)")
+
+        addDomainToBlockedList(domain: userEnteredDomainName, for: listName)
+        blockedList = getBlockedLists().userBlockListsDefaults[listName]
         
-        let domains = getBlockedLists().userBlockListsDefaults
-        let userList = domains[listName]
-        
-        if let list = userList {
-            addDomainToBlockedList(domain: userEnteredDomainName, for: list.name.lowercased())
-        }
         tableView.reloadData()
     }
     
@@ -244,13 +243,25 @@ extension ListSettingsViewController {
             if let txtField = alertController.textFields?.first, let text = txtField.text {
                 
                 self.saveNewDomain(userEnteredDomainName: text)
-                self.tableView.reloadData()
             }
         }
+        
+        saveAction.isEnabled = false
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addTextField { (textField) in
+            textField.keyboardType = .URL
             textField.placeholder = "domain-to-block URL"
         }
+        
+        NotificationCenter.default.addObserver(
+            forName: UITextField.textDidChangeNotification,
+            object: alertController.textFields?.first,
+            queue: .main) { (notification) -> Void in
+                guard let textFieldText = alertController.textFields?.first?.text else { return }
+                saveAction.isEnabled = textFieldText.isValid(.domainName)
+            }
+        
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -308,8 +319,7 @@ extension ListSettingsViewController {
     }
     
     @objc func exportList(_ sender: UIButton) {
-        let domains = getBlockedLists().userBlockListsDefaults
-        var domainsList = domains[listName]?.domains
+        let domainsList = blockedList?.domains
         
         guard let url = domainsList?.first?.exportToURL() else { return }
         
@@ -319,5 +329,20 @@ extension ListSettingsViewController {
         )
         activity.popoverPresentationController?.sourceView = sender
         present(activity, animated: true, completion: nil)
+    }
+}
+
+extension ListSettingsViewController: ListDetailViewControllerDelegate {
+    
+    func changeListName(name: String) {
+        listName = name
+        tableView.reloadData()
+    }
+}
+
+extension ListSettingsViewController: ListDescriptionViewControllerDelegate {
+    
+    func changeListDescription(description: String) {
+        tableView.reloadData()
     }
 }

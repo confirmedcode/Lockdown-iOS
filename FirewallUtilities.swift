@@ -171,14 +171,14 @@ func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsU
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
-    let dummyList = LockdownGroup.init(
-        version: 30,
-        internalID: "dummyList",
-        name: NSLocalizedString("Dummy Domains", comment: "The title of a list of trackers"),
-        iconURL: "clickbait_icon",
-        enabled: false,
-        domains: getDomainBlockList(filename: "5000_dummy_list"),
-        ipRanges: [:])
+//    let dummyList = LockdownGroup.init(
+//        version: 30,
+//        internalID: "dummyList",
+//        name: NSLocalizedString("Dummy Domains", comment: "The title of a list of trackers"),
+//        iconURL: "clickbait_icon",
+//        enabled: false,
+//        domains: getDomainBlockList(filename: "5000_dummy_list"),
+//        ipRanges: [:])
     
     let snapchatAnalytics = LockdownGroup.init(
         version: 27,
@@ -320,8 +320,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:],
         warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.")
     
-    let defaultLockdownSettings = [dummyList,
-                                   snapchatAnalytics,
+    let defaultLockdownSettings = [snapchatAnalytics,
                                    gameAds,
                                    clickbait,
                                    crypto,
@@ -457,6 +456,15 @@ func getBlockedLists() -> UserBlockListsDefaults {
 func addBlockedList(listName: String) {
     var data = getBlockedLists()
     data.userBlockListsDefaults[listName] = UserBlockListsGroup(name: listName, enabled: false)
+    let encodedData = try? JSONEncoder().encode(data)
+    defaults.set(encodedData, forKey: kUserBlockedLists)
+}
+
+func changeBlockedListName(from listName: String, to newListName: String) {
+    var data = getBlockedLists()
+    data.userBlockListsDefaults[newListName] = data.userBlockListsDefaults[listName]
+    data.userBlockListsDefaults[newListName]?.name = newListName
+    data.userBlockListsDefaults[listName] = nil
     let encodedData = try? JSONEncoder().encode(data)
     defaults.set(encodedData, forKey: kUserBlockedLists)
 }
