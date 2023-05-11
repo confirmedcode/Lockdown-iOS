@@ -39,7 +39,7 @@ prefix = ''
 
 [blacklist]
 blacklist_file = "BLOCKLIST_FILE_HERE"
-log_file = "BLOCKLIST_LOG_HERE"
+log_file = 'query.log'
 log_format = "tsv"
 
 [static]

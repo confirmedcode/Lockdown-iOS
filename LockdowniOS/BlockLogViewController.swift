@@ -62,11 +62,11 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         blockDayCounterLabel.text = getDayMetricsString(commas: true)
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
+        refreshControl.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
         
         configureObservers()
         
-        refreshData(self);
+        refreshData(self)
     }
     
     deinit {

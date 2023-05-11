@@ -11,17 +11,14 @@ import CocoaLumberjackSwift
 import PromiseKit
 import NetworkExtension
 import PopupDialog
+import SwiftyStoreKit
 
 final class LDVpnViewController: BaseViewController {
     
     // MARK: - Properties
+    var activePlans: [Subscription.PlanType] = []
     
     var lastVPNStatus: NEVPNStatus?
-    
-    lazy var accessLevelslView: AccessLevelslView = {
-        let view = AccessLevelslView()
-        return view
-    }()
     
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -35,7 +32,7 @@ final class LDVpnViewController: BaseViewController {
         return view
     }()
     
-    private lazy var firewallTitle: UILabel = {
+    private lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Get Anonymous protection", comment: "")
         label.font = fontBold24
@@ -44,44 +41,50 @@ final class LDVpnViewController: BaseViewController {
         return label
     }()
     
-    private lazy var firewallDescriptionLabel1: DescriptionLabel = {
+    private lazy var descriptionLabel1: DescriptionLabel = {
         let label = DescriptionLabel()
         label.configure(with: DescriptionLabelViewModel(text: NSLocalizedString("Block as many trackers as you want", comment: "")))
         return label
     }()
     
-    private lazy var firewallDescriptionLabel2: DescriptionLabel = {
+    private lazy var descriptionLabel2: DescriptionLabel = {
         let label = DescriptionLabel()
         label.configure(with: DescriptionLabelViewModel(text: NSLocalizedString("Import and export your own block lists", comment: "")))
         return label
     }()
     
-    private lazy var firewallDescriptionLabel3: DescriptionLabel = {
+    private lazy var descriptionLabel3: DescriptionLabel = {
         let label = DescriptionLabel()
         label.configure(with: DescriptionLabelViewModel(text: NSLocalizedString("Access to new curated lists of trackers", comment: "")))
         return label
     }()
     
-    private lazy var firewallDescriptionLabel4: DescriptionLabel = {
+    private lazy var descriptionLabel4: DescriptionLabel = {
         let label = DescriptionLabel()
         label.configure(with: DescriptionLabelViewModel(text: NSLocalizedString("The only fully open source VPN", comment: "")))
         return label
     }()
     
-    private lazy var firewallDescriptionLabel5: DescriptionLabel = {
+    private lazy var descriptionLabel5: DescriptionLabel = {
         let label = DescriptionLabel()
         label.configure(with: DescriptionLabelViewModel(text: NSLocalizedString("Hide your identity around the world", comment: "")))
         return label
     }()
     
+    private lazy var descriptionLabel6: DescriptionLabel = {
+        let label = DescriptionLabel()
+        label.configure(with: DescriptionLabelViewModel(text: NSLocalizedString("Protect all Apple devices", comment: "")))
+        return label
+    }()
+    
     private lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
-        stackView.addArrangedSubview(firewallTitle)
-        stackView.addArrangedSubview(firewallDescriptionLabel1)
-        stackView.addArrangedSubview(firewallDescriptionLabel2)
-        stackView.addArrangedSubview(firewallDescriptionLabel3)
-        stackView.addArrangedSubview(firewallDescriptionLabel4)
-        stackView.addArrangedSubview(firewallDescriptionLabel5)
+        stackView.addArrangedSubview(mainTitle)
+        stackView.addArrangedSubview(descriptionLabel1)
+        stackView.addArrangedSubview(descriptionLabel2)
+        stackView.addArrangedSubview(descriptionLabel3)
+        stackView.addArrangedSubview(descriptionLabel4)
+        stackView.addArrangedSubview(descriptionLabel5)
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 10
@@ -153,11 +156,6 @@ final class LDVpnViewController: BaseViewController {
         
         view.backgroundColor = .systemBackground
         
-        view.addSubview(accessLevelslView)
-        accessLevelslView.anchors.top.safeAreaPin(inset: 0)
-        accessLevelslView.anchors.leading.marginsPin()
-        accessLevelslView.anchors.trailing.marginsPin()
-        
         view.addSubview(vpnSwitchControl)
         vpnSwitchControl.anchors.bottom.safeAreaPin()
         vpnSwitchControl.anchors.leading.marginsPin()
@@ -165,7 +163,7 @@ final class LDVpnViewController: BaseViewController {
         vpnSwitchControl.anchors.height.equal(56)
         
         view.addSubview(scrollView)
-        scrollView.anchors.top.spacing(18, to: accessLevelslView.anchors.bottom)
+        scrollView.anchors.top.safeAreaPin()
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
         scrollView.anchors.bottom.spacing(8, to: vpnSwitchControl.anchors.top)
@@ -214,7 +212,8 @@ final class LDVpnViewController: BaseViewController {
                     switch apiError.code {
                     case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
                         self.showPopupDialog(title: NSLocalizedString("VPN Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to re-activate the VPN.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
-                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                            self.present(VPNPaywallViewController(), animated: true)
+//                            self.performSegue(withIdentifier: "showSignup", sender: self)
                         })
                     default:
                         _ = self.popupErrorAsApiError(error)
@@ -228,13 +227,87 @@ final class LDVpnViewController: BaseViewController {
             }
         }
         
+        accountStateDidChange()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
     }
 }
 
 // MARK: - Private functions
 
-extension LDVpnViewController {
+extension LDVpnViewController: Loadable {
+    
+    @objc func accountStateDidChange() {
+        updateActiveSubscription()
+    }
+    
+    func updateActiveSubscription() {
+        showLoadingView()
+        // not logged in via email, use receipt
+        firstly {
+            try Client.signIn()
+        }.then { _ in
+            try Client.activeSubscriptions()
+        }.ensure {
+            self.hideLoadingView()
+        }.done { [self] subscriptions in
+            self.activePlans = subscriptions.map({ $0.planType })
+            if let active = subscriptions.first {
+                if  active.planType == .advancedMonthly || active.planType == .advancedYearly {
+                    descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
+                    UserDefaults.hasSeenAdvancedPaywall = true
+                } else if active.planType == .monthly || active.planType == .annual {
+                    mainTitle.text = "Get Universal protection"
+                    descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
+                    UserDefaults.hasSeenAdvancedPaywall = true
+                    UserDefaults.hasSeenAnonymousPaywall = true
+                } else if active.planType == .proAnnual || active.planType == .proMonthly {
+                    mainTitle.text = "You're fully protected"
+                    descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel5.lockImage.image = UIImage(named: "icn_checkmark")
+                    descriptionLabel6.lockImage.image = UIImage(named: "icn_checkmark")
+                    upgradeButton.isHidden = true
+                    upgradeButton.anchors.height.equal(0)
+                    UserDefaults.hasSeenAdvancedPaywall = true
+                    UserDefaults.hasSeenAnonymousPaywall = true
+                    UserDefaults.hasSeenUniversalPaywall = true
+                }
+            }
+        }.catch { [self] error in
+            DDLogError("Error reloading subscription: \(error.localizedDescription)")
+            hideLoadingView()
+            if let apiError = error as? ApiError {
+                switch apiError.code {
+                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                    UserDefaults.hasSeenAnonymousPaywall = false
+                    UserDefaults.hasSeenUniversalPaywall = false
+                case kApiCodeSandboxReceiptNotAllowed:
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                    UserDefaults.hasSeenAnonymousPaywall = false
+                    UserDefaults.hasSeenUniversalPaywall = false
+                default:
+                    DDLogError("Error loading plan: API error code - \(apiError.code)")
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                    UserDefaults.hasSeenAnonymousPaywall = false
+                    UserDefaults.hasSeenUniversalPaywall = false
+                }
+            } else {
+                DDLogError("Error loading plan: Non-API Error - \(error.localizedDescription)")
+                UserDefaults.hasSeenAdvancedPaywall = false
+                UserDefaults.hasSeenAnonymousPaywall = false
+                UserDefaults.hasSeenUniversalPaywall = false
+            }
+        }
+    }
     
     @objc func upgrade() {
         let vc = VPNPaywallViewController()
@@ -303,10 +376,12 @@ extension LDVpnViewController {
                             ])
                             self.present(confirm, animated: true, completion: nil)
                         case kApiCodeNoSubscriptionInReceipt:
-                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                            self.present(VPNPaywallViewController(), animated: true)
+//                            self.performSegue(withIdentifier: "showSignup", sender: self)
                         case kApiCodeNoActiveSubscription:
                             self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
-                                self.performSegue(withIdentifier: "showSignup", sender: self)
+                                self.present(VPNPaywallViewController(), animated: true)
+//                                self.performSegue(withIdentifier: "showSignup", sender: self)
                             })
                         default:
                             _ = self.popupErrorAsApiError(error)
@@ -334,10 +409,12 @@ extension LDVpnViewController {
                     else if let apiError = error as? ApiError {
                         switch apiError.code {
                         case kApiCodeNoSubscriptionInReceipt:
-                            self.performSegue(withIdentifier: "showSignup", sender: self)
+                            self.present(VPNPaywallViewController(), animated: true)
+//                            self.performSegue(withIdentifier: "showSignup", sender: self)
                         case kApiCodeNoActiveSubscription:
                             self.showPopupDialog(title: NSLocalizedString("Subscription Expired", comment: ""), message: NSLocalizedString("Please renew your subscription to activate the Secure Tunnel.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""), completionHandler: {
-                                self.performSegue(withIdentifier: "showSignup", sender: self)
+                                self.present(VPNPaywallViewController(), animated: true)
+//                                self.performSegue(withIdentifier: "showSignup", sender: self)
                             })
                         default:
                             if (apiError.code == kApiCodeNegativeError) {
@@ -423,4 +500,3 @@ extension LDVpnViewController {
         }
     }
 }
-

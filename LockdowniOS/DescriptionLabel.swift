@@ -16,11 +16,20 @@ final class DescriptionLabel: UIView {
     
     // MARK: - Properties
     
-    private lazy var lockImage: UIImageView = {
+    lazy var lockImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "icn_lock")
         image.contentMode = .scaleAspectFit
         image.layer.masksToBounds = true
+        return image
+    }()
+    
+    lazy var checkmarkImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "icn_checkmark")
+        image.contentMode = .scaleAspectFit
+        image.layer.masksToBounds = true
+        image.isHidden = true
         return image
     }()
     
@@ -35,6 +44,7 @@ final class DescriptionLabel: UIView {
     private lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
         stackView.addArrangedSubview(lockImage)
+        stackView.addArrangedSubview(checkmarkImage)
         stackView.addArrangedSubview(descriptionLabel)
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally

@@ -51,9 +51,8 @@ final class TrackersGroupView: UIView {
     
     lazy var number: UILabel = {
         let label = UILabel()
-        label.textColor = .label
         label.font = fontBold18
-        label.textColor = .red
+        label.textColor = .label
         label.textAlignment = .right
         return label
     }()

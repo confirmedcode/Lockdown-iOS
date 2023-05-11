@@ -11,14 +11,21 @@ import CocoaLumberjackSwift
 final class MoveToListViewController: UIViewController {
     
     // MARK: - Properties
+    
+    var moveToListCompletion: (() -> ())?
+    
     private var didMakeChange = false
+    
+    var successMessage = ""
     
     var selectedDomains: Dictionary<String, Bool> = [:] {
         didSet {
             if selectedDomains.count == 1 {
                 numberOfdomains.text = "\(selectedDomains.count) " + NSLocalizedString("domain", comment: "")
+                successMessage = "\(selectedDomains.count) domain has been moved to list successfully."
             } else {
                 numberOfdomains.text = "\(selectedDomains.count) " + NSLocalizedString("domains", comment: "")
+                successMessage = "\(selectedDomains.count) domains have been moved to list successfully."
             }
             domainsList.text = selectedDomains.map(\.0).joined(separator: ", ")
         }
@@ -194,6 +201,7 @@ private extension MoveToListViewController {
                         addDomainToBlockedList(domain: domain, for: blockedList.name)
                     }
                 }
+                moveToList()
             }
             
             cell.accessoryType = .none
@@ -247,5 +255,23 @@ private extension MoveToListViewController {
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func moveToList() {
+        for domain in selectedDomains.keys {
+            deleteUserBlockedDomain(domain: domain)
+        }
+        
+        moveToListCompletion?()
+        
+        let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""),
+                                      message: NSLocalizedString("\(successMessage)", comment: ""),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                      style: .default,
+                                      handler: { _ in
+            self.dismiss(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

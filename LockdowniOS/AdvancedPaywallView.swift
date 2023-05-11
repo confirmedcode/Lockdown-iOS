@@ -11,6 +11,8 @@ final class AdvancedPaywallView: UIView {
     
     //MARK: Properties
     
+    var isSelected: Bool = false
+    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
@@ -82,7 +84,7 @@ final class AdvancedPaywallView: UIView {
         return stackView
     }()
     
-    private lazy var buyButton1: UIButton = {
+    lazy var buyButton1: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
@@ -108,7 +110,7 @@ final class AdvancedPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $29.99 per year"
+        descriptionLabel.text = "then $35.99 per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         button.addSubview(descriptionLabel)
@@ -116,7 +118,7 @@ final class AdvancedPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $2.49 per month"
+        descriptionLabel2.text = "only $3 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)
@@ -129,7 +131,7 @@ final class AdvancedPaywallView: UIView {
         return button
     }()
     
-    private lazy var buyButton2: UIButton = {
+    lazy var buyButton2: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue

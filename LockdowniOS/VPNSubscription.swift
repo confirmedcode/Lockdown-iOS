@@ -16,21 +16,35 @@ enum SubscriptionState: Int {
 
 class VPNSubscription: NSObject {
     
+    static let productIdAdvancedMonthly = "LockdowniOSFirewallMonthly"
+    static let productIdAdvancedYearly = "LockdowniOSFirewallAnnual"
     static let productIdMonthly = "LockdowniOSVpnMonthly"
     static let productIdAnnual = "LockdowniOSVpnAnnual"
     static let productIdMonthlyPro = "LockdowniOSVpnMonthlyPro"
     static let productIdAnnualPro = "LockdowniOSVpnAnnualPro"
-    static let productIds: Set = [productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
+    static let productIds: Set = [productIdAdvancedMonthly, productIdAdvancedYearly, productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
     static var selectedProductId = productIdMonthly
     
-    static var defaultPriceStringMonthly = "$7.99 per month after"
-    static var defaultPriceStringMonthlyPro = "$11.99 per month after"
-    static var defaultPriceStringAnnual = "$49.99/year after (~$4.17/month)"
-    static var defaultPriceStringAnnualPro = "$99.99/year after (~$8.33/month)"
+    // Advanced Level
+    static var defaultPriceStringAdvancedMonthly = "$4.99/month"
+    static var defaultPriceStringAdvancedYearly = "then $35.99/year"
+    static var defaultPriceSubStringAdvancedYearly = "only $2.49/month"
     
-    static var defaultUpgradePriceStringMonthly = "$7.99 per month"
+    // Anonymous Level
+    static var defaultPriceStringMonthly = "$8.99/month"
+    static var defaultPriceStringAnnual = "then $59.99 per year"
+    static var defaultPriceSubStringAnnual = "only $4.99 per month"
+    
+    // Universal Level
+    static var defaultPriceStringMonthlyPro = "$11.99/month"
+    static var defaultPriceStringAnnualPro = "then $99.99 per year"
+    static var defaultPriceSubStringAnnualPro = "only $8.33 per month"
+    
+    static var defaultUpgradePriceStringAdvancedMonthly = "$4.99/month"
+    static var defaultUpgradePriceStringAdvancedYearly = "$29.99/year"
+    static var defaultUpgradePriceStringMonthly = "$8.99 per month"
     static var defaultUpgradePriceStringMonthlyPro = "$11.99 per month"
-    static var defaultUpgradePriceStringAnnual = "$49.99/year (~$4.17/month)"
+    static var defaultUpgradePriceStringAnnual = "$59.99/year (~$4.17/month)"
     static var defaultUpgradePriceStringAnnualPro = "$99.99/year (~$8.33/month)"
     
     static func purchase(succeeded: @escaping () -> Void, errored: @escaping (Error) -> Void) {
@@ -91,17 +105,21 @@ class VPNSubscription: NSObject {
         else {
             DDLogError("Found no cached price for productId \(productId), returning default")
             switch productId {
-                case productIdMonthly:
-                    return defaultPriceStringMonthly
-                case productIdMonthlyPro:
-                    return defaultPriceStringMonthlyPro
-                case productIdAnnual:
-                    return defaultPriceStringAnnual
-                case productIdAnnualPro:
-                    return defaultPriceStringAnnualPro
-                default:
-                    DDLogError("Invalid product Id: \(productId)")
-                    return "Invalid Price"
+            case productIdAdvancedMonthly:
+                return defaultPriceStringAdvancedMonthly
+            case productIdAdvancedYearly:
+                return defaultPriceStringAdvancedYearly
+            case productIdMonthly:
+                return defaultPriceStringMonthly
+            case productIdMonthlyPro:
+                return defaultPriceStringMonthlyPro
+            case productIdAnnual:
+                return defaultPriceStringAnnual
+            case productIdAnnualPro:
+                return defaultPriceStringAnnualPro
+            default:
+                DDLogError("Invalid product Id: \(productId)")
+                return "Invalid Price"
             }
         }
     }
@@ -115,17 +133,21 @@ class VPNSubscription: NSObject {
         else {
             DDLogError("Found no cached upgrade price for productId \(productId), returning default")
             switch productId {
-                case productIdMonthly:
-                    return defaultUpgradePriceStringMonthly
-                case productIdMonthlyPro:
-                    return defaultUpgradePriceStringMonthlyPro
-                case productIdAnnual:
-                    return defaultUpgradePriceStringAnnual
-                case productIdAnnualPro:
-                    return defaultUpgradePriceStringAnnualPro
-                default:
-                    DDLogError("Invalid product Id: \(productId)")
-                    return "Invalid Upgrade Price"
+            case productIdAdvancedMonthly:
+                return defaultUpgradePriceStringAdvancedMonthly
+            case productIdAdvancedYearly:
+                return defaultUpgradePriceStringAdvancedYearly
+            case productIdMonthly:
+                return defaultUpgradePriceStringMonthly
+            case productIdMonthlyPro:
+                return defaultUpgradePriceStringMonthlyPro
+            case productIdAnnual:
+                return defaultUpgradePriceStringAnnual
+            case productIdAnnualPro:
+                return defaultUpgradePriceStringAnnualPro
+            default:
+                DDLogError("Invalid product Id: \(productId)")
+                return "Invalid Upgrade Price"
             }
         }
     }
@@ -142,7 +164,31 @@ class VPNSubscription: NSObject {
             for product in result.retrievedProducts {
                 DDLogInfo("product locale: \(product.priceLocale)")
                 DDLogInfo("productprice: \(product.localizedPrice ?? "n/a")")
-                if product.productIdentifier == productIdMonthly {
+                if product.productIdentifier == productIdAdvancedMonthly {
+                    if product.localizedPrice != nil {
+                        DDLogInfo("setting monthly display price = " + product.localizedPrice!)
+                        setProductIdPrice(productId: productIdAdvancedMonthly, price: "\(product.localizedPrice!)/month")
+                        setProductIdUpgradePrice(productId: productIdAdvancedMonthly, upgradePrice: "\(product.localizedPrice!)/month")
+                    }
+                    else {
+                        DDLogError("monthly nil localizedPrice, setting default")
+                        setProductIdPrice(productId: productIdAdvancedMonthly, price: defaultPriceStringAdvancedMonthly)
+                        setProductIdUpgradePrice(productId: productIdAdvancedMonthly, upgradePrice: defaultUpgradePriceStringAdvancedMonthly)
+                    }
+                }
+                else if product.productIdentifier == productIdAdvancedYearly {
+                    if product.localizedPrice != nil {
+                        DDLogInfo("setting monthly display price = " + product.localizedPrice!)
+                        setProductIdPrice(productId: productIdAdvancedYearly, price: "then \(product.localizedPrice!) per year")
+                        setProductIdUpgradePrice(productId: productIdAdvancedYearly, upgradePrice: "\(product.localizedPrice!)/year")
+                    }
+                    else {
+                        DDLogError("monthly nil localizedPrice, setting default")
+                        setProductIdPrice(productId: productIdAdvancedYearly, price: defaultPriceStringAdvancedYearly)
+                        setProductIdUpgradePrice(productId: productIdAdvancedYearly, upgradePrice: defaultUpgradePriceStringAdvancedYearly)
+                    }
+                }
+                else if product.productIdentifier == productIdMonthly {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthly display price = " + product.localizedPrice!)
                         setProductIdPrice(productId: productIdMonthly, price: "\(product.localizedPrice!) per month after")
@@ -208,6 +254,10 @@ class VPNSubscription: NSObject {
 extension Subscription.PlanType {
     var productId: String? {
         switch self {
+        case .advancedMonthly:
+            return VPNSubscription.productIdAdvancedMonthly
+        case .advancedYearly:
+            return VPNSubscription.productIdAdvancedYearly
         case .monthly:
             return VPNSubscription.productIdMonthly
         case .annual:
@@ -222,15 +272,19 @@ extension Subscription.PlanType {
     }
     
     static var supported: [Subscription.PlanType] {
-        return [.monthly, .annual, .proMonthly, .proAnnual]
+        return [.advancedMonthly, .advancedYearly, .monthly, .annual, .proMonthly, .proAnnual]
     }
     
     var availableUpgrades: [Subscription.PlanType]? {
         switch self {
+        case .advancedMonthly:
+            return [.advancedYearly, .monthly, .annual, .proMonthly, .proAnnual]
+        case .advancedYearly:
+            return [.monthly, .annual, .proMonthly, .proAnnual]
         case .monthly:
             return [.annual, .proMonthly, .proAnnual]
         case .annual:
-            return [.proAnnual]
+            return [.proMonthly, .proAnnual]
         case .proMonthly:
             return [.proAnnual]
         case .proAnnual:

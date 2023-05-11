@@ -487,17 +487,17 @@ final class AccountViewController: BaseViewController, Loadable {
     }
     
     func startTutorial() {
-        if let tabBarController = tabBarController as? MainTabBarController {
-            tabBarController.selectedViewController = tabBarController.homeViewController
-            tabBarController.homeViewController.startTutorial()
-        }
+//        if let tabBarController = tabBarController as? MainTabBarController {
+//            tabBarController.selectedViewController = tabBarController.homeViewController
+//            tabBarController.homeViewController.startTutorial()
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showWhatIsVPN":
             if let vc = segue.destination as? WhatIsVpnViewController {
-                vc.parentVC = (tabBarController as? MainTabBarController)?.homeViewController
+//                vc.parentVC = (tabBarController as? MainTabBarController)?.vpnViewController
             }
         case "showUpgradePlanAccount":
             if let vc = segue.destination as? SignupViewController {

@@ -11,6 +11,8 @@ final class AnonymousPaywallView: UIView {
     
     //MARK: Properties
     
+    var isSelected: Bool = false
+    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
@@ -97,7 +99,7 @@ final class AnonymousPaywallView: UIView {
         return stackView
     }()
     
-    private lazy var buyButton1: UIButton = {
+    lazy var buyButton1: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
@@ -123,7 +125,7 @@ final class AnonymousPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $59.99 per year"
+        descriptionLabel.text = "then $49.99 per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -132,7 +134,7 @@ final class AnonymousPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $4.99 per month"
+        descriptionLabel2.text = "only $4.17 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)
@@ -160,7 +162,7 @@ final class AnonymousPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "$8.99/month"
+        descriptionLabel.text = "$4.99/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         

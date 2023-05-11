@@ -11,6 +11,7 @@ import CocoaLumberjackSwift
 import PromiseKit
 import NetworkExtension
 import PopupDialog
+import SwiftyStoreKit
 
 final class LDFirewallViewController: BaseViewController {
     
@@ -24,13 +25,16 @@ final class LDFirewallViewController: BaseViewController {
     
     var lastFirewallStatus: NEVPNStatus?
     var activePlans: [Subscription.PlanType] = []
+    let vc = FirewallPaywallViewController()
+    
+    enum Mode {
+        case newSubscription
+        case upgrade(active: [Subscription.PlanType])
+    }
+    
+    var mode = Mode.newSubscription
     
     var metricsTimer : Timer?
-    
-    lazy var accessLevelslView: AccessLevelslView = {
-        let view = AccessLevelslView()
-        return view
-    }()
     
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -44,7 +48,7 @@ final class LDFirewallViewController: BaseViewController {
         return view
     }()
     
-    private lazy var firewallTitle: UILabel = {
+    lazy var firewallTitle: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Get complete protection", comment: "")
         label.font = fontBold24
@@ -98,6 +102,7 @@ final class LDFirewallViewController: BaseViewController {
         view.placeNumber.text = "#1"
         view.placeNumber.textColor = .black
         view.titleLabel.textColor = .black
+        view.number.textColor = .black
         view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_game_marketing")!, title: "Game Marketing", number: 4678))
         view.number.isHidden = true
         return view
@@ -108,6 +113,7 @@ final class LDFirewallViewController: BaseViewController {
         view.placeNumber.text = "#2"
         view.placeNumber.textColor = .black
         view.titleLabel.textColor = .black
+        view.number.textColor = .black
         view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_marketing_trackers")!, title: "Marketing Trackers", number: 3432))
         view.number.isHidden = true
         return view
@@ -118,6 +124,7 @@ final class LDFirewallViewController: BaseViewController {
         view.placeNumber.text = "#3"
         view.placeNumber.textColor = .black
         view.titleLabel.textColor = .black
+        view.number.textColor = .black
         view.configure(with: TrackersGroupViewModel(image: UIImage(named: "icn_email_trackers")!, title: "Email Trackers", number: 2756))
         view.number.isHidden = true
         return view
@@ -217,6 +224,9 @@ final class LDFirewallViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        VPNSubscription.cacheLocalizedPrices()
+        
+        
         
         updateFirewallButtonWithStatus(status: FirewallController.shared.status())
         updateMetrics()
@@ -227,11 +237,6 @@ final class LDFirewallViewController: BaseViewController {
         
         view.backgroundColor = .systemBackground
         
-        view.addSubview(accessLevelslView)
-        accessLevelslView.anchors.top.safeAreaPin()
-        accessLevelslView.anchors.leading.marginsPin()
-        accessLevelslView.anchors.trailing.marginsPin()
-        
         view.addSubview(firewallSwitchControl)
         firewallSwitchControl.anchors.bottom.safeAreaPin()
         firewallSwitchControl.anchors.leading.marginsPin()
@@ -239,7 +244,7 @@ final class LDFirewallViewController: BaseViewController {
         firewallSwitchControl.anchors.height.equal(56)
         
         view.addSubview(scrollView)
-        scrollView.anchors.top.spacing(18, to: accessLevelslView.anchors.bottom)
+        scrollView.anchors.top.safeAreaPin()
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
         scrollView.anchors.bottom.spacing(8, to: firewallSwitchControl.anchors.top)
@@ -274,10 +279,80 @@ final class LDFirewallViewController: BaseViewController {
         statisitcsView.anchors.top.spacing(18, to: maStackView.anchors.bottom)
         statisitcsView.anchors.leading.marginsPin()
         statisitcsView.anchors.trailing.marginsPin()
+        
+        accountStateDidChange()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(accountStateDidChange), name: Notification.Name("AdvancedPlanActive"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateMetrics()
     }
 }
 
-extension LDFirewallViewController {
+extension LDFirewallViewController: Loadable {
+    
+    @objc func accountStateDidChange() {
+        updateActiveSubscription()
+    }
+    
+    func updateUI() {
+        firewallTitle.isHidden = true
+        firewallDescriptionLabel1.isHidden = true
+        firewallDescriptionLabel2.isHidden = true
+        firewallDescriptionLabel3.isHidden = true
+        upgradeButton.isHidden = true
+        upgradeButton.anchors.height.equal(0)
+        cpTrackersGroupView1.lockImage.isHidden = true
+        cpTrackersGroupView1.number.isHidden = false
+        cpTrackersGroupView2.lockImage.isHidden = true
+        cpTrackersGroupView2.number.isHidden = false
+        cpTrackersGroupView3.lockImage.isHidden = true
+        cpTrackersGroupView3.number.isHidden = false
+        cpTitle.text = "Most active not blocked"
+    }
+    
+    func updateActiveSubscription() {
+        showLoadingView()
+        // not logged in via email, use receipt
+        firstly {
+            try Client.signIn()
+        }.then { _ in
+            try Client.activeSubscriptions()
+        }.ensure {
+            self.hideLoadingView()
+        }.done { [self] subscriptions in
+            self.activePlans = subscriptions.map({ $0.planType })
+            if let active = subscriptions.first {
+                if active.planType == .proAnnual || active.planType == .proMonthly || active.planType == .advancedMonthly || active.planType == .advancedYearly || active.planType == .monthly || active.planType == .annual {
+                    updateUI()
+                    UserDefaults.hasSeenAdvancedPaywall = true
+                } else {
+                    firewallTitle.textColor = .red
+                }
+            } else {
+                firewallTitle.textColor = .red
+            }
+        }.catch { [self] error in
+            DDLogError("Error reloading subscription: \(error.localizedDescription)")
+            hideLoadingView()
+            if let apiError = error as? ApiError {
+                switch apiError.code {
+                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                case kApiCodeSandboxReceiptNotAllowed:
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                default:
+                    DDLogError("Error loading plan: API error code - \(apiError.code)")
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                }
+            } else {
+                DDLogError("Error loading plan: Non-API Error - \(error.localizedDescription)")
+                UserDefaults.hasSeenAdvancedPaywall = false
+            }
+        }
+    }
     
     @objc func upgrade() {
         let vc = FirewallPaywallViewController()
@@ -305,12 +380,15 @@ extension LDFirewallViewController {
     }
     
     @objc func updateMetrics() {
-        DispatchQueue.main.async {
-//            self.dailyMetrics?.text = getDayMetricsString()
-//            self.weeklyMetrics?.text = getWeekMetricsString()
-//            self.allTimeMetrics?.text = getTotalMetricsString()
+        DispatchQueue.main.async { [unowned self] in
+            self.statisitcsView.enabledBoxView.numberLabel.text = String(getTotalEnabled().count)
+            self.statisitcsView.disabledBoxView.numberLabel.text = String(getTotalDisabled().count)
+            self.statisitcsView.requestsBoxView.numberLabel.text = String(Int.random(in: 1..<144))
+            self.statisitcsView.blockedBoxView.numberLabel.text = String(getAllBlockedDomains().count)
         }
     }
+    
+    
     
     func toggleFirewall() {
         if (defaults.bool(forKey: kHasAgreedToFirewallPrivacyPolicy) == false) {

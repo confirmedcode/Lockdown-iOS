@@ -1,0 +1,14 @@
+﻿cdn.mxpnl.com
+hotjar.com
+script.hotjar.com
+googletagmanager.com
+firebase-settings.crashlytics.com
+vc.hotjar.io
+sessions.bugsnag.com
+pendo.io
+bounceexchange.com
+wunderkind.co
+hexagon-analytics.com
+cdn.attn.tv
+bounce.net
+brand metrics.com

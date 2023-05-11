@@ -11,6 +11,8 @@ final class UniversalPaywallView: UIView {
     
     //MARK: Properties
     
+    var isSelected: Bool = false
+    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
@@ -89,7 +91,7 @@ final class UniversalPaywallView: UIView {
         return stackView
     }()
     
-    private lazy var buyButton1: UIButton = {
+    lazy var buyButton1: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
@@ -115,7 +117,7 @@ final class UniversalPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $99.99 per year"
+        descriptionLabel.text = "then $74.99 per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +126,7 @@ final class UniversalPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $8.33 per month"
+        descriptionLabel2.text = "only $6.25 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)
