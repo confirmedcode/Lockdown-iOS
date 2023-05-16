@@ -325,7 +325,7 @@ func setupFirewallDefaultBlockLists() {
         version: 1,
         internalID: "ifunnyTrackers",
         name: NSLocalizedString("iFunny Trackers", comment: "The title of a list of trackers"),
-        iconURL: "game_ads_icon",
+        iconURL: "icn_vpn",
         enabled: false,
         domains: getDomainBlockList(filename: "ifunny_trackers"),
         ipRanges: [:])
@@ -334,7 +334,7 @@ func setupFirewallDefaultBlockLists() {
         version: 1,
         internalID: "advancedGaming",
         name: NSLocalizedString("Advanced Gaming", comment: "The title of a list of trackers"),
-        iconURL: "game_ads_icon",
+        iconURL: "icn_vpn",
         enabled: false,
         domains: getDomainBlockList(filename: "advanced_gaming"),
         ipRanges: [:])
@@ -343,7 +343,7 @@ func setupFirewallDefaultBlockLists() {
         version: 1,
         internalID: "tiktokTrackers",
         name: NSLocalizedString("Tiktok Trackers", comment: "The title of a list of trackers"),
-        iconURL: "game_ads_icon",
+        iconURL: "icn_vpn",
         enabled: false,
         domains: getDomainBlockList(filename: "tiktok_trackers"),
         ipRanges: [:])
@@ -352,7 +352,7 @@ func setupFirewallDefaultBlockLists() {
         version: 1,
         internalID: "scams",
         name: NSLocalizedString("Scams", comment: "The title of a list of trackers"),
-        iconURL: "game_ads_icon",
+        iconURL: "icn_vpn",
         enabled: false,
         domains: getDomainBlockList(filename: "scams"),
         ipRanges: [:])
@@ -361,7 +361,7 @@ func setupFirewallDefaultBlockLists() {
         version: 1,
         internalID: "junesJourneyTrackers",
         name: NSLocalizedString("Junes Journey Trackers", comment: "The title of a list of trackers"),
-        iconURL: "game_ads_icon",
+        iconURL: "icn_vpn",
         enabled: false,
         domains: getDomainBlockList(filename: "junes_journey_trackers"),
         ipRanges: [:])
@@ -370,7 +370,7 @@ func setupFirewallDefaultBlockLists() {
         version: 1,
         internalID: "advancedAnalytics",
         name: NSLocalizedString("Advanced Analytics", comment: "The title of a list of trackers"),
-        iconURL: "game_ads_icon",
+        iconURL: "icn_vpn",
         enabled: false,
         domains: getDomainBlockList(filename: "advanced_analytics"),
         ipRanges: [:])

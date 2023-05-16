@@ -59,8 +59,8 @@ class SetRegionViewController: BaseViewController, UITableViewDataSource, UITabl
             WidgetCenter.shared.reloadAllTimelines()
         }
 
-        if vpnVC != nil {
-            vpnVC!.updateVPNRegionLabel()
+        if homeVC != nil {
+            homeVC!.updateVPNRegionLabel()
         }
         
         dismiss(animated: true, completion: {

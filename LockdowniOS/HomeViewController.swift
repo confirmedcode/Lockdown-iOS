@@ -151,7 +151,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         //performSegue(withIdentifier: "showSignup", sender: nil)
         
         if (defaults.bool(forKey: kHasViewedTutorial) == false) {
-            startTutorial()
+//            startTutorial()
         }
         else if (defaults.bool(forKey: kHasSeenEmailSignup) == false) {
             AccountUI.presentCreateAccount(on: self)

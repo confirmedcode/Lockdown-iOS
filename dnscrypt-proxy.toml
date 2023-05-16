@@ -30,7 +30,7 @@ log_level = 2
 ios_mode = true
 retry_count = 5
 
-[sources.public-resolvers]
+[sources.public-resolvers  ]
 urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
 cache_file = 'public-resolvers.md'
 minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
@@ -39,7 +39,7 @@ prefix = ''
 
 [blacklist]
 blacklist_file = "BLOCKLIST_FILE_HERE"
-log_file = 'query.log'
+log_file = 'BLOCKLIST_LOG_HERE'
 log_format = "tsv"
 
 [static]
