@@ -81,7 +81,6 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(systemName: "plus", withConfiguration: symbolConfig), for: .normal)
         button.addTarget(self, action: #selector(showSubmenu), for: .touchUpInside)
-        button.isEnabled = UserDefaults.hasSeenAdvancedPaywall ? true : false
         return button
     }()
     
@@ -129,7 +128,6 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(named: "icn_edit"), for: .normal)
         button.addTarget(self, action: #selector(editDomains), for: .touchUpInside)
-        button.isHidden = true
         return button
     }()
     
@@ -149,6 +147,12 @@ final class BlockListViewController: BaseViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            editDomainButton.isEnabled = true
+        } else {
+            editDomainButton.isEnabled = false
+        }
         
         configure()
         configureCuratedBlockedDomainsTableView()
@@ -372,7 +376,8 @@ extension BlockListViewController {
         let emptyList = emptyListsView
         let lockedList = lockedListsView
         
-        if UserDefaults.hasSeenAdvancedPaywall {
+        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            addNewListButton.isEnabled = true
             if customBlockedLists.count == 0 {
                 tableView.addRow { (contentView) in
                     contentView.addSubview(emptyList)

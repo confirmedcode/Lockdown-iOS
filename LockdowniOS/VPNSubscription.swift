@@ -9,6 +9,7 @@ import UIKit
 import SwiftyStoreKit
 import PromiseKit
 import CocoaLumberjackSwift
+import StoreKit
 
 enum SubscriptionState: Int {
     case Uninitialized = 1, Subscribed, NotSubscribed
@@ -23,11 +24,11 @@ class VPNSubscription: NSObject {
     static let productIdMonthlyPro = "LockdowniOSVpnMonthlyPro"
     static let productIdAnnualPro = "LockdowniOSVpnAnnualPro"
     static let productIds: Set = [productIdAdvancedMonthly, productIdAdvancedYearly, productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
-    static var selectedProductId = productIdMonthly
+    static var selectedProductId = productIdAdvancedMonthly
     
     // Advanced Level
     static var defaultPriceStringAdvancedMonthly = "$4.99/month"
-    static var defaultPriceStringAdvancedYearly = "then $35.99/year"
+    static var defaultPriceStringAdvancedYearly = "then $29.99/year"
     static var defaultPriceSubStringAdvancedYearly = "only $2.49/month"
     
     // Anonymous Level
@@ -44,7 +45,7 @@ class VPNSubscription: NSObject {
     static var defaultUpgradePriceStringAdvancedYearly = "$29.99/year"
     static var defaultUpgradePriceStringMonthly = "$8.99 per month"
     static var defaultUpgradePriceStringMonthlyPro = "$11.99 per month"
-    static var defaultUpgradePriceStringAnnual = "$59.99/year (~$4.17/month)"
+    static var defaultUpgradePriceStringAnnual = "$59.99/year (~$4.99/month)"
     static var defaultUpgradePriceStringAnnualPro = "$99.99/year (~$8.33/month)"
     
     static func purchase(succeeded: @escaping () -> Void, errored: @escaping (Error) -> Void) {
@@ -167,8 +168,8 @@ class VPNSubscription: NSObject {
                 if product.productIdentifier == productIdAdvancedMonthly {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthly display price = " + product.localizedPrice!)
-                        setProductIdPrice(productId: productIdAdvancedMonthly, price: "\(product.localizedPrice!)/month")
-                        setProductIdUpgradePrice(productId: productIdAdvancedMonthly, upgradePrice: "\(product.localizedPrice!)/month")
+                        setProductIdPrice(productId: productIdAdvancedMonthly, price: "\(product.localizedPrice!)")
+                        setProductIdUpgradePrice(productId: productIdAdvancedMonthly, upgradePrice: "\(product.localizedPrice!)")
                     }
                     else {
                         DDLogError("monthly nil localizedPrice, setting default")
@@ -179,8 +180,8 @@ class VPNSubscription: NSObject {
                 else if product.productIdentifier == productIdAdvancedYearly {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthly display price = " + product.localizedPrice!)
-                        setProductIdPrice(productId: productIdAdvancedYearly, price: "then \(product.localizedPrice!) per year")
-                        setProductIdUpgradePrice(productId: productIdAdvancedYearly, upgradePrice: "\(product.localizedPrice!)/year")
+                        setProductIdPrice(productId: productIdAdvancedYearly, price: "\(product.localizedPrice!)")
+                        setProductIdUpgradePrice(productId: productIdAdvancedYearly, upgradePrice: "\(product.localizedPrice!)")
                     }
                     else {
                         DDLogError("monthly nil localizedPrice, setting default")
@@ -191,8 +192,8 @@ class VPNSubscription: NSObject {
                 else if product.productIdentifier == productIdMonthly {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthly display price = " + product.localizedPrice!)
-                        setProductIdPrice(productId: productIdMonthly, price: "\(product.localizedPrice!) per month after")
-                        setProductIdUpgradePrice(productId: productIdMonthly, upgradePrice: "\(product.localizedPrice!) per month")
+                        setProductIdPrice(productId: productIdMonthly, price: "\(product.localizedPrice!)")
+                        setProductIdUpgradePrice(productId: productIdMonthly, upgradePrice: "\(product.localizedPrice!)")
                     }
                     else {
                         DDLogError("monthly nil localizedPrice, setting default")
@@ -203,8 +204,8 @@ class VPNSubscription: NSObject {
                 else if product.productIdentifier == productIdMonthlyPro {
                     if product.localizedPrice != nil {
                         DDLogInfo("setting monthlyPro display price = " + product.localizedPrice!)
-                        setProductIdPrice(productId: productIdMonthlyPro, price: "\(product.localizedPrice!) per month after")
-                        setProductIdUpgradePrice(productId: productIdMonthlyPro, upgradePrice: "\(product.localizedPrice!) per month")
+                        setProductIdPrice(productId: productIdMonthlyPro, price: "\(product.localizedPrice!)")
+                        setProductIdUpgradePrice(productId: productIdMonthlyPro, upgradePrice: "\(product.localizedPrice!)")
                     }
                     else {
                         DDLogError("monthlyPro nil localizedPrice, setting default")
@@ -216,10 +217,10 @@ class VPNSubscription: NSObject {
                     currencyFormatter.locale = product.priceLocale
                     let priceMonthly = product.price.dividing(by: 12)
                     DDLogInfo("annual price = \(product.price)")
-                    if let priceString = currencyFormatter.string(from: product.price), let priceStringMonthly = currencyFormatter.string(from: priceMonthly) {
+                    if let priceString = currencyFormatter.string(from: product.price) {
                         DDLogInfo("setting annual display price = annual product price / 12 = " + priceString)
-                        setProductIdPrice(productId: productIdAnnual, price: "\(priceString)/year after (~\(priceStringMonthly)/month)")
-                        setProductIdUpgradePrice(productId: productIdAnnual, upgradePrice: "\(priceString)/year (~\(priceStringMonthly)/month)")
+                        setProductIdPrice(productId: productIdAnnual, price: "\(priceString)")
+                        setProductIdUpgradePrice(productId: productIdAnnual, upgradePrice: "\(priceString)")
                     }
                     else {
                         DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)
@@ -231,10 +232,10 @@ class VPNSubscription: NSObject {
                     currencyFormatter.locale = product.priceLocale
                     let priceMonthly = product.price.dividing(by: 12)
                     DDLogInfo("annualPro price = \(product.price)")
-                    if let priceString = currencyFormatter.string(from: product.price), let priceStringMonthly = currencyFormatter.string(from: priceMonthly) {
+                    if let priceString = currencyFormatter.string(from: product.price) {
                         DDLogInfo("setting annualPro display price = annualPro product price / 12 = " + priceString)
-                        setProductIdPrice(productId: productIdAnnualPro, price: "\(priceString)/year after (~\(priceStringMonthly)/month)")
-                        setProductIdUpgradePrice(productId: productIdAnnualPro, upgradePrice: "\(priceString)/year (~\(priceStringMonthly)/month)")
+                        setProductIdPrice(productId: productIdAnnualPro, price: "\(priceString)")
+                        setProductIdUpgradePrice(productId: productIdAnnualPro, upgradePrice: "\(priceString)")
                     }
                     else {
                         DDLogError("unable to format price with currencyformatter: " + product.price.stringValue)

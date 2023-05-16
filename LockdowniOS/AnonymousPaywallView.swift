@@ -123,9 +123,9 @@ final class AnonymousPaywallView: UIView {
         titleLabel.anchors.top.pin(inset: 16)
         titleLabel.anchors.leading.pin(inset: 24)
         
-        let descriptionLabel = UILabel()
+        var descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $49.99 per year"
+        descriptionLabel.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)) per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +134,7 @@ final class AnonymousPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $4.17 per month"
+        descriptionLabel2.text = "only $4.99 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)
@@ -145,6 +145,33 @@ final class AnonymousPaywallView: UIView {
         button.addTarget(self, action: #selector(buy), for: .touchUpInside)
         return button
     }()
+    
+    lazy var button1TitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("7-Day FREE TRIAL", comment: "")
+        label.font = fontBold15
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        buyButton1.addSubview(button1TitleLabel)
+        label.anchors.top.pin(inset: 16)
+        label.anchors.leading.pin(inset: 24)
+        return label
+    }()
+    
+    lazy var button1DescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = fontMedium11
+        label.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)) per year"
+        label.textColor = .white
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        buyButton1.addSubview(button1DescriptionLabel)
+        label.anchors.top.spacing(4, to: button1TitleLabel.anchors.bottom)
+        label.anchors.leading.pin(inset: 24)
+        
+        return label
+    }()
+    
     
     lazy var buyButton2: UIButton = {
         let button = UIButton(type: .system)
@@ -162,7 +189,7 @@ final class AnonymousPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "$4.99/month"
+        descriptionLabel.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly))/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         

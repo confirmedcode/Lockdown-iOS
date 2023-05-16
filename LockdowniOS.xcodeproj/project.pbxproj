@@ -261,6 +261,13 @@
 		40960B0D2A034054000F82EB /* LockdownStorageIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960B0C2A034054000F82EB /* LockdownStorageIdentifier.swift */; };
 		40960B0E2A034054000F82EB /* LockdownStorageIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960B0C2A034054000F82EB /* LockdownStorageIdentifier.swift */; };
 		40960B152A034400000F82EB /* Keychainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960B142A034400000F82EB /* Keychainable.swift */; };
+		40E7A2F22A0CE8AE00E0231A /* advanced_gaming.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2EC2A0CE8AE00E0231A /* advanced_gaming.txt */; };
+		40E7A2F82A0CE92900E0231A /* ifunny_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F32A0CE92800E0231A /* ifunny_trackers.txt */; };
+		40E7A2F92A0CE92900E0231A /* junes_journey_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F42A0CE92800E0231A /* junes_journey_trackers.txt */; };
+		40E7A2FA2A0CE92900E0231A /* scams.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F52A0CE92800E0231A /* scams.txt */; };
+		40E7A2FB2A0CE92900E0231A /* tiktok_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F62A0CE92800E0231A /* tiktok_trackers.txt */; };
+		40E7A2FC2A0CE92900E0231A /* advanced_analytics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F72A0CE92900E0231A /* advanced_analytics.txt */; };
+		40E7A3012A0E1C7A00E0231A /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */; };
 		40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC414229F74C7900BD7396 /* String+Extensions.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
@@ -711,6 +718,13 @@
 		40960B092A03400E000F82EB /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		40960B0C2A034054000F82EB /* LockdownStorageIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockdownStorageIdentifier.swift; sourceTree = "<group>"; };
 		40960B142A034400000F82EB /* Keychainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychainable.swift; sourceTree = "<group>"; };
+		40E7A2EC2A0CE8AE00E0231A /* advanced_gaming.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = advanced_gaming.txt; sourceTree = "<group>"; };
+		40E7A2F32A0CE92800E0231A /* ifunny_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ifunny_trackers.txt; sourceTree = "<group>"; };
+		40E7A2F42A0CE92800E0231A /* junes_journey_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = junes_journey_trackers.txt; sourceTree = "<group>"; };
+		40E7A2F52A0CE92800E0231A /* scams.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scams.txt; sourceTree = "<group>"; };
+		40E7A2F62A0CE92800E0231A /* tiktok_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tiktok_trackers.txt; sourceTree = "<group>"; };
+		40E7A2F72A0CE92900E0231A /* advanced_analytics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = advanced_analytics.txt; sourceTree = "<group>"; };
+		40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
 		40FC414229F74C7900BD7396 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4CA426CE326B009F3E4493D1 /* Pods_Lockdown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -977,6 +991,12 @@
 		3D0971D522EBAAEE00CCD326 /* Domains */ = {
 			isa = PBXGroup;
 			children = (
+				40E7A2F72A0CE92900E0231A /* advanced_analytics.txt */,
+				40E7A2F32A0CE92800E0231A /* ifunny_trackers.txt */,
+				40E7A2F42A0CE92800E0231A /* junes_journey_trackers.txt */,
+				40E7A2F52A0CE92800E0231A /* scams.txt */,
+				40E7A2F62A0CE92800E0231A /* tiktok_trackers.txt */,
+				40E7A2EC2A0CE8AE00E0231A /* advanced_gaming.txt */,
 				3DD545DA2808C2F6005E140C /* 5000_dummy_list.txt */,
 				3DAA6B4E22EA76420018FC09 /* clickbait.txt */,
 				3D5F5A0723107C1E004C3860 /* game_ads.txt */,
@@ -1512,6 +1532,30 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		40E7A2FD2A0E1C3200E0231A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				40E7A2FE2A0E1C4500E0231A /* Splashscreen */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		40E7A2FE2A0E1C4500E0231A /* Splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				40E7A2FF2A0E1C5600E0231A /* ViewController */,
+			);
+			name = Splashscreen;
+			sourceTree = "<group>";
+		};
+		40E7A2FF2A0E1C5600E0231A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		7C0D11102473EDFD00A26E04 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1650,6 +1694,7 @@
 		A1141A131F46230500F54698 /* LockdowniOS */ = {
 			isa = PBXGroup;
 			children = (
+				40E7A2FD2A0E1C3200E0231A /* Presentation */,
 				40960B042A033EE8000F82EB /* Core */,
 				40960AF92A033E2E000F82EB /* Business Logic */,
 				402D24CE29D87EF300A5AB60 /* Scenes */,
@@ -2245,6 +2290,7 @@
 				A1D85F0B207C562F00B766E0 /* adBlockListThree.json in Resources */,
 				A1159FCC207C228300DA4670 /* privacyBlockList.json in Resources */,
 				A1159FCD207C228300DA4670 /* socialBlockList.json in Resources */,
+				40E7A2F22A0CE8AE00E0231A /* advanced_gaming.txt in Resources */,
 				A1FCDA8722CDE8C000C928BC /* crypto_mining_ips.txt in Resources */,
 				3D752C342357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf in Resources */,
 				A1159FCE207C228300DA4670 /* adBlockList.json in Resources */,
@@ -2254,6 +2300,7 @@
 				3D44378422DFB22600908CDC /* Montserrat-SemiBold.ttf in Resources */,
 				3D01D97B2480DCB3003A710C /* data_trackers.txt in Resources */,
 				3D44378022DFB22600908CDC /* Montserrat-Medium.ttf in Resources */,
+				40E7A2F82A0CE92900E0231A /* ifunny_trackers.txt in Resources */,
 				A15F3C751F79DC8F00B07F03 /* LaunchScreen.storyboard in Resources */,
 				3DD545DB2808C2F6005E140C /* 5000_dummy_list.txt in Resources */,
 				A1FCDA8522CDE60800C928BC /* crypto_mining.txt in Resources */,
@@ -2268,8 +2315,10 @@
 				3D752C362357FA3B00C163E4 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				3D44378222DFB22600908CDC /* Montserrat-Thin.ttf in Resources */,
 				A1FCDA8A22D3BA1900C928BC /* facebook_inc_ips.txt in Resources */,
+				40E7A2F92A0CE92900E0231A /* junes_journey_trackers.txt in Resources */,
 				3DAA6B4F22EA76420018FC09 /* clickbait.txt in Resources */,
 				A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */,
+				40E7A2FB2A0CE92900E0231A /* tiktok_trackers.txt in Resources */,
 				A1141A1C1F46230500F54698 /* Assets.xcassets in Resources */,
 				3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */,
 				A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */,
@@ -2282,6 +2331,8 @@
 				3D40826327F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				3D5464D323037CCA00AE1F73 /* Settings.bundle in Resources */,
 				20816D1FD569053C0994232B /* Pods-Lockdown-metadata.plist in Resources */,
+				40E7A2FC2A0CE92900E0231A /* advanced_analytics.txt in Resources */,
+				40E7A2FA2A0CE92900E0231A /* scams.txt in Resources */,
 				C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2683,6 +2734,7 @@
 				A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */,
 				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */,
+				40E7A3012A0E1C7A00E0231A /* SplashscreenViewController.swift in Sources */,
 				3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */,
 				A1EBEAD02097AE6E002B9087 /* M13CheckboxController.swift in Sources */,
@@ -2921,7 +2973,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2958,7 +3010,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3051,7 +3103,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3089,7 +3141,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3240,7 +3292,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3280,7 +3332,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3326,7 +3378,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3369,7 +3421,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3405,7 +3457,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3435,7 +3487,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3467,7 +3519,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3524,7 +3576,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

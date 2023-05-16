@@ -95,9 +95,9 @@ final class AdvancedPaywallView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         button.addSubview(imageView)
         NSLayoutConstraint.activate([
-                imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: 0),
-                imageView.topAnchor.constraint(equalTo: button.topAnchor, constant: 0)
-            ])
+            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: 0),
+            imageView.topAnchor.constraint(equalTo: button.topAnchor, constant: 0)
+        ])
         
         let titleLabel = UILabel()
         titleLabel.text = NSLocalizedString("7-Day FREE TRIAL", comment: "")
@@ -110,7 +110,7 @@ final class AdvancedPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $35.99 per year"
+        descriptionLabel.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)) per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         button.addSubview(descriptionLabel)
@@ -118,13 +118,13 @@ final class AdvancedPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $3 per month"
+        descriptionLabel2.text = "only $2.49 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)
         descriptionLabel2.anchors.top.spacing(14, to: imageView.anchors.bottom)
         descriptionLabel2.anchors.trailing.pin(inset: 24)
-
+        
         
         button.anchors.height.equal(66)
         button.addTarget(self, action: #selector(buyButton1Clicked), for: .touchUpInside)
@@ -147,7 +147,7 @@ final class AdvancedPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "$4.99/month"
+        descriptionLabel.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly))/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
             

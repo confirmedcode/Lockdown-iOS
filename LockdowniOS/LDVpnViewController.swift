@@ -32,6 +32,36 @@ final class LDVpnViewController: BaseViewController {
         return view
     }()
     
+    private lazy var yourCurrentPlanLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Your current plan is", comment: "")
+        label.font = fontRegular14
+        label.numberOfLines = 0
+        label.textColor = .label
+        return label
+    }()
+    
+    private lazy var upgradeLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Upgrade?", comment: "")
+        label.font = fontBold13
+        label.textColor = .tunnelsBlue
+        label.isUserInteractionEnabled = true
+        label.setOnClickListener {
+            let vc = VPNPaywallViewController()
+            self.present(vc, animated: true)
+        }
+        return label
+    }()
+    
+    private lazy var protectionPlanLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Basic Protection", comment: "")
+        label.font = fontBold22
+        label.textColor = .label
+        return label
+    }()
+    
     private lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Get Anonymous protection", comment: "")
@@ -162,8 +192,20 @@ final class LDVpnViewController: BaseViewController {
         vpnSwitchControl.anchors.trailing.marginsPin()
         vpnSwitchControl.anchors.height.equal(56)
         
+        view.addSubview(yourCurrentPlanLabel)
+        yourCurrentPlanLabel.anchors.leading.marginsPin()
+        yourCurrentPlanLabel.anchors.top.safeAreaPin()
+        
+        view.addSubview(upgradeLabel)
+        upgradeLabel.anchors.trailing.marginsPin()
+        upgradeLabel.anchors.centerY.equal(yourCurrentPlanLabel.anchors.centerY)
+        
+        view.addSubview(protectionPlanLabel)
+        protectionPlanLabel.anchors.top.spacing(8, to: yourCurrentPlanLabel.anchors.bottom)
+        protectionPlanLabel.anchors.leading.marginsPin()
+        
         view.addSubview(scrollView)
-        scrollView.anchors.top.safeAreaPin()
+        scrollView.anchors.top.spacing(12, to: protectionPlanLabel.anchors.bottom)
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
         scrollView.anchors.bottom.spacing(8, to: vpnSwitchControl.anchors.top)
@@ -216,7 +258,8 @@ final class LDVpnViewController: BaseViewController {
 //                            self.performSegue(withIdentifier: "showSignup", sender: self)
                         })
                     default:
-                        _ = self.popupErrorAsApiError(error)
+//                        _ = self.popupErrorAsApiError(error)
+                        break
                     }
                 }
                 else {
@@ -227,7 +270,34 @@ final class LDVpnViewController: BaseViewController {
             }
         }
         
-        accountStateDidChange()
+        if UserDefaults.hasSeenAnonymousPaywall {
+            mainTitle.text = "Get Universal protection"
+            descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
+            protectionPlanLabel.text = "Anonymous protection"
+        } else if UserDefaults.hasSeenUniversalPaywall {
+            mainTitle.text = "You're fully protected"
+            descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel5.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel6.lockImage.image = UIImage(named: "icn_checkmark")
+            upgradeButton.isHidden = true
+            upgradeButton.anchors.height.equal(0)
+            protectionPlanLabel.text = "Universal protection"
+        } else if UserDefaults.hasSeenAdvancedPaywall {
+            descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
+            descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
+            protectionPlanLabel.text = "Advanced protection"
+        } else {
+            protectionPlanLabel.text = "Basic protection"
+        }
+        
+//        accountStateDidChange()
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
     }
@@ -428,7 +498,9 @@ extension LDVpnViewController: Loadable {
                                 }
                             }
                             else {
-                                _ = self.popupErrorAsApiError(error)
+//                                _ = self.popupErrorAsApiError(error)
+                                self.updateVPNButtonWithStatus(status: .connecting)
+                                VPNController.shared.setEnabled(true)
                             }
                         }
                     }

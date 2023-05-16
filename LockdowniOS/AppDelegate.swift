@@ -60,7 +60,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         connectivityService.startObservingConnectivity()
         
+        // Content Blocker
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: LockdownStorageIdentifier.contentBlockerId) { error in
+            if error != nil {
+                DDLogError("Error loading Content Blocker: \(String(describing: error))")
+            }
+        }
         
+        // Prepare IAP
+        
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)")
+                if purchase.transaction.transactionState == .purchased || purchase.transaction.transactionState == .restored {
+                    if purchase.needsFinishTransaction {
+                        DDLogInfo("Finishing transaction for purchase: \(purchase)")
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                }
+            }
+        }
+        
+        VPNSubscription.cacheLocalizedPrices()
+        
+        BaseUserService.shared.updateUserSubscription{ subscription in
+            if subscription?.planType == .monthly || subscription?.planType == .annual {
+                UserDefaults.hasSeenAdvancedPaywall = false
+                UserDefaults.hasSeenUniversalPaywall = false
+                UserDefaults.hasSeenAnonymousPaywall = true
+            }
+            else if subscription?.planType == .proMonthly || subscription?.planType == .proAnnual {
+                UserDefaults.hasSeenAnonymousPaywall = false
+                UserDefaults.hasSeenAdvancedPaywall = false
+                UserDefaults.hasSeenUniversalPaywall = true
+            } else {
+                UserDefaults.hasSeenAnonymousPaywall = false
+                UserDefaults.hasSeenAdvancedPaywall = false
+                UserDefaults.hasSeenUniversalPaywall = false
+            }
+        }
         
         // Set up PopupDialog
         let dialogAppearance = PopupDialogDefaultView.appearance()
@@ -110,12 +148,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         cancelButtonAppearance.titleFont      = fontSemiBold17
         cancelButtonAppearance.titleColor     = UIColor.lightGray
-
-        // Lockdown default lists
-        setupFirewallDefaultBlockLists()
-        
-        // Whitelist default domains
-        setupLockdownWhitelistedDomains()
         
         // Show indicator at top when internet not reachable
         reachability?.whenReachable = { reachability in
@@ -136,27 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try reachability?.startNotifier()
         } catch {
             DDLogError("Unable to start reachability notifier")
-        }
-        
-        // Content Blocker
-        SFContentBlockerManager.reloadContentBlocker( withIdentifier: "com.confirmed.lockdown.Confirmed-Blocker") { (_ error: Error?) -> Void in
-            if error != nil {
-                DDLogError("Error loading Content Blocker: \(String(describing: error))")
-            }
-        }
-        
-        // Prepare IAP
-        VPNSubscription.cacheLocalizedPrices()
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)");
-                if purchase.transaction.transactionState == .purchased || purchase.transaction.transactionState == .restored {
-                    if purchase.needsFinishTransaction {
-                        DDLogInfo("Finishing transaction for purchase: \(purchase)")
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                }
-            }
         }
         
         // Periodically check if the firewall is functioning correctly - every 2.5 hours
@@ -423,14 +434,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         else if (host == "toggleFirewall") {
-            if let home = self.getCurrentViewController() as? HomeViewController {
-                home.toggleFirewall(self)
+            if let home = self.getCurrentViewController() as? LDFirewallViewController {
+                home.toggleFirewall()
             }
         }
         
         else if (host == "toggleVPN") {
-            if let home = self.getCurrentViewController() as? HomeViewController {
-                home.toggleVPN(self)
+            if let home = self.getCurrentViewController() as? LDVpnViewController {
+                home.toggleVPN()
             }
         }
         

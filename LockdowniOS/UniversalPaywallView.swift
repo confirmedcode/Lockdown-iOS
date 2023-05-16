@@ -117,7 +117,7 @@ final class UniversalPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $74.99 per year"
+        descriptionLabel.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro)) per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +126,7 @@ final class UniversalPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $6.25 per month"
+        descriptionLabel2.text = "only $8.33 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)
@@ -154,7 +154,7 @@ final class UniversalPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "$11.99/month"
+        descriptionLabel.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro))/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         

@@ -309,9 +309,6 @@ extension ListSettingsViewController {
     }
     
     func setBlockingEnabled(_ isEnabled: Bool) {
-        if let vc = self.blockListVC {
-            vc.didMakeChange = true
-        }
         
         let domains = getBlockedLists().userBlockListsDefaults
         var userList = domains[listName]
@@ -322,6 +319,10 @@ extension ListSettingsViewController {
         data.userBlockListsDefaults[listName] = userList
         let encodedData = try? JSONEncoder().encode(data)
         defaults.set(encodedData, forKey: kUserBlockedLists)
+        
+        if let vc = self.blockListVC {
+            vc.didMakeChange = true
+        }
     }
     
     @objc func exportList(_ sender: UIButton) {

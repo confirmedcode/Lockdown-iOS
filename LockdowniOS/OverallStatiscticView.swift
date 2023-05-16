@@ -24,7 +24,7 @@ final class BoxLabelView: UIView {
         view.layer.cornerRadius = 4
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 1
-        view.anchors.height.equal(65)
+        view.anchors.height.equal(85)
         return view
     }()
     
@@ -96,13 +96,6 @@ final class OverallStatiscticView: UIView {
         return box
     }()
     
-    lazy var requestsBoxView: BoxLabelView = {
-        let box = BoxLabelView()
-        box.numberLabel.text = "0.9K"
-        box.boxTitle.text = "Requests"
-        return box
-    }()
-    
     lazy var blockedBoxView: BoxLabelView = {
         let box = BoxLabelView()
         box.numberLabel.text = "0.2K"
@@ -114,7 +107,6 @@ final class OverallStatiscticView: UIView {
         let stackView  = UIStackView()
         stackView.addArrangedSubview(enabledBoxView)
         stackView.addArrangedSubview(disabledBoxView)
-        stackView.addArrangedSubview(requestsBoxView)
         stackView.addArrangedSubview(blockedBoxView)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

@@ -48,6 +48,36 @@ final class LDFirewallViewController: BaseViewController {
         return view
     }()
     
+    lazy var yourCurrentPlanLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Your current plan is", comment: "")
+        label.font = fontRegular14
+        label.numberOfLines = 0
+        label.textColor = .label
+        return label
+    }()
+    
+    lazy var upgradeLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Upgrade?", comment: "")
+        label.font = fontBold13
+        label.textColor = .tunnelsBlue
+        label.isUserInteractionEnabled = true
+        label.setOnClickListener {
+            let vc = VPNPaywallViewController()
+            self.present(vc, animated: true)
+        }
+        return label
+    }()
+    
+    lazy var protectionPlanLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Basic Protection", comment: "")
+        label.font = fontBold22
+        label.textColor = .label
+        return label
+    }()
+    
     lazy var firewallTitle: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Get complete protection", comment: "")
@@ -226,8 +256,6 @@ final class LDFirewallViewController: BaseViewController {
         super.viewDidLoad()
         VPNSubscription.cacheLocalizedPrices()
         
-        
-        
         updateFirewallButtonWithStatus(status: FirewallController.shared.status())
         updateMetrics()
         if metricsTimer == nil {
@@ -243,8 +271,20 @@ final class LDFirewallViewController: BaseViewController {
         firewallSwitchControl.anchors.trailing.marginsPin()
         firewallSwitchControl.anchors.height.equal(56)
         
+        view.addSubview(yourCurrentPlanLabel)
+        yourCurrentPlanLabel.anchors.leading.marginsPin()
+        yourCurrentPlanLabel.anchors.top.safeAreaPin()
+        
+        view.addSubview(upgradeLabel)
+        upgradeLabel.anchors.trailing.marginsPin()
+        upgradeLabel.anchors.centerY.equal(yourCurrentPlanLabel.anchors.centerY)
+        
+        view.addSubview(protectionPlanLabel)
+        protectionPlanLabel.anchors.top.spacing(8, to: yourCurrentPlanLabel.anchors.bottom)
+        protectionPlanLabel.anchors.leading.marginsPin()
+        
         view.addSubview(scrollView)
-        scrollView.anchors.top.safeAreaPin()
+        scrollView.anchors.top.spacing(12, to: protectionPlanLabel.anchors.bottom)
         scrollView.anchors.leading.pin()
         scrollView.anchors.trailing.pin()
         scrollView.anchors.bottom.spacing(8, to: firewallSwitchControl.anchors.top)
@@ -260,13 +300,8 @@ final class LDFirewallViewController: BaseViewController {
         stackView.anchors.leading.marginsPin()
         stackView.anchors.trailing.marginsPin()
         
-        contentView.addSubview(cpStackView)
-        cpStackView.anchors.top.spacing(18, to: stackView.anchors.bottom)
-        cpStackView.anchors.leading.marginsPin()
-        cpStackView.anchors.trailing.marginsPin()
-        
         contentView.addSubview(upgradeButton)
-        upgradeButton.anchors.top.spacing(18, to: cpStackView.anchors.bottom)
+        upgradeButton.anchors.top.spacing(18, to: stackView.anchors.bottom)
         upgradeButton.anchors.leading.marginsPin()
         upgradeButton.anchors.trailing.marginsPin()
         
@@ -280,9 +315,11 @@ final class LDFirewallViewController: BaseViewController {
         statisitcsView.anchors.leading.marginsPin()
         statisitcsView.anchors.trailing.marginsPin()
         
-        accountStateDidChange()
+        updateProtectionPlanUI()
+
+//        accountStateDidChange()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(accountStateDidChange), name: Notification.Name("AdvancedPlanActive"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -295,6 +332,21 @@ extension LDFirewallViewController: Loadable {
     
     @objc func accountStateDidChange() {
         updateActiveSubscription()
+    }
+    
+    func updateProtectionPlanUI() {
+        if UserDefaults.hasSeenUniversalPaywall {
+            updateUI()
+            protectionPlanLabel.text = "Universal protection"
+        } else if UserDefaults.hasSeenAnonymousPaywall {
+            updateUI()
+            protectionPlanLabel.text = "Anonymous protection"
+        } else if UserDefaults.hasSeenAdvancedPaywall {
+            updateUI()
+            protectionPlanLabel.text = "Advanced protection"
+        } else {
+            protectionPlanLabel.text = "Basic protection"
+        }
     }
     
     func updateUI() {
@@ -310,7 +362,6 @@ extension LDFirewallViewController: Loadable {
         cpTrackersGroupView2.number.isHidden = false
         cpTrackersGroupView3.lockImage.isHidden = true
         cpTrackersGroupView3.number.isHidden = false
-        cpTitle.text = "Most active not blocked"
     }
     
     func updateActiveSubscription() {
@@ -325,9 +376,15 @@ extension LDFirewallViewController: Loadable {
         }.done { [self] subscriptions in
             self.activePlans = subscriptions.map({ $0.planType })
             if let active = subscriptions.first {
-                if active.planType == .proAnnual || active.planType == .proMonthly || active.planType == .advancedMonthly || active.planType == .advancedYearly || active.planType == .monthly || active.planType == .annual {
+                if active.planType == .proAnnual || active.planType == .proMonthly {
+                    protectionPlanLabel.text = "Universal protection"
                     updateUI()
-                    UserDefaults.hasSeenAdvancedPaywall = true
+                } else if active.planType == .monthly || active.planType == .annual {
+                    updateUI()
+                    protectionPlanLabel.text = "Anonymous protection"
+                } else if active.planType == .advancedMonthly || active.planType == .advancedYearly {
+                    updateUI()
+                    protectionPlanLabel.text = "Advanced protection"
                 } else {
                     firewallTitle.textColor = .red
                 }
@@ -383,12 +440,9 @@ extension LDFirewallViewController: Loadable {
         DispatchQueue.main.async { [unowned self] in
             self.statisitcsView.enabledBoxView.numberLabel.text = String(getTotalEnabled().count)
             self.statisitcsView.disabledBoxView.numberLabel.text = String(getTotalDisabled().count)
-            self.statisitcsView.requestsBoxView.numberLabel.text = String(Int.random(in: 1..<144))
             self.statisitcsView.blockedBoxView.numberLabel.text = String(getAllBlockedDomains().count)
         }
     }
-    
-    
     
     func toggleFirewall() {
         if (defaults.bool(forKey: kHasAgreedToFirewallPrivacyPolicy) == false) {

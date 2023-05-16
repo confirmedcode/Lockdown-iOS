@@ -67,8 +67,13 @@ final class LDConfigurationViewController: UIViewController {
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [weak self] in
             guard let self else { return }
-            let vc = ImportBlockListViewController()
-            self.present(vc, animated: true)
+            if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+                let vc = ImportBlockListViewController()
+                self.present(vc, animated: true)
+            } else {
+                let vc = VPNPaywallViewController()
+                self.present(vc, animated: true)
+            }
         }
         return view
     }()

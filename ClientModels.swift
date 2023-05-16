@@ -89,4 +89,3 @@ public extension RawValueCodable where RawValue: Codable {
         try container.encode(rawValue)
     }
 }
-

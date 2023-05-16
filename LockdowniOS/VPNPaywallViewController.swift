@@ -125,6 +125,10 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     
     lazy var advancedView: AdvancedPaywallView = {
         let view = AdvancedPaywallView()
+        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            view.buyButton1.isEnabled = false
+            view.buyButton2.isEnabled = false
+        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAdvancedYearly()
             startTrial()
@@ -139,6 +143,10 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var anonymousView: AnonymousPaywallView = {
         let view = AnonymousPaywallView()
         view.isHidden = true
+        if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            view.buyButton1.isEnabled = false
+            view.buyButton2.isEnabled = false
+        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAnonymousYearly()
             startTrial()
@@ -153,6 +161,10 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var universalView: UniversalPaywallView = {
         let view = UniversalPaywallView()
         view.isHidden = true
+        if UserDefaults.hasSeenUniversalPaywall {
+            view.buyButton1.isEnabled = false
+            view.buyButton2.isEnabled = false
+        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectUniversalYearly()
             startTrial()
@@ -191,7 +203,6 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .paywallNew
-        
         configureUI()
     }
     
@@ -244,8 +255,6 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     @objc func closeButtonClicked() {
         dismiss(animated: true)
     }
-    
-    
     
     @objc private func labelTapped(sender: UITapGestureRecognizer) {
         let termsRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Terms of Service", comment: "").count - 18, length: NSLocalizedString("Terms of Service", comment: "").count)
@@ -310,11 +319,9 @@ extension VPNPaywallViewController: ProductPurchasable {
         if advancedView.isSelected {
             let monthlyPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly, for: context)
             let annualPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly, for: context)
-//            ftPriceLabel.text = "7-day free trial, then \(priceLabel). Cancel anytime."
         } else if anonymousView.isSelected {
             let monthlyPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly, for: context)
             let annualPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual, for: context)
-//            ftPriceLabel.text = "7-day free trial, then \(priceLabel). Cancel anytime."
         } else if universalView.isSelected {
             let monthlyPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro, for: context)
             let annualPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro, for: context)
@@ -328,7 +335,23 @@ extension VPNPaywallViewController: ProductPurchasable {
                 self.dismiss(animated: true, completion: {
                     if let presentingViewController = self.parentVC as? LDVpnViewController {
                         // TODO: change view of LDFirewallViewController
-                        
+                    }
+                    if self.anonymousView.isSelected {
+                        UserDefaults.hasSeenAnonymousPaywall = true
+                        UserDefaults.hasSeenUniversalPaywall = false
+                        UserDefaults.hasSeenAdvancedPaywall = false
+                    } else if self.universalView.isSelected {
+                        UserDefaults.hasSeenAnonymousPaywall = false
+                        UserDefaults.hasSeenUniversalPaywall = true
+                        UserDefaults.hasSeenAdvancedPaywall = false
+                    } else if  self.advancedView.isSelected {
+                        UserDefaults.hasSeenAnonymousPaywall = false
+                        UserDefaults.hasSeenUniversalPaywall = false
+                        UserDefaults.hasSeenAdvancedPaywall = true
+                    } else {
+                        UserDefaults.hasSeenAnonymousPaywall = false
+                        UserDefaults.hasSeenUniversalPaywall = false
+                        UserDefaults.hasSeenAdvancedPaywall = false
                     }
                     // force refresh receipt, and sync with email if it exists, activate VPNte
                     if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
@@ -419,7 +442,8 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
                     self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
                 } else if self.popupErrorAsNSURLError(error) {
                     return
-                } else if self.popupErrorAsApiError(error) {
+                }
+                else if self.popupErrorAsApiError(error) {
                     return
                 } else {
                     self.showPopupDialog(

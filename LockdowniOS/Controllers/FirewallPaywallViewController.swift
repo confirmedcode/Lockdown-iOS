@@ -48,8 +48,8 @@ final class FirewallPaywallViewController: BaseViewController, Loadable {
     private lazy var annualPlan: AdvancedPlansViews = {
         let view = AdvancedPlansViews()
         view.title.text = "Annual"
-        view.detailTitle.text = "$35.99/year"
-        view.detailTitle2.text = "$3/month"
+        view.detailTitle.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly))/year"
+        view.detailTitle2.text = "$2.99/month"
         view.discountImageView.image = UIImage(named: "saveDiscount")
         view.iconImageView.image = UIImage(named: "fill-1")
         view.backgroundView.layer.borderColor = UIColor.white.cgColor
@@ -68,7 +68,7 @@ final class FirewallPaywallViewController: BaseViewController, Loadable {
             monthlyPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
             monthlyPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
             
-            ftPriceLabel.text = "7-day free trial, then $29.99 yearly. Cancel anytime."
+            ftPriceLabel.text = "7-day free trial, then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)) yearly. Cancel anytime."
         }
         return view
     }()
@@ -76,7 +76,7 @@ final class FirewallPaywallViewController: BaseViewController, Loadable {
     private lazy var monthlyPlan: AdvancedPlansViews = {
         let view = AdvancedPlansViews()
         view.title.text = "Monthly"
-        view.detailTitle.text = "$4.99/month"
+        view.detailTitle.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly))/month"
         view.detailTitle2.text = "  "
         view.isUserInteractionEnabled = true
         
@@ -93,7 +93,7 @@ final class FirewallPaywallViewController: BaseViewController, Loadable {
             annualPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
             annualPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
             
-            ftPriceLabel.text = "7-day free trial, then $4.99 monthly. Cancel anytime."
+            ftPriceLabel.text = "7-day free trial, then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly)) monthly. Cancel anytime."
         }
         return view
     }()
@@ -111,7 +111,7 @@ final class FirewallPaywallViewController: BaseViewController, Loadable {
     
     lazy var ftPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("7-day free trial, then $35.99 yearly. Cancel anytime.", comment: "")
+        label.text = NSLocalizedString("7-day free trial, then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)) yearly. Cancel anytime.", comment: "")
         label.textColor = .smallGrey
         label.font = fontMedium11
         label.textAlignment = .center
@@ -401,13 +401,7 @@ extension FirewallPaywallViewController: ProductPurchasable {
                         
                         // TODO: change view of LDFirewallViewController
                     }
-                    
-                    advancedPlanUpdated?()
                     UserDefaults.hasSeenAdvancedPaywall = true
-//                    if let vc = firewallVC {
-//                        vc.advancedPlanUpdated = true
-//                        UserDefaults.hasSeenAdvancedPaywall = true
-//                    }
                     
                     // force refresh receipt, and sync with email if it exists, activate VPNte
                     if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {

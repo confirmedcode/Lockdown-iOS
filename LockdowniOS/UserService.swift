@@ -58,7 +58,6 @@ final class BaseUserService: UserService {
             }.done { subscriptions in
                 DDLogInfo("active-subs: \(subscriptions)")
                 NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
-                
                 self.user.updateSubscription(to: subscriptions.first)
                 completion(subscriptions.first)
             }.catch { error in
@@ -69,6 +68,7 @@ final class BaseUserService: UserService {
                     DDLogError("Error loading plan: Non-API Error - \(error.localizedDescription)")
                 }
                 self.user.updateSubscription(to: nil)
+                // TODO: to change later when there will be data on the server
                 completion(nil)
             }
         }

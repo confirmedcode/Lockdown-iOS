@@ -1068,7 +1068,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A simple, powerful firewall that stops connections to trackers, malware and other bad agents.  Free and open source." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Qj-yK-k5A">
-                                <rect key="frame" x="24" y="211.5" width="327" height="128.5"/>
+                                <rect key="frame" x="24" y="211.5" width="327" height="161"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1098,7 +1098,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6y-cc-pyT">
-                                <rect key="frame" x="107.5" y="602" width="160" height="31"/>
+                                <rect key="frame" x="95.5" y="602" width="184" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <state key="normal" title="Why Trust Lockdown?">
                                     <color key="titleColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1187,7 +1187,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocking Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-nB-tAb">
-                                                <rect key="frame" x="20" y="6.5" width="125.5" height="30"/>
+                                                <rect key="frame" x="20" y="6.5" width="144" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZgL-en-Q3V"/>
                                                 </constraints>
@@ -1351,7 +1351,7 @@
                                                 <rect key="frame" x="344" y="0.0" width="31" height="73"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xt8-uP-JgS">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xt8-uP-JgS">
                                                 <rect key="frame" x="73.5" y="7" width="293.5" height="38.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="9jN-wn-44u"/>
@@ -1453,7 +1453,7 @@
                                                     <action selector="annualTapped:" destination="uhi-Bj-03J" eventType="valueChanged" id="Lkt-A8-pnc"/>
                                                 </connections>
                                             </view>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Annual (Save ~50%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-KH-z1j">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous Annual (Save ~50%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-KH-z1j">
                                                 <rect key="frame" x="73.5" y="7" width="293.5" height="38.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="evj-cu-zx7"/>
@@ -1490,7 +1490,7 @@
                                                 <rect key="frame" x="344" y="0.0" width="31" height="72.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6Y-nW-xhv">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Universal Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6Y-nW-xhv">
                                                 <rect key="frame" x="73.5" y="7" width="293.5" height="38.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="PoX-VC-lK0"/>
@@ -1592,7 +1592,7 @@
                                                     <action selector="annualProTapped:" destination="uhi-Bj-03J" eventType="valueChanged" id="G8D-3e-zKC"/>
                                                 </connections>
                                             </view>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pro Annual (Save ~30%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASZ-so-4BJ">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Universal Annual (Save ~30%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASZ-so-4BJ">
                                                 <rect key="frame" x="73.5" y="7.5" width="293.5" height="38.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.5" id="TS3-2d-dVZ"/>
@@ -3034,7 +3034,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wPU-g5-s3s">
-                                <rect key="frame" x="37.5" y="175" width="300.5" height="34"/>
+                                <rect key="frame" x="33" y="176" width="309" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="hHY-9d-5Uw"/>
                                 </constraints>
@@ -3042,13 +3042,13 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMa-F3-KUG">
-                                <rect key="frame" x="34" y="158" width="29.5" height="14"/>
+                                <rect key="frame" x="29.5" y="158" width="34.5" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-Kz-eVg">
-                                <rect key="frame" x="37.5" y="234" width="300.5" height="34"/>
+                                <rect key="frame" x="33" y="236" width="309" height="34"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
@@ -3056,7 +3056,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3y-bX-UkA">
-                                <rect key="frame" x="34" y="217" width="53.5" height="14"/>
+                                <rect key="frame" x="29.5" y="218" width="58" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -3071,7 +3071,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJW-8m-Vk5">
-                                <rect key="frame" x="37.5" y="274" width="300.5" height="38.5"/>
+                                <rect key="frame" x="33" y="276" width="309" height="40.5"/>
                                 <string key="text">Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one symbol.</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3209,7 +3209,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KMj-n0-VnV">
-                                <rect key="frame" x="24" y="147" width="327" height="34"/>
+                                <rect key="frame" x="24" y="148" width="327" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="750" constant="400" id="Y17-UK-EsH"/>
                                 </constraints>
@@ -3217,18 +3217,18 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asx-fS-ufQ">
-                                <rect key="frame" x="24" y="130" width="29.5" height="14"/>
+                                <rect key="frame" x="24" y="130" width="34.5" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0XQ-Qd-SAy">
-                                <rect key="frame" x="24" y="206" width="327" height="34"/>
+                                <rect key="frame" x="24" y="208" width="327" height="34"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCb-D1-AbS">
-                                <rect key="frame" x="24" y="189" width="53.5" height="14"/>
+                                <rect key="frame" x="24" y="190" width="58" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -3361,7 +3361,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXd-nf-bzR">
-                                <rect key="frame" x="24" y="155" width="327" height="34"/>
+                                <rect key="frame" x="24" y="156" width="327" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="750" constant="400" id="aqM-gh-6bG"/>
                                 </constraints>
@@ -3369,7 +3369,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-Jd-iUo">
-                                <rect key="frame" x="24" y="138" width="29.5" height="14"/>
+                                <rect key="frame" x="24" y="138" width="34.5" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -3471,7 +3471,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="Lob-gK-5lR">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yjd-Jn-wK5" customClass="MainTabBarController" customModule="Lockdown" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="yjd-Jn-wK5" customClass="MainTabBarController" customModule="Lockdown" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZaO-Uc-o9X">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -3558,7 +3558,7 @@
         <scene sceneID="Ukn-8j-czd">
             <objects>
                 <navigationController id="iEl-zS-nFt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Configuration" image="gearshape" catalog="system" id="zu3-Y2-tf2"/>
+                    <tabBarItem key="tabBarItem" title="Configuration" image="icn_configuration" id="zu3-Y2-tf2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yvf-h3-UiG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3679,8 +3679,8 @@
     <resources>
         <image name="blue_circle" width="156" height="156"/>
         <image name="book" catalog="system" width="128" height="99"/>
-        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="globe" width="120" height="120"/>
+        <image name="icn_configuration" width="22" height="23"/>
         <image name="icn_firewall" width="19" height="22"/>
         <image name="icn_vpn" width="22" height="22"/>
         <image name="lock.shield.fill" catalog="system" width="128" height="119"/>
