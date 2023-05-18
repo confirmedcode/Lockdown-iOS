@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_72" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnableNotificationsViewController" customModule="Lockdown" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="UOQ-rH-dFv" id="OFd-aN-3vC"/>
+                <outlet property="enableNotificationsButton" destination="APZ-Qg-G3M" id="7oJ-31-Ii7"/>
+                <outlet property="imageBackgroundView" destination="4Oy-Cf-TzY" id="Zsf-Uf-dsv"/>
+                <outlet property="maybeLaterButton" destination="pvw-hr-3rW" id="8wD-oz-uYe"/>
+                <outlet property="stayInLoopLabel" destination="HFy-sV-CJY" id="VwD-mU-1zi"/>
+                <outlet property="view" destination="iN0-l3-epB" id="BR6-Kv-hLU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Stay in the Loop" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HFy-sV-CJY">
+                    <rect key="frame" x="16" y="91" width="390" height="32"/>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Once a week helpful reminders about your security and how to make most of it. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="UOQ-rH-dFv">
+                    <rect key="frame" x="16" y="131" width="390" height="41.666666666666657"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvw-hr-3rW">
+                    <rect key="frame" x="24" y="849" width="382" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="420" id="hSb-M6-szb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Maybe Later">
+                        <color key="titleColor" name="Confirmed Blue"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapMaybeLater:" destination="-1" eventType="touchUpInside" id="pLn-Yn-Sdz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APZ-Qg-G3M">
+                    <rect key="frame" x="24" y="769" width="382" height="56"/>
+                    <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="490-u5-I5w"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="WiM-53-vlY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Enable Notifications"/>
+                    <connections>
+                        <action selector="didTapEnableNotifications:" destination="-1" eventType="touchUpInside" id="cye-7k-xy6"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="4Oy-Cf-TzY">
+                    <rect key="frame" x="42" y="274.33333333333337" width="346" height="383.33333333333337"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GreenShield" translatesAutoresizingMaskIntoConstraints="NO" id="ptu-7H-f8V">
+                            <rect key="frame" x="50" y="50" width="246" height="283.33333333333331"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.011764705882352941" green="0.40000000000000002" blue="0.85490196078431369" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ptu-7H-f8V" secondAttribute="trailing" constant="50" id="APL-Qy-RtD"/>
+                        <constraint firstAttribute="bottom" secondItem="ptu-7H-f8V" secondAttribute="bottom" constant="50" id="IUU-Ki-a3N"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="NyC-yy-hbQ"/>
+                        <constraint firstAttribute="width" secondItem="4Oy-Cf-TzY" secondAttribute="height" multiplier="270:299" id="Pat-57-lon"/>
+                        <constraint firstItem="ptu-7H-f8V" firstAttribute="leading" secondItem="4Oy-Cf-TzY" secondAttribute="leading" constant="50" id="THp-VA-8SR"/>
+                        <constraint firstItem="ptu-7H-f8V" firstAttribute="top" secondItem="4Oy-Cf-TzY" secondAttribute="top" constant="50" id="nGJ-eY-rcO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="APZ-Qg-G3M" secondAttribute="trailing" priority="999" constant="24" id="3KE-Zf-BxM"/>
+                <constraint firstItem="4Oy-Cf-TzY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="999" constant="42" id="3eN-xX-YyB"/>
+                <constraint firstItem="HFy-sV-CJY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="E0c-Jq-9Uq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pvw-hr-3rW" secondAttribute="bottom" constant="16" id="EF8-7x-dum"/>
+                <constraint firstItem="4Oy-Cf-TzY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UOQ-rH-dFv" secondAttribute="bottom" constant="16" id="SGF-J0-3yq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4Oy-Cf-TzY" secondAttribute="trailing" priority="999" constant="42" id="Va4-Dx-txx"/>
+                <constraint firstItem="UOQ-rH-dFv" firstAttribute="top" secondItem="HFy-sV-CJY" secondAttribute="bottom" constant="8" id="Xq1-yr-L0p"/>
+                <constraint firstItem="APZ-Qg-G3M" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="999" constant="24" id="byH-AX-Gdo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HFy-sV-CJY" secondAttribute="trailing" constant="24" id="cMO-La-SIz"/>
+                <constraint firstItem="4Oy-Cf-TzY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cmg-EZ-pIs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pvw-hr-3rW" secondAttribute="trailing" priority="999" constant="24" id="dLU-RE-31N"/>
+                <constraint firstItem="pvw-hr-3rW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="999" constant="24" id="fBv-i5-9QY"/>
+                <constraint firstItem="pvw-hr-3rW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fpQ-z5-Wws"/>
+                <constraint firstItem="HFy-sV-CJY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" priority="750" constant="32" id="grT-qp-9jp"/>
+                <constraint firstItem="pvw-hr-3rW" firstAttribute="top" secondItem="APZ-Qg-G3M" secondAttribute="bottom" constant="24" id="pao-l2-ZNJ"/>
+                <constraint firstItem="APZ-Qg-G3M" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qFf-wV-2K9"/>
+                <constraint firstItem="4Oy-Cf-TzY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sqf-hA-KqE"/>
+                <constraint firstAttribute="trailing" secondItem="UOQ-rH-dFv" secondAttribute="trailing" constant="24" id="t9v-6Z-2Rm"/>
+                <constraint firstItem="UOQ-rH-dFv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vRY-jB-cCW"/>
+            </constraints>
+            <point key="canvasLocation" x="90.839694656488547" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="GreenShield" width="164" height="187"/>
+        <namedColor name="Confirmed Blue">
+            <color red="0.0" green="0.67450980392156867" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -25,6 +25,8 @@ final class BlockListViewController: BaseViewController {
     let customBlockedListsTableView = StaticTableView()
     let customBlockedDomainsTableView = StaticTableView()
     
+    
+    
     private lazy var listsSubmenuView: ListsSubmenuView = {
         let view = ListsSubmenuView()
         view.topButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
@@ -81,6 +83,7 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(systemName: "plus", withConfiguration: symbolConfig), for: .normal)
         button.addTarget(self, action: #selector(showSubmenu), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -128,6 +131,7 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(named: "icn_edit"), for: .normal)
         button.addTarget(self, action: #selector(editDomains), for: .touchUpInside)
+//        button.isEnabled = false
         return button
     }()
     
@@ -147,12 +151,6 @@ final class BlockListViewController: BaseViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        
-        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-            editDomainButton.isEnabled = true
-        } else {
-            editDomainButton.isEnabled = false
-        }
         
         configure()
         configureCuratedBlockedDomainsTableView()
@@ -298,11 +296,21 @@ final class BlockListViewController: BaseViewController {
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
             }.onSelect { [unowned self] in
-                let storyboard = UIStoryboard.main
-                let target = storyboard.instantiate(BlockListGroupViewController.self)
-                target.lockdownGroup = lockdownGroup
-                target.blockListVC = self
-                self.navigationController?.pushViewController(target, animated: true)
+                if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+                    let storyboard = UIStoryboard.main
+                    let target = storyboard.instantiate(BlockListGroupViewController.self)
+                    target.lockdownGroup = lockdownGroup
+                    target.blockListVC = self
+                    self.navigationController?.pushViewController(target, animated: true)
+                } else {
+                    if lockdownGroup.enabled {
+                        let storyboard = UIStoryboard.main
+                        let target = storyboard.instantiate(BlockListGroupViewController.self)
+                        target.lockdownGroup = lockdownGroup
+                        target.blockListVC = self
+                        self.navigationController?.pushViewController(target, animated: true)
+                    }
+                }
             }
             
             cell.accessoryType = .disclosureIndicator
@@ -391,7 +399,7 @@ extension BlockListViewController {
                 contentView.addSubview(lockedList)
                 lockedList.anchors.edges.pin()
             }.onSelect {
-                let vc = FirewallPaywallViewController()
+                let vc = VPNPaywallViewController()
                 self.present(vc, animated: true)
             }
         }

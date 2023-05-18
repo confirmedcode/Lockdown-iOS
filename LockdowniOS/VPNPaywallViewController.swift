@@ -12,6 +12,10 @@ import PromiseKit
 import CocoaLumberjackSwift
 import StoreKit
 
+protocol VPNPaywallViewControllerCloseDelegate: AnyObject {
+    func didClosePaywall()
+}
+
 final class VPNPaywallViewController: BaseViewController, Loadable {
     
     var parentVC: UIViewController?
@@ -22,6 +26,11 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     }
     
     var mode = Mode.newSubscription
+    
+//    private let existingSubscription: Subscription?
+//    private let paywallService: PaywallService
+    
+    weak var delegate: VPNPaywallViewControllerCloseDelegate?
     
     //MARK: Properties
     private var titleName = NSLocalizedString("Lockdown", comment: "")
@@ -125,10 +134,10 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     
     lazy var advancedView: AdvancedPaywallView = {
         let view = AdvancedPaywallView()
-        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-            view.buyButton1.isEnabled = false
-            view.buyButton2.isEnabled = false
-        }
+//        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+//            view.buyButton1.isEnabled = false
+//            view.buyButton2.isEnabled = false
+//        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAdvancedYearly()
             startTrial()
@@ -143,10 +152,10 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var anonymousView: AnonymousPaywallView = {
         let view = AnonymousPaywallView()
         view.isHidden = true
-        if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-            view.buyButton1.isEnabled = false
-            view.buyButton2.isEnabled = false
-        }
+//        if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+//            view.buyButton1.isEnabled = false
+//            view.buyButton2.isEnabled = false
+//        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAnonymousYearly()
             startTrial()
@@ -333,25 +342,16 @@ extension VPNPaywallViewController: ProductPurchasable {
         VPNSubscription.purchase(
             succeeded: {
                 self.dismiss(animated: true, completion: {
-                    if let presentingViewController = self.parentVC as? LDVpnViewController {
+                    
+                    let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+                    let vc = SplashscreenViewController()
+                    let navigation = UINavigationController(rootViewController: vc)
+                    keyWindow?.rootViewController = navigation
+                    
+//             Do not show onboarding if user has seen the previous onboarding or has already seen this new one
+                    
+                    if let presentingViewController = self.parentVC as? HomeViewController {
                         // TODO: change view of LDFirewallViewController
-                    }
-                    if self.anonymousView.isSelected {
-                        UserDefaults.hasSeenAnonymousPaywall = true
-                        UserDefaults.hasSeenUniversalPaywall = false
-                        UserDefaults.hasSeenAdvancedPaywall = false
-                    } else if self.universalView.isSelected {
-                        UserDefaults.hasSeenAnonymousPaywall = false
-                        UserDefaults.hasSeenUniversalPaywall = true
-                        UserDefaults.hasSeenAdvancedPaywall = false
-                    } else if  self.advancedView.isSelected {
-                        UserDefaults.hasSeenAnonymousPaywall = false
-                        UserDefaults.hasSeenUniversalPaywall = false
-                        UserDefaults.hasSeenAdvancedPaywall = true
-                    } else {
-                        UserDefaults.hasSeenAnonymousPaywall = false
-                        UserDefaults.hasSeenUniversalPaywall = false
-                        UserDefaults.hasSeenAdvancedPaywall = false
                     }
                     // force refresh receipt, and sync with email if it exists, activate VPNte
                     if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
@@ -370,7 +370,7 @@ extension VPNPaywallViewController: ProductPurchasable {
                         .done { (getKey: GetKey) in
                             try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
                             DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
-                            VPNController.shared.setEnabled(true)
+//                            VPNController.shared.setEnabled(true)
                         }
                         .catch { error in
                             DDLogError("purchase complete: Error: \(error)")
@@ -393,7 +393,7 @@ extension VPNPaywallViewController: ProductPurchasable {
                         }
                         .done { (getKey: GetKey) in
                             try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                            VPNController.shared.setEnabled(true)
+//                            VPNController.shared.setEnabled(true)
                         }
                         .catch { error in
                             DDLogError("purchase complete - no email: Error: \(error)")
@@ -410,8 +410,9 @@ extension VPNPaywallViewController: ProductPurchasable {
                 })
             },
             errored: { error in
-                DDLogError("Start Trial Failed: \(error)")
                 self.hideLoadingView()
+                DDLogError("Start Trial Failed: \(error)")
+                
                 if let skError = error as? SKError {
                     var errorText = ""
                     switch skError.code {
@@ -442,8 +443,7 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
                     self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
                 } else if self.popupErrorAsNSURLError(error) {
                     return
-                }
-                else if self.popupErrorAsApiError(error) {
+                } else if self.popupErrorAsApiError(error) {
                     return
                 } else {
                     self.showPopupDialog(

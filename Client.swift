@@ -291,7 +291,7 @@ class Client {
     
     // MARK: - Util
     
-    private static func getReceipt(forceRefresh: Bool) -> Promise<String> {
+    static func getReceipt(forceRefresh: Bool) -> Promise<String> {
         DDLogInfo("fetch and set latest receipt")
         return Promise { seal in
             SwiftyStoreKit.fetchReceipt(forceRefresh: forceRefresh) { result in

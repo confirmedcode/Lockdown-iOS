@@ -24,7 +24,8 @@ final class EditDomainsViewController: UIViewController {
                 bottomMenu.middleButton.isEnabled = false
                 bottomMenu.rightButton.isEnabled = false
             } else {
-                bottomMenu.middleButton.isEnabled = true
+                if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+                    bottomMenu.middleButton.isEnabled = true }
                 bottomMenu.rightButton.isEnabled = true
             }
         }

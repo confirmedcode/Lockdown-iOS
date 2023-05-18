@@ -83,23 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         VPNSubscription.cacheLocalizedPrices()
         
-        BaseUserService.shared.updateUserSubscription{ subscription in
-            if subscription?.planType == .monthly || subscription?.planType == .annual {
-                UserDefaults.hasSeenAdvancedPaywall = false
-                UserDefaults.hasSeenUniversalPaywall = false
-                UserDefaults.hasSeenAnonymousPaywall = true
-            }
-            else if subscription?.planType == .proMonthly || subscription?.planType == .proAnnual {
-                UserDefaults.hasSeenAnonymousPaywall = false
-                UserDefaults.hasSeenAdvancedPaywall = false
-                UserDefaults.hasSeenUniversalPaywall = true
-            } else {
-                UserDefaults.hasSeenAnonymousPaywall = false
-                UserDefaults.hasSeenAdvancedPaywall = false
-                UserDefaults.hasSeenUniversalPaywall = false
-            }
-        }
-        
         // Set up PopupDialog
         let dialogAppearance = PopupDialogDefaultView.appearance()
         if #available(iOS 13.0, *) {
@@ -187,13 +170,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWidgetToggleWorkaround()
         
         // If not yet agreed to privacy policy, set initial view controller to TitleViewController
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        self.window?.rootViewController = LDFirewallViewController()
-//        self.window?.rootViewController = LDConfigurationViewController()
-//        self.window?.rootViewController = ListSettingsViewController()
-//        self.window?.makeKeyAndVisible()
         
-        if (defaults.bool(forKey: kHasShownTitlePage) == false) {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = SplashscreenViewController()
+        window?.makeKeyAndVisible()
+        
+//        if (defaults.bool(forKey: kHasShownTitlePage) == false) {
             // TODO: removed this check because this was causing crashes possibly due to Locale
             // don't show onboarding page for anyone who installed before Aug 16th
         //            let formatter = DateFormatter()
@@ -203,14 +185,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //                print("Not showing onboarding page, installation epoch \(appInstall.timeIntervalSince1970)")
         //            }
         //            else {
-                DDLogInfo("Showing onboarding page")
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController
-                self.window?.rootViewController = viewController
-                self.window?.makeKeyAndVisible()
+//                DDLogInfo("Showing onboarding page")
+//                self.window = UIWindow(frame: UIScreen.main.bounds)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController
+//                self.window?.rootViewController = viewController
+//                self.window?.makeKeyAndVisible()
         //            }
-        }
+//        }
         
         return true
     }

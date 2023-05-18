@@ -14,8 +14,30 @@ final class SplashscreenViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BaseUserService.shared.updateUserSubscription { [weak self] _ in
+        BaseUserService.shared.updateUserSubscription { [weak self] subscription in
             DispatchQueue.main.async {
+                
+                if subscription?.planType == .monthly || subscription?.planType == .annual {
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                    UserDefaults.hasSeenUniversalPaywall = false
+                    UserDefaults.hasSeenAnonymousPaywall = true
+                }
+                else if subscription?.planType == .proMonthly || subscription?.planType == .proAnnual {
+                    UserDefaults.hasSeenAnonymousPaywall = false
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                    UserDefaults.hasSeenUniversalPaywall = true
+                }
+                else if subscription?.planType == .advancedMonthly || subscription?.planType == .advancedYearly {
+                    UserDefaults.hasSeenAnonymousPaywall = false
+                    UserDefaults.hasSeenAdvancedPaywall = true
+                    UserDefaults.hasSeenUniversalPaywall = false
+                }
+                else {
+                    UserDefaults.hasSeenAnonymousPaywall = false
+                    UserDefaults.hasSeenAdvancedPaywall = false
+                    UserDefaults.hasSeenUniversalPaywall = false
+                }
+                
                 self?.dismiss()
             }
         }
@@ -24,18 +46,15 @@ final class SplashscreenViewController: BaseViewController {
     private func dismiss() {
         dismiss(animated: false) {
             let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-            keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
             
-            
-            // Do not show onboarding if user has seen the previous onboarding or has already seen this new one
-//            if OneTimeActions.hasSeen(.welcomeScreen) == false,
-//               OneTimeActions.hasSeen(.newFancyOnboarding) == false {
-//                let onboardingViewController = OnboardingViewController()
-//                let navigation = UINavigationController(rootViewController: onboardingViewController)
-//                keyWindow?.rootViewController = navigation
-//            } else {
-//                keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
-//            }
+//             Do not show onboarding if user has seen the previous onboarding or has already seen this new one
+            if OneTimeActions.hasSeen(.welcomeScreen) == false {
+                let welcomeViewController = WelcomeViewController()
+                let navigation = UINavigationController(rootViewController: welcomeViewController)
+                keyWindow?.rootViewController = navigation
+            } else {
+                keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
+            }
             keyWindow?.makeKeyAndVisible()
         }
     }

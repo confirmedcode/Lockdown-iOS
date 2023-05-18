@@ -118,7 +118,7 @@ final class AdvancedPaywallView: UIView {
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $2.49 per month"
+        descriptionLabel2.text = "only \(VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAdvancedYearly)) per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         button.addSubview(descriptionLabel2)

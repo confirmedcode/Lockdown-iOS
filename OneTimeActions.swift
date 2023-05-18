@@ -11,8 +11,10 @@ import Foundation
 enum OneTimeActions {
     
     enum Flag: String {
+        case welcomeScreen = "LockdownHasSeenWelcomePopup"
         case notificationAuthorizationRequestPopup = "LockdownHasSeenNotificationAuthorizationRequestPopup"
         case oneHundredTrackingAttemptsBlockedNotification = "LockdownHasScheduledOneHundredTrackingAttemptsBlockedNotification"
+        case newEnableNotificationsController = "LockdownHasSeenNewEnableNotificationsController"
     }
     
     static func hasSeen(_ flag: Flag) -> Bool {

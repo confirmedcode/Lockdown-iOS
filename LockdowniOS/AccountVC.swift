@@ -14,14 +14,6 @@ import CocoaLumberjackSwift
 final class AccountViewController: BaseViewController, Loadable {
     
     // MARK: - Properties
-    private lazy var navigationView: ConfiguredNavigationView = {
-        let view = ConfiguredNavigationView()
-        view.leftNavButton.setTitle("BACK", for: .normal)
-        view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        view.leftNavButton.addTarget(self, action: #selector(returnBack), for: .touchUpInside)
-        return view
-    }()
-    
     let tableView = StaticTableView(frame: .zero, style: .grouped)
     var activePlans: [Subscription.PlanType] = []
     
@@ -31,17 +23,8 @@ final class AccountViewController: BaseViewController, Loadable {
         view.backgroundColor = .systemBackground
         
         do {
-            view.addSubview(navigationView)
-            navigationView.anchors.top.safeAreaPin()
-            navigationView.anchors.leading.pin()
-            navigationView.anchors.trailing.pin()
-            navigationView.anchors.height.equal(40)
-            
             view.addSubview(tableView)
-            tableView.anchors.top.spacing(0, to: navigationView.anchors.bottom)
-            tableView.anchors.leading.pin()
-            tableView.anchors.trailing.pin()
-            tableView.anchors.bottom.pin()
+            tableView.anchors.edges.pin()
             tableView.separatorStyle = .singleLine
             tableView.cellLayoutMarginsFollowReadableWidth = true
             tableView.deselectsCellsAutomatically = true
@@ -87,25 +70,25 @@ final class AccountViewController: BaseViewController, Loadable {
                 firstButton = DefaultCell(title: NSLocalizedString("Sign Out", comment: "")) {
                     let confirm = PopupDialog(title: NSLocalizedString("Sign Out?", comment: ""),
                                               message: NSLocalizedString("You'll be signed out from this account.", comment: ""),
-                                               image: nil,
-                                               buttonAlignment: .horizontal,
-                                               transitionStyle: .bounceDown,
-                                               preferredWidth: 270,
-                                               tapGestureDismissal: true,
-                                               panGestureDismissal: false,
-                                               hideStatusBar: false,
-                                               completion: nil)
+                                              image: nil,
+                                              buttonAlignment: .horizontal,
+                                              transitionStyle: .bounceDown,
+                                              preferredWidth: 270,
+                                              tapGestureDismissal: true,
+                                              panGestureDismissal: false,
+                                              hideStatusBar: false,
+                                              completion: nil)
                     confirm.addButtons([
-                       DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
-                       },
-                       DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) { [unowned self] in
-                        URLCache.shared.removeAllCachedResponses()
-                        Client.clearCookies()
-                        clearAPICredentials()
-                        setAPICredentialsConfirmed(confirmed: false)
-                        self.reloadTable()
-                        self.showPopupDialog(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("Signed out successfully.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
-                       },
+                        DefaultButton(title: NSLocalizedString("Cancel", comment: ""), dismissOnTap: true) {
+                        },
+                        DefaultButton(title: NSLocalizedString("Sign Out", comment: ""), dismissOnTap: true) { [unowned self] in
+                            URLCache.shared.removeAllCachedResponses()
+                            Client.clearCookies()
+                            clearAPICredentials()
+                            setAPICredentialsConfirmed(confirmed: false)
+                            self.reloadTable()
+                            self.showPopupDialog(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("Signed out successfully.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))
+                        },
                     ])
                     self.present(confirm, animated: true, completion: nil)
                 }
@@ -154,8 +137,8 @@ final class AccountViewController: BaseViewController, Loadable {
                                                 hideStatusBar: false,
                                                 completion: nil)
                         popup.addButtons([
-                           DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
-                            self.reloadTable()
+                            DefaultButton(title: NSLocalizedString("Okay", comment: ""), dismissOnTap: true) {
+                                self.reloadTable()
                             }
                         ])
                         self.present(popup, animated: true, completion: nil)
@@ -203,14 +186,14 @@ final class AccountViewController: BaseViewController, Loadable {
                                     else {
                                         self.showPopupDialog(title: NSLocalizedString("Error Re-sending Email Confirmation", comment: ""),
                                                              message: "\(error)",
-                                            acceptButton: NSLocalizedString("Okay", comment: ""))
+                                                             acceptButton: NSLocalizedString("Okay", comment: ""))
                                     }
                                 }
                             },
                         ])
                         self.present(popup, animated: true, completion: nil)
                     }
-
+                    
                 }
             }
         }
@@ -223,7 +206,7 @@ final class AccountViewController: BaseViewController, Loadable {
         upgradeButton.selectionStyle = .none
         
         self.activePlans = []
-
+        
         // show the plan status/button - first check and sync email if it's confirmed, otherwise just use receipt
         if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
             DDLogInfo("plan status: have confirmed API credentials, using them")
@@ -378,7 +361,7 @@ final class AccountViewController: BaseViewController, Loadable {
         }
         
         updateNotificationButtonTitle(notificationsButton)
-                        
+        
         notificationsButton.onSelect { [unowned notificationsButton, unowned self] in
             if PushNotifications.Authorization.getUserWantsNotificationsEnabled(forCategory: .weeklyUpdate) {
                 PushNotifications.Authorization.setUserWantsNotificationsEnabled(false, forCategory: .weeklyUpdate)
@@ -426,9 +409,9 @@ final class AccountViewController: BaseViewController, Loadable {
         }
         
         let otherCells = [
-//            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
-//                self.startTutorial()
-//            },
+            //            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
+            //                self.startTutorial()
+            //            },
             DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: "")) {
                 self.showWhyTrustPopup()
             },
@@ -465,14 +448,20 @@ final class AccountViewController: BaseViewController, Loadable {
             tableView.addCell(cell)
         }
         
-        #if DEBUG
+        if let creds = getAPICredentials() {
+            tableView.addCell(MakeDefaultCell(title: .localized("delete_account"), color: .tunnelsWarning) {
+                self.deleteAccount(userEmail: creds.email)
+            })
+        }
+        
+#if DEBUG
         let fixVPNConfig = DefaultCell(title: "_Fix Firewall Config", action: {
             self.showFixFirewallConnectionDialog {
                 FirewallController.shared.deleteConfigurationAndAddAgain()
             }
         })
         tableView.addCell(fixVPNConfig)
-        #endif
+#endif
         
         tableView.addRowCell { (cell) in
             cell.textLabel?.text = Bundle.main.versionString
@@ -500,7 +489,7 @@ final class AccountViewController: BaseViewController, Loadable {
 //                vc.parentVC = (tabBarController as? MainTabBarController)?.vpnViewController
             }
         case "showUpgradePlanAccount":
-            if let vc = segue.destination as? SignupViewController {
+            if let vc = segue.destination as? OldSignupViewController {
                 vc.parentVC = self
                 if activePlans.isEmpty {
                     vc.mode = .newSubscription
@@ -548,6 +537,25 @@ func DefaultCell(title: String, action: @escaping () -> ()) -> _DefaultCell {
     return cell.onSelect(callback: action)
 }
 
+func MakeDefaultCell(title: String, color: UIColor = .tunnelsBlue, action: @escaping () -> Void) -> _DefaultCell {
+    let cell = _DefaultCell()
+    cell.label.text = title
+    cell.label.font = .semiboldLockdownFont(size: 17)
+    cell.label.textColor = color
+    cell.label.textAlignment = .center
+    cell.contentView.addSubview(cell.label)
+    cell.label.anchors.edges.marginsPin(insets: .init(top: 8, left: 0, bottom: 8, right: 0))
+    return cell.onSelect(callback: action)
+}
+
+extension AccountViewController: EmailComposable {
+    private func deleteAccount(userEmail: String) {
+        let deleteAccountViewController = DeleteMyAccountViewController(userEmail: userEmail)
+        deleteAccountViewController.modalPresentationStyle = .formSheet
+        present(deleteAccountViewController, animated: true)
+    }
+}
+
 fileprivate extension _DefaultButtonCell {
     func startActivityIndicator() {
         let activity = UIActivityIndicatorView()
@@ -569,11 +577,5 @@ fileprivate extension _DefaultButtonCell {
                 indicator.removeFromSuperview()
             }
         }
-    }
-}
-
-private extension AccountViewController {
-    @objc func returnBack() {
-        dismiss(animated: true)
     }
 }

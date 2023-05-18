@@ -401,7 +401,6 @@ extension FirewallPaywallViewController: ProductPurchasable {
                         
                         // TODO: change view of LDFirewallViewController
                     }
-                    UserDefaults.hasSeenAdvancedPaywall = true
                     
                     // force refresh receipt, and sync with email if it exists, activate VPNte
                     if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {

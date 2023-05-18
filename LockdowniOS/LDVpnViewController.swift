@@ -115,6 +115,7 @@ final class LDVpnViewController: BaseViewController {
         stackView.addArrangedSubview(descriptionLabel3)
         stackView.addArrangedSubview(descriptionLabel4)
         stackView.addArrangedSubview(descriptionLabel5)
+        stackView.addArrangedSubview(descriptionLabel6)
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 10
