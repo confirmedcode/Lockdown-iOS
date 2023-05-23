@@ -38,6 +38,7 @@ struct LockdownGroup : Codable {
     var domains : Dictionary<String, Bool>
     var ipRanges : Dictionary<String, ConfirmedIPRange>
     var warning: String?
+    var accessLevel: String = "advanced"
 }
 
 struct LockdownDefaults : Codable {
@@ -172,15 +173,6 @@ func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsU
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
-//    let dummyList = LockdownGroup.init(
-//        version: 30,
-//        internalID: "dummyList",
-//        name: NSLocalizedString("Dummy Domains", comment: "The title of a list of trackers"),
-//        iconURL: "clickbait_icon",
-//        enabled: false,
-//        domains: getDomainBlockList(filename: "5000_dummy_list"),
-//        ipRanges: [:])
-    
     let snapchatAnalytics = LockdownGroup.init(
         version: 27,
         internalID: "snapchatAnalytics",
@@ -197,35 +189,28 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "game_ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "game_ads"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let clickbait = LockdownGroup.init(
         version: 29,
         internalID: "clickbait",
         name: NSLocalizedString("Clickbait", comment: "The title of a list of trackers"),
         iconURL: "clickbait_icon",
-        enabled: false,
-        domains: getDomainBlockList(filename: "clickbait"),
-        ipRanges: [:])
-    
-    let crypto = LockdownGroup.init(
-        version: 29,
-        internalID: "crypto_mining",
-        name: NSLocalizedString("Crypto Mining", comment: "The title of a list of trackers"),
-        iconURL: "crypto_icon",
         enabled: true,
-        domains: getDomainBlockList(filename: "crypto_mining"),
+        domains: getDomainBlockList(filename: "clickbait"),
         ipRanges: [:],
-        warning: "This block list is currently under maintenance and will be updated soon.")
+        accessLevel: "basic")
     
     let emailOpens = LockdownGroup.init(
         version: 30,
         internalID: "email_opens",
         name: NSLocalizedString("Email Trackers", comment: "The title of a list of trackers"),
         iconURL: "email_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "email_opens"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let facebookInc = LockdownGroup.init(
         version: 33,
@@ -244,7 +229,8 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "facebook_white_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "facebook_sdk"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let marketingScripts = LockdownGroup.init(
         version: 31,
@@ -253,26 +239,17 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "marketing_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "marketing"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let marketingScriptsII = LockdownGroup.init(
         version: 30,
         internalID: "marketing_beta_scripts",
         name: NSLocalizedString("Marketing Trackers II", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
-        enabled: true,
+        enabled: false,
         domains: getDomainBlockList(filename: "marketing_beta"),
         ipRanges: [:])
-
-    let ransomware = LockdownGroup.init(
-        version: 29,
-        internalID: "ransomware",
-        name: NSLocalizedString("Ransomware", comment: "The title of a list of trackers"),
-        iconURL: "ransomware_icon",
-        enabled: false,
-        domains: getDomainBlockList(filename: "ransomware"),
-        ipRanges: [:],
-        warning: "This block list is currently under maintenance and will be updated soon.")
 
     let googleShoppingAds = LockdownGroup.init(
         version: 35,
@@ -291,7 +268,8 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "user_data_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "data_trackers"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let generalAds = LockdownGroup.init(
         version: 40,
@@ -300,26 +278,29 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "general_ads"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let reporting = LockdownGroup.init(
         version: 29,
         internalID: "reporting",
         name: NSLocalizedString("Reporting", comment: "The title of a list of trackers"),
         iconURL: "reporting_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "reporting"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let amazonTrackers = LockdownGroup.init(
         version: 32,
         internalID: "amazon_trackers",
         name: NSLocalizedString("Amazon Trackers", comment: "The title of a list of trackers"),
         iconURL: "amazon_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "amazon_trackers"),
         ipRanges: [:],
-        warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.")
+        warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.",
+        accessLevel: "basic")
     
     let ifunnyTrackers = LockdownGroup.init(
         version: 1,
@@ -385,13 +366,11 @@ func setupFirewallDefaultBlockLists() {
         snapchatAnalytics,
         gameAds,
         clickbait,
-        crypto,
         emailOpens,
         facebookInc,
         facebookSDK,
         marketingScripts,
         marketingScriptsII,
-        ransomware,
         googleShoppingAds,
         dataTrackers,
         generalAds,

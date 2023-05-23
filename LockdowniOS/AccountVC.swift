@@ -400,7 +400,7 @@ final class AccountViewController: BaseViewController, Loadable {
         
         let firstButtons: [SelectableTableViewCell] = [
             firstButton,
-            upgradeButton,
+//            upgradeButton,
             notificationsButton,
         ]
         

@@ -303,7 +303,10 @@ final class BlockListViewController: BaseViewController {
                     target.blockListVC = self
                     self.navigationController?.pushViewController(target, animated: true)
                 } else {
-                    if lockdownGroup.enabled {
+                    if lockdownGroup.accessLevel == "advanced" {
+                        let vc = VPNPaywallViewController()
+                        present(vc, animated: true)
+                    } else {
                         let storyboard = UIStoryboard.main
                         let target = storyboard.instantiate(BlockListGroupViewController.self)
                         target.lockdownGroup = lockdownGroup

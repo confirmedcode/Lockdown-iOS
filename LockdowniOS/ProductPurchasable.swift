@@ -83,22 +83,30 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
         firstly {
             try Client.signIn(forceRefresh: true)
         }
-        .then { _ in
-            try Client.getKey()
-        }
+//        .then { _ in
+//            try Client.activeSubscriptions()
+//        }
         .done { _ in
             // we were able to get key, so subscription is valid -- follow pathway from HomeViewController to associate this with the email account if there is one
-            let presentingViewController = self.presentingViewController as? HomeViewController
-            BaseUserService.shared.updateUserSubscription { [weak self] _ in
-                self?.hideLoadingView()
-                self?.dismiss(animated: true, completion: {
-                    if presentingViewController != nil {
-                        presentingViewController?.toggleVPN("me")
-                    } else {
-                        VPNController.shared.setEnabled(true)
-                    }
-                })
-            }
+            self.dismiss(animated: true, completion: {
+                self.hideLoadingView()
+                let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+                let vc = SplashscreenViewController()
+                let navigation = UINavigationController(rootViewController: vc)
+                keyWindow?.rootViewController = navigation
+            })
+            
+//            let presentingViewController = self.presentingViewController as? HomeViewController
+//            BaseUserService.shared.updateUserSubscription { [weak self] _ in
+//                self?.hideLoadingView()
+//                self?.dismiss(animated: true, completion: {
+//                    if presentingViewController != nil {
+//                        presentingViewController?.toggleVPN("me")
+//                    } else {
+//                        VPNController.shared.setEnabled(true)
+//                    }
+//                })
+//            }
         }
         .catch { error in
             self.hideLoadingView()
@@ -130,7 +138,7 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
                                         if presentingViewController != nil {
                                             presentingViewController?.toggleVPN("me")
                                         } else {
-                                            VPNController.shared.setEnabled(true)
+//                                            VPNController.shared.setEnabled(true)
                                         }
                                     })
                                 }

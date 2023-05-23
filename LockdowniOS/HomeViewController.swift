@@ -198,6 +198,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(yourCurrentPlanLabel)
+        yourCurrentPlanLabel.anchors.leading.marginsPin()
+        yourCurrentPlanLabel.anchors.top.safeAreaPin(inset: 16)
+        
         layoutUI()
         
         updateFirewallButtonWithStatus(status: FirewallController.shared.status())
@@ -254,44 +258,50 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
+        
+//        if OneTimeActions.hasSeen(.welcomeScreen) == false {
+//            view.addSubview(welcomeView)
+//            welcomeView.anchors.edges.pin()
+//            OneTimeActions.markAsSeen(.welcomeScreen)
+//            welcomeView.continueButton.addTarget(self, action: #selector(hideWelcomeScreen), for: .touchUpInside)
+            
+//            let tabBarControllerItems = self.tabBarController?.tabBar.items
+//
+//            tabBarControllerItems?.forEach({ tabbaritem in
+//                tabbaritem.isEnabled = false
+//            })
+//        }
     }
     
     private func layoutUI() {
         
-        view.addSubview(yourCurrentPlanLabel)
-        yourCurrentPlanLabel.anchors.leading.marginsPin()
-        yourCurrentPlanLabel.anchors.top.safeAreaPin(inset: 16)
-        
         if UserDefaults.hasSeenAnonymousPaywall {
             mainTitle.text = "Get Universal protection"
+            protectionPlanLabel.text = "Anonymous protection"
             descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
             descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
             descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
             descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
             descriptionLabel5.lockImage.image = UIImage(named: "icn_checkmark")
-            protectionPlanLabel.text = "Anonymous protection"
             stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel1)
             stackView.addArrangedSubview(descriptionLabel2)
             stackView.addArrangedSubview(descriptionLabel3)
             stackView.addArrangedSubview(descriptionLabel4)
             stackView.addArrangedSubview(descriptionLabel5)
-            stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel6)
             stackView.addArrangedSubview(upgradeButton)
         } else if UserDefaults.hasSeenUniversalPaywall {
             protectionPlanLabel.text = "Universal protection"
             stackView.anchors.height.equal(0)
             contentView.anchors.height.equal(600)
-//            upgradeLabel.isHidden = true
-//            upgradeButton.isHidden = true
-//
-//            upgradeButton.anchors.height.equal(0)
+            upgradeLabel.isHidden = true
         } else if UserDefaults.hasSeenAdvancedPaywall {
+            mainTitle.text = "Get Anonymous protection"
+            protectionPlanLabel.text = "Advanced protection"
             descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
             descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
             descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
-            protectionPlanLabel.text = "Advanced protection"
             stackView.addArrangedSubview(descriptionLabel1)
             stackView.addArrangedSubview(descriptionLabel2)
             stackView.addArrangedSubview(descriptionLabel3)
@@ -301,6 +311,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             stackView.addArrangedSubview(descriptionLabel6)
             stackView.addArrangedSubview(upgradeButton)
         } else {
+            mainTitle.text = "Get Advanced protection"
             protectionPlanLabel.text = "Basic protection"
             stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel1)
@@ -355,6 +366,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let inset = firewallButton.frame.width * 0.175
         firewallButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         vpnButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        
+//        welcomeView.applyGradient(.welcomePurple, corners: .continuous(15.0))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -363,6 +376,12 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        OneTimeActions.performOnce(ifHasNotSeen: .welcomeScreen) {
+            let vc = WelcomeViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+        }
         
         // Used for debugging signup
         //performSegue(withIdentifier: "showSignup", sender: nil)
@@ -378,13 +397,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             tapToActivateFirewallLabel.isHidden = false
         }
         
-        OneTimeActions.performOnce(ifHasNotSeen: .notificationAuthorizationRequestPopup) {
-            PushNotifications.Authorization.requestWeeklyUpdateAuthorization(presentingDialogOn: self).done { status in
-                DDLogInfo("Updated notifications status: \(status)")
-            }.catch { error in
-                DDLogWarn(error.localizedDescription)
-            }
-        }
+        
         
         // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
         if (getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) != true) {
@@ -459,8 +472,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             hideStatusBar: true,
             completion: nil)
         
-        let getEnhancedPrivacyButton = DefaultButton(title: NSLocalizedString("1 Week Free", comment: ""), dismissOnTap: true) {
-            self.performSegue(withIdentifier: "showSignup", sender: self)
+        let getEnhancedPrivacyButton = DefaultButton(title: NSLocalizedString("1 Week Free", comment: ""), dismissOnTap: true) { [unowned self] in
+            let vc = VPNPaywallViewController()
+                present(vc, animated: true)
         }
         let laterButton = CancelButton(title: NSLocalizedString("Skip Trial", comment: ""), dismissOnTap: true) { }
         
@@ -1017,7 +1031,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             SKStoreReviewController.requestReview()
         }
     }
-    
 }
 
 // MARK: - Paywalling

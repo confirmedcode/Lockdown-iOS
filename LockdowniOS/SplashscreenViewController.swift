@@ -44,18 +44,24 @@ final class SplashscreenViewController: BaseViewController {
     }
     
     private func dismiss() {
+        
         dismiss(animated: false) {
             let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-            
-//             Do not show onboarding if user has seen the previous onboarding or has already seen this new one
-            if OneTimeActions.hasSeen(.welcomeScreen) == false {
-                let welcomeViewController = WelcomeViewController()
-                let navigation = UINavigationController(rootViewController: welcomeViewController)
-                keyWindow?.rootViewController = navigation
-            } else {
-                keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
-            }
+            keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
             keyWindow?.makeKeyAndVisible()
+            
+            
+            
+//            if OneTimeActions.hasSeen(.welcomeScreen) == false {
+//                let welcomeViewController = WelcomeViewController()
+//                let navigation = UINavigationController(rootViewController: welcomeViewController)
+//                keyWindow?.rootViewController = navigation
+//            } else {
+//                let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+//                keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
+//                keyWindow?.makeKeyAndVisible()
+//            }
+//            keyWindow?.makeKeyAndVisible()
         }
     }
     

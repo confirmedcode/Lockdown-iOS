@@ -152,8 +152,24 @@ class Client {
                         return true
                     }
                 }
+                else if (sub1.planType == .monthly) {
+                    if (sub1.planType == .annual || sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                        return false
+                    }
+                    else {
+                        return true
+                    }
+                }
+                else if (sub1.planType == .advancedYearly) {
+                    if (sub1.planType == .monthly || sub1.planType == .annual || sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                        return false
+                    }
+                    else {
+                        return true
+                    }
+                }
                 else {
-                    if (sub2.planType == .proAnnual || sub2.planType == .proMonthly || sub2.planType == .annual) {
+                    if (sub1.planType == .advancedYearly || sub1.planType == .monthly || sub2.planType == .annual || sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
                         return false
                     }
                     else {

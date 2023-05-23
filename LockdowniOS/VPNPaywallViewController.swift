@@ -18,6 +18,10 @@ protocol VPNPaywallViewControllerCloseDelegate: AnyObject {
 
 final class VPNPaywallViewController: BaseViewController, Loadable {
     
+    static let shared: UserService = BaseUserService()
+    
+    var user = LockdownUser()
+    
     var parentVC: UIViewController?
     
     enum Mode {
@@ -26,9 +30,6 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     }
     
     var mode = Mode.newSubscription
-    
-//    private let existingSubscription: Subscription?
-//    private let paywallService: PaywallService
     
     weak var delegate: VPNPaywallViewControllerCloseDelegate?
     
@@ -134,10 +135,12 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     
     lazy var advancedView: AdvancedPaywallView = {
         let view = AdvancedPaywallView()
-//        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-//            view.buyButton1.isEnabled = false
-//            view.buyButton2.isEnabled = false
-//        }
+        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            view.buyButton1.isEnabled = false
+            view.buyButton2.isEnabled = false
+            view.buyButton1.backgroundColor = .lightGray
+            view.buyButton2.backgroundColor = .lightGray
+        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAdvancedYearly()
             startTrial()
@@ -152,10 +155,12 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var anonymousView: AnonymousPaywallView = {
         let view = AnonymousPaywallView()
         view.isHidden = true
-//        if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-//            view.buyButton1.isEnabled = false
-//            view.buyButton2.isEnabled = false
-//        }
+        if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            view.buyButton1.isEnabled = false
+            view.buyButton2.isEnabled = false
+            view.buyButton1.backgroundColor = .lightGray
+            view.buyButton2.backgroundColor = .lightGray
+        }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAnonymousYearly()
             startTrial()
@@ -173,6 +178,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         if UserDefaults.hasSeenUniversalPaywall {
             view.buyButton1.isEnabled = false
             view.buyButton2.isEnabled = false
+            view.buyButton1.backgroundColor = .lightGray
+            view.buyButton2.backgroundColor = .lightGray
         }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectUniversalYearly()
@@ -348,12 +355,7 @@ extension VPNPaywallViewController: ProductPurchasable {
                     let navigation = UINavigationController(rootViewController: vc)
                     keyWindow?.rootViewController = navigation
                     
-//             Do not show onboarding if user has seen the previous onboarding or has already seen this new one
-                    
-                    if let presentingViewController = self.parentVC as? HomeViewController {
-                        // TODO: change view of LDFirewallViewController
-                    }
-                    // force refresh receipt, and sync with email if it exists, activate VPNte
+                    // force refresh receipt, and sync with email if it exists
                     if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
                         DDLogInfo("purchase complete: syncing with confirmed email")
                         firstly {
@@ -363,14 +365,15 @@ extension VPNPaywallViewController: ProductPurchasable {
                             DDLogInfo("purchase complete: signin result: \(signin)")
                             return try Client.subscriptionEvent(forceRefresh: true)
                         }
-                        .then { (result: SubscriptionEvent) -> Promise<GetKey> in
-                            DDLogInfo("purchase complete: subscriptionevent result: \(result)")
-                            return try Client.getKey()
+                        .then { (result: SubscriptionEvent) -> Promise<[Subscription]> in
+                            DDLogInfo("plan status: subscriptionevent result: \(result)")
+                            return try Client.activeSubscriptions()
                         }
-                        .done { (getKey: GetKey) in
-                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                            DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
-//                            VPNController.shared.setEnabled(true)
+                        .done { subscriptions in
+                            DDLogInfo("active-subs (start trial): \(subscriptions)")
+                            NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
+                            
+                            self.user.updateSubscription(to: subscriptions.first)
                         }
                         .catch { error in
                             DDLogError("purchase complete: Error: \(error)")
@@ -385,15 +388,14 @@ extension VPNPaywallViewController: ProductPurchasable {
                         }
                     } else {
                         firstly {
-                            try Client.signIn(forceRefresh: true) // this will fetch and set latest receipt, then submit to API to get cookie
-                        }
-                        .then { _ in
-                            // TODO: don't always do this -- if we already have a key, then only do it once per day max
-                            try Client.getKey()
-                        }
-                        .done { (getKey: GetKey) in
-                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-//                            VPNController.shared.setEnabled(true)
+                            try Client.signIn()
+                        }.then { _ in
+                            try Client.activeSubscriptions()
+                        }.done { subscriptions in
+                            DDLogInfo("active-subs (start trial): \(subscriptions)")
+                            NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
+                            
+                            self.user.updateSubscription(to: subscriptions.first)
                         }
                         .catch { error in
                             DDLogError("purchase complete - no email: Error: \(error)")
@@ -411,6 +413,10 @@ extension VPNPaywallViewController: ProductPurchasable {
             },
             errored: { error in
                 self.hideLoadingView()
+                let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+                let vc = SplashscreenViewController()
+                let navigation = UINavigationController(rootViewController: vc)
+                keyWindow?.rootViewController = navigation
                 DDLogError("Start Trial Failed: \(error)")
                 
                 if let skError = error as? SKError {
@@ -440,12 +446,16 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
                     default:
                         errorText = skError.localizedDescription
                     }
+                    
                     self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
-                } else if self.popupErrorAsNSURLError(error) {
+                }
+                else if self.popupErrorAsNSURLError(error) {
                     return
-                } else if self.popupErrorAsApiError(error) {
+                }
+                else if self.popupErrorAsApiError(error) {
                     return
-                } else {
+                }
+                else {
                     self.showPopupDialog(
                         title: .localized("Error Starting Trial"),
                         message: .localized("Please contact team@lockdownprivacy.com.\n\nError details:\n") + "\(error)",

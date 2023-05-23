@@ -13,6 +13,7 @@ enum LockdownGradient {
     case onboardingBlue
     case onboardingPurple
     case ltoButtonOnHomePage
+    case welcomePurple
     case custom([CGColor])
     
     var colors: [CGColor] {
@@ -30,6 +31,8 @@ enum LockdownGradient {
         case .ltoButtonOnHomePage:
             return [UIColor.fromHex("#FFFFFF00").withAlphaComponent(0).cgColor,
                     UIColor.fromHex("#FFFFFF4D").withAlphaComponent(0.3).cgColor]
+        case .welcomePurple:
+            return [UIColor.gradientPink1.cgColor, UIColor.gradientPink2.cgColor]
         case .custom(let colors):
             return colors
         }

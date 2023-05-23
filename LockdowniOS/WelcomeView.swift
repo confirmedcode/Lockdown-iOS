@@ -10,9 +10,20 @@ import UIKit
 final class WelcomeView: UIView {
     
     //MARK: Properties
-    private lazy var titleLable: UILabel = {
+    
+    lazy var backgroundView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    lazy var gradientView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Welcome to Lockdown 2.0!", comment: "")
+        label.text = NSLocalizedString("Welcome to \nLockdown 2.0!", comment: "")
         label.textColor = .white
         label.font = fontBold26
         label.numberOfLines = 0
@@ -26,18 +37,6 @@ final class WelcomeView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
         }()
-    
-    private lazy var titleStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(titleLable)
-        stackView.axis = .horizontal
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 16
-        stackView.anchors.height.equal(64)
-        return stackView
-    }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
@@ -89,22 +88,12 @@ final class WelcomeView: UIView {
         return view
     }()
     
-    private lazy var bulletView5: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "You can monitor what’s not being blocked"))
-        view.titleLabel.numberOfLines = 0
-        view.titleLabel.font = fontMedium15
-        view.stackView.anchors.height.equal(40)
-        return view
-    }()
-    
     private lazy var bulletsStackView: UIStackView = {
         let stackView  = UIStackView()
         stackView.addArrangedSubview(bulletView1)
         stackView.addArrangedSubview(bulletView2)
         stackView.addArrangedSubview(bulletView3)
         stackView.addArrangedSubview(bulletView4)
-        stackView.addArrangedSubview(bulletView5)
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fillProportionally
@@ -127,7 +116,6 @@ final class WelcomeView: UIView {
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
         button.layer.cornerRadius = 28
-//        button.addTarget(self, action: #selector(continueButtonClicked), for: .touchUpInside)
         let titleLabel = UILabel()
         titleLabel.text = NSLocalizedString("Continue", comment: "")
         titleLabel.font = fontSemiBold17
@@ -154,58 +142,47 @@ final class WelcomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        configureBackgroundColor()
-    }
-    
     //MARK: Functions
     private func configureUI() {
-        addSubview(titleStackView)
-        titleStackView.anchors.top.safeAreaPin(inset: 24)
-        titleStackView.anchors.leading.marginsPin()
-        titleStackView.anchors.trailing.marginsPin()
         
-        addSubview(descriptionLabel)
-        descriptionLabel.anchors.top.spacing(24, to: titleStackView.anchors.bottom)
+        addSubview(backgroundView)
+        backgroundView.anchors.top.pin()
+        backgroundView.anchors.leading.pin()
+        backgroundView.anchors.trailing.pin()
+        backgroundView.anchors.bottom.pin()
+        
+        backgroundView.addSubview(titleLabel)
+        titleLabel.anchors.top.pin(inset: 24)
+        titleLabel.anchors.centerX.equal(backgroundView.anchors.centerX)
+        
+        backgroundView.addSubview(imageView)
+        imageView.anchors.leading.marginsPin()
+        imageView.anchors.centerY.equal(titleLabel.anchors.centerY)
+        
+        backgroundView.addSubview(descriptionLabel)
+        descriptionLabel.anchors.top.spacing(16, to: titleLabel.anchors.bottom)
         descriptionLabel.anchors.trailing.marginsPin()
         descriptionLabel.anchors.leading.marginsPin()
         
-        addSubview(subTitleLable)
+        backgroundView.addSubview(subTitleLable)
         subTitleLable.anchors.top.spacing(16, to: descriptionLabel.anchors.bottom)
         subTitleLable.anchors.trailing.marginsPin()
         subTitleLable.anchors.leading.marginsPin()
         
-        addSubview(bulletsStackView)
+        backgroundView.addSubview(bulletsStackView)
         bulletsStackView.anchors.top.spacing(8, to: subTitleLable.anchors.bottom)
         bulletsStackView.anchors.trailing.marginsPin()
         bulletsStackView.anchors.leading.marginsPin()
         
-        addSubview(descriptionLabel2)
+        backgroundView.addSubview(descriptionLabel2)
         descriptionLabel2.anchors.top.spacing(16, to: bulletsStackView.anchors.bottom)
         descriptionLabel2.anchors.trailing.marginsPin()
         descriptionLabel2.anchors.leading.marginsPin()
         
-        addSubview(continueButton)
-        continueButton.anchors.bottom.safeAreaPin(inset: 24)
-        continueButton.anchors.top.spacing(24, to: descriptionLabel2.anchors.bottom)
+        backgroundView.addSubview(continueButton)
+        continueButton.anchors.bottom.pin(inset: 24)
+        continueButton.anchors.top.spacing(16, to: descriptionLabel2.anchors.bottom)
         continueButton.anchors.leading.marginsPin()
         continueButton.anchors.trailing.marginsPin()
-    }
-    
-    private func configureBackgroundColor() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.gradientPink1.cgColor, UIColor.gradientPink2.cgColor]
-        gradientLayer.frame = bounds
-        layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    @objc func continueButtonClicked() {
-//        dismiss(animated: false) {
-//            let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-//            
-//            keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
-//            keyWindow?.makeKeyAndVisible()
-//        }
     }
 }
