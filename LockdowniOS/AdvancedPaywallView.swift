@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 final class AdvancedPaywallView: UIView {
     
@@ -108,23 +109,31 @@ final class AdvancedPaywallView: UIView {
         titleLabel.anchors.top.pin(inset: 16)
         titleLabel.anchors.leading.pin(inset: 24)
         
+        titleLabel.highlight()
+        
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)) per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
+        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)
+        descriptionLabel.text = "then \(descriptionLabelPrice1) per year"
+        descriptionLabel.highlight(descriptionLabelPrice1, font: UIFont.boldLockdownFont(size: 15))
+        
         button.addSubview(descriptionLabel)
         descriptionLabel.anchors.top.spacing(4, to: titleLabel.anchors.bottom)
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only \(VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAdvancedYearly)) per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
+        
+        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAdvancedYearly)
+        descriptionLabel2.text = "only \(descriptionLabelPrice2) per month"
+        descriptionLabel2.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
+        
         button.addSubview(descriptionLabel2)
         descriptionLabel2.anchors.top.spacing(14, to: imageView.anchors.bottom)
         descriptionLabel2.anchors.trailing.pin(inset: 24)
-        
         
         button.anchors.height.equal(66)
         button.addTarget(self, action: #selector(buyButton1Clicked), for: .touchUpInside)
@@ -147,10 +156,13 @@ final class AdvancedPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly))/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
-            
+        
+        let descriptionLabelPrice = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly)
+        descriptionLabel.text = "\(descriptionLabelPrice)/month"
+        descriptionLabel.highlight(descriptionLabelPrice, font: UIFont.boldLockdownFont(size: 15))
+        
         let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -162,7 +174,6 @@ final class AdvancedPaywallView: UIView {
         stackView.anchors.leading.pin(inset: 24)
         
         button.anchors.height.equal(66)
-        
         return button
     }()
     

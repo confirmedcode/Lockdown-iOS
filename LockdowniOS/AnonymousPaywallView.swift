@@ -125,18 +125,25 @@ final class AnonymousPaywallView: UIView {
         
         var descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)) per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)
+        descriptionLabel.text = "then \(descriptionLabelPrice1) per year"
+        descriptionLabel.highlight(descriptionLabelPrice1, font: UIFont.boldLockdownFont(size: 15))
+        
         button.addSubview(descriptionLabel)
         descriptionLabel.anchors.top.spacing(4, to: titleLabel.anchors.bottom)
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only \(VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAnnual)) per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
+        
+        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAnnual)
+        descriptionLabel2.text = "only \(descriptionLabelPrice2) per month"
+        descriptionLabel2.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
+        
         button.addSubview(descriptionLabel2)
         descriptionLabel2.anchors.top.spacing(14, to: imageView.anchors.bottom)
         descriptionLabel2.anchors.trailing.pin(inset: 24)
@@ -161,17 +168,20 @@ final class AnonymousPaywallView: UIView {
     lazy var button1DescriptionLabel: UILabel = {
         let label = UILabel()
         label.font = fontMedium11
-        label.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)) per year"
         label.textColor = .white
         label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAnnual)
+        label.text = "only \(descriptionLabelPrice2) per month"
+        label.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
+        label.text = "then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual)) per year"
+        
         buyButton1.addSubview(button1DescriptionLabel)
         label.anchors.top.spacing(4, to: button1TitleLabel.anchors.bottom)
         label.anchors.leading.pin(inset: 24)
         
         return label
     }()
-    
     
     lazy var buyButton2: UIButton = {
         let button = UIButton(type: .system)
@@ -189,9 +199,12 @@ final class AnonymousPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly))/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
+        
+        let descriptionLabelPrice = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly)
+        descriptionLabel.text = "\(descriptionLabelPrice)/month"
+        descriptionLabel.highlight(descriptionLabelPrice, font: UIFont.boldLockdownFont(size: 15))
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         stackView.axis = .vertical
@@ -208,8 +221,6 @@ final class AnonymousPaywallView: UIView {
         
         return button
     }()
-    
-    
     
     //MARK: Initialization
     
