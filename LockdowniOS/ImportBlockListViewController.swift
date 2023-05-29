@@ -7,10 +7,13 @@
 
 import UIKit
 import UniformTypeIdentifiers
+import MobileCoreServices
 
 final class ImportBlockListViewController: UIViewController, UIDocumentPickerDelegate {
     
     // MARK: - Properties
+    
+    var importCompletion: (() -> ())?
     
     var titleName = "Import Block List"
     
@@ -113,6 +116,10 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         configureUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     // MARK: - Configure UI
     func configureUI() {
         view.addSubview(navigationView)
@@ -139,70 +146,71 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
 }
 
     // MARK: - Private functions
-private extension ImportBlockListViewController {
+extension ImportBlockListViewController {
     
     @objc func cancel() {
+        let viewController = BlockListViewController()
+        viewController.reloadCustomBlockedLists()
         dismiss(animated: true)
     }
     
-    // returns your application folder
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        guard let url = urls.first else {
+            return
+        }
+        
+        guard let data = try? Data(contentsOf: url) else { return }
+        
+        do {
+            let exportedList = try JSONDecoder().decode(UserBlockListsGroup.self, from: data)
+            var allData = getBlockedLists()
+            allData.userBlockListsDefaults[exportedList.name] = exportedList
+            let encodedData = try? JSONEncoder().encode(allData)
+            defaults.set(encodedData, forKey: kUserBlockedLists)
+            
+            importCompletion?()
+            dismiss(animated: true) {
+                let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""),
+                                              message: NSLocalizedString("The list has been imported successfully. You can start blocking the list's domains", comment: ""),
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                              style: .default,
+                                              handler: nil))
+                UIApplication.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+            }
+            
+        } catch {
+            dismiss(animated: true) {
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""),
+                                              message: NSLocalizedString("Unable to import the list. Please try again or contact support for assistance", comment: ""),
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                              style: .default,
+                                              handler: nil))
+                UIApplication.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+            }
+        }
     }
-    
-    //  list name validation code method
-    func isValidListName(text: String) -> Bool {
-        let regEx = "^[a-zA-Z0-9]{1,20}$"
-        return text.range(of: "\(regEx)", options: .regularExpression) != nil
+
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("view was cancelled")
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func selectFromFiles() {
         
-        let alertController = UIAlertController(title: "Create New List", message: nil, preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
-            if let txtField = alertController.textFields?.first, let text = txtField.text {
-                guard let self else { return }
-                
-                addBlockedList(listName: text)
-                let path = self.getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
-                let url = URL(string: path)!
-                
-                UIApplication.shared.open(url)
-                
-            }
+        if #available(iOS 14.0, *) {
+            let supportedFiles: [UTType] = [UTType.data]
+            
+            let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
+            
+            controller.delegate = self
+            controller.modalPresentationStyle = .formSheet
+            controller.allowsMultipleSelection = false
+            present(controller, animated: true)
         }
-        
-        saveAction.isEnabled = false
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
-            guard let self else { return }
-        }
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = NSLocalizedString("List Name", comment: "")
-        }
-        
-        NotificationCenter.default.addObserver(
-            forName: UITextField.textDidChangeNotification,
-            object: alertController.textFields?.first,
-            queue: .main) { (notification) -> Void in
-                guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = self.isValidListName(text: textFieldText) && !textFieldText.isEmpty
-            }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-        
-        
-        
-        
-        
-        
-
     }
     
     @objc func blockPastedDomains() {

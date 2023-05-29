@@ -21,7 +21,7 @@ final class BulletView: UIView {
         return image
     }()
     
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = fontSemiBold15
@@ -30,7 +30,7 @@ final class BulletView: UIView {
         return label
     }()
     
-    private lazy var stackView: UIStackView = {
+    lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
         stackView.addArrangedSubview(bulletImage)
         stackView.addArrangedSubview(titleLabel)

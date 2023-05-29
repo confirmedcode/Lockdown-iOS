@@ -9,6 +9,7 @@
 import Foundation
 import NetworkExtension
 import WidgetKit
+import UniformTypeIdentifiers
 
 // MARK: - Constants
 
@@ -37,6 +38,7 @@ struct LockdownGroup : Codable {
     var domains : Dictionary<String, Bool>
     var ipRanges : Dictionary<String, ConfirmedIPRange>
     var warning: String?
+    var accessLevel: String = "advanced"
 }
 
 struct LockdownDefaults : Codable {
@@ -45,8 +47,8 @@ struct LockdownDefaults : Codable {
 
 struct UserBlockListsGroup: Codable {
     var name: String
-    var enabled : Bool = true
-    var domains : [Domains] = []
+    var enabled: Bool = false
+    var domains: Set<String> = []
     var description: String?
 }
 
@@ -54,10 +56,10 @@ struct UserBlockListsDefaults: Codable {
     var userBlockListsDefaults: Dictionary<String, UserBlockListsGroup>
 }
 
-struct Domains: Codable {
-    var name: String
-    var isBlocked: Bool = true
-}
+//struct Domains: Codable {
+//    var name: String
+//    var isBlocked: Bool = true
+//}
 
 // MARK: - Block Metrics & Block Log
 
@@ -171,15 +173,6 @@ func updateMetrics(_ mode: MetricsUpdate.Mode, rescheduleNotifications: MetricsU
 func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
-//    let dummyList = LockdownGroup.init(
-//        version: 30,
-//        internalID: "dummyList",
-//        name: NSLocalizedString("Dummy Domains", comment: "The title of a list of trackers"),
-//        iconURL: "clickbait_icon",
-//        enabled: false,
-//        domains: getDomainBlockList(filename: "5000_dummy_list"),
-//        ipRanges: [:])
-    
     let snapchatAnalytics = LockdownGroup.init(
         version: 27,
         internalID: "snapchatAnalytics",
@@ -196,35 +189,28 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "game_ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "game_ads"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let clickbait = LockdownGroup.init(
         version: 29,
         internalID: "clickbait",
         name: NSLocalizedString("Clickbait", comment: "The title of a list of trackers"),
         iconURL: "clickbait_icon",
-        enabled: false,
-        domains: getDomainBlockList(filename: "clickbait"),
-        ipRanges: [:])
-    
-    let crypto = LockdownGroup.init(
-        version: 29,
-        internalID: "crypto_mining",
-        name: NSLocalizedString("Crypto Mining", comment: "The title of a list of trackers"),
-        iconURL: "crypto_icon",
         enabled: true,
-        domains: getDomainBlockList(filename: "crypto_mining"),
+        domains: getDomainBlockList(filename: "clickbait"),
         ipRanges: [:],
-        warning: "This block list is currently under maintenance and will be updated soon.")
+        accessLevel: "basic")
     
     let emailOpens = LockdownGroup.init(
         version: 30,
         internalID: "email_opens",
         name: NSLocalizedString("Email Trackers", comment: "The title of a list of trackers"),
         iconURL: "email_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "email_opens"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let facebookInc = LockdownGroup.init(
         version: 33,
@@ -243,7 +229,8 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "facebook_white_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "facebook_sdk"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let marketingScripts = LockdownGroup.init(
         version: 31,
@@ -252,26 +239,17 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "marketing_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "marketing"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let marketingScriptsII = LockdownGroup.init(
         version: 30,
         internalID: "marketing_beta_scripts",
         name: NSLocalizedString("Marketing Trackers II", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
-        enabled: true,
+        enabled: false,
         domains: getDomainBlockList(filename: "marketing_beta"),
         ipRanges: [:])
-
-    let ransomware = LockdownGroup.init(
-        version: 29,
-        internalID: "ransomware",
-        name: NSLocalizedString("Ransomware", comment: "The title of a list of trackers"),
-        iconURL: "ransomware_icon",
-        enabled: false,
-        domains: getDomainBlockList(filename: "ransomware"),
-        ipRanges: [:],
-        warning: "This block list is currently under maintenance and will be updated soon.")
 
     let googleShoppingAds = LockdownGroup.init(
         version: 35,
@@ -290,7 +268,8 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "user_data_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "data_trackers"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let generalAds = LockdownGroup.init(
         version: 40,
@@ -299,42 +278,104 @@ func setupFirewallDefaultBlockLists() {
         iconURL: "ads_icon",
         enabled: true,
         domains: getDomainBlockList(filename: "general_ads"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let reporting = LockdownGroup.init(
         version: 29,
         internalID: "reporting",
         name: NSLocalizedString("Reporting", comment: "The title of a list of trackers"),
         iconURL: "reporting_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "reporting"),
-        ipRanges: [:])
+        ipRanges: [:],
+        accessLevel: "basic")
     
     let amazonTrackers = LockdownGroup.init(
         version: 32,
         internalID: "amazon_trackers",
         name: NSLocalizedString("Amazon Trackers", comment: "The title of a list of trackers"),
         iconURL: "amazon_icon",
-        enabled: false,
+        enabled: true,
         domains: getDomainBlockList(filename: "amazon_trackers"),
         ipRanges: [:],
-        warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.")
+        warning: "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.",
+        accessLevel: "basic")
     
-    let defaultLockdownSettings = [snapchatAnalytics,
-                                   gameAds,
-                                   clickbait,
-                                   crypto,
-                                   emailOpens,
-                                   facebookInc,
-                                   facebookSDK,
-                                   marketingScripts,
-                                   marketingScriptsII,
-                                   ransomware,
-                                   googleShoppingAds,
-                                   dataTrackers,
-                                   generalAds,
-                                   reporting,
-                                   amazonTrackers];
+    let ifunnyTrackers = LockdownGroup.init(
+        version: 1,
+        internalID: "ifunnyTrackers",
+        name: NSLocalizedString("iFunny Trackers", comment: "The title of a list of trackers"),
+        iconURL: "icn_vpn",
+        enabled: false,
+        domains: getDomainBlockList(filename: "ifunny_trackers"),
+        ipRanges: [:])
+    
+    let advancedGaming = LockdownGroup.init(
+        version: 1,
+        internalID: "advancedGaming",
+        name: NSLocalizedString("Advanced Gaming", comment: "The title of a list of trackers"),
+        iconURL: "icn_vpn",
+        enabled: false,
+        domains: getDomainBlockList(filename: "advanced_gaming"),
+        ipRanges: [:])
+    
+    let tiktokTrackers = LockdownGroup.init(
+        version: 1,
+        internalID: "tiktokTrackers",
+        name: NSLocalizedString("Tiktok Trackers", comment: "The title of a list of trackers"),
+        iconURL: "icn_vpn",
+        enabled: false,
+        domains: getDomainBlockList(filename: "tiktok_trackers"),
+        ipRanges: [:])
+    
+    let scams = LockdownGroup.init(
+        version: 1,
+        internalID: "scams",
+        name: NSLocalizedString("Scams", comment: "The title of a list of trackers"),
+        iconURL: "icn_vpn",
+        enabled: false,
+        domains: getDomainBlockList(filename: "scams"),
+        ipRanges: [:])
+    
+    let junesJourneyTrackers = LockdownGroup.init(
+        version: 1,
+        internalID: "junesJourneyTrackers",
+        name: NSLocalizedString("Junes Journey Trackers", comment: "The title of a list of trackers"),
+        iconURL: "icn_vpn",
+        enabled: false,
+        domains: getDomainBlockList(filename: "junes_journey_trackers"),
+        ipRanges: [:])
+    
+    let advancedAnalytics = LockdownGroup.init(
+        version: 1,
+        internalID: "advancedAnalytics",
+        name: NSLocalizedString("Advanced Analytics", comment: "The title of a list of trackers"),
+        iconURL: "icn_vpn",
+        enabled: false,
+        domains: getDomainBlockList(filename: "advanced_analytics"),
+        ipRanges: [:])
+    
+    let defaultLockdownSettings = [
+        advancedAnalytics,
+        junesJourneyTrackers,
+        scams,
+        tiktokTrackers,
+        advancedGaming,
+        ifunnyTrackers,
+        snapchatAnalytics,
+        gameAds,
+        clickbait,
+        emailOpens,
+        facebookInc,
+        facebookSDK,
+        marketingScripts,
+        marketingScriptsII,
+        googleShoppingAds,
+        dataTrackers,
+        generalAds,
+        reporting,
+        amazonTrackers];
     
     for var defaultGroup in defaultLockdownSettings {
         if let current = lockdownBlockedDomains.lockdownDefaults[defaultGroup.internalID], current.version >= defaultGroup.version {
@@ -377,6 +418,7 @@ func getDomainBlockList(filename: String) -> Dictionary<String, Bool> {
 func getAllBlockedDomains() -> Array<String> {
     let lockdownBlockedDomains = getLockdownBlockedDomains()
     let userBlockedDomains = getUserBlockedDomains()
+    let userListsBlockedDomains = getBlockedLists()
     
     var allBlockedDomains = Array<String>()
     for (_, ldValue) in lockdownBlockedDomains.lockdownDefaults {
@@ -394,7 +436,49 @@ func getAllBlockedDomains() -> Array<String> {
         }
     }
     
+    for (_, value) in userListsBlockedDomains.userBlockListsDefaults {
+        if value.enabled {
+            for domain in value.domains {
+                allBlockedDomains.append(domain)
+            }
+        }
+    }
+    
     return allBlockedDomains
+}
+
+func getTotalEnabled() -> Array<String> {
+    let lockdownBlockedDomains = getLockdownBlockedDomains()
+    
+    var total = Array<String>()
+    for (_, ldValue) in lockdownBlockedDomains.lockdownDefaults {
+        if ldValue.enabled {
+            for (key, value) in ldValue.domains {
+                if value {
+                    total.append(key)
+                }
+            }
+        }
+    }
+    
+    return total
+}
+
+func getTotalDisabled() -> Array<String> {
+    let lockdownBlockedDomains = getLockdownBlockedDomains()
+    
+    var total = Array<String>()
+    for (_, ldValue) in lockdownBlockedDomains.lockdownDefaults {
+        if !ldValue.enabled {
+            for (key, value) in ldValue.domains {
+                if value {
+                    total.append(key)
+                }
+            }
+        }
+    }
+    
+    return total
 }
 
 func getIsCombinedBlockListEmpty() -> Bool {
@@ -455,9 +539,11 @@ func getBlockedLists() -> UserBlockListsDefaults {
 
 func addBlockedList(listName: String) {
     var data = getBlockedLists()
-    data.userBlockListsDefaults[listName] = UserBlockListsGroup(name: listName, enabled: false)
-    let encodedData = try? JSONEncoder().encode(data)
-    defaults.set(encodedData, forKey: kUserBlockedLists)
+    if !data.userBlockListsDefaults.keys.contains(listName) {
+        data.userBlockListsDefaults[listName] = UserBlockListsGroup(name: listName, enabled: false)
+        let encodedData = try? JSONEncoder().encode(data)
+        defaults.set(encodedData, forKey: kUserBlockedLists)
+    }
 }
 
 func changeBlockedListName(from listName: String, to newListName: String) {
@@ -478,43 +564,107 @@ func deleteBlockedList(listName: String) {
 
 func addDomainToBlockedList(domain: String, for listName: String) {
     var data = getBlockedLists()
-    data.userBlockListsDefaults[listName]?.domains.append(Domains(name: domain))
+    data.userBlockListsDefaults[listName]?.domains.insert(domain)
     let encodedData = try? JSONEncoder().encode(data)
     defaults.set(encodedData, forKey: kUserBlockedLists)
 }
 
-extension Domains {
+extension UserBlockListsGroup {
+    func generateCurrentTimeStamp () -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy_MM_dd_hh_mm_ss"
+        return (formatter.string(from: Date()) as NSString) as String
+    }
+    
     func exportToURL() -> URL? {
-      guard let encoded = try? JSONEncoder().encode(self) else { return nil }
-      
-      let documents = FileManager.default.urls(
-        for: .documentDirectory,
-        in: .userDomainMask
-      ).first
-      
-      guard let path = documents?.appendingPathComponent("/\(name).csv") else {
-        return nil
-      }
-      
-      do {
-        try encoded.write(to: path, options: .atomicWrite)
-        return path
-      } catch {
-        print(error.localizedDescription)
-        return nil
-      }
+        let timeStamp = generateCurrentTimeStamp()
+        let fileName = "LOCKDOWN_\(NSDate.now)"
+        guard let encoded = try? JSONEncoder().encode(self) else { return nil }
+        
+        let documents = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        ).first
+        
+        guard let path = documents?.appendingPathComponent("/\(fileName).csv") else {
+            return nil
+        }
+        
+        do {
+            try encoded.write(to: path, options: .atomicWrite)
+            print(fileName)
+            return path
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
     static func importData(from url: URL) {
-      guard
-        let data = try? Data(contentsOf: url),
-        let domain = try? JSONDecoder().decode(Domains.self, from: data)
-            
-            
-        else { return }
-        addDomainToBlockedList(domain: domain.name, for: "oop")
         
-      
-      try? FileManager.default.removeItem(at: url)
+//        if #available(iOSApplicationExtension 14.0, *) {
+//            let supportedFiles: [UTType] = [UTType.data]
+//
+////            let controller = UIDocumentPickerViewController
+//
+//
+//
+//        } else {
+//            // Fallback on earlier versions
+//        }
+        
+        guard let data = try? Data(contentsOf: url)
+//            let list = try? JSONDecoder().decode(UserBlockListsGroup.self, from: data)
+                
+        else { return }
+        defaults.set(data, forKey: kUserBlockedLists)
+        try? FileManager.default.removeItem(at: url)
     }
 }
+
+//extension Domains {
+//    
+//    func generateCurrentTimeStamp () -> String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy_MM_dd_hh_mm_ss"
+//        return (formatter.string(from: Date()) as NSString) as String
+//    }
+//    
+//    func exportToURL() -> URL? {
+//        
+//        let timeStamp = generateCurrentTimeStamp()
+//        let fileName = "LOCKDOWN_\(NSDate.now)"
+//        guard let encoded = try? JSONEncoder().encode(self) else { return nil }
+//        
+//        let documents = FileManager.default.urls(
+//            for: .documentDirectory,
+//            in: .userDomainMask
+//        ).first
+//        
+//        guard let path = documents?.appendingPathComponent("/\(fileName).csv") else {
+//            return nil
+//        }
+//        
+//        do {
+//            try encoded.write(to: path, options: .atomicWrite)
+//            print(fileName)
+//            return path
+//        } catch {
+//            print(error.localizedDescription)
+//            return nil
+//        }
+//    }
+//    
+//    static func importData(from url: URL) {
+//        guard
+//            let data = try? Data(contentsOf: url),
+//            let domain = try? JSONDecoder().decode(Domains.self, from: data)
+//                
+//                
+//        else { return }
+//        addDomainToBlockedList(domain: domain.name, for: "oop")
+//        
+//        
+//        try? FileManager.default.removeItem(at: url)
+//    }
+//}

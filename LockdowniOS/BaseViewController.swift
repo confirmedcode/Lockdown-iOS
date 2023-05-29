@@ -276,12 +276,6 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
 //        self.present(popup, animated: true, completion: nil)
 //    }
     
-    // MARK: - Email Team
-    
-    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
-    
     @objc func emailTeam(messageBody: String = NSLocalizedString("Hi, my question or feedback for Lockdown is: ", comment: ""), messageErrorBody: String = "") {
         DDLogInfo("")
         DDLogInfo("UserId: \(keychain[kVPNCredentialsId] ?? "No User ID")")
@@ -354,6 +348,16 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     //
     //        self.present(popup, animated: true, completion: nil)
     //    }
+    
+    // MARK: - Email Team
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true) { [weak self] in
+            self?.actionUponEmailComposeClosure()
+        }
+    }
+    
+    func actionUponEmailComposeClosure() {}
     
 }
 

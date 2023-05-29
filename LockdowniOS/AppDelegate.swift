@@ -28,6 +28,11 @@ let kHasShownTitlePage: String = "kHasShownTitlePage"
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    
+    private let connectivityService = ConnectivityService()
+    private let paywallService = BasePaywallService.shared
+    private let userService = BaseUserService.shared
+    
     let noInternetMessageView = MessageView.viewFromNib(layout: .statusLine)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -46,6 +51,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ProtectedFileAccess.createProtectionAccessCheckFile()
         
         UNUserNotificationCenter.current().delegate = self
+        
+        // Lockdown default lists
+        setupFirewallDefaultBlockLists()
+        
+        // Whitelist default domains
+        setupLockdownWhitelistedDomains()
+        
+        connectivityService.startObservingConnectivity()
+        
+        // Content Blocker
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: LockdownStorageIdentifier.contentBlockerId) { error in
+            if error != nil {
+                DDLogError("Error loading Content Blocker: \(String(describing: error))")
+            }
+        }
+        
+        // Prepare IAP
+        
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)")
+                if purchase.transaction.transactionState == .purchased || purchase.transaction.transactionState == .restored {
+                    if purchase.needsFinishTransaction {
+                        DDLogInfo("Finishing transaction for purchase: \(purchase)")
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                }
+            }
+        }
+        
+        VPNSubscription.cacheLocalizedPrices()
         
         // Set up PopupDialog
         let dialogAppearance = PopupDialogDefaultView.appearance()
@@ -95,12 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         cancelButtonAppearance.titleFont      = fontSemiBold17
         cancelButtonAppearance.titleColor     = UIColor.lightGray
-
-        // Lockdown default lists
-        setupFirewallDefaultBlockLists()
-        
-        // Whitelist default domains
-        setupLockdownWhitelistedDomains()
         
         // Show indicator at top when internet not reachable
         reachability?.whenReachable = { reachability in
@@ -123,27 +153,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DDLogError("Unable to start reachability notifier")
         }
         
-        // Content Blocker
-        SFContentBlockerManager.reloadContentBlocker( withIdentifier: "com.confirmed.lockdown.Confirmed-Blocker") { (_ error: Error?) -> Void in
-            if error != nil {
-                DDLogError("Error loading Content Blocker: \(String(describing: error))")
-            }
-        }
-        
-        // Prepare IAP
-        VPNSubscription.cacheLocalizedPrices()
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)");
-                if purchase.transaction.transactionState == .purchased || purchase.transaction.transactionState == .restored {
-                    if purchase.needsFinishTransaction {
-                        DDLogInfo("Finishing transaction for purchase: \(purchase)")
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                }
-            }
-        }
-        
         // Periodically check if the firewall is functioning correctly - every 2.5 hours
         if #available(iOS 13.0, *) {
             DDLogInfo("BGTask: Registering BGTask id \(FirewallRepair.identifier)")
@@ -161,13 +170,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWidgetToggleWorkaround()
         
         // If not yet agreed to privacy policy, set initial view controller to TitleViewController
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        self.window?.rootViewController = LDFirewallViewController()
-//        self.window?.rootViewController = LDConfigurationViewController()
-//        self.window?.rootViewController = ListSettingsViewController()
-//        self.window?.makeKeyAndVisible()
         
-        if (defaults.bool(forKey: kHasShownTitlePage) == false) {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = SplashscreenViewController()
+        window?.makeKeyAndVisible()
+        
+//        if (defaults.bool(forKey: kHasShownTitlePage) == false) {
             // TODO: removed this check because this was causing crashes possibly due to Locale
             // don't show onboarding page for anyone who installed before Aug 16th
         //            let formatter = DateFormatter()
@@ -177,14 +185,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //                print("Not showing onboarding page, installation epoch \(appInstall.timeIntervalSince1970)")
         //            }
         //            else {
-                DDLogInfo("Showing onboarding page")
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController
-                self.window?.rootViewController = viewController
-                self.window?.makeKeyAndVisible()
+//                DDLogInfo("Showing onboarding page")
+//                self.window = UIWindow(frame: UIScreen.main.bounds)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "titleViewController") as! TitleViewController
+//                self.window?.rootViewController = viewController
+//                self.window?.makeKeyAndVisible()
         //            }
-        }
+//        }
         
         return true
     }
@@ -365,9 +373,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        guard url.pathExtension == "csv" else { return false }
-        Domains.importData(from: url)
+
 
         guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
             let host = components.host else {
@@ -410,14 +416,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         else if (host == "toggleFirewall") {
-            if let home = self.getCurrentViewController() as? HomeViewController {
-                home.toggleFirewall(self)
+            if let home = self.getCurrentViewController() as? LDFirewallViewController {
+                home.toggleFirewall()
             }
         }
         
         else if (host == "toggleVPN") {
-            if let home = self.getCurrentViewController() as? HomeViewController {
-                home.toggleVPN(self)
+            if let home = self.getCurrentViewController() as? LDVpnViewController {
+                home.toggleVPN()
             }
         }
         

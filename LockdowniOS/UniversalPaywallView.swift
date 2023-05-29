@@ -11,6 +11,8 @@ final class UniversalPaywallView: UIView {
     
     //MARK: Properties
     
+    var isSelected: Bool = false
+    
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
@@ -89,7 +91,7 @@ final class UniversalPaywallView: UIView {
         return stackView
     }()
     
-    private lazy var buyButton1: UIButton = {
+    lazy var buyButton1: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
@@ -115,18 +117,25 @@ final class UniversalPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "then $99.99 per year"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro)
+        descriptionLabel.text = "then \(descriptionLabelPrice1) per year"
+        descriptionLabel.highlight(descriptionLabelPrice1, font: UIFont.boldLockdownFont(size: 15))
+        
         button.addSubview(descriptionLabel)
         descriptionLabel.anchors.top.spacing(4, to: titleLabel.anchors.bottom)
         descriptionLabel.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
-        descriptionLabel2.text = "only $8.33 per month"
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
+        
+        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAnnualPro)
+        descriptionLabel2.text = "only \(descriptionLabelPrice2) per month"
+        descriptionLabel2.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
+        
         button.addSubview(descriptionLabel2)
         descriptionLabel2.anchors.top.spacing(14, to: imageView.anchors.bottom)
         descriptionLabel2.anchors.trailing.pin(inset: 24)
@@ -152,9 +161,12 @@ final class UniversalPaywallView: UIView {
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
-        descriptionLabel.text = "$11.99/month"
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
+        
+        let descriptionLabelPrice = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro)
+        descriptionLabel.text = "\(descriptionLabelPrice)/month"
+        descriptionLabel.highlight(descriptionLabelPrice, font: UIFont.boldLockdownFont(size: 15))
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         stackView.axis = .vertical
@@ -163,12 +175,10 @@ final class UniversalPaywallView: UIView {
         stackView.spacing = 4
         
         button.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.anchors.centerY.align()
         stackView.anchors.leading.pin(inset: 24)
         
         button.anchors.height.equal(66)
-        
         return button
     }()
     

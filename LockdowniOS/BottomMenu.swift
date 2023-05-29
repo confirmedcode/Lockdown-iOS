@@ -42,7 +42,8 @@ final class BottomMenu: UIView {
     
     lazy var middleButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .gray
+        button.tintColor = .tunnelsBlue
+//        button.titleLabel?.textColor = .tunnelsBlue
         button.titleLabel?.font = fontMedium15
         button.setTitle(NSLocalizedString("Move to List", comment: ""), for: .normal)
         return button
@@ -50,10 +51,10 @@ final class BottomMenu: UIView {
     
     lazy var rightButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .gray
+        button.tintColor = .red
+//        button.titleLabel?.textColor = .red
         button.titleLabel?.font = fontMedium15
         button.setTitle(NSLocalizedString("Delete", comment: ""), for: .normal)
-        button.setTitleColor(.gray, for: .disabled)
         return button
     }()
     

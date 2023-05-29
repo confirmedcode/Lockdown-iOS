@@ -38,7 +38,7 @@
 "6sx-m3-XUn.text" = "World's Simplest Privacy Policy";
 
 /* Class = "UIButton"; normalTitle = "February 2022"; ObjectID = "7NS-46-hCo"; */
-"7NS-46-hCo.normalTitle" = "February 2022";
+"7NS-46-hCo.normalTitle" = "February 2023";
 
 /* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
 "7nc-lb-z6u.normalTitle" = "Agree";
@@ -145,8 +145,8 @@
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "O4a-yi-uRp"; */
 "O4a-yi-uRp.normalTitle" = "Button";
 
-/* Class = "UITabBarItem"; title = "Home"; ObjectID = "O5a-jC-Mj1"; */
-"O5a-jC-Mj1.title" = "Home";
+/* Class = "UITabBarItem"; title = "Protect"; ObjectID = "O5a-jC-Mj1"; */
+"O5a-jC-Mj1.title" = "Protect";
 
 /* Class = "UILabel"; text = "Location: 🇺🇸"; ObjectID = "O6b-GR-ijA"; */
 "O6b-GR-ijA.text" = "Location: 🇺🇸";
@@ -361,8 +361,8 @@
 /* Class = "UILabel"; text = "Forgot Password"; ObjectID = "nu2-zq-dta"; */
 "nu2-zq-dta.text" = "Forgot Password";
 
-/* Class = "UILabel"; text = "Secure Tunnel"; ObjectID = "nuc-D4-P1M"; */
-"nuc-D4-P1M.text" = "Secure Tunnel";
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "nuc-D4-P1M"; */
+"nuc-D4-P1M.text" = "Secure Tunnel VPN";
 
 /* Class = "UILabel"; text = "Sign In"; ObjectID = "oPf-b7-d1V"; */
 "oPf-b7-d1V.text" = "Sign In";

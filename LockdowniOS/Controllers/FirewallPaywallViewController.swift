@@ -6,8 +6,30 @@
 //
 
 import UIKit
+import SwiftyStoreKit
+import NetworkExtension
+import PromiseKit
+import CocoaLumberjackSwift
+import StoreKit
 
-final class FirewallPaywallViewController: UIViewController {
+protocol PaywallViewControllerCloseDelegate: AnyObject {
+    func didClosePaywall()
+}
+
+final class FirewallPaywallViewController: BaseViewController, Loadable {
+    
+    var parentVC: UIViewController?
+    
+    weak var firewallVC: LDFirewallViewController?
+    
+    var advancedPlanUpdated: (() -> ())?
+    
+    enum Mode {
+        case newSubscription
+        case upgrade(active: [Subscription.PlanType])
+    }
+    
+    var mode = Mode.newSubscription
     
     //MARK: Properties
     private var titleName = NSLocalizedString("Lockdown", comment: "")
@@ -16,25 +38,27 @@ final class FirewallPaywallViewController: UIViewController {
     {
         let view = ConfiguredNavigationView()
         view.rightNavButton.setTitle(NSLocalizedString("RESTORE", comment: ""), for: .normal)
+        view.rightNavButton.addTarget(self, action: #selector(restorePurchase), for: .touchUpInside)
         view.titleLabel.text = NSLocalizedString(titleName, comment: "")
         view.leftNavButton.setTitle(NSLocalizedString("CLOSE", comment: ""), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(closeButtonClicked), for: .touchUpInside)
-        view.rightNavButton.addTarget(self, action: #selector(restoreButtonClicked), for: .touchUpInside)
-        
         return view
     }()
     
     private lazy var annualPlan: AdvancedPlansViews = {
         let view = AdvancedPlansViews()
         view.title.text = "Annual"
-        view.detailTitle.text = "$29.99/year"
-        view.detailTitle2.text = "$2.49/month"
+        view.detailTitle.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly))/year"
+        view.detailTitle2.text = "$2.99/month"
         view.discountImageView.image = UIImage(named: "saveDiscount")
         view.iconImageView.image = UIImage(named: "fill-1")
         view.backgroundView.layer.borderColor = UIColor.white.cgColor
         view.isUserInteractionEnabled = true
         
         view.setOnClickListener { [unowned self] in
+            
+            selectAdvancedYearly()
+            
             annualView.isHidden = false
             monthlyView.isHidden = true
             
@@ -44,7 +68,7 @@ final class FirewallPaywallViewController: UIViewController {
             monthlyPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
             monthlyPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
             
-            ftPriceLabel.text = "7-day free trial, then $29.99 yearly. Cancel anytime."
+            ftPriceLabel.text = "7-day free trial, then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)) yearly. Cancel anytime."
         }
         return view
     }()
@@ -52,11 +76,14 @@ final class FirewallPaywallViewController: UIViewController {
     private lazy var monthlyPlan: AdvancedPlansViews = {
         let view = AdvancedPlansViews()
         view.title.text = "Monthly"
-        view.detailTitle.text = "$4.99/month"
+        view.detailTitle.text = "\(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly))/month"
         view.detailTitle2.text = "  "
         view.isUserInteractionEnabled = true
         
         view.setOnClickListener { [unowned self] in
+            
+            selectAdvancedMonthly()
+            
             monthlyView.isHidden = false
             annualView.isHidden = true
             
@@ -66,7 +93,7 @@ final class FirewallPaywallViewController: UIViewController {
             annualPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
             annualPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
             
-            ftPriceLabel.text = "7-day free trial, then $4.99 monthly. Cancel anytime."
+            ftPriceLabel.text = "7-day free trial, then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly)) monthly. Cancel anytime."
         }
         return view
     }()
@@ -84,7 +111,7 @@ final class FirewallPaywallViewController: UIViewController {
     
     lazy var ftPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("7-day free trial, then $29.99 yearly. Cancel anytime.", comment: "")
+        label.text = NSLocalizedString("7-day free trial, then \(VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)) yearly. Cancel anytime.", comment: "")
         label.textColor = .smallGrey
         label.font = fontMedium11
         label.textAlignment = .center
@@ -97,7 +124,7 @@ final class FirewallPaywallViewController: UIViewController {
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
         button.layer.cornerRadius = 28
-        button.addTarget(self, action: #selector(tryButtonClicked), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startTrial), for: .touchUpInside)
         let titleLabel = UILabel()
         let title = NSLocalizedString("Try 7-day free trial", comment: "")
         titleLabel.font = fontSemiBold17
@@ -127,27 +154,26 @@ final class FirewallPaywallViewController: UIViewController {
     
     private lazy var privacyLabel: UILabel = {
         let label = UILabel()
-        label.font = fontMedium11
-        label.textAlignment = .center
-        label.numberOfLines = 0
+          label.font = fontMedium11
+          label.textAlignment = .center
+          label.numberOfLines = 0
+        
         let attributedText = NSMutableAttributedString(string: NSLocalizedString("By continuing you agree with our ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey])
-            let termsRange = NSRange(location: attributedText.length, length: NSLocalizedString("Terms of Service", comment: "").count)
-            attributedText.append(NSAttributedString(string: NSLocalizedString("Terms of Service", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://lockdownprivacy.com/terms")!]))
-            attributedText.append(NSAttributedString(string: NSLocalizedString(" and ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey]))
-            let privacyRange = NSRange(location: attributedText.length, length: NSLocalizedString("Privacy Policy", comment: "").count)
-            attributedText.append(NSAttributedString(string: NSLocalizedString("Privacy Policy", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.link: URL(string: "https://lockdownprivacy.com/privacy")!]))
-            
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center
-            attributedText.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: attributedText.length))
-            label.attributedText = attributedText
-            
-            label.isUserInteractionEnabled = true
-            
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
-            label.addGestureRecognizer(tapGesture)
-            return label
-    }()
+        let termsRange = NSRange(location: attributedText.length, length: NSLocalizedString("Terms of Service", comment: "").count)
+        attributedText.append(NSAttributedString(string: NSLocalizedString("Terms of Service", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white]))
+        attributedText.append(NSAttributedString(string: NSLocalizedString(" and ", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.smallGrey]))
+        let privacyRange = NSRange(location: attributedText.length, length: NSLocalizedString("Privacy Policy", comment: "").count)
+        attributedText.append(NSAttributedString(string: NSLocalizedString("Privacy Policy", comment: ""), attributes: [NSAttributedString.Key.font: fontMedium11, NSAttributedString.Key.foregroundColor: UIColor.white]))
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        attributedText.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: attributedText.length))
+        label.attributedText = attributedText
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
+        label.addGestureRecognizer(tapGesture)
+        return label
+      }()
     
     //MARK: Lificycle
     override func viewDidLoad() {
@@ -207,14 +233,6 @@ final class FirewallPaywallViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    @objc func restoreButtonClicked() {
-        
-    }
-    
-    @objc func tryButtonClicked() {
-        
-    }
-    
     @objc private func labelTapped(sender: UITapGestureRecognizer) {
         let termsRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Terms of Service", comment: "").count - 18, length: NSLocalizedString("Terms of Service", comment: "").count)
         let privacyRange = NSRange(location: privacyLabel.attributedText!.length - NSLocalizedString("Privacy Policy", comment: "").count, length: NSLocalizedString("Privacy Policy", comment: "").count)
@@ -253,5 +271,243 @@ extension UITapGestureRecognizer {
                                                   in: textContainer,
                                                   fractionOfDistanceBetweenInsertionPoints: nil)
         return NSLocationInRange(index, targetRange)
+    }
+}
+
+extension FirewallPaywallViewController: ProductPurchasable {
+    @objc private func restorePurchase() {
+        //toggleRestorePurchasesButton(false)
+        firstly {
+            try Client.signIn(forceRefresh: true)
+        }
+        .then { (signin: SignIn) -> Promise<GetKey> in
+            try Client.getKey()
+        }
+        .done { (getKey: GetKey) in
+            // we were able to get key, so subscription is valid -- follow pathway from HomeViewController to associate this with the email account if there is one
+            let presentingViewController = self.presentingViewController as? HomeViewController
+            self.dismiss(animated: true, completion: {
+                if presentingViewController != nil {
+                    presentingViewController?.toggleVPN("me")
+                }
+                else {
+                    VPNController.shared.setEnabled(true)
+                }
+            })
+        }
+        .catch { error in
+//            self.toggleRestorePurchasesButton(true)
+            DDLogError("Restore Failed: \(error)")
+            if let apiError = error as? ApiError {
+                switch apiError.code {
+                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                    // now try email if it exists
+                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                        DDLogInfo("restore: have confirmed API credentials, using them")
+//                        self.toggleRestorePurchasesButton(false)
+                        firstly {
+                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                        }
+                        .then { (signin: SignIn) -> Promise<GetKey> in
+                            DDLogInfo("restore: signin result: \(signin)")
+                            return try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+//                            self.toggleRestorePurchasesButton(true)
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            DDLogInfo("restore: setting VPN creds with ID and Dismissing: \(getKey.id)")
+                            let presentingViewController = self.presentingViewController as? LDFirewallViewController
+                            self.dismiss(animated: true, completion: {
+                                if presentingViewController != nil {
+                                    presentingViewController?.toggleFirewall()
+                                }
+                                else {
+                                    VPNController.shared.setEnabled(true)
+                                }
+                            })
+                        }
+                        .catch { error in
+//                            self.toggleRestorePurchasesButton(true)
+                            DDLogError("restore: Error doing restore with email-login: \(error)")
+                            if (self.popupErrorAsNSURLError(error)) {
+                                return
+                            }
+                            else if let apiError = error as? ApiError {
+                                switch apiError.code {
+                                case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
+                                    self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
+                                                    message: NSLocalizedString("Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
+                                                    acceptButton: NSLocalizedString("OK", comment: ""))
+                                default:
+                                    _ = self.popupErrorAsApiError(error)
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        self.showPopupDialog(title: NSLocalizedString("No Active Subscription", comment: ""),
+                                        message: NSLocalizedString("Please ensure that you have an active subscription. If you're attempting to share a subscription from the same account, you'll need to sign in with the same email address. Otherwise, start your free trial or e-mail team@lockdownprivacy.com", comment: ""),
+                                        acceptButton: NSLocalizedString("OK", comment: ""))
+                    }
+                default:
+                    self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
+                                         message: NSLocalizedString("Please email team@lockdownprivacy.com with the following Error Code ", comment: "") + "\(apiError.code) : \(apiError.message)",
+                                         acceptButton: NSLocalizedString("OK", comment: ""))
+                }
+            }
+            else {
+                self.showPopupDialog(title: NSLocalizedString("Error Restoring Subscription", comment: ""),
+                                     message: NSLocalizedString("Please make sure your Internet connection is active. If this error persists, email team@lockdownprivacy.com with the following error message: ", comment: "") + "\(error)",
+                    acceptButton: NSLocalizedString("OK", comment: ""))
+            }
+        }
+    }
+    
+    func selectAdvancedYearly() {
+        VPNSubscription.selectedProductId = VPNSubscription.productIdAdvancedYearly
+        updatePricingSubtitle()
+    }
+    
+    func selectAdvancedMonthly() {
+        VPNSubscription.selectedProductId = VPNSubscription.productIdAdvancedMonthly
+        updatePricingSubtitle()
+    }
+    
+    func updatePricingSubtitle() {
+        let context: VPNSubscription.SubscriptionContext = {
+            switch mode {
+            case .newSubscription:
+                return .new
+            case .upgrade:
+                return .upgrade
+            }
+        }()
+        
+        if monthlyPlan.isSelected {
+            let priceLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly, for: context)
+            ftPriceLabel.text = "7-day free trial, then \(priceLabel). Cancel anytime."
+        } else if annualPlan.isSelected {
+            let priceLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly, for: context)
+            ftPriceLabel.text = "7-day free trial, then \(priceLabel). Cancel anytime."
+        }
+    }
+    
+    @objc func startTrial() {
+        showLoadingView()
+        VPNSubscription.purchase(
+            succeeded: {
+                self.dismiss(animated: true, completion: { [self] in
+                    if let presentingViewController = self.parentVC as? LDFirewallViewController {
+                        
+                        // TODO: change view of LDFirewallViewController
+                    }
+                    
+                    // force refresh receipt, and sync with email if it exists, activate VPNte
+                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+                        DDLogInfo("purchase complete: syncing with confirmed email")
+                        firstly {
+                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+                        }
+                        .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
+                            DDLogInfo("purchase complete: signin result: \(signin)")
+                            return try Client.subscriptionEvent(forceRefresh: true)
+                        }
+                        .then { (result: SubscriptionEvent) -> Promise<GetKey> in
+                            DDLogInfo("purchase complete: subscriptionevent result: \(result)")
+                            return try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            DDLogInfo("purchase complete: setting VPN creds with ID: \(getKey.id)")
+                            VPNController.shared.setEnabled(true)
+                        }
+                        .catch { error in
+                            DDLogError("purchase complete: Error: \(error)")
+                            if self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)") {
+                                return
+                            } else if let apiError = error as? ApiError {
+                                switch apiError.code {
+                                default:
+                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
+                                }
+                            }
+                        }
+                    } else {
+                        firstly {
+                            try Client.signIn(forceRefresh: true) // this will fetch and set latest receipt, then submit to API to get cookie
+                        }
+                        .then { _ in
+                            // TODO: don't always do this -- if we already have a key, then only do it once per day max
+                            try Client.getKey()
+                        }
+                        .done { (getKey: GetKey) in
+                            try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                            VPNController.shared.setEnabled(true)
+                        }
+                        .catch { error in
+                            DDLogError("purchase complete - no email: Error: \(error)")
+                            if self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)") {
+                                return
+                            } else if let apiError = error as? ApiError {
+                                switch apiError.code {
+                                default:
+                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
+                                }
+                            }
+                        }
+                    }
+                })
+            },
+            errored: { error in
+                DDLogError("Start Trial Failed: \(error)")
+                self.hideLoadingView()
+                if let skError = error as? SKError {
+                    var errorText = ""
+                    switch skError.code {
+                    case .unknown:
+                        errorText = .localized("Unknown error. Please contact support at team@lockdownprivacy.com.")
+                    case .clientInvalid:
+                        errorText = .localized("Not allowed to make the payment")
+                    case .paymentCancelled:
+                        errorText = .localized("Payment was cancelled")
+                    case .paymentInvalid:
+                        errorText = .localized("The purchase identifier was invalid")
+                    case .paymentNotAllowed:
+                        errorText = .localized("""
+Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. \
+Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again.
+""")
+                    case .storeProductNotAvailable:
+                        errorText = .localized("The product is not available in the current storefront")
+                    case .cloudServicePermissionDenied:
+                        errorText = .localized("Access to cloud service information is not allowed")
+                    case .cloudServiceNetworkConnectionFailed:
+                        errorText = .localized("Could not connect to the network")
+                    case .cloudServiceRevoked:
+                        errorText = .localized("User has revoked permission to use this cloud service")
+                    default:
+                        errorText = skError.localizedDescription
+                    }
+                    self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
+                } else if self.popupErrorAsNSURLError(error) {
+                    return
+                } else if self.popupErrorAsApiError(error) {
+                    return
+                } else {
+                    self.showPopupDialog(
+                        title: .localized("Error Starting Trial"),
+                        message: .localized("Please contact team@lockdownprivacy.com.\n\nError details:\n") + "\(error)",
+                        acceptButton: .localizedOkay)
+                }
+        })
+    }
+    
+    private func showPaywallIfNoSubscription() {
+        guard BaseUserService.shared.user.currentSubscription == nil else { return }
+        guard BasePaywallService.shared.context == .normal else { return }
+        
+        BasePaywallService.shared.showPaywall(on: self)
+        
+        UserDefaults.hasSeenPaywallOnHomeScreen = true
     }
 }

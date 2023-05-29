@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 import CocoaLumberjackSwift
 
 final class BlockListViewController: BaseViewController {
@@ -23,6 +24,8 @@ final class BlockListViewController: BaseViewController {
     let curatedBlockedDomainsTableView = StaticTableView()
     let customBlockedListsTableView = StaticTableView()
     let customBlockedDomainsTableView = StaticTableView()
+    
+    
     
     private lazy var listsSubmenuView: ListsSubmenuView = {
         let view = ListsSubmenuView()
@@ -80,6 +83,7 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(systemName: "plus", withConfiguration: symbolConfig), for: .normal)
         button.addTarget(self, action: #selector(showSubmenu), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -96,6 +100,11 @@ final class BlockListViewController: BaseViewController {
         view.descriptionLabel.text = NSLocalizedString("No lists yet", comment: "")
         view.addButton.setTitle(NSLocalizedString("Create a list", comment: ""), for: .normal)
         view.addButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var lockedListsView: LockedListsView = {
+        let view = LockedListsView()
         return view
     }()
     
@@ -122,7 +131,7 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(named: "icn_edit"), for: .normal)
         button.addTarget(self, action: #selector(editDomains), for: .touchUpInside)
-        button.isHidden = true
+//        button.isEnabled = false
         return button
     }()
     
@@ -137,7 +146,6 @@ final class BlockListViewController: BaseViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .secondarySystemBackground
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
@@ -229,6 +237,7 @@ final class BlockListViewController: BaseViewController {
             tableView.anchors.top.spacing(8, to: domainsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.safeAreaPin()
         })
         
         customBlockedDomainsTableView.deselectsCellsAutomatically = true
@@ -287,11 +296,24 @@ final class BlockListViewController: BaseViewController {
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
             }.onSelect { [unowned self] in
-                let storyboard = UIStoryboard.main
-                let target = storyboard.instantiate(BlockListGroupViewController.self)
-                target.lockdownGroup = lockdownGroup
-                target.blockListVC = self
-                self.navigationController?.pushViewController(target, animated: true)
+                if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+                    let storyboard = UIStoryboard.main
+                    let target = storyboard.instantiate(BlockListGroupViewController.self)
+                    target.lockdownGroup = lockdownGroup
+                    target.blockListVC = self
+                    self.navigationController?.pushViewController(target, animated: true)
+                } else {
+                    if lockdownGroup.accessLevel == "advanced" {
+                        let vc = VPNPaywallViewController()
+                        present(vc, animated: true)
+                    } else {
+                        let storyboard = UIStoryboard.main
+                        let target = storyboard.instantiate(BlockListGroupViewController.self)
+                        target.lockdownGroup = lockdownGroup
+                        target.blockListVC = self
+                        self.navigationController?.pushViewController(target, animated: true)
+                    }
+                }
             }
             
             cell.accessoryType = .disclosureIndicator
@@ -363,13 +385,25 @@ extension BlockListViewController {
     func createCustomBlockedListsRows() {
         let tableView = customBlockedListsTableView
         let emptyList = emptyListsView
+        let lockedList = lockedListsView
         
-        if customBlockedLists.count == 0 {
+        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+            addNewListButton.isEnabled = true
+            if customBlockedLists.count == 0 {
+                tableView.addRow { (contentView) in
+                    contentView.addSubview(emptyList)
+                    emptyListsView.anchors.edges.pin()
+                }.onSelect {
+                    self.addList()
+                }
+            }
+        } else {
             tableView.addRow { (contentView) in
-                contentView.addSubview(emptyList)
-                emptyListsView.anchors.edges.pin()
+                contentView.addSubview(lockedList)
+                lockedList.anchors.edges.pin()
             }.onSelect {
-                self.addList()
+                let vc = VPNPaywallViewController()
+                self.present(vc, animated: true)
             }
         }
         
@@ -384,6 +418,7 @@ extension BlockListViewController {
                 self.didMakeChange = true
                 let vc = ListSettingsViewController()
                 vc.listName = list.name
+                vc.didMakeChange = list.enabled
                 vc.blockListVC = self
                 navigationController?.pushViewController(vc, animated: true)
             }.onSwipeToDelete { [unowned self] in
@@ -484,12 +519,6 @@ extension BlockListViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    //  domain name validation code method
-    func isValidDomainName(text: String) -> Bool {
-        let regEx = "^([a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+.*)$"
-        return text.range(of: "\(regEx)", options: .regularExpression) != nil
-    }
-    
     func deleteList(list: String) {
         
         let alert = UIAlertController(title: NSLocalizedString("Delete List?", comment: ""),
@@ -501,7 +530,6 @@ extension BlockListViewController {
                                       handler: { [weak self] (_) in
             guard let self else { return }
             self.reloadCustomBlockedLists()
-            print("Return")
         }))
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes, Delete", comment: ""),
@@ -527,6 +555,11 @@ extension BlockListViewController {
     @objc func importBlockList() {
         listsSubmenuView.isHidden = true
         let vc = ImportBlockListViewController()
+        vc.importCompletion = { [unowned self] in
+                self.reloadCustomBlockedLists()
+                self.showSuccessImportAlert()
+        }
+        
         navigationController?.present(vc, animated: true)
     }
     
@@ -574,10 +607,13 @@ extension BlockListViewController {
     
     @objc func editDomains() {
         let vc = EditDomainsViewController()
+        vc.updateCompletion = { [weak self] in
+            self?.reloadCustomBlockedDomains()
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showSuccessAlert() {
+    func showSuccessImportAlert() {
         let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""),
                                       message: NSLocalizedString("The list has been imported successfully. You can start blocking the list's domains", comment: ""),
                                       preferredStyle: .alert)

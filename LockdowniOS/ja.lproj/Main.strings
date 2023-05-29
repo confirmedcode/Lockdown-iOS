@@ -38,7 +38,7 @@
 "6sx-m3-XUn.text" = "世界で最もシンプルなプライバシーポリシー";
 
 /* Class = "UIButton"; normalTitle = "February 2022"; ObjectID = "7NS-46-hCo"; */
-"7NS-46-hCo.normalTitle" = "2022年2月";
+"7NS-46-hCo.normalTitle" = "2023年2月";
 
 /* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "7nc-lb-z6u"; */
 "7nc-lb-z6u.normalTitle" = "同意する";
@@ -361,7 +361,7 @@
 /* Class = "UILabel"; text = "Forgot Password"; ObjectID = "nu2-zq-dta"; */
 "nu2-zq-dta.text" = "パスワードをお忘れですか";
 
-/* Class = "UILabel"; text = "Secure Tunnel"; ObjectID = "nuc-D4-P1M"; */
+/* Class = "UILabel"; text = "Secure Tunnel VPN"; ObjectID = "nuc-D4-P1M"; */
 "nuc-D4-P1M.text" = "セキュアトンネル";
 
 /* Class = "UILabel"; text = "Sign In"; ObjectID = "oPf-b7-d1V"; */

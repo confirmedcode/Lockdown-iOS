@@ -84,7 +84,7 @@ extension PushNotifications.Authorization {
         }
     }
     
-    static private func showGoToSettingsPopup(on vc: UIViewController, completion: @escaping () -> ()) {
+    static func showGoToSettingsPopup(on vc: UIViewController, completion: @escaping () -> ()) {
         let popup = PopupDialog(
             title: NSLocalizedString("Please first go to your iOS Settings > Notifications > Lockdown to enable notifications", comment: ""),
             message: nil,

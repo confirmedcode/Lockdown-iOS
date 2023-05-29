@@ -10,12 +10,26 @@ import UIKit
 final class EditDomainsViewController: UIViewController {
     
     // MARK: - Properties
+    var updateCompletion: (() -> ())?
+    
     private var didMakeChange = false
     
     private var checkedStatus = false
     
     var customBlockedDomains: [(String, Bool)] = []
-    var selectedBlockedDomains: Dictionary<String, Bool> = [:]
+    
+    var selectedDomains: Dictionary<String, Bool> = [:] {
+        didSet {
+            if selectedDomains.filter({ $0.value == true }).count == 0 {
+                bottomMenu.middleButton.isEnabled = false
+                bottomMenu.rightButton.isEnabled = false
+            } else {
+                if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+                    bottomMenu.middleButton.isEnabled = true }
+                bottomMenu.rightButton.isEnabled = true
+            }
+        }
+    }
     
     private var titleName = NSLocalizedString("Edit Domains", comment: "")
     
@@ -49,30 +63,33 @@ final class EditDomainsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        configureUI()
+        
         configureDomainsTableView()
+        configureUI()
     }
     
     // MARK: - Configure UI
     private func configureUI() {
+        
+        view.addSubview(bottomMenu)
+        bottomMenu.anchors.bottom.pin()
+        bottomMenu.anchors.height.equal(60)
+        bottomMenu.anchors.leading.pin()
+        bottomMenu.anchors.trailing.pin()
+    }
+    
+    private func configureDomainsTableView() {
+        
         view.addSubview(navigationView)
         navigationView.anchors.leading.pin()
         navigationView.anchors.trailing.pin()
         navigationView.anchors.top.safeAreaPin()
         
-        view.addSubview(bottomMenu)
-        bottomMenu.anchors.bottom.pin()
-        bottomMenu.anchors.height.equal(60)
-        bottomMenu.anchors.leading.marginsPin()
-        bottomMenu.anchors.trailing.marginsPin()
-    }
-    
-    private func configureDomainsTableView() {
-        
         addTableView(customBlockedDomainsTableView) { tableView in
             tableView.anchors.top.spacing(24, to: navigationView.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
+            tableView.anchors.bottom.pin(inset: 60)
         }
         
         reloadCustomBlockedDomains()
@@ -116,7 +133,7 @@ private extension EditDomainsViewController {
             let blockListView = EditDomainsCell()
             blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
             
-            self.selectedBlockedDomains[domain] = checkedStatus
+            self.selectedDomains[domain] = checkedStatus
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
@@ -127,10 +144,7 @@ private extension EditDomainsViewController {
                 checkedStatus.toggle()
                 blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
                 
-                self.selectedBlockedDomains[domain] = checkedStatus
-                
-                self.bottomMenu.middleButton.setTitleColor(.tunnelsBlue, for: .normal)
-                self.bottomMenu.rightButton.setTitleColor(.red, for: .normal)
+                self.selectedDomains[domain] = checkedStatus
             }
             
             cell.accessoryType = .none
@@ -138,7 +152,9 @@ private extension EditDomainsViewController {
     }
     
     @objc func closeButtonClicked() {
-        dismiss(animated: true)
+        
+        updateCompletion?()
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func selectAllddDomains() {
@@ -147,10 +163,13 @@ private extension EditDomainsViewController {
     }
     
     @objc func moveToList() {
-        let sortedDomains = selectedBlockedDomains.filter({ $0.value == true })
-        
+        let sortedDomains = selectedDomains.filter({ $0.value == true })
         let vc = MoveToListViewController()
         vc.selectedDomains = sortedDomains
+        vc.moveToListCompletion = { [unowned self] in
+            self.reloadCustomBlockedDomains()
+        }
+        
         present(vc, animated: true)
     }
     
@@ -165,7 +184,7 @@ private extension EditDomainsViewController {
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
-            let sortedDomains = self.selectedBlockedDomains.filter({ $0.value == true })
+            let sortedDomains = self.selectedDomains.filter({ $0.value == true })
             
             for domain in sortedDomains.keys {
                 deleteUserBlockedDomain(domain: domain)

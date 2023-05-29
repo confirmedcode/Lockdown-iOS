@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashscreenViewController" customModule="Lockdown" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="aVg-Op-3ah"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kjK-jB-ade">
+                    <rect key="frame" x="187" y="367" width="40" height="52"/>
+                    <color key="backgroundColor" name="Panel Background"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lockdown Privacy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bAN-Ko-Nrh">
+                    <rect key="frame" x="56" y="431" width="302" height="34.5"/>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="28"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="Panel Background"/>
+            <constraints>
+                <constraint firstItem="kjK-jB-ade" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4FV-Fs-ziM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bAN-Ko-Nrh" secondAttribute="trailing" constant="56" id="R63-Rh-pTA"/>
+                <constraint firstItem="bAN-Ko-Nrh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="56" id="ltK-cZ-HaJ"/>
+                <constraint firstItem="bAN-Ko-Nrh" firstAttribute="top" secondItem="kjK-jB-ade" secondAttribute="bottom" constant="12" id="nEl-9d-uvr"/>
+                <constraint firstItem="bAN-Ko-Nrh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qwt-R4-s1s"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SplashScreenLogo" width="40" height="52"/>
+        <namedColor name="Panel Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

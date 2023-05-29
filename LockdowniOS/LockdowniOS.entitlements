@@ -17,6 +17,7 @@
 	<key>com.apple.developer.icloud-services</key>
 	<array>
 		<string>CloudKit</string>
+		<string>CloudDocuments</string>
 	</array>
 	<key>com.apple.developer.networking.networkextension</key>
 	<array>
@@ -27,6 +28,10 @@
 	<key>com.apple.developer.networking.vpn.api</key>
 	<array>
 		<string>allow-vpn</string>
+	</array>
+	<key>com.apple.developer.ubiquity-container-identifiers</key>
+	<array>
+		<string>iCloud.$(CFBundleIdentifier)</string>
 	</array>
 	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
 	<string>$(TeamIdentifierPrefix)$(CFBundleIdentifier)</string>

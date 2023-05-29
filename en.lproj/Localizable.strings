@@ -711,3 +711,56 @@
 "Create a list" = "Create a list";
 "No custom domains yet" = "No custom domains yet";
 "Add a domain" = "Add a domain";
+
+// MARK: - SignUpViewController
+"welcome" = "Welcome";
+"already_have_account_login" = "Already have an account? Login";
+"sign_up_to_access_new_block_lists_from_trackers" = "Sign up to access new blocked lists from trackers";
+"already_have_account_login_below" = "Already have Lockdown account?\nLogin below.";
+"forgot_password" = "Forgot Password";
+"email" = "Email";
+"password" = "Password";
+"access_our_curated_block_lists_and_build_your_own" = "Access our curated block lists and build your own";
+"access_lockdown_across_all_your_devices" = "Access Lockdown across all your devices";
+"firewall_and_vpn_support" = "Firewall and VPN support";
+"by_continuing_you_agree_with_our" = "By continuing you agree with our";
+"and" = "and";
+
+// MARK: - Enable Notifications
+"stay_in_the_loop" = "Stay in the Loop";
+"once_a_week_helpful_reminders" = "Once a week helpful reminders about your security and how to make most of it.";
+"enable_notifications" = "Enable Notifications";
+"maybe_later" = "Maybe Later";
+
+// MARK: - Previously Unlocalized
+"check_fields" = "Check Fields";
+"email_and_password_must_not_be_empty" = "Email and password must not be empty";
+"Success! 🎉" = "Success! 🎉";
+"error_signing_in" = "Error Signing In";
+"confirm_your_email" = "Confirm Your Email";
+"you_have_successfully_sign_in" = "You've successfully signed in.";
+"i_blocked_trackers_ads_and_badware_with_lockdown" = "I blocked %@ trackers, ads, and badware with Lockdown, the firewall that blocks unwanted connections in all your apps.\nGet it free at lockdownprivacy.com.";
+"check_email" = "Check Email";
+"we_have_sent_a_reset_password_email" = "We've sent a reset password email to you. Be sure to check any spam/junk folders, in case it got stuck there.";
+"since_date" = "SINCE %@";
+"password_reset_successfully" = "Password Reset Successfully";
+"please_sign_in_with_new_password" = "Please Sign In With Your New Password";
+
+// MARK: - Delete My Account
+"delete_account" = "Delete Account";
+"delete_my_account" = "Delete My Account";
+"by_proceeding_you_will_submit_request_for_deleting_account" = "By proceeding you will submit a request to delete your entire account record, along with associated personal data. Once the account has been deleted, you will be notified of these changes via your account email.\n\nPlease, be aware that you will lose all of your settings including upgrade options and will not be able to create an account with the same email.";
+"proceed" = "Proceed";
+
+// MARK: - EmailValidatable
+"invalid_email_address" = "Invalid email address";
+"please_fill_in_your_email" = "Please fill in your email.";
+"you_entered_con_instead_of_com" = "You entered .con instead of .com.";
+"no_valid_email_address_detected" = "No valid email address detected.";
+"too_many_email_addresses_entered" = "Too many email addresses entered.";
+
+// MARK: - Firewall Blocking Warnings
+"this_block_is_under_maintenance_and_will_be_updated" = "This block list is currently under maintenance and will be updated soon.";
+"this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
+"this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
+"this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";

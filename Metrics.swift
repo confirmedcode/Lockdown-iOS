@@ -11,6 +11,8 @@ import Foundation
 let kDayMetrics = "LockdownDayMetrics"
 let kWeekMetrics = "LockdownWeekMetrics"
 let kTotalMetrics = "LockdownTotalMetrics"
+let kTotalEnabledMetrics = "LockdownTotalEnabledMetrics"
+let kTotalDisabledMetrics = "LockdownTotalDisabledMetrics"
 
 let kActiveDay = "LockdownActiveDay"
 let kActiveWeek = "LockdownActiveWeek"
@@ -37,6 +39,22 @@ func getTotalMetrics() -> Int {
 
 func getTotalMetricsString() -> String {
     return metricsToString(metric: getTotalMetrics())
+}
+
+func getTotalEnabledMetrics() -> Int {
+    return defaults.integer(forKey: kTotalEnabledMetrics)
+}
+
+func getTotalEnabledString() -> String {
+    return metricsToString(metric: getTotalEnabledMetrics())
+}
+
+func getTotalDisabledMetrics() -> Int {
+    return defaults.integer(forKey: kTotalDisabledMetrics)
+}
+
+func getTotalDisabledString() -> String {
+    return metricsToString(metric: getTotalDisabledMetrics())
 }
 
 func metricsToString(metric : Int, commas: Bool = false) -> String {

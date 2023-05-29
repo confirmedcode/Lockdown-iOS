@@ -56,9 +56,13 @@ final class ListSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
-        if let list = blockedList {
-            switchBlockingView.switchView.isOn = list.enabled
-        }
+        
+        
+        
+//        if let list = blockedList {
+//            list = getBlockedLists().userBlockListsDefaults[listName]
+//            switchBlockingView.switchView.isOn = list.enabled
+//        }
         
         configureUI()
         configureTableView()
@@ -68,6 +72,8 @@ final class ListSettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         let userBlockedLists = getBlockedLists().userBlockListsDefaults
         blockedList = userBlockedLists[listName]
+        
+        switchBlockingView.switchView.isOn = didMakeChange
     }
     
     // MARK: - Configure UI
@@ -188,7 +194,8 @@ extension ListSettingsViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DomainsBlockedTableViewCell.identifier, for: indexPath) as? DomainsBlockedTableViewCell else {
                 return UITableViewCell()
             }
-            cell.label.text = blockedList?.domains[indexPath.row].name
+            let domains: [String] = Array(blockedList!.domains)
+            cell.label.text = domains[indexPath.row]
             return cell
         default:
             return UITableViewCell()
@@ -288,7 +295,6 @@ extension ListSettingsViewController {
                 vc.didMakeChange = true
             }
             
-            
             if let list = self.blockedList {
             deleteBlockedList(listName: list.name)
             }
@@ -303,9 +309,6 @@ extension ListSettingsViewController {
     }
     
     func setBlockingEnabled(_ isEnabled: Bool) {
-        if let vc = self.blockListVC {
-            vc.didMakeChange = true
-        }
         
         let domains = getBlockedLists().userBlockListsDefaults
         var userList = domains[listName]
@@ -316,15 +319,19 @@ extension ListSettingsViewController {
         data.userBlockListsDefaults[listName] = userList
         let encodedData = try? JSONEncoder().encode(data)
         defaults.set(encodedData, forKey: kUserBlockedLists)
+        
+        if let vc = self.blockListVC {
+            vc.didMakeChange = true
+        }
     }
     
     @objc func exportList(_ sender: UIButton) {
-        let domainsList = blockedList?.domains
+        let userList = getBlockedLists().userBlockListsDefaults[listName]
         
-        guard let url = domainsList?.first?.exportToURL() else { return }
+        guard let url = userList?.exportToURL() else { return }
         
         let activity = UIActivityViewController(
-          activityItems: ["Export your domains", url],
+          activityItems: ["Export your list", url],
           applicationActivities: nil
         )
         activity.popoverPresentationController?.sourceView = sender

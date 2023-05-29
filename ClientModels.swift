@@ -40,7 +40,8 @@ struct Subscription: Codable {
         init(rawValue: String) {
             self.rawValue = rawValue
         }
-        
+        static let advancedMonthly = PlanType(rawValue: "ios-fw-monthly")
+        static let advancedYearly = PlanType(rawValue: "ios-fw-annual")
         static let monthly = PlanType(rawValue: "ios-monthly")
         static let annual = PlanType(rawValue: "ios-annual")
         static let proMonthly = PlanType(rawValue: "all-monthly")
@@ -88,4 +89,3 @@ public extension RawValueCodable where RawValue: Codable {
         try container.encode(rawValue)
     }
 }
-

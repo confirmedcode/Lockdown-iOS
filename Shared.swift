@@ -212,6 +212,9 @@ extension UIColor {
     static var purplePaywall = UIColor(red: 134/255.0, green: 26/255.0, blue: 201/255.0, alpha: 1)
     static var purplePaywall2 = UIColor(red: 103/255.0, green: 26/255.0, blue: 201/255.0, alpha: 1)
     static var extraLightGray = UIColor(red: 242/255.0, green: 244/255.0, blue: 245/255.0, alpha: 1)
+    static var gradientPink1 = UIColor(red: 0.788, green: 0.102, blue: 0.788, alpha: 1)
+    static var gradientPink2 = UIColor(red: 0.405, green: 0.103, blue: 0.789, alpha: 1)
+    static let tunnelsBlueTest = UIColor(red: 0/255.0, green: 173/255.0, blue: 231/255.0, alpha: 0.0)
 }
 
 extension UnicodeScalar {
