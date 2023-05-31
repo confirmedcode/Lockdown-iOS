@@ -303,7 +303,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let ifunnyTrackers = LockdownGroup.init(
-        version: 1,
+        version: 2,
         internalID: "ifunnyTrackers",
         name: NSLocalizedString("iFunny Trackers", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -312,7 +312,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let advancedGaming = LockdownGroup.init(
-        version: 1,
+        version: 2,
         internalID: "advancedGaming",
         name: NSLocalizedString("Advanced Gaming", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -330,7 +330,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let scams = LockdownGroup.init(
-        version: 1,
+        version: 2,
         internalID: "scams",
         name: NSLocalizedString("Scams", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -339,7 +339,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let junesJourneyTrackers = LockdownGroup.init(
-        version: 1,
+        version: 2,
         internalID: "junesJourneyTrackers",
         name: NSLocalizedString("Junes Journey Trackers", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",

@@ -258,7 +258,7 @@ extension ListSettingsViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addTextField { (textField) in
             textField.keyboardType = .URL
-            textField.placeholder = "domain-to-block URL"
+            textField.placeholder = "domain-to-block"
         }
         
         NotificationCenter.default.addObserver(

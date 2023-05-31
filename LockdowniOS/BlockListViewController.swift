@@ -25,8 +25,6 @@ final class BlockListViewController: BaseViewController {
     let customBlockedListsTableView = StaticTableView()
     let customBlockedDomainsTableView = StaticTableView()
     
-    
-    
     private lazy var listsSubmenuView: ListsSubmenuView = {
         let view = ListsSubmenuView()
         view.topButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
@@ -131,7 +129,7 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(named: "icn_edit"), for: .normal)
         button.addTarget(self, action: #selector(editDomains), for: .touchUpInside)
-//        button.isEnabled = false
+        button.isHidden = true
         return button
     }()
     
@@ -564,7 +562,6 @@ extension BlockListViewController {
     }
     
     @objc func addDomain() {
-        
         let tableView = customBlockedDomainsTableView
         
         let alertController = UIAlertController(title: NSLocalizedString("Add a Domain to Block", comment: ""),
@@ -580,6 +577,7 @@ extension BlockListViewController {
                 }
                 
                 self.reloadCustomBlockedDomains()
+                self.editDomainButton.isHidden = false
             }
         }
         
@@ -589,7 +587,7 @@ extension BlockListViewController {
         
         alertController.addTextField { (textField) in
             textField.keyboardType = .URL
-            textField.placeholder = "domain-to-block URL"
+            textField.placeholder = "domain-to-block"
         }
         
         NotificationCenter.default.addObserver(
@@ -606,11 +604,13 @@ extension BlockListViewController {
     }
     
     @objc func editDomains() {
-        let vc = EditDomainsViewController()
-        vc.updateCompletion = { [weak self] in
-            self?.reloadCustomBlockedDomains()
+        if !customBlockedDomains.isEmpty {
+            let vc = EditDomainsViewController()
+            vc.updateCompletion = { [weak self] in
+                self?.reloadCustomBlockedDomains()
+            }
+            navigationController?.pushViewController(vc, animated: true)
         }
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showSuccessImportAlert() {

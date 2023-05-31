@@ -976,10 +976,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             if let vc = segue.destination as? SetRegionViewController {
                 vc.homeVC = self
             }
-        case "showWhatIsVPN":
-            if let vc = segue.destination as? WhatIsVpnViewController {
-                vc.parentVC = self
-            }
+//        case "showWhatIsVPN":
+//            if let vc = segue.destination as? WhatIsVpnViewController {
+//                vc.parentVC = self
+//            }
         case "showUpgradePlan":
             if let vc = segue.destination as? OldSignupViewController {
                 if activePlans.isEmpty {

@@ -131,6 +131,7 @@ private extension EditDomainsViewController {
         
         for (domain, _) in customBlockedDomains {
             let blockListView = EditDomainsCell()
+            
             blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
             
             self.selectedDomains[domain] = checkedStatus

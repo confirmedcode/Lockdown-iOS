@@ -128,6 +128,11 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     
     // MARK: - WebView
     
+    func showWhatsNewModal() {
+        let vc = WhatsNewViewController()
+        present(vc, animated: true)
+    }
+    
     func showPrivacyPolicyModal() {
         self.showModalWebView(title: NSLocalizedString("Privacy Policy", comment: ""), urlString: "https://lockdownprivacy.com/privacy")
     }
