@@ -12,7 +12,7 @@ class WhatsNewViewController: UIViewController {
     
     private lazy var navigationView: CustomNavigationView = {
         let view = CustomNavigationView()
-        view.title = NSLocalizedString("Whats New", comment: "")
+        view.title = NSLocalizedString("What's New", comment: "")
         view.buttonTitle = NSLocalizedString("CLOSE", comment: "")
         view.onButtonPressed { [unowned self] in
             self.closeButtonClicked()
@@ -32,7 +32,7 @@ class WhatsNewViewController: UIViewController {
         let view = BulletView()
         view.titleLabel.textColor = .label
         view.titleLabel.font = fontRegular15
-        view.configure(with: BulletViewModel(image: UIImage(named: "icn_checkmark_bold")!, title: "We have replaced the NEKit blocking engine with a much more powerful, efficient, and secure blocking engine, DNS Crypt. This allows us to add new firewall capabilities like importing/exporting blocklists, large curated app-specific blocklists, and importing/exporting block lists."))
+        view.configure(with: BulletViewModel(image: UIImage(named: "icn_checkmark_bold")!, title: "We have replaced the NEKit blocking engine with a much more powerful, efficient, and secure blocking engine, DNS Crypt. This allows us to add new firewall capabilities like importing/exporting blocklists, large curated app-specific blocklists."))
         return view
     }()
     

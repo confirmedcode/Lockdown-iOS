@@ -294,7 +294,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         } else if UserDefaults.hasSeenUniversalPaywall {
             protectionPlanLabel.text = "Universal protection"
             stackView.anchors.height.equal(0)
-            contentView.anchors.height.equal(600)
+            contentView.anchors.height.equal(UIScreen.main.bounds.height - 150)
             upgradeLabel.isHidden = true
         } else if UserDefaults.hasSeenAdvancedPaywall {
             mainTitle.text = "Get Anonymous protection"
@@ -342,7 +342,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         contentView.anchors.centerX.align()
         contentView.anchors.width.equal(scrollView.anchors.width)
         contentView.anchors.bottom.pin()
-        contentView.anchors.height.equal(980)
+        
+        contentView.anchors.height.equal(UIScreen.main.bounds.height * 1.2)
 
         contentView.addSubview(stackView)
         stackView.anchors.top.marginsPin()
@@ -397,7 +398,12 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             tapToActivateFirewallLabel.isHidden = false
         }
         
-        
+//        updateMetrics()
+//
+//        if metricsTimer == nil {
+//            metricsTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateMetrics), userInfo: nil, repeats: true)
+//            metricsTimer?.fire()
+//        }
         
         // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
         if (getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) != true) {

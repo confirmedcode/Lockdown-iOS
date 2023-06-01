@@ -26,23 +26,33 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         return view
     }()
     
-    private lazy var importDomainsTitle: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Import Domains from file", comment: "")
         label.textColor = .label
-        label.font = fontBold15
-        label.textColor = .label
+        label.font = fontBold17
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
     
-    private lazy var importDomainsText: UILabel = {
+    private lazy var descriptionParagraph1: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Take control of your browsing experience! Import your own custom block list and say goodbye to pesky trackers for good. Simply select the file with the domains you want to block and import it. It's that easy!", comment: "")
+        label.text = NSLocalizedString("Take control of your browsing experience! Import your own custom block list and say goodbye to pesky trackers for good.", comment: "")
         label.textColor = .label
         label.font = fontRegular14
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var descriptionParagraph2: UILabel = {
+        let label = UILabel()
         label.textColor = .label
+        label.font = fontRegular14
+        let highlightedText = "comma-separated values (.csv)"
+        label.text = NSLocalizedString("Simply select the \(highlightedText) file with the domains you want to block and import it. It's that easy!", comment: "")
+        label.highlight(highlightedText, font: UIFont.boldLockdownFont(size: 14))
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -54,9 +64,35 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         button.backgroundColor = .tunnelsBlue
         button.layer.cornerRadius = 28
         button.setTitle(NSLocalizedString("Select from Files", comment: ""), for: .normal)
-        button.titleLabel?.font = fontBold15
+        button.setImage(UIImage(named: "icn_csv_file"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        button.titleLabel?.font = fontBold17
         button.addTarget(self, action: #selector(selectFromFiles), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var descriptionParagraph3: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("* The .csv file should contain a single column of domains and/or sub-domains. NO headers, NO additional columns, and NO URLs.", comment: "")
+        label.textColor = .label
+        label.font = fontRegular14
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var vStackView: UIStackView = {
+        let stackView  = UIStackView()
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(descriptionParagraph1)
+        stackView.addArrangedSubview(descriptionParagraph2)
+        stackView.addArrangedSubview(selectFromFilesButton)
+        stackView.addArrangedSubview(descriptionParagraph3)
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 24
+        return stackView
     }()
     
     private lazy var pasteFromClipboardTitle: UILabel = {
@@ -116,10 +152,6 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         configureUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     // MARK: - Configure UI
     func configureUI() {
         view.addSubview(navigationView)
@@ -127,20 +159,13 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         navigationView.anchors.trailing.pin()
         navigationView.anchors.top.safeAreaPin()
         
-        view.addSubview(importDomainsTitle)
-        importDomainsTitle.anchors.leading.marginsPin()
-        importDomainsTitle.anchors.trailing.marginsPin()
-        importDomainsTitle.anchors.top.spacing(30, to: navigationView.anchors.bottom)
+        view.addSubview(vStackView)
+        vStackView.anchors.top.spacing(48, to: navigationView.anchors.bottom)
+        vStackView.anchors.leading.marginsPin()
+        vStackView.anchors.trailing.marginsPin()
         
-        view.addSubview(importDomainsText)
-        importDomainsText.anchors.leading.marginsPin()
-        importDomainsText.anchors.trailing.marginsPin()
-        importDomainsText.anchors.top.spacing(16, to: importDomainsTitle.anchors.bottom)
-        
-        view.addSubview(selectFromFilesButton)
         selectFromFilesButton.anchors.leading.marginsPin()
         selectFromFilesButton.anchors.trailing.marginsPin()
-        selectFromFilesButton.anchors.top.spacing(20, to: importDomainsText.anchors.bottom)
         selectFromFilesButton.anchors.height.equal(56)
     }
 }

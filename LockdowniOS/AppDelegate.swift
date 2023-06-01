@@ -193,37 +193,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .portrait
     }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Call removeVpn method here
-        removeVPNProfile()
-    }
-
-    func removeVPNProfile() {
-        let manager = NEVPNManager.shared()
-        manager.loadFromPreferences { error in
-            if let error = error {
-                print("Error loading VPN preferences: \(error.localizedDescription)")
-                return
-            }
-            
-            manager.removeFromPreferences { error in
-                if let error = error {
-                    print("Error removing VPN preferences: \(error.localizedDescription)")
-                    return
-                }
-                
-                manager.saveToPreferences { error in
-                    if let error = error {
-                        print("Error saving VPN preferences: \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    print("VPN preferences removed successfully")
-                }
-            }
-        }
-    }
     
     // MARK: - WIDGET TOGGLE WORKAROUND
     func setupWidgetToggleWorkaround() {
