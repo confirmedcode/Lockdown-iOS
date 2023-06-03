@@ -174,7 +174,7 @@ func setupFirewallDefaultBlockLists() {
     var lockdownBlockedDomains = getLockdownBlockedDomains()
     
     let snapchatAnalytics = LockdownGroup.init(
-        version: 27,
+        version: 28,
         internalID: "snapchatAnalytics",
         name: NSLocalizedString("Snapchat Trackers", comment: "The title of a list of trackers"),
         iconURL: "snapchat_analytics_icon",
@@ -183,7 +183,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let gameAds = LockdownGroup.init(
-        version: 30,
+        version: 31,
         internalID: "gameAds",
         name: NSLocalizedString("Game Marketing", comment: "The title of a list of trackers"),
         iconURL: "game_ads_icon",
@@ -193,7 +193,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let clickbait = LockdownGroup.init(
-        version: 29,
+        version: 30,
         internalID: "clickbait",
         name: NSLocalizedString("Clickbait", comment: "The title of a list of trackers"),
         iconURL: "clickbait_icon",
@@ -203,7 +203,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let emailOpens = LockdownGroup.init(
-        version: 30,
+        version: 31,
         internalID: "email_opens",
         name: NSLocalizedString("Email Trackers", comment: "The title of a list of trackers"),
         iconURL: "email_icon",
@@ -213,7 +213,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let facebookInc = LockdownGroup.init(
-        version: 33,
+        version: 34,
         internalID: "facebook_inc",
         name: NSLocalizedString("Facebook & WhatsApp", comment: "The title of a list of trackers"),
         iconURL: "facebook_icon",
@@ -223,7 +223,7 @@ func setupFirewallDefaultBlockLists() {
         warning: "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.")
     
     let facebookSDK = LockdownGroup.init(
-        version: 28,
+        version: 29,
         internalID: "facebook_sdk",
         name: NSLocalizedString("Facebook Trackers", comment: "The title of a list of trackers"),
         iconURL: "facebook_white_icon",
@@ -233,7 +233,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let marketingScripts = LockdownGroup.init(
-        version: 31,
+        version: 32,
         internalID: "marketing_scripts",
         name: NSLocalizedString("Marketing Trackers", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
@@ -243,7 +243,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let marketingScriptsII = LockdownGroup.init(
-        version: 30,
+        version: 31,
         internalID: "marketing_beta_scripts",
         name: NSLocalizedString("Marketing Trackers II", comment: "The title of a list of trackers"),
         iconURL: "marketing_icon",
@@ -252,7 +252,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
 
     let googleShoppingAds = LockdownGroup.init(
-        version: 35,
+        version: 36,
         internalID: "google_shopping_ads",
         name: NSLocalizedString("Google Shopping", comment: "The title of a list of trackers"),
         iconURL: "google_icon",
@@ -262,7 +262,7 @@ func setupFirewallDefaultBlockLists() {
         warning: "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.")
     
     let dataTrackers = LockdownGroup.init(
-        version: 35,
+        version: 36,
         internalID: "data_trackers",
         name: NSLocalizedString("Data Trackers", comment: "The title of a list of trackers"),
         iconURL: "user_data_icon",
@@ -272,7 +272,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let generalAds = LockdownGroup.init(
-        version: 40,
+        version: 41,
         internalID: "general_ads",
         name: NSLocalizedString("General Marketing", comment: "The title of a list of trackers"),
         iconURL: "ads_icon",
@@ -282,7 +282,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let reporting = LockdownGroup.init(
-        version: 29,
+        version: 30,
         internalID: "reporting",
         name: NSLocalizedString("Reporting", comment: "The title of a list of trackers"),
         iconURL: "reporting_icon",
@@ -292,7 +292,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let amazonTrackers = LockdownGroup.init(
-        version: 32,
+        version: 33,
         internalID: "amazon_trackers",
         name: NSLocalizedString("Amazon Trackers", comment: "The title of a list of trackers"),
         iconURL: "amazon_icon",
@@ -303,7 +303,7 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let ifunnyTrackers = LockdownGroup.init(
-        version: 2,
+        version: 3,
         internalID: "ifunnyTrackers",
         name: NSLocalizedString("iFunny Trackers", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -312,7 +312,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let advancedGaming = LockdownGroup.init(
-        version: 2,
+        version: 3,
         internalID: "advancedGaming",
         name: NSLocalizedString("Advanced Gaming", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -321,7 +321,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let tiktokTrackers = LockdownGroup.init(
-        version: 1,
+        version: 2,
         internalID: "tiktokTrackers",
         name: NSLocalizedString("Tiktok Trackers", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -330,7 +330,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let scams = LockdownGroup.init(
-        version: 2,
+        version: 3,
         internalID: "scams",
         name: NSLocalizedString("Scams", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -339,7 +339,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let junesJourneyTrackers = LockdownGroup.init(
-        version: 2,
+        version: 3,
         internalID: "junesJourneyTrackers",
         name: NSLocalizedString("Junes Journey Trackers", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -348,7 +348,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let advancedAnalytics = LockdownGroup.init(
-        version: 1,
+        version: 2,
         internalID: "advancedAnalytics",
         name: NSLocalizedString("Advanced Analytics", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -577,27 +577,54 @@ extension UserBlockListsGroup {
     }
     
     func exportToURL() -> URL? {
-        let timeStamp = generateCurrentTimeStamp()
-        let fileName = "LOCKDOWN_\(NSDate.now)"
-        guard let encoded = try? JSONEncoder().encode(self) else { return nil }
+        var csvString = ""
+        
+        for domain in domains {
+            csvString = csvString.appending("\(domain)\r\n")
+        }
         
         let documents = FileManager.default.urls(
             for: .documentDirectory,
             in: .userDomainMask
         ).first
         
+        let fileName = "LOCKDOWN_\(NSDate.now)"
+        
         guard let path = documents?.appendingPathComponent("/\(fileName).csv") else {
             return nil
         }
         
         do {
-            try encoded.write(to: path, options: .atomicWrite)
-            print(fileName)
+            try csvString.write(to: path, atomically: true, encoding: .utf8)
             return path
         } catch {
             print(error.localizedDescription)
             return nil
         }
+        
+        
+        
+        
+
+//        guard let encoded = try? JSONEncoder().encode(self) else { return nil }
+//
+//        let documents = FileManager.default.urls(
+//            for: .documentDirectory,
+//            in: .userDomainMask
+//        ).first
+//
+//        guard let path = documents?.appendingPathComponent("/\(fileName).csv") else {
+//            return nil
+//        }
+//
+//        do {
+//            try encoded.write(to: path, options: .atomicWrite)
+//            print(fileName)
+//            return path
+//        } catch {
+//            print(error.localizedDescription)
+//            return nil
+//        }
     }
     
     static func importData(from url: URL) {

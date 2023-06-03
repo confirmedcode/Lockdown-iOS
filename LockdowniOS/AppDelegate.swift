@@ -138,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWidgetToggleWorkaround()
         
         window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.rootViewController = BlockListContainerViewController()
         window?.rootViewController = SplashscreenViewController()
         window?.makeKeyAndVisible()
         

@@ -331,7 +331,7 @@ extension ListSettingsViewController {
         guard let url = userList?.exportToURL() else { return }
         
         let activity = UIActivityViewController(
-          activityItems: ["Export your list", url],
+          activityItems: [url],
           applicationActivities: nil
         )
         activity.popoverPresentationController?.sourceView = sender
