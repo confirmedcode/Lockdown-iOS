@@ -114,7 +114,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         label.text = NSLocalizedString("Get Anonymous protection", comment: "")
         label.font = fontBold24
         label.numberOfLines = 0
-        label.textColor = .label
+        label.textColor = .black
         return label
     }()
     
@@ -378,6 +378,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     @objc func closeButtonTapped() {
         stackView.anchors.height.equal(0)
+        upgradeButton.isHidden = true
         closeButton.isHidden = true
     }
     

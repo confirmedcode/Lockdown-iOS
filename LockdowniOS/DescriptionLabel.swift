@@ -35,7 +35,7 @@ final class DescriptionLabel: UIView {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .label
+        label.textColor = .black
         label.font = fontMedium15
         label.textAlignment = .left
         return label
