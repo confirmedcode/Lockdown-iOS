@@ -17,6 +17,8 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
     
     var titleName = "Import Block List"
     
+    var newListName = ""
+    
     private lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView()
         view.rightNavButton.setTitle(NSLocalizedString("CANCEL", comment: ""), for: .normal)
@@ -26,23 +28,33 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         return view
     }()
     
-    private lazy var importDomainsTitle: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Import Domains from file", comment: "")
         label.textColor = .label
-        label.font = fontBold15
-        label.textColor = .label
+        label.font = fontBold17
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
     
-    private lazy var importDomainsText: UILabel = {
+    private lazy var descriptionParagraph1: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Take control of your browsing experience! Import your own custom block list and say goodbye to pesky trackers for good. Simply select the file with the domains you want to block and import it. It's that easy!", comment: "")
+        label.text = NSLocalizedString("Take control of your browsing experience! Import your own custom block list and say goodbye to pesky trackers for good.", comment: "")
         label.textColor = .label
         label.font = fontRegular14
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var descriptionParagraph2: UILabel = {
+        let label = UILabel()
         label.textColor = .label
+        label.font = fontRegular14
+        let highlightedText = "comma-separated values (.csv)"
+        label.text = NSLocalizedString("Simply select the \(highlightedText) file with the domains you want to block and import it. It's that easy!", comment: "")
+        label.highlight(highlightedText, font: UIFont.boldLockdownFont(size: 14))
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -54,9 +66,35 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         button.backgroundColor = .tunnelsBlue
         button.layer.cornerRadius = 28
         button.setTitle(NSLocalizedString("Select from Files", comment: ""), for: .normal)
-        button.titleLabel?.font = fontBold15
+        button.setImage(UIImage(named: "icn_csv_file"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        button.titleLabel?.font = fontBold17
         button.addTarget(self, action: #selector(selectFromFiles), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var descriptionParagraph3: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("* The .csv file should contain a single column of domains and/or sub-domains. NO headers, NO additional columns, and NO URLs.", comment: "")
+        label.textColor = .label
+        label.font = fontRegular14
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var vStackView: UIStackView = {
+        let stackView  = UIStackView()
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(descriptionParagraph1)
+        stackView.addArrangedSubview(descriptionParagraph2)
+        stackView.addArrangedSubview(selectFromFilesButton)
+        stackView.addArrangedSubview(descriptionParagraph3)
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 24
+        return stackView
     }()
     
     private lazy var pasteFromClipboardTitle: UILabel = {
@@ -113,11 +151,8 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
+        
         configureUI()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - Configure UI
@@ -127,21 +162,19 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         navigationView.anchors.trailing.pin()
         navigationView.anchors.top.safeAreaPin()
         
-        view.addSubview(importDomainsTitle)
-        importDomainsTitle.anchors.leading.marginsPin()
-        importDomainsTitle.anchors.trailing.marginsPin()
-        importDomainsTitle.anchors.top.spacing(30, to: navigationView.anchors.bottom)
+        view.addSubview(vStackView)
+        vStackView.anchors.top.spacing(48, to: navigationView.anchors.bottom)
+        vStackView.anchors.leading.marginsPin()
+        vStackView.anchors.trailing.marginsPin()
         
-        view.addSubview(importDomainsText)
-        importDomainsText.anchors.leading.marginsPin()
-        importDomainsText.anchors.trailing.marginsPin()
-        importDomainsText.anchors.top.spacing(16, to: importDomainsTitle.anchors.bottom)
-        
-        view.addSubview(selectFromFilesButton)
         selectFromFilesButton.anchors.leading.marginsPin()
         selectFromFilesButton.anchors.trailing.marginsPin()
-        selectFromFilesButton.anchors.top.spacing(20, to: importDomainsText.anchors.bottom)
         selectFromFilesButton.anchors.height.equal(56)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showCreateList()
     }
 }
 
@@ -159,25 +192,41 @@ extension ImportBlockListViewController {
         guard let url = urls.first else {
             return
         }
-        
-        guard let data = try? Data(contentsOf: url) else { return }
-        
+ 
         do {
-            let exportedList = try JSONDecoder().decode(UserBlockListsGroup.self, from: data)
-            var allData = getBlockedLists()
-            allData.userBlockListsDefaults[exportedList.name] = exportedList
-            let encodedData = try? JSONEncoder().encode(allData)
-            defaults.set(encodedData, forKey: kUserBlockedLists)
+            let content = csvProcessing(data: try String(contentsOf: url, encoding: .utf8))
             
-            importCompletion?()
+            if !content.isEmpty {
+                var allData = getBlockedLists()
+                
+                let importedList = UserBlockListsGroup(name: newListName, domains: content)
+                
+                allData.userBlockListsDefaults[importedList.name] = importedList
+                
+                let encodedData = try? JSONEncoder().encode(allData)
+                defaults.set(encodedData, forKey: kUserBlockedLists)
+                
+                importCompletion?()
+            }
+            
             dismiss(animated: true) {
-                let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""),
-                                              message: NSLocalizedString("The list has been imported successfully. You can start blocking the list's domains", comment: ""),
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
-                                              style: .default,
-                                              handler: nil))
-                UIApplication.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+                if !content.isEmpty {
+                    let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""),
+                                                  message: NSLocalizedString("The list has been imported successfully. You can start blocking the list's domains", comment: ""),
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                                  style: .default,
+                                                  handler: nil))
+                    UIApplication.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""),
+                                                  message: NSLocalizedString("Your list of domains is empty or in the wrong format", comment: ""),
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""),
+                                                  style: .default,
+                                                  handler: nil))
+                    UIApplication.getTopMostViewController()?.present(alert, animated: true, completion: nil)
+                }
             }
             
         } catch {
@@ -192,11 +241,71 @@ extension ImportBlockListViewController {
             }
         }
     }
+    
+    func showCreateList() {
+        let alertController = UIAlertController(title: "Create New List", message: nil, preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
+            if let txtField = alertController.textFields?.first, let text = txtField.text {
+                
+                guard let self else { return }
+                self.newListName = text
+                addBlockedList(listName: self.newListName)
+            }
+        }
+        
+        saveAction.isEnabled = false
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
+            guard let self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = NSLocalizedString("List Name", comment: "")
+        }
+        
+        NotificationCenter.default.addObserver(
+            forName: UITextField.textDidChangeNotification,
+            object: alertController.textFields?.first,
+            queue: .main) { (notification) -> Void in
+                guard let textFieldText = alertController.textFields?.first?.text else { return }
+                saveAction.isEnabled = textFieldText.isValid(.listName)
+            }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("view was cancelled")
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func csvProcessing(data: String) -> Set<String> {
+        var domains = Set<String>()
+        var arrayOfDomains = [String]()
+        
+        if data.contains("\r\n") {
+            arrayOfDomains = data.components(separatedBy: "\r\n")
+        } else if data.contains("\r") {
+            arrayOfDomains = data.components(separatedBy: "\r")
+        } else if data.contains("\n") {
+            arrayOfDomains = data.components(separatedBy: "\n")
+        } else if data.contains(",") {
+            arrayOfDomains = data.components(separatedBy: ",")
+        }
+        
+        for domain in arrayOfDomains {
+            if domain.isValid(.domainName) {
+                domains.insert(domain)
+            }
+        }
+        
+        return domains
     }
     
     @objc func selectFromFiles() {

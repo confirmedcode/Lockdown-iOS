@@ -1,30 +1,22 @@
 //
-//  FirewallDescriptionLabel.swift
+//  WhatsNewDescriptionLabel.swift
 //  Lockdown
 //
-//  Created by Aliaksandr Dvoineu on 18.04.23.
+//  Created by Aliaksandr Dvoineu on 30.05.23.
 //  Copyright © 2023 Confirmed Inc. All rights reserved.
 //
 
 import UIKit
 
-struct DescriptionLabelViewModel {
+struct WhatsNewDescriptionLabelViewModel {
     let text: String
 }
 
-final class DescriptionLabel: UIView {
+final class WhatsNewDescriptionLabel: UIView {
     
     // MARK: - Properties
     
-    lazy var lockImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "icn_lock")
-        image.contentMode = .left
-        image.layer.masksToBounds = true
-        return image
-    }()
-    
-    lazy var checkmarkImage: UIImageView = {
+    private lazy var checkmarkImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "icn_checkmark")
         image.contentMode = .left
@@ -35,7 +27,7 @@ final class DescriptionLabel: UIView {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.font = fontMedium15
         label.textAlignment = .left
         return label
@@ -43,7 +35,6 @@ final class DescriptionLabel: UIView {
     
     private lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
-        stackView.addArrangedSubview(lockImage)
         stackView.addArrangedSubview(checkmarkImage)
         stackView.addArrangedSubview(descriptionLabel)
         stackView.axis = .horizontal
@@ -76,7 +67,8 @@ final class DescriptionLabel: UIView {
         stackView.anchors.trailing.pin()
     }
     
-    func configure(with model: DescriptionLabelViewModel) {
+    func configure(with model: WhatsNewDescriptionLabelViewModel) {
         descriptionLabel.text = model.text
     }
 }
+

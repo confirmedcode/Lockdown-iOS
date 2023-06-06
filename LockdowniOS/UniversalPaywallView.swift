@@ -85,8 +85,6 @@ final class UniversalPaywallView: UIView {
         stackView.addArrangedSubview(bulletView6)
         stackView.addArrangedSubview(bulletView7)
         stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .equalSpacing
         stackView.spacing = 8
         return stackView
     }()

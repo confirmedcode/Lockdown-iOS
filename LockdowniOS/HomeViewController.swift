@@ -69,17 +69,17 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         return label
     }()
     
-    private lazy var upgradeLabel: UILabel = {
-        let label = UILabel()
-        label.text = NSLocalizedString("Upgrade?", comment: "")
-        label.font = fontBold13
-        label.textColor = .tunnelsBlue
-        label.isUserInteractionEnabled = true
-        label.setOnClickListener {
-            let vc = VPNPaywallViewController()
-            self.present(vc, animated: true)
-        }
-        return label
+    private lazy var upgradeLabel: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.setTitle(NSLocalizedString("Upgrade?", comment: ""), for: .normal)
+        button.titleLabel?.font = fontBold13
+        button.backgroundColor = .tunnelsBlue
+        button.anchors.height.equal(24)
+        button.layer.cornerRadius = 12
+        button.anchors.width.equal(100)
+        button.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
+        return button
     }()
     
     private lazy var protectionPlanLabel: UILabel = {
@@ -90,12 +90,18 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         return label
     }()
     
+//    lazy var ctaView: CTAView = {
+//        let view = CTAView()
+//
+//        return view
+//    }()
+    
     private lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Get Anonymous protection", comment: "")
         label.font = fontBold24
         label.numberOfLines = 0
-        label.textColor = .label
+        label.textColor = .black
         return label
     }()
     
@@ -135,22 +141,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         return label
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stackView  = UIStackView()
-        stackView.addArrangedSubview(mainTitle)
-        stackView.addArrangedSubview(descriptionLabel1)
-        stackView.addArrangedSubview(descriptionLabel2)
-        stackView.addArrangedSubview(descriptionLabel3)
-        stackView.addArrangedSubview(descriptionLabel4)
-        stackView.addArrangedSubview(descriptionLabel5)
-        stackView.addArrangedSubview(descriptionLabel6)
-        
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 10
-        return stackView
-    }()
-    
     private lazy var upgradeButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -160,6 +150,35 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         button.layer.cornerRadius = 28
         button.anchors.height.equal(56)
         button.addTarget(self, action: #selector(upgrade), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView  = UIStackView()
+//        stackView.addArrangedSubview(ctaView)
+//        stackView.addArrangedSubview(mainTitle)
+//        stackView.addArrangedSubview(descriptionLabel1)
+//        stackView.addArrangedSubview(descriptionLabel2)
+//        stackView.addArrangedSubview(descriptionLabel3)
+//        stackView.addArrangedSubview(descriptionLabel4)
+//        stackView.addArrangedSubview(descriptionLabel5)
+//        stackView.addArrangedSubview(descriptionLabel6)
+//        stackView.addArrangedSubview(upgradeButton)
+        
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        stackView.layer.cornerRadius = 8
+        stackView.backgroundColor = .extraLightGray
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 8)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+    
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icn_close_filled"), for: .normal)
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -276,50 +295,31 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     private func layoutUI() {
         
         if UserDefaults.hasSeenAnonymousPaywall {
-            mainTitle.text = "Get Universal protection"
+            mainTitle.text = "Get Universal\nprotection"
             protectionPlanLabel.text = "Anonymous protection"
-            descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
-            descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
-            descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
-            descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
-            descriptionLabel5.lockImage.image = UIImage(named: "icn_checkmark")
             stackView.addArrangedSubview(mainTitle)
-            stackView.addArrangedSubview(descriptionLabel1)
-            stackView.addArrangedSubview(descriptionLabel2)
-            stackView.addArrangedSubview(descriptionLabel3)
-            stackView.addArrangedSubview(descriptionLabel4)
-            stackView.addArrangedSubview(descriptionLabel5)
             stackView.addArrangedSubview(descriptionLabel6)
             stackView.addArrangedSubview(upgradeButton)
         } else if UserDefaults.hasSeenUniversalPaywall {
             protectionPlanLabel.text = "Universal protection"
             stackView.anchors.height.equal(0)
-            contentView.anchors.height.equal(600)
+            contentView.anchors.height.equal(UIScreen.main.bounds.height - 150)
+            closeButton.isHidden = true
             upgradeLabel.isHidden = true
         } else if UserDefaults.hasSeenAdvancedPaywall {
-            mainTitle.text = "Get Anonymous protection"
+            mainTitle.text = "Get Anonymous\nprotection"
             protectionPlanLabel.text = "Advanced protection"
-            descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
-            descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
-            descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
-            stackView.addArrangedSubview(descriptionLabel1)
-            stackView.addArrangedSubview(descriptionLabel2)
-            stackView.addArrangedSubview(descriptionLabel3)
             stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel4)
             stackView.addArrangedSubview(descriptionLabel5)
-            stackView.addArrangedSubview(descriptionLabel6)
             stackView.addArrangedSubview(upgradeButton)
         } else {
-            mainTitle.text = "Get Advanced protection"
+            mainTitle.text = "Get Advanced\nprotection"
             protectionPlanLabel.text = "Basic protection"
             stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel1)
             stackView.addArrangedSubview(descriptionLabel2)
             stackView.addArrangedSubview(descriptionLabel3)
-            stackView.addArrangedSubview(descriptionLabel4)
-            stackView.addArrangedSubview(descriptionLabel5)
-            stackView.addArrangedSubview(descriptionLabel6)
             stackView.addArrangedSubview(upgradeButton)
         }
         
@@ -342,7 +342,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         contentView.anchors.centerX.align()
         contentView.anchors.width.equal(scrollView.anchors.width)
         contentView.anchors.bottom.pin()
-        contentView.anchors.height.equal(980)
+        
+        contentView.anchors.height.equal(UIScreen.main.bounds.height * 1.2)
 
         contentView.addSubview(stackView)
         stackView.anchors.top.marginsPin()
@@ -353,6 +354,19 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         mainStack.anchors.top.spacing(8, to: stackView.anchors.bottom)
         mainStack.anchors.leading.marginsPin()
         mainStack.anchors.trailing.marginsPin()
+        
+        contentView.addSubview(closeButton)
+        closeButton.anchors.trailing.marginsPin(inset: 20)
+        closeButton.anchors.top.marginsPin(inset: 8)
+        
+    }
+    
+//    closeButtonTapped
+    
+    @objc func closeButtonTapped() {
+        stackView.anchors.height.equal(0)
+        upgradeButton.isHidden = true
+        closeButton.isHidden = true
     }
     
     @objc func upgrade() {
@@ -397,7 +411,12 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             tapToActivateFirewallLabel.isHidden = false
         }
         
-        
+//        updateMetrics()
+//
+//        if metricsTimer == nil {
+//            metricsTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateMetrics), userInfo: nil, repeats: true)
+//            metricsTimer?.fire()
+//        }
         
         // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
         if (getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) != true) {
@@ -976,10 +995,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             if let vc = segue.destination as? SetRegionViewController {
                 vc.homeVC = self
             }
-        case "showWhatIsVPN":
-            if let vc = segue.destination as? WhatIsVpnViewController {
-                vc.parentVC = self
-            }
+//        case "showWhatIsVPN":
+//            if let vc = segue.destination as? WhatIsVpnViewController {
+//                vc.parentVC = self
+//            }
         case "showUpgradePlan":
             if let vc = segue.destination as? OldSignupViewController {
                 if activePlans.isEmpty {

@@ -284,6 +284,13 @@
 		40CC84C62A14C2B800F9805E /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84C22A14C2B800F9805E /* TextBox.swift */; };
 		40CC84C72A14C2B800F9805E /* TextInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84C32A14C2B800F9805E /* TextInputState.swift */; };
 		40CC84C82A14C2B800F9805E /* TextBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84C42A14C2B800F9805E /* TextBoxLabel.swift */; };
+		40E04A222A26708200000E8C /* WhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E04A212A26708200000E8C /* WhatsNewViewController.swift */; };
+		40E04A242A26758200000E8C /* WhatsNewDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E04A232A26758200000E8C /* WhatsNewDescriptionLabel.swift */; };
+		40E04A502A28B4A000000E8C /* dnscrypt-proxy.toml in Resources */ = {isa = PBXBuildFile; fileRef = 3D40826227F675F6004C146B /* dnscrypt-proxy.toml */; };
+		40E04A532A29D79100000E8C /* BlockListContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E04A522A29D79100000E8C /* BlockListContainerViewController.swift */; };
+		40E04A552A29D7AB00000E8C /* CuratedListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E04A542A29D7AB00000E8C /* CuratedListsViewController.swift */; };
+		40E04A572A29D7BC00000E8C /* CustomListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E04A562A29D7BC00000E8C /* CustomListsViewController.swift */; };
+		40E04A592A2A1B4C00000E8C /* CTAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E04A582A2A1B4C00000E8C /* CTAView.swift */; };
 		40E7A2F22A0CE8AE00E0231A /* advanced_gaming.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2EC2A0CE8AE00E0231A /* advanced_gaming.txt */; };
 		40E7A2F82A0CE92900E0231A /* ifunny_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F32A0CE92800E0231A /* ifunny_trackers.txt */; };
 		40E7A2F92A0CE92900E0231A /* junes_journey_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F42A0CE92800E0231A /* junes_journey_trackers.txt */; };
@@ -770,6 +777,12 @@
 		40CC84C22A14C2B800F9805E /* TextBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		40CC84C32A14C2B800F9805E /* TextInputState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputState.swift; sourceTree = "<group>"; };
 		40CC84C42A14C2B800F9805E /* TextBoxLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBoxLabel.swift; sourceTree = "<group>"; };
+		40E04A212A26708200000E8C /* WhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewViewController.swift; sourceTree = "<group>"; };
+		40E04A232A26758200000E8C /* WhatsNewDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewDescriptionLabel.swift; sourceTree = "<group>"; };
+		40E04A522A29D79100000E8C /* BlockListContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListContainerViewController.swift; sourceTree = "<group>"; };
+		40E04A542A29D7AB00000E8C /* CuratedListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedListsViewController.swift; sourceTree = "<group>"; };
+		40E04A562A29D7BC00000E8C /* CustomListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListsViewController.swift; sourceTree = "<group>"; };
+		40E04A582A2A1B4C00000E8C /* CTAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAView.swift; sourceTree = "<group>"; };
 		40E7A2EC2A0CE8AE00E0231A /* advanced_gaming.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = advanced_gaming.txt; sourceTree = "<group>"; };
 		40E7A2F32A0CE92800E0231A /* ifunny_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ifunny_trackers.txt; sourceTree = "<group>"; };
 		40E7A2F42A0CE92800E0231A /* junes_journey_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = junes_journey_trackers.txt; sourceTree = "<group>"; };
@@ -1430,6 +1443,9 @@
 				402D252829E632F300A5AB60 /* ListSettingsViewController.swift */,
 				402D252E29E6357700A5AB60 /* ListDetailViewController.swift */,
 				402D253229E6588000A5AB60 /* ListDescriptionViewController.swift */,
+				40E04A522A29D79100000E8C /* BlockListContainerViewController.swift */,
+				40E04A542A29D7AB00000E8C /* CuratedListsViewController.swift */,
+				40E04A562A29D7BC00000E8C /* CustomListsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1689,9 +1705,19 @@
 			name = FloatingInput;
 			sourceTree = "<group>";
 		};
+		40E04A1B2A26705600000E8C /* WhatsNewScreen */ = {
+			isa = PBXGroup;
+			children = (
+				40E04A212A26708200000E8C /* WhatsNewViewController.swift */,
+				40E04A232A26758200000E8C /* WhatsNewDescriptionLabel.swift */,
+			);
+			name = WhatsNewScreen;
+			sourceTree = "<group>";
+		};
 		40E7A2FD2A0E1C3200E0231A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				40E04A1B2A26705600000E8C /* WhatsNewScreen */,
 				409B59E22A15CC7C0010242C /* WelcomeScreen */,
 				40CC849F2A14BEC200F9805E /* EnableNotifications */,
 				40CC84992A14BE6400F9805E /* SignUpAndLogin */,
@@ -1795,6 +1821,7 @@
 				3DCA4F3222F22CB40017740D /* HomeViewController.swift */,
 				7C422EAE252797A6007F9C22 /* AccountVC.swift */,
 				7C422EB62527A2D1007F9C22 /* MainTabBarViewController.swift */,
+				40E04A582A2A1B4C00000E8C /* CTAView.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -2531,6 +2558,7 @@
 				A1D85F09207C52A000B766E0 /* adBlockListThree.json in Resources */,
 				A1159FCB207C201A00DA4670 /* privacyBlockList.json in Resources */,
 				A1931CFE20791F5900E695EB /* adBlockList.json in Resources */,
+				40E04A502A28B4A000000E8C /* dnscrypt-proxy.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2854,6 +2882,7 @@
 				A1EBEAD72097AE6E002B9087 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				3D970DAD22EC149D00F9CC93 /* BlockLogCell.swift in Sources */,
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
+				40E04A222A26708200000E8C /* WhatsNewViewController.swift in Sources */,
 				40960AFB2A033E46000F82EB /* PaywallService.swift in Sources */,
 				40098E3129FDA73300886474 /* VPNPaywallViewController.swift in Sources */,
 				3D47CDD522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
@@ -2931,6 +2960,7 @@
 				A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */,
 				3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */,
 				40960AE22A029A7D000F82EB /* UIApplication+Extension.swift in Sources */,
+				40E04A572A29D7BC00000E8C /* CustomListsViewController.swift in Sources */,
 				A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */,
 				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */,
@@ -2949,6 +2979,7 @@
 				A154A080215C7A8C0010FFCC /* BlockListAddCell.swift in Sources */,
 				40960AF22A033AF9000F82EB /* String+Localized.swift in Sources */,
 				3D47CDB822F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
+				40E04A552A29D7AB00000E8C /* CuratedListsViewController.swift in Sources */,
 				3DBD57A822FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				40CC84A12A14BECF00F9805E /* EnableNotificationsViewController.swift in Sources */,
 				40CC84BE2A14C15400F9805E /* LockdownGradient.swift in Sources */,
@@ -2997,6 +3028,7 @@
 				3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
 				40098E2E29FDA6E500886474 /* PlanView.swift in Sources */,
+				40E04A592A2A1B4C00000E8C /* CTAView.swift in Sources */,
 				3D47CDB722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				3D47CDD322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				A1141A151F46230500F54698 /* AppDelegate.swift in Sources */,
@@ -3006,6 +3038,7 @@
 				402D24CB29D87B5A00A5AB60 /* ListsSubmenuView.swift in Sources */,
 				402BAD252A0B675B009B8820 /* LockedListsView.swift in Sources */,
 				40CC84BA2A14C0EA00F9805E /* UICollectionView+Dequeue.swift in Sources */,
+				40E04A242A26758200000E8C /* WhatsNewDescriptionLabel.swift in Sources */,
 				4015B4FD29F00DD8004102E0 /* LDVpnViewController.swift in Sources */,
 				A1EBEACE2097AE6E002B9087 /* M13CheckboxExpandController.swift in Sources */,
 				3D5F5A0C23109ABB004C3860 /* WhatIsVpnViewController.swift in Sources */,
@@ -3015,6 +3048,7 @@
 				3DAF73522768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				402D253B29E8F9A400A5AB60 /* JSONSerialization+Extensions.swift in Sources */,
 				3D47CDD022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
+				40E04A532A29D79100000E8C /* BlockListContainerViewController.swift in Sources */,
 				402D252729E5843300A5AB60 /* ImportBlockListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3182,7 +3216,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3197,7 +3231,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -3219,7 +3253,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3234,7 +3268,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3312,7 +3346,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3326,7 +3360,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -3350,7 +3384,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3364,7 +3398,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3501,7 +3535,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3520,7 +3554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3541,7 +3575,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3560,7 +3594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3587,7 +3621,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3602,7 +3636,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3630,7 +3664,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3645,7 +3679,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3666,7 +3700,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3676,7 +3710,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3696,7 +3730,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3706,7 +3740,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3728,7 +3762,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3743,7 +3777,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -3785,7 +3819,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3800,7 +3834,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
