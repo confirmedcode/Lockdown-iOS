@@ -1,0 +1,1224 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NEKit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CocoaAsyncSocket
+import CocoaLumberjackSwift
+import Foundation
+import NetworkExtension
+import Resolver
+import Swift
+import UIKit
+import UserNotifications
+import WidgetKit
+import _Concurrency
+import _StringProcessing
+public enum DNSSessionMatchResult {
+  case real, fake, unknown, pass
+  public static func == (a: NEKit.DNSSessionMatchResult, b: NEKit.DNSSessionMatchResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+open class HTTPHeader {
+  public enum HTTPHeaderError : Swift.Error {
+    case malformedHeader, invalidRequestLine, invalidHeaderField, invalidConnectURL, invalidConnectPort, invalidURL, missingHostField, invalidHostField, invalidHostPort, invalidContentLength, illegalEncoding
+    public static func == (a: NEKit.HTTPHeader.HTTPHeaderError, b: NEKit.HTTPHeader.HTTPHeaderError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  open var HTTPVersion: Swift.String
+  open var method: Swift.String
+  open var isConnect: Swift.Bool
+  open var path: Swift.String
+  open var foundationURL: Foundation.URL?
+  open var homemadeURL: NEKit.HTTPURL?
+  open var host: Swift.String
+  open var port: Swift.Int
+  open var contentLength: Swift.Int
+  open var headers: [(Swift.String, Swift.String)]
+  open var rawHeader: Foundation.Data?
+  public init(headerString: Swift.String) throws
+  convenience public init(headerData: Foundation.Data) throws
+  open subscript(index: Swift.String) -> Swift.String? {
+    get
+  }
+  open func toData() -> Foundation.Data
+  open func toString() -> Swift.String
+  open func addHeader(_ key: Swift.String, value: Swift.String)
+  open func rewriteToRelativePath()
+  open func removeHeader(_ key: Swift.String) -> Swift.String?
+  open func removeProxyHeader()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class DNSSession {
+  final public let requestMessage: NEKit.DNSMessage
+  open var realIP: NEKit.IPAddress?
+  open var fakeIP: NEKit.IPAddress?
+  open var realResponseMessage: NEKit.DNSMessage?
+  open var matchedRule: NEKit.Rule?
+  open var matchResult: NEKit.DNSSessionMatchResult?
+  @objc deinit
+}
+extension NEKit.DNSSession : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+open class DomainListRule : NEKit.Rule {
+  public enum MatchCriterion {
+    case regex(Foundation.NSRegularExpression), prefix(Swift.String), suffix(Swift.String), keyword(Swift.String), complete(Swift.String)
+  }
+  override open var description: Swift.String {
+    get
+  }
+  open var matchCriteria: [NEKit.DomainListRule.MatchCriterion]
+  public init(adapterFactory: NEKit.AdapterFactory, criteria: [NEKit.DomainListRule.MatchCriterion])
+  override open func matchDNS(_ session: NEKit.DNSSession, type: NEKit.DNSSessionMatchType) -> NEKit.DNSSessionMatchResult
+  override open func match(_ session: NEKit.ConnectSession) -> NEKit.AdapterFactory?
+  @objc deinit
+}
+public protocol DNSResolverProtocol : AnyObject {
+  var delegate: (any NEKit.DNSResolverDelegate)? { get set }
+  func resolve(session: NEKit.DNSSession)
+  func stop()
+}
+public protocol DNSResolverDelegate : AnyObject {
+  func didReceive(rawResponse: Foundation.Data)
+}
+open class UDPDNSResolver : NEKit.DNSResolverProtocol, NEKit.NWUDPSocketDelegate {
+  weak public var delegate: (any NEKit.DNSResolverDelegate)?
+  public init(address: NEKit.IPAddress, port: NEKit.Port)
+  public func resolve(session: NEKit.DNSSession)
+  public func stop()
+  public func didReceive(data: Foundation.Data, from: NEKit.NWUDPSocket)
+  public func didCancel(socket: NEKit.NWUDPSocket)
+  @objc deinit
+}
+open class ServerAdapterFactory : NEKit.AdapterFactory {
+  public init(serverHost: Swift.String, serverPort: Swift.Int)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Box<T> {
+  open var value: T
+  @objc deinit
+}
+open class Atomic<T> {
+  open var value: T {
+    get
+    set
+  }
+  public init(_ value: T)
+  open func withBox<U>(_ block: (NEKit.Box<T>) -> (U)) -> U
+  @objc deinit
+}
+public enum UInt128Errors : Swift.Error {
+  case invalidString
+  public static func == (a: NEKit.UInt128Errors, b: NEKit.UInt128Errors) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct UInt128 {
+  public var significantBits: NEKit.UInt128 {
+    get
+  }
+  public init(upperBits: Swift.UInt64, lowerBits: Swift.UInt64)
+  public init()
+  public init(_ source: NEKit.UInt128)
+  public init(_ source: Swift.String) throws
+}
+extension NEKit.UInt128 : Swift.FixedWidthInteger {
+  public static var bitWidth: Swift.Int {
+    get
+  }
+  public var nonzeroBitCount: Swift.Int {
+    get
+  }
+  public var leadingZeroBitCount: Swift.Int {
+    get
+  }
+  public var bigEndian: NEKit.UInt128 {
+    get
+  }
+  public var littleEndian: NEKit.UInt128 {
+    get
+  }
+  public var byteSwapped: NEKit.UInt128 {
+    get
+  }
+  public init(_truncatingBits bits: Swift.UInt)
+  public init(bigEndian value: NEKit.UInt128)
+  public init(littleEndian value: NEKit.UInt128)
+  public func addingReportingOverflow(_ rhs: NEKit.UInt128) -> (partialValue: NEKit.UInt128, overflow: Swift.Bool)
+  public func subtractingReportingOverflow(_ rhs: NEKit.UInt128) -> (partialValue: NEKit.UInt128, overflow: Swift.Bool)
+  public func multipliedReportingOverflow(by rhs: NEKit.UInt128) -> (partialValue: NEKit.UInt128, overflow: Swift.Bool)
+  public func multipliedFullWidth(by other: NEKit.UInt128) -> (high: NEKit.UInt128, low: NEKit.UInt128.Magnitude)
+  public func dividedReportingOverflow(by rhs: NEKit.UInt128) -> (partialValue: NEKit.UInt128, overflow: Swift.Bool)
+  public func dividingFullWidth(_ dividend: (high: NEKit.UInt128, low: NEKit.UInt128)) -> (quotient: NEKit.UInt128, remainder: NEKit.UInt128)
+  public func remainderReportingOverflow(dividingBy rhs: NEKit.UInt128) -> (partialValue: NEKit.UInt128, overflow: Swift.Bool)
+  public func quotientAndRemainder(dividingBy rhs: NEKit.UInt128) -> (quotient: NEKit.UInt128, remainder: NEKit.UInt128)
+}
+extension NEKit.UInt128 : Swift.BinaryInteger {
+  public var bitWidth: Swift.Int {
+    get
+  }
+  public var words: [Swift.UInt] {
+    get
+  }
+  public var trailingZeroBitCount: Swift.Int {
+    get
+  }
+  public init?<T>(exactly source: T) where T : Swift.BinaryFloatingPoint
+  public init<T>(_ source: T) where T : Swift.BinaryFloatingPoint
+  public static func / (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> NEKit.UInt128
+  public static func /= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func % (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> NEKit.UInt128
+  public static func %= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func &= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func |= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func ^= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func &>>= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func &<<= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public typealias Stride = Swift.Int
+  public typealias Words = [Swift.UInt]
+}
+extension NEKit.UInt128 : Swift.UnsignedInteger {
+}
+extension NEKit.UInt128 : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension NEKit.UInt128 : Swift.Numeric {
+  public static func + (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> NEKit.UInt128
+  public static func += (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func - (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> NEKit.UInt128
+  public static func -= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public static func * (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> NEKit.UInt128
+  public static func *= (lhs: inout NEKit.UInt128, rhs: NEKit.UInt128)
+  public typealias Magnitude = NEKit.UInt128
+}
+extension NEKit.UInt128 : Swift.Equatable {
+  public static func == (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> Swift.Bool
+}
+extension NEKit.UInt128 : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension NEKit.UInt128 : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension NEKit.UInt128 : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension NEKit.UInt128 : Swift.Comparable {
+  public static func < (lhs: NEKit.UInt128, rhs: NEKit.UInt128) -> Swift.Bool
+}
+extension NEKit.UInt128 : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension NEKit.UInt128 {
+  @available(swift, deprecated: 3.2, renamed: "init(_:)")
+  public static func fromUnparsedString(_ source: Swift.String) throws -> NEKit.UInt128
+}
+extension Swift.BinaryFloatingPoint {
+  public init(_ value: NEKit.UInt128)
+  public init?(exactly value: NEKit.UInt128)
+}
+extension Swift.String {
+  public init(_ value: NEKit.UInt128, radix: Swift.Int = 10, uppercase: Swift.Bool = false)
+}
+@_hasMissingDesignatedInitializers public class HTTPURL {
+  final public let scheme: Swift.String?
+  final public let host: Swift.String?
+  final public let port: Swift.Int?
+  final public let relativePath: Swift.String
+  @objc deinit
+}
+open class DNSServer : NEKit.DNSResolverDelegate, NEKit.IPStackProtocol {
+  public static var currentServer: NEKit.DNSServer?
+  open var outputFunc: (([Foundation.Data], [Foundation.NSNumber]) -> Swift.Void)!
+  public init(address: NEKit.IPAddress, port: NEKit.Port, fakeIPPool: NEKit.IPPool? = nil)
+  open func input(packet: Foundation.Data, version: Foundation.NSNumber?) -> Swift.Bool
+  public func start()
+  open func stop()
+  open func registerResolver(_ resolver: any NEKit.DNSResolverProtocol)
+  open func didReceive(rawResponse: Foundation.Data)
+  @objc deinit
+}
+open class AllRule : NEKit.Rule {
+  override open var description: Swift.String {
+    get
+  }
+  public init(adapterFactory: NEKit.AdapterFactory)
+  override open func matchDNS(_ session: NEKit.DNSSession, type: NEKit.DNSSessionMatchType) -> NEKit.DNSSessionMatchResult
+  override open func match(_ session: NEKit.ConnectSession) -> NEKit.AdapterFactory?
+  @objc deinit
+}
+final public class IPPool {
+  public init(range: NEKit.IPRange)
+  @objc deinit
+}
+open class CountryRule : NEKit.Rule {
+  final public let countryCode: Swift.String
+  final public let match: Swift.Bool
+  override open var description: Swift.String {
+    get
+  }
+  public init(countryCode: Swift.String, match: Swift.Bool, adapterFactory: NEKit.AdapterFactory)
+  override open func matchDNS(_ session: NEKit.DNSSession, type: NEKit.DNSSessionMatchType) -> NEKit.DNSSessionMatchResult
+  override open func match(_ session: NEKit.ConnectSession) -> NEKit.AdapterFactory?
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class NWTCPSocket : ObjectiveC.NSObject, NEKit.RawTCPSocketProtocol {
+  weak open var delegate: (any NEKit.RawTCPSocketDelegate)?
+  public var isConnected: Swift.Bool {
+    get
+  }
+  public var sourceIPAddress: NEKit.IPAddress? {
+    get
+  }
+  public var sourcePort: NEKit.Port? {
+    get
+  }
+  public var destinationIPAddress: NEKit.IPAddress? {
+    get
+  }
+  public var destinationPort: NEKit.Port? {
+    get
+  }
+  public func connectTo(host: Swift.String, port: Swift.Int, enableTLS: Swift.Bool, tlsSettings: [Swift.AnyHashable : Any]?) throws
+  public func disconnect()
+  public func forceDisconnect()
+  public func write(data: Foundation.Data)
+  public func readData()
+  public func readDataTo(length: Swift.Int)
+  public func readDataTo(data: Foundation.Data)
+  public func readDataTo(data: Foundation.Data, maxLength: Swift.Int)
+  @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_inheritsConvenienceInitializers open class HTTPAdapterFactory : NEKit.HTTPAuthenticationAdapterFactory {
+  required public init(serverHost: Swift.String, serverPort: Swift.Int, auth: NEKit.HTTPAuthentication?)
+  override open func getAdapterFor(session: NEKit.ConnectSession) -> NEKit.AdapterSocket
+  @objc deinit
+}
+open class DirectRule : NEKit.AllRule {
+  override open var description: Swift.String {
+    get
+  }
+  public init()
+  @objc deinit
+}
+open class AdapterFactory {
+  public init()
+  open func getAdapterFor(session: NEKit.ConnectSession) -> NEKit.AdapterSocket
+  public func getDirectAdapter() -> NEKit.AdapterSocket
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class DirectAdapterFactory : NEKit.AdapterFactory {
+  override public init()
+  @objc deinit
+}
+open class DNSFailRule : NEKit.Rule {
+  override open var description: Swift.String {
+    get
+  }
+  public init(adapterFactory: NEKit.AdapterFactory)
+  override open func matchDNS(_ session: NEKit.DNSSession, type: NEKit.DNSSessionMatchType) -> NEKit.DNSSessionMatchResult
+  override open func match(_ session: NEKit.ConnectSession) -> NEKit.AdapterFactory?
+  @objc deinit
+}
+public enum IPVersion : Swift.UInt8 {
+  case iPv4, iPv6
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+public enum TransportProtocol : Swift.UInt8 {
+  case icmp, tcp, udp
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class IPPacket {
+  public static func peekIPVersion(_ data: Foundation.Data) -> NEKit.IPVersion?
+  public static func peekProtocol(_ data: Foundation.Data) -> NEKit.TransportProtocol?
+  public static func peekSourceAddress(_ data: Foundation.Data) -> NEKit.IPAddress?
+  public static func peekDestinationAddress(_ data: Foundation.Data) -> NEKit.IPAddress?
+  public static func peekSourcePort(_ data: Foundation.Data) -> NEKit.Port?
+  public static func peekDestinationPort(_ data: Foundation.Data) -> NEKit.Port?
+  open var version: NEKit.IPVersion
+  open var headerLength: Swift.UInt8
+  open var tos: Swift.UInt8
+  open var totalLength: Swift.UInt16 {
+    get
+  }
+  @objc deinit
+}
+public enum DNSType : Swift.UInt16 {
+  case invalid, a, ns, md, mf, cname, soa, mb, mg, mr, null, wks, ptr, hinfo, minfo, mx, txt, rp, afsdb, x25, isdn, rt, nsap, nsapptr, sig, key, px, gpos, aaaa, loc, nxt, eid, nimloc, srv, atma, naptr, kx, cert, a6, dname, sink, opt, apl, ds, sshfp, rrsig, nsec, dnskey, tkey, tsig, ixfr, axfr, mailb, maila, any
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public enum DNSMessageType : Swift.UInt8 {
+  case query, response
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+public enum DNSReturnStatus : Swift.UInt8 {
+  case success, formatError, serverFailure, nameError, notImplemented, refused
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+public enum DNSClass : Swift.UInt16 {
+  case internet
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public enum RuleMatchEvent : NEKit.EventType {
+  public var description: Swift.String {
+    get
+  }
+  case ruleMatched(NEKit.ConnectSession, rule: NEKit.Rule), ruleDidNotMatch(NEKit.ConnectSession, rule: NEKit.Rule), dnsRuleMatched(NEKit.DNSSession, rule: NEKit.Rule, type: NEKit.DNSSessionMatchType, result: NEKit.DNSSessionMatchResult)
+}
+@objc @_inheritsConvenienceInitializers final public class GCDHTTPProxyServer : NEKit.GCDProxyServer {
+  override public init(address: NEKit.IPAddress?, port: NEKit.Port)
+  final public func refreshDomains()
+  override final public func handleNewGCDSocket(_ socket: NEKit.GCDTCPSocket)
+  @objc deinit
+}
+open class TUNInterface {
+  public init(packetFlow: NetworkExtension.NEPacketTunnelFlow)
+  open func start()
+  open func stop()
+  open func register(stack: any NEKit.IPStackProtocol)
+  @objc deinit
+}
+public struct Port : Swift.CustomStringConvertible, Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = Swift.UInt16
+  public init(portInNetworkOrder: Swift.UInt16)
+  public init(port: Swift.UInt16)
+  public init(integerLiteral value: NEKit.Port.IntegerLiteralType)
+  public init(bytesInNetworkOrder: Swift.UnsafeRawPointer)
+  public var description: Swift.String {
+    get
+  }
+  public var value: Swift.UInt16 {
+    get
+  }
+  public var valueInNetworkOrder: Swift.UInt16 {
+    get
+  }
+  public mutating func withUnsafeBufferPointer<T>(_ block: (Swift.UnsafeRawBufferPointer) -> T) -> T
+}
+public func == (left: NEKit.Port, right: NEKit.Port) -> Swift.Bool
+extension NEKit.Port : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers public class Tunnel : ObjectiveC.NSObject, NEKit.SocketDelegate {
+  public enum TunnelStatus : Swift.CustomStringConvertible {
+    case invalid, readingRequest, waitingToBeReady, forwarding, closing, closed
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: NEKit.Tunnel.TunnelStatus, b: NEKit.Tunnel.TunnelStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var isCancelled: Swift.Bool {
+    get
+  }
+  public var status: NEKit.Tunnel.TunnelStatus {
+    get
+  }
+  public var statusDescription: Swift.String {
+    get
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  public func didReceive(session: NEKit.ConnectSession, from: NEKit.ProxySocket)
+  public func didBecomeReadyToForwardWith(socket: any NEKit.SocketProtocol)
+  public func didDisconnectWith(socket: any NEKit.SocketProtocol)
+  public func didRead(data: Foundation.Data, from socket: any NEKit.SocketProtocol)
+  public func didWrite(data: Foundation.Data?, by socket: any NEKit.SocketProtocol)
+  public func didConnectWith(adapterSocket: NEKit.AdapterSocket)
+  public func updateAdapterWith(newAdapter: NEKit.AdapterSocket)
+  @objc deinit
+}
+public enum ProxySocketEvent : NEKit.EventType {
+  public var description: Swift.String {
+    get
+  }
+  case socketOpened(NEKit.ProxySocket), disconnectCalled(NEKit.ProxySocket), forceDisconnectCalled(NEKit.ProxySocket), disconnected(NEKit.ProxySocket), receivedRequest(NEKit.ConnectSession, on: NEKit.ProxySocket), readData(Foundation.Data, on: NEKit.ProxySocket), wroteData(Foundation.Data?, on: NEKit.ProxySocket), askedToResponseTo(NEKit.AdapterSocket, on: NEKit.ProxySocket), readyForForward(NEKit.ProxySocket), errorOccured(any Swift.Error, on: NEKit.ProxySocket)
+}
+@objc public class RejectAdapter : NEKit.AdapterSocket {
+  final public let delay: Swift.Int
+  public init(delay: Swift.Int)
+  override public func openSocketWith(session: NEKit.ConnectSession)
+  override public func disconnect(becauseOf error: (any Swift.Error)? = nil)
+  override public func forceDisconnect(becauseOf error: (any Swift.Error)? = nil)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class DirectAdapter : NEKit.AdapterSocket {
+  override public func openSocketWith(session: NEKit.ConnectSession)
+  override public func didConnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  override public func didRead(data: Foundation.Data, from rawSocket: any NEKit.RawTCPSocketProtocol)
+  override public func didWrite(data: Foundation.Data?, by rawSocket: any NEKit.RawTCPSocketProtocol)
+  override public init(observe: Swift.Bool = super)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class SOCKS5AdapterFactory : NEKit.ServerAdapterFactory {
+  override public init(serverHost: Swift.String, serverPort: Swift.Int)
+  override open func getAdapterFor(session: NEKit.ConnectSession) -> NEKit.AdapterSocket
+  @objc deinit
+}
+public protocol IPStackProtocol : AnyObject {
+  func input(packet: Foundation.Data, version: Foundation.NSNumber?) -> Swift.Bool
+  var outputFunc: (([Foundation.Data], [Foundation.NSNumber]) -> Swift.Void)! { get set }
+  func start()
+  func stop()
+}
+extension NEKit.IPStackProtocol {
+  public func stop()
+}
+@objc open class GCDTCPSocket : ObjectiveC.NSObject, CocoaAsyncSocket.GCDAsyncSocketDelegate, NEKit.RawTCPSocketProtocol {
+  public init(socket: CocoaAsyncSocket.GCDAsyncSocket? = nil)
+  weak open var delegate: (any NEKit.RawTCPSocketDelegate)?
+  open var isConnected: Swift.Bool {
+    get
+  }
+  open var sourceIPAddress: NEKit.IPAddress? {
+    get
+  }
+  open var sourcePort: NEKit.Port? {
+    get
+  }
+  open var destinationIPAddress: NEKit.IPAddress? {
+    get
+  }
+  open var destinationPort: NEKit.Port? {
+    get
+  }
+  open func connectTo(host: Swift.String, port: Swift.Int, enableTLS: Swift.Bool = false, tlsSettings: [Swift.AnyHashable : Any]? = nil) throws
+  open func disconnect()
+  open func forceDisconnect()
+  open func write(data: Foundation.Data)
+  open func readData()
+  open func readDataTo(length: Swift.Int)
+  open func readDataTo(data: Foundation.Data)
+  open func readDataTo(data: Foundation.Data, maxLength: Swift.Int)
+  @objc open func socket(_ sock: CocoaAsyncSocket.GCDAsyncSocket, didWriteDataWithTag tag: Swift.Int)
+  @objc open func socket(_ sock: CocoaAsyncSocket.GCDAsyncSocket, didRead data: Foundation.Data, withTag tag: Swift.Int)
+  @objc open func socketDidDisconnect(_ socket: CocoaAsyncSocket.GCDAsyncSocket, withError err: (any Swift.Error)?)
+  @objc open func socket(_ sock: CocoaAsyncSocket.GCDAsyncSocket, didConnectToHost host: Swift.String, port: Swift.UInt16)
+  @objc open func socketDidSecure(_ sock: CocoaAsyncSocket.GCDAsyncSocket)
+  @objc deinit
+}
+final public class ConnectSession {
+  public enum EventSourceEnum {
+    case proxy, adapter, tunnel
+    public static func == (a: NEKit.ConnectSession.EventSourceEnum, b: NEKit.ConnectSession.EventSourceEnum) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let requestedHost: Swift.String
+  final public var host: Swift.String
+  final public let port: Swift.Int
+  final public var matchedRule: NEKit.Rule?
+  final public let fakeIPEnabled: Swift.Bool
+  final public var error: (any Swift.Error)?
+  final public var errorSource: NEKit.ConnectSession.EventSourceEnum?
+  final public var disconnectedBy: NEKit.ConnectSession.EventSourceEnum?
+  final public var ipAddress: Swift.String {
+    get
+    set
+  }
+  final public var country: Swift.String {
+    get
+    set
+  }
+  public init?(host: Swift.String, port: Swift.Int, fakeIPEnabled: Swift.Bool = true)
+  convenience public init?(ipAddress: NEKit.IPAddress, port: NEKit.Port, fakeIPEnabled: Swift.Bool = true)
+  final public func isIPv4() -> Swift.Bool
+  final public func isIPv6() -> Swift.Bool
+  final public func isIP() -> Swift.Bool
+  @objc deinit
+}
+extension NEKit.ConnectSession : Swift.CustomStringConvertible {
+  final public var description: Swift.String {
+    get
+  }
+}
+@objc open class ProxyServer : ObjectiveC.NSObject {
+  final public let port: NEKit.Port
+  final public let address: NEKit.IPAddress?
+  final public let type: Swift.String
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  open var observer: NEKit.Observer<NEKit.ProxyServerEvent>?
+  public init(address: NEKit.IPAddress?, port: NEKit.Port)
+  open func start() throws
+  open func stop()
+  @objc deinit
+}
+public protocol BinaryReadable {
+  var littleEndian: Self { get }
+  var bigEndian: Self { get }
+}
+extension Swift.UInt8 : NEKit.BinaryReadable {
+  public var littleEndian: Swift.UInt8 {
+    get
+  }
+  public var bigEndian: Swift.UInt8 {
+    get
+  }
+}
+extension Swift.UInt16 : NEKit.BinaryReadable {
+}
+extension Swift.UInt32 : NEKit.BinaryReadable {
+}
+extension Swift.UInt64 : NEKit.BinaryReadable {
+}
+open class BinaryDataScanner {
+  public init(data: Foundation.Data, littleEndian: Swift.Bool)
+  open func read<T>() -> T? where T : NEKit.BinaryReadable
+  open func skip(to n: Swift.Int)
+  open func advance(by n: Swift.Int)
+  open func readByte() -> Swift.UInt8?
+  open func read16() -> Swift.UInt16?
+  open func read32() -> Swift.UInt32?
+  open func read64() -> Swift.UInt64?
+  @objc deinit
+}
+public protocol EventType : Swift.CustomStringConvertible {
+}
+public enum IPInterval {
+  case IPv4(Swift.UInt32), IPv6(NEKit.UInt128)
+}
+public enum HTTPAdapterError : Swift.Error, Swift.CustomStringConvertible {
+  case invalidURL, serailizationFailure
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: NEKit.HTTPAdapterError, b: NEKit.HTTPAdapterError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc public class HTTPAdapter : NEKit.AdapterSocket {
+  public init(serverHost: Swift.String, serverPort: Swift.Int, auth: NEKit.HTTPAuthentication?)
+  override public func openSocketWith(session: NEKit.ConnectSession)
+  override public func didConnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  override public func didRead(data: Foundation.Data, from socket: any NEKit.RawTCPSocketProtocol)
+  override public func didWrite(data: Foundation.Data?, by socket: any NEKit.RawTCPSocketProtocol)
+  @objc deinit
+}
+public struct Utils {
+  public struct HTTPData {
+    public static let DoubleCRLF: Foundation.Data
+    public static let CRLF: Foundation.Data
+    public static let ConnectSuccessResponse: Foundation.Data
+  }
+  public struct DNS {
+    public enum QueryType {
+      case a, aaaa, unspec
+      public static func == (a: NEKit.Utils.DNS.QueryType, b: NEKit.Utils.DNS.QueryType) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public static func resolve(_ name: Swift.String, type: NEKit.Utils.DNS.QueryType = .unspec) -> Swift.String
+  }
+  public struct IP {
+    public static func isIPv4(_ ipAddress: Swift.String) -> Swift.Bool
+    public static func isIPv6(_ ipAddress: Swift.String) -> Swift.Bool
+    public static func isIP(_ ipAddress: Swift.String) -> Swift.Bool
+    public static func IPv4ToInt(_ ipAddress: Swift.String) -> Swift.UInt32?
+    public static func IPv4ToBytes(_ ipAddress: Swift.String) -> [Swift.UInt8]?
+    public static func IPv6ToBytes(_ ipAddress: Swift.String) -> [Swift.UInt8]?
+  }
+}
+@objc open class ProxySocket : ObjectiveC.NSObject, NEKit.SocketProtocol, NEKit.RawTCPSocketDelegate {
+  public var session: NEKit.ConnectSession?
+  public var observer: NEKit.Observer<NEKit.ProxySocketEvent>?
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  public init(socket: any NEKit.RawTCPSocketProtocol, observe: Swift.Bool = true)
+  open func openSocket()
+  open func respondTo(adapter: NEKit.AdapterSocket)
+  open func readData()
+  open func write(data: Foundation.Data)
+  open func disconnect(becauseOf error: (any Swift.Error)? = nil)
+  open func forceDisconnect(becauseOf error: (any Swift.Error)? = nil)
+  public var socket: (any NEKit.RawTCPSocketProtocol)!
+  weak public var delegate: (any NEKit.SocketDelegate)?
+  public var status: NEKit.SocketStatus {
+    get
+  }
+  open func didDisconnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  open func didRead(data: Foundation.Data, from: any NEKit.RawTCPSocketProtocol)
+  open func didWrite(data: Foundation.Data?, by: any NEKit.RawTCPSocketProtocol)
+  open func didConnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  @objc deinit
+}
+public enum DNSSessionMatchType {
+  case domain, ip
+  public static func == (a: NEKit.DNSSessionMatchType, b: NEKit.DNSSessionMatchType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class UDPDirectStack : NEKit.IPStackProtocol, NEKit.NWUDPSocketDelegate {
+  public var outputFunc: (([Foundation.Data], [Foundation.NSNumber]) -> Swift.Void)!
+  public init()
+  public func input(packet: Foundation.Data, version: Foundation.NSNumber?) -> Swift.Bool
+  public func start()
+  public func stop()
+  public func didReceive(data: Foundation.Data, from: NEKit.NWUDPSocket)
+  public func didCancel(socket: NEKit.NWUDPSocket)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class DNSMessage {
+  open var transactionID: Swift.UInt16
+  open var messageType: NEKit.DNSMessageType
+  open var authoritative: Swift.Bool
+  open var truncation: Swift.Bool
+  open var recursionDesired: Swift.Bool
+  open var recursionAvailable: Swift.Bool
+  open var status: NEKit.DNSReturnStatus
+  open var queries: [NEKit.DNSQuery]
+  open var answers: [NEKit.DNSResource]
+  open var nameservers: [NEKit.DNSResource]
+  open var addtionals: [NEKit.DNSResource]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class DNSQuery {
+  final public let name: Swift.String
+  final public let type: NEKit.DNSType
+  final public let klass: NEKit.DNSClass
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class DNSResource {
+  final public let name: Swift.String
+  final public let type: NEKit.DNSType
+  final public let klass: NEKit.DNSClass
+  final public let TTL: Swift.UInt32
+  final public let data: Foundation.Data
+  @objc deinit
+}
+public struct Opt {
+  public static var MAXNWTCPSocketReadDataSize: Swift.Int
+  public static var MAXNWTCPScanLength: Swift.Int
+  public static var DNSFakeIPTTL: Swift.Int
+  public static var DNSPendingSessionLifeTime: Swift.Int
+  public static var UDPSocketActiveTimeout: Swift.Int
+  public static var UDPSocketActiveCheckInterval: Swift.Int
+  public static var MAXHTTPContentBlockLength: Swift.Int
+  public static var RejectAdapterDefaultDelay: Swift.Int
+  public static var DNSTimeout: Swift.Int
+  public static var forwardReadInterval: Swift.Int
+}
+public enum ProxyServerEvent : NEKit.EventType {
+  public var description: Swift.String {
+    get
+  }
+  case newSocketAccepted(NEKit.ProxySocket, onServer: NEKit.ProxyServer), tunnelClosed(NEKit.Tunnel, onServer: NEKit.ProxyServer), started(NEKit.ProxyServer), stopped(NEKit.ProxyServer)
+}
+public protocol NWUDPSocketDelegate : AnyObject {
+  func didReceive(data: Foundation.Data, from: NEKit.NWUDPSocket)
+  func didCancel(socket: NEKit.NWUDPSocket)
+}
+@objc public class NWUDPSocket : ObjectiveC.NSObject {
+  weak public var delegate: (any NEKit.NWUDPSocketDelegate)?
+  public var lastActive: Foundation.Date
+  public init?(host: Swift.String, port: Swift.Int, timeout: Swift.Int = Opt.UDPSocketActiveTimeout)
+  public func write(data: Foundation.Data)
+  public func disconnect()
+  @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc deinit
+}
+public enum IPRangeError : Swift.Error {
+  case invalidCIDRFormat, invalidRangeFormat, invalidRange, invalidFormat, addressIncompatible, noRange, intervalInvalid, invalidMask
+  public static func == (a: NEKit.IPRangeError, b: NEKit.IPRangeError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class IPRange {
+  final public let startIP: NEKit.IPAddress
+  final public let endIP: NEKit.IPAddress
+  final public let family: NEKit.IPAddress.Family
+  public init(startIP: NEKit.IPAddress, endIP: NEKit.IPAddress) throws
+  convenience public init(startIP: NEKit.IPAddress, interval: NEKit.IPInterval) throws
+  convenience public init(startIP: NEKit.IPAddress, mask: NEKit.IPMask) throws
+  public func contains(ip: NEKit.IPAddress) -> Swift.Bool
+  @objc deinit
+}
+extension NEKit.IPRange {
+  convenience public init(withCIDRString rep: Swift.String) throws
+  convenience public init(withRangeString rep: Swift.String) throws
+  convenience public init(withString rep: Swift.String) throws
+}
+open class IPRangeListRule : NEKit.Rule {
+  override open var description: Swift.String {
+    get
+  }
+  open var ranges: [NEKit.IPRange]
+  public init(adapterFactory: NEKit.AdapterFactory, ranges: [Swift.String]) throws
+  override open func matchDNS(_ session: NEKit.DNSSession, type: NEKit.DNSSessionMatchType) -> NEKit.DNSSessionMatchResult
+  override open func match(_ session: NEKit.ConnectSession) -> NEKit.AdapterFactory?
+  @objc deinit
+}
+public enum SocketStatus {
+  case invalid, connecting, established, disconnecting, closed
+  public static func == (a: NEKit.SocketStatus, b: NEKit.SocketStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol SocketProtocol : AnyObject {
+  var socket: (any NEKit.RawTCPSocketProtocol)! { get }
+  var delegate: (any NEKit.SocketDelegate)? { get set }
+  var status: NEKit.SocketStatus { get }
+  var isDisconnected: Swift.Bool { get }
+  var typeName: Swift.String { get }
+  var readStatusDescription: Swift.String { get }
+  var writeStatusDescription: Swift.String { get }
+  func readData()
+  func write(data: Foundation.Data)
+  func disconnect(becauseOf error: (any Swift.Error)?)
+  func forceDisconnect(becauseOf error: (any Swift.Error)?)
+}
+extension NEKit.SocketProtocol {
+  public var isDisconnected: Swift.Bool {
+    get
+  }
+  public var typeName: Swift.String {
+    get
+  }
+  public var readStatusDescription: Swift.String {
+    get
+  }
+  public var writeStatusDescription: Swift.String {
+    get
+  }
+}
+public protocol SocketDelegate : AnyObject {
+  func didConnectWith(adapterSocket: NEKit.AdapterSocket)
+  func didDisconnectWith(socket: any NEKit.SocketProtocol)
+  func didRead(data: Foundation.Data, from: any NEKit.SocketProtocol)
+  func didWrite(data: Foundation.Data?, by: any NEKit.SocketProtocol)
+  func didBecomeReadyToForwardWith(socket: any NEKit.SocketProtocol)
+  func didReceive(session: NEKit.ConnectSession, from: NEKit.ProxySocket)
+  func updateAdapterWith(newAdapter: NEKit.AdapterSocket)
+}
+public class IPAddress : Swift.CustomStringConvertible, Swift.Comparable {
+  public enum Family {
+    case IPv4, IPv6
+    public static func == (a: NEKit.IPAddress.Family, b: NEKit.IPAddress.Family) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Address : Swift.Equatable {
+    case IPv4(Darwin.in_addr), IPv6(Darwin.in6_addr)
+    public var asUInt128: NEKit.UInt128 {
+      get
+    }
+  }
+  final public let family: NEKit.IPAddress.Family
+  final public let address: NEKit.IPAddress.Address
+  public var presentation: Swift.String {
+    get
+    set
+  }
+  public init(fromInAddr addr: Darwin.in_addr)
+  public init(fromIn6Addr addr6: Darwin.in6_addr)
+  convenience public init?(fromString string: Swift.String)
+  convenience public init(ipv4InNetworkOrder: Swift.UInt32)
+  convenience public init(ipv6InNetworkOrder: NEKit.UInt128)
+  convenience public init(fromBytesInNetworkOrder ptr: Swift.UnsafeRawPointer, family: NEKit.IPAddress.Family = .IPv4)
+  public var description: Swift.String {
+    get
+  }
+  public var dataInNetworkOrder: Foundation.Data {
+    get
+  }
+  public var UInt32InNetworkOrder: Swift.UInt32? {
+    get
+  }
+  public var UInt128InNetworkOrder: NEKit.UInt128? {
+    get
+  }
+  public func withBytesInNetworkOrder<U>(_ body: (Swift.UnsafeRawBufferPointer) throws -> U) rethrows -> U
+  public func advanced(by interval: NEKit.IPInterval) -> NEKit.IPAddress?
+  public func advanced(by interval: Swift.UInt) -> NEKit.IPAddress?
+  @objc deinit
+}
+public func == (lhs: NEKit.IPAddress, rhs: NEKit.IPAddress) -> Swift.Bool
+public func < (lhs: NEKit.IPAddress, rhs: NEKit.IPAddress) -> Swift.Bool
+public func == (lhs: NEKit.IPAddress.Address, rhs: NEKit.IPAddress.Address) -> Swift.Bool
+extension NEKit.IPAddress : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class Checksum {
+  public static func computeChecksum(_ data: Foundation.Data, from start: Swift.Int = 0, to end: Swift.Int? = nil, withPseudoHeaderChecksum initChecksum: Swift.UInt32 = 0) -> Swift.UInt16
+  public static func validateChecksum(_ payload: Foundation.Data, from start: Swift.Int = 0, to end: Swift.Int? = nil) -> Swift.Bool
+  public static func computeChecksumUnfold(_ data: Foundation.Data, from start: Swift.Int = 0, to end: Swift.Int? = nil, withPseudoHeaderChecksum initChecksum: Swift.UInt32 = 0) -> Swift.UInt32
+  public static func toChecksum(_ checksum: Swift.UInt32) -> Swift.UInt16
+  @objc deinit
+}
+@objc open class AdapterSocket : ObjectiveC.NSObject, NEKit.SocketProtocol, NEKit.RawTCPSocketDelegate {
+  open var session: NEKit.ConnectSession!
+  open var observer: NEKit.Observer<NEKit.AdapterSocketEvent>?
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  public var isCancelled: Swift.Bool {
+    get
+  }
+  open func openSocketWith(session: NEKit.ConnectSession)
+  @objc deinit
+  open var socket: (any NEKit.RawTCPSocketProtocol)!
+  weak open var delegate: (any NEKit.SocketDelegate)?
+  public var status: NEKit.SocketStatus {
+    get
+  }
+  open var statusDescription: Swift.String {
+    get
+  }
+  public init(observe: Swift.Bool = true)
+  open func readData()
+  open func write(data: Foundation.Data)
+  open func disconnect(becauseOf error: (any Swift.Error)? = nil)
+  open func forceDisconnect(becauseOf error: (any Swift.Error)? = nil)
+  open func didDisconnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  open func didRead(data: Foundation.Data, from: any NEKit.RawTCPSocketProtocol)
+  open func didWrite(data: Foundation.Data?, by: any NEKit.RawTCPSocketProtocol)
+  open func didConnectWith(socket: any NEKit.RawTCPSocketProtocol)
+}
+public protocol RawTCPSocketProtocol : AnyObject {
+  var delegate: (any NEKit.RawTCPSocketDelegate)? { get set }
+  var isConnected: Swift.Bool { get }
+  var sourceIPAddress: NEKit.IPAddress? { get }
+  var sourcePort: NEKit.Port? { get }
+  var destinationIPAddress: NEKit.IPAddress? { get }
+  var destinationPort: NEKit.Port? { get }
+  func connectTo(host: Swift.String, port: Swift.Int, enableTLS: Swift.Bool, tlsSettings: [Swift.AnyHashable : Any]?) throws
+  func disconnect()
+  func forceDisconnect()
+  func write(data: Foundation.Data)
+  func readData()
+  func readDataTo(length: Swift.Int)
+  func readDataTo(data: Foundation.Data)
+  func readDataTo(data: Foundation.Data, maxLength: Swift.Int)
+}
+public protocol RawTCPSocketDelegate : AnyObject {
+  func didDisconnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  func didRead(data: Foundation.Data, from: any NEKit.RawTCPSocketProtocol)
+  func didWrite(data: Foundation.Data?, by: any NEKit.RawTCPSocketProtocol)
+  func didConnectWith(socket: any NEKit.RawTCPSocketProtocol)
+}
+@_inheritsConvenienceInitializers open class SecureHTTPAdapterFactory : NEKit.HTTPAdapterFactory {
+  required public init(serverHost: Swift.String, serverPort: Swift.Int, auth: NEKit.HTTPAuthentication?)
+  override open func getAdapterFor(session: NEKit.ConnectSession) -> NEKit.AdapterSocket
+  @objc deinit
+}
+open class RejectAdapterFactory : NEKit.AdapterFactory {
+  final public let delay: Swift.Int
+  public init(delay: Swift.Int = Opt.RejectAdapterDefaultDelay)
+  override open func getAdapterFor(session: NEKit.ConnectSession) -> NEKit.AdapterSocket
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SpeedAdapter : NEKit.AdapterSocket, NEKit.SocketDelegate {
+  public var adapters: [(NEKit.AdapterSocket, Swift.Int)]!
+  override public func openSocketWith(session: NEKit.ConnectSession)
+  override public func disconnect(becauseOf error: (any Swift.Error)? = nil)
+  override public func forceDisconnect(becauseOf error: (any Swift.Error)? = nil)
+  public func didBecomeReadyToForwardWith(socket: any NEKit.SocketProtocol)
+  public func didDisconnectWith(socket: any NEKit.SocketProtocol)
+  public func didConnectWith(adapterSocket socket: NEKit.AdapterSocket)
+  public func didWrite(data: Foundation.Data?, by: any NEKit.SocketProtocol)
+  public func didRead(data: Foundation.Data, from: any NEKit.SocketProtocol)
+  public func updateAdapterWith(newAdapter: NEKit.AdapterSocket)
+  public func didReceive(session: NEKit.ConnectSession, from: NEKit.ProxySocket)
+  override public init(observe: Swift.Bool = super)
+  @objc deinit
+}
+open class HTTPAuthenticationAdapterFactory : NEKit.ServerAdapterFactory {
+  required public init(serverHost: Swift.String, serverPort: Swift.Int, auth: NEKit.HTTPAuthentication?)
+  @objc deinit
+}
+public class AdapterFactoryManager {
+  public subscript(index: Swift.String) -> NEKit.AdapterFactory? {
+    get
+    set
+  }
+  public init(factoryDict: [Swift.String : NEKit.AdapterFactory])
+  @objc deinit
+}
+public enum SocketBaseType {
+  case nw, gcd
+  public static func == (a: NEKit.SocketBaseType, b: NEKit.SocketBaseType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class RawSocketFactory {
+  weak public static var TunnelProvider: NetworkExtension.NETunnelProvider?
+  public static func getRawSocket(_ type: NEKit.SocketBaseType? = nil) -> any NEKit.RawTCPSocketProtocol
+  @objc deinit
+}
+open class ObserverFactory {
+  public static var currentFactory: NEKit.ObserverFactory?
+  public init()
+  open func getObserverForTunnel(_ tunnel: NEKit.Tunnel) -> NEKit.Observer<NEKit.TunnelEvent>?
+  open func getObserverForAdapterSocket(_ socket: NEKit.AdapterSocket) -> NEKit.Observer<NEKit.AdapterSocketEvent>?
+  open func getObserverForProxySocket(_ socket: NEKit.ProxySocket) -> NEKit.Observer<NEKit.ProxySocketEvent>?
+  open func getObserverForProxyServer(_ server: NEKit.ProxyServer) -> NEKit.Observer<NEKit.ProxyServerEvent>?
+  open func getObserverForRuleManager(_ manager: NEKit.RuleManager) -> NEKit.Observer<NEKit.RuleMatchEvent>?
+  @objc deinit
+}
+open class Observer<T> where T : NEKit.EventType {
+  public init()
+  open func signal(_ event: T)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SecureHTTPAdapter : NEKit.HTTPAdapter {
+  override public init(serverHost: Swift.String, serverPort: Swift.Int, auth: NEKit.HTTPAuthentication?)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class GCDProxyServer : NEKit.ProxyServer, CocoaAsyncSocket.GCDAsyncSocketDelegate {
+  override open func start() throws
+  override open func stop()
+  open func handleNewGCDSocket(_ socket: NEKit.GCDTCPSocket)
+  @objc open func socket(_ sock: CocoaAsyncSocket.GCDAsyncSocket, didAcceptNewSocket newSocket: CocoaAsyncSocket.GCDAsyncSocket)
+  @objc public func newSocketQueueForConnection(fromAddress address: Foundation.Data, on sock: CocoaAsyncSocket.GCDAsyncSocket) -> Dispatch.DispatchQueue?
+  override public init(address: NEKit.IPAddress?, port: NEKit.Port)
+  @objc deinit
+}
+public enum TunnelEvent : NEKit.EventType {
+  public var description: Swift.String {
+    get
+  }
+  case opened(NEKit.Tunnel), closeCalled(NEKit.Tunnel), forceCloseCalled(NEKit.Tunnel), receivedRequest(NEKit.ConnectSession, from: NEKit.ProxySocket, on: NEKit.Tunnel), receivedReadySignal(any NEKit.SocketProtocol, currentReady: Swift.Int, on: NEKit.Tunnel), proxySocketReadData(Foundation.Data, from: NEKit.ProxySocket, on: NEKit.Tunnel), proxySocketWroteData(Foundation.Data?, by: NEKit.ProxySocket, on: NEKit.Tunnel), adapterSocketReadData(Foundation.Data, from: NEKit.AdapterSocket, on: NEKit.Tunnel), adapterSocketWroteData(Foundation.Data?, by: NEKit.AdapterSocket, on: NEKit.Tunnel), connectedToRemote(NEKit.AdapterSocket, on: NEKit.Tunnel), updatingAdapterSocket(from: NEKit.AdapterSocket, to: NEKit.AdapterSocket, on: NEKit.Tunnel), closed(NEKit.Tunnel)
+}
+open class Rule : Swift.CustomStringConvertible {
+  open var description: Swift.String {
+    get
+  }
+  public init()
+  open func matchDNS(_ session: NEKit.DNSSession, type: NEKit.DNSSessionMatchType) -> NEKit.DNSSessionMatchResult
+  open func match(_ session: NEKit.ConnectSession) -> NEKit.AdapterFactory?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class SpeedAdapterFactory : NEKit.AdapterFactory {
+  open var adapterFactories: [(NEKit.AdapterFactory, Swift.Int)]!
+  override public init()
+  override open func getAdapterFor(session: NEKit.ConnectSession) -> NEKit.AdapterSocket
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class HTTPProxySocket : NEKit.ProxySocket {
+  public var destinationHost: Swift.String!
+  public var destinationPort: Swift.Int!
+  public var isConnectCommand: Swift.Bool
+  public var readStatusDescription: Swift.String {
+    get
+  }
+  public var writeStatusDescription: Swift.String {
+    get
+  }
+  override public func openSocket()
+  override public func readData()
+  override public func didRead(data: Foundation.Data, from: any NEKit.RawTCPSocketProtocol)
+  override public func didWrite(data: Foundation.Data?, by: any NEKit.RawTCPSocketProtocol)
+  override public func respondTo(adapter: NEKit.AdapterSocket)
+  override public init(socket: any NEKit.RawTCPSocketProtocol, observe: Swift.Bool = super)
+  @objc deinit
+}
+open class StreamScanner {
+  public init(pattern: Foundation.Data, maximumLength: Swift.Int)
+  open func addAndScan(_ data: Foundation.Data) -> (Foundation.Data?, Foundation.Data)?
+  @objc deinit
+}
+open class RuleManager {
+  public static var currentManager: NEKit.RuleManager
+  open var observer: NEKit.Observer<NEKit.RuleMatchEvent>?
+  public init(fromRules rules: [NEKit.Rule], appendDirect: Swift.Bool = false)
+  @objc deinit
+}
+public enum AdapterSocketEvent : NEKit.EventType {
+  public var description: Swift.String {
+    get
+  }
+  case socketOpened(NEKit.AdapterSocket, withSession: NEKit.ConnectSession), disconnectCalled(NEKit.AdapterSocket), forceDisconnectCalled(NEKit.AdapterSocket), disconnected(NEKit.AdapterSocket), readData(Foundation.Data, on: NEKit.AdapterSocket), wroteData(Foundation.Data?, on: NEKit.AdapterSocket), connected(NEKit.AdapterSocket), readyForForward(NEKit.AdapterSocket), errorOccured(any Swift.Error, on: NEKit.AdapterSocket)
+}
+public enum IPMask {
+  case IPv4(Swift.UInt32), IPv6(NEKit.UInt128)
+}
+@_inheritsConvenienceInitializers open class DebugObserverFactory : NEKit.ObserverFactory {
+  override public init()
+  override open func getObserverForTunnel(_ tunnel: NEKit.Tunnel) -> NEKit.Observer<NEKit.TunnelEvent>?
+  override open func getObserverForProxyServer(_ server: NEKit.ProxyServer) -> NEKit.Observer<NEKit.ProxyServerEvent>?
+  override open func getObserverForProxySocket(_ socket: NEKit.ProxySocket) -> NEKit.Observer<NEKit.ProxySocketEvent>?
+  override open func getObserverForAdapterSocket(_ socket: NEKit.AdapterSocket) -> NEKit.Observer<NEKit.AdapterSocketEvent>?
+  override open func getObserverForRuleManager(_ manager: NEKit.RuleManager) -> NEKit.Observer<NEKit.RuleMatchEvent>?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class DebugTunnelObserver : NEKit.Observer<NEKit.TunnelEvent> {
+  override open func signal(_ event: NEKit.TunnelEvent)
+  override public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class DebugProxySocketObserver : NEKit.Observer<NEKit.ProxySocketEvent> {
+  override open func signal(_ event: NEKit.ProxySocketEvent)
+  override public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class DebugAdapterSocketObserver : NEKit.Observer<NEKit.AdapterSocketEvent> {
+  override open func signal(_ event: NEKit.AdapterSocketEvent)
+  override public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class DebugProxyServerObserver : NEKit.Observer<NEKit.ProxyServerEvent> {
+  override open func signal(_ event: NEKit.ProxyServerEvent)
+  override public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class DebugRuleManagerObserver : NEKit.Observer<NEKit.RuleMatchEvent> {
+  override open func signal(_ event: NEKit.RuleMatchEvent)
+  override public init()
+  @objc deinit
+}
+@objc public class SOCKS5Adapter : NEKit.AdapterSocket {
+  final public let serverHost: Swift.String
+  final public let serverPort: Swift.Int
+  public enum ReadTag : Swift.Int {
+    case methodResponse, connectResponseFirstPart, connectResponseSecondPart
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum WriteTag : Swift.Int {
+    case open, connectIPv4, connectIPv6, connectDomainLength, connectPort
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public init(serverHost: Swift.String, serverPort: Swift.Int)
+  override public func openSocketWith(session: NEKit.ConnectSession)
+  override public func didConnectWith(socket: any NEKit.RawTCPSocketProtocol)
+  override public func didRead(data: Foundation.Data, from socket: any NEKit.RawTCPSocketProtocol)
+  override open func didWrite(data: Foundation.Data?, by socket: any NEKit.RawTCPSocketProtocol)
+  @objc deinit
+}
+public struct HTTPAuthentication {
+  public let username: Swift.String
+  public let password: Swift.String
+  public init(username: Swift.String, password: Swift.String)
+  public func encoding() -> Swift.String?
+  public func authString() -> Swift.String
+}
+extension NEKit.DNSSessionMatchResult : Swift.Equatable {}
+extension NEKit.DNSSessionMatchResult : Swift.Hashable {}
+extension NEKit.HTTPHeader.HTTPHeaderError : Swift.Equatable {}
+extension NEKit.HTTPHeader.HTTPHeaderError : Swift.Hashable {}
+extension NEKit.UInt128Errors : Swift.Equatable {}
+extension NEKit.UInt128Errors : Swift.Hashable {}
+extension NEKit.IPVersion : Swift.Equatable {}
+extension NEKit.IPVersion : Swift.Hashable {}
+extension NEKit.IPVersion : Swift.RawRepresentable {}
+extension NEKit.TransportProtocol : Swift.Equatable {}
+extension NEKit.TransportProtocol : Swift.Hashable {}
+extension NEKit.TransportProtocol : Swift.RawRepresentable {}
+extension NEKit.DNSType : Swift.Equatable {}
+extension NEKit.DNSType : Swift.Hashable {}
+extension NEKit.DNSType : Swift.RawRepresentable {}
+extension NEKit.DNSMessageType : Swift.Equatable {}
+extension NEKit.DNSMessageType : Swift.Hashable {}
+extension NEKit.DNSMessageType : Swift.RawRepresentable {}
+extension NEKit.DNSReturnStatus : Swift.Equatable {}
+extension NEKit.DNSReturnStatus : Swift.Hashable {}
+extension NEKit.DNSReturnStatus : Swift.RawRepresentable {}
+extension NEKit.DNSClass : Swift.Equatable {}
+extension NEKit.DNSClass : Swift.Hashable {}
+extension NEKit.DNSClass : Swift.RawRepresentable {}
+extension NEKit.Tunnel.TunnelStatus : Swift.Equatable {}
+extension NEKit.Tunnel.TunnelStatus : Swift.Hashable {}
+extension NEKit.ConnectSession.EventSourceEnum : Swift.Equatable {}
+extension NEKit.ConnectSession.EventSourceEnum : Swift.Hashable {}
+extension NEKit.HTTPAdapterError : Swift.Equatable {}
+extension NEKit.HTTPAdapterError : Swift.Hashable {}
+extension NEKit.Utils.DNS.QueryType : Swift.Equatable {}
+extension NEKit.Utils.DNS.QueryType : Swift.Hashable {}
+extension NEKit.DNSSessionMatchType : Swift.Equatable {}
+extension NEKit.DNSSessionMatchType : Swift.Hashable {}
+extension NEKit.IPRangeError : Swift.Equatable {}
+extension NEKit.IPRangeError : Swift.Hashable {}
+extension NEKit.SocketStatus : Swift.Equatable {}
+extension NEKit.SocketStatus : Swift.Hashable {}
+extension NEKit.IPAddress.Family : Swift.Equatable {}
+extension NEKit.IPAddress.Family : Swift.Hashable {}
+extension NEKit.SocketBaseType : Swift.Equatable {}
+extension NEKit.SocketBaseType : Swift.Hashable {}
+extension NEKit.SOCKS5Adapter.ReadTag : Swift.Equatable {}
+extension NEKit.SOCKS5Adapter.ReadTag : Swift.Hashable {}
+extension NEKit.SOCKS5Adapter.ReadTag : Swift.RawRepresentable {}
+extension NEKit.SOCKS5Adapter.WriteTag : Swift.Equatable {}
+extension NEKit.SOCKS5Adapter.WriteTag : Swift.Hashable {}
+extension NEKit.SOCKS5Adapter.WriteTag : Swift.RawRepresentable {}

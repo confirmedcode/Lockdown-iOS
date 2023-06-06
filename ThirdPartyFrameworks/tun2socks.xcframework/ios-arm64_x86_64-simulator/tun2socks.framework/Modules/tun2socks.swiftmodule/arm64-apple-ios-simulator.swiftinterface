@@ -1,0 +1,44 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name tun2socks
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import lwip
+public protocol TSIPStackDelegate : AnyObject {
+  func didAcceptTCPSocket(_ sock: tun2socks.TSTCPSocket)
+}
+@_hasMissingDesignatedInitializers final public class TSIPStack {
+  public static var stack: tun2socks.TSIPStack
+  final public var processQueue: Dispatch.DispatchQueue
+  final public var outputBlock: (([Foundation.Data], [Foundation.NSNumber]) -> ())!
+  weak final public var delegate: (any tun2socks.TSIPStackDelegate)?
+  final public func suspendTimer()
+  final public func resumeTimer()
+  final public func received(packet: Foundation.Data)
+  @objc deinit
+}
+public protocol TSTCPSocketDelegate : AnyObject {
+  func localDidClose(_ socket: tun2socks.TSTCPSocket)
+  func socketDidReset(_ socket: tun2socks.TSTCPSocket)
+  func socketDidAbort(_ socket: tun2socks.TSTCPSocket)
+  func socketDidClose(_ socket: tun2socks.TSTCPSocket)
+  func didReadData(_ data: Foundation.Data, from: tun2socks.TSTCPSocket)
+  func didWriteData(_ length: Swift.Int, from: tun2socks.TSTCPSocket)
+}
+@_hasMissingDesignatedInitializers final public class TSTCPSocket {
+  final public let sourceAddress: Darwin.in_addr
+  final public let destinationAddress: Darwin.in_addr
+  final public let sourcePort: Swift.UInt16
+  final public let destinationPort: Swift.UInt16
+  final public var isConnected: Swift.Bool {
+    get
+  }
+  weak final public var delegate: (any tun2socks.TSTCPSocketDelegate)?
+  final public func writeData(_ data: Foundation.Data)
+  final public func close()
+  final public func reset()
+  @objc deinit
+}

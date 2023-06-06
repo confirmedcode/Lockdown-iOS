@@ -1,0 +1,37 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Resolver
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import dnssd
+public enum ResolveType : dnssd.DNSServiceProtocol {
+  case ipv4, ipv6, any
+  public init?(rawValue: dnssd.DNSServiceProtocol)
+  public typealias RawValue = dnssd.DNSServiceProtocol
+  public var rawValue: dnssd.DNSServiceProtocol {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class ResolverKit {
+  public static var queue: Dispatch.DispatchQueue {
+    get
+    set
+  }
+  public static var activeCount: Swift.Int {
+    get
+  }
+  final public let hostname: Swift.String
+  public var ipv4Result: [Swift.String]
+  public var ipv6Result: [Swift.String]
+  public var result: [Swift.String] {
+    get
+  }
+  public static func resolve(hostname: Swift.String, qtype: Resolver.ResolveType = .ipv4, firstResult: Swift.Bool = true, timeout: Swift.Int = 3, completionHanlder: @escaping (Resolver.ResolverKit?, dnssd.DNSServiceErrorType?) -> ()) -> Swift.Bool
+  @objc deinit
+}
+extension Resolver.ResolveType : Swift.Equatable {}
+extension Resolver.ResolveType : Swift.Hashable {}
+extension Resolver.ResolveType : Swift.RawRepresentable {}

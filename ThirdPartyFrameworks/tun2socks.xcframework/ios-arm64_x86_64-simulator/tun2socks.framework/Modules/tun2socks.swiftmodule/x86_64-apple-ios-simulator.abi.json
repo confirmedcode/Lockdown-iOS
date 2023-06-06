@@ -1,0 +1,1469 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "tun2socks"
+      },
+      {
+        "kind": "Import",
+        "name": "lwip",
+        "printedName": "lwip",
+        "declKind": "Import",
+        "moduleName": "tun2socks"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TSIPStackDelegate",
+        "printedName": "TSIPStackDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "didAcceptTCPSocket",
+            "printedName": "didAcceptTCPSocket(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks17TSIPStackDelegateP18didAcceptTCPSocketyyAA11TSTCPSocketCF",
+            "mangledName": "$s9tun2socks17TSIPStackDelegateP18didAcceptTCPSocketyyAA11TSTCPSocketCF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSIPStackDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSIPStackDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9tun2socks17TSIPStackDelegateP",
+        "mangledName": "$s9tun2socks17TSIPStackDelegateP",
+        "moduleName": "tun2socks",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TSIPStack",
+        "printedName": "TSIPStack",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "stack",
+            "printedName": "stack",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TSIPStack",
+                "printedName": "tun2socks.TSIPStack",
+                "usr": "s:9tun2socks9TSIPStackC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks9TSIPStackC5stackACvpZ",
+            "mangledName": "$s9tun2socks9TSIPStackC5stackACvpZ",
+            "moduleName": "tun2socks",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSIPStack",
+                    "printedName": "tun2socks.TSIPStack",
+                    "usr": "s:9tun2socks9TSIPStackC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC5stackACvgZ",
+                "mangledName": "$s9tun2socks9TSIPStackC5stackACvgZ",
+                "moduleName": "tun2socks",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSIPStack",
+                    "printedName": "tun2socks.TSIPStack",
+                    "usr": "s:9tun2socks9TSIPStackC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC5stackACvsZ",
+                "mangledName": "$s9tun2socks9TSIPStackC5stackACvsZ",
+                "moduleName": "tun2socks",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC5stackACvMZ",
+                "mangledName": "$s9tun2socks9TSIPStackC5stackACvMZ",
+                "moduleName": "tun2socks",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "processQueue",
+            "printedName": "processQueue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DispatchQueue",
+                "printedName": "Dispatch.DispatchQueue",
+                "usr": "c:objc(cs)OS_dispatch_queue"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvp",
+            "mangledName": "$s9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DispatchQueue",
+                    "printedName": "Dispatch.DispatchQueue",
+                    "usr": "c:objc(cs)OS_dispatch_queue"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvg",
+                "mangledName": "$s9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DispatchQueue",
+                    "printedName": "Dispatch.DispatchQueue",
+                    "usr": "c:objc(cs)OS_dispatch_queue"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvs",
+                "mangledName": "$s9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvs",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvM",
+                "mangledName": "$s9tun2socks9TSIPStackC12processQueueSo17OS_dispatch_queueCvM",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "outputBlock",
+            "printedName": "outputBlock",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImplicitlyUnwrappedOptional",
+                "printedName": "(([Foundation.Data], [Foundation.NSNumber]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Foundation.Data], [Foundation.NSNumber]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([Foundation.Data], [Foundation.NSNumber])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[Foundation.Data]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Data",
+                                "printedName": "Foundation.Data",
+                                "usr": "s:10Foundation4DataV"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[Foundation.NSNumber]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "NSNumber",
+                                "printedName": "Foundation.NSNumber",
+                                "usr": "c:objc(cs)NSNumber"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvp",
+            "mangledName": "$s9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "(([Foundation.Data], [Foundation.NSNumber]) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "([Foundation.Data], [Foundation.NSNumber]) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Tuple",
+                            "printedName": "([Foundation.Data], [Foundation.NSNumber])",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[Foundation.Data]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Data",
+                                    "printedName": "Foundation.Data",
+                                    "usr": "s:10Foundation4DataV"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[Foundation.NSNumber]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "NSNumber",
+                                    "printedName": "Foundation.NSNumber",
+                                    "usr": "c:objc(cs)NSNumber"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvg",
+                "mangledName": "$s9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "(([Foundation.Data], [Foundation.NSNumber]) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "([Foundation.Data], [Foundation.NSNumber]) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Tuple",
+                            "printedName": "([Foundation.Data], [Foundation.NSNumber])",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[Foundation.Data]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "Data",
+                                    "printedName": "Foundation.Data",
+                                    "usr": "s:10Foundation4DataV"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[Foundation.NSNumber]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "NSNumber",
+                                    "printedName": "Foundation.NSNumber",
+                                    "usr": "c:objc(cs)NSNumber"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvs",
+                "mangledName": "$s9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvs",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvM",
+                "mangledName": "$s9tun2socks9TSIPStackC11outputBlockySay10Foundation4DataVG_SaySo8NSNumberCGtcSgvM",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "tun2socks.TSIPStackDelegate?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvp",
+            "mangledName": "$s9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "tun2socks.TSIPStackDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSIPStackDelegate",
+                        "printedName": "tun2socks.TSIPStackDelegate",
+                        "usr": "s:9tun2socks17TSIPStackDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvg",
+                "mangledName": "$s9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "tun2socks.TSIPStackDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSIPStackDelegate",
+                        "printedName": "tun2socks.TSIPStackDelegate",
+                        "usr": "s:9tun2socks17TSIPStackDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvs",
+                "mangledName": "$s9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvs",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvM",
+                "mangledName": "$s9tun2socks9TSIPStackC8delegateAA0B8Delegate_pSgvM",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "suspendTimer",
+            "printedName": "suspendTimer()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks9TSIPStackC12suspendTimeryyF",
+            "mangledName": "$s9tun2socks9TSIPStackC12suspendTimeryyF",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "resumeTimer",
+            "printedName": "resumeTimer()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks9TSIPStackC11resumeTimeryyF",
+            "mangledName": "$s9tun2socks9TSIPStackC11resumeTimeryyF",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "received",
+            "printedName": "received(packet:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks9TSIPStackC8received6packety10Foundation4DataV_tF",
+            "mangledName": "$s9tun2socks9TSIPStackC8received6packety10Foundation4DataV_tF",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:9tun2socks9TSIPStackC",
+        "mangledName": "$s9tun2socks9TSIPStackC",
+        "moduleName": "tun2socks",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "tun2socks"
+      },
+      {
+        "kind": "Import",
+        "name": "lwip",
+        "printedName": "lwip",
+        "declKind": "Import",
+        "moduleName": "tun2socks"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TSTCPSocketDelegate",
+        "printedName": "TSTCPSocketDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "localDidClose",
+            "printedName": "localDidClose(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks19TSTCPSocketDelegateP13localDidCloseyyAA0B0CF",
+            "mangledName": "$s9tun2socks19TSTCPSocketDelegateP13localDidCloseyyAA0B0CF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSTCPSocketDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSTCPSocketDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "socketDidReset",
+            "printedName": "socketDidReset(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks19TSTCPSocketDelegateP14socketDidResetyyAA0B0CF",
+            "mangledName": "$s9tun2socks19TSTCPSocketDelegateP14socketDidResetyyAA0B0CF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSTCPSocketDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSTCPSocketDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "socketDidAbort",
+            "printedName": "socketDidAbort(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks19TSTCPSocketDelegateP14socketDidAbortyyAA0B0CF",
+            "mangledName": "$s9tun2socks19TSTCPSocketDelegateP14socketDidAbortyyAA0B0CF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSTCPSocketDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSTCPSocketDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "socketDidClose",
+            "printedName": "socketDidClose(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks19TSTCPSocketDelegateP14socketDidCloseyyAA0B0CF",
+            "mangledName": "$s9tun2socks19TSTCPSocketDelegateP14socketDidCloseyyAA0B0CF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSTCPSocketDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSTCPSocketDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReadData",
+            "printedName": "didReadData(_:from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks19TSTCPSocketDelegateP11didReadData_4fromy10Foundation0F0V_AA0B0CtF",
+            "mangledName": "$s9tun2socks19TSTCPSocketDelegateP11didReadData_4fromy10Foundation0F0V_AA0B0CtF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSTCPSocketDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSTCPSocketDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didWriteData",
+            "printedName": "didWriteData(_:from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TSTCPSocket",
+                "printedName": "tun2socks.TSTCPSocket",
+                "usr": "s:9tun2socks11TSTCPSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks19TSTCPSocketDelegateP12didWriteData_4fromySi_AA0B0CtF",
+            "mangledName": "$s9tun2socks19TSTCPSocketDelegateP12didWriteData_4fromySi_AA0B0CtF",
+            "moduleName": "tun2socks",
+            "genericSig": "<τ_0_0 where τ_0_0 : tun2socks.TSTCPSocketDelegate>",
+            "sugared_genericSig": "<Self where Self : tun2socks.TSTCPSocketDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9tun2socks19TSTCPSocketDelegateP",
+        "mangledName": "$s9tun2socks19TSTCPSocketDelegateP",
+        "moduleName": "tun2socks",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TSTCPSocket",
+        "printedName": "TSTCPSocket",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "sourceAddress",
+            "printedName": "sourceAddress",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "in_addr",
+                "printedName": "Darwin.in_addr",
+                "usr": "c:@S@in_addr"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks11TSTCPSocketC13sourceAddressSo7in_addrVvp",
+            "mangledName": "$s9tun2socks11TSTCPSocketC13sourceAddressSo7in_addrVvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "in_addr",
+                    "printedName": "Darwin.in_addr",
+                    "usr": "c:@S@in_addr"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC13sourceAddressSo7in_addrVvg",
+                "mangledName": "$s9tun2socks11TSTCPSocketC13sourceAddressSo7in_addrVvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "destinationAddress",
+            "printedName": "destinationAddress",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "in_addr",
+                "printedName": "Darwin.in_addr",
+                "usr": "c:@S@in_addr"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks11TSTCPSocketC18destinationAddressSo7in_addrVvp",
+            "mangledName": "$s9tun2socks11TSTCPSocketC18destinationAddressSo7in_addrVvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "in_addr",
+                    "printedName": "Darwin.in_addr",
+                    "usr": "c:@S@in_addr"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC18destinationAddressSo7in_addrVvg",
+                "mangledName": "$s9tun2socks11TSTCPSocketC18destinationAddressSo7in_addrVvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sourcePort",
+            "printedName": "sourcePort",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt16",
+                "printedName": "Swift.UInt16",
+                "usr": "s:s6UInt16V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks11TSTCPSocketC10sourcePorts6UInt16Vvp",
+            "mangledName": "$s9tun2socks11TSTCPSocketC10sourcePorts6UInt16Vvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt16",
+                    "printedName": "Swift.UInt16",
+                    "usr": "s:s6UInt16V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC10sourcePorts6UInt16Vvg",
+                "mangledName": "$s9tun2socks11TSTCPSocketC10sourcePorts6UInt16Vvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "destinationPort",
+            "printedName": "destinationPort",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt16",
+                "printedName": "Swift.UInt16",
+                "usr": "s:s6UInt16V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks11TSTCPSocketC15destinationPorts6UInt16Vvp",
+            "mangledName": "$s9tun2socks11TSTCPSocketC15destinationPorts6UInt16Vvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt16",
+                    "printedName": "Swift.UInt16",
+                    "usr": "s:s6UInt16V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC15destinationPorts6UInt16Vvg",
+                "mangledName": "$s9tun2socks11TSTCPSocketC15destinationPorts6UInt16Vvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isConnected",
+            "printedName": "isConnected",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks11TSTCPSocketC11isConnectedSbvp",
+            "mangledName": "$s9tun2socks11TSTCPSocketC11isConnectedSbvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC11isConnectedSbvg",
+                "mangledName": "$s9tun2socks11TSTCPSocketC11isConnectedSbvg",
+                "moduleName": "tun2socks",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "tun2socks.TSTCPSocketDelegate?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvp",
+            "mangledName": "$s9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvp",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "tun2socks.TSTCPSocketDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSTCPSocketDelegate",
+                        "printedName": "tun2socks.TSTCPSocketDelegate",
+                        "usr": "s:9tun2socks19TSTCPSocketDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvg",
+                "mangledName": "$s9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvg",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "tun2socks.TSTCPSocketDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSTCPSocketDelegate",
+                        "printedName": "tun2socks.TSTCPSocketDelegate",
+                        "usr": "s:9tun2socks19TSTCPSocketDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvs",
+                "mangledName": "$s9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvs",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvM",
+                "mangledName": "$s9tun2socks11TSTCPSocketC8delegateAA0B8Delegate_pSgvM",
+                "moduleName": "tun2socks",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "writeData",
+            "printedName": "writeData(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks11TSTCPSocketC9writeDatayy10Foundation0D0VF",
+            "mangledName": "$s9tun2socks11TSTCPSocketC9writeDatayy10Foundation0D0VF",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "close",
+            "printedName": "close()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks11TSTCPSocketC5closeyyF",
+            "mangledName": "$s9tun2socks11TSTCPSocketC5closeyyF",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reset",
+            "printedName": "reset()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9tun2socks11TSTCPSocketC5resetyyF",
+            "mangledName": "$s9tun2socks11TSTCPSocketC5resetyyF",
+            "moduleName": "tun2socks",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:9tun2socks11TSTCPSocketC",
+        "mangledName": "$s9tun2socks11TSTCPSocketC",
+        "moduleName": "tun2socks",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSIPStack.swift",
+      "kind": "StringLiteral",
+      "offset": 1667,
+      "length": 24,
+      "value": "\"tun2socks.IPStackQueue\""
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSIPStack.swift",
+      "kind": "Array",
+      "offset": 1705,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSIPStack.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2649,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSIPStack.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3686,
+      "length": 3,
+      "value": "250"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSIPStack.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3734,
+      "length": 3,
+      "value": "250"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSIPStack.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4924,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSTCPSocket.swift",
+      "kind": "Dictionary",
+      "offset": 2360,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSTCPSocket.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2607,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSTCPSocket.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3689,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSTCPSocket.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4794,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSTCPSocket.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5701,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/tun2socks\/tun2socks\/TSTCPSocket.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7287,
+      "length": 1,
+      "value": "1"
+    }
+  ]
+}

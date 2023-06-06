@@ -1,0 +1,149 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CocoaLumberjackSwift
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import CocoaLumberjack
+@_exported import CocoaLumberjackSwift
+import Combine
+import Swift
+import _Concurrency
+import _StringProcessing
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension CocoaLumberjack.DDLog {
+  @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  public struct MessagePublisher : Combine.Publisher {
+    public typealias Output = CocoaLumberjack.DDLogMessage
+    public typealias Failure = Swift.Never
+    public init(log: CocoaLumberjack.DDLog, with logLevel: CocoaLumberjack.DDLogLevel)
+    public func receive<S>(subscriber: S) where S : Combine.Subscriber, S.Failure == Swift.Never, S.Input == CocoaLumberjack.DDLogMessage
+  }
+  public func messagePublisher(with logLevel: CocoaLumberjack.DDLogLevel = .all) -> CocoaLumberjack.DDLog.MessagePublisher
+}
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension Combine.Publisher where Self.Output == CocoaLumberjack.DDLogMessage {
+  public func formatted(with formatter: any CocoaLumberjack.DDLogFormatter) -> Combine.Publishers.CompactMap<Self, Swift.String>
+}
+@inlinable public func DDAssert(_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String = "", level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = false, ddlog: CocoaLumberjack.DDLog = DDLog.sharedInstance) {
+    if !condition() {
+        DDLogError(message(),
+                   level: level,
+                   context: context,
+                   file: file,
+                   function: function,
+                   line: line,
+                   tag: tag,
+                   asynchronous: async,
+                   ddlog: ddlog)
+        Swift.assertionFailure(message(), file: file, line: line)
+    }
+}
+@inlinable public func DDAssertionFailure(_ message: @autoclosure () -> Swift.String = "", level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = false, ddlog: CocoaLumberjack.DDLog = DDLog.sharedInstance) {
+    DDLogError(message(),
+               level: level,
+               context: context,
+               file: file,
+               function: function,
+               line: line,
+               tag: tag,
+               asynchronous: async,
+               ddlog: ddlog)
+    Swift.assertionFailure(message(), file: file, line: line)
+}
+extension CocoaLumberjack.DDLogFlag {
+  public static func from(_ logLevel: CocoaLumberjack.DDLogLevel) -> CocoaLumberjack.DDLogFlag
+  public init(_ logLevel: CocoaLumberjack.DDLogLevel)
+  public func toLogLevel() -> CocoaLumberjack.DDLogLevel
+}
+public var dynamicLogLevel: CocoaLumberjack.DDLogLevel
+@inlinable public func resetDynamicLogLevel() {
+    dynamicLogLevel = .all
+}
+@available(*, deprecated, renamed: "dynamicLogLevel", message: "Please use dynamicLogLevel")
+public var defaultDebugLevel: CocoaLumberjack.DDLogLevel {
+  get
+  set
+}
+@available(*, deprecated, renamed: "resetDynamicLogLevel", message: "Please use resetDynamicLogLevel")
+public func resetDefaultDebugLevel()
+public var asyncLoggingEnabled: Swift.Bool
+@inlinable public func _DDLogMessage(_ message: @autoclosure () -> Any, level: CocoaLumberjack.DDLogLevel, flag: CocoaLumberjack.DDLogFlag, context: Swift.Int, file: Swift.StaticString, function: Swift.StaticString, line: Swift.UInt, tag: Any?, asynchronous: Swift.Bool, ddlog: CocoaLumberjack.DDLog) {
+    // The `dynamicLogLevel` will always be checked here (instead of being passed in).
+    // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
+    if level.rawValue & flag.rawValue != 0 && dynamicLogLevel.rawValue & flag.rawValue != 0 {
+        // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
+        let logMessage = DDLogMessage(message: String(describing: message()),
+                                      level: level,
+                                      flag: flag,
+                                      context: context,
+                                      file: String(describing: file),
+                                      function: String(describing: function),
+                                      line: line,
+                                      tag: tag,
+                                      options: [.copyFile, .copyFunction],
+                                      timestamp: nil)
+        ddlog.log(asynchronous: asynchronous, message: logMessage)
+    }
+}
+@inlinable public func DDLogDebug(_ message: @autoclosure () -> Any, level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = asyncLoggingEnabled, ddlog: CocoaLumberjack.DDLog = .sharedInstance) {
+    _DDLogMessage(message(),
+                  level: level,
+                  flag: .debug,
+                  context: context,
+                  file: file,
+                  function: function,
+                  line: line,
+                  tag: tag,
+                  asynchronous: async,
+                  ddlog: ddlog)
+}
+@inlinable public func DDLogInfo(_ message: @autoclosure () -> Any, level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = asyncLoggingEnabled, ddlog: CocoaLumberjack.DDLog = .sharedInstance) {
+    _DDLogMessage(message(),
+                  level: level,
+                  flag: .info,
+                  context: context,
+                  file: file,
+                  function: function,
+                  line: line,
+                  tag: tag,
+                  asynchronous: async,
+                  ddlog: ddlog)
+}
+@inlinable public func DDLogWarn(_ message: @autoclosure () -> Any, level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = asyncLoggingEnabled, ddlog: CocoaLumberjack.DDLog = .sharedInstance) {
+    _DDLogMessage(message(),
+                  level: level,
+                  flag: .warning,
+                  context: context,
+                  file: file,
+                  function: function,
+                  line: line,
+                  tag: tag,
+                  asynchronous: async,
+                  ddlog: ddlog)
+}
+@inlinable public func DDLogVerbose(_ message: @autoclosure () -> Any, level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = asyncLoggingEnabled, ddlog: CocoaLumberjack.DDLog = .sharedInstance) {
+    _DDLogMessage(message(),
+                  level: level,
+                  flag: .verbose,
+                  context: context,
+                  file: file,
+                  function: function,
+                  line: line,
+                  tag: tag,
+                  asynchronous: async,
+                  ddlog: ddlog)
+}
+@inlinable public func DDLogError(_ message: @autoclosure () -> Any, level: CocoaLumberjack.DDLogLevel = DDDefaultLogLevel, context: Swift.Int = 0, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line, tag: Any? = nil, asynchronous async: Swift.Bool = false, ddlog: CocoaLumberjack.DDLog = .sharedInstance) {
+    _DDLogMessage(message(),
+                  level: level,
+                  flag: .error,
+                  context: context,
+                  file: file,
+                  function: function,
+                  line: line,
+                  tag: tag,
+                  asynchronous: async,
+                  ddlog: ddlog)
+}
+public func currentFileName(_ fileName: Swift.StaticString = #file) -> Swift.String
+@available(*, deprecated, renamed: "currentFileName", message: "Please use currentFileName")
+public func CurrentFileName(_ fileName: Swift.StaticString = #file) -> Swift.String

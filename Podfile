@@ -13,7 +13,6 @@ target :'Lockdown' do
   pod 'PromiseKit'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'KeychainAccess'
-  pod 'CocoaLumberjack', '3.5.2'
   pod 'PopupDialog', '~> 0.9'
   pod 'SwiftCSV'
 end
@@ -29,7 +28,6 @@ target :'Lockdown VPN Widget' do
   pod 'PromiseKit'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'KeychainAccess'
-  pod 'CocoaLumberjack', '3.5.2'
   pod 'ReachabilitySwift', '4.3.1'
 end
 
@@ -37,7 +35,6 @@ target :'Lockdown Firewall Widget' do
   pod 'PromiseKit'
   pod 'SwiftyStoreKit', '0.13.1'
   pod 'KeychainAccess'
-  pod 'CocoaLumberjack', '3.5.2'
   pod 'ReachabilitySwift', '4.3.1'
 end
 

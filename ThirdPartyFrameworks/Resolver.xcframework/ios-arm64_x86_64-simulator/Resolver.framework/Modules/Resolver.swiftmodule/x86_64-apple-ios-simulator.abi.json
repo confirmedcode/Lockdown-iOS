@@ -1,0 +1,1098 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Resolver"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "Resolver"
+      },
+      {
+        "kind": "Import",
+        "name": "dnssd",
+        "printedName": "dnssd",
+        "declKind": "Import",
+        "moduleName": "Resolver"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ResolveType",
+        "printedName": "ResolveType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "ipv4",
+            "printedName": "ipv4",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Resolver.ResolveType.Type) -> Resolver.ResolveType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResolveType",
+                    "printedName": "Resolver.ResolveType",
+                    "usr": "s:8Resolver11ResolveTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Resolver.ResolveType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResolveType",
+                        "printedName": "Resolver.ResolveType",
+                        "usr": "s:8Resolver11ResolveTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8Resolver11ResolveTypeO4ipv4yA2CmF",
+            "mangledName": "$s8Resolver11ResolveTypeO4ipv4yA2CmF",
+            "moduleName": "Resolver"
+          },
+          {
+            "kind": "Var",
+            "name": "ipv6",
+            "printedName": "ipv6",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Resolver.ResolveType.Type) -> Resolver.ResolveType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResolveType",
+                    "printedName": "Resolver.ResolveType",
+                    "usr": "s:8Resolver11ResolveTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Resolver.ResolveType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResolveType",
+                        "printedName": "Resolver.ResolveType",
+                        "usr": "s:8Resolver11ResolveTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8Resolver11ResolveTypeO4ipv6yA2CmF",
+            "mangledName": "$s8Resolver11ResolveTypeO4ipv6yA2CmF",
+            "moduleName": "Resolver"
+          },
+          {
+            "kind": "Var",
+            "name": "any",
+            "printedName": "any",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Resolver.ResolveType.Type) -> Resolver.ResolveType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResolveType",
+                    "printedName": "Resolver.ResolveType",
+                    "usr": "s:8Resolver11ResolveTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Resolver.ResolveType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResolveType",
+                        "printedName": "Resolver.ResolveType",
+                        "usr": "s:8Resolver11ResolveTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8Resolver11ResolveTypeO3anyyA2CmF",
+            "mangledName": "$s8Resolver11ResolveTypeO3anyyA2CmF",
+            "moduleName": "Resolver"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Resolver.ResolveType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResolveType",
+                    "printedName": "Resolver.ResolveType",
+                    "usr": "s:8Resolver11ResolveTypeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt32",
+                "printedName": "Swift.UInt32",
+                "usr": "s:s6UInt32V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8Resolver11ResolveTypeO8rawValueACSgs6UInt32V_tcfc",
+            "mangledName": "$s8Resolver11ResolveTypeO8rawValueACSgs6UInt32V_tcfc",
+            "moduleName": "Resolver",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt32",
+                "printedName": "Swift.UInt32",
+                "usr": "s:s6UInt32V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver11ResolveTypeO8rawValues6UInt32Vvp",
+            "mangledName": "$s8Resolver11ResolveTypeO8rawValues6UInt32Vvp",
+            "moduleName": "Resolver",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt32",
+                    "printedName": "Swift.UInt32",
+                    "usr": "s:s6UInt32V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver11ResolveTypeO8rawValues6UInt32Vvg",
+                "mangledName": "$s8Resolver11ResolveTypeO8rawValues6UInt32Vvg",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:8Resolver11ResolveTypeO",
+        "mangledName": "$s8Resolver11ResolveTypeO",
+        "moduleName": "Resolver",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "enumRawTypeName": "UInt32",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt32",
+                    "printedName": "Swift.UInt32",
+                    "usr": "s:s6UInt32V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ResolverKit",
+        "printedName": "ResolverKit",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "queue",
+            "printedName": "queue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DispatchQueue",
+                "printedName": "Dispatch.DispatchQueue",
+                "usr": "c:objc(cs)OS_dispatch_queue"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver0A3KitC5queueSo012OS_dispatch_C0CvpZ",
+            "mangledName": "$s8Resolver0A3KitC5queueSo012OS_dispatch_C0CvpZ",
+            "moduleName": "Resolver",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DispatchQueue",
+                    "printedName": "Dispatch.DispatchQueue",
+                    "usr": "c:objc(cs)OS_dispatch_queue"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC5queueSo012OS_dispatch_C0CvgZ",
+                "mangledName": "$s8Resolver0A3KitC5queueSo012OS_dispatch_C0CvgZ",
+                "moduleName": "Resolver",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DispatchQueue",
+                    "printedName": "Dispatch.DispatchQueue",
+                    "usr": "c:objc(cs)OS_dispatch_queue"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC5queueSo012OS_dispatch_C0CvsZ",
+                "mangledName": "$s8Resolver0A3KitC5queueSo012OS_dispatch_C0CvsZ",
+                "moduleName": "Resolver",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC5queueSo012OS_dispatch_C0CvMZ",
+                "mangledName": "$s8Resolver0A3KitC5queueSo012OS_dispatch_C0CvMZ",
+                "moduleName": "Resolver",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "activeCount",
+            "printedName": "activeCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver0A3KitC11activeCountSivpZ",
+            "mangledName": "$s8Resolver0A3KitC11activeCountSivpZ",
+            "moduleName": "Resolver",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC11activeCountSivgZ",
+                "mangledName": "$s8Resolver0A3KitC11activeCountSivgZ",
+                "moduleName": "Resolver",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hostname",
+            "printedName": "hostname",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver0A3KitC8hostnameSSvp",
+            "mangledName": "$s8Resolver0A3KitC8hostnameSSvp",
+            "moduleName": "Resolver",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC8hostnameSSvg",
+                "mangledName": "$s8Resolver0A3KitC8hostnameSSvg",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "ipv4Result",
+            "printedName": "ipv4Result",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver0A3KitC10ipv4ResultSaySSGvp",
+            "mangledName": "$s8Resolver0A3KitC10ipv4ResultSaySSGvp",
+            "moduleName": "Resolver",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC10ipv4ResultSaySSGvg",
+                "mangledName": "$s8Resolver0A3KitC10ipv4ResultSaySSGvg",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC10ipv4ResultSaySSGvs",
+                "mangledName": "$s8Resolver0A3KitC10ipv4ResultSaySSGvs",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC10ipv4ResultSaySSGvM",
+                "mangledName": "$s8Resolver0A3KitC10ipv4ResultSaySSGvM",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "ipv6Result",
+            "printedName": "ipv6Result",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver0A3KitC10ipv6ResultSaySSGvp",
+            "mangledName": "$s8Resolver0A3KitC10ipv6ResultSaySSGvp",
+            "moduleName": "Resolver",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC10ipv6ResultSaySSGvg",
+                "mangledName": "$s8Resolver0A3KitC10ipv6ResultSaySSGvg",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC10ipv6ResultSaySSGvs",
+                "mangledName": "$s8Resolver0A3KitC10ipv6ResultSaySSGvs",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC10ipv6ResultSaySSGvM",
+                "mangledName": "$s8Resolver0A3KitC10ipv6ResultSaySSGvM",
+                "moduleName": "Resolver",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "result",
+            "printedName": "result",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8Resolver0A3KitC6resultSaySSGvp",
+            "mangledName": "$s8Resolver0A3KitC6resultSaySSGvp",
+            "moduleName": "Resolver",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8Resolver0A3KitC6resultSaySSGvg",
+                "mangledName": "$s8Resolver0A3KitC6resultSaySSGvg",
+                "moduleName": "Resolver",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "resolve",
+            "printedName": "resolve(hostname:qtype:firstResult:timeout:completionHanlder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ResolveType",
+                "printedName": "Resolver.ResolveType",
+                "hasDefaultArg": true,
+                "usr": "s:8Resolver11ResolveTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Resolver.ResolverKit?, Swift.Int32?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Resolver.ResolverKit?, Swift.Int32?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Resolver.ResolverKit?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ResolverKit",
+                            "printedName": "Resolver.ResolverKit",
+                            "usr": "s:8Resolver0A3KitC"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Int32?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int32",
+                            "printedName": "Swift.Int32",
+                            "usr": "s:s5Int32V"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8Resolver0A3KitC7resolve8hostname5qtype11firstResult7timeout17completionHanlderSbSS_AA11ResolveTypeOSbSiyACSg_s5Int32VSgtctFZ",
+            "mangledName": "$s8Resolver0A3KitC7resolve8hostname5qtype11firstResult7timeout17completionHanlderSbSS_AA11ResolveTypeOSbSiyACSg_s5Int32VSgtctFZ",
+            "moduleName": "Resolver",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:8Resolver0A3KitC",
+        "mangledName": "$s8Resolver0A3KitC",
+        "moduleName": "Resolver",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/SafeDict.swift",
+      "kind": "Dictionary",
+      "offset": 107,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/SafeDict.swift",
+      "kind": "IntegerLiteral",
+      "offset": 134,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/SafeDict.swift",
+      "kind": "IntegerLiteral",
+      "offset": 319,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/SafeDict.swift",
+      "kind": "IntegerLiteral",
+      "offset": 392,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 138,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 148,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 157,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 138,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 148,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 157,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 138,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 148,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 157,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "StringLiteral",
+      "offset": 351,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "StringLiteral",
+      "offset": 438,
+      "length": 15,
+      "value": "\"ResolverQueue\""
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "StringLiteral",
+      "offset": 614,
+      "length": 15,
+      "value": "\"ResolverQueue\""
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "Array",
+      "offset": 875,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "Array",
+      "offset": 916,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1023,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1428,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1449,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2079,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2131,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2560,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2563,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2882,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "StringLiteral",
+      "offset": 2923,
+      "length": 35,
+      "value": "\"Error: Got some unknown resolver.\""
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3589,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3783,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4260,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4456,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5053,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5305,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5477,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "StringLiteral",
+      "offset": 5582,
+      "length": 15,
+      "value": "\"ResolverQueue\""
+    },
+    {
+      "filePath": "\/Users\/pavelvilbik\/Developer\/Softteco\/lockdown-ios-2.0\/Carthage\/Checkouts\/Resolver\/Resolver\/ResolverKit.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5966,
+      "length": 4,
+      "value": "true"
+    }
+  ]
+}
