@@ -8,16 +8,22 @@
 
 import UIKit
 
+protocol CTAViewDelegate {
+    func onRemove(_ view: CTAView)
+}
+
 final class CTAView: UIView {
+    
+    let delegate: CTAViewDelegate
 
     // MARK: - Properties
     
-    private lazy var bkgView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 15
-        return view
-    }()
+//    private lazy var bkgView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .lightGray
+//        view.layer.cornerRadius = 15
+//        return view
+//    }()
     
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -33,6 +39,17 @@ final class CTAView: UIView {
         label.numberOfLines = 0
         label.textColor = .label
         return label
+    }()
+    
+    private lazy var hStackView: UIStackView = {
+        let stackView  = UIStackView()
+        stackView.addArrangedSubview(mainTitle)
+        stackView.addArrangedSubview(closeButton)
+        stackView.axis = .horizontal
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .top
+        stackView.spacing = 12
+        return stackView
     }()
     
     private lazy var descriptionLabel1: DescriptionLabel = {
@@ -73,16 +90,7 @@ final class CTAView: UIView {
 //        return image
 //    }()
     
-    private lazy var hStackView: UIStackView = {
-        let stackView  = UIStackView()
-        stackView.addArrangedSubview(mainTitle)
-        stackView.addArrangedSubview(closeButton)
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        stackView.spacing = 30
-        return stackView
-    }()
+    
     
     private lazy var vStackView: UIStackView = {
         let stackView  = UIStackView()
@@ -92,16 +100,19 @@ final class CTAView: UIView {
         stackView.addArrangedSubview(descriptionLabel3)
         stackView.addArrangedSubview(upgradeButton)
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.alignment = .center
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .fill
         stackView.spacing = 4
         return stackView
     }()
     
     // MARK: - Initializer
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(delegate: CTAViewDelegate) {
+        self.delegate = delegate
+        super.init(frame: .zero)
+        backgroundColor = .extraLightGray
+        layer.cornerRadius = 15
         configure()
     }
     
@@ -113,18 +124,27 @@ final class CTAView: UIView {
     
     func configure() {
         
-        vStackView.layer.cornerRadius = 15
-        vStackView.backgroundColor = .lightGray
+//        vStackView.layer.cornerRadius = 15
         
         addSubview(vStackView)
-        vStackView.anchors.top.pin()
-        vStackView.anchors.bottom.pin()
-        vStackView.anchors.leading.pin()
-        vStackView.anchors.trailing.pin()
+        vStackView.anchors.top.marginsPin()
+        vStackView.anchors.bottom.marginsPin()
+        vStackView.anchors.leading.marginsPin()
+        vStackView.anchors.trailing.marginsPin()
     }
     
     @objc func closeButtonTapped() {
+//        UIView.animate(withDuration: 0.2) {
+//            self.imageView.isHidden = !self.imageView.isHidden
+//        }
+//
+//        if self.imageView.isHidden {
+//            btnShow.setTitle("Show", for: .normal)
+//        } else {
+//            btnShow.setTitle("Hide", for: .normal)
+//        }
         
+        self.delegate.onRemove(self)
     }
     
 //    @objc func upgrade() {

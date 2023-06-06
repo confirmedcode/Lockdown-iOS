@@ -69,19 +69,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         return label
     }()
     
-//    private lazy var upgradeLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = NSLocalizedString("Upgrade?", comment: "")
-//        label.font = fontBold13
-//        label.textColor = .tunnelsBlue
-//        label.isUserInteractionEnabled = true
-//        label.setOnClickListener {
-//            let vc = VPNPaywallViewController()
-//            self.present(vc, animated: true)
-//        }
-//        return label
-//    }()
-    
     private lazy var upgradeLabel: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -103,11 +90,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         return label
     }()
     
-    lazy var ctaView: CTAView = {
-        let view = CTAView()
-        
-        return view
-    }()
+//    lazy var ctaView: CTAView = {
+//        let view = CTAView()
+//
+//        return view
+//    }()
     
     private lazy var mainTitle: UILabel = {
         let label = UILabel()

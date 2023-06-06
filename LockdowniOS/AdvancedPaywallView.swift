@@ -79,8 +79,6 @@ final class AdvancedPaywallView: UIView {
         stackView.addArrangedSubview(bulletView5)
         stackView.addArrangedSubview(bulletView6)
         stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .equalSpacing
         stackView.spacing = 8
         return stackView
     }()
