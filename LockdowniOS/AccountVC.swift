@@ -412,6 +412,9 @@ final class AccountViewController: BaseViewController, Loadable {
             //            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
             //                self.startTutorial()
             //            },
+            DefaultCell(title: NSLocalizedString("What's New", comment: "")) {
+                self.showWhatsNewModal()
+            },
             DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: "")) {
                 self.showWhyTrustPopup()
             },

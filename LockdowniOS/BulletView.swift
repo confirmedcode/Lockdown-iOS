@@ -16,15 +16,17 @@ final class BulletView: UIView {
     
     private lazy var bulletImage: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .center
+        image.contentMode = .left
         image.layer.masksToBounds = true
+        image.anchors.height.equal(22)
+        image.anchors.width.equal(22)
         return image
     }()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = fontSemiBold15
+        label.font = fontMedium15
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -35,8 +37,8 @@ final class BulletView: UIView {
         stackView.addArrangedSubview(bulletImage)
         stackView.addArrangedSubview(titleLabel)
         stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        stackView.alignment = .leading
+        stackView.distribution = .fill
+        stackView.alignment = .top
         stackView.spacing = 8
         return stackView
     }()

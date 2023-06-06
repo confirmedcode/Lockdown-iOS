@@ -18,7 +18,7 @@ extension String {
     
     enum Regex: String {
         case listName = "^[a-zA-Z0-9\\s]{1,30}$"
-        case domainName = "^([a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+.*)$"
+        case domainName = "^(?:\\*\\.)?[a-z0-9]+(?:[\\-_.][a-z0-9]+)*\\.[a-z]{2,6}$"
         case listDescription = "^[a-zA-Z0-9\\s]{1,500}$"
     }
     

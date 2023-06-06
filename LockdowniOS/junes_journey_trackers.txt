@@ -1,4 +1,4 @@
-﻿adcolony.com
+adcolony.com
 pubnative.net
 peak226.com
 pubmatic.com
@@ -34,7 +34,6 @@ supply.colossusssp.com
 advertising.com
 onetag.com
 conversantmedia.com
-google.com
 facebook.com
 fyber.com
 acd.op.hicloud.com
@@ -54,9 +53,8 @@ verve.com
 video.unrulymedia.com
 yieldmo.com 
 sharethrough.com
-yahoo.com
 rhebus.works
-VideoHeroes.tv
+videoHeroes.tv
 xad.com
 adform.com
 alpineinteractivegroup.com
@@ -67,7 +65,6 @@ showheroes.com
 visiblemeasures.com
 ironsrc.com
 adbility-media.com
-aol.com
 appads.in
 gamoshi.io 
 pokkt.com
@@ -121,7 +118,7 @@ criteo.com
 liftoff.io
 telaria.com
 lemmatechnologies.com
-Se7en.es
+se7en.es
 adview.com
 adelement.com
 advlion.com
@@ -137,7 +134,7 @@ blueseasx.com
 adtiming.com
 uis.mobfox.com
 admixer.co.kr
-App-stock.com
+app-stock.com
 ssp.e-volution.ai
 smartyads.com
 chartboost.com
@@ -153,7 +150,7 @@ media.net
 lunamedia.io
 ogury.com
 gameloft.com
-Eskimi.com
+eskimi.com
 q1media.com
 q1connect.com
 beachfront.com

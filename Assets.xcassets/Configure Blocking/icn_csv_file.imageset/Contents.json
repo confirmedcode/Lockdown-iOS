@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "icn_csv_file.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

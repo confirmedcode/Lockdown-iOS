@@ -1,4 +1,4 @@
-﻿a4g.com
+a4g.com
 indexexchange.com
 pubmatic.com
 media.net
@@ -13,7 +13,7 @@ loopme.com
 thebrave.io
 verve.com
 spotx.tv
-Peak226.com
+peak226.com
 smartadserver.com
 spotxchange.com
 conversantmedia.com
@@ -76,7 +76,7 @@ olaex.biz
 ssp.e-volution.ai
 admixer.co.kr
 aralego.com
-Eskimi.com
+eskimi.com
 appads.in
 sovrn.com
 synacor.com
@@ -92,7 +92,7 @@ tpmn.io
 yandex.com
 start.io
 adiiix.com
-Beapup.com
+beapup.com
 mobismarter.com
 advlion.com
 growintech.co
@@ -111,7 +111,7 @@ adverty.com
 nobid.io
 zedo.com
 targetspot.com
-EMXDGT.com
+emxdgt.com
 bidscube.com
 kubient.com
 pubwise.io
@@ -119,16 +119,16 @@ gumgum.com
 zeststack.com
 onairglobal.com
 omnifytv.com
-Limpid.tv
+limpid.tv
 ssp.smartyads.com
 152media.info
-App-stock.com
+app-stock.com
 mobupps.com
 singularads.com
 brightcom.com
 showheroes.com
 9dotsmedia.com
-Bridgeupp.com
+bridgeupp.com
 carbonatix.com
 krushmedia.com
 connekt.ai
@@ -137,14 +137,13 @@ geofy.ai
 33across.com
 target.my.com
 admixer.com
-unity.com
 admixplay.com
 bidease.com
 exchange.admazing.co
 kidoz.net
 reforge.in
 telaria.com
-Xapads.com
+xapads.com
 vungle.com
 adswizz.com
 adtiming.com
@@ -203,8 +202,7 @@ richaudience.com
 supply.colossusssp.com
 teads.tv
 mcoreads.com
-Zeta.com
-Disqus.com
+zeta.com
 madopi.media
 movve.com
 motionspots.com

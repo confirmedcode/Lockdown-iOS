@@ -44,6 +44,7 @@ final class WelcomeView: UIView {
         label.textColor = .white
         label.font = fontMedium15
         label.textAlignment = .left
+        label.minimumScaleFactor = 0.5
         label.numberOfLines = 0
         return label
     }()
@@ -61,30 +62,24 @@ final class WelcomeView: UIView {
     private lazy var bulletView1: BulletView = {
         let view = BulletView()
         view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "Your blocking engine is faster and more robust"))
-        view.titleLabel.numberOfLines = 0
-        view.titleLabel.font = fontMedium15
-        view.stackView.anchors.height.equal(40)
         return view
     }()
     
     private lazy var bulletView2: BulletView = {
         let view = BulletView()
         view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "You can import + export lists"))
-        view.titleLabel.font = fontMedium15
         return view
     }()
     
     private lazy var bulletView3: BulletView = {
         let view = BulletView()
         view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "You can create your own groups"))
-        view.titleLabel.font = fontMedium15
         return view
     }()
     
     private lazy var bulletView4: BulletView = {
         let view = BulletView()
         view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "You can select app specific lists"))
-        view.titleLabel.font = fontMedium15
         return view
     }()
     
@@ -95,8 +90,6 @@ final class WelcomeView: UIView {
         stackView.addArrangedSubview(bulletView3)
         stackView.addArrangedSubview(bulletView4)
         stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
         stackView.spacing = 10
         return stackView
     }()

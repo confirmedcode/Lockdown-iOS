@@ -258,7 +258,7 @@ extension ListSettingsViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addTextField { (textField) in
             textField.keyboardType = .URL
-            textField.placeholder = "domain-to-block URL"
+            textField.placeholder = "domain-to-block"
         }
         
         NotificationCenter.default.addObserver(
@@ -331,7 +331,7 @@ extension ListSettingsViewController {
         guard let url = userList?.exportToURL() else { return }
         
         let activity = UIActivityViewController(
-          activityItems: ["Export your list", url],
+          activityItems: [url],
           applicationActivities: nil
         )
         activity.popoverPresentationController?.sourceView = sender

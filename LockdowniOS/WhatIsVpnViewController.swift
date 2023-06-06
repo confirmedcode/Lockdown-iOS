@@ -29,7 +29,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     @IBOutlet weak var toggleAnimatedCircle: NVActivityIndicatorView!
     @IBOutlet weak var button: UIButton!
     
-    var parentVC: HomeViewController? = nil
+//    var parentVC: HomeViewController? = nil
+    var parentVC: VPNPaywallViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
     }
     
     @IBAction func getStartedTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
-            self.parentVC?.performSegue(withIdentifier: "showSignup", sender: self)
-        })
+        let vc = VPNPaywallViewController()
+        present(vc, animated: true)
     }
     
     @IBAction func learnMoreTapped(_ sender: Any) {

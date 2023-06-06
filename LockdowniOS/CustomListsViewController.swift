@@ -1,27 +1,23 @@
 //
-//  LockdownViewController.swift
+//  CustomListsViewController.swift
 //  Lockdown
 //
-//  Copyright © 2019 Confirmed Inc. All rights reserved.
+//  Created by Aliaksandr Dvoineu on 2.06.23.
+//  Copyright © 2023 Confirmed Inc. All rights reserved.
 //
 
 import UIKit
-import Foundation
 import CocoaLumberjackSwift
 
-final class BlockListViewController: BaseViewController {
+final class CustomListsViewController: UIViewController {
     
     // MARK: - Properties
+    
     var didMakeChange = false
-    
-    var chosenBlocking = 0
-    
-    var lockdownBlockLists: [LockdownGroup] = []
     var customBlockedDomains: [(String, Bool)] = []
-
+    
     var customBlockedLists: [UserBlockListsGroup] = []
     
-    let curatedBlockedDomainsTableView = StaticTableView()
     let customBlockedListsTableView = StaticTableView()
     let customBlockedDomainsTableView = StaticTableView()
     
@@ -30,48 +26,6 @@ final class BlockListViewController: BaseViewController {
         view.topButton.addTarget(self, action: #selector(addList), for: .touchUpInside)
         view.bottomButton.addTarget(self, action: #selector(importBlockList), for: .touchUpInside)
         view.isHidden = true
-        return view
-    }()
-    
-    private lazy var customNavigationView: CustomNavigationView = {
-        let view = CustomNavigationView()
-        view.title = NSLocalizedString("Configure Blocking", comment: "")
-        view.buttonTitle = NSLocalizedString("CLOSE", comment: "")
-        view.onButtonPressed { [unowned self] in
-            self.close()
-        }
-        return view
-    }()
-    
-    enum Page: CaseIterable {
-        case curated
-        case custom
-        
-        var localizedTitle: String {
-            switch self {
-            case .curated:
-                return NSLocalizedString("Curated", comment: "")
-            case .custom:
-                return NSLocalizedString("Custom", comment: "")
-            }
-        }
-    }
-    
-    private lazy var segmented: UISegmentedControl = {
-        let view = UISegmentedControl(items: Page.allCases.map(\.localizedTitle))
-        view.selectedSegmentIndex = chosenBlocking
-        view.setTitleTextAttributes([.font: fontMedium14], for: .normal)
-        view.selectedSegmentTintColor = .tunnelsBlue
-        view.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        view.addTarget(self, action: #selector(segmentedControlDidChangeValue), for: .valueChanged)
-        return view
-    }()
-    
-    private let paragraphLabel: UILabel = {
-        let view = UILabel()
-        view.font = fontRegular14
-        view.numberOfLines = 0
-        view.text = NSLocalizedString("Block all your apps from connecting to the domains and sites below. For your convenience, Lockdown also has pre-configured suggestions.", comment: "")
         return view
     }()
     
@@ -140,20 +94,17 @@ final class BlockListViewController: BaseViewController {
         view.addButton.addTarget(self, action: #selector(addDomain), for: .touchUpInside)
         return view
     }()
-    
-    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .secondarySystemBackground
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-        
-        configure()
-        configureCuratedBlockedDomainsTableView()
+//        configure()
         configureCustomBlockedListsTableView()
-        configureCustomBlockedDomainsTableView()
+//        configureCustomBlockedDomainsTableView()
+
+        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,78 +112,47 @@ final class BlockListViewController: BaseViewController {
         reloadCustomBlockedLists()
     }
     
-    private func configure() {
-        view.addSubview(customNavigationView)
-        customNavigationView.anchors.leading.pin()
-        customNavigationView.anchors.trailing.pin()
-        customNavigationView.anchors.top.safeAreaPin()
-        
-        view.addSubview(paragraphLabel)
-        paragraphLabel.anchors.top.spacing(0, to: customNavigationView.anchors.bottom)
-        paragraphLabel.anchors.leading.readableContentPin(inset: 3)
-        paragraphLabel.anchors.trailing.readableContentPin(inset: 3)
-        paragraphLabel.anchors.height.equal(60)
-        
-        view.addSubview(segmented)
-        segmented.anchors.top.spacing(12, to: paragraphLabel.anchors.bottom)
-        segmented.anchors.leading.readableContentPin()
-        segmented.anchors.trailing.readableContentPin()
-        segmented.anchors.height.equal(40)
-    }
-    
-    private func configureCuratedBlockedDomainsTableView() {
-        addTableView(curatedBlockedDomainsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(8, to: segmented.anchors.bottom)
-            tableView.anchors.leading.pin()
-            tableView.anchors.trailing.pin()
-            tableView.anchors.bottom.pin()
-        })
-        
-        reloadCuratedBlockDomains()
-        chosenBlocking == 0 ? transition(toPage: .curated) : transition(toPage: .custom)
-    }
-    
     private func configureCustomBlockedListsTableView() {
         
-        view.addSubview(listsLabel)
-        listsLabel.anchors.top.spacing(24, to: segmented.anchors.bottom)
-        listsLabel.anchors.leading.marginsPin()
+//        view.addSubview(listsLabel)
+//        listsLabel.anchors.top.spacing(24, to: segmented.anchors.bottom)
+//        listsLabel.anchors.leading.marginsPin()
 
-        view.addSubview(addNewListButton)
-        addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
-        addNewListButton.anchors.trailing.marginsPin()
+//        view.addSubview(addNewListButton)
+//        addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
+//        addNewListButton.anchors.trailing.marginsPin()
         
-        view.addSubview(domainsLabel)
-        domainsLabel.anchors.top.spacing(300, to: segmented.anchors.bottom)
-        domainsLabel.anchors.height.equal(30)
-        domainsLabel.anchors.leading.marginsPin()
+//        view.addSubview(domainsLabel)
+//        domainsLabel.anchors.top.spacing(300, to: segmented.anchors.bottom)
+//        domainsLabel.anchors.height.equal(30)
+//        domainsLabel.anchors.leading.marginsPin()
         
         addTableView(customBlockedListsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(8, to: listsLabel.anchors.bottom)
+            tableView.anchors.top.marginsPin()
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
-            tableView.anchors.bottom.spacing(8, to: domainsLabel.anchors.top)
+//            tableView.anchors.bottom.marginsPin()
         })
         
-        view.addSubview(listsSubmenuView)
-        listsSubmenuView.anchors.trailing.marginsPin()
-        listsSubmenuView.anchors.top.spacing(60, to: paragraphLabel.anchors.bottom)
+//        view.addSubview(listsSubmenuView)
+//        listsSubmenuView.anchors.trailing.marginsPin()
+//        listsSubmenuView.anchors.top.marginsPin()
         
         customBlockedListsTableView.deselectsCellsAutomatically = true
     }
     
     private func configureCustomBlockedDomainsTableView() {
         
-        view.addSubview(addNewDomainButton)
-        addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
-        addNewDomainButton.anchors.trailing.marginsPin()
-        
-        view.addSubview(editDomainButton)
-        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
-        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
+//        view.addSubview(addNewDomainButton)
+//        addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+//        addNewDomainButton.anchors.trailing.marginsPin()
+//
+//        view.addSubview(editDomainButton)
+//        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+//        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
         
         addTableView(customBlockedDomainsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(8, to: domainsLabel.anchors.bottom)
+            tableView.anchors.top.marginsPin()
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
             tableView.anchors.bottom.safeAreaPin()
@@ -242,18 +162,9 @@ final class BlockListViewController: BaseViewController {
 
         reloadCustomBlockedDomains()
     }
-    
-    // Curated lists
-    func reloadCuratedBlockDomains() {
-        curatedBlockedDomainsTableView.clear()
-        lockdownBlockLists = {
-            let domains = getLockdownBlockedDomains().lockdownDefaults
-            let sorted = domains.sorted(by: { $0.key < $1.key })
-            return Array(sorted.map(\.value))
-        }()
-        createCuratedBlockedDomainsRows()
-        curatedBlockedDomainsTableView.reloadData()
-    }
+}
+
+private extension CustomListsViewController {
     
     func reloadCustomBlockedLists() {
         customBlockedListsTableView.clear()
@@ -282,73 +193,6 @@ final class BlockListViewController: BaseViewController {
         customBlockedDomainsTableView.reloadData()
     }
     
-    // Curated Lists
-    func createCuratedBlockedDomainsRows() {
-        let tableView = curatedBlockedDomainsTableView
-        
-        for lockdownGroup in lockdownBlockLists {
-            
-            let cell = tableView.addRow { (contentView) in
-                let blockListView = BlockListView()
-                blockListView.contents = .lockdownGroup(lockdownGroup)
-                contentView.addSubview(blockListView)
-                blockListView.anchors.edges.pin()
-            }.onSelect { [unowned self] in
-                if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-                    let storyboard = UIStoryboard.main
-                    let target = storyboard.instantiate(BlockListGroupViewController.self)
-                    target.lockdownGroup = lockdownGroup
-                    target.blockListVC = self
-                    self.navigationController?.pushViewController(target, animated: true)
-                } else {
-                    if lockdownGroup.accessLevel == "advanced" {
-                        let vc = VPNPaywallViewController()
-                        present(vc, animated: true)
-                    } else {
-                        let storyboard = UIStoryboard.main
-                        let target = storyboard.instantiate(BlockListGroupViewController.self)
-                        target.lockdownGroup = lockdownGroup
-                        target.blockListVC = self
-                        self.navigationController?.pushViewController(target, animated: true)
-                    }
-                }
-            }
-            
-            cell.accessoryType = .disclosureIndicator
-        }
-    }
-    
-    @objc
-    func segmentedControlDidChangeValue() {
-        let page = Page.allCases[segmented.selectedSegmentIndex]
-        transition(toPage: page)
-    }
-    
-    func transition(toPage page: Page) {
-        
-        switch page {
-        case .curated:
-            customBlockedDomainsTableView.isHidden = true
-            customBlockedListsTableView.isHidden = true
-            curatedBlockedDomainsTableView.isHidden = false
-            listsLabel.isHidden = true
-            addNewListButton.isHidden = true
-            listsSubmenuView.isHidden = true
-            addNewDomainButton.isHidden = true
-            domainsLabel.isHidden = true
-            editDomainButton.isHidden = true
-        case .custom:
-            customBlockedListsTableView.isHidden = false
-            customBlockedDomainsTableView.isHidden = false
-            curatedBlockedDomainsTableView.isHidden = true
-            listsLabel.isHidden = false
-            addNewListButton.isHidden = false
-            addNewDomainButton.isHidden = false
-            domainsLabel.isHidden = false
-            editDomainButton.isHidden = false
-        }
-    }
-    
     func saveNewList(userEnteredListName: String) {
         didMakeChange = true
         DDLogInfo("Adding custom list - \(userEnteredListName)")
@@ -368,17 +212,13 @@ final class BlockListViewController: BaseViewController {
             reloadCustomBlockedDomains()
         case .notValid(let reason):
             DDLogWarn("Custom domain is not valid - \(userEnteredDomainName), reason - \(reason)")
-            showPopupDialog(
-                title: NSLocalizedString("Invalid domain", comment: ""),
-                message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"", comment: ""),
-                acceptButton: NSLocalizedString("Okay", comment: "")
-            )
+//            showPopupDialog(
+//                title: NSLocalizedString("Invalid domain", comment: ""),
+//                message: "\"\(userEnteredDomainName)\"" + NSLocalizedString(" is not a valid entry. Please only enter the host of the domain you want to block. For example, \"google.com\" without \"https://\"", comment: ""),
+//                acceptButton: NSLocalizedString("Okay", comment: "")
+//            )
         }
     }
-}
-
-// MARK: - Functions
-extension BlockListViewController {
     
     func createCustomBlockedListsRows() {
         let tableView = customBlockedListsTableView
@@ -417,18 +257,17 @@ extension BlockListViewController {
                 let vc = ListSettingsViewController()
                 vc.listName = list.name
                 vc.didMakeChange = list.enabled
-                vc.blockListVC = self
+//                vc.blockListVC = self
                 navigationController?.pushViewController(vc, animated: true)
             }.onSwipeToDelete { [unowned self] in
                 self.didMakeChange = true
                 deleteList(list: list.name)
                 DDLogInfo("Deleting custom list - \(list.name)")
             }
-            cell.accessoryType = .disclosureIndicator
+//            cell.accessoryType = .disclosureIndicator
         }
     }
     
-    // Custom Domains
     func createCustomBlockedDomainsRows() {
         let tableView = customBlockedDomainsTableView
         let emptyDomains = emptyDomainsView
@@ -460,19 +299,6 @@ extension BlockListViewController {
                 DDLogInfo("Deleting custom domain - \(domain)")
             }
         }
-    }
-    
-    func close() {
-        dismiss(animated: true, completion: { [weak self] in
-            guard let self else { return }
-            if (self.didMakeChange == true) {
-                if getIsCombinedBlockListEmpty() {
-                    FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
-                } else if (FirewallController.shared.status() == .connected) {
-                    FirewallController.shared.restart()
-                }
-            }
-        })
     }
     
     @objc func addList() {
@@ -632,4 +458,5 @@ extension BlockListViewController {
                                       handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
 }
