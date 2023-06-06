@@ -321,7 +321,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let tiktokTrackers = LockdownGroup.init(
-        version: 2,
+        version: 3,
         internalID: "tiktokTrackers",
         name: NSLocalizedString("Tiktok Trackers", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
@@ -348,7 +348,7 @@ func setupFirewallDefaultBlockLists() {
         ipRanges: [:])
     
     let advancedAnalytics = LockdownGroup.init(
-        version: 2,
+        version: 3,
         internalID: "advancedAnalytics",
         name: NSLocalizedString("Advanced Analytics", comment: "The title of a list of trackers"),
         iconURL: "icn_vpn",
