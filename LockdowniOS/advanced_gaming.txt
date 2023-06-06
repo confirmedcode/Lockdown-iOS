@@ -2,7 +2,7 @@ a4.applovin.com
 assets.applovin.com
 cdn.liftoff-creatives.io
 supersonics.com
-outcome-sssp.supersonicads.com/
+outcome-sssp.supersonicads.com
 4.adsco.re
 6.adsco.re
 a4g.com
