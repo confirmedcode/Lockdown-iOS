@@ -412,7 +412,10 @@ final class AccountViewController: BaseViewController, Loadable {
             //            DefaultCell(title: NSLocalizedString("Tutorial", comment: "")) { [unowned self] in
             //                self.startTutorial()
             //            },
-            DefaultCell(title: NSLocalizedString("What's New", comment: "")) {
+            MakeDefaultCell(
+                title: NSLocalizedString("What's New", comment: ""),
+                color: .paywallNew
+            ) {
                 self.showWhatsNewModal()
             },
             DefaultCell(title: NSLocalizedString("Why Trust Lockdown", comment: "")) {
@@ -452,7 +455,10 @@ final class AccountViewController: BaseViewController, Loadable {
         }
         
         if let creds = getAPICredentials() {
-            tableView.addCell(MakeDefaultCell(title: .localized("delete_account"), color: .tunnelsWarning) {
+            tableView.addCell(MakeDefaultCell(
+                title: .localized("delete_account"),
+                color: .lockdownRed
+            ) {
                 self.deleteAccount(userEmail: creds.email)
             })
         }
