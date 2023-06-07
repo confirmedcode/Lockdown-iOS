@@ -72,7 +72,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     private lazy var upgradeLabel: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
-        button.setTitle(NSLocalizedString("Upgrade?", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("See plans", comment: ""), for: .normal)
         button.titleLabel?.font = fontBold13
         button.backgroundColor = .tunnelsBlue
         button.anchors.height.equal(24)
