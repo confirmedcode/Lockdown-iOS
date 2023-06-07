@@ -136,10 +136,26 @@ class WhatsNewViewController: UIViewController {
         navigationView.anchors.leading.pin()
         navigationView.anchors.trailing.pin()
         
-        view.addSubview(bulletsStackView)
-        bulletsStackView.anchors.top.spacing(18, to: navigationView.anchors.bottom)
-        bulletsStackView.anchors.leading.marginsPin()
-        bulletsStackView.anchors.trailing.marginsPin()
+        let scrollView = UIScrollView()
+        view.addSubview(scrollView)
+        scrollView.anchors.top.spacing(18, to: navigationView.anchors.bottom)
+        scrollView.anchors.leading.marginsPin()
+        scrollView.anchors.trailing.marginsPin()
+        scrollView.anchors.bottom.marginsPin()
+        
+        let contentView = UIView()
+        scrollView.addSubview(contentView)
+        contentView.anchors.top.pin()
+        contentView.anchors.leading.pin()
+        contentView.anchors.trailing.pin()
+        contentView.anchors.bottom.pin()
+        contentView.anchors.width.equal(scrollView.anchors.width)
+        
+        contentView.addSubview(bulletsStackView)
+        bulletsStackView.anchors.top.pin()
+        bulletsStackView.anchors.leading.pin()
+        bulletsStackView.anchors.trailing.pin()
+        bulletsStackView.anchors.bottom.pin()
     }
 
     //MARK: Functions
