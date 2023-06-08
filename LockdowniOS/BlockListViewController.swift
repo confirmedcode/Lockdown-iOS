@@ -129,7 +129,7 @@ final class BlockListViewController: BaseViewController {
         button.tintColor = .tunnelsBlue
         button.setImage(UIImage(named: "icn_edit"), for: .normal)
         button.addTarget(self, action: #selector(editDomains), for: .touchUpInside)
-        button.isHidden = true
+//        button.isHidden = true
         return button
     }()
     
@@ -227,9 +227,9 @@ final class BlockListViewController: BaseViewController {
         addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
         addNewDomainButton.anchors.trailing.marginsPin()
         
-        view.addSubview(editDomainButton)
-        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
-        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
+//        view.addSubview(editDomainButton)
+//        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+//        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
         
         addTableView(customBlockedDomainsTableView, layout: { tableView in
             tableView.anchors.top.spacing(8, to: domainsLabel.anchors.bottom)
@@ -298,7 +298,7 @@ final class BlockListViewController: BaseViewController {
                     let storyboard = UIStoryboard.main
                     let target = storyboard.instantiate(BlockListGroupViewController.self)
                     target.lockdownGroup = lockdownGroup
-                    target.blockListVC = self
+//                    target.blockListVC = self
                     self.navigationController?.pushViewController(target, animated: true)
                 } else {
                     if lockdownGroup.accessLevel == "advanced" {
@@ -308,7 +308,7 @@ final class BlockListViewController: BaseViewController {
                         let storyboard = UIStoryboard.main
                         let target = storyboard.instantiate(BlockListGroupViewController.self)
                         target.lockdownGroup = lockdownGroup
-                        target.blockListVC = self
+//                        target.blockListVC = self
                         self.navigationController?.pushViewController(target, animated: true)
                     }
                 }
@@ -449,6 +449,9 @@ extension BlockListViewController {
             tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
+                view.addSubview(editDomainButton)
+                editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+                editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
             }.onSelect { [unowned blockListView, unowned self] in
                 self.didMakeChange = true
                 currentEnabledStatus.toggle()
@@ -577,7 +580,7 @@ extension BlockListViewController {
                 }
                 
                 self.reloadCustomBlockedDomains()
-                self.editDomainButton.isHidden = false
+//                self.editDomainButton.isHidden = false
             }
         }
         

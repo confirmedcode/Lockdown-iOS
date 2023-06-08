@@ -186,11 +186,14 @@ private extension EditDomainsViewController {
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
-            let sortedDomains = self.selectedDomains.filter({ $0.value == true })
+            var sortedDomains = self.selectedDomains.filter({ $0.value == true })
             
             for domain in sortedDomains.keys {
                 deleteUserBlockedDomain(domain: domain)
             }
+            
+            sortedDomains = self.selectedDomains.filter({ $0.value == false })
+            self.selectedDomains = sortedDomains
             
             self.reloadCustomBlockedDomains()
         }))
