@@ -33,7 +33,7 @@ final class StaticTableView: UITableView {
     func setup() {
         dataSource = self
         delegate = self
-        separatorStyle = .none
+//        separatorStyle = .none
     }
     
     enum Insert {
