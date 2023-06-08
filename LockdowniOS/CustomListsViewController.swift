@@ -106,8 +106,6 @@ final class CustomListsViewController: UIViewController {
         
         configureCustomBlockedListsTableView()
         configureCustomBlockedDomainsTableView()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +117,7 @@ final class CustomListsViewController: UIViewController {
     private func configureCustomBlockedListsTableView() {
         
         view.addSubview(listsLabel)
-        listsLabel.anchors.top.pin(inset: 20)
+        listsLabel.anchors.top.pin(inset: 12)
         listsLabel.anchors.leading.marginsPin()
 
         view.addSubview(addNewListButton)
@@ -127,7 +125,7 @@ final class CustomListsViewController: UIViewController {
         addNewListButton.anchors.trailing.marginsPin()
         
         addTableView(customBlockedListsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(8, to: listsLabel.anchors.bottom)
+            tableView.anchors.top.spacing(0, to: listsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
             tableView.anchors.height.equal(250)
@@ -143,22 +141,16 @@ final class CustomListsViewController: UIViewController {
     private func configureCustomBlockedDomainsTableView() {
         
         view.addSubview(domainsLabel)
-        domainsLabel.anchors.top.spacing(8, to: customBlockedListsTableView.anchors.bottom)
+        domainsLabel.anchors.top.spacing(290, to: view.anchors.top)
         domainsLabel.anchors.height.equal(30)
         domainsLabel.anchors.leading.marginsPin()
         
         view.addSubview(addNewDomainButton)
         addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
         addNewDomainButton.anchors.trailing.marginsPin()
-//
-        
-        // TODO: Add logic to hide edit button
-        view.addSubview(editDomainButton)
-        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
-        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
         
         addTableView(customBlockedDomainsTableView, layout: { tableView in
-            tableView.anchors.top.spacing(8, to: domainsLabel.anchors.bottom)
+            tableView.anchors.top.spacing(0, to: domainsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
             tableView.anchors.bottom.safeAreaPin()
@@ -276,8 +268,10 @@ private extension CustomListsViewController {
     
     func createCustomBlockedDomainsRows() {
         let tableView = customBlockedDomainsTableView
+        
         let emptyDomains = emptyDomainsView
-        if customBlockedDomains.count == 0 {
+        if customBlockedDomains.isEmpty {
+            editDomainButton.isHidden = true
             tableView.addRow { (contentView) in
                 contentView.addSubview(emptyDomains)
                 emptyDomains.anchors.edges.pin()
@@ -285,7 +279,7 @@ private extension CustomListsViewController {
                 self.addDomain()
             }
         }
-
+        
         for (domain, isEnabled) in customBlockedDomains {
             var currentEnabledStatus = isEnabled
             let blockListView = BlockListView()
@@ -294,6 +288,10 @@ private extension CustomListsViewController {
             tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
+                view.addSubview(editDomainButton)
+                editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+                editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
+                editDomainButton.isHidden = false
             }.onSelect { [unowned blockListView, unowned self] in
                 self.didMakeChange = true
                 currentEnabledStatus.toggle()
@@ -409,7 +407,6 @@ private extension CustomListsViewController {
                 }
                 
                 self.reloadCustomBlockedDomains()
-                self.editDomainButton.isHidden = false
             }
         }
         
