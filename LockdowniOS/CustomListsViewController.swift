@@ -100,9 +100,12 @@ final class CustomListsViewController: UIViewController {
         
         view.backgroundColor = .secondarySystemBackground
         
-//        configure()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
         configureCustomBlockedListsTableView()
-//        configureCustomBlockedDomainsTableView()
+        configureCustomBlockedDomainsTableView()
 
         // Do any additional setup after loading the view.
     }
@@ -110,49 +113,52 @@ final class CustomListsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadCustomBlockedLists()
+        reloadCustomBlockedDomains()
     }
     
     private func configureCustomBlockedListsTableView() {
         
-//        view.addSubview(listsLabel)
-//        listsLabel.anchors.top.spacing(24, to: segmented.anchors.bottom)
-//        listsLabel.anchors.leading.marginsPin()
+        view.addSubview(listsLabel)
+        listsLabel.anchors.top.pin(inset: 20)
+        listsLabel.anchors.leading.marginsPin()
 
-//        view.addSubview(addNewListButton)
-//        addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
-//        addNewListButton.anchors.trailing.marginsPin()
-        
-//        view.addSubview(domainsLabel)
-//        domainsLabel.anchors.top.spacing(300, to: segmented.anchors.bottom)
-//        domainsLabel.anchors.height.equal(30)
-//        domainsLabel.anchors.leading.marginsPin()
+        view.addSubview(addNewListButton)
+        addNewListButton.anchors.centerY.equal(listsLabel.anchors.centerY)
+        addNewListButton.anchors.trailing.marginsPin()
         
         addTableView(customBlockedListsTableView, layout: { tableView in
-            tableView.anchors.top.marginsPin()
+            tableView.anchors.top.spacing(8, to: listsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
-//            tableView.anchors.bottom.marginsPin()
+            tableView.anchors.height.equal(250)
         })
         
-//        view.addSubview(listsSubmenuView)
-//        listsSubmenuView.anchors.trailing.marginsPin()
-//        listsSubmenuView.anchors.top.marginsPin()
+        view.addSubview(listsSubmenuView)
+        listsSubmenuView.anchors.trailing.marginsPin()
+        listsSubmenuView.anchors.top.marginsPin()
         
         customBlockedListsTableView.deselectsCellsAutomatically = true
     }
     
     private func configureCustomBlockedDomainsTableView() {
         
-//        view.addSubview(addNewDomainButton)
-//        addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
-//        addNewDomainButton.anchors.trailing.marginsPin()
+        view.addSubview(domainsLabel)
+        domainsLabel.anchors.top.spacing(8, to: customBlockedListsTableView.anchors.bottom)
+        domainsLabel.anchors.height.equal(30)
+        domainsLabel.anchors.leading.marginsPin()
+        
+        view.addSubview(addNewDomainButton)
+        addNewDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+        addNewDomainButton.anchors.trailing.marginsPin()
 //
-//        view.addSubview(editDomainButton)
-//        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
-//        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
+        
+        // TODO: Add logic to hide edit button
+        view.addSubview(editDomainButton)
+        editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
+        editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
         
         addTableView(customBlockedDomainsTableView, layout: { tableView in
-            tableView.anchors.top.marginsPin()
+            tableView.anchors.top.spacing(8, to: domainsLabel.anchors.bottom)
             tableView.anchors.leading.pin()
             tableView.anchors.trailing.pin()
             tableView.anchors.bottom.safeAreaPin()
@@ -458,5 +464,4 @@ private extension CustomListsViewController {
                                       handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
 }

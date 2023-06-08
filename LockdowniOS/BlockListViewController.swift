@@ -298,7 +298,7 @@ final class BlockListViewController: BaseViewController {
                     let storyboard = UIStoryboard.main
                     let target = storyboard.instantiate(BlockListGroupViewController.self)
                     target.lockdownGroup = lockdownGroup
-                    target.blockListVC = self
+//                    target.blockListVC = self
                     self.navigationController?.pushViewController(target, animated: true)
                 } else {
                     if lockdownGroup.accessLevel == "advanced" {
@@ -308,7 +308,7 @@ final class BlockListViewController: BaseViewController {
                         let storyboard = UIStoryboard.main
                         let target = storyboard.instantiate(BlockListGroupViewController.self)
                         target.lockdownGroup = lockdownGroup
-                        target.blockListVC = self
+//                        target.blockListVC = self
                         self.navigationController?.pushViewController(target, animated: true)
                     }
                 }

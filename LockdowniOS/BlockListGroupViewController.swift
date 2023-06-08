@@ -16,8 +16,8 @@ class BlockListGroupViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet var lockdownEnabled: UISwitch!
     @IBOutlet var groupTitle: UILabel!
     
-    weak var blockListVC: BlockListViewController?
-    weak var curatedListsVC: CuratedListsViewController?
+//    weak var blockListVC: BlockListViewController?
+    weak var blockListVC: CuratedListsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
