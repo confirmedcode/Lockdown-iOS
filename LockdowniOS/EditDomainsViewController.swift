@@ -176,7 +176,7 @@ private extension EditDomainsViewController {
         let vc = MoveToListViewController()
         vc.selectedDomains = sortedDomains
         vc.moveToListCompletion = { [unowned self] in
-            self.reloadCustomBlockedDomains()
+            self.refreshSelectedDomainsAndReloadCustomBlockedDomains()
         }
         
         present(vc, animated: true)
@@ -193,17 +193,21 @@ private extension EditDomainsViewController {
                                       style: UIAlertAction.Style.destructive,
                                       handler: { [weak self] (_) in
             guard let self else { return }
-            var sortedDomains = self.selectedDomains.filter({ $0.value == true })
+            let sortedDomains = self.selectedDomains.filter({ $0.value == true })
             
             for domain in sortedDomains.keys {
                 deleteUserBlockedDomain(domain: domain)
             }
             
-            sortedDomains = self.selectedDomains.filter({ $0.value == false })
-            self.selectedDomains = sortedDomains
-            
-            self.reloadCustomBlockedDomains()
+            self.refreshSelectedDomainsAndReloadCustomBlockedDomains()
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func refreshSelectedDomainsAndReloadCustomBlockedDomains() {
+        let sortedDomains = self.selectedDomains.filter { $0.value == false }
+        self.selectedDomains = sortedDomains
+        
+        self.reloadCustomBlockedDomains()
     }
 }
