@@ -10,6 +10,17 @@ import UIKit
 struct BulletViewModel {
     let image: UIImage
     let title: String
+    let highlightedStrings: [String]
+    
+    init(
+        image: UIImage,
+        title: String,
+        highlightedStrings: [String] = []
+    ) {
+        self.image = image
+        self.title = title
+        self.highlightedStrings = highlightedStrings
+    }
 }
 
 final class BulletView: UIView {
@@ -62,5 +73,8 @@ final class BulletView: UIView {
     func configure(with model: BulletViewModel) {
         bulletImage.image = model.image
         titleLabel.text = model.title
+        model.highlightedStrings.forEach {
+            titleLabel.highlight($0, font: .boldLockdownFont(size: 15))
+        }
     }
 }
