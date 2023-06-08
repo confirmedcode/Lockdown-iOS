@@ -262,7 +262,7 @@ private extension CustomListsViewController {
                 deleteList(list: list.name)
                 DDLogInfo("Deleting custom list - \(list.name)")
             }
-//            cell.accessoryType = .disclosureIndicator
+            cell.accessoryType = .disclosureIndicator
         }
     }
     
