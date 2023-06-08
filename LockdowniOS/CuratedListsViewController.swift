@@ -61,15 +61,12 @@ final class CuratedListsViewController: UIViewController {
                 blockListView.anchors.edges.pin()
             }.onSelect { [unowned self] in
                 if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
+                    
                     let storyboard = UIStoryboard.main
                     let target = storyboard.instantiate(BlockListGroupViewController.self)
                     target.lockdownGroup = lockdownGroup
-                    target.curatedListsVC = self
-                    let nav = UINavigationController(rootViewController: BlockListContainerViewController())
-                    nav.pushViewController(target, animated: true)
-//                    present(target, animated: true)
-//                    self.navigationController?.pushViewController(target, animated: true)
-//                    navigationController?.popToViewController(target, animated: true)
+                    target.blockListVC = self
+                    self.navigationController?.pushViewController(target, animated: true)
                 } else {
                     if lockdownGroup.accessLevel == "advanced" {
                         let vc = VPNPaywallViewController()
@@ -78,7 +75,7 @@ final class CuratedListsViewController: UIViewController {
                         let storyboard = UIStoryboard.main
                         let target = storyboard.instantiate(BlockListGroupViewController.self)
                         target.lockdownGroup = lockdownGroup
-//                        target.blockListVC = self
+                        target.blockListVC = self
                         self.navigationController?.pushViewController(target, animated: true)
                     }
                 }

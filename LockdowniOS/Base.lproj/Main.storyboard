@@ -227,7 +227,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eso-Na-ALG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YIN-hF-LwL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -280,7 +280,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="uj4-Tw-NBS" kind="presentation" id="3gU-2X-sH5"/>
+                                                            <segue destination="0CN-pU-wkU" kind="presentation" id="dop-hf-UNZ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JVD-sS-lUY">
@@ -1259,7 +1259,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mU9-zL-O80">
-                                <rect key="frame" x="317" y="69.666666666666671" width="60" height="38.999999999999986"/>
+                                <rect key="frame" x="317" y="69.666666666666671" width="60" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="O5g-Ze-mGc"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="ZTY-Ty-XIw"/>
@@ -1865,7 +1865,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMu-va-97O">
-                                <rect key="frame" x="16" y="69.666666666666671" width="60" height="38.999999999999986"/>
+                                <rect key="frame" x="16" y="69.666666666666671" width="60" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="DMt-V1-DQN"/>
                                     <constraint firstAttribute="height" constant="39" id="zWR-Fr-id4"/>
@@ -3028,7 +3028,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMa-F3-KUG">
-                                <rect key="frame" x="26.333333333333329" y="217" width="34.333333333333343" height="14.666666666666657"/>
+                                <rect key="frame" x="26.333333333333332" y="217" width="34.333333333333343" height="14.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -3064,7 +3064,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anO-Te-34C">
-                                <rect key="frame" x="16" y="69.666666666666671" width="60" height="38.999999999999986"/>
+                                <rect key="frame" x="16" y="69.666666666666671" width="60" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="4oL-9n-3kh"/>
                                     <constraint firstAttribute="height" constant="39" id="AKQ-fl-1j6"/>
@@ -3203,7 +3203,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asx-fS-ufQ">
-                                <rect key="frame" x="24" y="189" width="34.333333333333343" height="14"/>
+                                <rect key="frame" x="24.000000000000004" y="189" width="34.333333333333343" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -3228,7 +3228,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FF-0m-G4n">
-                                <rect key="frame" x="16" y="69.666666666666671" width="60" height="38.999999999999986"/>
+                                <rect key="frame" x="16" y="69.666666666666671" width="60" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="5k0-SP-b4X"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="6J0-UL-1He"/>
@@ -3355,7 +3355,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-Jd-iUo">
-                                <rect key="frame" x="24" y="138" width="34.333333333333343" height="14"/>
+                                <rect key="frame" x="24.000000000000004" y="138" width="34.333333333333343" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -3498,7 +3498,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="uj4-Tw-NBS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UY9-Xw-QS7">
-                        <rect key="frame" x="0.0" y="-69" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3651,9 +3650,9 @@
         <!--Navigation Controller-->
         <scene sceneID="cJb-EK-1bb">
             <objects>
-                <navigationController id="0CN-pU-wkU" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="0CN-pU-wkU" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xnF-hM-zEQ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="-69" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -3662,18 +3661,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VaZ-DL-OQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1280" y="-882"/>
+            <point key="canvasLocation" x="-750" y="-100"/>
         </scene>
-        <!--Curated Lists View Controller-->
+        <!--Block List Container View Controller-->
         <scene sceneID="guo-jf-UVY">
             <objects>
-                <viewController storyboardIdentifier="CuratedListsViewController" id="9Kh-y8-ojF" customClass="CuratedListsViewController" customModule="Lockdown" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlockListContainerViewController" id="9Kh-y8-ojF" customClass="BlockListContainerViewController" customModule="Lockdown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8u7-Ci-hWD"/>
                         <viewControllerLayoutGuide type="bottom" id="KGW-Mx-ovj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SZI-F2-PEF">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -3681,7 +3680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM2-qJ-HST" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-546" y="-882"/>
+            <point key="canvasLocation" x="-18" y="-100"/>
         </scene>
     </scenes>
     <designables>

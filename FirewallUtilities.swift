@@ -303,55 +303,55 @@ func setupFirewallDefaultBlockLists() {
         accessLevel: "basic")
     
     let ifunnyTrackers = LockdownGroup.init(
-        version: 3,
+        version: 4,
         internalID: "ifunnyTrackers",
         name: NSLocalizedString("iFunny Trackers", comment: "The title of a list of trackers"),
-        iconURL: "icn_vpn",
+        iconURL: "icn_ifunny",
         enabled: false,
         domains: getDomainBlockList(filename: "ifunny_trackers"),
         ipRanges: [:])
     
     let advancedGaming = LockdownGroup.init(
-        version: 3,
+        version: 5,
         internalID: "advancedGaming",
         name: NSLocalizedString("Advanced Gaming", comment: "The title of a list of trackers"),
-        iconURL: "icn_vpn",
+        iconURL: "icn_advanced_gaming",
         enabled: false,
         domains: getDomainBlockList(filename: "advanced_gaming"),
         ipRanges: [:])
     
     let tiktokTrackers = LockdownGroup.init(
-        version: 2,
+        version: 4,
         internalID: "tiktokTrackers",
         name: NSLocalizedString("Tiktok Trackers", comment: "The title of a list of trackers"),
-        iconURL: "icn_vpn",
+        iconURL: "icn_tiktok",
         enabled: false,
         domains: getDomainBlockList(filename: "tiktok_trackers"),
         ipRanges: [:])
     
     let scams = LockdownGroup.init(
-        version: 3,
+        version: 4,
         internalID: "scams",
         name: NSLocalizedString("Scams", comment: "The title of a list of trackers"),
-        iconURL: "icn_vpn",
+        iconURL: "icn_scams",
         enabled: false,
         domains: getDomainBlockList(filename: "scams"),
         ipRanges: [:])
     
     let junesJourneyTrackers = LockdownGroup.init(
-        version: 3,
+        version: 5,
         internalID: "junesJourneyTrackers",
         name: NSLocalizedString("Junes Journey Trackers", comment: "The title of a list of trackers"),
-        iconURL: "icn_vpn",
+        iconURL: "icn-junes-journey",
         enabled: false,
         domains: getDomainBlockList(filename: "junes_journey_trackers"),
         ipRanges: [:])
     
     let advancedAnalytics = LockdownGroup.init(
-        version: 2,
+        version: 4,
         internalID: "advancedAnalytics",
         name: NSLocalizedString("Advanced Analytics", comment: "The title of a list of trackers"),
-        iconURL: "icn_vpn",
+        iconURL: "icn_advanced_analytics",
         enabled: false,
         domains: getDomainBlockList(filename: "advanced_analytics"),
         ipRanges: [:])

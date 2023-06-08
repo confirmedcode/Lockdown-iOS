@@ -28,9 +28,7 @@ final class BulletView: UIView {
     private lazy var bulletImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .left
-        image.layer.masksToBounds = true
-        image.anchors.height.equal(22)
-        image.anchors.width.equal(22)
+        image.anchors.width.equal(24)
         return image
     }()
     
