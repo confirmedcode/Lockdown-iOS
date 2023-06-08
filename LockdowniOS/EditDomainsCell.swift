@@ -75,10 +75,10 @@ extension EditDomainsCell {
         let title: String?
         let status: String?
         
-        static func userBlocked(domain: String, isSelected: Bool) -> Contents {
+        static func userBlocked(domain: String, isSelected: Bool, isBlocked: Bool) -> Contents {
             let checkMark = isSelected ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
             let image = UIImage(named: "website_icon.png")
-            let status = NSLocalizedString("Blocked", comment: "")
+            let status = isBlocked ? NSLocalizedString("Blocked", comment: "") : NSLocalizedString("Not Blocked", comment: "")
             return Contents(checkMark: checkMark, icon: image, title: domain, status: status)
         }
     }
