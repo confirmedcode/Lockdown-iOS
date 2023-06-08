@@ -52,8 +52,10 @@ final class ImportBlockListViewController: UIViewController, UIDocumentPickerDel
         let label = UILabel()
         label.textColor = .label
         label.font = fontRegular14
-        let highlightedText = "comma-separated values (.csv)"
-        label.text = NSLocalizedString("Simply select the \(highlightedText) file with the domains you want to block and import it. It's that easy!", comment: "")
+        let highlightedText = NSLocalizedString("comma-separated values (.csv)*", comment: "a bold part of description")
+        label.text = NSLocalizedString("Simply select the ", comment: "") +
+            highlightedText +
+            NSLocalizedString(" file with the domains you want to block and import it. It's that easy!", comment: "")
         label.highlight(highlightedText, font: UIFont.boldLockdownFont(size: 14))
         label.numberOfLines = 0
         label.textAlignment = .left
