@@ -14,9 +14,7 @@ final class EditDomainsViewController: UIViewController {
     var updateCompletion: (() -> ())?
     
     private var didMakeChange = false
-    
-    private var checkedStatus = false
-    
+        
     var customBlockedDomains: [(String, Bool)] = []
     
     var selectedDomains: Dictionary<String, Bool> = [:] {
@@ -112,7 +110,7 @@ private extension EditDomainsViewController {
                 }
             }
         }()
-        
+
         createUserBlockedDomainsRows()
         customBlockedDomainsTableView.reloadData()
     }
@@ -130,12 +128,15 @@ private extension EditDomainsViewController {
             tableTitle.anchors.bottom.marginsPin()
         }
         
-        for (domain, _) in customBlockedDomains {
+        for (domain, isBlocked) in customBlockedDomains {
             let blockListView = EditDomainsCell()
             
-            blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
+            blockListView.contents = .userBlocked(
+                domain: domain,
+                isSelected: self.selectedDomains[domain] ?? false,
+                isBlocked: isBlocked
+            )
             
-            self.selectedDomains[domain] = checkedStatus
             let cell = tableView.addRow { (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
@@ -143,10 +144,14 @@ private extension EditDomainsViewController {
             }.onSelect { [unowned blockListView, unowned self] in
                 self.didMakeChange = true
                 
-                checkedStatus.toggle()
-                blockListView.contents = .userBlocked(domain: domain, isSelected: checkedStatus)
+                let isChecked = self.selectedDomains[domain] ?? false
+                blockListView.contents = .userBlocked(
+                    domain: domain,
+                    isSelected: !isChecked,
+                    isBlocked: isBlocked
+                )
                 
-                self.selectedDomains[domain] = checkedStatus
+                self.selectedDomains[domain] = !isChecked
             }
             
             cell.accessoryType = .none
@@ -160,7 +165,9 @@ private extension EditDomainsViewController {
     }
     
     @objc func selectAllddDomains() {
-        checkedStatus = true
+        for (domain, _) in customBlockedDomains {
+            selectedDomains[domain] = true
+        }
         reloadCustomBlockedDomains()
     }
     
