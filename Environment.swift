@@ -9,19 +9,19 @@
 import Foundation
 import CocoaLumberjackSwift
 
-//let vpnSourceID = "-111818" //getEnvironmentVariable(key: "vpnSourceID", default: "-111818")
-//let vpnDomain = "confirmedvpn.com" //getEnvironmentVariable(key: "vpnDomain", default: "confirmedvpn.com")
-//let vpnRemoteIdentifier = "www" + vpnSourceID + "." + vpnDomain
-//let mainDomain = "confirmedvpn.com" //getEnvironmentVariable(key: "mainDomain", default: "confirmedvpn.com")
-//let mainURL = "https://www." + mainDomain
+let vpnSourceID = "-111818" //getEnvironmentVariable(key: "vpnSourceID", default: "-111818")
+let vpnDomain = "confirmedvpn.com" //getEnvironmentVariable(key: "vpnDomain", default: "confirmedvpn.com")
+let vpnRemoteIdentifier = "www" + vpnSourceID + "." + vpnDomain
+let mainDomain = "confirmedvpn.com" //getEnvironmentVariable(key: "mainDomain", default: "confirmedvpn.com")
+let mainURL = "https://www." + mainDomain
 
 // Dev Environment
 // US-East US-West
-let vpnSourceID = "-111618"
-let vpnDomain = "trusty-ap.science"
-let vpnRemoteIdentifier = "www" + vpnSourceID + "." + vpnDomain
-let mainDomain = "trusty-ap.science"
-let mainURL = "https://www." + mainDomain
+//let vpnSourceID = "-111618"
+//let vpnDomain = "trusty-ap.science"
+//let vpnRemoteIdentifier = "www" + vpnSourceID + "." + vpnDomain
+//let mainDomain = "trusty-ap.science"
+//let mainURL = "https://www." + mainDomain
 
 let testFirewallDomain = "example.com"
 
