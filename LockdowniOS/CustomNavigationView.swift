@@ -30,7 +30,7 @@ final class CustomNavigationView: UIView {
         return self
     }
     
-    private let titleView = UILabel()
+    let titleView = UILabel()
     private let button = UIButton(type: .system)
     
     init() {

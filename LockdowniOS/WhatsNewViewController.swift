@@ -13,6 +13,7 @@ class WhatsNewViewController: UIViewController {
     private lazy var navigationView: CustomNavigationView = {
         let view = CustomNavigationView()
         view.title = NSLocalizedString("What's New", comment: "")
+        view.titleView.font = .boldLockdownFont(size: 17)
         view.buttonTitle = NSLocalizedString("CLOSE", comment: "")
         view.onButtonPressed { [unowned self] in
             self.closeButtonClicked()
