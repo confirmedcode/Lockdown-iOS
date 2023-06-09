@@ -840,6 +840,14 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                      prefixText: NSLocalizedString("Tunnel", comment: "").uppercased())
     }
     
+    private func startVPNAfterSettingCredentials() {
+        VPNController.shared.setEnabled(true) { error in
+            if error != nil {
+                self.updateVPNButtonWithStatus(status: .disconnected)
+            }
+        }
+    }
+    
     @IBAction func toggleVPN(_ sender: Any) {
         if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
             DDLogInfo("Toggle VPN")
@@ -865,10 +873,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                         DDLogInfo("subscriptionevent result: \(result)")
                         return try Client.getKey()
                     }
-                    .done { (getKey: GetKey) in
+                    .done { [weak self] (getKey: GetKey) in
                         try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
                         DDLogInfo("setting VPN creds with ID: \(getKey.id)")
-                        VPNController.shared.setEnabled(true)
+                        self?.startVPNAfterSettingCredentials()
                     }
                     .catch { error in
                         DDLogError("Error doing email-login -> subscription-event: \(error)")
@@ -921,9 +929,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                         // TODO: don't always do this -- if we already have a key, then only do it once per day max
                         try Client.getKey()
                     }
-                    .done { (getKey: GetKey) in
+                    .done { [weak self] (getKey: GetKey) in
                         try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
-                        VPNController.shared.setEnabled(true)
+                        self?.startVPNAfterSettingCredentials()
                     }
                     .catch { error in
                         self.updateVPNButtonWithStatus(status: .disconnected)
@@ -943,7 +951,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                                     if (getVPNCredentials() != nil) {
                                         DDLogError("Unknown error -1 from API, but VPNCredentials exists, so activating anyway.")
                                         self.updateVPNButtonWithStatus(status: .connecting)
-                                        VPNController.shared.setEnabled(true)
+                                        self.startVPNAfterSettingCredentials()
                                     }
                                     else {
                                         self.showPopupDialog(title: NSLocalizedString("Apple Outage", comment: ""), message: "There is currently an outage at Apple which is preventing Secure Tunnel from activating. This will likely by resolved by Apple soon, and we apologize for this issue in the meantime." + NSLocalizedString("\n\n If this error persists, please contact team@lockdownprivacy.com.", comment: ""), acceptButton: NSLocalizedString("Okay", comment: ""))

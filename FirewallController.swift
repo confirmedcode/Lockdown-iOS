@@ -92,6 +92,14 @@ class FirewallController: NSObject {
     
     struct CombinedBlockListEmptyError: Error { }
     
+    private func handleUserDeniedAccessToFirewallConfiguration() {
+        setUserWantsFirewallEnabled(false)
+        if #available(iOSApplicationExtension 14.0, iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        manager = nil
+    }
+    
     func setEnabled(_ enabled: Bool, isUserExplicitToggle: Bool = false, completion: @escaping (_ error: Error?) -> Void = {_ in }) {
         DDLogInfo("FirewallController set enabled: \(enabled)")
         // only change this boolean if it's user action
@@ -139,7 +147,8 @@ class FirewallController: NSObject {
                     case .configurationInvalid:
                         break;
                     case .configurationReadWriteFailed:
-                        break;
+                        self.handleUserDeniedAccessToFirewallConfiguration()
+                        return
                     case .configurationStale:
                         break;
                     case .configurationUnknown:
@@ -147,7 +156,7 @@ class FirewallController: NSObject {
                     case .connectionFailed:
                         break;
                     }
-                    completion(nil)
+                    completion(e)
                 }
                 else if let e = error {
                     DDLogError("Error saving config for enabled state: \(enabled): \(e)")
