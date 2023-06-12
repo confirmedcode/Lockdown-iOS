@@ -84,6 +84,7 @@ class BlockLogViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func refreshData(_ sender: Any) {
+        flushBlockLog(log: { _ in })
         blockDayCounterLabel.text = getDayMetricsString(commas: true)
         if BlockDayLog.shared.isEnabled {
             tableView.isHidden = false

@@ -153,6 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         DDLogInfo("applicationDidBecomeActive")
         PacketTunnelProviderLogs.flush()
+        flushBlockLog(log: { _ in })
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
         
         FirewallRepair.run(context: .homeScreenDidLoad)
