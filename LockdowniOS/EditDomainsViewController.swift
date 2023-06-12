@@ -118,6 +118,7 @@ private extension EditDomainsViewController {
 
         createUserBlockedDomainsRows()
         customBlockedDomainsTableView.reloadData()
+        updateLeftButton()
     }
     
     func createUserBlockedDomainsRows() {
@@ -157,10 +158,22 @@ private extension EditDomainsViewController {
                 )
                 
                 self.selectedDomains[domain] = !isChecked
+                self.updateLeftButton()
             }
             
             cell.accessoryType = .none
         }
+    }
+    
+    private func isAllDomainSelected() -> Bool {
+        guard !customBlockedDomains.isEmpty else { return false }
+        
+        for (domain, _) in customBlockedDomains {
+            if (selectedDomains[domain] ?? false) == false {
+                return false
+            }
+        }
+        return true
     }
     
     @objc func closeButtonClicked() {
@@ -170,10 +183,12 @@ private extension EditDomainsViewController {
     }
     
     @objc func selectAllddDomains() {
+        let wasAllSelected = isAllDomainSelected()
         for (domain, _) in customBlockedDomains {
-            selectedDomains[domain] = true
+            selectedDomains[domain] = !wasAllSelected
         }
         reloadCustomBlockedDomains()
+        updateLeftButton()
     }
     
     @objc func moveToList() {
@@ -214,5 +229,13 @@ private extension EditDomainsViewController {
         self.selectedDomains = sortedDomains
         
         self.reloadCustomBlockedDomains()
+    }
+    
+    private func updateLeftButton() {
+        bottomMenu.leftButton.setTitle(
+            isAllDomainSelected() ? NSLocalizedString("Deselect All", comment: "") : NSLocalizedString("Select All", comment: ""),
+            for: .normal
+        )
+        bottomMenu.leftButton.isEnabled = !customBlockedDomains.isEmpty
     }
 }
