@@ -40,7 +40,8 @@ class WhatIsVpnViewController: BaseViewController, AwesomeSpotlightViewDelegate 
             descriptionLabelHeight.constant = 0
         }
         
-        if VPNController.shared.status() != .invalid {
+        if UserDefaults.hasSeenAnonymousPaywall
+            || UserDefaults.hasSeenUniversalPaywall {
             self.getStartedButton.alpha = 0
         }
         
