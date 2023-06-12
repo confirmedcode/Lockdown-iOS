@@ -53,6 +53,14 @@ class ForgotPasswordViewController: BaseViewController, Loadable {
         }
         .done { (success: Bool) in
             self.hideLoadingView()
+            guard success else {
+                self.showPopupDialog(
+                    title: NSLocalizedString("Unknown error", comment: ""),
+                    message: "",
+                    acceptButton: "Okay"
+                )
+                return
+            }
             self.showPopupDialog(title: "Check Email", message: "We've sent a reset password email to you. Be sure to check any spam/junk folders, in case it got stuck there.", acceptButton: "Okay") {
                 self.dismiss(animated: true, completion: nil)
             }

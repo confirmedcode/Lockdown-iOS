@@ -216,7 +216,13 @@ class Client {
                    if httpResponse.statusCode < 400 {
                        return true
                    }
-                   return false
+                   if let error = try? JSONDecoder().decode(ApiError.self, from: data) {
+                       throw error
+                   }
+                   throw ApiError(
+                    code: httpResponse.statusCode,
+                    message: "Unknown error"
+                   )
                }
                DDLogInfo("API RESULT: error - forgot-password: not HTTPURLResponse")
                return false
