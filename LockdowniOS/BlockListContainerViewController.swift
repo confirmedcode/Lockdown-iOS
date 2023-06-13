@@ -11,7 +11,7 @@ import UIKit
 class BlockListContainerViewController: UIViewController {
     
     // MARK: - Properties
-    var didMakeChange = false
+    var didMakeChange = true
     
     private lazy var customNavigationView: CustomNavigationView = {
         let view = CustomNavigationView()
@@ -31,24 +31,8 @@ class BlockListContainerViewController: UIViewController {
         return view
     }()
     
-//    enum Page: CaseIterable {
-//        case curated
-//        case custom
-//
-//        var localizedTitle: String {
-//            switch self {
-//            case .curated:
-//                return NSLocalizedString("Curated", comment: "")
-//            case .custom:
-//                return NSLocalizedString("Custom", comment: "")
-//            }
-//        }
-//    }
-    
     private lazy var segmented: UISegmentedControl = {
         let view = UISegmentedControl()
-//        let view = UISegmentedControl(items: Page.allCases.map(\.localizedTitle))
-//        view.removeAllSegments()
         view.insertSegment(withTitle: "Curated", at: 0, animated: false)
         view.insertSegment(withTitle: "Custom", at: 1, animated: false)
         view.selectedSegmentIndex = 0
@@ -99,7 +83,6 @@ class BlockListContainerViewController: UIViewController {
         segmented.anchors.height.equal(40)
         
         updateView()
-        
     }
 }
 
@@ -133,30 +116,20 @@ private extension BlockListContainerViewController {
     }
     
     func add(asChildViewController viewController: UIViewController) {
-        // Add Child View Controller
         addChild(viewController)
 
-        // Add Child View as Subview
         view.addSubview(viewController.view)
-
-        // Define Constraints
         viewController.view.anchors.top.spacing(24, to: segmented.anchors.bottom)
         viewController.view.anchors.leading.pin()
         viewController.view.anchors.trailing.pin()
         viewController.view.anchors.bottom.pin()
 
-        // Notify Child View Controller
         viewController.didMove(toParent: self)
     }
     
     func remove(asChildViewController viewController: UIViewController) {
-        // Notify Child View Controller
         viewController.willMove(toParent: nil)
-
-        // Remove Child View From Superview
         viewController.view.removeFromSuperview()
-
-        // Notify Child View Controller
         viewController.removeFromParent()
     }
 }

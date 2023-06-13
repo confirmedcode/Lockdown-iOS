@@ -13,7 +13,11 @@ final class CuratedListsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var didMakeChange = false
+    var didMakeChange = false {
+        didSet{
+            
+        }
+    }
     var lockdownBlockLists: [LockdownGroup] = []
     var basicLockdownBlockLists: [LockdownGroup] = []
     var advancedLockdownBlockLists: [LockdownGroup] = []
@@ -40,7 +44,7 @@ final class CuratedListsViewController: UIViewController {
         curatedTableView.dataSource = self
         
         addTableView(curatedTableView) { tableview in
-            curatedTableView.anchors.top.pin(inset: 16)
+            curatedTableView.anchors.top.pin()
             curatedTableView.anchors.leading.pin()
             curatedTableView.anchors.trailing.pin()
             curatedTableView.anchors.bottom.pin()
