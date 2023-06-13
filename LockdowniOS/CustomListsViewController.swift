@@ -405,7 +405,7 @@ private extension CustomListsViewController {
                 if !getUserBlockedDomains().isEmpty {
                     tableView.clear()
                 }
-                
+                self.didMakeChange = true
                 self.reloadCustomBlockedDomains()
             }
         }
