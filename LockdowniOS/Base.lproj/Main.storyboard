@@ -3406,6 +3406,7 @@
                     <navigationItem key="navigationItem" id="bWO-9z-RdW"/>
                     <connections>
                         <outlet property="emailField" destination="pXd-nf-bzR" id="5zC-i3-DMy"/>
+                        <outlet property="submitButton" destination="j43-ba-oDJ" id="pQr-9U-VCE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzx-wt-LeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,14 +11,16 @@ import UIKit
 import PopupDialog
 import PromiseKit
 
-class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loadable {
+class ForgotPasswordViewController: BaseViewController, Loadable {
     
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailField.delegate = self
         setupToHideKeyboardOnTapOnView()
+        updateSubmitButton(isEnabled: false)
     }
     
     func setupToHideKeyboardOnTapOnView()
@@ -35,12 +37,9 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (textField == emailField) {
-            textField.resignFirstResponder()
-            submit()
-        }
-        return false
+    private func updateSubmitButton(isEnabled: Bool) {
+        submitButton.isEnabled = isEnabled
+        submitButton.backgroundColor = isEnabled ? .tunnelsBlue : .borderGray
     }
     
     @IBAction func submit() {
@@ -54,6 +53,14 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
         }
         .done { (success: Bool) in
             self.hideLoadingView()
+            guard success else {
+                self.showPopupDialog(
+                    title: NSLocalizedString("Unknown error", comment: ""),
+                    message: "",
+                    acceptButton: "Okay"
+                )
+                return
+            }
             self.showPopupDialog(title: "Check Email", message: "We've sent a reset password email to you. Be sure to check any spam/junk folders, in case it got stuck there.", acceptButton: "Okay") {
                 self.dismiss(animated: true, completion: nil)
             }
@@ -71,5 +78,21 @@ class ForgotPasswordViewController: BaseViewController, UITextFieldDelegate, Loa
     
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ForgotPasswordViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text as? NSString)?.replacingCharacters(in: range, with: string) ?? ""
+        updateSubmitButton(isEnabled: !text.isEmpty)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == emailField) {
+            textField.resignFirstResponder()
+            submit()
+        }
+        return false
     }
 }
