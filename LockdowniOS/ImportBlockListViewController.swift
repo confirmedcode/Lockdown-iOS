@@ -9,7 +9,7 @@ import UIKit
 import UniformTypeIdentifiers
 import MobileCoreServices
 
-final class ImportBlockListViewController: UIViewController, UIDocumentPickerDelegate {
+final class ImportBlockListViewController: UIViewController, UIDocumentPickerDelegate, DomainListSaveable {
     
     // MARK: - Properties
     
@@ -240,7 +240,12 @@ extension ImportBlockListViewController {
                 return
             }
             
-            showCreateList(forDomainList: content)
+            showCreateList(
+                initialListName: nil,
+                forDomainList: content
+            ) { [weak self] in
+                self?.saveImportedDomains($0, toNewListName: $1)
+            }
         } catch {
             dismiss(animated: true) {
                 let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""),
@@ -252,70 +257,6 @@ extension ImportBlockListViewController {
                 UIApplication.getTopMostViewController()?.present(alert, animated: true, completion: nil)
             }
         }
-    }
-    
-    private func showCreateList(forDomainList domains: Set<String>) {
-        let alertController = UIAlertController(title: "Create New List", message: nil, preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
-            if let txtField = alertController.textFields?.first, let text = txtField.text {
-                self?.validateListName(text, forDomainList: domains)
-            }
-        }
-        
-        saveAction.isEnabled = false
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
-            guard let self else { return }
-            self.dismiss(animated: true)
-        }
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = NSLocalizedString("List Name", comment: "")
-        }
-        
-        NotificationCenter.default.addObserver(
-            forName: UITextField.textDidChangeNotification,
-            object: alertController.textFields?.first,
-            queue: .main) { (notification) -> Void in
-                guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = textFieldText.isValid(.listName)
-            }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func validateListName(_ name: String, forDomainList domains: Set<String>) {
-        guard !getBlockedLists().userBlockListsDefaults.keys.contains(name) else {
-            showAlertAboutExistingListName { [weak self] in
-                self?.showCreateList(forDomainList: domains)
-            }
-            return
-        }
-        
-        self.saveImportedDomains(domains, toNewListName: name)
-    }
-    
-    private func showAlertAboutExistingListName(completion: @escaping () -> Void) {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("This list name is already exist!", comment: ""),
-            message: NSLocalizedString("Please choose another name.", comment: ""),
-            preferredStyle: .alert
-        )
-        
-        alertController.addAction(
-            .init(
-                title: NSLocalizedString("Ok", comment: ""),
-                style: .default,
-                handler: { _ in
-                    completion()
-                }
-            )
-        )
-        
-        present(alertController, animated: true)
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

@@ -430,6 +430,7 @@
 		B163A34B2A2F4BBA00FD7C5E /* Dnscryptproxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B163A33F2A2F498600FD7C5E /* Dnscryptproxy.xcframework */; };
 		B163A34E2A2F4C2C00FD7C5E /* Resolver.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B163A32B2A2F2BE700FD7C5E /* Resolver.xcframework */; };
 		B163A34F2A2F4C2C00FD7C5E /* Resolver.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B163A32B2A2F2BE700FD7C5E /* Resolver.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
 		E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */; };
 /* End PBXBuildFile section */
@@ -864,6 +865,7 @@
 		B163A3312A2F2C7800FD7C5E /* NEKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NEKit.xcframework; path = ThirdPartyFrameworks/NEKit.xcframework; sourceTree = "<group>"; };
 		B163A3372A2F2CBC00FD7C5E /* tun2socks.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tun2socks.xcframework; path = ThirdPartyFrameworks/tun2socks.xcframework; sourceTree = "<group>"; };
 		B163A33F2A2F498600FD7C5E /* Dnscryptproxy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Dnscryptproxy.xcframework; sourceTree = "<group>"; };
+		B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListSaveable.swift; sourceTree = "<group>"; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
 		BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
@@ -1359,6 +1361,7 @@
 				40E04A522A29D79100000E8C /* BlockListContainerViewController.swift */,
 				40E04A542A29D7AB00000E8C /* CuratedListsViewController.swift */,
 				40E04A562A29D7BC00000E8C /* CustomListsViewController.swift */,
+				B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2824,6 +2827,7 @@
 				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */,
 				40CC84B22A14C0D800F9805E /* UIAppearance+Ext.swift in Sources */,
+				B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */,
 				40E7A3012A0E1C7A00E0231A /* SplashscreenViewController.swift in Sources */,
 				3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */,
