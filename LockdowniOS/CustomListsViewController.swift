@@ -9,7 +9,7 @@
 import UIKit
 import CocoaLumberjackSwift
 
-final class CustomListsViewController: UIViewController {
+final class CustomListsViewController: UIViewController, DomainListSaveable {
     
     // MARK: - Properties
     
@@ -308,43 +308,16 @@ private extension CustomListsViewController {
     @objc func addList() {
         
         let tableView = customBlockedListsTableView
-
-        let alertController = UIAlertController(title: "Create New List", message: nil, preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] (_) in
-            if let txtField = alertController.textFields?.first, let text = txtField.text {
-                guard let self else { return }
-                self.saveNewList(userEnteredListName: text)
-//                if !getBlockedLists().isEmpty {
-//                    tableView.clear()
-//                }
-                self.reloadCustomBlockedLists()
-                self.listsSubmenuView.isHidden = true
-            }
-        }
-        
-        saveAction.isEnabled = false
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
+        showCreateList(
+            initialListName: nil,
+            forDomainList: []
+        ) { [weak self] _, name in
             guard let self else { return }
+            self.saveNewList(userEnteredListName: name)
+            self.reloadCustomBlockedLists()
             self.listsSubmenuView.isHidden = true
         }
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = NSLocalizedString("List Name", comment: "")
-        }
-        
-        NotificationCenter.default.addObserver(
-            forName: UITextField.textDidChangeNotification,
-            object: alertController.textFields?.first,
-            queue: .main) { (notification) -> Void in
-                guard let textFieldText = alertController.textFields?.first?.text else { return }
-                saveAction.isEnabled = textFieldText.isValid(.listName)
-            }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
     }
     
     func deleteList(list: String) {
