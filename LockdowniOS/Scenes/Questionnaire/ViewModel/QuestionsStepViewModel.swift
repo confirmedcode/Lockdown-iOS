@@ -18,6 +18,10 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
     }
     
+    var isFilled: Bool {
+        model.isAllRequiredQuestionsAnswered
+    }
+    
     private var model = QuestionModel() {
         didSet {
             updateRows()

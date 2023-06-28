@@ -47,6 +47,8 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         return result
     }
     
+    var isFilled = true
+    
     override func updateRows() {
         staticTableView?.clear()
         addTitleRow(

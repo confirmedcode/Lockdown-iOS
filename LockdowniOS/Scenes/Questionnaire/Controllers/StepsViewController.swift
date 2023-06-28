@@ -102,6 +102,16 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         present(viewController, animated: true)
     }
     
+    func showAlert(_ title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(.init(
+            title: NSLocalizedString("Ok", comment: ""), style: .default)
+        )
+        
+        present(alert, animated: true)
+    }
+    
     // MARK: - actions
     
     @objc private func backButtonClicked() {
