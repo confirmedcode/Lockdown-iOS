@@ -11,6 +11,7 @@ import UIKit
 final class ConfiguredNavigationView: UIView {
     
     private(set) var buttonCallback: () -> () = { }
+    var accentColor = UIColor.tunnelsBlue
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -23,7 +24,7 @@ final class ConfiguredNavigationView: UIView {
     lazy var leftNavButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.font = fontBold13
-        button.tintColor = .tunnelsBlue
+        button.tintColor = accentColor
         button.addTarget(self, action: #selector(buttonDidPress), for: .touchUpInside)
         return button
     }()
@@ -31,13 +32,14 @@ final class ConfiguredNavigationView: UIView {
     lazy var rightNavButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.font = fontBold13
-        button.tintColor = .tunnelsBlue
+        button.tintColor = accentColor
         button.addTarget(self, action: #selector(buttonDidPress), for: .touchUpInside)
         return button
     }()
 
-    init() {
+    init(accentColor: UIColor = .tunnelsBlue) {
         super.init(frame: .zero)
+        self.accentColor = accentColor
         configureUI()
     }
     

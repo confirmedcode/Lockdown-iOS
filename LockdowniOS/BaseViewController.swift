@@ -293,7 +293,6 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         PacketTunnelProviderLogs.flush()
         DDLogInfo("")
         
-        let recipient = "team@lockdownprivacy.com"
         var appendString = ""
         if (getUserWantsVPNEnabled()) {
             appendString = appendString + " - S"
@@ -306,6 +305,11 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         }
         message += "\n\n\n"
         
+        sendMessage(message, subject: subject)
+    }
+    
+    func sendMessage(_ message: String, subject: String) {
+        let recipient = "team@lockdownprivacy.com"
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self
