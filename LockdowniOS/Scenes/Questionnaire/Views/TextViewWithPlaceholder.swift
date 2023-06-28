@@ -17,7 +17,7 @@ class TextViewWithPlaceholder: UIView {
         textView.delegate = self
         textView.font = .regularLockdownFont(size: 16)
         textView.backgroundColor = .clear
-        textView.textColor = .black
+        textView.textColor = .label
         textView.isScrollEnabled = false
         return textView
     }()
@@ -25,7 +25,7 @@ class TextViewWithPlaceholder: UIView {
     private(set) lazy var placeholderLabel: UILabel = {
         let label = UILabel()
         label.font = .regularLockdownFont(size: 16)
-        label.textColor = .black
+        label.textColor = .secondaryLabel
         label.alpha = 0.3
         label.numberOfLines = 0
         return label
@@ -41,7 +41,7 @@ class TextViewWithPlaceholder: UIView {
     }
     
     private func configure() {
-        backgroundColor = .extraLightGray
+        backgroundColor = .tableCellBackground
         layer.cornerRadius = 10
         
         addSubview(textView)

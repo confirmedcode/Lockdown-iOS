@@ -16,7 +16,7 @@ class CountryView: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 36)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
 
@@ -24,7 +24,7 @@ class CountryView: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -51,7 +51,7 @@ class CountryView: UIView {
     }
     
     private func configure() {
-        backgroundColor = .extraLightGray
+        backgroundColor = .tableCellBackground
         layer.cornerRadius = 8
         layer.borderWidth = 0
         

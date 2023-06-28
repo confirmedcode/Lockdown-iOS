@@ -22,7 +22,7 @@ class YesNoRadioSwitcherView: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -35,7 +35,7 @@ class YesNoRadioSwitcherView: UIView {
     private lazy var yesLabel: UILabel = {
         let label = UILabel()
         label.font = .regularLockdownFont(size: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.text = NSLocalizedString("Yes", comment: "")
         return label
     }()
@@ -49,7 +49,7 @@ class YesNoRadioSwitcherView: UIView {
     private lazy var noLabel: UILabel = {
         let label = UILabel()
         label.font = .regularLockdownFont(size: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.text = NSLocalizedString("No", comment: "")
         return label
     }()

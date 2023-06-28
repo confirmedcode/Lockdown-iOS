@@ -14,7 +14,7 @@ class NavigationLinkView: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 36)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
 
@@ -22,7 +22,7 @@ class NavigationLinkView: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -30,7 +30,7 @@ class NavigationLinkView: UIView {
         let label = UILabel()
         label.font = .regularLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .secondaryLabel
         return label
     }()
     
@@ -54,7 +54,7 @@ class NavigationLinkView: UIView {
     }
     
     private func configure() {
-        backgroundColor = .extraLightGray
+        backgroundColor = .tableCellBackground
         layer.cornerRadius = 8
         layer.borderWidth = 0
         

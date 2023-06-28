@@ -17,8 +17,8 @@ class SelectableRadioSwitcherWithTitle: UIView {
     }
     var didSelect: ((Bool) -> Void)?
     
-    var unselectedBackgroundColor = UIColor.extraLightGray
-    var selectedBackgroundColor = UIColor.tunnelsLightBlue
+    var unselectedBackgroundColor = UIColor.tableCellBackground
+    var selectedBackgroundColor = UIColor.tableCellSelectedBackground
     var selectedBorderColor = UIColor.tunnelsBlue
     
     private lazy var switcher: RadioSwitcher = {
@@ -31,7 +31,7 @@ class SelectableRadioSwitcherWithTitle: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     

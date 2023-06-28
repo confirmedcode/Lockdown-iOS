@@ -27,7 +27,7 @@ class SelectCountryViewController: UIViewController {
     private lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView(accentColor: .darkText)
         view.titleLabel.text = NSLocalizedString("Select country", comment: "")
-        view.titleLabel.textColor = .black
+        view.titleLabel.textColor = .label
         view.leftNavButton.setTitle(NSLocalizedString("DONE", comment: ""), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(doneClicked), for: .touchUpInside)
         view.leftNavButton.tintColor = .tunnelsBlue
@@ -47,7 +47,7 @@ class SelectCountryViewController: UIViewController {
     
     // MARK: - Configure UI
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .panelSecondaryBackground
         
         view.addSubview(navigationView)
         navigationView.anchors.leading.pin()

@@ -79,7 +79,7 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     }
     
     private func isSelectedOther() -> Bool {
-        selectedProblemIndex != problemList.count - 1
+        selectedProblemIndex == problemList.count - 1
     }
     
     private func updateForSelect(problemIndex: Int, isSelected: Bool) {

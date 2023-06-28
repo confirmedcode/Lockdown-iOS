@@ -14,7 +14,7 @@ class TitleAndSubtitleView: UIView {
         let label = UILabel()
         label.font = .boldLockdownFont(size: 34)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -22,7 +22,7 @@ class TitleAndSubtitleView: UIView {
         let label = UILabel()
         label.font = .mediumLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .borderGray
+        label.textColor = .secondaryLabel
         return label
     }()
     

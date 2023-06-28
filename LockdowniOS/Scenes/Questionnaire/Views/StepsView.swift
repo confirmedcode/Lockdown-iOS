@@ -24,7 +24,7 @@ class StepsView: UIView {
     }
     
     var filledColor = UIColor.tunnelsBlue
-    var unfilledColor = UIColor.smallGrey
+    var unfilledColor = UIColor.tableCellBackground
 
     private var views = [UIView]()
     

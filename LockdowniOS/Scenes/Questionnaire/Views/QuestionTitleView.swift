@@ -14,7 +14,7 @@ class QuestionTitleView: UIView {
         let label = UILabel()
         label.font = .semiboldLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
 

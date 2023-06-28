@@ -19,8 +19,10 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         let view = ConfiguredNavigationView(accentColor: .darkText)
         view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
+        view.leftNavButton.tintColor = .label
         view.rightNavButton.setTitle(NSLocalizedString("Skip", comment: ""), for: .normal)
         view.rightNavButton.addTarget(self, action: #selector(skipClicked), for: .touchUpInside)
+        view.rightNavButton.tintColor = .label
         return view
     }()
     
@@ -53,7 +55,7 @@ class StepsViewController: UIViewController, StepsViewProtocol {
     
     // MARK: - Configure UI
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .panelSecondaryBackground
         
         view.addSubview(navigationView)
         navigationView.anchors.leading.pin()
