@@ -438,6 +438,9 @@ final class AccountViewController: BaseViewController, Loadable {
                         .custom(title: NSLocalizedString("Email Us", comment: ""), completion: {
                             self.emailTeam()
                         }),
+                        .custom(title: NSLocalizedString("Fill Questions", comment: "")) { [weak self] in
+                            self?.openQuestionnaire()
+                        },
                         .cancel()
                     ]
                 )
@@ -509,6 +512,19 @@ final class AccountViewController: BaseViewController, Loadable {
         default:
             break
         }
+    }
+    
+    private func openQuestionnaire() {
+        let stepsViewController = StepsViewController()
+        var viewModel = StepsViewModel { [weak self] message in
+            self?.sendMessage(
+                message,
+                subject: "Lockdown Error Reporting Form (iOS \(Bundle.main.versionString))"
+            )
+        }
+        stepsViewController.viewModel = viewModel
+        stepsViewController.modalPresentationStyle = .fullScreen
+        present(stepsViewController, animated: true)
     }
 }
 

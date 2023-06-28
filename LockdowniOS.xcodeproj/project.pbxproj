@@ -442,6 +442,27 @@
 		A1FCDA8D22D3C50A00C928BC /* email_opens.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA8C22D3C50A00C928BC /* email_opens.txt */; };
 		A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1FCDA9022D3D52C00C928BC /* facebook_inc_ipv6.txt */; };
 		B05197BCB274B38A23A35CAF /* Pods_LockdownTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB305D330C07B959830513 /* Pods_LockdownTests.framework */; };
+		B1062A2D2A447B2F00FA9E8B /* RadioSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A2C2A447B2F00FA9E8B /* RadioSwitcher.swift */; };
+		B1062A2F2A448F1700FA9E8B /* SelectableRadioSwitcherWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A2E2A448F1700FA9E8B /* SelectableRadioSwitcherWithTitle.swift */; };
+		B1062A312A449F5200FA9E8B /* TitleAndSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A302A449F5200FA9E8B /* TitleAndSubtitleView.swift */; };
+		B1062A332A459AC800FA9E8B /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */; };
+		B1062A362A45BD7000FA9E8B /* StepsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */; };
+		B1062A382A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */; };
+		B1A01CA52A4328E1004D43EE /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CA42A4328E1004D43EE /* StepsViewController.swift */; };
+		B1A01CA92A432926004D43EE /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CA82A432926004D43EE /* StepModel.swift */; };
+		B1A01CAC2A4343F1004D43EE /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CAB2A4343F1004D43EE /* StepsView.swift */; };
+		B1BA87012A4C4BC400D141A8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */; };
+		B1F11C7A2A498C5300A137A3 /* QuestionsStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */; };
+		B1F11C7C2A498CBF00A137A3 /* BaseStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */; };
+		B1F11C7E2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */; };
+		B1F11C802A49E35800A137A3 /* QuestionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7F2A49E35800A137A3 /* QuestionTitleView.swift */; };
+		B1F11C822A49E63400A137A3 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C812A49E63400A137A3 /* NavigationLinkView.swift */; };
+		B1F11C842A4B029800A137A3 /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C832A4B029800A137A3 /* SelectCountryViewController.swift */; };
+		B1F11C862A4B02EE00A137A3 /* SelectCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C852A4B02EE00A137A3 /* SelectCountryViewModel.swift */; };
+		B1F11C882A4B033000A137A3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C872A4B033000A137A3 /* Country.swift */; };
+		B1F11C8A2A4B050500A137A3 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C892A4B050500A137A3 /* CountryView.swift */; };
+		B1F11C8C2A4C273500A137A3 /* SelectRegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */; };
+		B1F11C8E2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */; };
 		B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
 		E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */; };
@@ -928,6 +949,27 @@
 		A2316A93257F196F84916806 /* Pods-Lockdown Firewall Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown Firewall Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown Firewall Widget/Pods-Lockdown Firewall Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		A75E57A0F35C50EA949FB1FE /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		AE616CC875B5A9730B25D559 /* Pods_Lockdown_Firewall_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockdown_Firewall_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1062A2C2A447B2F00FA9E8B /* RadioSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSwitcher.swift; sourceTree = "<group>"; };
+		B1062A2E2A448F1700FA9E8B /* SelectableRadioSwitcherWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableRadioSwitcherWithTitle.swift; sourceTree = "<group>"; };
+		B1062A302A449F5200FA9E8B /* TitleAndSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndSubtitleView.swift; sourceTree = "<group>"; };
+		B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
+		B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
+		B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatProblemStepViewModel.swift; sourceTree = "<group>"; };
+		B1A01CA42A4328E1004D43EE /* StepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
+		B1A01CA82A432926004D43EE /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
+		B1A01CAB2A4343F1004D43EE /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
+		B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsStepViewModel.swift; sourceTree = "<group>"; };
+		B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStepViewModel.swift; sourceTree = "<group>"; };
+		B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoRadioSwitcherView.swift; sourceTree = "<group>"; };
+		B1F11C7F2A49E35800A137A3 /* QuestionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTitleView.swift; sourceTree = "<group>"; };
+		B1F11C812A49E63400A137A3 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
+		B1F11C832A4B029800A137A3 /* SelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewController.swift; sourceTree = "<group>"; };
+		B1F11C852A4B02EE00A137A3 /* SelectCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewModel.swift; sourceTree = "<group>"; };
+		B1F11C872A4B033000A137A3 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		B1F11C892A4B050500A137A3 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionViewModel.swift; sourceTree = "<group>"; };
+		B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSelectCountryViewModel.swift; sourceTree = "<group>"; };
 		B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListSaveable.swift; sourceTree = "<group>"; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
 		BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1410,6 +1452,7 @@
 				402D252429E5840500A5AB60 /* Import Block List */,
 				402D251129E5142A00A5AB60 /* Edit Domains */,
 				402D24CF29D87EF900A5AB60 /* Configure Blocking */,
+				B1A01CA32A432826004D43EE /* Questionnaire */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -2061,6 +2104,67 @@
 			);
 			name = "Block Lists";
 			path = LockdowniOS;
+			sourceTree = "<group>";
+		};
+		B1062A342A45BD5800FA9E8B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */,
+				B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */,
+				B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */,
+				B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */,
+				B1F11C852A4B02EE00A137A3 /* SelectCountryViewModel.swift */,
+				B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */,
+				B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B1A01CA32A432826004D43EE /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				B1A01CA62A432902004D43EE /* Controllers */,
+				B1A01CA72A432919004D43EE /* Models */,
+				B1062A342A45BD5800FA9E8B /* ViewModel */,
+				B1A01CAA2A4343D0004D43EE /* Views */,
+			);
+			name = Questionnaire;
+			path = Scenes/Questionnaire;
+			sourceTree = "<group>";
+		};
+		B1A01CA62A432902004D43EE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B1A01CA42A4328E1004D43EE /* StepsViewController.swift */,
+				B1F11C832A4B029800A137A3 /* SelectCountryViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B1A01CA72A432919004D43EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1A01CA82A432926004D43EE /* StepModel.swift */,
+				B1F11C872A4B033000A137A3 /* Country.swift */,
+				B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B1A01CAA2A4343D0004D43EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1A01CAB2A4343F1004D43EE /* StepsView.swift */,
+				B1062A2C2A447B2F00FA9E8B /* RadioSwitcher.swift */,
+				B1062A2E2A448F1700FA9E8B /* SelectableRadioSwitcherWithTitle.swift */,
+				B1062A302A449F5200FA9E8B /* TitleAndSubtitleView.swift */,
+				B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */,
+				B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */,
+				B1F11C7F2A49E35800A137A3 /* QuestionTitleView.swift */,
+				B1F11C812A49E63400A137A3 /* NavigationLinkView.swift */,
+				B1F11C892A4B050500A137A3 /* CountryView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D4B0457BD6E109D891101985 /* Pods */ = {
@@ -2874,15 +2978,19 @@
 				4015B4FF29F14C95004102E0 /* LDCardView.swift in Sources */,
 				402D254E29EE598D00A5AB60 /* TrackersGroupView.swift in Sources */,
 				3D47CDC522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
+				B1F11C882A4B033000A137A3 /* Country.swift in Sources */,
 				40CC84BC2A14C0EA00F9805E /* UIView+Ext.swift in Sources */,
 				A1EBEACD2097AE6E002B9087 /* M13CheckboxFadeController.swift in Sources */,
 				409B59E62A15D00C0010242C /* WelcomeViewController.swift in Sources */,
 				40CC81792A14BA8800F9805E /* EmailAddress.swift in Sources */,
 				3D47CDCF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
 				3D47CDC422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
+				B1A01CA52A4328E1004D43EE /* StepsViewController.swift in Sources */,
 				7C1AE07A247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				40CC84AF2A14C0D800F9805E /* Date+Ext.swift in Sources */,
 				A1EBEAD72097AE6E002B9087 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				B1A01CAC2A4343F1004D43EE /* StepsView.swift in Sources */,
+				B1062A2F2A448F1700FA9E8B /* SelectableRadioSwitcherWithTitle.swift in Sources */,
 				3D970DAD22EC149D00F9CC93 /* BlockLogCell.swift in Sources */,
 				A1EBEACF2097AE6E002B9087 /* M13Checkbox.swift in Sources */,
 				40E04A222A26708200000E8C /* WhatsNewViewController.swift in Sources */,
@@ -2892,13 +3000,16 @@
 				3D47CDCD22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				7CAB283F254336230087AAF4 /* CustomNavigationView.swift in Sources */,
 				A1EBEAD22097AE6E002B9087 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				B1F11C8C2A4C273500A137A3 /* SelectRegionViewModel.swift in Sources */,
 				3DCA4F3122F190AE0017740D /* ClientModels.swift in Sources */,
 				3DCFE6FA24493F9000EA9B35 /* marketing_beta.txt in Sources */,
 				3D0711B822FE79BE00391C6E /* WhyTrustViewController.swift in Sources */,
 				A118F64520B33FED009A64E7 /* TimerEx.swift in Sources */,
 				408E7A9429F88C9200B2F587 /* CustomUISwitch.swift in Sources */,
+				B1062A362A45BD7000FA9E8B /* StepsViewModel.swift in Sources */,
 				7C422EAF252797A6007F9C22 /* AccountVC.swift in Sources */,
 				4015B50329F16E1A004102E0 /* LDConfigurationViewController.swift in Sources */,
+				B1F11C7C2A498CBF00A137A3 /* BaseStepViewModel.swift in Sources */,
 				3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				3D9FC67723E503DF004122D3 /* EmailSignInViewController.swift in Sources */,
 				3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */,
@@ -2912,6 +3023,7 @@
 				402D251929E517E100A5AB60 /* ConfiguredNavigationView.swift in Sources */,
 				7C422EA525279724007F9C22 /* Align.swift in Sources */,
 				A118F64120B33FED009A64E7 /* TransitionSubmitButton.swift in Sources */,
+				B1F11C802A49E35800A137A3 /* QuestionTitleView.swift in Sources */,
 				3DBD57A622FBCD7A00DE189F /* WhitelistViewController.swift in Sources */,
 				402D252129E52D7600A5AB60 /* BottomMenu.swift in Sources */,
 				40CC84A82A14C09600F9805E /* String+URL.swift in Sources */,
@@ -2925,6 +3037,7 @@
 				A1EBEADA2097AE6E002B9087 /* M13CheckboxFillController.swift in Sources */,
 				A1EBEAD42097AE6E002B9087 /* M13CheckboxPathGenerator.swift in Sources */,
 				40CC817E2A14BB3600F9805E /* UIView+Corners.swift in Sources */,
+				B1062A2D2A447B2F00FA9E8B /* RadioSwitcher.swift in Sources */,
 				A1EBEACB2097AE6E002B9087 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				40960AEB2A03396F000F82EB /* ProductPurchasable.swift in Sources */,
 				40CC84AA2A14C0A300F9805E /* String+Attributed.swift in Sources */,
@@ -2944,6 +3057,7 @@
 				7CC8EFED254036050005054C /* FirewallRepair.swift in Sources */,
 				3D47CDD422F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				402BAD382A0CD3B0009B8820 /* ConnectionState.swift in Sources */,
+				B1F11C862A4B02EE00A137A3 /* SelectCountryViewModel.swift in Sources */,
 				7CE91C712521D58C009D8269 /* Metrics.swift in Sources */,
 				40960AE92A033514000F82EB /* AccessLevel.swift in Sources */,
 				40098E2A29FDA6A800886474 /* BulletView.swift in Sources */,
@@ -2951,21 +3065,27 @@
 				402D252329E5473E00A5AB60 /* EditDomainsCell.swift in Sources */,
 				A12186271FB8F691007058B3 /* OldSignupViewController.swift in Sources */,
 				A1EBEAD12097AE6E002B9087 /* M13Checkbox+IB.swift in Sources */,
+				B1F11C8E2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift in Sources */,
 				40CC84B92A14C0EA00F9805E /* Font+Ext.swift in Sources */,
 				A1FCDA5F22C14EB800C928BC /* BlockListGroupCell.swift in Sources */,
+				B1F11C7E2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift in Sources */,
 				40098E3B29FF378F00886474 /* FirewallPaywallViewController.swift in Sources */,
 				40CC84C72A14C2B800F9805E /* TextInputState.swift in Sources */,
 				409B59E02A14CB7B0010242C /* SignUpViewController.swift in Sources */,
+				B1F11C8A2A4B050500A137A3 /* CountryView.swift in Sources */,
 				A1EBEACC2097AE6E002B9087 /* M13CheckboxDotController.swift in Sources */,
 				7C1AE075247FE1FB0000A7D3 /* PushNotificationsAuthorizationUI.swift in Sources */,
 				40098E3C29FF378F00886474 /* AnnualPlanView.swift in Sources */,
 				A1EBEAD92097AE6E002B9087 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				A1FCDA5D22C1301A00C928BC /* BlockListGroupViewController.swift in Sources */,
+				B1F11C842A4B029800A137A3 /* SelectCountryViewController.swift in Sources */,
 				3DBD57B022FC14CD00DE189F /* Shared.swift in Sources */,
 				40960AE22A029A7D000F82EB /* UIApplication+Extension.swift in Sources */,
 				40E04A572A29D7BC00000E8C /* CustomListsViewController.swift in Sources */,
+				B1F11C822A49E63400A137A3 /* NavigationLinkView.swift in Sources */,
 				A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */,
 				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
+				B1BA87012A4C4BC400D141A8 /* QuestionModel.swift in Sources */,
 				40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */,
 				40CC84B22A14C0D800F9805E /* UIAppearance+Ext.swift in Sources */,
 				B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */,
@@ -2992,12 +3112,14 @@
 				3D9FC67923E521DE004122D3 /* ForgotPasswordViewController.swift in Sources */,
 				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
+				B1062A382A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift in Sources */,
 				402D253129E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift in Sources */,
 				7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */,
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				7C44081B2539BCCE003FAD1E /* ProtectedFileAccess.swift in Sources */,
 				7C1AE073247FD82A0000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
 				7C798A1A25409F8100A99695 /* Mailto.swift in Sources */,
+				B1A01CA92A432926004D43EE /* StepModel.swift in Sources */,
 				40CC84B02A14C0D800F9805E /* CALayer+Ext.swift in Sources */,
 				3D47CDBC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				3D47CDBA22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
@@ -3031,17 +3153,20 @@
 				3DF2455423A2F8A400E46613 /* EmailSignUpViewController.swift in Sources */,
 				3D47CDB522F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				3D47CDC922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationAudioEqualizer.swift in Sources */,
+				B1062A332A459AC800FA9E8B /* TextViewWithPlaceholder.swift in Sources */,
 				40098E2E29FDA6E500886474 /* PlanView.swift in Sources */,
 				40E04A592A2A1B4C00000E8C /* CTAView.swift in Sources */,
 				3D47CDB722F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				3D47CDD322F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				A1141A151F46230500F54698 /* AppDelegate.swift in Sources */,
+				B1062A312A449F5200FA9E8B /* TitleAndSubtitleView.swift in Sources */,
 				3DBD57AE22FBE04300DE189F /* WhitelistAddCell.swift in Sources */,
 				4015B4F729EFD9AC004102E0 /* AccessLevelView.swift in Sources */,
 				3D47CDB922F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				402D24CB29D87B5A00A5AB60 /* ListsSubmenuView.swift in Sources */,
 				402BAD252A0B675B009B8820 /* LockedListsView.swift in Sources */,
 				40CC84BA2A14C0EA00F9805E /* UICollectionView+Dequeue.swift in Sources */,
+				B1F11C7A2A498C5300A137A3 /* QuestionsStepViewModel.swift in Sources */,
 				40E04A242A26758200000E8C /* WhatsNewDescriptionLabel.swift in Sources */,
 				4015B4FD29F00DD8004102E0 /* LDVpnViewController.swift in Sources */,
 				A1EBEACE2097AE6E002B9087 /* M13CheckboxExpandController.swift in Sources */,
