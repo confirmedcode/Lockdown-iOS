@@ -569,6 +569,17 @@ func addDomainToBlockedList(domain: String, for listName: String) {
     defaults.set(encodedData, forKey: kUserBlockedLists)
 }
 
+func deleteDoman(domain: String, inBlockedListName listName: String) -> UserBlockListsGroup? {
+    var data = getBlockedLists()
+    guard let index = data.userBlockListsDefaults[listName]?.domains.firstIndex(of: domain) else {
+        return nil
+    }
+    data.userBlockListsDefaults[listName]?.domains.remove(at: index)
+    let encodedData = try? JSONEncoder().encode(data)
+    defaults.set(encodedData, forKey: kUserBlockedLists)
+    return data.userBlockListsDefaults[listName]
+}
+
 extension UserBlockListsGroup {
     func generateCurrentTimeStamp () -> String {
         let formatter = DateFormatter()

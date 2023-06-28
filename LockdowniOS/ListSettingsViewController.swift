@@ -115,6 +115,12 @@ final class ListSettingsViewController: UIViewController {
         tableView.register(ListBlockedTableViewCell.self, forCellReuseIdentifier: ListBlockedTableViewCell.identifier)
         tableView.register(DomainsBlockedTableViewCell.self, forCellReuseIdentifier: DomainsBlockedTableViewCell.identifier)
     }
+    
+    private func removeDomain(at index: Int) {
+        guard let list = blockedList else { return }
+        let domain = Array(list.domains)[index]
+        blockedList = deleteDoman(domain: domain, inBlockedListName: listName)
+    }
 }
 
 extension ListSettingsViewController: UITableViewDataSource {
@@ -219,6 +225,24 @@ extension ListSettingsViewController: UITableViewDataSource {
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        indexPath.section == 2
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard indexPath.section == 2,
+              editingStyle == .delete else {
+            return
+        }
+        
+        removeDomain(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 
