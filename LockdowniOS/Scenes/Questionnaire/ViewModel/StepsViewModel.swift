@@ -10,6 +10,7 @@ import UIKit
 
 protocol StepsViewProtocol: AnyObject {
     func changeContent()
+    func updateNextButton()
     func close(completion: (() -> Void)?)
     func showSelectCountry(with viewModel: SelectCountryViewModelProtocol)
     func showAlert(_ title: String?, message: String?)
@@ -17,7 +18,6 @@ protocol StepsViewProtocol: AnyObject {
 
 protocol StepViewModelProtocol {
     func contentView() -> UITableView
-    var isSkiped: Bool { get set }
     var step: Steps { get }
     var message: String? { get }
     var isFilled: Bool { get }
@@ -25,9 +25,17 @@ protocol StepViewModelProtocol {
 
 class StepsViewModel {
     private lazy var steps: [StepViewModelProtocol] = [
-        WhatProblemStepViewModel(),
+        whatProblemStep,
         questionsStep
     ]
+    
+    private lazy var whatProblemStep: WhatProblemStepViewModel = {
+        let viewModel = WhatProblemStepViewModel() { [weak self] _ in
+            self?.view?.updateNextButton()
+        }
+        return viewModel
+    }()
+    
     private lazy var questionsStep: QuestionsStepViewModel = {
         let viewModel = QuestionsStepViewModel()
         viewModel.selectCountry = { [weak self] in self?.selectCountry(viewModel: $0) }
@@ -35,10 +43,6 @@ class StepsViewModel {
     }()
     
     private weak var view: StepsViewProtocol?
-    
-    var showSkipButton: Bool {
-        stepViewModel.step.showSkipButton
-    }
     
     var stepsCount: Int {
         steps.count
@@ -52,6 +56,10 @@ class StepsViewModel {
     
     var stepViewModel: StepViewModelProtocol {
         steps[currentStepIndex]
+    }
+    
+    var isStepReady: Bool {
+        steps[currentStepIndex].isFilled
     }
     
     private var sendMessage: ((String) -> Void)?
@@ -78,13 +86,6 @@ class StepsViewModel {
         view?.changeContent()
     }
     
-    func skipStep() {
-        guard stepViewModel.step.showSkipButton else { return }
-        
-        steps[currentStepIndex].isSkiped = true
-        performStepAction()
-    }
-    
     func backPressed() {
         guard currentStepIndex > 0 else {
             view?.close(completion: nil)
@@ -93,7 +94,6 @@ class StepsViewModel {
         
         currentStepIndex -= 1
         view?.changeContent()
-        steps[currentStepIndex].isSkiped = false
     }
     
     func selectCountry(viewModel: SelectCountryViewModelProtocol) {

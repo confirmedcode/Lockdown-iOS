@@ -18,7 +18,11 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     ]
     
     private var selectedProblemIndex = -1
-    private var otherInput: String?
+    private var otherInput: String? {
+        didSet {
+            didChangeReady?(isFilled)
+        }
+    }
     
     private var selectedProblem: String? {
         if (0..<problemList.count).contains(selectedProblemIndex) {
@@ -36,7 +40,7 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     
     var step: Steps = .whatsProblem
     var message: String? {
-        guard !isSkiped, selectedProblemIndex >= 0 else { return nil }
+        guard selectedProblemIndex >= 0 else { return nil }
         var result = ""
         result.append(problemList[selectedProblemIndex])
         if isSelectedOther(),
@@ -47,7 +51,21 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         return result
     }
     
-    var isFilled = true
+    var isFilled: Bool {
+        guard selectedProblemIndex >= 0 else {
+            return false
+        }
+        if isSelectedOther() {
+            return !(otherInput?.isEmpty ?? true)
+        }
+        return true
+    }
+    
+    var didChangeReady: ((Bool) -> Void)?
+    
+    init(didChangeReady: ((Bool) -> Void)?) {
+        self.didChangeReady = didChangeReady
+    }
     
     override func updateRows() {
         staticTableView?.clear()
@@ -94,5 +112,6 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             otherInput = nil
         }
         updateRows()
+        didChangeReady?(isFilled)
     }
 }

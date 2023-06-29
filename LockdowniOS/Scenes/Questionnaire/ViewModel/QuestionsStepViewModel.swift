@@ -18,9 +18,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
     }
     
-    var isFilled: Bool {
-        model.isAllRequiredQuestionsAnswered
-    }
+    var isFilled = true
     
     private var model = QuestionModel() {
         didSet {
