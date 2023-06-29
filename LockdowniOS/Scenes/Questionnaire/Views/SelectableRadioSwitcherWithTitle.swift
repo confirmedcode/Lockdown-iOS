@@ -23,7 +23,7 @@ class SelectableRadioSwitcherWithTitle: UIView {
     
     private lazy var switcher: RadioSwitcher = {
         let view = RadioSwitcher()
-        view.didSelect = { [weak self] in self?.isSelected = $0 }
+        view.didSelect = { [weak self] _ in self?.tapped() }
         return view
     }()
     
