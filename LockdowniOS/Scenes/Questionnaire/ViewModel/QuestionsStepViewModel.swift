@@ -41,7 +41,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addYesNoRow(
-            title: NSLocalizedString("1. Is the firewall on? (optional)", comment: ""),
+            title: NSLocalizedString("1. Is the firewall on?", comment: ""),
             initialValue: model.isFirewallOn,
             didSelect: { [weak self] in self?.model.isFirewallOn = $0 }
         )
@@ -53,7 +53,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addYesNoRow(
-            title: NSLocalizedString("2. Is the VPN on? (optional)", comment: ""),
+            title: NSLocalizedString("2. Is the VPN on?", comment: ""),
             initialValue: model.isVPNOn,
             didSelect: { [weak self] in self?.model.isVPNOn = $0 }
         )
@@ -118,7 +118,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addQuestionTitleRow(
-            NSLocalizedString("8. Additional details. (optional)", comment: "")
+            NSLocalizedString("8. Additional details.", comment: "")
         )
         addTextViewRow(
             text: otherDetailsInput,
