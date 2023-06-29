@@ -73,8 +73,7 @@ class SelectableRadioSwitcherWithTitle: UIView {
     }
     
     @objc private func tapped() {
-        isSelected.toggle()
-        didSelect?(isSelected)
+        didSelect?(!isSelected)
     }
 
 }

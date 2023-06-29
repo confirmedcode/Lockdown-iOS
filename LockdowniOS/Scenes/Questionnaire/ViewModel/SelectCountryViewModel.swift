@@ -9,6 +9,10 @@
 import Foundation
 
 class SelectCountryViewModel: BaseSelectCountryViewModel, SelectCountryViewModelProtocol {
+    var title: String {
+        NSLocalizedString("Select country", comment: "")
+    }
+    
     override func generateCountryList() -> [Country] {
         if #available(iOS 16, *) {
             return Locale.Region.isoRegions.filter { $0.subRegions.isEmpty } .map { region in
@@ -16,14 +20,14 @@ class SelectCountryViewModel: BaseSelectCountryViewModel, SelectCountryViewModel
                     title: Locale.current.localizedString(forRegionCode: region.identifier) ?? "",
                     emojiSymbol: emojiFlag(for: region.identifier)
                 )
-            }
+            }.sorted { $0.title < $1.title }
         } else {
             return Locale.isoRegionCodes.map { identifier in
                 Country(
                     title: Locale.current.localizedString(forRegionCode: identifier) ?? "",
                     emojiSymbol: emojiFlag(for: identifier)
                 )
-            }
+            }.sorted { $0.title < $1.title }
         }
     }
     

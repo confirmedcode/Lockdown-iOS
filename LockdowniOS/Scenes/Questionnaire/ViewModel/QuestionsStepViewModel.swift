@@ -18,9 +18,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
     }
     
-    var isFilled: Bool {
-        model.isAllRequiredQuestionsAnswered
-    }
+    var isFilled = true
     
     private var model = QuestionModel() {
         didSet {
@@ -43,7 +41,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addYesNoRow(
-            title: NSLocalizedString("1. Is the firewall on? (optional)", comment: ""),
+            title: NSLocalizedString("1. Is the firewall on?", comment: ""),
             initialValue: model.isFirewallOn,
             didSelect: { [weak self] in self?.model.isFirewallOn = $0 }
         )
@@ -55,7 +53,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addYesNoRow(
-            title: NSLocalizedString("2. Is the VPN on? (optional)", comment: ""),
+            title: NSLocalizedString("2. Is the VPN on?", comment: ""),
             initialValue: model.isVPNOn,
             didSelect: { [weak self] in self?.model.isVPNOn = $0 }
         )
@@ -68,7 +66,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         
         if model.isVPNOn ?? false {
             addQuestionTitleRow(
-                NSLocalizedString("If the VPN is on, which region is it set to?", comment: "")
+                NSLocalizedString("Which region is the VPN set to?", comment: "")
             )
             addNavigationLinkRow(
                 placeholder: NSLocalizedString("Select region", comment: ""),

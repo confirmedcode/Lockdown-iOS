@@ -20,10 +20,6 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
         view.leftNavButton.tintColor = .label
-        view.rightNavButton.setTitle(NSLocalizedString("Skip", comment: ""), for: .normal)
-        view.rightNavButton.addTarget(self, action: #selector(skipClicked), for: .touchUpInside)
-        view.rightNavButton.titleLabel?.font = .regularLockdownFont(size: 16)
-        view.rightNavButton.tintColor = .label
         return view
     }()
     
@@ -90,8 +86,7 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         }
         contentView = staticTableView
         stepsView.currentStep = viewModel.currentStepIndex
-        navigationView.rightNavButton.isHidden = !viewModel.showSkipButton
-        actionButton.setTitle(viewModel.actionTitle, for: .normal)
+        updateNextButton()
     }
     
     func close(completion: (() -> Void)?) {
@@ -114,14 +109,16 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         present(alert, animated: true)
     }
     
+    func updateNextButton() {
+        actionButton.setTitle(viewModel.actionTitle, for: .normal)
+        actionButton.isEnabled = viewModel.isStepReady
+        actionButton.backgroundColor = viewModel.isStepReady ? .tunnelsBlue : .disabledGray
+    }
+    
     // MARK: - actions
     
     @objc private func backButtonClicked() {
         viewModel.backPressed()
-    }
-    
-    @objc private func skipClicked() {
-        viewModel.skipStep()
     }
     
     @objc private func actionClicked() {

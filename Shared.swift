@@ -219,6 +219,7 @@ extension UIColor {
     static let panelSecondaryBackground = UIColor(named: "Panel Secondary Background")
     static let tableCellBackground = UIColor(named: "tableCellBackground")
     static let tableCellSelectedBackground = UIColor(named: "tableCellSelectedBackground")
+    static let disabledGray = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
 }
 
 extension UnicodeScalar {

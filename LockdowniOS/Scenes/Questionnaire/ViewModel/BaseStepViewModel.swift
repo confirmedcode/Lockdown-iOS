@@ -10,7 +10,6 @@ import UIKit
 
 class BaseStepViewModel {
     var staticTableView: StaticTableView?
-    var isSkiped = false
     
     func contentView() -> UITableView {
         let staticTableView = StaticTableView()

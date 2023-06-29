@@ -18,7 +18,11 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     ]
     
     private var selectedProblemIndex = -1
-    private var otherInput: String?
+    private var otherInput: String? {
+        didSet {
+            didChangeReady?(isFilled)
+        }
+    }
     
     private var selectedProblem: String? {
         if (0..<problemList.count).contains(selectedProblemIndex) {
@@ -36,7 +40,7 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     
     var step: Steps = .whatsProblem
     var message: String? {
-        guard !isSkiped, selectedProblemIndex >= 0 else { return nil }
+        guard selectedProblemIndex >= 0 else { return nil }
         var result = ""
         result.append(problemList[selectedProblemIndex])
         if isSelectedOther(),
@@ -44,10 +48,25 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             result.append("\n")
             result.append(otherInput)
         }
+        result.append("\n")
         return result
     }
     
-    var isFilled = true
+    var isFilled: Bool {
+        guard selectedProblemIndex >= 0 else {
+            return false
+        }
+        if isSelectedOther() {
+            return !(otherInput?.isEmpty ?? true)
+        }
+        return true
+    }
+    
+    var didChangeReady: ((Bool) -> Void)?
+    
+    init(didChangeReady: ((Bool) -> Void)?) {
+        self.didChangeReady = didChangeReady
+    }
     
     override func updateRows() {
         staticTableView?.clear()
@@ -61,7 +80,9 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
                 let view = SelectableRadioSwitcherWithTitle()
                 view.titleLabel.text = problemList[index]
                 view.isSelected = self.selectedProblemIndex == index
-                view.didSelect = { self.updateForSelect(problemIndex: index, isSelected: $0) }
+                view.didSelect = { [weak self] in
+                    self?.updateForSelect(problemIndex: index, isSelected: $0)
+                }
                 self.setupClear(cell)
                 cell.addSubview(view)
                 view.anchors.edges.pin(insets: .init(top: 5, left: 2, bottom: 5, right: 2))
@@ -94,5 +115,6 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             otherInput = nil
         }
         updateRows()
+        didChangeReady?(isFilled)
     }
 }
