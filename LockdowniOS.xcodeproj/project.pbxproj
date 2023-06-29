@@ -440,6 +440,7 @@
 		B1A01CA92A432926004D43EE /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CA82A432926004D43EE /* StepModel.swift */; };
 		B1A01CAC2A4343F1004D43EE /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CAB2A4343F1004D43EE /* StepsView.swift */; };
 		B1BA87012A4C4BC400D141A8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */; };
+		B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */; };
 		B1F11C7A2A498C5300A137A3 /* QuestionsStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */; };
 		B1F11C7C2A498CBF00A137A3 /* BaseStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */; };
 		B1F11C7E2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */; };
@@ -451,7 +452,6 @@
 		B1F11C8A2A4B050500A137A3 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C892A4B050500A137A3 /* CountryView.swift */; };
 		B1F11C8C2A4C273500A137A3 /* SelectRegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */; };
 		B1F11C8E2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */; };
-		B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
 		E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */; };
 /* End PBXBuildFile section */
@@ -896,6 +896,7 @@
 		B1A01CA82A432926004D43EE /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
 		B1A01CAB2A4343F1004D43EE /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListSaveable.swift; sourceTree = "<group>"; };
 		B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsStepViewModel.swift; sourceTree = "<group>"; };
 		B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStepViewModel.swift; sourceTree = "<group>"; };
 		B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoRadioSwitcherView.swift; sourceTree = "<group>"; };
@@ -907,7 +908,6 @@
 		B1F11C892A4B050500A137A3 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionViewModel.swift; sourceTree = "<group>"; };
 		B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSelectCountryViewModel.swift; sourceTree = "<group>"; };
-		B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListSaveable.swift; sourceTree = "<group>"; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
 		BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
@@ -3208,7 +3208,6 @@
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3245,7 +3244,6 @@
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3528,7 +3526,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3568,7 +3565,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3613,7 +3609,6 @@
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3656,7 +3651,6 @@
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3754,7 +3748,6 @@
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3811,7 +3804,6 @@
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Dnscryptproxy.xcframework/ios-arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
