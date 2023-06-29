@@ -12,6 +12,7 @@ protocol StepsViewProtocol: AnyObject {
     func changeContent()
     func close(completion: (() -> Void)?)
     func showSelectCountry(with viewModel: SelectCountryViewModelProtocol)
+    func showAlert(_ title: String?, message: String?)
 }
 
 protocol StepViewModelProtocol {
@@ -19,6 +20,7 @@ protocol StepViewModelProtocol {
     var isSkiped: Bool { get set }
     var step: Steps { get }
     var message: String? { get }
+    var isFilled: Bool { get }
 }
 
 class StepsViewModel {
@@ -52,7 +54,10 @@ class StepsViewModel {
         steps[currentStepIndex]
     }
     
-    var sendMessage: ((String) -> Void)?
+    private var sendMessage: ((String) -> Void)?
+    private var isReadyToSend: Bool {
+        steps.reduce(true) { $0 && $1.isFilled }
+    }
     
     init(sendMessage: ((String) -> Void)?) {
         self.sendMessage = sendMessage
@@ -95,7 +100,14 @@ class StepsViewModel {
         view?.showSelectCountry(with: viewModel)
     }
     
-    func finishFlow() {
+    private func finishFlow() {
+        guard isReadyToSend else {
+            view?.showAlert(
+                NSLocalizedString("Empty answers!", comment: ""),
+                message: NSLocalizedString("Could you answer all questions?", comment: "")
+            )
+            return
+        }
         let sendMessage = sendMessage
         let message = message()
         view?.close {

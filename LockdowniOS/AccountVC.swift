@@ -438,7 +438,7 @@ final class AccountViewController: BaseViewController, Loadable {
                         .custom(title: NSLocalizedString("Email Us", comment: ""), completion: {
                             self.emailTeam()
                         }),
-                        .custom(title: NSLocalizedString("Fill Questions", comment: "")) { [weak self] in
+                        .custom(title: NSLocalizedString("Bug Reporting Form", comment: "")) { [weak self] in
                             self?.openQuestionnaire()
                         },
                         .cancel()
