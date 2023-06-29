@@ -13,6 +13,7 @@ protocol SelectCountryViewModelProtocol {
     var selectedCountry: Country? { get set }
     func bind(_ view: SelectCountryViewController)
     func donePressed()
+    var title: String { get }
 }
 
 class SelectCountryViewController: UIViewController {
@@ -26,7 +27,6 @@ class SelectCountryViewController: UIViewController {
     
     private lazy var navigationView: ConfiguredNavigationView = {
         let view = ConfiguredNavigationView(accentColor: .darkText)
-        view.titleLabel.text = NSLocalizedString("Select country", comment: "")
         view.titleLabel.textColor = .label
         view.leftNavButton.setTitle(NSLocalizedString("DONE", comment: ""), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(doneClicked), for: .touchUpInside)
@@ -64,6 +64,7 @@ class SelectCountryViewController: UIViewController {
         staticTableView.backgroundColor = .clear
         staticTableView.deselectsCellsAutomatically = true
         staticTableView.separatorStyle = .none
+        navigationView.titleLabel.text = viewModel?.title
     }
     
     func updateView() {

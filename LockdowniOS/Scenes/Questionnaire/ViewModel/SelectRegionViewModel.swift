@@ -9,6 +9,10 @@
 import Foundation
 
 class SelectRegionViewModel: BaseSelectCountryViewModel, SelectCountryViewModelProtocol {
+    var title: String {
+        NSLocalizedString("Select Region", comment: "")
+    }
+    
     override func generateCountryList() -> [Country] {
         vpnRegions.map {
             Country(

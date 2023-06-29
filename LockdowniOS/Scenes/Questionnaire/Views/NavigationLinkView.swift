@@ -38,7 +38,7 @@ class NavigationLinkView: UIView {
         let configuration = UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)
         let view = UIImageView(image: .init(systemName: "chevron.right", withConfiguration: configuration))
         view.contentMode = .center
-        view.tintColor = .black
+        view.tintColor = .label
         return view
     }()
     
