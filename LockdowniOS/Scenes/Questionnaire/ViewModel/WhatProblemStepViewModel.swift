@@ -79,7 +79,9 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
                 let view = SelectableRadioSwitcherWithTitle()
                 view.titleLabel.text = problemList[index]
                 view.isSelected = self.selectedProblemIndex == index
-                view.didSelect = { self.updateForSelect(problemIndex: index, isSelected: $0) }
+                view.didSelect = { [weak self] in
+                    self?.updateForSelect(problemIndex: index, isSelected: $0)
+                }
                 self.setupClear(cell)
                 cell.addSubview(view)
                 view.anchors.edges.pin(insets: .init(top: 5, left: 2, bottom: 5, right: 2))
