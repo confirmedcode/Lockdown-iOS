@@ -80,7 +80,8 @@ struct QuestionModel {
         )
         if let otherDetailsInput,
            !otherDetailsInput.isEmpty {
-            result.append(otherDetailsInput)
+            result.append(NSLocalizedString("8. Additional details.", comment: ""))
+            result.append(" " + otherDetailsInput)
         }
         
         guard !result.isEmpty else { return nil }
