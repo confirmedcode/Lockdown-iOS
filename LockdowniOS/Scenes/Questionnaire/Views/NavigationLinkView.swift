@@ -30,7 +30,7 @@ class NavigationLinkView: UIView {
         let label = UILabel()
         label.font = .regularLockdownFont(size: 16)
         label.numberOfLines = 0
-        label.textColor = .secondaryLabel
+        label.textColor = .label
         return label
     }()
     

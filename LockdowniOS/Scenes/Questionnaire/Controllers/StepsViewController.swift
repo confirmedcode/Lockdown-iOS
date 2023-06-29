@@ -22,6 +22,7 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         view.leftNavButton.tintColor = .label
         view.rightNavButton.setTitle(NSLocalizedString("Skip", comment: ""), for: .normal)
         view.rightNavButton.addTarget(self, action: #selector(skipClicked), for: .touchUpInside)
+        view.rightNavButton.titleLabel?.font = .regularLockdownFont(size: 16)
         view.rightNavButton.tintColor = .label
         return view
     }()
@@ -90,6 +91,7 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         contentView = staticTableView
         stepsView.currentStep = viewModel.currentStepIndex
         navigationView.rightNavButton.isHidden = !viewModel.showSkipButton
+        actionButton.setTitle(viewModel.actionTitle, for: .normal)
     }
     
     func close(completion: (() -> Void)?) {

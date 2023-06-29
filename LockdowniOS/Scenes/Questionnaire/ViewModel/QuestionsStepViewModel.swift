@@ -55,7 +55,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addYesNoRow(
-            title: NSLocalizedString("2-1. Is the VPN on? (optional)", comment: ""),
+            title: NSLocalizedString("2. Is the VPN on? (optional)", comment: ""),
             initialValue: model.isVPNOn,
             didSelect: { [weak self] in self?.model.isVPNOn = $0 }
         )
@@ -68,7 +68,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         
         if model.isVPNOn ?? false {
             addQuestionTitleRow(
-                NSLocalizedString("2-2. If the VPN is on, which region is it set to?", comment: "")
+                NSLocalizedString("If the VPN is on, which region is it set to?", comment: "")
             )
             addNavigationLinkRow(
                 placeholder: NSLocalizedString("Select region", comment: ""),
@@ -120,7 +120,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addQuestionTitleRow(
-            NSLocalizedString("8. Additional details.", comment: "")
+            NSLocalizedString("8. Additional details. (optional)", comment: "")
         )
         addTextViewRow(
             text: otherDetailsInput,
