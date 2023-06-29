@@ -430,7 +430,7 @@ final class AccountViewController: BaseViewController, Loadable {
             DefaultCell(title: NSLocalizedString("Support | Feedback", comment: "")) {
                 self.showPopupDialog(
                     title: nil,
-                    message: NSLocalizedString("Remember to check our FAQs first, for answers to the most frequently asked questions.\n\nIf it's not answered there, we're happy to provide support and take feedback by email.", comment: ""),
+                    message: NSLocalizedString("Remember to check our FAQs first for answers to the most frequently asked questions.\n\nIf your question is not answered there, we're happy to provide support and receive feedback via email or through the bug reporting form.", comment: ""),
                     buttons: [
                         .custom(title: NSLocalizedString("View FAQs", comment: ""), completion: {
                             self.showFAQsModal()

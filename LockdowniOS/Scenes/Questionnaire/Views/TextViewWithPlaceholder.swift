@@ -25,7 +25,7 @@ class TextViewWithPlaceholder: UIView {
     private(set) lazy var placeholderLabel: UILabel = {
         let label = UILabel()
         label.font = .regularLockdownFont(size: 16)
-        label.textColor = .secondaryLabel
+        label.textColor = .label
         label.alpha = 0.3
         label.numberOfLines = 0
         return label
