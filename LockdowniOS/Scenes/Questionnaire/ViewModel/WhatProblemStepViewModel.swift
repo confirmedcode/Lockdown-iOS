@@ -48,6 +48,7 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             result.append("\n")
             result.append(otherInput)
         }
+        result.append("\n")
         return result
     }
     
