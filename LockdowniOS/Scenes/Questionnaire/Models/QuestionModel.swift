@@ -33,7 +33,7 @@ struct QuestionModel {
         )
         result.append(
             stringForQuestion(
-                NSLocalizedString("2-1. Is the VPN on?", comment: ""),
+                NSLocalizedString("2. Is the VPN on?", comment: ""),
                 answer: isVPNOn,
                 input: vpnInput
             )
@@ -41,7 +41,7 @@ struct QuestionModel {
         result.append(
             stringForCountry(
                 vpnRegion,
-                title: NSLocalizedString("2-2. If the VPN is on, which region is it set to?", comment: "")
+                title: NSLocalizedString("Which region is the VPN set to?", comment: "")
             )
         )
         result.append(
@@ -115,7 +115,7 @@ struct QuestionModel {
         var result = ""
         if let country {
             result.append(title)
-            result.append(": " + country.title)
+            result.append(" " + country.title)
             result.append("\n")
         }
         return result
