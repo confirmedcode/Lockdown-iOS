@@ -66,7 +66,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         
         if model.isVPNOn ?? false {
             addQuestionTitleRow(
-                NSLocalizedString("If the VPN is on, which region is it set to?", comment: "")
+                NSLocalizedString("Which region is the VPN set to?", comment: "")
             )
             addNavigationLinkRow(
                 placeholder: NSLocalizedString("Select region", comment: ""),
