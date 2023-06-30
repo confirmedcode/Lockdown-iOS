@@ -118,7 +118,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         )
         
         addQuestionTitleRow(
-            NSLocalizedString("8. Additional details.", comment: "")
+            NSLocalizedString("8. Additional details. (optional)", comment: "")
         )
         addTextViewRow(
             text: otherDetailsInput,

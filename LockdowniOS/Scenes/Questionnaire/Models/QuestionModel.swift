@@ -124,4 +124,12 @@ struct QuestionModel {
     private func stringFor(_ boolValue: Bool) -> String {
         boolValue ? NSLocalizedString("Yes", comment: "") : NSLocalizedString("No", comment: "")
     }
+    
+    var isAllRequiredQuestionsAnswered: Bool {
+        fromCountry != nil
+        && isHappeningWifiIssue != nil
+        && isHappenningCellularIssue != nil
+        && haveOtherFirewall != nil
+        && haveOtherVPN != nil
+    }
 }
