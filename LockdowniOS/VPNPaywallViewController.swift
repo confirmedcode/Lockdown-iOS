@@ -18,7 +18,7 @@ protocol VPNPaywallViewControllerCloseDelegate: AnyObject {
 
 final class VPNPaywallViewController: BaseViewController, Loadable {
     
-    static let shared: UserService = BaseUserService()
+    static let shared: UserService = BaseUserService.shared
     
     var user = LockdownUser()
     
@@ -135,11 +135,11 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     
     lazy var advancedView: AdvancedPaywallView = {
         let view = AdvancedPaywallView()
-        if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-            view.buyButton1.isEnabled = false
-            view.buyButton2.isEnabled = false
-            view.buyButton1.backgroundColor = .lightGray
-            view.buyButton2.backgroundColor = .lightGray
+        if isDisabledPlan(.advancedMonthly) {
+            disable(button: view.buyButton2)
+        }
+        if isDisabledPlan(.advancedAnnual) {
+            disable(button: view.buyButton1)
         }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAdvancedYearly()
@@ -155,11 +155,11 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var anonymousView: AnonymousPaywallView = {
         let view = AnonymousPaywallView()
         view.isHidden = true
-        if UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
-            view.buyButton1.isEnabled = false
-            view.buyButton2.isEnabled = false
-            view.buyButton1.backgroundColor = .lightGray
-            view.buyButton2.backgroundColor = .lightGray
+        if isDisabledPlan(.anonymousMonthly) {
+            disable(button: view.buyButton2)
+        }
+        if isDisabledPlan(.anonymousAnnual) {
+            disable(button: view.buyButton1)
         }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectAnonymousYearly()
@@ -175,11 +175,11 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var universalView: UniversalPaywallView = {
         let view = UniversalPaywallView()
         view.isHidden = true
-        if UserDefaults.hasSeenUniversalPaywall {
-            view.buyButton1.isEnabled = false
-            view.buyButton2.isEnabled = false
-            view.buyButton1.backgroundColor = .lightGray
-            view.buyButton2.backgroundColor = .lightGray
+        if isDisabledPlan(.universalMonthly) {
+            disable(button: view.buyButton2)
+        }
+        if isDisabledPlan(.universalAnnual) {
+            disable(button: view.buyButton1)
         }
         view.buyButton1.setOnClickListener { [unowned self] in
             selectUniversalYearly()
@@ -283,6 +283,30 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
             let url = URL(string: "https://lockdownprivacy.com/terms") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    private func disable(button: UIButton) {
+        button.isEnabled = false
+        button.backgroundColor = .lightGray
+    }
+    
+    private func isDisabledPlan(_ plan: Subscription.PlanType) -> Bool {
+        guard let subscription = Self.shared.user.currentSubscription else {
+            return false
+        }
+        let planOrder: [Subscription.PlanType] = [
+            .advancedMonthly,
+            .advancedAnnual,
+            .anonymousMonthly,
+            .anonymousAnnual,
+            .universalMonthly,
+            .universalAnnual
+        ]
+        guard let index = planOrder.firstIndex(of: plan),
+            let currentIndex = planOrder.firstIndex(of: subscription.planType) else {
+            return false
+        }
+        return index <= currentIndex
     }
 }
 
