@@ -132,25 +132,35 @@ class VPNController: NSObject {
                     }
                 }
                 else {
-                    do {
-                        // manually activate the starting of the tunnel, and also do a dummy connect to a nonexistant, invalid URL to force enabling
-                        try self.manager.connection.startVPNTunnel()
-                        let config = URLSessionConfiguration.default
-                        config.requestCachePolicy = .reloadIgnoringLocalCacheData
-                        config.urlCache = nil
-                        let session = URLSession.init(configuration: config)
-                        let url = URL(string: "https://nonexistant_invalid_url")
-                        let task = session.dataTask(with: url!) { (data, response, error) in
-                            return
-                        }
-                        task.resume()
-                    }
-                    catch {
-                        DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
-                    }
-                    completion(nil)
+                    self.loadFromPrefenrenceAndStartVPN(completion: completion)
                 }
             })
         })
+    }
+    
+    private func loadFromPrefenrenceAndStartVPN(completion: @escaping (_ error: Error?) -> Void) {
+        manager.loadFromPreferences { [weak self] error in
+            if let error {
+                DDLogError("Read preference error before start vpn: " + error.localizedDescription)
+            }
+            do {
+                // manually activate the starting of the tunnel, and also do a dummy connect to a nonexistant, invalid URL to force enabling
+                try self?.manager.connection.startVPNTunnel()
+                let config = URLSessionConfiguration.default
+                config.requestCachePolicy = .reloadIgnoringLocalCacheData
+                config.urlCache = nil
+                let session = URLSession.init(configuration: config)
+                let url = URL(string: "https://nonexistant_invalid_url")
+                let task = session.dataTask(with: url!) { (data, response, error) in
+                    return
+                }
+                task.resume()
+            }
+            catch {
+                DDLogError("Unable to start the tunnel after saving: " + error.localizedDescription)
+            }
+            completion(nil)
+        }
+        
     }
 }
