@@ -415,13 +415,13 @@ extension OldSignupViewController {
     
     private func configureForUnavailable(_ subscriptionPlanType: Subscription.PlanType, reason: UnavailableReason) {
         switch subscriptionPlanType {
-        case .monthly:
+        case .anonymousMonthly:
             markAsUnavailable(monthlyPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: monthlyPlanContainer)
-        case .proMonthly:
+        case .universalMonthly:
             markAsUnavailable(monthlyProPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: monthlyProPlanContainer)
-        case .annual:
+        case .anonymousAnnual:
             markAsUnavailable(annualPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: annualPlanContainer)
-        case .proAnnual:
+        case .universalAnnual:
             markAsUnavailable(annualProPlanCheckbox, plan: subscriptionPlanType, reason: reason, container: annualProPlanContainer)
         default:
             break
@@ -483,13 +483,13 @@ extension OldSignupViewController {
     enum Accessibility {
         static func currentPlanCheckboxLabel(for plan: Subscription.PlanType) -> String? {
             switch plan {
-            case .monthly:
+            case .anonymousMonthly:
                 return NSLocalizedString("\"iOS Monthly\" is your current plan", comment: "")
-            case .proMonthly:
+            case .universalMonthly:
                 return NSLocalizedString("\"Pro Monthly\" is your current plan", comment: "")
-            case .annual:
+            case .anonymousAnnual:
                 return NSLocalizedString("\"iOS Annual\" is your current plan", comment: "")
-            case .proAnnual:
+            case .universalAnnual:
                 return NSLocalizedString("\"Pro Annual\" is your current plan", comment: "")
             default:
                 return "\"\(plan.rawValue)\" is your current plan"

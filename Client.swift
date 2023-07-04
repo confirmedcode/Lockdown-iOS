@@ -133,35 +133,35 @@ class Client {
             DDLogInfo("API RESULT: active-subscriptions: \(subscriptions)")
             // sort subscriptions with highest tier at the top
             subscriptions.sort(by: { (sub1: Subscription, sub2: Subscription) -> Bool in
-                if (sub1.planType == .proAnnual) {
+                if (sub1.planType == .universalAnnual) {
                     return true
                 }
-                else if (sub1.planType == .proMonthly) {
-                    if (sub2.planType == .proAnnual) {
+                else if (sub1.planType == .universalMonthly) {
+                    if (sub2.planType == .universalAnnual) {
                         return false
                     }
                     else {
                         return true
                     }
                 }
-                else if (sub1.planType == .annual) {
-                    if (sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                else if (sub1.planType == .anonymousAnnual) {
+                    if (sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
                         return false
                     }
                     else {
                         return true
                     }
                 }
-                else if (sub1.planType == .monthly) {
-                    if (sub1.planType == .annual || sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                else if (sub1.planType == .anonymousMonthly) {
+                    if (sub1.planType == .anonymousAnnual || sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
                         return false
                     }
                     else {
                         return true
                     }
                 }
-                else if (sub1.planType == .advancedYearly) {
-                    if (sub1.planType == .monthly || sub1.planType == .annual || sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                else if (sub1.planType == .advancedAnnual) {
+                    if (sub1.planType == .anonymousMonthly || sub1.planType == .anonymousAnnual || sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
                         return false
                     }
                     else {
@@ -169,7 +169,7 @@ class Client {
                     }
                 }
                 else {
-                    if (sub1.planType == .advancedYearly || sub1.planType == .monthly || sub2.planType == .annual || sub2.planType == .proAnnual || sub2.planType == .proMonthly) {
+                    if (sub1.planType == .advancedAnnual || sub1.planType == .anonymousMonthly || sub2.planType == .anonymousAnnual || sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
                         return false
                     }
                     else {

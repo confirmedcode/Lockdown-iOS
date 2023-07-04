@@ -324,12 +324,12 @@ extension LDVpnViewController: Loadable {
         }.done { [self] subscriptions in
             self.activePlans = subscriptions.map({ $0.planType })
             if let active = subscriptions.first {
-                if  active.planType == .advancedMonthly || active.planType == .advancedYearly {
+                if  active.planType == .advancedMonthly || active.planType == .advancedAnnual {
                     descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
                     descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
                     descriptionLabel3.lockImage.image = UIImage(named: "icn_checkmark")
                     UserDefaults.hasSeenAdvancedPaywall = true
-                } else if active.planType == .monthly || active.planType == .annual {
+                } else if active.planType == .anonymousMonthly || active.planType == .anonymousAnnual {
                     mainTitle.text = "Get Universal protection"
                     descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
                     descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")
@@ -337,7 +337,7 @@ extension LDVpnViewController: Loadable {
                     descriptionLabel4.lockImage.image = UIImage(named: "icn_checkmark")
                     UserDefaults.hasSeenAdvancedPaywall = true
                     UserDefaults.hasSeenAnonymousPaywall = true
-                } else if active.planType == .proAnnual || active.planType == .proMonthly {
+                } else if active.planType == .universalAnnual || active.planType == .universalMonthly {
                     mainTitle.text = "You're fully protected"
                     descriptionLabel1.lockImage.image = UIImage(named: "icn_checkmark")
                     descriptionLabel2.lockImage.image = UIImage(named: "icn_checkmark")

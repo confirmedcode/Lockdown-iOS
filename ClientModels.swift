@@ -41,11 +41,11 @@ struct Subscription: Codable {
             self.rawValue = rawValue
         }
         static let advancedMonthly = PlanType(rawValue: "ios-fw-monthly")
-        static let advancedYearly = PlanType(rawValue: "ios-fw-annual")
-        static let monthly = PlanType(rawValue: "ios-monthly")
-        static let annual = PlanType(rawValue: "ios-annual")
-        static let proMonthly = PlanType(rawValue: "all-monthly")
-        static let proAnnual = PlanType(rawValue: "all-annual")        
+        static let advancedAnnual = PlanType(rawValue: "ios-fw-annual")
+        static let anonymousMonthly = PlanType(rawValue: "ios-monthly")
+        static let anonymousAnnual = PlanType(rawValue: "ios-annual")
+        static let universalMonthly = PlanType(rawValue: "all-monthly")
+        static let universalAnnual = PlanType(rawValue: "all-annual")        
     }
 }
 

@@ -376,13 +376,13 @@ extension LDFirewallViewController: Loadable {
         }.done { [self] subscriptions in
             self.activePlans = subscriptions.map({ $0.planType })
             if let active = subscriptions.first {
-                if active.planType == .proAnnual || active.planType == .proMonthly {
+                if active.planType == .universalAnnual || active.planType == .universalMonthly {
                     protectionPlanLabel.text = "Universal protection"
                     updateUI()
-                } else if active.planType == .monthly || active.planType == .annual {
+                } else if active.planType == .anonymousMonthly || active.planType == .anonymousAnnual {
                     updateUI()
                     protectionPlanLabel.text = "Anonymous protection"
-                } else if active.planType == .advancedMonthly || active.planType == .advancedYearly {
+                } else if active.planType == .advancedMonthly || active.planType == .advancedAnnual {
                     updateUI()
                     protectionPlanLabel.text = "Advanced protection"
                 } else {
