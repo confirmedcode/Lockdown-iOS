@@ -1068,17 +1068,17 @@ extension HomeViewController: PaywallViewControllerCloseDelegate {
             self?.showLoadingView()
             DispatchQueue.main.async {
                 
-                if subscription?.planType == .monthly || subscription?.planType == .annual {
+                if subscription?.planType == .anonymousMonthly || subscription?.planType == .anonymousAnnual {
                     UserDefaults.hasSeenAdvancedPaywall = false
                     UserDefaults.hasSeenUniversalPaywall = false
                     UserDefaults.hasSeenAnonymousPaywall = true
                 }
-                else if subscription?.planType == .proMonthly || subscription?.planType == .proAnnual {
+                else if subscription?.planType == .universalMonthly || subscription?.planType == .universalAnnual {
                     UserDefaults.hasSeenAnonymousPaywall = false
                     UserDefaults.hasSeenAdvancedPaywall = false
                     UserDefaults.hasSeenUniversalPaywall = true
                 }
-                else if subscription?.planType == .advancedMonthly || subscription?.planType == .advancedYearly {
+                else if subscription?.planType == .advancedMonthly || subscription?.planType == .advancedAnnual {
                     UserDefaults.hasSeenAnonymousPaywall = false
                     UserDefaults.hasSeenAdvancedPaywall = true
                     UserDefaults.hasSeenUniversalPaywall = false

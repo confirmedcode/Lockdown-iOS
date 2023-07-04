@@ -312,15 +312,15 @@ extension Subscription.PlanType {
         switch self {
         case .advancedMonthly:
             return VPNSubscription.productIdAdvancedMonthly
-        case .advancedYearly:
+        case .advancedAnnual:
             return VPNSubscription.productIdAdvancedYearly
-        case .monthly:
+        case .anonymousMonthly:
             return VPNSubscription.productIdMonthly
-        case .annual:
+        case .anonymousAnnual:
             return VPNSubscription.productIdAnnual
-        case .proMonthly:
+        case .universalMonthly:
             return VPNSubscription.productIdMonthlyPro
-        case .proAnnual:
+        case .universalAnnual:
             return VPNSubscription.productIdAnnualPro
         default:
             return nil
@@ -328,22 +328,22 @@ extension Subscription.PlanType {
     }
     
     static var supported: [Subscription.PlanType] {
-        return [.advancedMonthly, .advancedYearly, .monthly, .annual, .proMonthly, .proAnnual]
+        return [.advancedMonthly, .advancedAnnual, .anonymousMonthly, .anonymousAnnual, .universalMonthly, .universalAnnual]
     }
     
     var availableUpgrades: [Subscription.PlanType]? {
         switch self {
         case .advancedMonthly:
-            return [.advancedYearly, .monthly, .annual, .proMonthly, .proAnnual]
-        case .advancedYearly:
-            return [.monthly, .annual, .proMonthly, .proAnnual]
-        case .monthly:
-            return [.annual, .proMonthly, .proAnnual]
-        case .annual:
-            return [.proMonthly, .proAnnual]
-        case .proMonthly:
-            return [.proAnnual]
-        case .proAnnual:
+            return [.advancedAnnual, .anonymousMonthly, .anonymousAnnual, .universalMonthly, .universalAnnual]
+        case .advancedAnnual:
+            return [.anonymousMonthly, .anonymousAnnual, .universalMonthly, .universalAnnual]
+        case .anonymousMonthly:
+            return [.anonymousAnnual, .universalMonthly, .universalAnnual]
+        case .anonymousAnnual:
+            return [.universalMonthly, .universalAnnual]
+        case .universalMonthly:
+            return [.universalAnnual]
+        case .universalAnnual:
             return []
         default:
             return nil

@@ -226,7 +226,7 @@ final class AccountViewController: BaseViewController, Loadable {
                 DDLogInfo("active-subs: \(subscriptions)")
                 self.activePlans = subscriptions.map({ $0.planType })
                 if let active = subscriptions.first {
-                    if active.planType == .proAnnual {
+                    if active.planType == .universalAnnual {
                         upgradeButton.button.isEnabled = false
                         upgradeButton.selectionStyle = .none
                         upgradeButton.button.setTitle(NSLocalizedString("Plan: Annual Pro", comment: ""), for: UIControl.State())
@@ -293,7 +293,7 @@ final class AccountViewController: BaseViewController, Loadable {
             }.done { subscriptions in
                 self.activePlans = subscriptions.map({ $0.planType })
                 if let active = subscriptions.first {
-                    if active.planType == .proAnnual {
+                    if active.planType == .universalAnnual {
                         upgradeButton.button.isEnabled = false
                         upgradeButton.selectionStyle = .none
                         upgradeButton.button.setTitle(NSLocalizedString("Plan: Annual Pro", comment: ""), for: UIControl.State())
