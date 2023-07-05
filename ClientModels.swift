@@ -28,10 +28,10 @@ struct SubscriptionEvent: Codable {
 struct Subscription: Codable {
     let planType: PlanType
     let receiptId: String
-    let expirationDate: String
+    let expirationDate: Date
     let expirationDateString: String
     let expirationDateMs: Int
-    let cancellationDate: String?
+    let cancellationDate: Date?
     let cancellationDateString: String?
     let cancellationDateMs: Int?
     
@@ -45,7 +45,7 @@ struct Subscription: Codable {
         static let anonymousMonthly = PlanType(rawValue: "ios-monthly")
         static let anonymousAnnual = PlanType(rawValue: "ios-annual")
         static let universalMonthly = PlanType(rawValue: "all-monthly")
-        static let universalAnnual = PlanType(rawValue: "all-annual")        
+        static let universalAnnual = PlanType(rawValue: "all-annual")
     }
 }
 
