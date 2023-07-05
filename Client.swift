@@ -129,7 +129,11 @@ class Client {
             URLSession.shared.dataTask(.promise, with: try makePostRequest(urlString: mainURL + "/active-subscriptions", parameters: [:]))
         }.map { data, response -> [Subscription] in
             try self.validateApiResponse(data: data, response: response)
-            var subscriptions = try JSONDecoder().decode([Subscription].self, from: data)
+            let decoder = JSONDecoder()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sss'Z'"
+            decoder.dateDecodingStrategy = .formatted(formatter)
+            var subscriptions = try decoder.decode([Subscription].self, from: data)
             DDLogInfo("API RESULT: active-subscriptions: \(subscriptions)")
             // sort subscriptions with highest tier at the top
             subscriptions.sort(by: { (sub1: Subscription, sub2: Subscription) -> Bool in
