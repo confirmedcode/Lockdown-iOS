@@ -401,6 +401,7 @@
 		B1062A332A459AC800FA9E8B /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */; };
 		B1062A362A45BD7000FA9E8B /* StepsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */; };
 		B1062A382A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */; };
+		B157DE312A56B7F7003BA0AB /* CodableUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B157DE302A56B7F7003BA0AB /* CodableUserDefaults.swift */; };
 		B163A2F72A2F29A100FD7C5E /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B163A2F62A2F29A000FD7C5E /* CocoaAsyncSocket.xcframework */; };
 		B163A2F82A2F29A100FD7C5E /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B163A2F62A2F29A000FD7C5E /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B163A2F92A2F29BB00FD7C5E /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B163A2F62A2F29A000FD7C5E /* CocoaAsyncSocket.xcframework */; };
@@ -884,6 +885,7 @@
 		B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
 		B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatProblemStepViewModel.swift; sourceTree = "<group>"; };
+		B157DE302A56B7F7003BA0AB /* CodableUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUserDefaults.swift; sourceTree = "<group>"; };
 		B163A2F62A2F29A000FD7C5E /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = ThirdPartyFrameworks/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
 		B163A2FC2A2F29FC00FD7C5E /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = ThirdPartyFrameworks/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
 		B163A30D2A2F2AB500FD7C5E /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = ThirdPartyFrameworks/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
@@ -1541,6 +1543,7 @@
 			isa = PBXGroup;
 			children = (
 				40960B092A03400E000F82EB /* UserDefault.swift */,
+				B157DE302A56B7F7003BA0AB /* CodableUserDefaults.swift */,
 			);
 			name = PropertyWrappers;
 			sourceTree = "<group>";
@@ -2822,6 +2825,7 @@
 				3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */,
 				3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				B157DE312A56B7F7003BA0AB /* CodableUserDefaults.swift in Sources */,
 				402D251B29E519B500A5AB60 /* CustomTableView.swift in Sources */,
 				40098E2729FDA67700886474 /* UniversalPaywallView.swift in Sources */,
 				7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */,
