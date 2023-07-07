@@ -14,54 +14,43 @@ final class SplashscreenViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BaseUserService.shared.updateUserSubscription { [weak self] subscription in
-            DispatchQueue.main.async {
-                
-                if subscription?.planType == .anonymousMonthly || subscription?.planType == .anonymousAnnual {
-                    UserDefaults.hasSeenAdvancedPaywall = false
-                    UserDefaults.hasSeenUniversalPaywall = false
-                    UserDefaults.hasSeenAnonymousPaywall = true
+        if let cached = BaseUserService.shared.user.cachedSubscription() {
+            BaseUserService.shared.user.updateSubscription(to: cached)
+            finishFlow(with: cached)
+            
+            BaseUserService.shared.updateUserSubscription { subscription in
+                guard let subscription,
+                      !cached.isSameType(subscription) else {
+                    return
                 }
-                else if subscription?.planType == .universalMonthly || subscription?.planType == .universalAnnual {
-                    UserDefaults.hasSeenAnonymousPaywall = false
-                    UserDefaults.hasSeenAdvancedPaywall = false
-                    UserDefaults.hasSeenUniversalPaywall = true
-                }
-                else if subscription?.planType == .advancedMonthly || subscription?.planType == .advancedAnnual {
-                    UserDefaults.hasSeenAnonymousPaywall = false
-                    UserDefaults.hasSeenAdvancedPaywall = true
-                    UserDefaults.hasSeenUniversalPaywall = false
-                }
-                else {
-                    UserDefaults.hasSeenAnonymousPaywall = false
-                    UserDefaults.hasSeenAdvancedPaywall = false
-                    UserDefaults.hasSeenUniversalPaywall = false
-                }
-                
-                self?.dismiss()
+                NotificationCenter.default.post(name: AccountUI.subscritionTypeChanged, object: nil)
+            }
+        } else {
+            BaseUserService.shared.updateUserSubscription { [weak self] subscription in
+                self?.finishFlow(with: subscription)
             }
         }
     }
     
+    private func finishFlow(with subscription: Subscription?) {
+        updateUserDafauls(with: subscription)
+
+        DispatchQueue.main.async {
+            self.dismiss()
+        }
+    }
+    
+    private func updateUserDafauls(with subscription: Subscription?) {
+        UserDefaults.hasSeenAdvancedPaywall = subscription?.planType.isAdvanced ?? false
+        UserDefaults.hasSeenUniversalPaywall = subscription?.planType.isUniversal ?? false
+        UserDefaults.hasSeenAnonymousPaywall = subscription?.planType.isAnonymous ?? false
+    }
+    
     private func dismiss() {
-        
         dismiss(animated: false) {
             let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
             keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
             keyWindow?.makeKeyAndVisible()
-            
-            
-            
-//            if OneTimeActions.hasSeen(.welcomeScreen) == false {
-//                let welcomeViewController = WelcomeViewController()
-//                let navigation = UINavigationController(rootViewController: welcomeViewController)
-//                keyWindow?.rootViewController = navigation
-//            } else {
-//                let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-//                keyWindow?.rootViewController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainTabBarController")
-//                keyWindow?.makeKeyAndVisible()
-//            }
-//            keyWindow?.makeKeyAndVisible()
         }
     }
     

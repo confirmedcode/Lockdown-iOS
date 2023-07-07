@@ -11,6 +11,8 @@ import UIKit
 enum AccountUI {
     
     static let accountStateDidChange = Notification.Name("AccountUIAccountStateDidChangeNotification")
+    static let subscritionTypeChanged =
+        Notification.Name("AccountSubscritionTypeDidChanged")
     
     static func presentCreateAccount(on vc: UIViewController) {
         let storyboard = UIStoryboard.main

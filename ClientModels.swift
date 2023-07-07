@@ -46,6 +46,24 @@ struct Subscription: Codable {
         static let anonymousAnnual = PlanType(rawValue: "ios-annual")
         static let universalMonthly = PlanType(rawValue: "all-monthly")
         static let universalAnnual = PlanType(rawValue: "all-annual")
+        
+        var isAdvanced: Bool {
+            self == Self.advancedMonthly || self == Self.advancedMonthly
+        }
+        
+        var isAnonymous: Bool {
+            self == Self.anonymousAnnual || self == Self.anonymousMonthly
+        }
+        
+        var isUniversal: Bool {
+            self == Self.universalAnnual || self == Self.universalMonthly
+        }
+    }
+    
+    func isSameType(_ subscrition: Subscription) -> Bool {
+        self.planType.isAdvanced == subscrition.planType.isAdvanced ||
+        self.planType.isAnonymous == subscrition.planType.isAnonymous ||
+        self.planType.isUniversal == subscrition.planType.isUniversal
     }
 }
 
