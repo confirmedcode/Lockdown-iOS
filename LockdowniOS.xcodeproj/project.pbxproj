@@ -449,6 +449,7 @@
 		B1062A332A459AC800FA9E8B /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */; };
 		B1062A362A45BD7000FA9E8B /* StepsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */; };
 		B1062A382A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */; };
+		B157DE312A56B7F7003BA0AB /* CodableUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B157DE302A56B7F7003BA0AB /* CodableUserDefaults.swift */; };
 		B1A01CA52A4328E1004D43EE /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CA42A4328E1004D43EE /* StepsViewController.swift */; };
 		B1A01CA92A432926004D43EE /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CA82A432926004D43EE /* StepModel.swift */; };
 		B1A01CAC2A4343F1004D43EE /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CAB2A4343F1004D43EE /* StepsView.swift */; };
@@ -956,6 +957,7 @@
 		B1062A322A459AC800FA9E8B /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		B1062A352A45BD7000FA9E8B /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
 		B1062A372A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatProblemStepViewModel.swift; sourceTree = "<group>"; };
+		B157DE302A56B7F7003BA0AB /* CodableUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUserDefaults.swift; sourceTree = "<group>"; };
 		B1A01CA42A4328E1004D43EE /* StepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		B1A01CA82A432926004D43EE /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
 		B1A01CAB2A4343F1004D43EE /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
@@ -1629,6 +1631,7 @@
 			isa = PBXGroup;
 			children = (
 				40960B092A03400E000F82EB /* UserDefault.swift */,
+				B157DE302A56B7F7003BA0AB /* CodableUserDefaults.swift */,
 			);
 			name = PropertyWrappers;
 			sourceTree = "<group>";
@@ -2964,6 +2967,7 @@
 				3D47CDBB22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				A118F64920B33FED009A64E7 /* CGRectEx.swift in Sources */,
 				3D47CDBF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				B157DE312A56B7F7003BA0AB /* CodableUserDefaults.swift in Sources */,
 				402D251B29E519B500A5AB60 /* CustomTableView.swift in Sources */,
 				40098E2729FDA67700886474 /* UniversalPaywallView.swift in Sources */,
 				7C3E8D21247D8057004B81D6 /* PushNotifications.swift in Sources */,
