@@ -136,6 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // WORKAROUND: allows the widget to toggle VPN
         application.registerForRemoteNotifications()
         setupWidgetToggleWorkaround()
+        setupObservingSubscritionChanges()
         
         window = UIWindow(frame: UIScreen.main.bounds)
 //        window?.rootViewController = BlockListContainerViewController()
@@ -556,6 +557,25 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         )
         popup.addButton(DefaultButton(title: .localizedOkay, dismissOnTap: true, action: nil))
         self.getCurrentViewController()?.present(popup, animated: true, completion: nil)
+    }
+    
+    // MARK: - subscription
+    
+    private func setupObservingSubscritionChanges() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(openSplashScreen),
+            name: AccountUI.subscritionTypeChanged,
+            object: nil
+        )
+    }
+    
+    @objc
+    private func openSplashScreen() {
+        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        let vc = SplashscreenViewController()
+        let navigation = UINavigationController(rootViewController: vc)
+        keyWindow?.rootViewController = navigation
     }
 }
 
