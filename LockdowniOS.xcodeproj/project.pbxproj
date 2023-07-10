@@ -195,6 +195,7 @@
 		402D255029EE78D600A5AB60 /* OverallStatiscticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */; };
 		408E7A9429F88C9200B2F587 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */; };
 		408E7A9729FA698C00B2F587 /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9629FA698C00B2F587 /* UIVIew+Extensions.swift */; };
+		409481AE2A431D78001F11EB /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		40960AE22A029A7D000F82EB /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960AE12A029A7D000F82EB /* UIApplication+Extension.swift */; };
 		40960AE92A033514000F82EB /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960AE82A033514000F82EB /* AccessLevel.swift */; };
 		40960AEB2A03396F000F82EB /* ProductPurchasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960AEA2A03396F000F82EB /* ProductPurchasable.swift */; };
@@ -3088,6 +3089,7 @@
 				7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
 				3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */,
+				409481AE2A431D78001F11EB /* VPNController.swift in Sources */,
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
 				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
@@ -3208,7 +3210,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3222,7 +3224,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -3244,7 +3246,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3258,7 +3260,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3336,7 +3338,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3350,7 +3352,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -3374,7 +3376,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3388,7 +3390,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3525,7 +3527,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3543,7 +3545,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3564,7 +3566,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3582,7 +3584,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3609,7 +3611,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3623,7 +3625,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3651,7 +3653,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3665,7 +3667,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3686,7 +3688,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3696,7 +3698,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3716,7 +3718,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3726,7 +3728,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3748,7 +3750,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3762,7 +3764,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -3804,7 +3806,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3818,7 +3820,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
