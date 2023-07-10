@@ -138,7 +138,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWidgetToggleWorkaround()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = BlockListContainerViewController()
         window?.rootViewController = SplashscreenViewController()
         window?.makeKeyAndVisible()
         
@@ -355,14 +354,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         else if (host == "toggleFirewall") {
-            if let home = self.getCurrentViewController() as? LDFirewallViewController {
-                home.toggleFirewall()
+            if let home = self.getCurrentViewController() as? HomeViewController {
+                home.toggleFirewall(self)
             }
         }
         
         else if (host == "toggleVPN") {
-            if let home = self.getCurrentViewController() as? LDVpnViewController {
-                home.toggleVPN()
+            if let home = self.getCurrentViewController() as? HomeViewController {
+                home.toggleFirewall(self)
             }
         }
         

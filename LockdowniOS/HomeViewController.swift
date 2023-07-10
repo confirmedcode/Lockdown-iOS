@@ -277,19 +277,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
-        
-//        if OneTimeActions.hasSeen(.welcomeScreen) == false {
-//            view.addSubview(welcomeView)
-//            welcomeView.anchors.edges.pin()
-//            OneTimeActions.markAsSeen(.welcomeScreen)
-//            welcomeView.continueButton.addTarget(self, action: #selector(hideWelcomeScreen), for: .touchUpInside)
-            
-//            let tabBarControllerItems = self.tabBarController?.tabBar.items
-//
-//            tabBarControllerItems?.forEach({ tabbaritem in
-//                tabbaritem.isEnabled = false
-//            })
-//        }
     }
     
     private func layoutUI() {
@@ -358,7 +345,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         contentView.addSubview(closeButton)
         closeButton.anchors.trailing.marginsPin(inset: 20)
         closeButton.anchors.top.marginsPin(inset: 8)
-        
     }
     
 //    closeButtonTapped
@@ -380,8 +366,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let inset = firewallButton.frame.width * 0.175
         firewallButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         vpnButton.contentEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-        
-//        welcomeView.applyGradient(.welcomePurple, corners: .continuous(15.0))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -687,17 +671,18 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         switch FirewallController.shared.status() {
         case .invalid:
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
-            //ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
         case .disconnected:
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
             updateFirewallButtonWithStatus(status: .connecting)
             FirewallController.shared.setEnabled(true, isUserExplicitToggle: true)
-            //ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
+            
             
             checkForAskRating()
         case .connected:
             updateFirewallButtonWithStatus(status: .disconnecting)
             FirewallController.shared.setEnabled(false, isUserExplicitToggle: true)
         case .connecting, .disconnecting, .reasserting:
+            ensureFirewallWorkingAfterEnabling(waitingSeconds: 3.0)
             break;
         }
     }
@@ -859,6 +844,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             case .disconnected, .disconnecting, .invalid:
                 DDLogInfo("Toggle VPN: off currently, turning it on")
                 updateVPNButtonWithStatus(status: .connecting)
+//                VPNController.shared.setEnabled(true)
+//                ensureFirewallWorkingAfterEnabling(waitingSeconds: 5.0)
                 // if there's a confirmed email, use that and sync the receipt with it
                 if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
                     DDLogInfo("have confirmed API credentials, using them")

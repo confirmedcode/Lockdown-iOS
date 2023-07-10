@@ -242,6 +242,7 @@
 		402D255029EE78D600A5AB60 /* OverallStatiscticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D254F29EE78D600A5AB60 /* OverallStatiscticView.swift */; };
 		408E7A9429F88C9200B2F587 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9329F88C9200B2F587 /* CustomUISwitch.swift */; };
 		408E7A9729FA698C00B2F587 /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E7A9629FA698C00B2F587 /* UIVIew+Extensions.swift */; };
+		409481AE2A431D78001F11EB /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		40960AE22A029A7D000F82EB /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960AE12A029A7D000F82EB /* UIApplication+Extension.swift */; };
 		40960AE92A033514000F82EB /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960AE82A033514000F82EB /* AccessLevel.swift */; };
 		40960AEB2A03396F000F82EB /* ProductPurchasable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40960AEA2A03396F000F82EB /* ProductPurchasable.swift */; };
@@ -452,6 +453,7 @@
 		B1A01CA92A432926004D43EE /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CA82A432926004D43EE /* StepModel.swift */; };
 		B1A01CAC2A4343F1004D43EE /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A01CAB2A4343F1004D43EE /* StepsView.swift */; };
 		B1BA87012A4C4BC400D141A8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */; };
+		B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */; };
 		B1F11C7A2A498C5300A137A3 /* QuestionsStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */; };
 		B1F11C7C2A498CBF00A137A3 /* BaseStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */; };
 		B1F11C7E2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */; };
@@ -463,7 +465,6 @@
 		B1F11C8A2A4B050500A137A3 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C892A4B050500A137A3 /* CountryView.swift */; };
 		B1F11C8C2A4C273500A137A3 /* SelectRegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */; };
 		B1F11C8E2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */; };
-		B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */; };
 		C9E66BB880A29A48D055FBFF /* Pods-Lockdown-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */; };
 		E82C3745DDABA3CDE9D1D776 /* Pods_LockdownTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */; };
 /* End PBXBuildFile section */
@@ -959,6 +960,7 @@
 		B1A01CA82A432926004D43EE /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
 		B1A01CAB2A4343F1004D43EE /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		B1BA87002A4C4BC400D141A8 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListSaveable.swift; sourceTree = "<group>"; };
 		B1F11C792A498C5300A137A3 /* QuestionsStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsStepViewModel.swift; sourceTree = "<group>"; };
 		B1F11C7B2A498CBF00A137A3 /* BaseStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStepViewModel.swift; sourceTree = "<group>"; };
 		B1F11C7D2A49AE4000A137A3 /* YesNoRadioSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoRadioSwitcherView.swift; sourceTree = "<group>"; };
@@ -970,7 +972,6 @@
 		B1F11C892A4B050500A137A3 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		B1F11C8B2A4C273500A137A3 /* SelectRegionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionViewModel.swift; sourceTree = "<group>"; };
 		B1F11C8D2A4C27B800A137A3 /* BaseSelectCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSelectCountryViewModel.swift; sourceTree = "<group>"; };
-		B1F11C722A45DBF900A137A3 /* DomainListSaveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainListSaveable.swift; sourceTree = "<group>"; };
 		B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-metadata.plist"; path = "Pods/Pods-LockdownTunnel-metadata.plist"; sourceTree = "<group>"; };
 		BD91685BB7BEC612310EC3ED /* Pods_LockdownTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockdownTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A025BF9012D4E6454AE1D6 /* Pods-Lockdown-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-metadata.plist"; path = "Pods/Pods-Lockdown-metadata.plist"; sourceTree = "<group>"; };
@@ -3225,6 +3226,7 @@
 				7C3E8D22247D8057004B81D6 /* PushNotifications.swift in Sources */,
 				3D94AB1522FE3BA40012B0DE /* Environment.swift in Sources */,
 				3DBD57B222FC14CD00DE189F /* Shared.swift in Sources */,
+				409481AE2A431D78001F11EB /* VPNController.swift in Sources */,
 				A1FCDA4422C0651300C928BC /* PacketTunnelProvider.swift in Sources */,
 				3DBD57AA22FBD7A100DE189F /* WhitelistUtilities.swift in Sources */,
 				7C1AE077247FE2010000A7D3 /* PushNotificationsAuthorization.swift in Sources */,
@@ -3345,7 +3347,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3360,7 +3362,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
@@ -3382,7 +3384,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3397,7 +3399,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-Firewall-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3475,7 +3477,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3489,7 +3491,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
@@ -3513,7 +3515,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3527,7 +3529,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown.LockdownFirewallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3664,7 +3666,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3683,7 +3685,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3704,7 +3706,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3723,7 +3725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3750,7 +3752,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3765,7 +3767,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3793,7 +3795,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3808,7 +3810,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Lockdown-VPN-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3829,7 +3831,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3839,7 +3841,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3859,7 +3861,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Lockdown Blocker/Info.plist";
@@ -3869,7 +3871,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.confirmed.lockdown.Confirmed-Blocker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3891,7 +3893,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3906,7 +3908,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -3948,7 +3950,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3963,7 +3965,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.4;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

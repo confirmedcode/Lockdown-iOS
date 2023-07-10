@@ -10,6 +10,7 @@ import NEKit
 import Dnscryptproxy
 import Network
 import PromiseKit
+import CocoaLumberjack
 
 var latestBlockedDomains = getAllBlockedDomains()
 
@@ -62,16 +63,16 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     let dateOfLastReachabilityKill = Date(timeIntervalSince1970: timeIntervalOfLastReachabilityKill)
                     let timeSinceLastReachabilityKill = Date().timeIntervalSince(dateOfLastReachabilityKill)
                     self.log("REACHABILITY kill - time since last kill: \(timeSinceLastReachabilityKill)")
-                    if (timeSinceLastReachabilityKill < 30) {
+                    if (timeSinceLastReachabilityKill < 60) {
                         self.log("REACHABILITY kill - did this < 30 seconds ago, not calling it again")
-                        return
+//                        return
                     }
                     else {
                         // do the kill
                         defaults.set(Date().timeIntervalSince1970, forKey: self.lastReachabilityKillKey)
-                        self.stopTunnel(with: .connectionFailed, completionHandler: {
-                            self.log("successfully stopped tunnel from reachability")
-                        })
+//                        self.stopTunnel(with: .connectionFailed, completionHandler: {
+//                            self.log("successfully stopped tunnel from reachability")
+//                        })
                     }
                 }
             }
@@ -123,18 +124,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             exit(EXIT_SUCCESS);
     }
 
-    override func wake() {
-        log("===== wake")
-        flushBlockLog(log: log)
-        log("wake setting tunnel network settings to nil")
-        self.setTunnelNetworkSettings(nil, completionHandler: { error in
-            if (error != nil) {
-                self.log("error setting tunnelnetworksettings to nil: \(error)")
-            }
-            self.log("wake calling reactivate tunnel")
-            self.reactivateTunnel()
-        })
-    }
+//    override func wake() {
+//        log("===== wake")
+//        flushBlockLog(log: log)
+//        log("wake setting tunnel network settings to nil")
+//        self.setTunnelNetworkSettings(nil, completionHandler: { error in
+//            if (error != nil) {
+//                self.log("error setting tunnelnetworksettings to nil: \(error)")
+//            }
+//            self.log("wake calling reactivate tunnel")
+//            self.reactivateTunnel()
+//        })
+//    }
     
     func getNetworkSettings() -> NEPacketTunnelNetworkSettings {
         log("===== getNetworkSettings")
@@ -343,7 +344,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         log("===== reactivateTunnel, reasserting true")
         reasserting = true
         
-        _dns.closeIdleConnections()
+        stopDnsServer()
+//        _dns.closeIdleConnections()
         
         let networkSettings = getNetworkSettings()
         
@@ -363,6 +365,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 
             } )
         })
+        
+        startDns()
     }
     
     func checkNetworkConnection( callback: @escaping (Bool) -> Void ) {
@@ -379,7 +383,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         .catch { error in
             self.log("ERROR - failed checkNetworkConnection attempt #1: \(error)")
             self.log("checkNetworkConnection - attempt #2")
-            DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 3) {
+            DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 5) {
                 firstly {
                     try self.makeNetworkConnection()
                 }
@@ -390,7 +394,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 .catch { error in
                     self.log("ERROR - failed checkNetworkConnection attempt #2: \(error)")
                     self.log("checkNetworkConnection - attempt #3")
-                    DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 8) {
+                    DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 15) {
                         firstly {
                             try self.makeNetworkConnection()
                         }
@@ -406,7 +410,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 }
             }
         }
-
     }
     
     func makeNetworkConnection() throws -> Promise<(data: Data, response: URLResponse)> {
