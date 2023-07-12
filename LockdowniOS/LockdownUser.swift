@@ -40,4 +40,8 @@ final class LockdownUser {
         }
         return subscription
     }
+    
+    func resetCache() {
+        cachedUserSubscription = nil
+    }
 }
