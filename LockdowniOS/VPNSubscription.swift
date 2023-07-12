@@ -61,6 +61,7 @@ class VPNSubscription: NSObject {
                     }
                     .done { (getKey: GetKey) in
                         try setVPNCredentials(id: getKey.id, keyBase64: getKey.b64)
+                        BaseUserService.shared.user.resetCache()
                         succeeded()
                     }
                     .catch { error in

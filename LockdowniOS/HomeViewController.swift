@@ -12,7 +12,6 @@ import CocoaLumberjackSwift
 import UIKit
 import PromiseKit
 import StoreKit
-import SwiftyStoreKit
 import PopupDialog
 import AwesomeSpotlightView
 
