@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftyStoreKit
 import NetworkExtension
 import PromiseKit
 import CocoaLumberjackSwift

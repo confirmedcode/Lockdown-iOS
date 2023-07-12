@@ -98,7 +98,6 @@
 		3D94AAF522FDEACD0012B0DE /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		3D94AAF822FDEADC0012B0DE /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD57AF22FC14CC00DE189F /* Shared.swift */; };
-		3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
 		3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */; };
 		3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
 		3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D94AB1122FE3A460012B0DE /* Environment.swift */; };
@@ -361,7 +360,6 @@
 		A1DBA18621B77C66008A9322 /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
 		A1DBA18A21B77C80008A9322 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
 		A1DBA18B21B77C88008A9322 /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18921B77C80008A9322 /* VPNController.swift */; };
-		A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DBA18521B77C66008A9322 /* VPNSubscription.swift */; };
 		A1DBA19621B82F73008A9322 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = A1DBA19521B82F72008A9322 /* LICENSE.md */; };
 		A1E7481A1F9108B6004B8021 /* SpeedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E748191F9108B6004B8021 /* SpeedTest.swift */; };
 		A1E78D13207BE58C007FAE70 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E78D12207BE58C007FAE70 /* CloudKit.framework */; };
@@ -2764,7 +2762,6 @@
 				7C1AE07D247FF87F0000A7D3 /* OneTimeActions.swift in Sources */,
 				3DAF73552768572300D97BB0 /* FirewallUtilities.swift in Sources */,
 				3D94AAF722FDEAD70012B0DE /* FirewallController.swift in Sources */,
-				3D94AAFD22FDEB460012B0DE /* VPNSubscription.swift in Sources */,
 				7CE91C992521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				7CD52D83247EC18900D0530F /* PushNotifications.swift in Sources */,
 				3DBD57BF22FD727900DE189F /* FirewallTodayViewController.swift in Sources */,
@@ -3064,7 +3061,6 @@
 				7CD52D82247EC18800D0530F /* PushNotifications.swift in Sources */,
 				3D94AB1322FE3BA10012B0DE /* Environment.swift in Sources */,
 				7CE91C602521D564009D8269 /* UserDefaults.swift in Sources */,
-				A1DBA18E21B77C8E008A9322 /* VPNSubscription.swift in Sources */,
 				A12473F71FE44285008493B8 /* VPNTodayViewController.swift in Sources */,
 				7CE91C7E2521D5B6009D8269 /* Metrics.swift in Sources */,
 				3D40826A27F6A03F004C146B /* DNSCryptThread.swift in Sources */,

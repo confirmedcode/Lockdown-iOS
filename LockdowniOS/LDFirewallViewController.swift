@@ -11,7 +11,6 @@ import CocoaLumberjackSwift
 import PromiseKit
 import NetworkExtension
 import PopupDialog
-import SwiftyStoreKit
 
 final class LDFirewallViewController: BaseViewController {
     
