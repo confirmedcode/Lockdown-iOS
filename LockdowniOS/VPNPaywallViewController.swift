@@ -56,66 +56,68 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     private lazy var advancedPlan: PlanView = {
         let view = PlanView()
         view.title.text = "Advanced"
-        view.iconImageView.image = UIImage(named: "fill-1")
-        view.backgroundView.layer.borderColor = UIColor.borderBlue.cgColor
+        if Self.shared.user.currentSubscription?.planType.isAdvanced ?? false {
+            update(view, isSelected: true)
+            advancedView.isHidden = false
+            anonymousView.isHidden = true
+            universalView.isHidden = true
+        }
         view.isUserInteractionEnabled = true
-        
         
         view.setOnClickListener { [unowned self] in
             advancedView.isHidden = false
             anonymousView.isHidden = true
             universalView.isHidden = true
             
-            view.iconImageView.image = UIImage(named: "fill-1")
-            view.backgroundView.layer.borderColor = UIColor.borderBlue.cgColor
-            
-            anonymousPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
-            anonymousPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
-            
-            universalPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
-            universalPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
+            self.update(view, isSelected: true)
+            self.update(self.anonymousPlan, isSelected: false)
+            self.update(self.universalPlan, isSelected: false)
         }
+        view.isHidden = isDisabledPlan(.advancedAnnual)
         return view
     }()
     
     private lazy var anonymousPlan: PlanView = {
         let view = PlanView()
         view.title.text = "Anonymous"
+        if Self.shared.user.currentSubscription?.planType.isAnonymous ?? false {
+            update(view, isSelected: true)
+            anonymousView.isHidden = false
+            advancedView.isHidden = true
+            universalView.isHidden = true
+        }
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [unowned self] in
             anonymousView.isHidden = false
             advancedView.isHidden = true
             universalView.isHidden = true
             
-            view.iconImageView.image = UIImage(named: "fill-1")
-            view.backgroundView.layer.borderColor = UIColor.borderBlue.cgColor
-            
-            advancedPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
-            advancedPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
-            
-            universalPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
-            universalPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
+            self.update(view, isSelected: true)
+            self.update(self.advancedPlan, isSelected: false)
+            self.update(self.universalPlan, isSelected: false)
         }
+        view.isHidden = isDisabledPlan(.anonymousAnnual)
         return view
     }()
     
     private lazy var universalPlan: PlanView = {
         let view = PlanView()
         view.title.text = "Universal"
+        if Self.shared.user.currentSubscription?.planType.isUniversal ?? false {
+            update(view, isSelected: true)
+            universalView.isHidden = false
+            anonymousView.isHidden = true
+            advancedView.isHidden = true
+        }
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [unowned self] in
             universalView.isHidden = false
             anonymousView.isHidden = true
             advancedView.isHidden = true
             
-            view.iconImageView.image = UIImage(named: "fill-1")
-            view.backgroundView.layer.borderColor = UIColor.borderBlue.cgColor
-            
-            advancedPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
-            advancedPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
-            
-            anonymousPlan.iconImageView.image = UIImage(named: "grey-ellipse-1")
-            anonymousPlan.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
+            self.update(view, isSelected: true)
+            self.update(self.advancedPlan, isSelected: false)
+            self.update(self.anonymousPlan, isSelected: false)
         }
         return view
     }()
@@ -306,6 +308,16 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
             return false
         }
         return index <= currentIndex
+    }
+    
+    private func update(_ planView: PlanView, isSelected: Bool) {
+        if isSelected {
+            planView.iconImageView.image = UIImage(named: "fill-1")
+            planView.backgroundView.layer.borderColor = UIColor.borderBlue.cgColor
+        } else {
+            planView.iconImageView.image = UIImage(named: "grey-ellipse-1")
+            planView.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
+        }
     }
 }
 
