@@ -46,6 +46,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // reachability check
         monitor.pathUpdateHandler = { path in
             self.log("REACHABILITY - Connected: \(path.status == .satisfied) - NWPATH: \(path.debugDescription)")
+            if path.usesInterfaceType(.wifi) {
+                self.log("REACHABILITY - have connection to wifi")
+            }
+            if path.usesInterfaceType(.cellular) {
+                self.log("REACHABILITY - have connection to cellular")
+            }
             let servers = Resolver().getservers().map(Resolver.getnameinfo)
             self.log("REACHABILITY DNS Servers: \(servers)")
             
