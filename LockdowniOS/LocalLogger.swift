@@ -31,6 +31,10 @@ func setupLocalLogger() {
     fileLogger.logFileManager.maximumNumberOfLogFiles = 7
     fileLogger.logFormatter = LogFormatter()
     DDLog.add(fileLogger)
+    writeCommonInfoToLog()
+}
+
+func writeCommonInfoToLog() {
     let nsObject: String? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
     let systemVersion = UIDevice.current.systemVersion
     let accessLevel = accessLevel()

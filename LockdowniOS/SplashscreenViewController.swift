@@ -28,6 +28,7 @@ final class SplashscreenViewController: BaseViewController {
         } else {
             BaseUserService.shared.updateUserSubscription { [weak self] subscription in
                 self?.finishFlow(with: subscription)
+                writeCommonInfoToLog()
             }
         }
     }
