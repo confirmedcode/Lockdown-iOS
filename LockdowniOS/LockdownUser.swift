@@ -13,9 +13,7 @@ final class LockdownUser {
     
     @CodableUserDefaults(key: "cahedUsedSubscription")
     private var cachedUserSubscription: Subscription?
-    
-    private let graceTimeInterval = TimeInterval(7 * 24 * 60 * 60) // 7 days
-    
+        
     func updateSubscription(to newSubscription: Subscription?) {
         currentSubscription = newSubscription
         updateCachedSubscription(to: newSubscription)
@@ -34,7 +32,7 @@ final class LockdownUser {
             return nil
         }
         
-        guard subscription.expirationDate.addingTimeInterval(graceTimeInterval) > Date() else {
+        guard subscription.expirationDate > Date() else {
             cachedUserSubscription = nil
             return nil
         }
