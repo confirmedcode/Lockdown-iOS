@@ -16,11 +16,14 @@ protocol VPNPaywallViewControllerCloseDelegate: AnyObject {
 }
 
 final class VPNPaywallViewController: BaseViewController, Loadable {
+    private enum Tab {
+        case advanced
+        case anonymous
+        case universal
+    }
     
-    static let shared: UserService = BaseUserService.shared
-    
-    var user = LockdownUser()
-    
+    let shared: UserService = BaseUserService.shared
+        
     var parentVC: UIViewController?
     
     enum Mode {
@@ -31,6 +34,12 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     var mode = Mode.newSubscription
     
     weak var delegate: VPNPaywallViewControllerCloseDelegate?
+    
+    private var selectedTab = Tab.advanced {
+        didSet {
+            updateTabs()
+        }
+    }
     
     //MARK: Properties
     private var titleName = NSLocalizedString("Lockdown", comment: "")
@@ -56,68 +65,30 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     private lazy var advancedPlan: PlanView = {
         let view = PlanView()
         view.title.text = "Advanced"
-        if Self.shared.user.currentSubscription?.planType.isAdvanced ?? false {
-            update(view, isSelected: true)
-            advancedView.isHidden = false
-            anonymousView.isHidden = true
-            universalView.isHidden = true
-        }
         view.isUserInteractionEnabled = true
         
         view.setOnClickListener { [unowned self] in
-            advancedView.isHidden = false
-            anonymousView.isHidden = true
-            universalView.isHidden = true
-            
-            self.update(view, isSelected: true)
-            self.update(self.anonymousPlan, isSelected: false)
-            self.update(self.universalPlan, isSelected: false)
+            self.selectedTab = .advanced
         }
-        view.isHidden = isDisabledPlan(.advancedAnnual)
         return view
     }()
     
     private lazy var anonymousPlan: PlanView = {
         let view = PlanView()
         view.title.text = "Anonymous"
-        if Self.shared.user.currentSubscription?.planType.isAnonymous ?? false {
-            update(view, isSelected: true)
-            anonymousView.isHidden = false
-            advancedView.isHidden = true
-            universalView.isHidden = true
-        }
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [unowned self] in
-            anonymousView.isHidden = false
-            advancedView.isHidden = true
-            universalView.isHidden = true
-            
-            self.update(view, isSelected: true)
-            self.update(self.advancedPlan, isSelected: false)
-            self.update(self.universalPlan, isSelected: false)
+            selectedTab = .anonymous
         }
-        view.isHidden = isDisabledPlan(.anonymousAnnual)
         return view
     }()
     
     private lazy var universalPlan: PlanView = {
         let view = PlanView()
         view.title.text = "Universal"
-        if Self.shared.user.currentSubscription?.planType.isUniversal ?? false {
-            update(view, isSelected: true)
-            universalView.isHidden = false
-            anonymousView.isHidden = true
-            advancedView.isHidden = true
-        }
         view.isUserInteractionEnabled = true
         view.setOnClickListener { [unowned self] in
-            universalView.isHidden = false
-            anonymousView.isHidden = true
-            advancedView.isHidden = true
-            
-            self.update(view, isSelected: true)
-            self.update(self.advancedPlan, isSelected: false)
-            self.update(self.anonymousPlan, isSelected: false)
+            selectedTab = .universal
         }
         return view
     }()
@@ -221,6 +192,9 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         super.viewDidLoad()
         view.backgroundColor = .paywallNew
         configureUI()
+        updateCurrentSelectedTab()
+        updateTabs()
+        updateVisibleTabs()
     }
     
     //MARK: ConfigureUI
@@ -292,7 +266,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     }
     
     private func isDisabledPlan(_ plan: Subscription.PlanType) -> Bool {
-        guard let subscription = Self.shared.user.currentSubscription else {
+        guard let subscription = shared.user.currentSubscription else {
             return false
         }
         let planOrder: [Subscription.PlanType] = [
@@ -317,6 +291,53 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         } else {
             planView.iconImageView.image = UIImage(named: "grey-ellipse-1")
             planView.backgroundView.layer.borderColor = UIColor.borderGray.cgColor
+        }
+    }
+    
+    private func updateCurrentSelectedTab () {
+        guard let plan = shared.user.currentSubscription?.planType else {
+            selectedTab = .advanced
+            return
+        }
+        if plan.isAdvanced {
+            selectedTab = .advanced
+        }
+        if plan.isAnonymous {
+            selectedTab = .anonymous
+        }
+        if plan.isUniversal {
+            selectedTab = .universal
+        }
+    }
+    
+    private func updateTabs() {
+        advancedView.isHidden = selectedTab != .advanced
+        anonymousView.isHidden = selectedTab != .anonymous
+        universalView.isHidden = selectedTab != .universal
+        
+        update(advancedPlan, isSelected: selectedTab == .advanced)
+        update(anonymousPlan, isSelected: selectedTab == .anonymous)
+        update(universalPlan, isSelected: selectedTab == .universal)
+    }
+    
+    private func updateVisibleTabs() {
+        guard let plan = shared.user.currentSubscription?.planType else {
+            advancedPlan.isHidden = false
+            anonymousPlan.isHidden = false
+            universalPlan.isHidden = false
+            return
+        }
+        if plan.isAdvanced {
+            advancedPlan.isHidden = false
+            anonymousPlan.isHidden = false
+            universalPlan.isHidden = false
+        }
+        if plan.isAnonymous {
+            advancedPlan.isHidden = true
+        }
+        if plan.isUniversal {
+            advancedPlan.isHidden = true
+            anonymousPlan.isHidden = true
         }
     }
 }
@@ -408,7 +429,7 @@ extension VPNPaywallViewController: ProductPurchasable {
                             DDLogInfo("active-subs (start trial): \(subscriptions)")
                             NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
                             
-                            self.user.updateSubscription(to: subscriptions.first)
+                            self.shared.user.updateSubscription(to: subscriptions.first)
                         }
                         .catch { error in
                             DDLogError("purchase complete: Error: \(error)")
@@ -430,7 +451,7 @@ extension VPNPaywallViewController: ProductPurchasable {
                             DDLogInfo("active-subs (start trial): \(subscriptions)")
                             NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
                             
-                            self.user.updateSubscription(to: subscriptions.first)
+                            self.shared.user.updateSubscription(to: subscriptions.first)
                         }
                         .catch { error in
                             DDLogError("purchase complete - no email: Error: \(error)")

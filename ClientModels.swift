@@ -48,7 +48,7 @@ struct Subscription: Codable {
         static let universalAnnual = PlanType(rawValue: "all-annual")
         
         var isAdvanced: Bool {
-            self == Self.advancedMonthly || self == Self.advancedMonthly
+            self == Self.advancedAnnual || self == Self.advancedMonthly
         }
         
         var isAnonymous: Bool {
