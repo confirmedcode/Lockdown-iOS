@@ -30,10 +30,11 @@ class FirewallController: NSObject {
             if let managers = managers, managers.count > 0 {
                 if (self.manager == managers[0]) {
                     DDLogInfo("Encountered same manager while refreshing manager, not replacing it.")
-                    completion(nil)
+                } else {
+                    self.manager = nil
+                    self.manager = managers[0]
                 }
-                self.manager = nil
-                self.manager = managers[0]
+                completion(nil)
             }
             completion(error)
         }
@@ -46,8 +47,8 @@ class FirewallController: NSObject {
     }
     
     func status() -> NEVPNStatus {
-        if manager != nil {
-            return manager!.connection.status
+        if let manager {
+            return manager.connection.status
         }
         else {
             return .invalid
@@ -126,18 +127,18 @@ class FirewallController: NSObject {
             else {
                 self.manager = nil
                 self.manager = NETunnelProviderManager()
-                self.manager!.protocolConfiguration = NETunnelProviderProtocol()
+                self.manager?.protocolConfiguration = NETunnelProviderProtocol()
             }
-            self.manager!.localizedDescription = kFirewallTunnelLocalizedDescription
-            self.manager!.protocolConfiguration?.serverAddress = kFirewallTunnelLocalizedDescription
-            self.manager!.isEnabled = enabled
-            self.manager!.isOnDemandEnabled = enabled
-            self.manager!.protocolConfiguration?.disconnectOnSleep = false
+            self.manager?.localizedDescription = kFirewallTunnelLocalizedDescription
+            self.manager?.protocolConfiguration?.serverAddress = kFirewallTunnelLocalizedDescription
+            self.manager?.isEnabled = enabled
+            self.manager?.isOnDemandEnabled = enabled
+            self.manager?.protocolConfiguration?.disconnectOnSleep = false
             
             let connectRule = NEOnDemandRuleConnect()
             connectRule.interfaceTypeMatch = .any
-            self.manager!.onDemandRules = [connectRule]
-            self.manager!.saveToPreferences(completionHandler: { [weak self] (error) -> Void in
+            self.manager?.onDemandRules = [connectRule]
+            self.manager?.saveToPreferences(completionHandler: { [weak self] (error) -> Void in
                 // TODO: Handle each case specifically
                 if let e = error as? NEVPNError {
                     DDLogError("VPN Error while saving state: \(enabled) \(e)")
@@ -189,24 +190,30 @@ class FirewallController: NSObject {
     }
     
     private func startFirewallTunnel(completion: @escaping (_ error: Error?) -> Void) {
+        guard let manager else {
+            DDLogInfo("FirewallController.setEnabled ignore: empty manager")
+            completion(nil)
+            return
+        }
         DDLogInfo("FirewallController.setEnabled enabled, calling startVPNTunnel")
         do {
-            try self.manager!.connection.startVPNTunnel()
+            try manager.connection.startVPNTunnel()
             let config = URLSessionConfiguration.default
             config.requestCachePolicy = .reloadIgnoringLocalCacheData
             config.urlCache = nil
             let session = URLSession.init(configuration: config)
-            let url = URL(string: "https://nonexistant_invalid_url")
-            let task = session.dataTask(with: url!) { (data, response, error) in
-                DDLogInfo("FirewallController.setEnabled response from calling nonexistant url")
-                return
+            if let url = URL(string: "https://nonexistant_invalid_url") {
+                let task = session.dataTask(with: url) { (data, response, error) in
+                    DDLogInfo("FirewallController.setEnabled response from calling nonexistant url")
+                    return
+                }
+                DDLogInfo("FirewallController.setEnabled calling nonexistant url")
+                task.resume()
             }
-            DDLogInfo("FirewallController.setEnabled calling nonexistant url")
-            task.resume()
             DDLogInfo("FirewallController.setEnabled refreshing manager")
-            self.refreshManager(completion: { error in
-                if (error != nil) {
-                    DDLogInfo("FirewallController.setEnabled error response from refreshing manager: \(error!)")
+            refreshManager(completion: { error in
+                if let error {
+                    DDLogInfo("FirewallController.setEnabled error response from refreshing manager: \(error)")
                 }
                 else {
                     DDLogInfo("FirewallController.setEnabled no error from refreshing manager")
