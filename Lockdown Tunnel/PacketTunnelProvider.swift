@@ -44,7 +44,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // usleep(10000000)
         
         // reachability check
-        monitor.pathUpdateHandler = { path in
+        monitor.pathUpdateHandler = { [weak self] path in
+            guard let self else { return }
             self.log("REACHABILITY - Connected: \(path.status == .satisfied) - NWPATH: \(path.debugDescription)")
             if path.usesInterfaceType(.wifi) {
                 self.log("REACHABILITY - have connection to wifi")
@@ -56,7 +57,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             self.log("REACHABILITY DNS Servers: \(servers)")
             
             self.log("reachability testing network")
-            self.checkNetworkConnection { success in
+            self.checkNetworkConnection { [weak self] success in
+                guard let self else { return }
                 self.log("reachability network check result: \(success)")
                 if( success == false ) {
                     self.log("ERROR - network check failed, killing PTP if not killed in the last 30 seconds")
@@ -76,9 +78,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     else {
                         // do the kill
                         defaults.set(Date().timeIntervalSince1970, forKey: self.lastReachabilityKillKey)
-//                        self.stopTunnel(with: .connectionFailed, completionHandler: {
-//                            self.log("successfully stopped tunnel from reachability")
-//                        })
                     }
                 }
             }
@@ -89,9 +88,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let networkSettings = getNetworkSettings();
         
         log("Calling setTunnelNetworkSettings")
-        self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
-            if (error != nil) {
-                self.log("ERROR - StartTunnel \(error!.localizedDescription)")
+        self.setTunnelNetworkSettings(networkSettings, completionHandler: { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.log("ERROR - StartTunnel \(error.localizedDescription)")
                 completionHandler(error);
             } else {
                 self.log("No error on setTunnelNetworkSettings, starting dns and proxy")
@@ -107,13 +107,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 else {
                     self.log("SUCCESS - startTunnel")
                     completionHandler(nil)
-//                    self.log("||||| startTunnel - checking availability to apple.com")
-//                    self.checkNetworkConnection(callback: { success in
-//                        self.log("startTunnel network check result: \(success)")
-//                        // failures are already handled by Reachability check
-//                        completionHandler(nil)
-//
-//                    })
                 }
             }
         })
@@ -125,9 +118,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         monitor.cancel()
         stopProxyServer()
         stopDnsServer()
-            self.log("stopTunnel completionHandler, exit")
-            completionHandler();
-            exit(EXIT_SUCCESS);
+        self.log("stopTunnel completionHandler, exit")
+        completionHandler();
+        exit(EXIT_SUCCESS);
     }
 
 //    override func wake() {
@@ -158,42 +151,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.exceptionList = []
         proxySettings.matchDomains = getAllWhitelistedDomains()
         networkSettings.proxySettings = proxySettings;
-        
-//        let ipv6Settings = NEIPv6Settings()
-//        ipv6Settings.includedRoutes = [NEIPv6Route(destinationAddress: "::", networkPrefixLength: 0)]
-//        networkSettings.ipv6Settings = ipv6Settings
-        
-//        let ipv4Settings = NEIPv4Settings()
-//        ipv4Settings.excludedRoutes = [NEIPv4Route(destinationAddress: "0.0.0.0", subnetMask: "128.0.0.0")]
-//        networkSettings.ipv4Settings = ipv4Settings
-        
-//        proxySettings.exceptionList = ["mask.icloud.com", "mask-api.icloud.com", "mask-h2.icloud.com", "mask.apple-dns.net", "icloud.com", "apple.com"]
-//        var toMatch = getAllWhitelistedDomains()
-//        proxySettings.matchDomains = toMatch
-//        proxySettings.autoProxyConfigurationEnabled = true
-//        var js = "function FindProxyForURL(url, host) { "
-////        js = js + "if (dnsDomainIs(host, \"mask.icloud.com\") || dnsDomainIs(host, \"mask-h2.icloud.com\") || dnsDomainIs(host, \"mask.apple-dns.net\") || dnsDomainIs(host, \"mask-api.icloud.com\") || dnsDomainIs(host, \"icloud.com\") || dnsDomainIs(host, \"apple.com\")) { "
-////        js = js + "return 'DIRECT'; } "
-////        js = js + "if ("
-////        for domain in getAllWhitelistedDomains() {
-////            js = js + "dnsDomainIs(host, \"\(domain)\") || "
-////        }
-////        js = js + " false )"
-////        js = js + " { return 'PROXY \(proxyServerAddress):\(proxyServerPort)'; } "
-//        js = js + "return 'PROXY \(proxyServerAddress):\(proxyServerPort)';"
-//        js = js + " }"
-//        NSLog(js)
-//        proxySettings.proxyAutoConfigurationJavaScript = js
-////        proxySettings.proxyAutoConfigurationJavaScript = """
-////        function FindProxyForURL(url, host)
-////        {
-////            if (dnsDomainIs(host, "ipchicken.com") )
-////            {
-////                return 'PROXY \(proxyServerAddress):\(proxyServerPort)';
-////            }
-////            return 'DIRECT';
-////        }
-////        """
         
         let dnsSettings = NEDNSSettings(servers: [dnsServerAddress])
         dnsSettings.matchDomains = [""];
@@ -349,15 +306,13 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     func reactivateTunnel() {
         log("===== reactivateTunnel, reasserting true")
         reasserting = true
-        
-        stopDnsServer()
-//        _dns.closeIdleConnections()
-        
+                
         let networkSettings = getNetworkSettings()
         
-        self.setTunnelNetworkSettings(networkSettings, completionHandler: { error in
-            if (error != nil) {
-                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error?.localizedDescription)")
+        self.setTunnelNetworkSettings(networkSettings) { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error.localizedDescription)")
             }
             self.log("reactivateTunnel setTunnelNetworkSettings complete, reasserting false")
             self.reasserting = false
@@ -366,54 +321,37 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             self.log("closed idle connections")
             
             self.log("||||| reactivate AFTER - checking availability to apple.com")
-            self.checkNetworkConnection(callback: { success in
+            self.checkNetworkConnection { [weak self] success in
+                guard let self else { return }
                 self.log("ReactivateTunnel checkNetworkConnection result: \(success)")
-                
-            } )
-        })
+            }
+        }
         
         startDns()
     }
     
-    func checkNetworkConnection( callback: @escaping (Bool) -> Void ) {
+    func checkNetworkConnection(callback: @escaping (Bool) -> Void, attempt: Int = 1) {
 
-        log("===== checkNetworkConnection - attempt #1")
+        log("===== checkNetworkConnection - attempt #\(attempt)")
         URLCache.shared.removeAllCachedResponses()
         firstly {
             try makeNetworkConnection()
         }
-        .map { data, response -> Void in
+        .map { [weak self] data, response -> Void in
+            guard let self else { return }
             try self.validateNetworkResponse(response: response)
             callback(true)
         }
-        .catch { error in
-            self.log("ERROR - failed checkNetworkConnection attempt #1: \(error)")
-            self.log("checkNetworkConnection - attempt #2")
-            DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 5) {
-                firstly {
-                    try self.makeNetworkConnection()
+        .catch { [weak self] error in
+            guard let self else { return }
+            self.log("ERROR - failed checkNetworkConnection attempt #\(attempt): \(error)")
+            if attempt < 3 {
+                DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + attempt == 1 ? 5 : 15) {
+                    self.checkNetworkConnection(callback: callback, attempt: attempt + 1)
                 }
-                .map { data, response -> Void in
-                    try self.validateNetworkResponse(response: response)
-                    callback(true)
-                }
-                .catch { error in
-                    self.log("ERROR - failed checkNetworkConnection attempt #2: \(error)")
-                    self.log("checkNetworkConnection - attempt #3")
-                    DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + 15) {
-                        firstly {
-                            try self.makeNetworkConnection()
-                        }
-                        .map { data, response -> Void in
-                            try self.validateNetworkResponse(response: response)
-                            callback(true)
-                        }
-                        .catch { error in
-                            self.log("ERROR - failed checkNetworkConnection attempt #3: \(error)")
-                            callback(false)
-                        }
-                    }
-                }
+            } else {
+                self.log("ERROR - failed checkNetworkConnection attempt #\(attempt): \(error)")
+                callback(false)
             }
         }
     }
@@ -507,48 +445,6 @@ extension Resolver {
         return String(cString: hostBuffer)
     }
 }
-
-//open class Resolver {
-//
-//    fileprivate var state = __res_9_state()
-//
-//    public init() {
-//        res_9_ninit(&state)
-//    }
-//
-//    deinit {
-//        res_9_ndestroy(&state)
-//    }
-//
-//    public final func getservers() -> [res_9_sockaddr_union] {
-//
-//        let maxServers = 10
-//        var servers = [res_9_sockaddr_union](repeating: res_9_sockaddr_union(), count: maxServers)
-//        let found = Int(res_9_getservers(&state, &servers, Int32(maxServers)))
-//
-//        // filter is to remove the erroneous empty entry when there's no real servers
-//       return Array(servers[0 ..< found]).filter() { $0.sin.sin_len > 0 }
-//    }
-//}
-//
-//extension Resolver {
-//    public static func getnameinfo(_ s: res_9_sockaddr_union) -> String {
-//        var s = s
-//        var hostBuffer = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-//
-//        let sinlen = socklen_t(s.sin.sin_len)
-//        let _ = withUnsafePointer(to: &s) {
-//            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
-//                Darwin.getnameinfo($0, sinlen,
-//                                   &hostBuffer, socklen_t(hostBuffer.count),
-//                                   nil, 0,
-//                                   NI_NUMERICHOST)
-//            }
-//        }
-//
-//        return String(cString: hostBuffer)
-//    }
-//}
 
 extension NEProviderStopReason: CustomDebugStringConvertible {
     
