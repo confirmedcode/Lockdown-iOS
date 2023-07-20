@@ -346,7 +346,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             guard let self else { return }
             self.log("ERROR - failed checkNetworkConnection attempt #\(attempt): \(error)")
             if attempt < 3 {
-                DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + attempt == 1 ? 5 : 15) {
+                DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + (attempt == 1 ? 5 : 15)) {
                     self.checkNetworkConnection(callback: callback, attempt: attempt + 1)
                 }
             } else {
