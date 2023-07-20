@@ -226,18 +226,18 @@ private extension CustomListsViewController {
         if UserDefaults.hasSeenAdvancedPaywall || UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall {
             addNewListButton.isEnabled = true
             if customBlockedLists.count == 0 {
-                tableView.addRow { (contentView) in
+                tableView.addRow { [unowned self] (contentView) in
                     contentView.addSubview(emptyList)
                     emptyListsView.anchors.edges.pin()
-                }.onSelect {
+                }.onSelect { [unowned self] in
                     self.addList()
                 }
             }
         } else {
-            tableView.addRow { (contentView) in
+            tableView.addRow { [unowned self] (contentView) in
                 contentView.addSubview(lockedList)
                 lockedList.anchors.edges.pin()
-            }.onSelect {
+            }.onSelect { [unowned self] in
                 let vc = VPNPaywallViewController()
                 self.present(vc, animated: true)
             }
@@ -247,7 +247,7 @@ private extension CustomListsViewController {
             let blockListView = BlockListView()
             blockListView.contents = .listsBlocked(list)
             
-            let cell = tableView.addRow { (contentView) in
+            let cell = tableView.addRow { [unowned self] (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
             }.onSelect { [unowned self] in
@@ -272,7 +272,7 @@ private extension CustomListsViewController {
         let emptyDomains = emptyDomainsView
         if customBlockedDomains.isEmpty {
             editDomainButton.isHidden = true
-            tableView.addRow { (contentView) in
+            tableView.addRow { [unowned self] (contentView) in
                 contentView.addSubview(emptyDomains)
                 emptyDomains.anchors.edges.pin()
             }.onSelect { [unowned self] in
@@ -285,10 +285,10 @@ private extension CustomListsViewController {
             let blockListView = BlockListView()
             blockListView.contents = .userBlocked(domain: domain, isEnabled: isEnabled)
             
-            tableView.addRow { (contentView) in
+            tableView.addRow { [unowned self] (contentView) in
                 contentView.addSubview(blockListView)
                 blockListView.anchors.edges.pin()
-                view.addSubview(editDomainButton)
+                self.view.addSubview(editDomainButton)
                 editDomainButton.anchors.centerY.equal(domainsLabel.anchors.centerY)
                 editDomainButton.anchors.trailing.spacing(16, to: addNewDomainButton.anchors.leading)
                 editDomainButton.isHidden = false
