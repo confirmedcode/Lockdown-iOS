@@ -325,21 +325,21 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         scrollView.addSubview(contentView)
         contentView.anchors.top.pin()
-        contentView.anchors.centerX.align()
+        contentView.anchors.leading.pin()
         contentView.anchors.width.equal(scrollView.anchors.width)
         contentView.anchors.bottom.pin()
-        
-        contentView.anchors.height.equal(UIScreen.main.bounds.height * 1.2)
+        contentView.anchors.trailing.pin()
 
         contentView.addSubview(stackView)
         stackView.anchors.top.marginsPin()
-        stackView.anchors.leading.equal(protectionPlanLabel.anchors.leading)
+        stackView.anchors.leading.pin(inset: 8)
         stackView.anchors.trailing.marginsPin(inset: 10)
         
         contentView.addSubview(mainStack)
         mainStack.anchors.top.spacing(8, to: stackView.anchors.bottom)
         mainStack.anchors.leading.marginsPin()
         mainStack.anchors.trailing.marginsPin()
+        mainStack.anchors.bottom.pin()
         
         contentView.addSubview(closeButton)
         closeButton.anchors.trailing.marginsPin(inset: 20)
