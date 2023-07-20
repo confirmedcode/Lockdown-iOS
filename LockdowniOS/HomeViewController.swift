@@ -490,17 +490,15 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         // Firewall
         if let tunnelProviderSession = notification.object as? NETunnelProviderSession {
             DDLogInfo("VPNStatusDidChange as NETunnelProviderSession with status: \(tunnelProviderSession.status.description)");
-            if (!getUserWantsFirewallEnabled()) {
-                updateFirewallButtonWithStatus(status: .disconnected)
-            }
-            else {
-                updateFirewallButtonWithStatus(status: tunnelProviderSession.status)
-                if (tunnelProviderSession.status == .connected && defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false) {
-                    defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
-                    self.tapToActivateFirewallLabel.isHidden = true
-                    if (VPNController.shared.status() == .invalid) {
-                        self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.", comment: ""))
-                    }
+            updateFirewallButtonWithStatus(status: tunnelProviderSession.status)
+            
+            if getUserWantsFirewallEnabled() &&
+                tunnelProviderSession.status == .connected &&
+                defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
+                defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
+                self.tapToActivateFirewallLabel.isHidden = true
+                if (VPNController.shared.status() == .invalid) {
+                    self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.", comment: ""))
                 }
             }
         }
