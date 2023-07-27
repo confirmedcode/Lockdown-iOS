@@ -224,10 +224,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         updateFirewallButtonWithStatus(status: FirewallController.shared.status())
         updateMetrics()
-        if metricsTimer == nil {
-            metricsTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateMetrics), userInfo: nil, repeats: true)
-            metricsTimer?.fire()
-        }
+        didBecomeActive()
+        
         firewallViewLogButton.layer.cornerRadius = 8
         firewallViewLogButton.layer.maskedCorners = [.layerMinXMaxYCorner]
         firewallSettingsButton.layer.cornerRadius = 8
@@ -275,7 +273,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             }
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
     private func layoutUI() {
@@ -394,13 +393,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             tapToActivateFirewallLabel.isHidden = false
         }
         
-//        updateMetrics()
-//
-//        if metricsTimer == nil {
-//            metricsTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateMetrics), userInfo: nil, repeats: true)
-//            metricsTimer?.fire()
-//        }
-        
         // If total blocked > 1000, and have not shown share dialog before, ask if user wants to share
         if (getTotalMetrics() > 1000 && defaults.bool(forKey: kHasSeenShare) != true) {
             defaults.set(true, forKey: kHasSeenShare)
@@ -434,6 +426,18 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
              ])
              self.present(popup, animated: true, completion: nil)
         }
+    }
+    
+    @objc
+    private func didBecomeActive() {
+        NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
+        startTimer()
+    }
+    
+    @objc
+    private func willResignActive() {
+        NotificationCenter.default.removeObserver(self, name: .NEVPNStatusDidChange, object: nil)
+        stopTimer()
     }
     
     func updateStackViewAxis(basedOn size: CGSize) {
@@ -640,6 +644,23 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     // MARK: - Firewall
+    
+    private func startTimer() {
+        stopTimer()
+        metricsTimer = Timer.scheduledTimer(
+            timeInterval: 2.0,
+            target: self,
+            selector: #selector(updateMetrics),
+            userInfo: nil,
+            repeats: true
+        )
+        metricsTimer?.fire()
+    }
+    
+    private func stopTimer() {
+        metricsTimer?.invalidate()
+        metricsTimer = nil
+    }
     
     @objc func updateMetrics() {
         DispatchQueue.main.async {
