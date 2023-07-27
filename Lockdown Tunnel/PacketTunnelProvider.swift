@@ -28,7 +28,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     let groupContainer = "group.com.confirmed"
     
     let lastReachabilityKillKey = "lastReachabilityKillTime"
-    
+    private var token: NSObjectProtocol?
+    private let center = NotificationCenter.default
+    private var proxyError: Error?
+
     func log(_ str: String) {
         PacketTunnelProviderLogs.log(str)
         NSLog("ptplog - " + str)
@@ -40,55 +43,47 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         log("+++++ startTunnel NEW")
-        
-        // usleep(10000000)
-        
+                
         // reachability check
         monitor.pathUpdateHandler = { [weak self] path in
-            guard let self else { return }
-            self.log("REACHABILITY - Connected: \(path.status == .satisfied) - NWPATH: \(path.debugDescription)")
-            if path.usesInterfaceType(.wifi) {
-                self.log("REACHABILITY - have connection to wifi")
-            }
-            if path.usesInterfaceType(.cellular) {
-                self.log("REACHABILITY - have connection to cellular")
-            }
-            let servers = Resolver().getservers().map(Resolver.getnameinfo)
-            self.log("REACHABILITY DNS Servers: \(servers)")
-            
-            self.log("reachability testing network")
-            self.checkNetworkConnection { [weak self] success in
-                guard let self else { return }
-                self.log("reachability network check result: \(success)")
-                if( success == false ) {
-                    self.log("ERROR - network check failed, killing PTP if not killed in the last 30 seconds")
-                    
-                    // only kill PTP if it hasnt been killed in the last 30 seconds - to avoid race conditions/infinite loop
-                    // TODO: maybe force VPN restart too?
-                    // TODO: maybe force wait a second on stopping?
-                    // TODO: make this smarter e.g- if PTP has been killed in the last 30 seconds, wait 10 seconds to kill it
-                    let timeIntervalOfLastReachabilityKill = defaults.double(forKey: self.lastReachabilityKillKey)
-                    let dateOfLastReachabilityKill = Date(timeIntervalSince1970: timeIntervalOfLastReachabilityKill)
-                    let timeSinceLastReachabilityKill = Date().timeIntervalSince(dateOfLastReachabilityKill)
-                    self.log("REACHABILITY kill - time since last kill: \(timeSinceLastReachabilityKill)")
-                    if (timeSinceLastReachabilityKill < 60) {
-                        self.log("REACHABILITY kill - did this < 30 seconds ago, not calling it again")
-//                        return
-                    }
-                    else {
-                        // do the kill
-                        defaults.set(Date().timeIntervalSince1970, forKey: self.lastReachabilityKillKey)
-                    }
-                }
-            }
+            self?.pathUpdateHandler(path: path)
         }
-        let queue = DispatchQueue(label: "Monitor")
-        monitor.start(queue: queue)
         
-        let networkSettings = getNetworkSettings();
         
         log("Calling setTunnelNetworkSettings")
-        self.setTunnelNetworkSettings(networkSettings, completionHandler: { [weak self] error in
+        initializeDns();
+        initializeProxy();
+    
+        setupObserverDNSCryptProxyReady(completionHandler: completionHandler)
+        
+        startDns();
+        proxyError = startProxy()
+    }
+    
+    private func setupObserverDNSCryptProxyReady(completionHandler: @escaping (Error?) -> Void) {
+        token = center.addObserver(
+            forName: Notification.Name(kDNSCryptProxyReady),
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            self?.dnsCryptProxyReady(completionHandler: completionHandler)
+        }
+    }
+    
+    private func dnsCryptProxyReady(completionHandler: @escaping (Error?) -> Void) {
+        log("Found available resolvers, tell iOS we are ready")
+        if let token {
+            center.removeObserver(token)
+        }
+        updateTunnelSetting(completionHandler: completionHandler)
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
+    }
+    
+    private func updateTunnelSetting(completionHandler: @escaping (Error?) -> Void) {
+        let networkSettings = getNetworkSettings();
+        
+        self.setTunnelNetworkSettings(networkSettings) { [weak self] error in
             guard let self else { return }
             if let error {
                 self.log("ERROR - StartTunnel \(error.localizedDescription)")
@@ -96,11 +91,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             } else {
                 self.log("No error on setTunnelNetworkSettings, starting dns and proxy")
                 
-                self.initializeDns();
-                self.initializeProxy();
-
-                self.startDns();
-                if let proxyError = self.startProxy() {
+                if let proxyError = self.proxyError {
                     self.log("ERROR - Failed to start proxy: \(proxyError)")
                     completionHandler(proxyError)
                 }
@@ -108,9 +99,17 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     self.log("SUCCESS - startTunnel")
                     completionHandler(nil)
                 }
+                self.proxyError = nil
             }
-        })
-        
+        }
+    }
+    
+    private func refreshServers() {
+        stopProxyServer()
+        _dns.closeIdleConnections()
+        _dns.refreshServersInfo()
+        initializeProxy()
+        _ = startProxy()
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
@@ -303,31 +302,73 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
     }
     
-    func reactivateTunnel() {
-        log("===== reactivateTunnel, reasserting true")
-        reasserting = true
-                
-        let networkSettings = getNetworkSettings()
-        
-        self.setTunnelNetworkSettings(networkSettings) { [weak self] error in
-            guard let self else { return }
-            if let error {
-                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error.localizedDescription)")
-            }
-            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasserting false")
-            self.reasserting = false
-            
-            self._dns.closeIdleConnections()
-            self.log("closed idle connections")
-            
-            self.log("||||| reactivate AFTER - checking availability to apple.com")
-            self.checkNetworkConnection { [weak self] success in
-                guard let self else { return }
-                self.log("ReactivateTunnel checkNetworkConnection result: \(success)")
-            }
+//    func reactivateTunnel() {
+//        log("===== reactivateTunnel, reasserting true")
+//        reasserting = true
+//
+//        let networkSettings = getNetworkSettings()
+//
+//        self.setTunnelNetworkSettings(networkSettings) { [weak self] error in
+//            guard let self else { return }
+//            if let error {
+//                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error.localizedDescription)")
+//            }
+//            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasserting false")
+//            self.reasserting = false
+//
+//            self._dns.closeIdleConnections()
+//            self.log("closed idle connections")
+//
+//            self.log("||||| reactivate AFTER - checking availability to apple.com")
+//            self.checkNetworkConnection { [weak self] success in
+//                guard let self else { return }
+//                self.log("ReactivateTunnel checkNetworkConnection result: \(success)")
+//            }
+//        }
+//
+//        startDns()
+//    }
+    
+    
+    // MARK: - reachability
+
+    func pathUpdateHandler(path: Network.NWPath) {
+        log("REACHABILITY - Connected: \(path.status == .satisfied) - NWPATH: \(path.debugDescription)")
+        if path.usesInterfaceType(.wifi) {
+            log("REACHABILITY - have connection to wifi")
         }
+        if path.usesInterfaceType(.cellular) {
+            log("REACHABILITY - have connection to cellular")
+        }
+        let servers = Resolver().getservers().map(Resolver.getnameinfo)
+        log("REACHABILITY DNS Servers: \(servers)")
         
-        startDns()
+        log("reachability testing network")
+        
+//        self.checkNetworkConnection { [weak self] success in
+//            guard let self else { return }
+//            self.log("reachability network check result: \(success)")
+//            if( success == false ) {
+//                self.log("ERROR - network check failed, killing PTP if not killed in the last 30 seconds")
+//
+//                // only kill PTP if it hasnt been killed in the last 30 seconds - to avoid race conditions/infinite loop
+//                // TODO: maybe force VPN restart too?
+//                // TODO: maybe force wait a second on stopping?
+//                // TODO: make this smarter e.g- if PTP has been killed in the last 30 seconds, wait 10 seconds to kill it
+//                let timeIntervalOfLastReachabilityKill = defaults.double(forKey: self.lastReachabilityKillKey)
+//                let dateOfLastReachabilityKill = Date(timeIntervalSince1970: timeIntervalOfLastReachabilityKill)
+//                let timeSinceLastReachabilityKill = Date().timeIntervalSince(dateOfLastReachabilityKill)
+//                self.log("REACHABILITY kill - time since last kill: \(timeSinceLastReachabilityKill)")
+//                if (timeSinceLastReachabilityKill < 60) {
+//                    self.log("REACHABILITY kill - did this < 30 seconds ago, not calling it again")
+//                        return
+//                }
+//                else {
+//                    // do the kill
+//                    defaults.set(Date().timeIntervalSince1970, forKey: self.lastReachabilityKillKey)
+//                }
+//            }
+//        }
     }
     
     func checkNetworkConnection(callback: @escaping (Bool) -> Void, attempt: Int = 1) {
