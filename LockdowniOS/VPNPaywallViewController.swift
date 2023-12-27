@@ -40,6 +40,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
             updateTabs()
         }
     }
+
+    private var needScrolToUniversal = false
     
     //MARK: Properties
     private var titleName = NSLocalizedString("Lockdown", comment: "")
@@ -197,6 +199,14 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         updateVisibleTabs()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if needScrolToUniversal {
+            scrollToRightTabs()
+            needScrolToUniversal = false
+        }
+    }
+    
     //MARK: ConfigureUI
     private func configureUI() {
         view.addSubview(navigationView)
@@ -296,7 +306,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     
     private func updateCurrentSelectedTab () {
         guard let plan = shared.user.currentSubscription?.planType else {
-            selectedTab = .advanced
+            selectedTab = .universal
+            needScrolToUniversal = true
             return
         }
         if plan.isAdvanced {
@@ -307,6 +318,13 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         }
         if plan.isUniversal {
             selectedTab = .universal
+        }
+    }
+    
+    private func scrollToRightTabs() {
+        DispatchQueue.main.async {
+            let offset = self.hScrollView.contentSize.width - self.hScrollView.frame.size.width
+            self.hScrollView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
         }
     }
     
