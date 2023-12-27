@@ -324,7 +324,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     private func scrollToRightTabs() {
         DispatchQueue.main.async {
             let offset = self.hScrollView.contentSize.width - self.hScrollView.frame.size.width
-            self.hScrollView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+            self.hScrollView.setContentOffset(CGPoint(x: offset, y: 0), animated: false)
         }
     }
     
