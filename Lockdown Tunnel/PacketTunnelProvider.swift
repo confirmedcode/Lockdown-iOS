@@ -104,6 +104,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
     }
     
+    private func refreshServers() {
+        stopProxyServer()
+        _dns.closeIdleConnections()
+        _dns.refreshServersInfo()
+        initializeProxy()
+        _ = startProxy()
+    }
+    
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         self.log("+++++ stopTunnel with reason: \(reason)")
         monitor.cancel()
@@ -294,31 +302,32 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
     }
     
-    func reactivateTunnel() {
-        log("===== reactivateTunnel, reasserting true")
-        reasserting = true
-
-        refreshServers()
-        
-        let networkSettings = getNetworkSettings()
-
-        self.setTunnelNetworkSettings(networkSettings) { [weak self] error in
-            guard let self else { return }
-            if let error {
-                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error.localizedDescription)")
-            }
-            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasserting false")
-            self.reasserting = false
-        }
-    }
-    
-    private func refreshServers() {
-        stopProxyServer()
-        _dns.closeIdleConnections()
-        _dns.refreshServersInfo()
-        initializeProxy()
-        _ = startProxy()
-    }
+//    func reactivateTunnel() {
+//        log("===== reactivateTunnel, reasserting true")
+//        reasserting = true
+//
+//        let networkSettings = getNetworkSettings()
+//
+//        self.setTunnelNetworkSettings(networkSettings) { [weak self] error in
+//            guard let self else { return }
+//            if let error {
+//                self.log("ERROR - reactivateTunnel setTunnelNetworkSettings: \(error.localizedDescription)")
+//            }
+//            self.log("reactivateTunnel setTunnelNetworkSettings complete, reasserting false")
+//            self.reasserting = false
+//
+//            self._dns.closeIdleConnections()
+//            self.log("closed idle connections")
+//
+//            self.log("||||| reactivate AFTER - checking availability to apple.com")
+//            self.checkNetworkConnection { [weak self] success in
+//                guard let self else { return }
+//                self.log("ReactivateTunnel checkNetworkConnection result: \(success)")
+//            }
+//        }
+//
+//        startDns()
+//    }
     
     
     // MARK: - reachability
@@ -335,11 +344,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         log("REACHABILITY DNS Servers: \(servers)")
         
         log("reachability testing network")
-        
-        if path.status != .satisfied {
-            reasserting = true
-            reactivateTunnel()
-        }
         
 //        self.checkNetworkConnection { [weak self] success in
 //            guard let self else { return }
