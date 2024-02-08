@@ -131,7 +131,7 @@ class Client {
             try self.validateApiResponse(data: data, response: response)
             let decoder = JSONDecoder()
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sss'Z'"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             decoder.dateDecodingStrategy = .formatted(formatter)
             var subscriptions = try decoder.decode([Subscription].self, from: data)
             DDLogInfo("API RESULT: active-subscriptions: \(subscriptions)")
