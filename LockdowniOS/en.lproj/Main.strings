@@ -128,7 +128,7 @@
 "KtJ-Jg-Z3X.text" = "Set Region";
 
 /* Class = "UILabel"; text = "Firewall"; ObjectID = "LE2-86-d4U"; */
-"LE2-86-d4U.text" = "Firewall";
+"LE2-86-d4U.text" = "Digital Shield Firewall";
 
 /* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "MRU-xk-A2p"; */
 "MRU-xk-A2p.normalTitle" = "CANCEL";
@@ -161,7 +161,7 @@
 "OLt-18-OkW.normalTitle" = "􀁝";
 
 /* Class = "UILabel"; text = "Block Invasive Tracking"; ObjectID = "PGe-EF-Ixy"; */
-"PGe-EF-Ixy.text" = "Block Invasive Tracking";
+"PGe-EF-Ixy.text" = "Block digital intruders";
 
 /* Class = "UIButton"; normalTitle = "􀆅"; ObjectID = "RMP-Wh-oss"; */
 "RMP-Wh-oss.normalTitle" = "􀆅";
@@ -332,7 +332,7 @@
 "jXy-3G-JaC.accessibilityLabel" = "Tap This Button To Activate Secure Tunnel";
 
 /* Class = "UILabel"; text = "Private Browsing + Hide Location & IP"; ObjectID = "ked-BF-PXx"; */
-"ked-BF-PXx.text" = "Private Browsing + Hide Location & IP";
+"ked-BF-PXx.text" = "Hide your location & IP";
 
 /* Class = "UILabel"; text = "NOT ACTIVE"; ObjectID = "kmJ-b4-n81"; */
 "kmJ-b4-n81.text" = "NOT ACTIVE";

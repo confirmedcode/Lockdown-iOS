@@ -258,8 +258,8 @@
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kyi-Fn-BTq">
                                                 <rect key="frame" x="14" y="2" width="365" height="341"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firewall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIB-Tk-mf1">
-                                                        <rect key="frame" x="14" y="12" width="250" height="23"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digital Shield Firewall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIB-Tk-mf1">
+                                                        <rect key="frame" x="48" y="12" width="250" height="23"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="250" id="3eh-gZ-QTK">
                                                                 <variation key="heightClass=regular-widthClass=regular" constant="250"/>
@@ -511,8 +511,8 @@
                                                             <constraint firstAttribute="height" constant="48" id="qet-fn-FY0"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Invasive Tracking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGe-EF-Ixy">
-                                                        <rect key="frame" x="14" y="37" width="337" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block digital intruders" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGe-EF-Ixy">
+                                                        <rect key="frame" x="48" y="37" width="303" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="Vat-wn-bfE"/>
                                                         </constraints>
@@ -548,6 +548,9 @@
                                                             <action selector="shareFirewallMetricsTapped:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="396-21-MUz"/>
                                                         </connections>
                                                     </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SheldIcon" translatesAutoresizingMaskIntoConstraints="NO" id="n4N-2D-C3a">
+                                                        <rect key="frame" x="8" y="12" width="32" height="32"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Panel Background"/>
                                                 <constraints>
@@ -557,6 +560,7 @@
                                                     <constraint firstItem="BoV-0k-BS5" firstAttribute="leading" secondItem="ldh-Fd-85p" secondAttribute="trailing" constant="5" id="71r-mw-0fw"/>
                                                     <constraint firstAttribute="trailing" secondItem="XvC-pH-UjX" secondAttribute="trailing" id="Bjg-us-SL0"/>
                                                     <constraint firstAttribute="trailing" secondItem="xTx-NG-XuM" secondAttribute="trailing" id="FkC-Bf-1Gw"/>
+                                                    <constraint firstItem="yIB-Tk-mf1" firstAttribute="leading" secondItem="n4N-2D-C3a" secondAttribute="trailing" constant="8" id="G1W-xA-T7D"/>
                                                     <constraint firstItem="xTx-NG-XuM" firstAttribute="top" secondItem="O6K-5L-NkS" secondAttribute="bottom" id="GZI-6b-huk"/>
                                                     <constraint firstItem="BoV-0k-BS5" firstAttribute="centerY" secondItem="ldh-Fd-85p" secondAttribute="centerY" id="MRT-Lj-3i9"/>
                                                     <constraint firstItem="JVD-sS-lUY" firstAttribute="leading" secondItem="Kyi-Fn-BTq" secondAttribute="leading" id="PqW-TK-G7w"/>
@@ -566,10 +570,11 @@
                                                     <constraint firstItem="PGe-EF-Ixy" firstAttribute="top" secondItem="yIB-Tk-mf1" secondAttribute="bottom" constant="2" id="RoZ-JN-hN5"/>
                                                     <constraint firstItem="jmJ-jD-Nql" firstAttribute="centerX" secondItem="Kyi-Fn-BTq" secondAttribute="centerX" id="RwE-F8-7cT"/>
                                                     <constraint firstItem="XvC-pH-UjX" firstAttribute="top" secondItem="xTx-NG-XuM" secondAttribute="bottom" constant="2" id="SEv-0J-lEL"/>
-                                                    <constraint firstItem="yIB-Tk-mf1" firstAttribute="leading" secondItem="Kyi-Fn-BTq" secondAttribute="leading" constant="14" id="SWQ-RI-nPn"/>
+                                                    <constraint firstItem="yIB-Tk-mf1" firstAttribute="leading" secondItem="Kyi-Fn-BTq" secondAttribute="leading" constant="48" id="SWQ-RI-nPn"/>
                                                     <constraint firstItem="jmJ-jD-Nql" firstAttribute="top" secondItem="PGe-EF-Ixy" secondAttribute="bottom" constant="10" id="UjE-uy-Jn1"/>
+                                                    <constraint firstItem="PGe-EF-Ixy" firstAttribute="leading" secondItem="yIB-Tk-mf1" secondAttribute="leading" id="Z5J-ja-G8Y"/>
                                                     <constraint firstItem="XvC-pH-UjX" firstAttribute="leading" secondItem="JVD-sS-lUY" secondAttribute="trailing" constant="0.5" id="ZRS-s4-1mz"/>
-                                                    <constraint firstItem="PGe-EF-Ixy" firstAttribute="leading" secondItem="Kyi-Fn-BTq" secondAttribute="leading" constant="14" id="Zl9-Oi-LAf"/>
+                                                    <constraint firstItem="n4N-2D-C3a" firstAttribute="top" secondItem="Kyi-Fn-BTq" secondAttribute="top" constant="12" id="c6a-XJ-dP0"/>
                                                     <constraint firstAttribute="bottom" secondItem="XvC-pH-UjX" secondAttribute="bottom" id="fDD-Ns-4mo"/>
                                                     <constraint firstAttribute="bottom" secondItem="JVD-sS-lUY" secondAttribute="bottom" id="iwb-SS-irO"/>
                                                     <constraint firstItem="XvC-pH-UjX" firstAttribute="width" secondItem="JVD-sS-lUY" secondAttribute="width" id="t0K-bS-Ew8"/>
@@ -833,15 +838,15 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure Tunnel VPN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuc-D4-P1M">
-                                                                <rect key="frame" x="14" y="12" width="299" height="23"/>
+                                                                <rect key="frame" x="48" y="12" width="265" height="23"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="zN0-yu-62P"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Browsing + Hide Location &amp; IP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="ked-BF-PXx">
-                                                                <rect key="frame" x="14" y="37" width="299" height="16"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide your location &amp; IP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="ked-BF-PXx">
+                                                                <rect key="frame" x="48" y="37" width="265" height="16"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="16" id="YfV-OL-jKP"/>
                                                                 </constraints>
@@ -866,15 +871,20 @@
                                                                     <action selector="vpnQuestionTapped:" destination="NZN-Gg-FQX" eventType="touchUpInside" id="9f7-vE-YKb"/>
                                                                 </connections>
                                                             </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VPNIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oiQ-cY-8cI">
+                                                                <rect key="frame" x="8" y="12" width="32" height="32"/>
+                                                            </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="nuc-D4-P1M" firstAttribute="leading" secondItem="oXk-la-xaY" secondAttribute="leading" constant="14" id="0B8-lg-2eb"/>
+                                                            <constraint firstItem="nuc-D4-P1M" firstAttribute="leading" secondItem="oXk-la-xaY" secondAttribute="leading" constant="48" id="0B8-lg-2eb"/>
+                                                            <constraint firstItem="oiQ-cY-8cI" firstAttribute="top" secondItem="oXk-la-xaY" secondAttribute="top" constant="12" id="FBy-G0-wxd"/>
+                                                            <constraint firstItem="nuc-D4-P1M" firstAttribute="leading" secondItem="oiQ-cY-8cI" secondAttribute="trailing" constant="8" id="FRk-gs-UxV"/>
                                                             <constraint firstItem="2I5-jL-jQr" firstAttribute="centerX" secondItem="oXk-la-xaY" secondAttribute="centerX" id="G9F-eI-y9U"/>
                                                             <constraint firstAttribute="trailing" secondItem="OLt-18-OkW" secondAttribute="trailing" constant="12" id="Phc-Og-R4g"/>
                                                             <constraint firstItem="OLt-18-OkW" firstAttribute="leading" secondItem="ked-BF-PXx" secondAttribute="trailing" constant="8" id="XJI-eE-4eM"/>
-                                                            <constraint firstItem="ked-BF-PXx" firstAttribute="leading" secondItem="oXk-la-xaY" secondAttribute="leading" constant="14" id="abo-yf-9In"/>
                                                             <constraint firstAttribute="height" constant="63" id="c3y-Y9-WR9"/>
+                                                            <constraint firstItem="ked-BF-PXx" firstAttribute="leading" secondItem="nuc-D4-P1M" secondAttribute="leading" id="d83-rv-7k5"/>
                                                             <constraint firstItem="2I5-jL-jQr" firstAttribute="centerY" secondItem="nuc-D4-P1M" secondAttribute="centerY" priority="999" id="fqL-ad-2Ax"/>
                                                             <constraint firstItem="OLt-18-OkW" firstAttribute="top" secondItem="oXk-la-xaY" secondAttribute="top" constant="12" id="hGN-Jx-zIV"/>
                                                             <constraint firstItem="ked-BF-PXx" firstAttribute="top" secondItem="nuc-D4-P1M" secondAttribute="bottom" constant="2" id="ieq-GZ-cLw"/>
@@ -990,7 +1000,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsC-EY-ZUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2272.5" y="1262.323943661972"/>
+            <point key="canvasLocation" x="-2272.5190839694656" y="1261.9718309859156"/>
         </scene>
         <!--Why Trust View Controller-->
         <scene sceneID="RB8-7K-oGs">
@@ -3717,6 +3727,8 @@
         <segue reference="QzY-Hs-CoL"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="SheldIcon" width="32" height="32"/>
+        <image name="VPNIcon" width="32" height="32"/>
         <image name="blue_circle" width="104" height="104"/>
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="globe" width="80" height="80"/>
