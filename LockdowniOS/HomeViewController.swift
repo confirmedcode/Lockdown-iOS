@@ -368,6 +368,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        tabBarController?.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -1194,5 +1196,26 @@ extension NEVPNStatus: CustomStringConvertible {
         case .disconnecting:
             return "disconnecting"
         }
+    }
+}
+
+extension HomeViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController is UINavigationController || viewController is HomeViewController {
+            return true
+        }
+        
+        let stepsViewController = StepsViewController()
+        var viewModel = StepsViewModel { [weak self] message in
+            self?.sendMessage(
+                message,
+                subject: "Lockdown Error Reporting Form (iOS \(Bundle.main.versionString))"
+            )
+        }
+        stepsViewController.viewModel = viewModel
+        stepsViewController.modalPresentationStyle = .fullScreen
+        present(stepsViewController, animated: true)
+        
+        return false
     }
 }
