@@ -503,7 +503,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 defaults.bool(forKey: kHasSeenInitialFirewallConnectedDialog) == false {
                 defaults.set(true, forKey: kHasSeenInitialFirewallConnectedDialog)
                 self.tapToActivateFirewallLabel.isHidden = true
-                if (VPNController.shared.status() == .invalid) {
+                let hasSubscription = UserDefaults.hasSeenAnonymousPaywall || UserDefaults.hasSeenUniversalPaywall || UserDefaults.hasSeenAdvancedPaywall
+                if (VPNController.shared.status() == .invalid && !hasSubscription) {
                     self.showVPNSubscriptionDialog(title: NSLocalizedString("🔥🧱 Firewall Activated 🎊🎉", comment: ""), message: NSLocalizedString("Trackers, ads, and other malicious scripts are now blocked in all your apps, even outside of Safari.\n\nGet maximum privacy with a Secure Tunnel that protects connections, anonymizes your browsing, and hides your location.", comment: ""))
                 }
             }
