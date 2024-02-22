@@ -107,8 +107,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         return stack
     }()
     
-    lazy var advancedView: AdvancedPaywallView = {
-        let view = AdvancedPaywallView()
+    lazy var advancedView: PaywallView = {
+        let view = PaywallView(model: .advancedDetails())
         if isDisabledPlan(.advancedMonthly) {
             disable(button: view.buyButton2)
         }
@@ -126,8 +126,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         return view
     }()
     
-    lazy var anonymousView: AnonymousPaywallView = {
-        let view = AnonymousPaywallView()
+    lazy var anonymousView: PaywallView = {
+        let view = PaywallView(model: .anonymousDetails())
         view.isHidden = true
         if isDisabledPlan(.anonymousMonthly) {
             disable(button: view.buyButton2)
@@ -146,8 +146,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         return view
     }()
     
-    lazy var universalView: UniversalPaywallView = {
-        let view = UniversalPaywallView()
+    lazy var universalView: PaywallView = {
+        let view = PaywallView(model: .universalDetails())
         view.isHidden = true
         if isDisabledPlan(.universalMonthly) {
             disable(button: view.buyButton2)

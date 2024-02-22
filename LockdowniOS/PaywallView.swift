@@ -8,10 +8,10 @@
 import UIKit
 import Foundation
 
-final class AdvancedPaywallView: UIView {
+final class PaywallView: UIView {
     
     //MARK: Properties
-    
+    private let model: PaywallViewModel
     var isSelected: Bool = false
     
     lazy var scrollView: UIScrollView = {
@@ -28,56 +28,17 @@ final class AdvancedPaywallView: UIView {
     
     lazy var headlineLabel: PaywallDescriptionLabel = {
         let label = PaywallDescriptionLabel()
-        label.titleLabel.text = NSLocalizedString("Advanced Level Protection", comment:"")
-        label.subtitleLabel.text = NSLocalizedString("Used by 100,000+ Privacy-Conscious People", comment: "")
+        label.titleLabel.text = model.title
+        label.subtitleLabel.text = model.subtitle
         return label
-    }()
-    
-    lazy var bulletView1: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "Custom block lists"))
-        return view
-    }()
-    
-    lazy var bulletView2: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "Advanced malware & ads blocking"))
-        return view
-    }()
-    
-    lazy var bulletView3: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "Unlimited blocking"))
-        return view
-    }()
-    
-    lazy var bulletView4: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "App-specific block lists"))
-        return view
-    }()
-    
-    lazy var bulletView5: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "Advanced encryption protocols"))
-        return view
-    }()
-    
-    lazy var bulletView6: BulletView = {
-        let view = BulletView()
-        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: "Import/Export block lists for more tailored protection"))
-        return view
     }()
     
     private lazy var bulletsStackView: UIStackView = {
         let stackView  = UIStackView()
         stackView.addArrangedSubview(headlineLabel)
-        stackView.addArrangedSubview(bulletView1)
-        stackView.addArrangedSubview(bulletView2)
-        stackView.addArrangedSubview(bulletView3)
-        stackView.addArrangedSubview(bulletView4)
-        stackView.addArrangedSubview(bulletView5)
-        stackView.addArrangedSubview(bulletView6)
+        model.bulletPoints.forEach {
+            stackView.addArrangedSubview(bulletView(forTitle: $0))
+        }
         stackView.axis = .vertical
         stackView.spacing = 8
         return stackView
@@ -113,7 +74,7 @@ final class AdvancedPaywallView: UIView {
         descriptionLabel.font = fontMedium11
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
-        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedYearly)
+        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
         descriptionLabel.text = "then \(descriptionLabelPrice1) per year"
         descriptionLabel.highlight(descriptionLabelPrice1, font: UIFont.boldLockdownFont(size: 15))
         
@@ -125,7 +86,7 @@ final class AdvancedPaywallView: UIView {
         descriptionLabel2.font = fontMedium11
         descriptionLabel2.textColor = .white
         
-        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: VPNSubscription.productIdAdvancedYearly)
+        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: model.annualProductId)
         descriptionLabel2.text = "only \(descriptionLabelPrice2) per month"
         descriptionLabel2.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
         
@@ -157,7 +118,7 @@ final class AdvancedPaywallView: UIView {
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         
-        let descriptionLabelPrice = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly)
+        let descriptionLabelPrice = VPNSubscription.getProductIdPrice(productId: model.mounthProductId)
         descriptionLabel.text = "\(descriptionLabelPrice)/month"
         descriptionLabel.highlight(descriptionLabelPrice, font: UIFont.boldLockdownFont(size: 15))
         
@@ -177,7 +138,14 @@ final class AdvancedPaywallView: UIView {
     
     //MARK: Initialization
     
+    init(model: PaywallViewModel) {
+        self.model = model
+        super.init(frame: .zero)
+        configureUI()
+    }
+    
     override init(frame: CGRect) {
+        model = .empty()
         super.init(frame: frame)
         configureUI()
     }
@@ -217,6 +185,12 @@ final class AdvancedPaywallView: UIView {
         bulletsStackView.anchors.top.marginsPin()
         bulletsStackView.anchors.leading.marginsPin()
         bulletsStackView.anchors.trailing.marginsPin()
+    }
+    
+    private func bulletView(forTitle title: String) -> BulletView {
+        let view = BulletView()
+        view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: title))
+        return view
     }
     
     //MARK: Functions
