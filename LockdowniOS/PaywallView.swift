@@ -59,28 +59,35 @@ final class PaywallView: UIView {
             imageView.topAnchor.constraint(equalTo: button.topAnchor, constant: 0)
         ])
         
+        let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
+        let title = trialDuation + " " + NSLocalizedString("FREE TRIAL", comment: "")
         let titleLabel = UILabel()
-        titleLabel.text = NSLocalizedString("7-Day FREE TRIAL", comment: "")
+        titleLabel.text = title
         titleLabel.font = fontBold15
         titleLabel.textColor = .white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        button.addSubview(titleLabel)
-        titleLabel.anchors.top.pin(inset: 16)
-        titleLabel.anchors.leading.pin(inset: 24)
-        
         titleLabel.highlight()
+        titleLabel.isHidden = trialDuation.isEmpty
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
         let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
-        descriptionLabel.text = "then \(descriptionLabelPrice1) per year"
+        var descriptionTitle = trialDuation.isEmpty ? "" : NSLocalizedString("then", comment: "") + " "
+        descriptionTitle += descriptionLabelPrice1 + " " + NSLocalizedString("per year", comment: "")
+        descriptionLabel.text = descriptionTitle
         descriptionLabel.highlight(descriptionLabelPrice1, font: UIFont.boldLockdownFont(size: 15))
+                
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fill
+        stackView.spacing = 4
         
-        button.addSubview(descriptionLabel)
-        descriptionLabel.anchors.top.spacing(4, to: titleLabel.anchors.bottom)
-        descriptionLabel.anchors.leading.pin(inset: 24)
+        button.addSubview(stackView)
+        stackView.anchors.centerY.align()
+        stackView.anchors.leading.pin(inset: 24)
         
         let descriptionLabel2 = UILabel()
         descriptionLabel2.font = fontMedium11
@@ -91,7 +98,7 @@ final class PaywallView: UIView {
         descriptionLabel2.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
         
         button.addSubview(descriptionLabel2)
-        descriptionLabel2.anchors.top.spacing(14, to: imageView.anchors.bottom)
+        descriptionLabel2.anchors.bottom.pin(inset: 13)
         descriptionLabel2.anchors.trailing.pin(inset: 24)
         
         button.anchors.height.equal(66)
@@ -106,12 +113,14 @@ final class PaywallView: UIView {
         button.layer.cornerRadius = 28
         button.addTarget(self, action: #selector(buyButton2Clicked), for: .touchUpInside)
         
-        let title = NSLocalizedString("7-Day FREE TRIAL", comment: "")
+        let trialDuration = VPNSubscription.trialDuration(productId: model.mounthProductId) ?? ""
+        let title = trialDuration + " " + NSLocalizedString("FREE TRIAL", comment: "")
         let titleLabel = UILabel()
         titleLabel.font = fontBold15
         titleLabel.text = title
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
+        titleLabel.isHidden = trialDuration.isEmpty
         
         let descriptionLabel = UILabel()
         descriptionLabel.font = fontMedium11

@@ -74,6 +74,15 @@ class VPNSubscription: NSObject {
         }
     }
     
+    static func setTrialDuration(productId: String, duration: String?) {
+        guard let duration else {
+            DDLogInfo("Unavaible trial for \(productId)")
+            return
+        }
+        DDLogInfo("Setting trial a duration \(duration) for \(productId)")
+        UserDefaults.standard.set(duration, forKey: productId + "Trial")
+    }
+    
     static func setProductIdPrice(productId: String, price: String) {
         DDLogInfo("Setting product id price \(price) for \(productId)")
         UserDefaults.standard.set(price, forKey: productId + "Price")
@@ -134,6 +143,10 @@ class VPNSubscription: NSObject {
                 return "Invalid Price"
             }
         }
+    }
+    
+    static func trialDuration(productId: String) -> String? {
+        UserDefaults.standard.string(forKey: productId + "Trial")
     }
     
     static func getProductIdPrice(productId: String) -> String {
@@ -299,6 +312,7 @@ class VPNSubscription: NSObject {
                         setProductIdPriceAnnualMonthly(productId: productIdAnnualPro, price: defaultPriceSubStringAnnualPro)
                     }
                 }
+                setTrialDuration(productId: product.productIdentifier, duration: trialDuraion(for: product.introductoryPrice))
             }
             for invalidProductId in result.invalidProductIDs {
                 DDLogError("invalid product id: \(invalidProductId)");
@@ -306,6 +320,19 @@ class VPNSubscription: NSObject {
         }
     }
     
+    private static func trialDuraion(for trial: SKProductDiscount?) -> String? {
+        guard let trial,
+              trial.paymentMode == .freeTrial else {
+            return nil
+        }
+        let unit = switch trial.subscriptionPeriod.unit {
+        case .day: NSLocalizedString("Day", comment: "day")
+        case .week: NSLocalizedString("Week", comment: "week")
+        case .month: NSLocalizedString("Month", comment: "month")
+        case .year: NSLocalizedString("Year", comment: "year")
+        }
+        return "\(trial.subscriptionPeriod.numberOfUnits)" + "-" + unit
+    }
 }
 
 extension Subscription.PlanType {
