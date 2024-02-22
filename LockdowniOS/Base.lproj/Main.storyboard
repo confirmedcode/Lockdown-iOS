@@ -2583,7 +2583,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feedback" image="message.fill" catalog="system" id="hqu-8v-XrR"/>
+                    <tabBarItem key="tabBarItem" title="Feedback" image="message-circle" id="hqu-8v-XrR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYo-Lj-A6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3736,7 +3736,7 @@
         <image name="icn_firewall" width="19" height="22"/>
         <image name="icn_vpn" width="22" height="22"/>
         <image name="lock.shield.fill" catalog="system" width="128" height="119"/>
-        <image name="message.fill" catalog="system" width="128" height="114"/>
+        <image name="message-circle" width="24" height="24"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
         <image name="power" width="284" height="284"/>
         <namedColor name="Confirmed Blue">
