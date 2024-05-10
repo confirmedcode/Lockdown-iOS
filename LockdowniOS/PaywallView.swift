@@ -44,104 +44,64 @@ final class PaywallView: UIView {
         return stackView
     }()
     
-    lazy var buyButton1: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .white
-        button.backgroundColor = .tunnelsBlue
-        button.layer.cornerRadius = 28
-        
-        let imageView = UIImageView(image: UIImage(named: "discount"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        button.addSubview(imageView)
-        NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: 0),
-            imageView.topAnchor.constraint(equalTo: button.topAnchor, constant: 0)
-        ])
-        
+    lazy var trialDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = fontRegular12
+        label.textColor = .white
+        label.textAlignment = .center
+        let anualPrice = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
+        let monthlyPrice = VPNSubscription.getProductIdPriceMonthly(productId: model.annualProductId)
         let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
-        let title = trialDuation + " " + NSLocalizedString("FREE TRIAL", comment: "")
-        let titleLabel = UILabel()
-        titleLabel.text = title
-        titleLabel.font = fontBold15
-        titleLabel.textColor = .white
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.highlight()
-        titleLabel.isHidden = trialDuation.isEmpty
+        let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(anualPrice) (\(monthlyPrice)/mo)"
+        label.text = title
+        return label
+    }()
+    
+    lazy var bottomProduct: ProductButton = {
+        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: model.mounthProductId)
+        let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
+        let title = trialDuation + " " + NSLocalizedString("trial", comment: "")
         
-        let descriptionLabel = UILabel()
-        descriptionLabel.font = fontMedium11
-        descriptionLabel.textColor = .white
-        descriptionLabel.textAlignment = .left
-        let descriptionLabelPrice1 = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
         var descriptionTitle = trialDuation.isEmpty ? "" : NSLocalizedString("then", comment: "") + " "
-        descriptionTitle += descriptionLabelPrice1 + " " + NSLocalizedString("per year", comment: "")
-        descriptionLabel.text = descriptionTitle
-        descriptionLabel.highlight(descriptionLabelPrice1, font: UIFont.boldLockdownFont(size: 15))
-                
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fill
-        stackView.spacing = 4
+        descriptionTitle += descriptionLabelPrice1 + NSLocalizedString("/year", comment: "")
         
-        button.addSubview(stackView)
-        stackView.anchors.centerY.align()
-        stackView.anchors.leading.pin(inset: 24)
-        
-        let descriptionLabel2 = UILabel()
-        descriptionLabel2.font = fontMedium11
-        descriptionLabel2.textColor = .white
-        
-        let descriptionLabelPrice2 = VPNSubscription.getProductIdPriceMonthly(productId: model.annualProductId)
-        descriptionLabel2.text = "only \(descriptionLabelPrice2) per month"
-        descriptionLabel2.highlight(descriptionLabelPrice2, font: UIFont.boldLockdownFont(size: 15))
-        
-        button.addSubview(descriptionLabel2)
-        descriptionLabel2.anchors.bottom.pin(inset: 13)
-        descriptionLabel2.anchors.trailing.pin(inset: 24)
-        
-        button.anchors.height.equal(66)
-        button.addTarget(self, action: #selector(buyButton1Clicked), for: .touchUpInside)
+        let button = ProductButton(title: "Montly", subtitle: descriptionLabelPrice1, toHighlight: descriptionLabelPrice1)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    lazy var buyButton2: UIButton = {
+    lazy var topProduct: ProductButton = {
+        let annyalPrice = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
+        let monthlyPrice = VPNSubscription.getProductIdPriceMonthly(productId: model.annualProductId)
+        var descriptionTitle = "\(annyalPrice)" + " (\(monthlyPrice)/mo)"
+        let button = ProductButton(title: "Yearly", subtitle: descriptionTitle, toHighlight: annyalPrice, isSelected: true)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    var isYearlyProduct: Bool {
+        (VPNSubscription.selectedProductId == VPNSubscription.productIdAdvancedYearly)
+        || (VPNSubscription.selectedProductId == VPNSubscription.productIdAnnual)
+        || (VPNSubscription.selectedProductId == VPNSubscription.productIdAnnualPro)
+    }
+    
+    var isYearlyProductWithTrial: Bool {
+        isYearlyProduct && (VPNSubscription.trialDuration(productId: model.annualProductId) != nil)
+    }
+    
+    func updateCTATitle() {
+        let title = isYearlyProductWithTrial ? "Start for Free" : "Continue"
+        actionButton.setTitle(title, for: .normal)
+    }
+    
+    lazy var actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
         button.backgroundColor = .tunnelsBlue
         button.layer.cornerRadius = 28
-        button.addTarget(self, action: #selector(buyButton2Clicked), for: .touchUpInside)
-        
-        let trialDuration = VPNSubscription.trialDuration(productId: model.mounthProductId) ?? ""
-        let title = trialDuration + " " + NSLocalizedString("FREE TRIAL", comment: "")
-        let titleLabel = UILabel()
-        titleLabel.font = fontBold15
-        titleLabel.text = title
-        titleLabel.textColor = .white
-        titleLabel.textAlignment = .left
-        titleLabel.isHidden = trialDuration.isEmpty
-        
-        let descriptionLabel = UILabel()
-        descriptionLabel.font = fontMedium11
-        descriptionLabel.textColor = .white
-        descriptionLabel.textAlignment = .left
-        
-        let descriptionLabelPrice = VPNSubscription.getProductIdPrice(productId: model.mounthProductId)
-        descriptionLabel.text = "\(descriptionLabelPrice)/month"
-        descriptionLabel.highlight(descriptionLabelPrice, font: UIFont.boldLockdownFont(size: 15))
-        
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fill
-        stackView.spacing = 4
-        
-        button.addSubview(stackView)
-        stackView.anchors.centerY.align()
-        stackView.anchors.leading.pin(inset: 24)
-        
-        button.anchors.height.equal(66)
+        let title = "Start for Free"
+        button.setTitle(title, for: .normal)
         return button
     }()
     
@@ -167,22 +127,35 @@ final class PaywallView: UIView {
     //MARK: ConfigureUI
     private func configureUI() {
         
-        addSubview(buyButton2)
-        buyButton2.anchors.bottom.pin()
-        buyButton2.anchors.leading.marginsPin()
-        buyButton2.anchors.trailing.marginsPin()
+        addSubview(actionButton)
+        actionButton.anchors.bottom.pin()
+        actionButton.anchors.leading.marginsPin()
+        actionButton.anchors.trailing.marginsPin()
+        actionButton.anchors.height.equal(58)
         
-        addSubview(buyButton1)
-        buyButton1.anchors.bottom.spacing(16, to: buyButton2.anchors.top)
-        buyButton1.anchors.leading.marginsPin()
-        buyButton1.anchors.trailing.marginsPin()
+        addSubview(trialDescriptionLabel)
+        trialDescriptionLabel.anchors.leading.marginsPin()
+        trialDescriptionLabel.anchors.trailing.marginsPin()
+        trialDescriptionLabel.anchors.bottom.spacing(10, to: actionButton.anchors.top)
+        
+        addSubview(bottomProduct)
+        bottomProduct.anchors.bottom.spacing(35, to: actionButton.anchors.top)
+        bottomProduct.anchors.leading.marginsPin()
+        bottomProduct.anchors.trailing.marginsPin()
+        bottomProduct.anchors.height.equal(60)
+        
+        addSubview(topProduct)
+        topProduct.anchors.bottom.spacing(16, to: bottomProduct.anchors.top)
+        topProduct.anchors.leading.marginsPin()
+        topProduct.anchors.trailing.marginsPin()
+        topProduct.anchors.height.equal(60)
         
         addSubview(scrollView)
         scrollView.anchors.top.pin()
         scrollView.anchors.leading.pin(inset: 16)
         scrollView.anchors.trailing.pin()
         scrollView.showsVerticalScrollIndicator = false
-        scrollView.anchors.bottom.spacing(8, to: buyButton1.anchors.top)
+        scrollView.anchors.bottom.spacing(8, to: topProduct.anchors.top)
         
         scrollView.addSubview(contentView)
         contentView.anchors.top.pin()
@@ -201,14 +174,4 @@ final class PaywallView: UIView {
         view.configure(with: BulletViewModel(image: UIImage(named: "Checkbox")!, title: title))
         return view
     }
-    
-    //MARK: Functions
-    @objc func buyButton1Clicked() {
-        
-    }
-    
-    @objc func buyButton2Clicked() {
-        
-    }
-
 }
