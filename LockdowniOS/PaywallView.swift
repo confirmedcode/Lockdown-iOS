@@ -80,18 +80,10 @@ final class PaywallView: UIView {
         return button
     }()
     
-    var isYearlyProduct: Bool {
-        (VPNSubscription.selectedProductId == VPNSubscription.productIdAdvancedYearly)
-        || (VPNSubscription.selectedProductId == VPNSubscription.productIdAnnual)
-        || (VPNSubscription.selectedProductId == VPNSubscription.productIdAnnualPro)
-    }
-    
-    var isYearlyProductWithTrial: Bool {
-        isYearlyProduct && (VPNSubscription.trialDuration(productId: model.annualProductId) != nil)
-    }
     
     func updateCTATitle() {
-        let title = isYearlyProductWithTrial ? "Start for Free" : "Continue"
+        let hasTrial = (VPNSubscription.trialDuration(productId: model.annualProductId) != nil) || (VPNSubscription.trialDuration(productId: model.mounthProductId) != nil)
+        let title = hasTrial ? "Start for Free" : "Continue"
         actionButton.setTitle(title, for: .normal)
     }
     

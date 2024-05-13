@@ -115,7 +115,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         }
         view.bottomProduct.setOnClickListener { [unowned self] in
             selectAdvancedMonthly()
-            selectMontlyProduct(view)
+            selectMontlyProduct(view, model: .advancedDetails())
         }
 
         view.actionButton.setOnClickListener { [unowned self] in
@@ -135,7 +135,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         }
         view.bottomProduct.setOnClickListener { [unowned self] in
             selectAnonymousMonthly()
-            selectMontlyProduct(view)
+            selectMontlyProduct(view, model: .anonymousDetails())
         }
         view.actionButton.setOnClickListener { [unowned self] in
             startTrial()
@@ -152,7 +152,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         }
         view.bottomProduct.setOnClickListener { [unowned self] in
             selectUniversalMonthly()
-            selectMontlyProduct(view)
+            selectMontlyProduct(view, model: .universalDetails())
         }
 
         view.actionButton.setOnClickListener { [unowned self] in
@@ -165,14 +165,23 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     private func selectYearlyProduct(_ view: PaywallView, model: PaywallViewModel) {
         view.topProduct.setSelected(true)
         view.bottomProduct.setSelected(false)
+        let anualPrice = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
+        let monthlyPrice = VPNSubscription.getProductIdPriceMonthly(productId: model.annualProductId)
+        let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
+        let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(anualPrice) (\(monthlyPrice)/mo)"
+        view.trialDescriptionLabel.text = title
         view.trialDescriptionLabel.isHidden = VPNSubscription.trialDuration(productId: model.annualProductId) == nil
         view.updateCTATitle()
     }
     
-    private func selectMontlyProduct(_ view: PaywallView) {
+    private func selectMontlyProduct(_ view: PaywallView, model: PaywallViewModel) {
         view.bottomProduct.setSelected(true)
         view.topProduct.setSelected(false)
-        view.trialDescriptionLabel.isHidden = true
+        let monthlyPrice = VPNSubscription.getProductIdPrice(productId: model.mounthProductId)
+        let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
+        let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(monthlyPrice)/mo"
+        view.trialDescriptionLabel.text = title
+        view.trialDescriptionLabel.isHidden = VPNSubscription.trialDuration(productId: model.mounthProductId) == nil
         view.updateCTATitle()
     }
     
