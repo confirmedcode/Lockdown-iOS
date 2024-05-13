@@ -326,10 +326,10 @@ class VPNSubscription: NSObject {
             return nil
         }
         let unit = switch trial.subscriptionPeriod.unit {
-        case .day: NSLocalizedString("Day", comment: "day")
-        case .week: NSLocalizedString("Week", comment: "week")
-        case .month: NSLocalizedString("Month", comment: "month")
-        case .year: NSLocalizedString("Year", comment: "year")
+        case .day: NSLocalizedString("day", comment: "day")
+        case .week: NSLocalizedString("week", comment: "week")
+        case .month: NSLocalizedString("month", comment: "month")
+        case .year: NSLocalizedString("year", comment: "year")
         }
         return "\(trial.subscriptionPeriod.numberOfUnits)" + "-" + unit
     }

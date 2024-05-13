@@ -109,38 +109,35 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     
     lazy var advancedView: PaywallView = {
         let view = PaywallView(model: .advancedDetails())
-        if isDisabledPlan(.advancedMonthly) {
-            disable(button: view.buyButton2)
-        }
-        if isDisabledPlan(.advancedAnnual) {
-            disable(button: view.buyButton1)
-        }
-        view.buyButton1.setOnClickListener { [unowned self] in
+        view.topProduct.setOnClickListener { [unowned self] in
             selectAdvancedYearly()
-            startTrial()
+            selectYearlyProduct(view, model: .advancedDetails())
         }
-        view.buyButton2.setOnClickListener { [unowned self] in
+        view.bottomProduct.setOnClickListener { [unowned self] in
             selectAdvancedMonthly()
+            selectMontlyProduct(view, model: .advancedDetails())
+        }
+
+        view.actionButton.setOnClickListener { [unowned self] in
             startTrial()
         }
         return view
     }()
     
+
+    
     lazy var anonymousView: PaywallView = {
         let view = PaywallView(model: .anonymousDetails())
         view.isHidden = true
-        if isDisabledPlan(.anonymousMonthly) {
-            disable(button: view.buyButton2)
-        }
-        if isDisabledPlan(.anonymousAnnual) {
-            disable(button: view.buyButton1)
-        }
-        view.buyButton1.setOnClickListener { [unowned self] in
+        view.topProduct.setOnClickListener { [unowned self] in
             selectAnonymousYearly()
-            startTrial()
+            selectYearlyProduct(view, model: .anonymousDetails())
         }
-        view.buyButton2.setOnClickListener { [unowned self] in
+        view.bottomProduct.setOnClickListener { [unowned self] in
             selectAnonymousMonthly()
+            selectMontlyProduct(view, model: .anonymousDetails())
+        }
+        view.actionButton.setOnClickListener { [unowned self] in
             startTrial()
         }
         return view
@@ -149,22 +146,44 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     lazy var universalView: PaywallView = {
         let view = PaywallView(model: .universalDetails())
         view.isHidden = true
-        if isDisabledPlan(.universalMonthly) {
-            disable(button: view.buyButton2)
-        }
-        if isDisabledPlan(.universalAnnual) {
-            disable(button: view.buyButton1)
-        }
-        view.buyButton1.setOnClickListener { [unowned self] in
+        view.topProduct.setOnClickListener { [unowned self] in
             selectUniversalYearly()
-            startTrial()
+            selectYearlyProduct(view, model: .universalDetails())
         }
-        view.buyButton2.setOnClickListener { [unowned self] in
+        view.bottomProduct.setOnClickListener { [unowned self] in
             selectUniversalMonthly()
+            selectMontlyProduct(view, model: .universalDetails())
+        }
+
+        view.actionButton.setOnClickListener { [unowned self] in
             startTrial()
         }
+        
         return view
     }()
+    
+    private func selectYearlyProduct(_ view: PaywallView, model: PaywallViewModel) {
+        view.topProduct.setSelected(true)
+        view.bottomProduct.setSelected(false)
+        let anualPrice = VPNSubscription.getProductIdPrice(productId: model.annualProductId)
+        let monthlyPrice = VPNSubscription.getProductIdPriceMonthly(productId: model.annualProductId)
+        let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
+        let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(anualPrice) (\(monthlyPrice)/mo)"
+        view.trialDescriptionLabel.text = title
+        view.trialDescriptionLabel.isHidden = VPNSubscription.trialDuration(productId: model.annualProductId) == nil
+        view.updateCTATitle()
+    }
+    
+    private func selectMontlyProduct(_ view: PaywallView, model: PaywallViewModel) {
+        view.bottomProduct.setSelected(true)
+        view.topProduct.setSelected(false)
+        let monthlyPrice = VPNSubscription.getProductIdPrice(productId: model.mounthProductId)
+        let trialDuation = VPNSubscription.trialDuration(productId: model.annualProductId) ?? ""
+        let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(monthlyPrice)/mo"
+        view.trialDescriptionLabel.text = title
+        view.trialDescriptionLabel.isHidden = VPNSubscription.trialDuration(productId: model.mounthProductId) == nil
+        view.updateCTATitle()
+    }
     
     private lazy var privacyLabel: UILabel = {
         let label = UILabel()

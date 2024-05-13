@@ -295,6 +295,7 @@ struct Config {
 }
 
 // MARK: - Fonts
+let fontRegular12 = UIFont(name: "Montserrat-Regular", size: 12)!
 let fontRegular14 = UIFont(name: "Montserrat-Regular", size: 14)!
 let fontRegular15 = UIFont(name: "Montserrat-Regular", size: 15)!
 let fontRegular17 = UIFont(name: "Montserrat-Regular", size: 17)!
