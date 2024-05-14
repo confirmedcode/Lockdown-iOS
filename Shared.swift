@@ -10,7 +10,6 @@
 import Foundation
 import CocoaLumberjackSwift
 import KeychainAccess
-import Reachability
 
 let isTestFlight = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
 
@@ -39,7 +38,7 @@ func appHasJustBeenUpgradedOrIsNewInstall() -> Bool {
     }
 }
 
-let reachability = Reachability()
+let reachability = Availability()
 
 let keychain = Keychain(service: "com.confirmed.tunnels").synchronizable(true)
 
