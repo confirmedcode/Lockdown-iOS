@@ -1,29 +1,5 @@
-/*
-Copyright (c) 2014, Ashley Mills
-All rights reserved.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
-*/
+// Copyright (c) 2014, Ashley Mills
 
 import SystemConfiguration
 import Foundation
@@ -36,11 +12,11 @@ public enum ReachabilityError: Error {
     case UnableToGetInitialFlags
 }
 
-@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
-public let ReachabilityChangedNotification = NSNotification.Name("ReachabilityChangedNotification")
+@available(*, unavailable, renamed: "Notification.Name.availabilityChanged")
+public let AvailabilityChangedNotification = NSNotification.Name("AvailabilityChangedNotification")
 
 public extension Notification.Name {
-    static let reachabilityChanged = Notification.Name("reachabilityChanged")
+    static let availabilityChanged = Notification.Name("availabilityChanged")
 }
 
 public class Availability {
@@ -114,24 +90,24 @@ public class Availability {
     }()
 
     fileprivate var notifierRunning = false
-    fileprivate let reachabilityRef: SCNetworkReachability
-    fileprivate let reachabilitySerialQueue: DispatchQueue
+    fileprivate let ref: SCNetworkReachability
+    fileprivate let serialQueue: DispatchQueue
     fileprivate(set) var flags: SCNetworkReachabilityFlags? {
         didSet {
             guard flags != oldValue else { return }
-            reachabilityChanged()
+            availabilityChanged()
         }
     }
 
-    required public init(reachabilityRef: SCNetworkReachability, queueQoS: DispatchQoS = .default, targetQueue: DispatchQueue? = nil) {
+    required public init(availabilityRef: SCNetworkReachability, queueQoS: DispatchQoS = .default, targetQueue: DispatchQueue? = nil) {
         self.allowsCellularConnection = true
-        self.reachabilityRef = reachabilityRef
-        self.reachabilitySerialQueue = DispatchQueue(label: "uk.co.ashleymills.reachability", qos: queueQoS, target: targetQueue)
+        self.ref = availabilityRef
+        self.serialQueue = DispatchQueue(label: "uk.co.ashleymills.availability", qos: queueQoS, target: targetQueue)
     }
 
     public convenience init?(hostname: String, queueQoS: DispatchQoS = .default, targetQueue: DispatchQueue? = nil) {
         guard let ref = SCNetworkReachabilityCreateWithName(nil, hostname) else { return nil }
-        self.init(reachabilityRef: ref, queueQoS: queueQoS, targetQueue: targetQueue)
+        self.init(availabilityRef: ref, queueQoS: queueQoS, targetQueue: targetQueue)
     }
 
     public convenience init?(queueQoS: DispatchQoS = .default, targetQueue: DispatchQueue? = nil) {
@@ -141,7 +117,7 @@ public class Availability {
 
         guard let ref = SCNetworkReachabilityCreateWithAddress(nil, &zeroAddress) else { return nil }
 
-        self.init(reachabilityRef: ref, queueQoS: queueQoS, targetQueue: targetQueue)
+        self.init(availabilityRef: ref, queueQoS: queueQoS, targetQueue: targetQueue)
     }
 
     deinit {
@@ -164,12 +140,12 @@ public extension Availability {
 
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = UnsafeMutableRawPointer(Unmanaged<Availability>.passUnretained(self).toOpaque())
-        if !SCNetworkReachabilitySetCallback(reachabilityRef, callback, &context) {
+        if !SCNetworkReachabilitySetCallback(ref, callback, &context) {
             stopNotifier()
             throw ReachabilityError.UnableToSetCallback
         }
 
-        if !SCNetworkReachabilitySetDispatchQueue(reachabilityRef, reachabilitySerialQueue) {
+        if !SCNetworkReachabilitySetDispatchQueue(ref, serialQueue) {
             stopNotifier()
             throw ReachabilityError.UnableToSetDispatchQueue
         }
@@ -183,8 +159,8 @@ public extension Availability {
     func stopNotifier() {
         defer { notifierRunning = false }
 
-        SCNetworkReachabilitySetCallback(reachabilityRef, nil, nil)
-        SCNetworkReachabilitySetDispatchQueue(reachabilityRef, nil)
+        SCNetworkReachabilitySetCallback(ref, nil, nil)
+        SCNetworkReachabilitySetDispatchQueue(ref, nil)
     }
 
     // MARK: - *** Connection test methods ***
@@ -223,9 +199,9 @@ public extension Availability {
 fileprivate extension Availability {
 
     func setReachabilityFlags() throws {
-        try reachabilitySerialQueue.sync { [unowned self] in
+        try serialQueue.sync { [unowned self] in
             var flags = SCNetworkReachabilityFlags()
-            if !SCNetworkReachabilityGetFlags(self.reachabilityRef, &flags) {
+            if !SCNetworkReachabilityGetFlags(self.ref, &flags) {
                 self.stopNotifier()
                 throw ReachabilityError.UnableToGetInitialFlags
             }
@@ -234,13 +210,13 @@ fileprivate extension Availability {
         }
     }
     
-    func reachabilityChanged() {
+    func availabilityChanged() {
         let block = connection != .none ? whenReachable : whenUnreachable
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             block?(self)
-            self.notificationCenter.post(name: .reachabilityChanged, object: self)
+            self.notificationCenter.post(name: .availabilityChanged, object: self)
         }
     }
 }
