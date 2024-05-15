@@ -27,7 +27,7 @@ struct PaywallViewModel {
     
     static func advancedDetails() -> Self {
         .init(
-            title: NSLocalizedString("Advanced Level Protection", comment:""),
+            title: NSLocalizedString("Advanced Level \nProtection", comment:""),
             subtitle: NSLocalizedString("Used by 100,000+ Privacy-Conscious People", comment: ""),
             bulletPoints: [
                 "Custom block lists",

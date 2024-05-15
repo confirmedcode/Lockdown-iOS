@@ -39,7 +39,7 @@ final class ProductButton: UIButton {
         
         self.layer.borderWidth = isSelected ? 3 : 1
         self.layer.borderColor = isSelected ? UIColor.white.cgColor : UIColor.gray.cgColor
-        self.iconImageView.image = isSelected ? UIImage(named: "fill-1") : UIImage(named: "grey-ellipse-1")
+        self.iconImageView.image = isSelected ? UIImage(named: "fill-2") : UIImage(named: "grey-ellipse-1")
         
         let planPeriodLabel = UILabel()
         planPeriodLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +99,7 @@ final class ProductButton: UIButton {
     func setSelected(_ isSelected: Bool) {
         self.layer.borderWidth = isSelected ? 3 : 1
         self.layer.borderColor = isSelected ? UIColor.white.cgColor : UIColor.gray.cgColor
-        self.iconImageView.image = isSelected ? UIImage(named: "fill-1") : UIImage(named: "grey-ellipse-1")
+        self.iconImageView.image = isSelected ? UIImage(named: "fill-2") : UIImage(named: "grey-ellipse-1")
     }
 
 }
