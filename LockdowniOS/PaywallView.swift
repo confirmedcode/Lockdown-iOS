@@ -17,6 +17,7 @@ final class PaywallView: UIView {
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 17, right: 0)
         return view
     }()
     
