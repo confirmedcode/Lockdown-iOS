@@ -10,7 +10,6 @@
 import Foundation
 import SystemConfiguration
 import CoreTelephony
-import Reachability
 import CocoaLumberjackSwift
 import PromiseKit
 
