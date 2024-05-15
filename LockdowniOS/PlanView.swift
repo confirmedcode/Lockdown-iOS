@@ -73,6 +73,6 @@ final class PlanView: UIView {
         stackView.anchors.top.marginsPin(inset: 8)
         stackView.anchors.bottom.marginsPin(inset: 8)
         stackView.anchors.leading.marginsPin(inset: 16)
-        stackView.anchors.trailing.marginsPin()
+        stackView.anchors.trailing.marginsPin(inset: 8)
     }
 }

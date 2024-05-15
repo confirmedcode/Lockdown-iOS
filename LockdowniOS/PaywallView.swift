@@ -17,6 +17,7 @@ final class PaywallView: UIView {
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 17, right: 0)
         return view
     }()
     
@@ -66,7 +67,7 @@ final class PaywallView: UIView {
         var descriptionTitle = trialDuation.isEmpty ? "" : NSLocalizedString("then", comment: "") + " "
         descriptionTitle += descriptionLabelPrice1 + NSLocalizedString("/year", comment: "")
         
-        let button = ProductButton(title: "Montly", subtitle: descriptionLabelPrice1, toHighlight: descriptionLabelPrice1)
+        let button = ProductButton(title: "Monthly", subtitle: descriptionLabelPrice1, toHighlight: descriptionLabelPrice1)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -93,6 +94,7 @@ final class PaywallView: UIView {
         button.backgroundColor = .tunnelsBlue
         button.layer.cornerRadius = 28
         let title = "Start for Free"
+        button.titleLabel?.font = fontSemiBold17
         button.setTitle(title, for: .normal)
         return button
     }()
