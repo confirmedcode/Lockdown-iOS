@@ -171,7 +171,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(anualPrice) (\(monthlyPrice)/mo)"
         view.trialDescriptionLabel.text = title
         view.trialDescriptionLabel.isHidden = VPNSubscription.trialDuration(productId: model.annualProductId) == nil
-        view.updateCTATitle()
+        view.updateCTATitle(for: model.annualProductId)
     }
     
     private func selectMontlyProduct(_ view: PaywallView, model: PaywallViewModel) {
@@ -182,7 +182,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         let title = trialDuation + " " + NSLocalizedString("free trial", comment: "") + "," + " then \(monthlyPrice)/mo"
         view.trialDescriptionLabel.text = title
         view.trialDescriptionLabel.isHidden = VPNSubscription.trialDuration(productId: model.mounthProductId) == nil
-        view.updateCTATitle()
+        view.updateCTATitle(for: model.mounthProductId)
     }
     
     private lazy var privacyLabel: UILabel = {

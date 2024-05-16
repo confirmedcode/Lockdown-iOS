@@ -82,8 +82,8 @@ final class PaywallView: UIView {
     }()
     
     
-    func updateCTATitle() {
-        let hasTrial = (VPNSubscription.trialDuration(productId: model.annualProductId) != nil) || (VPNSubscription.trialDuration(productId: model.mounthProductId) != nil)
+    func updateCTATitle(for productID: String) {
+        let hasTrial = VPNSubscription.trialDuration(productId: productID) != nil
         let title = hasTrial ? "Start for Free" : "Continue"
         actionButton.setTitle(title, for: .normal)
     }
