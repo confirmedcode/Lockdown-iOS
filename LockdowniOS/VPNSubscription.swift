@@ -75,12 +75,15 @@ class VPNSubscription: NSObject {
     }
     
     static func setTrialDuration(productId: String, duration: String?) {
+        let trialKey = productId + "Trial"
+        
         guard let duration else {
+            UserDefaults.standard.removeObject(forKey: trialKey)
             DDLogInfo("Unavaible trial for \(productId)")
             return
         }
         DDLogInfo("Setting trial a duration \(duration) for \(productId)")
-        UserDefaults.standard.set(duration, forKey: productId + "Trial")
+        UserDefaults.standard.set(duration, forKey: trialKey)
     }
     
     static func setProductIdPrice(productId: String, price: String) {
