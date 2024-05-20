@@ -327,14 +327,14 @@
 		92635DDA2BF2764E0044673D /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92635DD52BF2764E0044673D /* Availability.swift */; };
 		92635DDC2BF2764E0044673D /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92635DD52BF2764E0044673D /* Availability.swift */; };
 		92635DDF2BF2780A0044673D /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92635DD52BF2764E0044673D /* Availability.swift */; };
+		92635DE12BF784FF0044673D /* BlockerPrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92635DE02BF784FF0044673D /* BlockerPrivacyInfo.xcprivacy */; };
+		92635DE32BF786330044673D /* FireWallPrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92635DE22BF786330044673D /* FireWallPrivacyInfo.xcprivacy */; };
+		92635DE52BF7869C0044673D /* TunnelPrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92635DE42BF7869C0044673D /* TunnelPrivacyInfo.xcprivacy */; };
+		92635DE82BF787220044673D /* WidgetExtensionPrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92635DE72BF787220044673D /* WidgetExtensionPrivacyInfo.xcprivacy */; };
+		92635DEA2BF788E50044673D /* FireWallWidgetPrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92635DE92BF788E50044673D /* FireWallWidgetPrivacyInfo.xcprivacy */; };
+		92635DEC2BF78A9F0044673D /* VPNVidgetPrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92635DEB2BF78A9F0044673D /* VPNVidgetPrivacyInfo.xcprivacy */; };
 		92CCC17B2BEE40C900C38E1C /* ProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCC17A2BEE40C900C38E1C /* ProductButton.swift */; };
 		92CCC17D2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
-		92CCC17E2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
-		92CCC17F2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
-		92CCC1802BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
-		92CCC1812BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
-		92CCC1822BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
-		92CCC1832BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */; };
 		A101106D202B9D4300807612 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101106C202B9D4300807612 /* BaseViewController.swift */; };
 		A1141A151F46230500F54698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1141A141F46230500F54698 /* AppDelegate.swift */; };
 		A1141A1A1F46230500F54698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1141A181F46230500F54698 /* Main.storyboard */; };
@@ -808,6 +808,12 @@
 		8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTests-metadata.plist"; path = "Pods/Pods-LockdownTests-metadata.plist"; sourceTree = "<group>"; };
 		8ED8D7A5DFFEEA5E9BD7FD20 /* Pods-Lockdown VPN Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown VPN Widget-settings-metadata.plist"; sourceTree = "<group>"; };
 		92635DD52BF2764E0044673D /* Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
+		92635DE02BF784FF0044673D /* BlockerPrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BlockerPrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		92635DE22BF786330044673D /* FireWallPrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FireWallPrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		92635DE42BF7869C0044673D /* TunnelPrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TunnelPrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		92635DE72BF787220044673D /* WidgetExtensionPrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WidgetExtensionPrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		92635DE92BF788E50044673D /* FireWallWidgetPrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FireWallWidgetPrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		92635DEB2BF78A9F0044673D /* VPNVidgetPrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VPNVidgetPrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		92CCC17A2BEE40C900C38E1C /* ProductButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductButton.swift; sourceTree = "<group>"; };
 		92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		92D3DD81205F17D004056D79 /* Pods-Lockdown VPN Widget-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown VPN Widget-metadata.plist"; path = "Pods/Pods-Lockdown VPN Widget-metadata.plist"; sourceTree = "<group>"; };
@@ -1201,6 +1207,7 @@
 				3DBD57BE22FD727900DE189F /* FirewallTodayViewController.swift */,
 				3D94AB0222FDEDEB0012B0DE /* MainInterface.storyboard */,
 				3DBD57C322FD727900DE189F /* Info.plist */,
+				92635DE22BF786330044673D /* FireWallPrivacyInfo.xcprivacy */,
 			);
 			path = "Lockdown Firewall Today";
 			sourceTree = "<group>";
@@ -1810,15 +1817,24 @@
 				7C9A9372251E1EC700DA5721 /* Assets.xcassets */,
 				7C9A9374251E1EC700DA5721 /* Info.plist */,
 				7CE91CA7252214C9009D8269 /* CombinedProvider.swift */,
+				92635DE92BF788E50044673D /* FireWallWidgetPrivacyInfo.xcprivacy */,
 			);
 			path = LockdownFirewallWidget;
+			sourceTree = "<group>";
+		};
+		92635DE62BF786D20044673D /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				92635DE72BF787220044673D /* WidgetExtensionPrivacyInfo.xcprivacy */,
+			);
+			path = WidgetExtension;
 			sourceTree = "<group>";
 		};
 		A1141A081F46230500F54698 = {
 			isa = PBXGroup;
 			children = (
-				92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */,
 				7CE91C8E2521D6CF009D8269 /* LockdownFirewallWidgetExtension.entitlements */,
+				92CCC17C2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy */,
 				3D40826227F675F6004C146B /* dnscrypt-proxy.toml */,
 				3D3BF4D0233D5E9100D0C482 /* Localizable.strings */,
 				3D5464D223037CCA00AE1F73 /* Settings.bundle */,
@@ -1827,6 +1843,7 @@
 				A1931CFC20791F5900E695EB /* Lockdown Blocker */,
 				3DBD57BD22FD727900DE189F /* Lockdown Firewall Today */,
 				A12473F51FE44285008493B8 /* Today */,
+				92635DE62BF786D20044673D /* WidgetExtension */,
 				A1FCDA4222C0651300C928BC /* Lockdown Tunnel */,
 				A1DBA19521B82F72008A9322 /* LICENSE.md */,
 				A1141A1B1F46230500F54698 /* Assets.xcassets */,
@@ -1945,6 +1962,7 @@
 				A12473F61FE44285008493B8 /* VPNTodayViewController.swift */,
 				A12473F81FE44285008493B8 /* MainInterface.storyboard */,
 				A12473FB1FE44285008493B8 /* Info.plist */,
+				92635DEB2BF78A9F0044673D /* VPNVidgetPrivacyInfo.xcprivacy */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -1970,6 +1988,7 @@
 				A1D85F08207C52A000B766E0 /* adBlockListThree.json */,
 				A1931CFF20791F5900E695EB /* ContentBlockerRequestHandler.swift */,
 				A1931D0120791F5900E695EB /* Info.plist */,
+				92635DE02BF784FF0044673D /* BlockerPrivacyInfo.xcprivacy */,
 			);
 			path = "Lockdown Blocker";
 			sourceTree = "<group>";
@@ -2008,6 +2027,7 @@
 				A1FCDA4522C0651300C928BC /* Info.plist */,
 				A1FCDA4622C0651300C928BC /* LockdownTunnel.entitlements */,
 				3DD545D428068233005E140C /* LockdownTunnelBridgingHeader.h */,
+				92635DE42BF7869C0044673D /* TunnelPrivacyInfo.xcprivacy */,
 			);
 			path = "Lockdown Tunnel";
 			sourceTree = "<group>";
@@ -2429,11 +2449,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D3BF4CE233D5E9100D0C482 /* Localizable.strings in Resources */,
-				92CCC1812BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */,
 				3D40826627F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				3D94AB1022FE0CFB0012B0DE /* MainInterface.storyboard in Resources */,
 				3D5464D62303839500AE1F73 /* Settings.bundle in Resources */,
 				601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */,
+				92635DE32BF786330044673D /* FireWallPrivacyInfo.xcprivacy in Resources */,
+				92635DEA2BF788E50044673D /* FireWallWidgetPrivacyInfo.xcprivacy in Resources */,
 				388CD7581B88A7E496467546 /* Pods-Lockdown Firewall Widget-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2442,7 +2463,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92CCC1822BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */,
 				4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */,
 				78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */,
 			);
@@ -2456,11 +2476,11 @@
 				7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */,
 				7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */,
 				7C0156562521C2F200670CB5 /* Montserrat-SemiBold.ttf in Resources */,
+				92635DE82BF787220044673D /* WidgetExtensionPrivacyInfo.xcprivacy in Resources */,
 				7C0156572521C2F200670CB5 /* Montserrat-Regular.ttf in Resources */,
 				3DCBC8F22542544A00446C98 /* Localizable.strings in Resources */,
 				7C0156552521C2F200670CB5 /* Montserrat-Bold.ttf in Resources */,
 				7C0156592521C2F200670CB5 /* Montserrat-Thin.ttf in Resources */,
-				92CCC1832BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */,
 				3D40826727F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2532,11 +2552,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D3BF4CD233D5E9100D0C482 /* Localizable.strings in Resources */,
-				92CCC17F2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */,
 				3D40826427F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 				A12473FA1FE44285008493B8 /* MainInterface.storyboard in Resources */,
 				3D5464D42303839200AE1F73 /* Settings.bundle in Resources */,
 				90728B81560C790FD5A02A6B /* Pods-Lockdown VPN Widget-metadata.plist in Resources */,
+				92635DEC2BF78A9F0044673D /* VPNVidgetPrivacyInfo.xcprivacy in Resources */,
 				1579100974C8086B190B35BB /* Pods-Lockdown VPN Widget-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2546,11 +2566,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1159FCA207C201A00DA4670 /* socialBlockList.json in Resources */,
-				92CCC17E2BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */,
 				A1D85F07207C4C8300B766E0 /* adBlockListTwo.json in Resources */,
 				A1D85F09207C52A000B766E0 /* adBlockListThree.json in Resources */,
 				A1159FCB207C201A00DA4670 /* privacyBlockList.json in Resources */,
 				A1931CFE20791F5900E695EB /* adBlockList.json in Resources */,
+				92635DE12BF784FF0044673D /* BlockerPrivacyInfo.xcprivacy in Resources */,
 				40E04A502A28B4A000000E8C /* dnscrypt-proxy.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2561,8 +2581,8 @@
 			files = (
 				3D5464D52303839400AE1F73 /* Settings.bundle in Resources */,
 				5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */,
+				92635DE52BF7869C0044673D /* TunnelPrivacyInfo.xcprivacy in Resources */,
 				5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */,
-				92CCC1802BF22ABE00C38E1C /* PrivacyInfo.xcprivacy in Resources */,
 				3D40826527F675F6004C146B /* dnscrypt-proxy.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3557,7 +3577,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
@@ -3597,7 +3617,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
