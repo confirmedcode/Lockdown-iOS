@@ -309,7 +309,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func sendMessage(_ message: String, subject: String) {
-        let recipient = "team@lockdownprivacy.com"
+        let recipient = "team@lockdownprivacy.com" // TODO: change email
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = self

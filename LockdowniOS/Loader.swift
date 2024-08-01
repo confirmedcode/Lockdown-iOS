@@ -16,8 +16,8 @@ protocol Loadable {
 }
 
 final class LoadingView: UIView {
-    private let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-    
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
+
     override func layoutSubviews() {
         super.layoutSubviews()
         

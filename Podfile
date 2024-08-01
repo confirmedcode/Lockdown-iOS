@@ -18,8 +18,8 @@ end
 
 target :'LockdownTunnel' do
   pod 'PromiseKit'
-  pod 'KeychainAccess'
   pod 'SwiftyStoreKit', '0.13.1'
+  pod 'KeychainAccess'
 end
 
 target :'Lockdown VPN Widget' do
@@ -39,10 +39,10 @@ target :'LockdownTests' do
   pod 'SnapshotTesting', :git => 'https://github.com/pointfreeco/swift-snapshot-testing.git', :commit => '8e9f685'
 end
 
-# post_install do |installer|
-#   installer.pods_project.targets.each do |target|
-#     target.build_configurations.each do |config|
-#       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
-#     end
-#   end
-# end
+ post_install do |installer|
+   installer.pods_project.targets.each do |target|
+     target.build_configurations.each do |config|
+       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+     end
+   end
+ end
