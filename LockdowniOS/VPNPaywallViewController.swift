@@ -34,6 +34,8 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     var mode = Mode.newSubscription
     
     weak var delegate: VPNPaywallViewControllerCloseDelegate?
+    var purchaseSuccessful: (()->Void)?
+    var purchaseFailed: ((Error)->Void)?
     
     private var selectedTab = Tab.advanced {
         didSet {
@@ -348,6 +350,15 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
     }
     
     private func updateTabs() {
+        switch selectedTab {
+        case .advanced:
+            selectAdvancedYearly()
+        case .anonymous:
+            selectAnonymousYearly()
+        case .universal:
+            selectUniversalYearly()
+        }
+        
         advancedView.isHidden = selectedTab != .advanced
         anonymousView.isHidden = selectedTab != .anonymous
         universalView.isHidden = selectedTab != .universal
@@ -424,17 +435,6 @@ extension VPNPaywallViewController: ProductPurchasable {
                 return .upgrade
             }
         }()
-        
-        if advancedView.isSelected {
-            let monthlyPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly, for: context)
-            let annualPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAdvancedMonthly, for: context)
-        } else if anonymousView.isSelected {
-            let monthlyPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthly, for: context)
-            let annualPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnual, for: context)
-        } else if universalView.isSelected {
-            let monthlyPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdMonthlyPro, for: context)
-            let annualPlanLabel = VPNSubscription.getProductIdPrice(productId: VPNSubscription.productIdAnnualPro, for: context)
-        }
     }
     
     @objc func startTrial() {
@@ -442,118 +442,12 @@ extension VPNPaywallViewController: ProductPurchasable {
         VPNSubscription.purchase(
             succeeded: {
                 self.dismiss(animated: true, completion: {
-                    
-                    let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-                    let vc = SplashscreenViewController()
-                    let navigation = UINavigationController(rootViewController: vc)
-                    keyWindow?.rootViewController = navigation
-                    
-                    // force refresh receipt, and sync with email if it exists
-                    if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
-                        DDLogInfo("purchase complete: syncing with confirmed email")
-                        firstly {
-                            try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
-                        }
-                        .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
-                            DDLogInfo("purchase complete: signin result: \(signin)")
-                            return try Client.subscriptionEvent(forceRefresh: true)
-                        }
-                        .then { (result: SubscriptionEvent) -> Promise<[Subscription]> in
-                            DDLogInfo("plan status: subscriptionevent result: \(result)")
-                            return try Client.activeSubscriptions()
-                        }
-                        .done { subscriptions in
-                            DDLogInfo("active-subs (start trial): \(subscriptions)")
-                            NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
-                            
-                            self.shared.user.updateSubscription(to: subscriptions.first)
-                        }
-                        .catch { error in
-                            DDLogError("purchase complete: Error: \(error)")
-                            if self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)") {
-                                return
-                            } else if let apiError = error as? ApiError {
-                                switch apiError.code {
-                                default:
-                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
-                                }
-                            }
-                        }
-                    } else {
-                        firstly {
-                            try Client.signIn()
-                        }.then { _ in
-                            try Client.activeSubscriptions()
-                        }.done { subscriptions in
-                            DDLogInfo("active-subs (start trial): \(subscriptions)")
-                            NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
-                            
-                            self.shared.user.updateSubscription(to: subscriptions.first)
-                        }
-                        .catch { error in
-                            DDLogError("purchase complete - no email: Error: \(error)")
-                            if self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)") {
-                                return
-                            } else if let apiError = error as? ApiError {
-                                switch apiError.code {
-                                default:
-                                    _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
-                                }
-                            }
-                        }
-                    }
+                    self.purchaseSuccessful?()
                 })
             },
             errored: { error in
                 self.hideLoadingView()
-                let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-                let vc = SplashscreenViewController()
-                let navigation = UINavigationController(rootViewController: vc)
-                keyWindow?.rootViewController = navigation
-                DDLogError("Start Trial Failed: \(error)")
-                
-                if let skError = error as? SKError {
-                    var errorText = ""
-                    switch skError.code {
-                    case .unknown:
-                        errorText = .localized("Unknown error. Please contact support at team@lockdownprivacy.com.")
-                    case .clientInvalid:
-                        errorText = .localized("Not allowed to make the payment")
-                    case .paymentCancelled:
-                        errorText = .localized("Payment was cancelled")
-                    case .paymentInvalid:
-                        errorText = .localized("The purchase identifier was invalid")
-                    case .paymentNotAllowed:
-                        errorText = .localized("""
-Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. \
-Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again.
-""")
-                    case .storeProductNotAvailable:
-                        errorText = .localized("The product is not available in the current storefront")
-                    case .cloudServicePermissionDenied:
-                        errorText = .localized("Access to cloud service information is not allowed")
-                    case .cloudServiceNetworkConnectionFailed:
-                        errorText = .localized("Could not connect to the network")
-                    case .cloudServiceRevoked:
-                        errorText = .localized("User has revoked permission to use this cloud service")
-                    default:
-                        errorText = skError.localizedDescription
-                    }
-                    
-                    self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
-                }
-                else if self.popupErrorAsNSURLError(error) {
-                    return
-                }
-                else if self.popupErrorAsApiError(error) {
-                    return
-                }
-                else {
-                    self.showPopupDialog(
-                        title: .localized("Error Starting Trial"),
-                        message: .localized("Please contact team@lockdownprivacy.com.\n\nError details:\n") + "\(error)",
-                        acceptButton: .localizedOkay)
-                }
+                self.purchaseFailed?(error)
         })
     }
 }

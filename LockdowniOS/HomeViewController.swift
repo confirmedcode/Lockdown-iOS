@@ -14,6 +14,7 @@ import PromiseKit
 import StoreKit
 import PopupDialog
 import AwesomeSpotlightView
+import SwiftUI
 
 class CircularView: UIView {
     override func layoutSubviews() {
@@ -154,16 +155,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     private lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
-//        stackView.addArrangedSubview(ctaView)
-//        stackView.addArrangedSubview(mainTitle)
-//        stackView.addArrangedSubview(descriptionLabel1)
-//        stackView.addArrangedSubview(descriptionLabel2)
-//        stackView.addArrangedSubview(descriptionLabel3)
-//        stackView.addArrangedSubview(descriptionLabel4)
-//        stackView.addArrangedSubview(descriptionLabel5)
-//        stackView.addArrangedSubview(descriptionLabel6)
-//        stackView.addArrangedSubview(upgradeButton)
-        
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 10
@@ -355,6 +346,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     @objc func upgrade() {
         let vc = VPNPaywallViewController()
+        vc.purchaseSuccessful = {[weak self] in self?.handlePurchaseSuccessful() }
+        vc.purchaseFailed = { [weak self] err in self?.handlePurchaseFailed(error: err)}
         present(vc, animated: true)
     }
     
@@ -374,13 +367,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         OneTimeActions.performOnce(ifHasNotSeen: .welcomeScreen) {
             let vc = WelcomeViewController()
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
         }
-        
         // Used for debugging signup
         //performSegue(withIdentifier: "showSignup", sender: nil)
         
@@ -434,6 +425,13 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     private func didBecomeActive() {
         NotificationCenter.default.addObserver(self, selector: #selector(tunnelStatusDidChange(_:)), name: .NEVPNStatusDidChange, object: nil)
         startTimer()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if !defaults.bool(forKey: kOneTimeOfferShown) && appDelegate.timeSinceLastStart > 4 * 60 * 60 {
+            if BaseUserService.shared.user.currentSubscription == nil {
+                showOneTimeOffer()
+            }
+        }
     }
     
     @objc
@@ -464,6 +462,28 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             self.updateStackViewAxis(basedOn: size)
         } completion: { (_) in
             return
+        }
+    }
+    private func showOneTimeOffer() {
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds:1_000_000_000)
+            if let productInfos = await VPNSubscription.shared.loadSubscriptions(productIds: Set(VPNSubscription.oneTimeProducts.toList())) {
+                let model = OneTimePaywallModel(products: VPNSubscription.oneTimeProducts, infos: productInfos)
+                model.closeAction = { [weak self] in self?.dismiss(animated: true)}
+                model.continueAction = { [weak self] pid in
+                    VPNSubscription.selectedProductId = pid
+                    VPNSubscription.purchase {
+                        self?.handlePurchaseSuccessful()
+                    } errored: { err in
+                        self?.handlePurchaseFailed(error: err)
+                    }
+                    
+                }
+                let viewCtrl = UIHostingController(rootView: OneTimePaywallView(model: model))
+                viewCtrl.modalPresentationStyle = .fullScreen
+                self.present(viewCtrl, animated: true)
+                defaults.set(true, forKey: kOneTimeOfferShown)
+            }
         }
     }
     
@@ -1015,16 +1035,124 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
 //            if let vc = segue.destination as? WhatIsVpnViewController {
 //                vc.parentVC = self
 //            }
-        case "showUpgradePlan":
-            if let vc = segue.destination as? OldSignupViewController {
-                if activePlans.isEmpty {
-                    vc.mode = .newSubscription
-                } else {
-                    vc.mode = .upgrade(active: activePlans)
-                }
-            }
         default:
             break
+        }
+    }
+    
+    func handlePurchaseFailed(error: Error) {
+        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        let vc = SplashscreenViewController()
+        let navigation = UINavigationController(rootViewController: vc)
+        keyWindow?.rootViewController = navigation
+        DDLogError("Start Trial Failed: \(error)")
+        
+        if let skError = error as? SKError {
+            var errorText = ""
+            switch skError.code {
+            case .unknown:
+                errorText = .localized("Unknown error. Please contact support at team@lockdownprivacy.com.")
+            case .clientInvalid:
+                errorText = .localized("Not allowed to make the payment")
+            case .paymentCancelled:
+                errorText = .localized("Payment was cancelled")
+            case .paymentInvalid:
+                errorText = .localized("The purchase identifier was invalid")
+            case .paymentNotAllowed:
+                errorText = .localized("""
+Payment not allowed.\nEither this device is not allowed to make purchases, or In-App Purchases have been disabled. \
+Please allow them in Settings App -> Screen Time -> Restrictions -> App Store -> In-app Purchases. Then try again.
+""")
+            case .storeProductNotAvailable:
+                errorText = .localized("The product is not available in the current storefront")
+            case .cloudServicePermissionDenied:
+                errorText = .localized("Access to cloud service information is not allowed")
+            case .cloudServiceNetworkConnectionFailed:
+                errorText = .localized("Could not connect to the network")
+            case .cloudServiceRevoked:
+                errorText = .localized("User has revoked permission to use this cloud service")
+            default:
+                errorText = skError.localizedDescription
+            }
+            
+            self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
+        }
+        else if self.popupErrorAsNSURLError(error) {
+            return
+        }
+        else if self.popupErrorAsApiError(error) {
+            return
+        }
+        else {
+            self.showPopupDialog(
+                title: .localized("Error Starting Trial"),
+                message: .localized("Please contact team@lockdownprivacy.com.\n\nError details:\n") + "\(error)",
+                acceptButton: .localizedOkay)
+        }
+    }
+    
+    func handlePurchaseSuccessful(completion: (()->Void)? = nil) {
+        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        let vc = SplashscreenViewController()
+        let navigation = UINavigationController(rootViewController: vc)
+        keyWindow?.rootViewController = navigation
+        
+        // force refresh receipt, and sync with email if it exists
+        if let apiCredentials = getAPICredentials(), getAPICredentialsConfirmed() == true {
+            DDLogInfo("purchase complete: syncing with confirmed email")
+            firstly {
+                try Client.signInWithEmail(email: apiCredentials.email, password: apiCredentials.password)
+            }
+            .then { (signin: SignIn) -> Promise<SubscriptionEvent> in
+                DDLogInfo("purchase complete: signin result: \(signin)")
+                return try Client.subscriptionEvent(forceRefresh: true)
+            }
+            .then { (result: SubscriptionEvent) -> Promise<[Subscription]> in
+                DDLogInfo("plan status: subscriptionevent result: \(result)")
+                return try Client.activeSubscriptions()
+            }
+            .done { subscriptions in
+                DDLogInfo("active-subs (start trial): \(subscriptions)")
+                NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
+                
+                self.userService.user.updateSubscription(to: subscriptions.first)
+            }
+            .ensure {
+                completion?()
+            }
+            .catch { error in
+                DDLogError("purchase complete: Error: \(error)")
+                if self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)") {
+                    return
+                } else if let apiError = error as? ApiError {
+                    switch apiError.code {
+                    default:
+                        _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
+                    }
+                }
+            }
+        } else {
+            firstly {
+                try Client.signIn()
+            }.then { _ in
+                try Client.activeSubscriptions()
+            }.done { subscriptions in
+                DDLogInfo("active-subs (start trial): \(subscriptions)")
+                NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
+                
+                self.userService.user.updateSubscription(to: subscriptions.first)
+            }
+            .catch { error in
+                DDLogError("purchase complete - no email: Error: \(error)")
+                if self.popupErrorAsNSURLError("Error activating Secure Tunnel: \(error)") {
+                    return
+                } else if let apiError = error as? ApiError {
+                    switch apiError.code {
+                    default:
+                        _ = self.popupErrorAsApiError("API Error activating Secure Tunnel: \(error)")
+                    }
+                }
+            }
         }
     }
     

@@ -24,6 +24,7 @@ let kHasShownTitlePage: String = "kHasShownTitlePage"
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    private (set) var timeSinceLastStart: TimeInterval = 0
     
     private let connectivityService = ConnectivityService()
     private let paywallService = BasePaywallService.shared
@@ -65,6 +66,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Prepare IAP
         VPNSubscription.cacheLocalizedPrices()
+        Task {
+            let pids = Set(VPNSubscription.oneTimeProducts.toList())
+            await VPNSubscription.shared.loadSubscriptions(productIds: pids)
+            print("")
+        }
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 DDLogInfo("LAUNCH: Processing Purchase\n\(purchase)")
@@ -151,6 +157,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        let lastStartup = defaults.double(forKey: kAppActivateTime)
+        timeSinceLastStart = lastStartup == 0 ? 0 : Date().timeIntervalSinceReferenceDate - lastStartup
+        defaults.set(Date().timeIntervalSinceReferenceDate, forKey: kAppActivateTime)
+        if timeSinceLastStart > 120 {
+            defaults.set(false, forKey: kOneTimeOfferShown)
+        }
+        
         DDLogInfo("applicationDidBecomeActive")
         PacketTunnelProviderLogs.flush()
         flushBlockLog(log: { _ in })
@@ -160,6 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
+        DDLogInfo("applicationWillResignActive")
         if #available(iOS 14.0, *) {
             WidgetCenter.shared.reloadAllTimelines()
         }

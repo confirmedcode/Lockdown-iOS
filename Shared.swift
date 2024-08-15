@@ -166,8 +166,6 @@ func getAPICredentials() -> APICredentials? {
     return APICredentials(email: email!, password: password!)
 }
 
-let kAPICredentialsConfirmed = "APICredentialsConfirmed"
-
 func getAPICredentialsConfirmed() -> Bool {
     return defaults.bool(forKey: kAPICredentialsConfirmed)
 }

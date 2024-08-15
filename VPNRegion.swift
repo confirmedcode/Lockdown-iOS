@@ -8,10 +8,6 @@
 
 import Foundation
 
-// MARK: - VPN Region
-
-let kSavedVPNRegionServerPrefix = "vpn_region_server_prefix"
-
 struct VPNRegion {
     var regionDisplayName: String = ""
     var regionDisplayNameShort: String = ""

@@ -13,10 +13,6 @@ import UniformTypeIdentifiers
 
 // MARK: - Constants
 
-let kLockdownBlockedDomains = "lockdown_domains"
-let kUserBlockedDomains = "lockdown_domains_user"
-let kUserBlockedLists = "lockdown_lists_user"
-
 // MARK: - data structures
 
 struct ConfirmedIPRange : Codable {

@@ -709,3 +709,18 @@
 
 /* The title of a list of trackers */
 "Dummy Domains" = "Dummy Domains";
+
+"Paywall.Onetime.Title" = "Appuyez sur Continuer pour activer Secure Tunnel VPN+";
+"Paywall.Onetime.Continue" = " Continuer ";
+"Paywall.Onetime.ToActivate" = "pour activer Secure Tunnel VPN+";
+"Paywall.Onetime.PrivateBrowse" = "Navigation privée avec IP cachée et changement de région mondiale";
+"Paywall.Onetime.List1" = "Navigation anonyme";
+"Paywall.Onetime.List2" = "Localisation et adresse IP masquées";
+"Paywall.Onetime.List3" = "Utilisation illimitée de la bande passante et des données et plus encore";
+"Paywall.Onetime.FreeTrialE" = "Essai gratuit activé";
+"Paywall.Onetime.YearlyPlan" = "Plan annuel";
+"Paywall.Onetime.Just %@" = "Seulement %@ par an";
+"Paywall.Onetime.PerWeek" = "par semaine";
+"Paywall.Onetime.Save %@"= "Sauvegarder %@";
+"Paywall.Onetime.3DayFT" = "Essai gratuit de 3 jours";
+"Paywall.Onetime.Then %@" = "après ça %@";

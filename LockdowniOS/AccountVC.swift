@@ -198,13 +198,6 @@ final class AccountViewController: BaseViewController, Loadable {
             }
         }
         
-        let upgradeButton = DefaultButtonCell(title: NSLocalizedString("Loading Plan", comment: "Shows when loading the details of a subscription plan")) {
-            self.performSegue(withIdentifier: "showUpgradePlanAccount", sender: self)
-        }
-        upgradeButton.startActivityIndicator()
-        upgradeButton.button.isEnabled = false
-        upgradeButton.selectionStyle = .none
-        
         self.activePlans = []
         
         // show the plan status/button - first check and sync email if it's confirmed, otherwise just use receipt
@@ -221,65 +214,11 @@ final class AccountViewController: BaseViewController, Loadable {
                 DDLogInfo("plan status: subscriptionevent result: \(result)")
                 return try Client.activeSubscriptions()
             }.ensure {
-                upgradeButton.stopActivityIndicator()
             }.done { subscriptions in
                 DDLogInfo("active-subs: \(subscriptions)")
                 self.activePlans = subscriptions.map({ $0.planType })
-                if let active = subscriptions.first {
-                    if active.planType == .universalAnnual {
-                        upgradeButton.button.isEnabled = false
-                        upgradeButton.selectionStyle = .none
-                        upgradeButton.button.setTitle(NSLocalizedString("Plan: Annual Pro", comment: ""), for: UIControl.State())
-                    } else {
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("View or Upgrade Plan", comment: ""), for: UIControl.State())
-                    }
-                } else {
-                    upgradeButton.button.isEnabled = true
-                    upgradeButton.selectionStyle = .default
-                    upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                    upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                    upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment: ""), for: UIControl.State())
-                }
             }
             .catch { error in
-                if let apiError = error as? ApiError {
-                    switch apiError.code {
-                    case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
-                    case kApiCodeSandboxReceiptNotAllowed:
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
-                    default:
-                        DDLogError("Error loading plan: API error code - \(apiError.code)")
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("Error Loading Plan: Retry", comment: ""), for: UIControl.State())
-                        upgradeButton.onSelect {
-                            self.reloadTable()
-                        }
-                    }
-                } else {
-                    DDLogError("Error loading plan: Non-API Error - \(error.localizedDescription)")
-                    upgradeButton.button.isEnabled = true
-                    upgradeButton.selectionStyle = .default
-                    upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
-                    upgradeButton.button.setTitle(NSLocalizedString("Error Loading Plan: Retry", comment: ""), for: UIControl.State())
-                    upgradeButton.onSelect {
-                        self.reloadTable()
-                    }
-                }
             }
         }
         // not logged in via email, use receipt
@@ -289,64 +228,10 @@ final class AccountViewController: BaseViewController, Loadable {
             }.then { _ in
                 try Client.activeSubscriptions()
             }.ensure {
-                upgradeButton.stopActivityIndicator()
             }.done { subscriptions in
                 self.activePlans = subscriptions.map({ $0.planType })
-                if let active = subscriptions.first {
-                    if active.planType == .universalAnnual {
-                        upgradeButton.button.isEnabled = false
-                        upgradeButton.selectionStyle = .none
-                        upgradeButton.button.setTitle(NSLocalizedString("Plan: Annual Pro", comment: ""), for: UIControl.State())
-                    } else {
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("View or Upgrade Plan", comment: ""), for: UIControl.State())
-                    }
-                } else {
-                    upgradeButton.button.isEnabled = true
-                    upgradeButton.selectionStyle = .default
-                    upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                    upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                    upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment: ""), for: UIControl.State())
-                }
             }.catch { error in
                 DDLogError("Error reloading subscription: \(error.localizedDescription)")
-                if let apiError = error as? ApiError {
-                    switch apiError.code {
-                    case kApiCodeNoSubscriptionInReceipt, kApiCodeNoActiveSubscription:
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
-                    case kApiCodeSandboxReceiptNotAllowed:
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.backgroundView?.backgroundColor = UIColor.tunnelsDarkBlue
-                        upgradeButton.button.setTitleColor(UIColor.white, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("View Upgrade Options", comment:""), for: UIControl.State())
-                    default:
-                        DDLogError("Error loading plan: API error code - \(apiError.code)")
-                        upgradeButton.button.isEnabled = true
-                        upgradeButton.selectionStyle = .default
-                        upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
-                        upgradeButton.button.setTitle(NSLocalizedString("Error Loading Plan: Retry", comment: ""), for: UIControl.State())
-                        upgradeButton.onSelect {
-                            self.reloadTable()
-                        }
-                    }
-                } else {
-                    DDLogError("Error loading plan: Non-API Error - \(error.localizedDescription)")
-                    upgradeButton.button.isEnabled = true
-                    upgradeButton.selectionStyle = .default
-                    upgradeButton.button.setTitleColor(UIColor.systemRed, for: UIControl.State())
-                    upgradeButton.button.setTitle(NSLocalizedString("Error Loading Plan: Retry", comment: ""), for: UIControl.State())
-                    upgradeButton.onSelect {
-                        self.reloadTable()
-                    }
-                }
             }
         }
         
@@ -400,7 +285,6 @@ final class AccountViewController: BaseViewController, Loadable {
         
         let firstButtons: [SelectableTableViewCell] = [
             firstButton,
-//            upgradeButton,
             notificationsButton,
         ]
         
@@ -499,15 +383,6 @@ final class AccountViewController: BaseViewController, Loadable {
         case "showWhatIsVPN":
             if let vc = segue.destination as? WhatIsVpnViewController {
 //                vc.parentVC = (tabBarController as? MainTabBarController)?.vpnViewController
-            }
-        case "showUpgradePlanAccount":
-            if let vc = segue.destination as? OldSignupViewController {
-                vc.parentVC = self
-                if activePlans.isEmpty {
-                    vc.mode = .newSubscription
-                } else {
-                    vc.mode = .upgrade(active: activePlans)
-                }
             }
         default:
             break

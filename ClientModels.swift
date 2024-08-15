@@ -25,6 +25,16 @@ struct SubscriptionEvent: Codable {
     let message: String
 }
 
+enum pt {
+    case advancedMonthly
+    case advancedAnnual
+    case anonymousMonthly
+    case anonymousAnnual
+    case universalMonthly
+    case universalAnnual
+    case universalWeekly
+}
+
 struct Subscription: Codable {
     let planType: PlanType
     let receiptId: String
@@ -40,19 +50,42 @@ struct Subscription: Codable {
         init(rawValue: String) {
             self.rawValue = rawValue
         }
+        
+        static func precedence(p: PlanType) -> Int {
+            switch p {
+            case Self.universalAnnual:
+                return 0
+            case Self.universalMonthly:
+                return 1
+            case Self.anonymousAnnual:
+                return 2
+            case Self.anonymousWeekly:
+                return 3
+            case Self.advancedAnnual:
+                return 4
+            case Self.advancedMonthly:
+                return 5
+            case Self.anonymousMonthly:
+                return 6
+            default:
+                return 7
+            }
+        }
+        
         static let advancedMonthly = PlanType(rawValue: "ios-fw-monthly")
         static let advancedAnnual = PlanType(rawValue: "ios-fw-annual")
         static let anonymousMonthly = PlanType(rawValue: "ios-monthly")
         static let anonymousAnnual = PlanType(rawValue: "ios-annual")
         static let universalMonthly = PlanType(rawValue: "all-monthly")
         static let universalAnnual = PlanType(rawValue: "all-annual")
+        static let anonymousWeekly = PlanType(rawValue: "ios-weekly")
         
         var isAdvanced: Bool {
             self == Self.advancedAnnual || self == Self.advancedMonthly
         }
         
         var isAnonymous: Bool {
-            self == Self.anonymousAnnual || self == Self.anonymousMonthly
+            self == Self.anonymousAnnual || self == Self.anonymousMonthly || self == Self.anonymousWeekly
         }
         
         var isUniversal: Bool {

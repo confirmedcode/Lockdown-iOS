@@ -212,8 +212,6 @@ extension PushNotifications {
     
     enum SchedulingHelper {
         
-        static let kAllowNotificationsAfterDate = "LockdownAllowNotificationsAfter"
-        
         static func calculateAndSaveNotificationsAllowedAfterDate() {
             let now = Date()
             if isFridayOrSaturday(date: now) {
@@ -302,10 +300,10 @@ extension PushNotifications {
         
         private var requestCounter: Int {
             get {
-                return defaults.integer(forKey: "LockdownNotificationsEnergySavingCounter")
+                return defaults.integer(forKey: kLockdownNotificationsEnergySavingCounter)
             }
             set {
-                defaults.set(newValue, forKey: "LockdownNotificationsEnergySavingCounter")
+                defaults.set(newValue, forKey: kLockdownNotificationsEnergySavingCounter)
             }
         }
         

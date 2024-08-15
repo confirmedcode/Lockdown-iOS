@@ -11,11 +11,55 @@ import PromiseKit
 import CocoaLumberjackSwift
 import StoreKit
 
+struct OnetTimeProducts {
+    let weekly: String
+    let weeklyTrial: String
+    let yearly: String
+    let yearlyTrial: String
+    
+    func toList() -> [String] {
+        let otherSelf = Mirror(reflecting: self)
+        return otherSelf.children.compactMap {
+            $0.value as? String
+        }
+    }
+}
+
+struct InternalSubscription: Hashable {
+    let productId: String
+    let period: SKProduct.PeriodUnit
+    let trialDuration: String?
+    let priceLocale: Locale
+    let price: NSDecimalNumber
+    
+    static func mockWeekly() -> InternalSubscription {
+        return InternalSubscription(productId: "lockdown.weekly.1.202408.no_trial.4hrs_offer", period: .week, trialDuration: nil, priceLocale: .current, price: 0.99)
+    }
+    
+    static func mockWeeklyTrial() -> InternalSubscription {
+        return InternalSubscription(productId: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer", period: .week, trialDuration: "3 days", priceLocale: .current, price: 0.99)
+    }
+    
+    static func mockYearly() -> InternalSubscription {
+        return InternalSubscription(productId: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", period: .year, trialDuration: nil, priceLocale: .current, price: 39.99)
+    }
+    
+    static func mocYearlTrial() -> InternalSubscription {
+        return InternalSubscription(productId: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer", period: .year, trialDuration: "3 days", priceLocale: .current, price: 39.99)
+    }
+
+}
+
 enum SubscriptionState: Int {
     case Uninitialized = 1, Subscribed, NotSubscribed
 }
 
-class VPNSubscription: NSObject {
+actor VPNSubscription: NSObject {
+    
+    static var shared = VPNSubscription()
+    
+    private var task: Task<[InternalSubscription]?, Never>?
+    var subscriptions:[InternalSubscription]?
     
     static let productIdAdvancedMonthly = "LockdowniOSFirewallMonthly"
     static let productIdAdvancedYearly = "LockdowniOSFirewallAnnual"
@@ -24,6 +68,10 @@ class VPNSubscription: NSObject {
     static let productIdMonthlyPro = "LockdowniOSVpnMonthlyPro"
     static let productIdAnnualPro = "LockdowniOSVpnAnnualPro"
     static let productIds: Set = [productIdAdvancedMonthly, productIdAdvancedYearly, productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
+    static let oneTimeProducts = OnetTimeProducts(weekly: "lockdown.weekly.1.202408.no_trial.4hrs_offer",
+                                                  weeklyTrial: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer",
+                                                  yearly: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", 
+                                                  yearlyTrial: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer")
     static var selectedProductId = productIdAdvancedMonthly
     
     // Advanced Level
@@ -47,6 +95,43 @@ class VPNSubscription: NSObject {
     static var defaultPriceSubStringAnnualPro = "$8.33"
     static var defaultUpgradePriceStringAnnualPro = "$99.99"
     static var defaultUpgradePriceStringMonthlyPro = "$11.99"
+    
+    @discardableResult
+    func loadSubscriptions(productIds: Set<String>) async -> [InternalSubscription]? {
+        if task == nil {
+            task = Task {await _loadSubscriptions(productIds: productIds) }
+        }
+        return await task!.value
+    }
+    
+    private func _loadSubscriptions(productIds: Set<String>) async -> [InternalSubscription]? {
+        DDLogInfo("cache localized price for productIds: \(productIds)")
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        
+        return await withCheckedContinuation { continuation in
+            SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
+                DDLogInfo("retrieve products results: \(result)")
+                var subs = [InternalSubscription]()
+                for product in result.retrievedProducts {
+                    
+                    let period = Self.subscriptionPeriod(product: product)
+                    let trialDuration = Self.trialDuraion(for: product.introductoryPrice)
+                    currencyFormatter.locale = product.priceLocale
+                    if let period {
+                        let ip = InternalSubscription(productId: product.productIdentifier, period: period,
+                                                      trialDuration: trialDuration, priceLocale: product.priceLocale, price: product.price)
+                        subs.append(ip)
+                    }
+                }
+                continuation.resume(returning: subs)
+            }
+        }
+    }
+    private override init() {
+        super.init()
+    }
     
     static func purchase(succeeded: @escaping () -> Void, errored: @escaping (Error) -> Void) {
         DDLogInfo("purchase")
@@ -72,6 +157,16 @@ class VPNSubscription: NSObject {
                     errored(error)
             }
         }
+    }
+    
+    static func subscriptionPeriod(product: SKProduct) -> SKProduct.PeriodUnit?{
+        let currentDate = Date()
+        guard let subscriptionPeriod = product.subscriptionPeriod else {
+            return nil
+        }
+        let numberOfUnits = subscriptionPeriod.numberOfUnits
+        let unit = subscriptionPeriod.unit
+        return unit
     }
     
     static func setTrialDuration(productId: String, duration: String?) {

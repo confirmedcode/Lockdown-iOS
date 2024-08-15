@@ -11,9 +11,6 @@ import NetworkExtension
 
 // MARK: - Constants
 
-let kLockdownWhitelistedDomains = "whitelisted_domains"
-let kUserWhitelistedDomains = "whitelisted_domains_user"
-
 func getAllWhitelistedDomains() -> Array<String> {
     let lockdownWhitelistedDomains = getLockdownWhitelistedDomains()
     let userWhitelistedDomains = getUserWhitelistedDomains()

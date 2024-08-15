@@ -27,5 +27,5 @@ extension UIView {
         if let onClick = sender.onClick {
             onClick()
         }
-    }
+    }    
 }

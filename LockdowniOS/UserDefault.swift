@@ -61,6 +61,9 @@ extension UserDefaults {
     
     @UserDefault("hasSeenUniversalPaywall", defaultValue: false, isLogged: true)
     static var hasSeenUniversalPaywall
+    
+    @UserDefault("hasSeenStartupOneTimeOffer", defaultValue: false, isLogged: true)
+    static var hasSeenStartupOneTimeOffer
 }
 
 // MARK: - Content Blocker

@@ -10,13 +10,7 @@ import Foundation
 
 let defaults = UserDefaults(suiteName: "group.com.confirmed")!
 
-let kUserWantsFirewallEnabled = "user_wants_firewall_enabled"
-let kUserWantsVPNEnabled = "user_wants_vpn_enabled"
-
 enum LatestKnowledge {
-    
-    private static let kLatestKnowledgeIsFirewallEnabled = "kLatestKnowledgeIsFirewallEnabled"
-    private static let kLatestKnowledgeIsVPNEnabled = "kLatestKnowledgeIsVPNEnabled"
     
     static var isFirewallEnabled: Bool {
         get {

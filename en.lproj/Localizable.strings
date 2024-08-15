@@ -764,3 +764,19 @@
 "this_block_is_intended_to_block_facebook_owned_apps" = "This list is intended to completely block Facebook-owned apps. Do not enable it if you use apps owned by Facebook like WhatsApp, Facebook Messenger, and Instagram.";
 "this_blocks_background_google_tracking" = "This blocks background Google tracking, but also blocks the shopping results at the top of Google search results. This is on by default for maximum privacy, but if you like the Google Shopping results, you can turn blocking off.";
 "this_blocks_amazon_referral_link_tracking" = "This blocks Amazon referral link tracking too, so enabling this list may cause errors when clicking certain links on Amazon.";
+
+// MARK: - One time Offer
+"Paywall.Onetime.Title" = "Tap Continue to Activate Secure Tunnel VPN+";
+"Paywall.Onetime.Continue" = " Continue ";
+"Paywall.Onetime.ToActivate" = "to Activate Secure Tunnel VPN+";
+"Paywall.Onetime.PrivateBrowse" = "Private Browsing with Hidden IP and Global Region Switching";
+"Paywall.Onetime.List1" = "Anonymised browsing";
+"Paywall.Onetime.List2" = "Location and IP address hidden";
+"Paywall.Onetime.List3" = "Unlimited bandwidth and data usage & more";
+"Paywall.Onetime.FreeTrialE" = "Free Trial enabled";
+"Paywall.Onetime.YearlyPlan" = "Yearly Plan";
+"Paywall.Onetime.Just %@" = "Just %@ per year";
+"Paywall.Onetime.PerWeek" = "per week";
+"Paywall.Onetime.Save %@"= "Save %@";
+"Paywall.Onetime.3DayFT" = "3-day free trial";
+"Paywall.Onetime.Then %@" = "then %@";

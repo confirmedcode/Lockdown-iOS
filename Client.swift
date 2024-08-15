@@ -36,7 +36,7 @@ class Client {
         clearCookies()
         return getReceipt(forceRefresh: forceRefresh)
             .then { receipt -> Promise<(data: Data, response: URLResponse)> in
-                let parameters:[String : Any] = [
+                    let parameters:[String : Any] = [
                     "authtype": "ios",
                     "authreceipt": receipt,
                     "lockdown": true
@@ -137,49 +137,9 @@ class Client {
             DDLogInfo("API RESULT: active-subscriptions: \(subscriptions)")
             // sort subscriptions with highest tier at the top
             subscriptions.sort(by: { (sub1: Subscription, sub2: Subscription) -> Bool in
-                if (sub1.planType == .universalAnnual) {
-                    return true
-                }
-                else if (sub1.planType == .universalMonthly) {
-                    if (sub2.planType == .universalAnnual) {
-                        return false
-                    }
-                    else {
-                        return true
-                    }
-                }
-                else if (sub1.planType == .anonymousAnnual) {
-                    if (sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
-                        return false
-                    }
-                    else {
-                        return true
-                    }
-                }
-                else if (sub1.planType == .anonymousMonthly) {
-                    if (sub1.planType == .anonymousAnnual || sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
-                        return false
-                    }
-                    else {
-                        return true
-                    }
-                }
-                else if (sub1.planType == .advancedAnnual) {
-                    if (sub1.planType == .anonymousMonthly || sub1.planType == .anonymousAnnual || sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
-                        return false
-                    }
-                    else {
-                        return true
-                    }
-                }
-                else {
-                    if (sub1.planType == .advancedAnnual || sub1.planType == .anonymousMonthly || sub2.planType == .anonymousAnnual || sub2.planType == .universalAnnual || sub2.planType == .universalMonthly) {
-                        return false
-                    }
-                    else {
-                        return true
-                    }
-                }
+                let p1 = Subscription.PlanType.precedence(p: sub1.planType)
+                let p2 = Subscription.PlanType.precedence(p: sub2.planType)
+                return p1 <= p2
             })
             DDLogInfo("API RESULT: sorted-active-subscriptions: \(subscriptions)")
             return subscriptions

@@ -8,15 +8,6 @@
 
 import Foundation
 
-let kDayMetrics = "LockdownDayMetrics"
-let kWeekMetrics = "LockdownWeekMetrics"
-let kTotalMetrics = "LockdownTotalMetrics"
-let kTotalEnabledMetrics = "LockdownTotalEnabledMetrics"
-let kTotalDisabledMetrics = "LockdownTotalDisabledMetrics"
-
-let kActiveDay = "LockdownActiveDay"
-let kActiveWeek = "LockdownActiveWeek"
-
 func getDayMetrics() -> Int {
     return defaults.integer(forKey: kDayMetrics)
 }
