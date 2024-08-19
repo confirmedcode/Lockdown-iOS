@@ -10,9 +10,10 @@ import SwiftUI
 
 struct OneTimePaywallView: View {
     @StateObject var model: OneTimePaywallModel
+    var imgName = UIScreen.main.bounds.height > 700 ? "bg_paywall_onetime" : "bg_paywall_onetime_ss"
     var body: some View {
         ZStack {
-            Image("bg_paywall_onetime")
+            Image(imgName)
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "bg_paywall_onetime_ss.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
