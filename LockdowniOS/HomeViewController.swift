@@ -345,6 +345,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     @objc func upgrade() {
+        //showOneTimeOffer()
         let vc = VPNPaywallViewController()
         vc.purchaseSuccessful = {[weak self] in self?.handlePurchaseSuccessful() }
         vc.purchaseFailed = { [weak self] err in self?.handlePurchaseFailed(error: err)}

@@ -56,6 +56,7 @@ class OneTimePaywallModel : ObservableObject {
     
     
     func purchase() {
+        showProgress = true
         switch activePlan {
         case .weekly:
             continueAction?(trialEnabled ? products.weeklyTrial : products.weekly)

@@ -158,9 +158,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         let lastStartup = defaults.double(forKey: kAppActivateTime)
-        timeSinceLastStart = lastStartup == 0 ? 0 : Date().timeIntervalSinceReferenceDate - lastStartup
+        timeSinceLastStart = lastStartup == 0.0 ? -1 : Date().timeIntervalSinceReferenceDate - lastStartup
         defaults.set(Date().timeIntervalSinceReferenceDate, forKey: kAppActivateTime)
-        if timeSinceLastStart > 120 {
+        if timeSinceLastStart < 0 || timeSinceLastStart > 120 {
             defaults.set(false, forKey: kOneTimeOfferShown)
         }
         

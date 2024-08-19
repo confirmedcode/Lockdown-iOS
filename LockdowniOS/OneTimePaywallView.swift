@@ -33,6 +33,8 @@ struct OneTimePaywallView: View {
                 .padding(.leading, -20)
                 .padding(.top, 40)
                 Spacer()
+                    .frame(minHeight: 10)
+                    .layoutPriority(-1)
                 Group {
                     Text("Tap")
                         .foregroundColor(.white)
@@ -42,6 +44,7 @@ struct OneTimePaywallView: View {
                         .foregroundColor(.white)
                 }
                 .font(.system(size: 28, weight: .semibold))
+                .frame(maxWidth: .infinity)
                 Text("Paywall.Onetime.PrivateBrowse")
                     .foregroundColor(.white)
                     .font(.custom("Montserrat-Regular", size: 14))
@@ -171,11 +174,13 @@ struct OneTimePaywallView: View {
                 Spacer()
                     .frame(maxHeight: 40)
             }
+            .frame(maxHeight: UIScreen.main.bounds.size.height)
             .padding(.horizontal, 40)
             ProgressView()
-                .scaleEffect(2)
-               .progressViewStyle(CircularProgressViewStyle())
-               .opacity(model.showProgress ? 1 : 0)
+                .offset(y: -70)
+                .scaleEffect(3)
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .opacity(model.showProgress ? 1 : 0)
         }
         .allowsHitTesting(model.showProgress ? false : true)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
