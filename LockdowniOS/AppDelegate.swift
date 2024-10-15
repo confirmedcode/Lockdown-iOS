@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Prepare IAP
         VPNSubscription.cacheLocalizedPrices()
         Task {
-            let pids = Set(VPNSubscription.oneTimeProducts.toList())
+            let pids = Set(VPNSubscription.oneTimeProducts.toList() + VPNSubscription.feedbackProducts.toList())
             await VPNSubscription.shared.loadSubscriptions(productIds: pids)
             print("")
         }

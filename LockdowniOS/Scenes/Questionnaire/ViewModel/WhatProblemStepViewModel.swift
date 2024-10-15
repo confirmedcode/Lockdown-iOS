@@ -9,6 +9,9 @@
 import UIKit
 
 class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
+    private let isUserPremium: Bool
+    let step: Steps = .whatsProblem
+
     private let problemList = [
         NSLocalizedString("Internet connection is blocked", comment: ""),
         NSLocalizedString("VPN not connecting", comment: ""),
@@ -37,8 +40,7 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         }
         return nil
     }
-    
-    var step: Steps = .whatsProblem
+
     var message: String? {
         guard selectedProblemIndex >= 0 else { return nil }
         var result = ""
@@ -64,17 +66,39 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     
     var didChangeReady: ((Bool) -> Void)?
     
-    init(didChangeReady: ((Bool) -> Void)?) {
+    init(isUserPremium: Bool, didChangeReady: ((Bool) -> Void)?) {
+        self.isUserPremium = isUserPremium
         self.didChangeReady = didChangeReady
     }
     
     override func updateRows() {
         staticTableView?.clear()
-        addTitleRow(
-            NSLocalizedString("What problem are you experiencing?", comment: ""),
-            subtitle: NSLocalizedString("Select your problem", comment: "")
-        )
-        
+
+        if isUserPremium {
+            addTitleRow(
+                NSLocalizedString("What problem are you experiencing?", comment: ""),
+                subtitle: nil
+            )
+        } else {
+            staticTableView?.addRowCell { cell in
+                let titleView = ImageBannerWithTitleView()
+                titleView.imageView.image = UIImage(named: "feedback-promo")
+                titleView.titleLabel.text = NSLocalizedString("Get a promo Discount", comment: "")
+                titleView.subtitleLabel.text = NSLocalizedString("Let us know your opinion, and as a thank you for your feedback, we’ll have a special offer waiting for you at the end!", comment: "")
+                self.setupClear(cell)
+                cell.addSubview(titleView)
+                titleView.anchors.edges.pin(insets: .init(top: 0, left: 0, bottom: 30, right: 0))
+            }
+        }
+        staticTableView?.addRowCell { cell in
+            let titleView = SectionTitleView()
+            titleView.titleLabel.text = NSLocalizedString("Select your problem", comment: "")
+            self.setupClear(cell)
+            cell.addSubview(titleView)
+            titleView.anchors.edges.pin(insets: .init(top: 0, left: 0, bottom: 5, right: 0))
+
+        }
+
         for index in 0..<problemList.count {
             staticTableView?.addRowCell { [unowned self] cell in
                 let view = SelectableRadioSwitcherWithTitle()
@@ -85,7 +109,7 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
                 }
                 self.setupClear(cell)
                 cell.addSubview(view)
-                view.anchors.edges.pin(insets: .init(top: 5, left: 2, bottom: 5, right: 2))
+                view.anchors.edges.pin(insets: .init(top: 0, left: 2, bottom: 0, right: 2))
             }
         }
         

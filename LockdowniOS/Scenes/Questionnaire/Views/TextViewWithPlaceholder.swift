@@ -15,7 +15,7 @@ class TextViewWithPlaceholder: UIView {
     private(set) lazy var textView: UITextView = {
         let textView = UITextView()
         textView.delegate = self
-        textView.font = .regularLockdownFont(size: 16)
+        textView.font = .regularLockdownFont(size: 12)
         textView.backgroundColor = .clear
         textView.textColor = .label
         textView.isScrollEnabled = false
@@ -24,9 +24,8 @@ class TextViewWithPlaceholder: UIView {
     
     private(set) lazy var placeholderLabel: UILabel = {
         let label = UILabel()
-        label.font = .regularLockdownFont(size: 16)
-        label.textColor = .label
-        label.alpha = 0.3
+        label.font = .regularLockdownFont(size: 12)
+        label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
     }()
@@ -41,17 +40,22 @@ class TextViewWithPlaceholder: UIView {
     }
     
     private func configure() {
-        backgroundColor = .tableCellBackground
-        layer.cornerRadius = 10
-        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .tableCellBackground
+        backgroundView.layer.cornerRadius = 8
+        backgroundView.layer.borderWidth = 1
+        backgroundView.layer.borderColor = UIColor.secondaryLabel.cgColor
+        addSubview(backgroundView)
+        backgroundView.anchors.edges.pin(insets: .init(top: 10, left: 23, bottom: 0, right: 23))
+
         addSubview(textView)
-        textView.anchors.edges.pin(insets: .init(top: 10, left: 14, bottom: 10, right: 14))
-        textView.anchors.height.greaterThanOrEqual(108)
+        textView.anchors.edges.pin(insets: .init(top: 15, left: 32, bottom: 0, right: 23))
+        textView.anchors.height.greaterThanOrEqual(95)
         
         addSubview(placeholderLabel)
-        placeholderLabel.anchors.leading.pin(inset: 18)
-        placeholderLabel.anchors.top.pin(inset: 18)
-        placeholderLabel.anchors.trailing.pin(inset: 18)
+        placeholderLabel.anchors.leading.pin(inset: 36)
+        placeholderLabel.anchors.top.pin(inset: 18 + 5)
+        placeholderLabel.anchors.trailing.pin(inset: 36)
     }
 }
 

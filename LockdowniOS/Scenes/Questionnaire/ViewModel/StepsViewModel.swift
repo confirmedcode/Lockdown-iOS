@@ -24,13 +24,15 @@ protocol StepViewModelProtocol {
 }
 
 class StepsViewModel {
+    private let isUserPremium: Bool
+
     private lazy var steps: [StepViewModelProtocol] = [
         whatProblemStep,
         questionsStep
     ]
     
     private lazy var whatProblemStep: WhatProblemStepViewModel = {
-        let viewModel = WhatProblemStepViewModel() { [weak self] _ in
+        let viewModel = WhatProblemStepViewModel(isUserPremium: isUserPremium) { [weak self] _ in
             self?.view?.updateNextButton()
         }
         return viewModel
@@ -67,7 +69,8 @@ class StepsViewModel {
         steps.reduce(true) { $0 && $1.isFilled }
     }
     
-    init(sendMessage: ((String) -> Void)?) {
+    init(isUserPremium: Bool, sendMessage: ((String) -> Void)?) {
+        self.isUserPremium = isUserPremium
         self.sendMessage = sendMessage
     }
     

@@ -20,7 +20,7 @@ class NavigationLinkView: UIView {
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .semiboldLockdownFont(size: 16)
+        label.font = .semiboldLockdownFont(size: 12)
         label.numberOfLines = 0
         label.textColor = .label
         return label
@@ -28,9 +28,9 @@ class NavigationLinkView: UIView {
     
     var placeholderLabel: UILabel = {
         let label = UILabel()
-        label.font = .regularLockdownFont(size: 16)
+        label.font = .regularLockdownFont(size: 12)
         label.numberOfLines = 0
-        label.textColor = .label
+        label.textColor = .secondaryLabel
         return label
     }()
     
@@ -38,7 +38,7 @@ class NavigationLinkView: UIView {
         let configuration = UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)
         let view = UIImageView(image: .init(systemName: "chevron.right", withConfiguration: configuration))
         view.contentMode = .center
-        view.tintColor = .label
+        view.tintColor = .secondaryLabel
         return view
     }()
     
@@ -56,8 +56,9 @@ class NavigationLinkView: UIView {
     private func configure() {
         backgroundColor = .tableCellBackground
         layer.cornerRadius = 8
-        layer.borderWidth = 0
-        
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.secondaryLabel.cgColor
+
         addSubview(emojiLabel)
         emojiLabel.anchors.leading.pin(inset: 20)
         emojiLabel.anchors.centerY.equal(anchors.centerY)
@@ -69,15 +70,15 @@ class NavigationLinkView: UIView {
         chevron.anchors.size.equal(.init(width: 16, height: 16))
         
         addSubview(titleLabel)
-        titleLabel.anchors.top.pin(inset: 18)
-        titleLabel.anchors.bottom.pin(inset: 18)
+        titleLabel.anchors.top.pin(inset: 12)
+        titleLabel.anchors.bottom.pin(inset: 12)
         titleLabel.anchors.leading.spacing(28, to: emojiLabel.anchors.trailing)
         chevron.anchors.leading.greaterThanOrEqual(titleLabel.anchors.trailing, constant: 8)
         
         addSubview(placeholderLabel)
-        placeholderLabel.anchors.top.greaterThanOrEqual(anchors.top, constant: 18)
+        placeholderLabel.anchors.top.greaterThanOrEqual(anchors.top, constant: 12)
         placeholderLabel.anchors.leading.pin(inset: 18)
-        anchors.bottom.greaterThanOrEqual(placeholderLabel.anchors.bottom, constant: 18)
+        anchors.bottom.greaterThanOrEqual(placeholderLabel.anchors.bottom, constant: 12)
         chevron.anchors.leading.greaterThanOrEqual(placeholderLabel.anchors.trailing, constant: 18)
         
         addGestureRecognizer(

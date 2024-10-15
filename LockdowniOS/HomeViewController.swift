@@ -49,6 +49,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     let ratingCountKey = "ratingCount" + lastVersionToAskForRating
     let ratingTriggeredKey = "ratingTriggered" + lastVersionToAskForRating
     
+    var feedbackFlow: FeedbackFlow?
+
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
@@ -478,7 +480,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     } errored: { err in
                         self?.handlePurchaseFailed(error: err)
                     }
-                    
                 }
                 let viewCtrl = UIHostingController(rootView: OneTimePaywallView(model: model))
                 viewCtrl.modalPresentationStyle = .fullScreen
@@ -1329,23 +1330,36 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
+extension HomeViewController: PurchaseHandler {
+    func purchase(productId: String) {
+        VPNSubscription.selectedProductId = productId
+        VPNSubscription.purchase { [weak self] in
+            self?.handlePurchaseSuccessful()
+        } errored: { [weak self] err in
+            self?.handlePurchaseFailed(error: err)
+        }
+    }
+}
+
 extension HomeViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is UINavigationController || viewController is HomeViewController {
             return true
         }
-        
-        let stepsViewController = StepsViewController()
-        var viewModel = StepsViewModel { [weak self] message in
-            self?.sendMessage(
-                message,
-                subject: "Lockdown Error Reporting Form (iOS \(Bundle.main.versionString))"
-            )
-        }
-        stepsViewController.viewModel = viewModel
-        stepsViewController.modalPresentationStyle = .fullScreen
-        present(stepsViewController, animated: true)
-        
+
+        feedbackFlow?.startFlow()
         return false
+    }
+
+    func showFeedbackPaywall() async {
+        guard let productInfos = await VPNSubscription.shared.loadSubscriptions(productIds: Set(VPNSubscription.feedbackProducts.toList())) else { return }
+
+        let viewModel = FeedbackPaywallViewModel(products: VPNSubscription.feedbackProducts, subscriptionInfo: productInfos)
+        viewModel.onCloseHandler = { vc in vc.dismiss(animated: true) }
+        viewModel.onPurchaseHandler = { [weak self] paywallVC, pid in
+            self?.purchase(productId: pid)
+        }
+        let paywalVC = FeedbackPaywallViewController(viewModel: viewModel)
+        present(paywalVC, animated: true)
     }
 }

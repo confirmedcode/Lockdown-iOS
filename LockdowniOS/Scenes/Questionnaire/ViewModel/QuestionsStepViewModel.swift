@@ -36,7 +36,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
         staticTableView?.clear()
         addTitleRow(
             NSLocalizedString("Questions", comment: ""),
-            subtitle: NSLocalizedString("Please fill questions answer", comment: ""),
+            subtitle: NSLocalizedString("Please answer the questions and share as much information as possible", comment: ""),
             bottomSpacing: 2
         )
         
@@ -141,7 +141,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             switcher.didSelect = didSelect
             self.setupClear(cell)
             cell.addSubview(switcher)
-            switcher.anchors.edges.pin(insets: .init(top: 37, left: 2, bottom: 15, right: 2))
+            switcher.anchors.edges.pin(insets: .init(top: 18, left: 0, bottom: 3, right: 0))
         }
     }
     
@@ -151,7 +151,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             view.titleLabel.text = title
             self.setupClear(cell)
             cell.addSubview(view)
-            view.anchors.edges.pin(insets: .init(top: 20, left: 2, bottom: 10, right: 2))
+            view.anchors.edges.pin(insets: .init(top: 18, left: 0, bottom: 3, right: 0))
         }
     }
     
@@ -172,7 +172,7 @@ class QuestionsStepViewModel: BaseStepViewModel, StepViewModelProtocol {
             view.didSelect = perform
             self.setupClear(cell)
             cell.addSubview(view)
-            view.anchors.edges.pin(insets: .init(top: 20, left: 2, bottom: 10, right: 2))
+            view.anchors.edges.pin(insets: .init(top: 10, left: 23, bottom: 0, right: 23))
         }
     }
 }

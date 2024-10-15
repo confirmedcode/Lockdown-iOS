@@ -22,10 +22,10 @@ class RadioSwitcher: UIView {
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView(image: unselectedImage)
-        view.contentMode = .center
+        view.contentMode = .scaleAspectFit
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -34,7 +34,11 @@ class RadioSwitcher: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    func toggle() {
+        tapped()
+    }
+
     private func configure() {
         backgroundColor = .clear
         
