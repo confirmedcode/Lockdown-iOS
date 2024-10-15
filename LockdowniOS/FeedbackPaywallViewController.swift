@@ -148,7 +148,7 @@ class FeedbackPaywallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .background
 
         view.addSubview(closeButton)
         NSLayoutConstraint.activate([
@@ -263,7 +263,7 @@ class FeedbackPaywallViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 54).isActive = true
         button.layer.cornerRadius = 27
         button.layer.borderWidth = 1
-        button.tintColor = .black
+        button.tintColor = .feedbackText
         button.setTitle(title, for: .normal)
         button.contentHorizontalAlignment = .left
         button.contentVerticalAlignment = .center
@@ -283,6 +283,7 @@ class FeedbackPaywallViewController: UIViewController {
         pricePeriodLabel?.text = period
 
         let stackView = UIStackView(arrangedSubviews: [priceLabel, pricePeriodLabel].compactMap { $0 })
+        stackView.isUserInteractionEnabled = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .trailing
@@ -384,11 +385,6 @@ private enum Copy {
 }
 
 private extension UIFont {
-    func withWeight(_ weight: UIFont.Weight) -> UIFont {
-        let newDescriptor = fontDescriptor.addingAttributes([.traits: [UIFontDescriptor.TraitKey.weight: weight]])
-        return UIFont(descriptor: newDescriptor, size: pointSize)
-    }
-
     static let close = UIFont(name: "Montserrat-Bold", size: 13)
     static let title = UIFont(name: "SFProRounded-Semibold", size: 28)
     static let description = UIFont(name: "Montserrat-Regular", size: 14)
@@ -401,7 +397,8 @@ private extension UIFont {
 }
 
 private extension UIColor {
-    static let feedbackText = UIColor.fromHex("#000000")
+    static let background = UIColor.panelSecondaryBackground
+    static let feedbackText = UIColor.label
     static let feedbackBlue = UIColor.fromHex("#00ADE7")
     static let selectedPlanBackground = feedbackBlue.withAlphaComponent(0.1)
     static let unselectedPlanBorder = UIColor.fromHex("#999999")
