@@ -49,7 +49,8 @@ class FeedbackPaywallViewController: UIViewController {
             bannerArrowImageView.centerXAnchor.constraint(equalTo: imageView.rightAnchor, constant: -10),
             bannerArrowImageView.widthAnchor.constraint(equalToConstant: 92),
             bannerArrowImageView.heightAnchor.constraint(equalToConstant: 92),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1072 / 687)
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1072 / 687),
+            imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 420)
         ])
 
         return imageView
@@ -169,11 +170,13 @@ class FeedbackPaywallViewController: UIViewController {
         bannerImageContainer.translatesAutoresizingMaskIntoConstraints = false
         bannerImageContainer.addSubview(bannerView)
         NSLayoutConstraint.activate([
-            bannerView.widthAnchor.constraint(equalTo: bannerImageContainer.widthAnchor, multiplier: 0.8),
             bannerView.topAnchor.constraint(equalTo: bannerImageContainer.topAnchor),
             bannerView.bottomAnchor.constraint(equalTo: bannerImageContainer.bottomAnchor),
             bannerView.centerXAnchor.constraint(equalTo: bannerImageContainer.centerXAnchor)
         ])
+        let bannerWidthConstraint = bannerView.widthAnchor.constraint(equalTo: bannerImageContainer.widthAnchor, multiplier: 0.8)
+        bannerWidthConstraint.priority = .init(rawValue: 999)
+        bannerWidthConstraint.isActive = true
 
         let copyStackView = UIStackView(arrangedSubviews: [bannerImageContainer, titleLabel, descriptionLabel, bulletPointContainer])
         copyStackView.translatesAutoresizingMaskIntoConstraints = false
