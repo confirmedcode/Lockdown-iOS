@@ -146,6 +146,11 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+
+    static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
+        guard #available(iOS 13.0, *) else { return light }
+        return UIColor { $0.userInterfaceStyle == .dark ? dark : light }
+    }
 }
 
 class GradientView: UIView {
