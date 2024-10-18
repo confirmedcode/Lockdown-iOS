@@ -74,21 +74,17 @@ class WhatProblemStepViewModel: BaseStepViewModel, StepViewModelProtocol {
     override func updateRows() {
         staticTableView?.clear()
 
-        if isUserPremium {
-            addTitleRow(
-                NSLocalizedString("What problem are you experiencing?", comment: ""),
-                subtitle: nil
-            )
-        } else {
-            staticTableView?.addRowCell { cell in
-                let titleView = ImageBannerWithTitleView()
-                titleView.imageView.image = UIImage(named: "feedback-promo")
-                titleView.titleLabel.text = NSLocalizedString("Get a promo Discount", comment: "")
-                titleView.subtitleLabel.text = NSLocalizedString("Let us know your opinion, and as a thank you for your feedback, we’ll have a special offer waiting for you at the end!", comment: "")
-                self.setupClear(cell)
-                cell.addSubview(titleView)
-                titleView.anchors.edges.pin(insets: .init(top: 0, left: 0, bottom: 30, right: 0))
-            }
+        staticTableView?.addRowCell { cell in
+            let titleView = ImageBannerWithTitleView()
+            titleView.imageView.image = isUserPremium ? UIImage(named: "feedback") : UIImage(named: "feedback-promo")
+            titleView.titleLabel.text = isUserPremium ? NSLocalizedString("How can we assist you?", comment: "") : NSLocalizedString("Get a promo Discount", comment: "")
+            titleView.subtitleLabel.text = isUserPremium ?
+                NSLocalizedString("Your feedback is valuable to us. By selecting the issue you're facing, we can guide you through troubleshooting or escalate the problem to our support team.", comment: "") :
+                NSLocalizedString("Let us know your opinion, and as a thank you for your feedback, we’ll have a special offer waiting for you at the end!", comment: "")
+            titleView.subtitleLabel.textAlignment = isUserPremium ? .left : .center
+            self.setupClear(cell)
+            cell.addSubview(titleView)
+            titleView.anchors.edges.pin(insets: .init(top: 0, left: 0, bottom: 30, right: 0))
         }
         staticTableView?.addRowCell { cell in
             let titleView = SectionTitleView()
