@@ -29,7 +29,7 @@ class SelectableRadioSwitcherWithTitle: UIView {
     
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .semiboldLockdownFont(size: 16)
+        label.font = .regularLockdownFont(size: 14)
         label.numberOfLines = 0
         label.textColor = .label
         return label
@@ -45,19 +45,15 @@ class SelectableRadioSwitcherWithTitle: UIView {
     }
     
     private func configure() {
-        backgroundColor = unselectedBackgroundColor
-        layer.cornerRadius = 8
-        layer.borderWidth = 0
-        
         addSubview(switcher)
-        switcher.anchors.leading.pin(inset: 18)
-        switcher.anchors.size.equal(.init(width: 20, height: 20))
-        
+        switcher.anchors.leading.pin(inset: 26)
+        switcher.anchors.size.equal(.init(width: 13, height: 13))
+
         addSubview(titleLabel)
         switcher.anchors.centerY.equal(titleLabel.anchors.centerY)
-        titleLabel.anchors.leading.spacing(22, to: switcher.anchors.trailing)
-        titleLabel.anchors.top.pin(inset: 18)
-        titleLabel.anchors.bottom.pin(inset: 18)
+        titleLabel.anchors.leading.spacing(9, to: switcher.anchors.trailing)
+        titleLabel.anchors.top.pin(inset: 8)
+        titleLabel.anchors.bottom.pin(inset: 8)
         titleLabel.anchors.trailing.pin(inset: 18)
         
         addGestureRecognizer(
@@ -67,9 +63,6 @@ class SelectableRadioSwitcherWithTitle: UIView {
     
     private func updateView() {
         switcher.isSelected = isSelected
-        backgroundColor = isSelected ? selectedBackgroundColor : unselectedBackgroundColor
-        layer.borderColor = (isSelected ? selectedBorderColor : .clear).cgColor
-        layer.borderWidth = isSelected ? 1 : 0
     }
     
     @objc private func tapped() {

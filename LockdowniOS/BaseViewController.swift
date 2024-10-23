@@ -198,7 +198,8 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
         let acceptButton = DefaultButton(title: NSLocalizedString("OK", comment: ""), dismissOnTap: true) { completionHandler() }
         popup.addButtons([acceptButton])
         
-        self.present(popup, animated: true, completion: nil)
+        let topVC = presentedViewController ?? self
+        topVC.present(popup, animated: true, completion: nil)
     }
     
     enum PopupButton {
@@ -321,7 +322,9 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                 attachmentData.append(logFileData as Data)
             }
             composeVC.addAttachmentData(attachmentData as Data, mimeType: "text/plain", fileName: "diagnostics.txt")
-            self.present(composeVC, animated: true, completion: nil)
+
+            let topVC = presentedViewController ?? self
+            topVC.present(composeVC, animated: true, completion: nil)
         } else {
             
             guard let mailtoURL = Mailto.generateURL(recipient: recipient, subject: subject, body: message) else {

@@ -249,6 +249,11 @@
 		40E7A3012A0E1C7A00E0231A /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */; };
 		40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC414229F74C7900BD7396 /* String+Extensions.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
+		51006F192CBD0E7400F5142C /* ImageBannerWithTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51006F182CBD0E7400F5142C /* ImageBannerWithTitleView.swift */; };
+		510AA2F62CB8222100E53560 /* FeedbackPaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510AA2F52CB8222100E53560 /* FeedbackPaywallViewModel.swift */; };
+		5117DE882CBD4A6600C4A61B /* SectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5117DE872CBD4A6600C4A61B /* SectionTitleView.swift */; };
+		5145A19A2CBE37C40074C562 /* FeedbackFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5145A1992CBE37C40074C562 /* FeedbackFlow.swift */; };
+		51DD89E52CB7DA770028B4FE /* FeedbackPaywallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD89E42CB7DA770028B4FE /* FeedbackPaywallViewController.swift */; };
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
@@ -775,6 +780,11 @@
 		40FC414229F74C7900BD7396 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
+		51006F182CBD0E7400F5142C /* ImageBannerWithTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBannerWithTitleView.swift; sourceTree = "<group>"; };
+		510AA2F52CB8222100E53560 /* FeedbackPaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPaywallViewModel.swift; sourceTree = "<group>"; };
+		5117DE872CBD4A6600C4A61B /* SectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleView.swift; sourceTree = "<group>"; };
+		5145A1992CBE37C40074C562 /* FeedbackFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackFlow.swift; sourceTree = "<group>"; };
+		51DD89E42CB7DA770028B4FE /* FeedbackPaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPaywallViewController.swift; sourceTree = "<group>"; };
 		66424506768B2196F870B04C /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
 		71D50056A5E2E1F6486369F9 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1251,6 +1261,7 @@
 		40098E1A29FDA61900886474 /* Paywalls */ = {
 			isa = PBXGroup;
 			children = (
+				51DD89E32CB7D9E10028B4FE /* FeedbackFormPaywall */,
 				40960AEE2A033A16000F82EB /* Models */,
 				40098E3329FF376900886474 /* FirewallPaywall */,
 				40098E2029FDA63100886474 /* VPNPaywall */,
@@ -1742,6 +1753,15 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		51DD89E32CB7D9E10028B4FE /* FeedbackFormPaywall */ = {
+			isa = PBXGroup;
+			children = (
+				51DD89E42CB7DA770028B4FE /* FeedbackPaywallViewController.swift */,
+				510AA2F52CB8222100E53560 /* FeedbackPaywallViewModel.swift */,
+			);
+			name = FeedbackFormPaywall;
+			sourceTree = "<group>";
+		};
 		7C0D11102473EDFD00A26E04 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -2084,6 +2104,7 @@
 		B1A01CA32A432826004D43EE /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
+				5145A1992CBE37C40074C562 /* FeedbackFlow.swift */,
 				B1A01CA62A432902004D43EE /* Controllers */,
 				B1A01CA72A432919004D43EE /* Models */,
 				B1062A342A45BD5800FA9E8B /* ViewModel */,
@@ -2124,6 +2145,8 @@
 				B1F11C7F2A49E35800A137A3 /* QuestionTitleView.swift */,
 				B1F11C812A49E63400A137A3 /* NavigationLinkView.swift */,
 				B1F11C892A4B050500A137A3 /* CountryView.swift */,
+				51006F182CBD0E7400F5142C /* ImageBannerWithTitleView.swift */,
+				5117DE872CBD4A6600C4A61B /* SectionTitleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2935,6 +2958,7 @@
 				B1F11C7C2A498CBF00A137A3 /* BaseStepViewModel.swift in Sources */,
 				3D47CDD222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				3D9FC67723E503DF004122D3 /* EmailSignInViewController.swift in Sources */,
+				51DD89E52CB7DA770028B4FE /* FeedbackPaywallViewController.swift in Sources */,
 				3DCA4F3322F22CB40017740D /* HomeViewController.swift in Sources */,
 				7CE91C962521ED5E009D8269 /* VPNRegion.swift in Sources */,
 				F0A8E0412C64E977001303C6 /* Defaults.swift in Sources */,
@@ -2964,6 +2988,7 @@
 				A1EBEAD42097AE6E002B9087 /* M13CheckboxPathGenerator.swift in Sources */,
 				40CC817E2A14BB3600F9805E /* UIView+Corners.swift in Sources */,
 				F01CAB7C2C61106F009C19CF /* SUI+Extensions.swift in Sources */,
+				5145A19A2CBE37C40074C562 /* FeedbackFlow.swift in Sources */,
 				B1062A2D2A447B2F00FA9E8B /* RadioSwitcher.swift in Sources */,
 				A1EBEACB2097AE6E002B9087 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				40960AEB2A03396F000F82EB /* ProductPurchasable.swift in Sources */,
@@ -3014,6 +3039,7 @@
 				B1F11C822A49E63400A137A3 /* NavigationLinkView.swift in Sources */,
 				A154A07E215C78180010FFCC /* BlockListCell.swift in Sources */,
 				F0B12AF82C60D602008EF8AA /* OneTimePaywallView.swift in Sources */,
+				510AA2F62CB8222100E53560 /* FeedbackPaywallViewModel.swift in Sources */,
 				3D47CDCE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				B1BA87012A4C4BC400D141A8 /* QuestionModel.swift in Sources */,
 				40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */,
@@ -3044,6 +3070,7 @@
 				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,
 				B1062A382A45BEBE00FA9E8B /* WhatProblemStepViewModel.swift in Sources */,
+				51006F192CBD0E7400F5142C /* ImageBannerWithTitleView.swift in Sources */,
 				402D253129E635CB00A5AB60 /* DomainsBlockedTableViewCell.swift in Sources */,
 				7C4D9BBB252C8748004175EA /* AccountUI.swift in Sources */,
 				3D47CDBE22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
@@ -3059,6 +3086,7 @@
 				402BAD362A0CD37C009B8820 /* ConnectivityService.swift in Sources */,
 				3D0711BB22FE7B5100391C6E /* TitleViewController.swift in Sources */,
 				3D47CDB222F3C3F3003BD7F7 /* NVActivityIndicatorShape.swift in Sources */,
+				5117DE882CBD4A6600C4A61B /* SectionTitleView.swift in Sources */,
 				7C422E97252796EE007F9C22 /* StaticTableView.swift in Sources */,
 				7C3EFA0224867DEE00719D96 /* TrackerInfo.swift in Sources */,
 				40960B152A034400000F82EB /* Keychainable.swift in Sources */,
@@ -3605,7 +3633,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
@@ -3645,7 +3673,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = V8J3Z26F6Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

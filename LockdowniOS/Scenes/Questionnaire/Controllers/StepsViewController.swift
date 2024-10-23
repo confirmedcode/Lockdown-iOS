@@ -20,6 +20,7 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         view.leftNavButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         view.leftNavButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
         view.leftNavButton.tintColor = .label
+        view.titleView = stepsView
         return view
     }()
     
@@ -58,11 +59,6 @@ class StepsViewController: UIViewController, StepsViewProtocol {
         navigationView.anchors.leading.pin()
         navigationView.anchors.trailing.pin()
         navigationView.anchors.top.safeAreaPin()
-        
-        view.addSubview(stepsView)
-        stepsView.anchors.top.spacing(0, to: navigationView.anchors.bottom)
-        stepsView.anchors.leading.pin(inset: 18)
-        stepsView.anchors.trailing.pin(inset: 18)
         
         view.addSubview(actionButton)
         actionButton.anchors.leading.pin(inset: 24)

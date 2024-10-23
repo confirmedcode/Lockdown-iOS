@@ -49,6 +49,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     let ratingCountKey = "ratingCount" + lastVersionToAskForRating
     let ratingTriggeredKey = "ratingTriggered" + lastVersionToAskForRating
     
+    var feedbackFlow: FeedbackFlow?
+
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isScrollEnabled = true
@@ -90,18 +92,12 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         return label
     }()
     
-//    lazy var ctaView: CTAView = {
-//        let view = CTAView()
-//
-//        return view
-//    }()
-    
     private lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Get Anonymous protection", comment: "")
         label.font = fontBold24
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -156,18 +152,20 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     private lazy var stackView: UIStackView = {
         let stackView  = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
         stackView.spacing = 10
         stackView.layer.cornerRadius = 8
-        stackView.backgroundColor = .extraLightGray
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 8, right: 8)
+        stackView.backgroundColor =  UIColor.dynamicColor(light: .extraLightGray, dark: .panelSecondaryBackground!)
+        stackView.layoutMargins = UIEdgeInsets(top: 17, left: 20, bottom: 17, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
     private lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "icn_close_filled"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 23)
+        button.setImage(UIImage(systemName: "xmark.circle.fill", withConfiguration: config), for: .normal)
+        button.tintColor = .secondaryLabel
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -276,6 +274,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel6)
             stackView.addArrangedSubview(upgradeButton)
+            stackView.setCustomSpacing(14, after: mainTitle)
+            stackView.setCustomSpacing(14, after: descriptionLabel6)
         } else if UserDefaults.hasSeenUniversalPaywall {
             protectionPlanLabel.text = "Universal protection"
             stackView.anchors.height.equal(0)
@@ -288,6 +288,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             stackView.addArrangedSubview(mainTitle)
             stackView.addArrangedSubview(descriptionLabel4)
             stackView.addArrangedSubview(descriptionLabel5)
+            stackView.setCustomSpacing(14, after: mainTitle)
+            stackView.setCustomSpacing(14, after: descriptionLabel5)
             stackView.addArrangedSubview(upgradeButton)
         } else {
             mainTitle.text = "Get Advanced\nprotection"
@@ -297,6 +299,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             stackView.addArrangedSubview(descriptionLabel2)
             stackView.addArrangedSubview(descriptionLabel3)
             stackView.addArrangedSubview(upgradeButton)
+            stackView.setCustomSpacing(14, after: mainTitle)
+            stackView.setCustomSpacing(14, after: descriptionLabel3)
         }
         
         view.addSubview(upgradeLabel)
@@ -322,9 +326,9 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
 
         contentView.addSubview(stackView)
         stackView.anchors.top.marginsPin()
-        stackView.anchors.leading.pin(inset: 8)
-        stackView.anchors.trailing.marginsPin(inset: 10)
-        
+        stackView.anchors.leading.pin(inset: 22)
+        stackView.anchors.trailing.pin(inset: 22)
+
         contentView.addSubview(mainStack)
         mainStack.anchors.top.spacing(8, to: stackView.anchors.bottom)
         mainStack.anchors.leading.marginsPin()
@@ -332,11 +336,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         mainStack.anchors.bottom.pin()
         
         contentView.addSubview(closeButton)
-        closeButton.anchors.trailing.marginsPin(inset: 20)
+        closeButton.anchors.trailing.spacing(-8, to: stackView.anchors.trailing)
         closeButton.anchors.top.marginsPin(inset: 8)
+        closeButton.anchors.height.equal(40)
+        closeButton.anchors.width.equal(40)
     }
-    
-//    closeButtonTapped
     
     @objc func closeButtonTapped() {
         stackView.anchors.height.equal(0)
@@ -478,7 +482,6 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     } errored: { err in
                         self?.handlePurchaseFailed(error: err)
                     }
-                    
                 }
                 let viewCtrl = UIHostingController(rootView: OneTimePaywallView(model: model))
                 viewCtrl.modalPresentationStyle = .fullScreen
@@ -1329,23 +1332,36 @@ extension NEVPNStatus: CustomStringConvertible {
     }
 }
 
+extension HomeViewController: PurchaseHandler {
+    func purchase(productId: String) {
+        VPNSubscription.selectedProductId = productId
+        VPNSubscription.purchase { [weak self] in
+            self?.handlePurchaseSuccessful()
+        } errored: { [weak self] err in
+            self?.handlePurchaseFailed(error: err)
+        }
+    }
+}
+
 extension HomeViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is UINavigationController || viewController is HomeViewController {
             return true
         }
-        
-        let stepsViewController = StepsViewController()
-        var viewModel = StepsViewModel { [weak self] message in
-            self?.sendMessage(
-                message,
-                subject: "Lockdown Error Reporting Form (iOS \(Bundle.main.versionString))"
-            )
-        }
-        stepsViewController.viewModel = viewModel
-        stepsViewController.modalPresentationStyle = .fullScreen
-        present(stepsViewController, animated: true)
-        
+
+        feedbackFlow?.startFlow()
         return false
+    }
+
+    func showFeedbackPaywall() async {
+        guard let productInfos = await VPNSubscription.shared.loadSubscriptions(productIds: Set(VPNSubscription.feedbackProducts.toList())) else { return }
+
+        let viewModel = FeedbackPaywallViewModel(products: VPNSubscription.feedbackProducts, subscriptionInfo: productInfos)
+        viewModel.onCloseHandler = { vc in vc.dismiss(animated: true) }
+        viewModel.onPurchaseHandler = { [weak self] paywallVC, pid in
+            self?.purchase(productId: pid)
+        }
+        let paywalVC = FeedbackPaywallViewController(viewModel: viewModel)
+        present(paywalVC, animated: true)
     }
 }

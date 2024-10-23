@@ -17,8 +17,8 @@ extension UIView {
     func applyGradient(_ gradient: LockdownGradient, corners: Corners = .continuous(0)) -> CAGradientLayer {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradient.colors
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.startPoint = gradient.points.start
+        gradientLayer.endPoint = gradient.points.end
         gradientLayer.frame = bounds
         gradientLayer.corners = corners
         
@@ -145,5 +145,25 @@ extension UIColor {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+
+    static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
+        guard #available(iOS 13.0, *) else { return light }
+        return UIColor { $0.userInterfaceStyle == .dark ? dark : light }
+    }
+}
+
+class GradientView: UIView {
+    var gradient: LockdownGradient? {
+        didSet {
+            guard let gradient else { return }
+            gradientLayer = applyGradient(gradient)
+        }
+    }
+    var gradientLayer: CALayer?
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer?.frame = bounds
     }
 }

@@ -12,7 +12,8 @@ class TitleAndSubtitleView: UIView {
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldLockdownFont(size: 34)
+        label.textAlignment = .center
+        label.font = .boldLockdownFont(size: 20)
         label.numberOfLines = 0
         label.textColor = .label
         return label
@@ -20,7 +21,8 @@ class TitleAndSubtitleView: UIView {
     
     var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .mediumLockdownFont(size: 16)
+        label.textAlignment = .center
+        label.font = .mediumLockdownFont(size: 14)
         label.numberOfLines = 0
         label.textColor = .secondaryLabel
         return label
@@ -45,7 +47,7 @@ class TitleAndSubtitleView: UIView {
         
         addSubview(subtitleLabel)
         subtitleLabel.anchors.leading.pin()
-        subtitleLabel.anchors.top.spacing(10, to: titleLabel.anchors.bottom)
+        subtitleLabel.anchors.top.spacing(8, to: titleLabel.anchors.bottom)
         subtitleLabel.anchors.trailing.pin()
         subtitleLabel.anchors.bottom.pin()
     }

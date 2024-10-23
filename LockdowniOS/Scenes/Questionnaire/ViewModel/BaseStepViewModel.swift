@@ -52,7 +52,7 @@ class BaseStepViewModel {
             view.placeholderLabel.isHidden = !(text?.isEmpty ?? true)
             self.setupClear(cell)
             cell.addSubview(view)
-            view.anchors.edges.pin(insets: .init(top: 3, left: 2, bottom: 5, right: 2))
+            view.anchors.edges.pin(insets: .init(top: 0, left: 0, bottom: 0, right: 0))
             view.textDidChanged = { [weak self] text in
                 didChangeText(text)
                 self?.staticTableView?.beginUpdates()

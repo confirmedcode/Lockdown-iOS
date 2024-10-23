@@ -20,7 +20,7 @@ class YesNoRadioSwitcherView: UIView {
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .semiboldLockdownFont(size: 16)
+        label.font = .semiboldLockdownFont(size: 14)
         label.numberOfLines = 0
         label.textColor = .label
         return label
@@ -34,9 +34,10 @@ class YesNoRadioSwitcherView: UIView {
     
     private lazy var yesLabel: UILabel = {
         let label = UILabel()
-        label.font = .regularLockdownFont(size: 16)
+        label.font = .regularLockdownFont(size: 14)
         label.textColor = .label
         label.text = NSLocalizedString("Yes", comment: "")
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -48,9 +49,10 @@ class YesNoRadioSwitcherView: UIView {
     
     private lazy var noLabel: UILabel = {
         let label = UILabel()
-        label.font = .regularLockdownFont(size: 16)
+        label.font = .regularLockdownFont(size: 14)
         label.textColor = .label
         label.text = NSLocalizedString("No", comment: "")
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -74,16 +76,21 @@ class YesNoRadioSwitcherView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.alignment = .leading
+        stackView.alignment = .fill
         addSubview(stackView)
-        stackView.anchors.top.spacing(15, to: titleLabel.anchors.bottom)
-        stackView.anchors.leading.pin()
+        stackView.anchors.top.spacing(12, to: titleLabel.anchors.bottom)
+        stackView.anchors.leading.pin(inset: 23)
         stackView.anchors.trailing.pin()
         stackView.anchors.bottom.pin()
-        stackView.anchors.height.equal(20)
-        
-        stackView.addArrangedSubview(view(for: yesSwitcher, andLabel: yesLabel))
-        stackView.addArrangedSubview(view(for: noSwitcher, andLabel: noLabel))
+        stackView.anchors.height.equal(23)
+
+        let yesView = view(for: yesSwitcher, andLabel: yesLabel)
+        yesView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedYes)))
+        stackView.addArrangedSubview(yesView)
+
+        let noView = view(for: noSwitcher, andLabel: noLabel)
+        noView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedNo)))
+        stackView.addArrangedSubview(noView)
     }
     
     private func view(for switcher: RadioSwitcher, andLabel label: UILabel) -> UIView {
@@ -93,8 +100,8 @@ class YesNoRadioSwitcherView: UIView {
         view.addSubview(switcher)
         switcher.anchors.leading.pin()
         switcher.anchors.centerY.equal(view.anchors.centerY)
-        switcher.anchors.size.equal(.init(width: 25, height: 25))
-        
+        switcher.anchors.size.equal(.init(width: 13, height: 13))
+
         view.addSubview(label)
         label.anchors.top.pin()
         label.anchors.leading.spacing(10, to: switcher.anchors.trailing)
@@ -107,5 +114,13 @@ class YesNoRadioSwitcherView: UIView {
     private func updateView() {
         yesSwitcher.isSelected = isSelected ?? false
         noSwitcher.isSelected = !(isSelected ?? true)
+    }
+
+    @objc private func tappedYes() {
+        yesSwitcher.toggle()
+    }
+
+    @objc private func tappedNo() {
+        noSwitcher.toggle()
     }
 }

@@ -15,7 +15,7 @@ enum Steps {
     var actionTitle: String {
         switch self {
         case .whatsProblem: return NSLocalizedString("Next", comment: "")
-        case .questions: return NSLocalizedString("Email Answers", comment: "")
+        case .questions: return NSLocalizedString("Submit Feedback", comment: "")
         }
     }
     

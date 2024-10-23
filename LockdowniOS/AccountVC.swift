@@ -16,7 +16,8 @@ final class AccountViewController: BaseViewController, Loadable {
     // MARK: - Properties
     let tableView = StaticTableView(frame: .zero, style: .grouped)
     var activePlans: [Subscription.PlanType] = []
-    
+    var feedbackFlow: FeedbackFlow?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -390,16 +391,7 @@ final class AccountViewController: BaseViewController, Loadable {
     }
     
     private func openQuestionnaire() {
-        let stepsViewController = StepsViewController()
-        var viewModel = StepsViewModel { [weak self] message in
-            self?.sendMessage(
-                message,
-                subject: "Lockdown Error Reporting Form (iOS \(Bundle.main.versionString))"
-            )
-        }
-        stepsViewController.viewModel = viewModel
-        stepsViewController.modalPresentationStyle = .fullScreen
-        present(stepsViewController, animated: true)
+        feedbackFlow?.startFlow()
     }
 }
 

@@ -43,7 +43,23 @@ final class ConfiguredNavigationView: UIView {
         self.accentColor = accentColor
         configureUI()
     }
-    
+
+    var titleView: UIView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+            guard let titleView else {
+                titleLabel.isHidden = false
+                return
+            }
+            titleLabel.isHidden = true
+
+            addSubview(titleView)
+            titleView.anchors.leading.marginsPin(inset: 67)
+            titleView.anchors.trailing.marginsPin(inset: 67)
+            titleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        }
+    }
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

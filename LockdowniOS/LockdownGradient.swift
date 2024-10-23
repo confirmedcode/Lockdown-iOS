@@ -14,8 +14,8 @@ enum LockdownGradient {
     case onboardingPurple
     case ltoButtonOnHomePage
     case welcomePurple
-    case custom([CGColor])
-    
+    case custom([CGColor], NSLayoutConstraint.Axis = .vertical)
+
     var colors: [CGColor] {
         switch self {
         case .lightBlue:
@@ -33,8 +33,18 @@ enum LockdownGradient {
                     UIColor.fromHex("#FFFFFF4D").withAlphaComponent(0.3).cgColor]
         case .welcomePurple:
             return [UIColor.gradientPink1.cgColor, UIColor.gradientPink2.cgColor]
-        case .custom(let colors):
+        case .custom(let colors, _):
             return colors
+        }
+    }
+
+    var points: (start: CGPoint, end: CGPoint) {
+        switch self {
+        case .custom(_, .horizontal):
+            return (CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 0))
+        default:
+            return (CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1))
+
         }
     }
 }

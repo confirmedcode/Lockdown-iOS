@@ -25,6 +25,18 @@ struct OnetTimeProducts {
     }
 }
 
+struct FeedbackProducts {
+    let weekly: String
+    let yearly: String
+
+    func toList() -> [String] {
+        let otherSelf = Mirror(reflecting: self)
+        return otherSelf.children.compactMap {
+            $0.value as? String
+        }
+    }
+}
+
 struct InternalSubscription: Hashable {
     let productId: String
     let period: SKProduct.PeriodUnit
@@ -72,8 +84,10 @@ actor VPNSubscription: NSObject {
                                                   weeklyTrial: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer",
                                                   yearly: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", 
                                                   yearlyTrial: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer")
+    static let feedbackProducts = FeedbackProducts(weekly: "lockdown.weekly.1.202409.no_trial.feedback",
+                                                   yearly: "lockdown.yearly.40.202409.no_trial.feedback")
     static var selectedProductId = productIdAdvancedMonthly
-    
+
     // Advanced Level
     static var defaultPriceStringAdvancedMonthly = "$4.99"
     static var defaultPriceStringAdvancedYearly = "$29.99"
