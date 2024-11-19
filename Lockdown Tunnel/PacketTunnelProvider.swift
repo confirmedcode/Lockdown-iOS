@@ -525,6 +525,8 @@ extension NEProviderStopReason: CustomDebugStringConvertible {
             return "sleep"
         case .appUpdate:
             return "appUpdate"
+        case .internalError:
+            return "internalError"
         }
     }
 }
