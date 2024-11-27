@@ -17,12 +17,12 @@ var latestBlockedDomains = getAllBlockedDomains()
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
     let dnsServerAddress = "127.0.0.1"
-    var _dns: DNSCryptThread!;
-    
-    let proxyServerAddress = "127.0.0.1";
-    let proxyServerPort: UInt16 = 9090;
-    var proxyServer: GCDHTTPProxyServer!
-    
+    var dns: DNSCryptThread?
+
+    let proxyServerAddress = "127.0.0.1"
+    let proxyServerPort: UInt16 = 9090
+    var proxyServer: GCDHTTPProxyServer?
+
     let monitor = NWPathMonitor()
     let fileManager = FileManager.default
     let groupContainer = "group.com.confirmed"
@@ -106,8 +106,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     private func refreshServers() {
         stopProxyServer()
-        _dns.closeIdleConnections()
-        _dns.refreshServersInfo()
+        dns?.closeIdleConnections()
+        dns?.refreshServersInfo()
         initializeProxy()
         _ = startProxy()
     }
@@ -251,7 +251,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         log("===== initialize DNS server")
         // stopDnsServer()
         log("initializing DNSCryptThread")
-        _dns = DNSCryptThread(arguments: [initializeAndReturnConfigPath()]);
+        dns = DNSCryptThread(arguments: [initializeAndReturnConfigPath()]);
     }
     
     func initializeProxy() {
@@ -264,7 +264,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     func startProxy() -> Error? {
         log("===== startProxy")
         do {
-            try self.proxyServer.start()
+            try self.proxyServer?.start()
             log("started proxyServer")
             return nil
         } catch {
@@ -275,31 +275,33 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     func startDns() {
         log("===== startDns")
-        _dns.start()
+        dns?.start()
     }
     
     func stopDnsServer() {
         log("===== stopDnsServer")
-        if (_dns != nil) {
-            log("dns is not nil")
-            log("dns closing idle connections")
-            _dns.closeIdleConnections()
-            log("dns stopApp")
-            _dns.stopApp()
-            log("dns set to nil")
-            _dns = nil
-        }
+        guard let dns else { return }
+
+        log("dns is not nil")
+        log("dns closing idle connections")
+        dns.closeIdleConnections()
+        log("dns stopApp")
+        dns.stopApp()
+
+        log("dns set to nil")
+        self.dns = nil
     }
     
     func stopProxyServer() {
         log("===== stopProxyServer")
-        if (proxyServer != nil) {
-            log("proxyServer is not nil")
-            log("proxyServer stop")
-            proxyServer.stop()
-            log("proxyServer nil")
-            proxyServer = nil
-        }
+        guard let proxyServer else { return }
+
+        log("proxyServer is not nil")
+        log("proxyServer stop")
+        proxyServer.stop()
+
+        log("proxyServer nil")
+        self.proxyServer = nil
     }
     
 //    func reactivateTunnel() {
