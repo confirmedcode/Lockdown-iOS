@@ -157,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        let isCleanInstall = UserDefaults.standard.value(forKey: kVersionOfLastRun) == nil
+        let isCleanInstall = defaults.value(forKey: kOneTimeOfferShown) == nil
         if isCleanInstall {
             defaults.set(true, forKey: kSpecialOfferTimeDidReset)
         }
@@ -180,7 +180,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
         
         FirewallRepair.run(context: .homeScreenDidLoad)
-        appHasJustBeenUpgradedOrIsNewInstall()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
