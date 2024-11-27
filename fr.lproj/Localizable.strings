@@ -125,7 +125,7 @@
 "Error Signing In To Verify Subscription" = "Erreur de Connexion pour Vérifier l'Abonnement";
 
 /* No comment provided by engineer. */
-"Error Starting Trial" = "Erreur Offre d'Essai";
+"Error Making Purchase" = "Erreur lors de l'achat";
 
 /* No comment provided by engineer. */
 "Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "Erreur lors de la confirmation de votre compte : \(errorMessage). Si ce problème persiste, veuillez contacter team@lockdownprivacy.com.";
@@ -724,3 +724,5 @@
 "Paywall.Onetime.Save %@"= "Sauvegarder %@";
 "Paywall.Onetime.3DayFT" = "Essai gratuit de 3 jours";
 "Paywall.Onetime.Then %@" = "après ça %@";
+"Paywall.Onetime.perYear %@" = "%@ per an";
+"Paywall.Onetime.BlackFriday" = "Black Friday\nCyber Monday Sale";

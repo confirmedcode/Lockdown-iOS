@@ -122,7 +122,7 @@
 "Error Signing In To Verify Subscription" = "Error Al Iniciar Sesión Para Verificar La Suscripción";
 
 /* No comment provided by engineer. */
-"Error Starting Trial" = "Error Al Iniciar La Prueba";
+"Error Making Purchase" = "Error Al Realizar La Compra";
 
 /* No comment provided by engineer. */
 "Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "Error al intentar confirmar su cuenta: \(mensajedeError). Si esto persiste, por favor contacte team@lockdownprivacy.com.";

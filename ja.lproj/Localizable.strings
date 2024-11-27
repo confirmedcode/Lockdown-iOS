@@ -125,7 +125,7 @@
 "Error Signing In To Verify Subscription" = "サブスクリプションを確認するためのサインインエラーです";
 
 /* No comment provided by engineer. */
-"Error Starting Trial" = "トライアル開始エラーです";
+"Error Making Purchase" = "購入エラー";
 
 /* No comment provided by engineer. */
 "Error while trying to confirm your account: \(errorMessage). If this persists, please contact team@lockdownprivacy.com." = "アカウントの確認中にエラーが発生しました: \(errorMessage). このエラーが続く場合はteam@lockdownprivacy.comにお問い合わせください。";

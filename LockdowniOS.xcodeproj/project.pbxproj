@@ -257,6 +257,14 @@
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
+		5E9AF7302CF5D198001239A0 /* SpecialOfferPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9AF72F2CF5D18F001239A0 /* SpecialOfferPaywallView.swift */; };
+		5EA97B2F2CF5F83D0082D3FD /* KumbhSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B2E2CF5F83D0082D3FD /* KumbhSans-Regular.ttf */; };
+		5EA97B312CF5F83D0082D3FD /* KumbhSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B2C2CF5F83D0082D3FD /* KumbhSans-Bold.ttf */; };
+		5EA97B322CF5F83D0082D3FD /* KumbhSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B2E2CF5F83D0082D3FD /* KumbhSans-Regular.ttf */; };
+		5EA97B342CF5F83D0082D3FD /* KumbhSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B2C2CF5F83D0082D3FD /* KumbhSans-Bold.ttf */; };
+		5EA97B362CF5F86A0082D3FD /* Juana-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B352CF5F86A0082D3FD /* Juana-SemiBold.ttf */; };
+		5EA97B372CF5F86A0082D3FD /* Juana-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B352CF5F86A0082D3FD /* Juana-SemiBold.ttf */; };
+		5EA97B392CF604F20082D3FD /* SpecialOfferPaywallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA97B382CF604D60082D3FD /* SpecialOfferPaywallModel.swift */; };
 		601BF3ED11EB7CBF95BF5720 /* Pods-Lockdown Firewall Widget-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12884CAB7C53B842E9E3745C /* Pods-Lockdown Firewall Widget-metadata.plist */; };
 		78010EFC9ED40D77BD40C924 /* Pods-LockdownTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ADD2E8AC036859E49987E8B /* Pods-LockdownTests-settings-metadata.plist */; };
 		7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */; };
@@ -785,6 +793,11 @@
 		5117DE872CBD4A6600C4A61B /* SectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleView.swift; sourceTree = "<group>"; };
 		5145A1992CBE37C40074C562 /* FeedbackFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackFlow.swift; sourceTree = "<group>"; };
 		51DD89E42CB7DA770028B4FE /* FeedbackPaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPaywallViewController.swift; sourceTree = "<group>"; };
+		5E9AF72F2CF5D18F001239A0 /* SpecialOfferPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferPaywallView.swift; sourceTree = "<group>"; };
+		5EA97B2C2CF5F83D0082D3FD /* KumbhSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KumbhSans-Bold.ttf"; sourceTree = "<group>"; };
+		5EA97B2E2CF5F83D0082D3FD /* KumbhSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KumbhSans-Regular.ttf"; sourceTree = "<group>"; };
+		5EA97B352CF5F86A0082D3FD /* Juana-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Juana-SemiBold.ttf"; sourceTree = "<group>"; };
+		5EA97B382CF604D60082D3FD /* SpecialOfferPaywallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferPaywallModel.swift; sourceTree = "<group>"; };
 		66424506768B2196F870B04C /* Pods-LockdownTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockdownTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockdownTests/Pods-LockdownTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-LockdownTunnel-settings-metadata.plist"; path = "Settings.bundle/Pods-LockdownTunnel-settings-metadata.plist"; sourceTree = "<group>"; };
 		71D50056A5E2E1F6486369F9 /* Pods-Lockdown VPN Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockdown VPN Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockdown VPN Widget/Pods-Lockdown VPN Widget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1113,6 +1126,9 @@
 				3D752C312357FA3B00C163E4 /* SF-Pro-Rounded-Medium.otf */,
 				3D752C302357FA3B00C163E4 /* SF-Pro-Rounded-Regular.otf */,
 				3D752C332357FA3B00C163E4 /* SF-Pro-Rounded-Semibold.otf */,
+				5EA97B352CF5F86A0082D3FD /* Juana-SemiBold.ttf */,
+				5EA97B2C2CF5F83D0082D3FD /* KumbhSans-Bold.ttf */,
+				5EA97B2E2CF5F83D0082D3FD /* KumbhSans-Regular.ttf */,
 				3D44377A22DFB22600908CDC /* Montserrat-Medium.ttf */,
 				3D44377B22DFB22600908CDC /* Montserrat-Light.ttf */,
 				3D44377C22DFB22600908CDC /* Montserrat-Thin.ttf */,
@@ -1299,6 +1315,8 @@
 				40098E3029FDA73200886474 /* VPNPaywallViewController.swift */,
 				F0B12AF72C60D602008EF8AA /* OneTimePaywallView.swift */,
 				F01CAB7D2C61316C009C19CF /* OneTimePaywallModel.swift */,
+				5E9AF72F2CF5D18F001239A0 /* SpecialOfferPaywallView.swift */,
+				5EA97B382CF604D60082D3FD /* SpecialOfferPaywallModel.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2514,6 +2532,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA97B322CF5F83D0082D3FD /* KumbhSans-Regular.ttf in Resources */,
+				5EA97B372CF5F86A0082D3FD /* Juana-SemiBold.ttf in Resources */,
+				5EA97B342CF5F83D0082D3FD /* KumbhSans-Bold.ttf in Resources */,
 				7C0156582521C2F200670CB5 /* Montserrat-Light.ttf in Resources */,
 				7C0156542521C2F200670CB5 /* Montserrat-Medium.ttf in Resources */,
 				7C9A9373251E1EC700DA5721 /* Assets.xcassets in Resources */,
@@ -2572,9 +2593,12 @@
 				A1141A1C1F46230500F54698 /* Assets.xcassets in Resources */,
 				3D44378322DFB22600908CDC /* Montserrat-Bold.ttf in Resources */,
 				A1FCDA9122D3D52C00C928BC /* facebook_inc_ipv6.txt in Resources */,
+				5EA97B362CF5F86A0082D3FD /* Juana-SemiBold.ttf in Resources */,
 				3D5F5A0823107C1E004C3860 /* game_ads.txt in Resources */,
 				3D5F5A0A23107EB8004C3860 /* snapchat_analytics.txt in Resources */,
 				3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */,
+				5EA97B2F2CF5F83D0082D3FD /* KumbhSans-Regular.ttf in Resources */,
+				5EA97B312CF5F83D0082D3FD /* KumbhSans-Bold.ttf in Resources */,
 				40CC84A52A14BEFA00F9805E /* SplashscreenViewController.xib in Resources */,
 				40CC849E2A14BEA000F9805E /* SignUpViewController.xib in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
@@ -2899,6 +2923,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D94AB1222FE3A460012B0DE /* Environment.swift in Sources */,
+				5EA97B392CF604F20082D3FD /* SpecialOfferPaywallModel.swift in Sources */,
 				A1DBA18A21B77C80008A9322 /* VPNController.swift in Sources */,
 				3DBD57B622FD00BC00DE189F /* SetRegionCell.swift in Sources */,
 				3D47CDB622F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
@@ -3066,6 +3091,7 @@
 				40CC84C82A14C2B800F9805E /* TextBoxLabel.swift in Sources */,
 				40960AED2A0339E2000F82EB /* UserService.swift in Sources */,
 				3D9FC67923E521DE004122D3 /* ForgotPasswordViewController.swift in Sources */,
+				5E9AF7302CF5D198001239A0 /* SpecialOfferPaywallView.swift in Sources */,
 				92635DD62BF2764E0044673D /* Availability.swift in Sources */,
 				3D47CDC122F3C3F3003BD7F7 /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				3DBD57B422FCFF2500DE189F /* SetRegionViewController.swift in Sources */,

@@ -222,5 +222,5 @@ struct BlurView: UIViewRepresentable {
 }
 
 #Preview {
-    OneTimePaywallView(model: OneTimePaywallModel(products: VPNSubscription.oneTimeProducts, infos:  [InternalSubscription.mockWeekly(), InternalSubscription.mockWeeklyTrial(), InternalSubscription.mockYearly(), InternalSubscription.mockWeeklyTrial()]))
+    OneTimePaywallView(model: OneTimePaywallModel(products: VPNSubscription.oneTimeProducts, infos:  [.mockWeekly, .mockWeeklyTrial, .mockYearly, .mockWeeklyTrial]))
 }
