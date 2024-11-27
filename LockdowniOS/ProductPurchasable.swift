@@ -63,14 +63,14 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
                     default:
                         errorText = skError.localizedDescription
                     }
-                    self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
+                    self.showPopupDialog(title: .localized("Error Making Purchase"), message: errorText, acceptButton: .localizedOkay)
                 } else if self.popupErrorAsNSURLError(error) {
                     return
                 } else if self.popupErrorAsApiError(error) {
                     return
                 } else {
                     self.showPopupDialog(
-                        title: .localized("Error Starting Trial"),
+                        title: .localized("Error Making Purchase"),
                         message: .localized("Please contact team@lockdownprivacy.com.\n\nError details:\n") + "\(error)",
                         acceptButton: .localizedOkay)
                 }

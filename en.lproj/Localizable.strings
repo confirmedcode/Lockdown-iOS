@@ -179,7 +179,7 @@
 "Error Signing In To Verify Subscription" = "Error Signing In To Verify Subscription";
 
 /* No comment provided by engineer. */
-"Error Starting Trial" = "Error Starting Trial";
+"Error Making Purchase" = "Error Making Purchase";
 
 /* The title of a list of trackers */
 "Facebook & WhatsApp" = "Facebook & WhatsApp";
@@ -769,7 +769,7 @@
 "Paywall.Onetime.Title" = "Tap Continue to Activate Secure Tunnel VPN+";
 "Paywall.Onetime.Continue" = " Continue ";
 "Paywall.Onetime.ToActivate" = "to Activate Secure Tunnel VPN+";
-"Paywall.Onetime.PrivateBrowse" = "Private Browsing with Hidden IP and Global Region Switching";
+"Paywall.Onetime.PrivateBrowse" = "Private Browsing with Hidden IP\nand Global Region Switching";
 "Paywall.Onetime.List1" = "Anonymised browsing";
 "Paywall.Onetime.List2" = "Location and IP address hidden";
 "Paywall.Onetime.List3" = "Unlimited bandwidth and data usage & more";
@@ -780,3 +780,6 @@
 "Paywall.Onetime.Save %@"= "Save %@";
 "Paywall.Onetime.3DayFT" = "3-day free trial";
 "Paywall.Onetime.Then %@" = "then %@";
+"Paywall.Onetime.perYear %@" = "%@ per year";
+"Paywall.Onetime.BlackFriday" = "Black Friday\nCyber Monday Sale";
+

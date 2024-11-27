@@ -44,7 +44,7 @@ class FeedbackFlow {
     @MainActor
     private func showFeedbackPaywall() async {
         guard let presentingViewController,
-              let productInfos = await VPNSubscription.shared.loadSubscriptions(productIds: Set(VPNSubscription.feedbackProducts.toList())) else {
+              let productInfos = await VPNSubscription.shared.loadSubscriptions(type: .feedback) else {
             return
         }
 

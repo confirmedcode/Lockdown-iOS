@@ -51,3 +51,5 @@ let kLockdownNotificationsEnergySavingCounter = "LockdownNotificationsEnergySavi
 
 let kAppActivateTime = "AppActivateTime"
 let kOneTimeOfferShown = "OneTimeOfferShown"
+let kSpecialOfferTimeDidReset = "SpecialOfferTimeDidReset"
+let kVersionOfLastRun = "VersionOfLastRun"

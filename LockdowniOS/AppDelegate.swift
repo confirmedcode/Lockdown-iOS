@@ -67,9 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Prepare IAP
         VPNSubscription.cacheLocalizedPrices()
         Task {
-            let pids = Set(VPNSubscription.oneTimeProducts.toList() + VPNSubscription.feedbackProducts.toList())
-            await VPNSubscription.shared.loadSubscriptions(productIds: pids)
-            print("")
+            await VPNSubscription.shared.loadSubscriptions(type: .oneTime)
+            await VPNSubscription.shared.loadSubscriptions(type: .feedback)
+            await VPNSubscription.shared.loadSubscriptions(type: .specialOffer)
         }
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
@@ -157,8 +157,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        let lastStartup = defaults.double(forKey: kAppActivateTime)
-        timeSinceLastStart = lastStartup == 0.0 ? -1 : Date().timeIntervalSinceReferenceDate - lastStartup
+        let isCleanInstall = UserDefaults.standard.value(forKey: kVersionOfLastRun) == nil
+        if isCleanInstall {
+            defaults.set(true, forKey: kSpecialOfferTimeDidReset)
+        }
+        let shouldResetOfferTime = !defaults.bool(forKey: kSpecialOfferTimeDidReset)
+        if shouldResetOfferTime && !isCleanInstall {
+            timeSinceLastStart = Date().timeIntervalSinceReferenceDate
+            defaults.set(true, forKey: kSpecialOfferTimeDidReset)
+        } else {
+            let lastStartup = defaults.double(forKey: kAppActivateTime)
+            timeSinceLastStart = lastStartup == 0.0 ? -1 : Date().timeIntervalSinceReferenceDate - lastStartup
+        }
         defaults.set(Date().timeIntervalSinceReferenceDate, forKey: kAppActivateTime)
         if timeSinceLastStart < 0 || timeSinceLastStart > 120 {
             defaults.set(false, forKey: kOneTimeOfferShown)
@@ -170,6 +180,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
         
         FirewallRepair.run(context: .homeScreenDidLoad)
+        appHasJustBeenUpgradedOrIsNewInstall()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

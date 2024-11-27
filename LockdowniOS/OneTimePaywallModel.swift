@@ -9,14 +9,14 @@
 import Foundation
 import SwiftyStoreKit
 
-class OneTimePaywallModel : ObservableObject {
+class OneTimePaywallModel: ObservableObject {
     
     enum ActivePlan {
         case weekly
         case yearly
     }
     
-    let products: OnetTimeProducts
+    let products: OneTimeProducts
     
     var closeAction: (()->Void)? = nil
     var continueAction: ((String)->Void)? = nil
@@ -25,25 +25,28 @@ class OneTimePaywallModel : ObservableObject {
     @Published var activePlan: ActivePlan = .weekly
     
     @Published var yearlyPrice: String
+    @Published var offerPrice: String
     @Published var weeklyPrice: String
     @Published var trialWeeklyPrice: String
     @Published var saving: Int
     @Published var showProgress = false
 
-    init(products: OnetTimeProducts, infos: [InternalSubscription]) {
+    init(products: OneTimeProducts, infos: [InternalSubscription]) {
         self.products = products
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
         currencyFormatter.locale = infos.first?.priceLocale
         
-        let yp = infos.first(where: { $0.productId  == products.yearly}).flatMap { $0.price } ?? 11.11
+        let yp = infos.first(where: { $0.productId == products.yearly}).flatMap { $0.price } ?? 11.11
         let wp = yp.dividing(by: 52)
-        let twp = infos.first(where: { $0.productId  == products.weeklyTrial}).flatMap { $0.price } ?? 0.11
+        let twp = infos.first(where: { $0.productId == products.weeklyTrial}).flatMap { $0.price } ?? 0.11
+        let op = infos.first(where: { $0.productId == products.yearly}).flatMap { $0.offer } ?? 0.11
         
         yearlyPrice = currencyFormatter.string(from: yp) ?? "__"
         weeklyPrice = currencyFormatter.string(from: wp) ?? "__"
         trialWeeklyPrice = currencyFormatter.string(from: twp) ?? "__"
+        offerPrice = currencyFormatter.string(from: op) ?? "__"
 
         trialWeeklyPrice = infos.first(where: { $0.productId  == products.weeklyTrial}).flatMap {
             currencyFormatter.locale = $0.priceLocale
@@ -53,7 +56,6 @@ class OneTimePaywallModel : ObservableObject {
         
         saving = 100 - Int(Double(truncating: wp) / Double(truncating: twp)*100)
     }
-    
     
     func purchase() {
         showProgress = true

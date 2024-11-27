@@ -349,7 +349,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     @objc func upgrade() {
-        //showOneTimeOffer()
+//        showSpecialOffer()
         let vc = VPNPaywallViewController()
         vc.purchaseSuccessful = {[weak self] in self?.handlePurchaseSuccessful() }
         vc.purchaseFailed = { [weak self] err in self?.handlePurchaseFailed(error: err)}
@@ -434,7 +434,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if !defaults.bool(forKey: kOneTimeOfferShown) && appDelegate.timeSinceLastStart > 4 * 60 * 60 {
             if BaseUserService.shared.user.currentSubscription == nil {
-                showOneTimeOffer()
+                if let targetDate = Calendar.current.date(from: DateComponents(year: 2024, month: 12, day: 4)), Date() < targetDate {
+                    showSpecialOffer()
+                } else {
+                    showOneTimeOffer()
+                }
             }
         }
     }
@@ -469,10 +473,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
             return
         }
     }
+    
     private func showOneTimeOffer() {
         Task { @MainActor in
-            try? await Task.sleep(nanoseconds:1_000_000_000)
-            if let productInfos = await VPNSubscription.shared.loadSubscriptions(productIds: Set(VPNSubscription.oneTimeProducts.toList())) {
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            if let productInfos = await VPNSubscription.shared.loadSubscriptions(type: .oneTime) {
                 let model = OneTimePaywallModel(products: VPNSubscription.oneTimeProducts, infos: productInfos)
                 model.closeAction = { [weak self] in self?.dismiss(animated: true)}
                 model.continueAction = { [weak self] pid in
@@ -484,6 +489,29 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                     }
                 }
                 let viewCtrl = UIHostingController(rootView: OneTimePaywallView(model: model))
+                viewCtrl.modalPresentationStyle = .fullScreen
+                self.present(viewCtrl, animated: true)
+                defaults.set(true, forKey: kOneTimeOfferShown)
+            }
+        }
+    }
+    
+    private func showSpecialOffer() {
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            if let productInfos = await VPNSubscription.shared.loadSubscriptions(type: .specialOffer) {
+                let model = SpecialOfferPaywallModel(products: VPNSubscription.specialOfferProducts, infos: productInfos)
+                model.closeAction = { [weak self] in self?.dismiss(animated: true)}
+                model.continueAction = { [weak self] pid in
+                    VPNSubscription.selectedProductId = pid
+                    VPNSubscription.purchase {
+                        self?.handlePurchaseSuccessful()
+                    } errored: { err in
+                        model.showProgress = false
+                        self?.handlePurchaseFailed(error: err)
+                    }
+                }
+                let viewCtrl = UIHostingController(rootView: SpecialOfferPaywallView(model: model))
                 viewCtrl.modalPresentationStyle = .fullScreen
                 self.present(viewCtrl, animated: true)
                 defaults.set(true, forKey: kOneTimeOfferShown)
@@ -1045,11 +1073,11 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     }
     
     func handlePurchaseFailed(error: Error) {
-        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-        let vc = SplashscreenViewController()
-        let navigation = UINavigationController(rootViewController: vc)
-        keyWindow?.rootViewController = navigation
-        DDLogError("Start Trial Failed: \(error)")
+//        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+//        let vc = SplashscreenViewController()
+//        let navigation = UINavigationController(rootViewController: vc)
+//        keyWindow?.rootViewController = navigation
+//        DDLogError("Start Trial Failed: \(error)")
         
         if let skError = error as? SKError {
             var errorText = ""
@@ -1079,7 +1107,7 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
                 errorText = skError.localizedDescription
             }
             
-            self.showPopupDialog(title: .localized("Error Starting Trial"), message: errorText, acceptButton: .localizedOkay)
+            self.showPopupDialog(title: .localized("Error Making Purchase"), message: errorText, acceptButton: .localizedOkay)
         }
         else if self.popupErrorAsNSURLError(error) {
             return
@@ -1089,7 +1117,7 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
         }
         else {
             self.showPopupDialog(
-                title: .localized("Error Starting Trial"),
+                title: .localized("Error Making Purchase"),
                 message: .localized("Please contact team@lockdownprivacy.com.\n\nError details:\n") + "\(error)",
                 acceptButton: .localizedOkay)
         }
@@ -1354,7 +1382,7 @@ extension HomeViewController: UITabBarControllerDelegate {
     }
 
     func showFeedbackPaywall() async {
-        guard let productInfos = await VPNSubscription.shared.loadSubscriptions(productIds: Set(VPNSubscription.feedbackProducts.toList())) else { return }
+        guard let productInfos = await VPNSubscription.shared.loadSubscriptions(type: .feedback) else { return }
 
         let viewModel = FeedbackPaywallViewModel(products: VPNSubscription.feedbackProducts, subscriptionInfo: productInfos)
         viewModel.onCloseHandler = { vc in vc.dismiss(animated: true) }

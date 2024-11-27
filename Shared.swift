@@ -22,11 +22,12 @@ var appInstallDate: Date? {
     return nil
 }
 
+@discardableResult
 func appHasJustBeenUpgradedOrIsNewInstall() -> Bool {
     let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-    let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
+    let versionOfLastRun = UserDefaults.standard.object(forKey: kVersionOfLastRun) as? String
     DDLogInfo("APP UPGRADED CHECK: LAST RUN \(versionOfLastRun ?? "n/a") | CURRENT \(currentVersion ?? "n/a")")
-    UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
+    UserDefaults.standard.set(currentVersion, forKey: kVersionOfLastRun)
     if (versionOfLastRun == nil || versionOfLastRun != currentVersion) {
         // either first time this check has occurred, or app was updated since last run
         DDLogInfo("APP UPGRADED CHECK: TRUE - LAST RUN \(versionOfLastRun ?? "n/a") | CURRENT \(currentVersion ?? "n/a")")

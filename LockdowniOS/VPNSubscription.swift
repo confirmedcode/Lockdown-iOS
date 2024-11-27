@@ -11,24 +11,27 @@ import PromiseKit
 import CocoaLumberjackSwift
 import StoreKit
 
-struct OnetTimeProducts {
+struct OneTimeProducts: ToList {
     let weekly: String
     let weeklyTrial: String
     let yearly: String
     let yearlyTrial: String
-    
-    func toList() -> [String] {
-        let otherSelf = Mirror(reflecting: self)
-        return otherSelf.children.compactMap {
-            $0.value as? String
-        }
-    }
 }
 
-struct FeedbackProducts {
+struct SpecialOfferProducts: ToList {
+    let yearly: String
+}
+
+struct FeedbackProducts: ToList {
     let weekly: String
     let yearly: String
+}
 
+protocol ToList {
+    func toList() -> [String]
+}
+
+extension ToList {
     func toList() -> [String] {
         let otherSelf = Mirror(reflecting: self)
         return otherSelf.children.compactMap {
@@ -43,23 +46,27 @@ struct InternalSubscription: Hashable {
     let trialDuration: String?
     let priceLocale: Locale
     let price: NSDecimalNumber
+    let offer: NSDecimalNumber?
     
-    static func mockWeekly() -> InternalSubscription {
-        return InternalSubscription(productId: "lockdown.weekly.1.202408.no_trial.4hrs_offer", period: .week, trialDuration: nil, priceLocale: .current, price: 0.99)
+    static var mockWeekly: InternalSubscription {
+        InternalSubscription(productId: "lockdown.weekly.1.202408.no_trial.4hrs_offer", period: .week, trialDuration: nil, priceLocale: .current, price: 0.99, offer: nil)
     }
     
-    static func mockWeeklyTrial() -> InternalSubscription {
-        return InternalSubscription(productId: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer", period: .week, trialDuration: "3 days", priceLocale: .current, price: 0.99)
+    static var mockWeeklyTrial: InternalSubscription {
+        InternalSubscription(productId: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer", period: .week, trialDuration: "3 days", priceLocale: .current, price: 0.99, offer: nil)
     }
     
-    static func mockYearly() -> InternalSubscription {
-        return InternalSubscription(productId: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", period: .year, trialDuration: nil, priceLocale: .current, price: 39.99)
+    static var mockYearly: InternalSubscription {
+        InternalSubscription(productId: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", period: .year, trialDuration: nil, priceLocale: .current, price: 39.99, offer: nil)
     }
     
-    static func mocYearlTrial() -> InternalSubscription {
-        return InternalSubscription(productId: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer", period: .year, trialDuration: "3 days", priceLocale: .current, price: 39.99)
+    static var mockYearlTrial: InternalSubscription {
+        InternalSubscription(productId: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer", period: .year, trialDuration: "3 days", priceLocale: .current, price: 39.99, offer: nil)
     }
-
+    
+    static var mockYearlyBF: InternalSubscription {
+        InternalSubscription(productId: "lockdown.yearly.30.202411.1_year_no_trial.4h_screen_bf", period: .year, trialDuration: nil, priceLocale: .current, price: 99.99, offer: 29.99)
+    }
 }
 
 enum SubscriptionState: Int {
@@ -68,10 +75,23 @@ enum SubscriptionState: Int {
 
 actor VPNSubscription: NSObject {
     
-    static var shared = VPNSubscription()
+    enum SubscriptionType {
+        case oneTime
+        case feedback
+        case specialOffer
+        
+        var productIds: [String] {
+            switch self {
+            case .oneTime: VPNSubscription.oneTimeProducts.toList()
+            case .feedback: VPNSubscription.feedbackProducts.toList()
+            case .specialOffer: VPNSubscription.specialOfferProducts.toList()
+            }
+        }
+    }
     
-    private var task: Task<[InternalSubscription]?, Never>?
-    var subscriptions:[InternalSubscription]?
+    private var cachedSubscriptions: [SubscriptionType: [InternalSubscription]] = [:]
+    
+    static var shared = VPNSubscription()
     
     static let productIdAdvancedMonthly = "LockdowniOSFirewallMonthly"
     static let productIdAdvancedYearly = "LockdowniOSFirewallAnnual"
@@ -80,12 +100,13 @@ actor VPNSubscription: NSObject {
     static let productIdMonthlyPro = "LockdowniOSVpnMonthlyPro"
     static let productIdAnnualPro = "LockdowniOSVpnAnnualPro"
     static let productIds: Set = [productIdAdvancedMonthly, productIdAdvancedYearly, productIdMonthly, productIdAnnual, productIdMonthlyPro, productIdAnnualPro]
-    static let oneTimeProducts = OnetTimeProducts(weekly: "lockdown.weekly.1.202408.no_trial.4hrs_offer",
+    static let oneTimeProducts = OneTimeProducts(weekly: "lockdown.weekly.1.202408.no_trial.4hrs_offer",
                                                   weeklyTrial: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer",
                                                   yearly: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", 
                                                   yearlyTrial: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer")
     static let feedbackProducts = FeedbackProducts(weekly: "lockdown.weekly.1.202409.no_trial.feedback",
                                                    yearly: "lockdown.yearly.40.202409.no_trial.feedback")
+    static let specialOfferProducts = SpecialOfferProducts(yearly: "lockdown.yearly.30.202411.1_year_no_trial.4h_screen_bf")
     static var selectedProductId = productIdAdvancedMonthly
 
     // Advanced Level
@@ -106,16 +127,18 @@ actor VPNSubscription: NSObject {
     // Universal Level
     static var defaultPriceStringMonthlyPro = "$11.99"
     static var defaultPriceStringAnnualPro = "$99.99"
+    static var defaultPriceStringAnnualPro70Off = "$29.99"
     static var defaultPriceSubStringAnnualPro = "$8.33"
     static var defaultUpgradePriceStringAnnualPro = "$99.99"
     static var defaultUpgradePriceStringMonthlyPro = "$11.99"
     
     @discardableResult
-    func loadSubscriptions(productIds: Set<String>) async -> [InternalSubscription]? {
-        if task == nil {
-            task = Task {await _loadSubscriptions(productIds: productIds) }
+    func loadSubscriptions(type: SubscriptionType) async -> [InternalSubscription]? {
+        if let subscriptions = cachedSubscriptions[type], !subscriptions.isEmpty {
+            return subscriptions
         }
-        return await task!.value
+        cachedSubscriptions[type] = await _loadSubscriptions(productIds: Set(type.productIds))
+        return cachedSubscriptions[type]
     }
     
     private func _loadSubscriptions(productIds: Set<String>) async -> [InternalSubscription]? {
@@ -134,8 +157,12 @@ actor VPNSubscription: NSObject {
                     let trialDuration = Self.trialDuraion(for: product.introductoryPrice)
                     currencyFormatter.locale = product.priceLocale
                     if let period {
-                        let ip = InternalSubscription(productId: product.productIdentifier, period: period,
-                                                      trialDuration: trialDuration, priceLocale: product.priceLocale, price: product.price)
+                        let ip = InternalSubscription(productId: product.productIdentifier,
+                                                      period: period,
+                                                      trialDuration: trialDuration,
+                                                      priceLocale: product.priceLocale,
+                                                      price: product.price,
+                                                      offer: product.price)
                         subs.append(ip)
                     }
                 }
@@ -173,14 +200,12 @@ actor VPNSubscription: NSObject {
         }
     }
     
-    static func subscriptionPeriod(product: SKProduct) -> SKProduct.PeriodUnit?{
-        let currentDate = Date()
+    static func subscriptionPeriod(product: SKProduct) -> SKProduct.PeriodUnit? {
         guard let subscriptionPeriod = product.subscriptionPeriod else {
             return nil
         }
-        let numberOfUnits = subscriptionPeriod.numberOfUnits
-        let unit = subscriptionPeriod.unit
-        return unit
+
+        return subscriptionPeriod.unit
     }
     
     static func setTrialDuration(productId: String, duration: String?) {
