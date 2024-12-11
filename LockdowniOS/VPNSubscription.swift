@@ -65,7 +65,7 @@ struct InternalSubscription: Hashable {
     }
     
     static var mockYearlyBF: InternalSubscription {
-        InternalSubscription(productId: "lockdown.yearly.30.202411.1_year_no_trial.4h_screen_bf", period: .year, trialDuration: nil, priceLocale: .current, price: 99.99, offer: 29.99)
+        InternalSubscription(productId: "lockdown.yearly.30.202412.1_year_no_trial.4h_screen_holiday", period: .year, trialDuration: nil, priceLocale: .current, price: 99.99, offer: 29.99)
     }
 }
 
@@ -106,7 +106,7 @@ actor VPNSubscription: NSObject {
                                                   yearlyTrial: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer")
     static let feedbackProducts = FeedbackProducts(weekly: "lockdown.weekly.1.202409.no_trial.feedback",
                                                    yearly: "lockdown.yearly.40.202409.no_trial.feedback")
-    static let specialOfferProducts = SpecialOfferProducts(yearly: "lockdown.yearly.30.202411.1_year_no_trial.4h_screen_bf")
+    static let specialOfferProducts = SpecialOfferProducts(yearly: "lockdown.yearly.30.202412.1_year_no_trial.4h_screen_holiday")
     static var selectedProductId = productIdAdvancedMonthly
 
     // Advanced Level
