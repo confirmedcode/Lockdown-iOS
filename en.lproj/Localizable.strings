@@ -782,4 +782,5 @@
 "Paywall.Onetime.Then %@" = "then %@";
 "Paywall.Onetime.perYear %@" = "%@ per year";
 "Paywall.Onetime.BlackFriday" = "Black Friday\nCyber Week Sale";
+"Paywall.Onetime.DecemberSale" = "December Sale";
 

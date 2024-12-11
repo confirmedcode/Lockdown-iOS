@@ -19,6 +19,7 @@ class SpecialOfferPaywallModel: ObservableObject {
     @Published var yearlyPrice: String
     @Published var offerPrice: String
     @Published var showProgress = false
+    @Published var isSmallScreen: Bool = UIScreen.main.bounds.width <= 375 || UIScreen.main.bounds.height <= 667
 
     init(products: SpecialOfferProducts, infos: [InternalSubscription]) {
         self.products = products
