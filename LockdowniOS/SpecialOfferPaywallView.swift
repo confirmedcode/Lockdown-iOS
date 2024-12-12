@@ -16,19 +16,6 @@ struct SpecialOfferPaywallView: View {
             Color.white
                 .ignoresSafeArea()
             
-            HStack {
-                Button {
-                    model.closeAction?()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundColor(.black)
-                }
-                .padding(.horizontal)
-                Spacer()
-            }
-            .padding(.horizontal)
-            
             VStack(spacing: 8) {
                 
                 VStack(spacing: -40) {
@@ -136,6 +123,19 @@ struct SpecialOfferPaywallView: View {
             }
             .frame(maxHeight: UIScreen.main.bounds.size.height)
             .padding(.horizontal, 20)
+            
+            HStack {
+                Button {
+                    model.closeAction?()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(.black)
+                }
+                .padding(.horizontal)
+                Spacer()
+            }
+            .padding(.horizontal)
             
             ProgressView()
                 .offset(y: 60)
