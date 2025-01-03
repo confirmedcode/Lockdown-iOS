@@ -21,7 +21,7 @@ class SpecialOfferPaywallModel: ObservableObject {
     @Published var showProgress = false
     @Published var isSmallScreen: Bool = UIScreen.main.bounds.width <= 375 || UIScreen.main.bounds.height <= 667
 
-    init(products: SpecialOfferProducts, infos: [InternalSubscription]) {
+    init(products: SpecialOfferProducts, infos: [InternalSubscription], closeAction: (()->Void)? = nil) {
         self.products = products
                 
         let offerPrice = infos.first(where: { $0.productId == products.yearly}).flatMap { $0.offer } ?? 29.99
@@ -34,6 +34,7 @@ class SpecialOfferPaywallModel: ObservableObject {
 
         self.yearlyPrice = currencyFormatter.string(from: yearlyPrice) ?? "__"
         self.offerPrice = currencyFormatter.string(from: offerPrice) ?? "__"
+        self.closeAction = closeAction
     }
     
     func purchase() {

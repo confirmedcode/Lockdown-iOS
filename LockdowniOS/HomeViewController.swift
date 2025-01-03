@@ -434,7 +434,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if !defaults.bool(forKey: kOneTimeOfferShown) && appDelegate.timeSinceLastStart > 4 * 60 * 60 {
             if BaseUserService.shared.user.currentSubscription == nil {
-                if let targetDate = Calendar.current.date(from: DateComponents(year: 2024, month: 12, day: 31, hour: 23, minute: 59, second: 59)), Date() < targetDate {
+                if let targetDate = Calendar.current.date(from: DateComponents(year: 2025, month: 2, day: 01, hour: 00, minute: 00, second: 00)), Date() < targetDate {
                     showSpecialOffer()
                 } else {
                     showOneTimeOffer()

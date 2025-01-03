@@ -10,22 +10,41 @@ import SwiftUI
 
 struct SpecialOfferPaywallView: View {
     @StateObject var model: SpecialOfferPaywallModel
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    var imgName = UIScreen.main.bounds.height > 700 ? "bg_paywall_onetime" : "bg_paywall_onetime_ss"
+    let txtColor = Color.white
     
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.white
-                .ignoresSafeArea()
-            
-            VStack(spacing: 8) {
-                
-                VStack(spacing: -40) {
-                    if model.isSmallScreen {
-                        Image("december_banner")
-                            .padding(.top, -40)
-                    } else {
-                        Image("december_banner")
+        ZStack(alignment: .center) {
+            Image(imgName)
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            LinearGradient(stops:
+                            [Gradient.Stop(color: Color.black.opacity(0.0), location: 0.0),
+                             Gradient.Stop(color: Color.black.opacity(0.0), location: 0.2),
+                             Gradient.Stop(color: Color.black.opacity(0.6), location: 0.5),
+                             Gradient.Stop(color: Color.black.opacity(0.6), location: 1.0),
+                            ], startPoint: .top, endPoint: .bottom)
+            VStack(spacing: 4) {
+                VStack(spacing: 0) {
+                    ZStack {
+                        Image("special_offer_stars")
+                            .resizable()
+                            .frame(height: screenHeight * 0.3)
+                            .edgesIgnoringSafeArea(.top)
+                        Image("special_offer_2025")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, screenWidth * 0.12)
+                            .padding(.vertical, screenWidth * 0.07)
                     }
                     Image("banner_70_percent")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight:120)
+                        .padding(.top, -20)
                 }
                 
                 if !model.isSmallScreen {
@@ -37,12 +56,13 @@ struct SpecialOfferPaywallView: View {
                 Text("Paywall.Onetime.DecemberSale")
                     .multilineTextAlignment(.center)
                     .font(.custom("Juana-SemiBold", size: 36))
-                    .foregroundColor(.black)
+                    .foregroundColor(txtColor)
+                    .minimumScaleFactor(0.5)
                                 
                 VStack(alignment: .center, spacing: 4) {
                     Text("Paywall.Onetime.perYear \(model.yearlyPrice)")
                         .strikethrough()
-                        .foregroundColor(.black)
+                        .foregroundColor(txtColor)
                         .font(.custom("KumbhSans-Regular", size: 18))
                     
                     Text("Paywall.Onetime.perYear \(model.offerPrice)")
@@ -64,14 +84,14 @@ struct SpecialOfferPaywallView: View {
                         + Text("Paywall.Onetime.Continue")
                             .foregroundColor(Color("Confirmed Blue"))
                         + Text("Paywall.Onetime.ToActivate")
-                            .foregroundColor(.black)
+                            .foregroundColor(txtColor)
                     }
                     .font(.custom("SF Pro Rounded Semibold", size: 28))
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text("Paywall.Onetime.PrivateBrowse")
-                        .foregroundColor(.black)
+                        .foregroundColor(txtColor)
                         .font(.custom("Montserrat-Regular", size: 14))
                     
                     
@@ -80,19 +100,19 @@ struct SpecialOfferPaywallView: View {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color("Confirmed Blue"))
                             Text("Paywall.Onetime.List1")
-                                .foregroundColor(.black)
+                                .foregroundColor(txtColor)
                         }
                         HStack {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color("Confirmed Blue"))
                             Text("Paywall.Onetime.List2")
-                                .foregroundColor(.black)
+                                .foregroundColor(txtColor)
                         }
                         HStack {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color("Confirmed Blue"))
                             Text("Paywall.Onetime.List3")
-                                .foregroundColor(.black)
+                                .foregroundColor(txtColor)
                         }
                     }
                     .font(.custom("Montserrat-Semibold", size: 12))
@@ -121,22 +141,27 @@ struct SpecialOfferPaywallView: View {
                 
                 Spacer()
             }
+            .edgesIgnoringSafeArea(.top)
             .frame(maxHeight: UIScreen.main.bounds.size.height)
             .padding(.horizontal, 20)
             
-            HStack {
-                Button {
-                    model.closeAction?()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundColor(.black)
+            VStack(alignment: .leading) {
+                HStack {
+                    Button {
+                        model.closeAction?()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundColor(txtColor)
+                    }
+                    .padding()
+                    .contentShape(Rectangle())
+                    Spacer()
                 }
-                .padding(.horizontal)
                 Spacer()
             }
-            .padding(.horizontal)
-            
+            .padding(.top, screenHeight * 0.02)
+
             ProgressView()
                 .offset(y: 60)
                 .scaleEffect(3)
@@ -149,5 +174,9 @@ struct SpecialOfferPaywallView: View {
 }
 
 #Preview {
-    SpecialOfferPaywallView(model: SpecialOfferPaywallModel(products: VPNSubscription.specialOfferProducts, infos: [.mockYearlyBF]))
+    var model = SpecialOfferPaywallModel(products: VPNSubscription.specialOfferProducts, infos: [.mockYearlyBF],
+                                         closeAction: {
+        print("")
+    })
+    SpecialOfferPaywallView(model: model)
 }

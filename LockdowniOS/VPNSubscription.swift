@@ -106,7 +106,7 @@ actor VPNSubscription: NSObject {
                                                   yearlyTrial: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer")
     static let feedbackProducts = FeedbackProducts(weekly: "lockdown.weekly.1.202409.no_trial.feedback",
                                                    yearly: "lockdown.yearly.40.202409.no_trial.feedback")
-    static let specialOfferProducts = SpecialOfferProducts(yearly: "lockdown.yearly.30.202412.1_year_no_trial.4h_screen_holiday")
+    static let specialOfferProducts = SpecialOfferProducts(yearly: "lockdown.yearly.30.202501.1_year_no_trial.4h_screen_newyear")
     static var selectedProductId = productIdAdvancedMonthly
 
     // Advanced Level
