@@ -710,6 +710,7 @@
 /* The title of a list of trackers */
 "Dummy Domains" = "Dummy Domains";
 
+// MARK: - One time Offer
 "Paywall.Onetime.Title" = "Appuyez sur Continuer pour activer Secure Tunnel VPN+";
 "Paywall.Onetime.Continue" = " Continuer ";
 "Paywall.Onetime.ToActivate" = "pour activer Secure Tunnel VPN+";
@@ -727,3 +728,16 @@
 "Paywall.Onetime.perYear %@" = "%@ per an";
 "Paywall.Onetime.BlackFriday" = "Black Friday\nCyber Week Sale";
 "Paywall.Onetime.DecemberSale" = "Vente du Nouvel An";
+
+// MARK: - Onboarding
+"Onboarding.Continue" = " Continuer ";
+"Onboarding.Step1.Title" = "Navigation Sécurisée & Anonyme";
+"Onboarding.Step1.Subtitle" = "Restez privé en ligne avec une navigation chiffrée. Votre IP reste cachée et vos données sont protégées";
+"Onboarding.Step1.Item1" = "Protégez vos informations sensibles des pirates et des traqueurs.";
+"Onboarding.Step1.Item2" = "Profitez d’un accès illimité aux sites web du monde entier.";
+"Onboarding.Step1.Item3" = "Assurez des connexions sécurisées sur les réseaux Wi-Fi publics.";
+"Onboarding.Step2.Title" = "Contrôle Personnalisé & Listes de Blocage";
+"Onboarding.Step2.Subtitle" = "Configurez une protection sur mesure. Bloquez les sites indésirables et les publicités. Personnalisez vos paramètres de sécurité";
+"Onboarding.Step2.Item1" = "Prenez le contrôle de votre expérience internet avec des outils simples.";
+"Onboarding.Step2.Item2" = "Créez des règles personnalisées pour les sites web et les applications.";
+"Onboarding.Step2.Item3" = "Profitez d’une navigation plus rapide et plus propre grâce au blocage des publicités et des traqueurs.";

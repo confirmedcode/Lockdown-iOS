@@ -24,7 +24,7 @@ let kHasShownTitlePage: String = "kHasShownTitlePage"
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private (set) var timeSinceLastStart: TimeInterval = 0
+    private(set) var timeSinceLastStart: TimeInterval = 0
     
     private let connectivityService = ConnectivityService()
     private let paywallService = BasePaywallService.shared
@@ -35,8 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Clear local data for testing
-//         try? keychain.removeAll()
+//        try? keychain.removeAll()
 //        for d in defaults.dictionaryRepresentation() {
+//            defaults.removeObject(forKey: d.key)
+//        }
+//        for d in UserDefaults.standard.dictionaryRepresentation() {
 //            defaults.removeObject(forKey: d.key)
 //        }
 //        return true
@@ -67,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Prepare IAP
         VPNSubscription.cacheLocalizedPrices()
         Task {
+            await VPNSubscription.shared.loadSubscriptions(type: .onboarding)
             await VPNSubscription.shared.loadSubscriptions(type: .oneTime)
             await VPNSubscription.shared.loadSubscriptions(type: .feedback)
             await VPNSubscription.shared.loadSubscriptions(type: .specialOffer)
@@ -145,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupObservingSubscritionChanges()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = SplashscreenViewController()
+        window?.rootViewController = SplashScreenViewController()
         window?.makeKeyAndVisible()
         
         return true
@@ -596,7 +600,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     @objc
     private func openSplashScreen() {
         let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-        let vc = SplashscreenViewController()
+        let vc = SplashScreenViewController()
         let navigation = UINavigationController(rootViewController: vc)
         keyWindow?.rootViewController = navigation
     }

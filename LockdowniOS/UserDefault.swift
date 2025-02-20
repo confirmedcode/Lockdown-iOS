@@ -64,6 +64,9 @@ extension UserDefaults {
     
     @UserDefault("hasSeenStartupOneTimeOffer", defaultValue: false, isLogged: true)
     static var hasSeenStartupOneTimeOffer
+    
+    @UserDefault("onboardingCompleted", defaultValue: false, isLogged: true)
+    static var onboardingCompleted
 }
 
 // MARK: - Content Blocker

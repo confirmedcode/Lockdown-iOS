@@ -88,7 +88,7 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
             self.dismiss(animated: true, completion: {
                 self.hideLoadingView()
                 let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-                let vc = SplashscreenViewController()
+                let vc = SplashScreenViewController()
                 let navigation = UINavigationController(rootViewController: vc)
                 keyWindow?.rootViewController = navigation
             })

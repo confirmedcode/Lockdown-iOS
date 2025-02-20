@@ -79,12 +79,14 @@ actor VPNSubscription: NSObject {
         case oneTime
         case feedback
         case specialOffer
+        case onboarding
         
         var productIds: [String] {
             switch self {
             case .oneTime: VPNSubscription.oneTimeProducts.toList()
             case .feedback: VPNSubscription.feedbackProducts.toList()
             case .specialOffer: VPNSubscription.specialOfferProducts.toList()
+            case .onboarding: VPNSubscription.onboardingProducts.toList()
             }
         }
     }
@@ -104,6 +106,10 @@ actor VPNSubscription: NSObject {
                                                   weeklyTrial: "lockdown.weekly.1.202408.3_days_free_trial.4hrs_offer",
                                                   yearly: "lockdown.yearly.40.202408.no_trial.4hrs_offer_", 
                                                   yearlyTrial: "lockdown.yearly.40.202408.3_days_free_trial.4hrs_offer")
+    static let onboardingProducts = OneTimeProducts(weekly: "lockdown.weekly.1.202502.no_trial.onboarding",
+                                                    weeklyTrial: "lockdown.weekly.1.202502.3_days_free_trial.onboarding",
+                                                    yearly: "lockdown.yearly.40.202502.no_trial.onboarding",
+                                                    yearlyTrial: "lockdown.yearly.40.202502.3_days_free_trial.onboarding")
     static let feedbackProducts = FeedbackProducts(weekly: "lockdown.weekly.1.202409.no_trial.feedback",
                                                    yearly: "lockdown.yearly.40.202409.no_trial.feedback")
     static let specialOfferProducts = SpecialOfferProducts(yearly: "lockdown.yearly.30.202501.1_year_no_trial.4h_screen_newyear")

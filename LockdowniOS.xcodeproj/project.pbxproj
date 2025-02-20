@@ -216,7 +216,7 @@
 		40CC849E2A14BEA000F9805E /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CC849D2A14BEA000F9805E /* SignUpViewController.xib */; };
 		40CC84A12A14BECF00F9805E /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84A02A14BECF00F9805E /* EnableNotificationsViewController.swift */; };
 		40CC84A32A14BED800F9805E /* EnableNotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CC84A22A14BED800F9805E /* EnableNotificationsViewController.xib */; };
-		40CC84A52A14BEFA00F9805E /* SplashscreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CC84A42A14BEFA00F9805E /* SplashscreenViewController.xib */; };
+		40CC84A52A14BEFA00F9805E /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40CC84A42A14BEFA00F9805E /* SplashScreenViewController.xib */; };
 		40CC84A82A14C09600F9805E /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84A72A14C09600F9805E /* String+URL.swift */; };
 		40CC84AA2A14C0A300F9805E /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84A92A14C0A200F9805E /* String+Attributed.swift */; };
 		40CC84AF2A14C0D800F9805E /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC84AB2A14C0D700F9805E /* Date+Ext.swift */; };
@@ -246,7 +246,7 @@
 		40E7A2FA2A0CE92900E0231A /* scams.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F52A0CE92800E0231A /* scams.txt */; };
 		40E7A2FB2A0CE92900E0231A /* tiktok_trackers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F62A0CE92800E0231A /* tiktok_trackers.txt */; };
 		40E7A2FC2A0CE92900E0231A /* advanced_analytics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 40E7A2F72A0CE92900E0231A /* advanced_analytics.txt */; };
-		40E7A3012A0E1C7A00E0231A /* SplashscreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */; };
+		40E7A3012A0E1C7A00E0231A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7A3002A0E1C7A00E0231A /* SplashScreenViewController.swift */; };
 		40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FC414229F74C7900BD7396 /* String+Extensions.swift */; };
 		4A86219093026DE70A097E79 /* Pods-LockdownTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA68459884385F76BF86234 /* Pods-LockdownTests-metadata.plist */; };
 		51006F192CBD0E7400F5142C /* ImageBannerWithTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51006F182CBD0E7400F5142C /* ImageBannerWithTitleView.swift */; };
@@ -257,6 +257,7 @@
 		54F0B1A0273200B0002F3630 /* FirewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA4F4022F252720017740D /* FirewallController.swift */; };
 		5647ACFEBBAB001FAE27CAF9 /* Pods-LockdownTunnel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F089C7008AB8F59DE3EA7BD /* Pods-LockdownTunnel-settings-metadata.plist */; };
 		5666ABC4D0064E4669D1943F /* Pods-LockdownTunnel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AFAE1E2F56A1CA9EC153D4 /* Pods-LockdownTunnel-metadata.plist */; };
+		5E13011D2D5E0131003896BD /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E13011C2D5E012E003896BD /* OnboardingView.swift */; };
 		5E9AF7302CF5D198001239A0 /* SpecialOfferPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9AF72F2CF5D18F001239A0 /* SpecialOfferPaywallView.swift */; };
 		5EA97B2F2CF5F83D0082D3FD /* KumbhSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B2E2CF5F83D0082D3FD /* KumbhSans-Regular.ttf */; };
 		5EA97B312CF5F83D0082D3FD /* KumbhSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA97B2C2CF5F83D0082D3FD /* KumbhSans-Bold.ttf */; };
@@ -755,7 +756,7 @@
 		40CC849D2A14BEA000F9805E /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		40CC84A02A14BECF00F9805E /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		40CC84A22A14BED800F9805E /* EnableNotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnableNotificationsViewController.xib; sourceTree = "<group>"; };
-		40CC84A42A14BEFA00F9805E /* SplashscreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashscreenViewController.xib; sourceTree = "<group>"; };
+		40CC84A42A14BEFA00F9805E /* SplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
 		40CC84A72A14C09600F9805E /* String+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		40CC84A92A14C0A200F9805E /* String+Attributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Attributed.swift"; sourceTree = "<group>"; };
 		40CC84AB2A14C0D700F9805E /* Date+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -784,7 +785,7 @@
 		40E7A2F52A0CE92800E0231A /* scams.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scams.txt; sourceTree = "<group>"; };
 		40E7A2F62A0CE92800E0231A /* tiktok_trackers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tiktok_trackers.txt; sourceTree = "<group>"; };
 		40E7A2F72A0CE92900E0231A /* advanced_analytics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = advanced_analytics.txt; sourceTree = "<group>"; };
-		40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenViewController.swift; sourceTree = "<group>"; };
+		40E7A3002A0E1C7A00E0231A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		40FC414229F74C7900BD7396 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		50F9BE503587CE4933CB7983 /* Pods-Lockdown-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown-settings-metadata.plist"; path = "Settings.bundle/Pods-Lockdown-settings-metadata.plist"; sourceTree = "<group>"; };
 		50FB8ADA1D444FD9486F2D44 /* Pods-Lockdown Firewall Widget-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Lockdown Firewall Widget-settings-metadata.plist"; path = "LockdowniOS/Settings.bundle/Pods-Lockdown Firewall Widget-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -793,6 +794,7 @@
 		5117DE872CBD4A6600C4A61B /* SectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleView.swift; sourceTree = "<group>"; };
 		5145A1992CBE37C40074C562 /* FeedbackFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackFlow.swift; sourceTree = "<group>"; };
 		51DD89E42CB7DA770028B4FE /* FeedbackPaywallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPaywallViewController.swift; sourceTree = "<group>"; };
+		5E13011C2D5E012E003896BD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5E9AF72F2CF5D18F001239A0 /* SpecialOfferPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferPaywallView.swift; sourceTree = "<group>"; };
 		5EA97B2C2CF5F83D0082D3FD /* KumbhSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KumbhSans-Bold.ttf"; sourceTree = "<group>"; };
 		5EA97B2E2CF5F83D0082D3FD /* KumbhSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KumbhSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -1425,6 +1427,7 @@
 		402D24CE29D87EF300A5AB60 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				5E13011B2D5E0118003896BD /* Onboarding */,
 				40098E1A29FDA61900886474 /* Paywalls */,
 				4015B50029F16DD9004102E0 /* Configuration */,
 				4015B4F829F00D74004102E0 /* VPN */,
@@ -1749,24 +1752,24 @@
 				40CC849F2A14BEC200F9805E /* EnableNotifications */,
 				40CC84992A14BE6400F9805E /* SignUpAndLogin */,
 				40CC817F2A14BCEA00F9805E /* DeleteAccount */,
-				40E7A2FE2A0E1C4500E0231A /* Splashscreen */,
+				40E7A2FE2A0E1C4500E0231A /* SplashScreen */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
 		};
-		40E7A2FE2A0E1C4500E0231A /* Splashscreen */ = {
+		40E7A2FE2A0E1C4500E0231A /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
 				40E7A2FF2A0E1C5600E0231A /* ViewController */,
 			);
-			name = Splashscreen;
+			name = SplashScreen;
 			sourceTree = "<group>";
 		};
 		40E7A2FF2A0E1C5600E0231A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				40CC84A42A14BEFA00F9805E /* SplashscreenViewController.xib */,
-				40E7A3002A0E1C7A00E0231A /* SplashscreenViewController.swift */,
+				40CC84A42A14BEFA00F9805E /* SplashScreenViewController.xib */,
+				40E7A3002A0E1C7A00E0231A /* SplashScreenViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1778,6 +1781,14 @@
 				510AA2F52CB8222100E53560 /* FeedbackPaywallViewModel.swift */,
 			);
 			name = FeedbackFormPaywall;
+			sourceTree = "<group>";
+		};
+		5E13011B2D5E0118003896BD /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5E13011C2D5E012E003896BD /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		7C0D11102473EDFD00A26E04 /* Services */ = {
@@ -2599,7 +2610,7 @@
 				3DCFE6FB244945A100EA9B35 /* marketing_beta.txt in Resources */,
 				5EA97B2F2CF5F83D0082D3FD /* KumbhSans-Regular.ttf in Resources */,
 				5EA97B312CF5F83D0082D3FD /* KumbhSans-Bold.ttf in Resources */,
-				40CC84A52A14BEFA00F9805E /* SplashscreenViewController.xib in Resources */,
+				40CC84A52A14BEFA00F9805E /* SplashScreenViewController.xib in Resources */,
 				40CC849E2A14BEA000F9805E /* SignUpViewController.xib in Resources */,
 				3D0971DA22EBAD4C00CCD326 /* marketing.txt in Resources */,
 				7C3EFA042486879800719D96 /* tracker_info.json in Resources */,
@@ -3070,7 +3081,7 @@
 				40FC414329F74C7900BD7396 /* String+Extensions.swift in Sources */,
 				40CC84B22A14C0D800F9805E /* UIAppearance+Ext.swift in Sources */,
 				B1F11C732A45DBF900A137A3 /* DomainListSaveable.swift in Sources */,
-				40E7A3012A0E1C7A00E0231A /* SplashscreenViewController.swift in Sources */,
+				40E7A3012A0E1C7A00E0231A /* SplashScreenViewController.swift in Sources */,
 				3D47CDCC22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				A1EBEADC2097AE6E002B9087 /* DefaultValues.swift in Sources */,
 				A1EBEAD02097AE6E002B9087 /* M13CheckboxController.swift in Sources */,
@@ -3123,6 +3134,7 @@
 				40960B0D2A034054000F82EB /* LockdownStorageIdentifier.swift in Sources */,
 				3D47CDC022F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				3D47CDC222F3C3F3003BD7F7 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
+				5E13011D2D5E0131003896BD /* OnboardingView.swift in Sources */,
 				402D252F29E6357700A5AB60 /* ListDetailViewController.swift in Sources */,
 				A1EBEAD62097AE6E002B9087 /* M13CheckboxSpiralController.swift in Sources */,
 				3D47CDAF22F3C3F3003BD7F7 /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
@@ -3678,7 +3690,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.17;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3717,7 +3729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.17;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.confirmed.lockdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

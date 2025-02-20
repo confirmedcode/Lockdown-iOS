@@ -709,3 +709,16 @@
 
 /* The title of a list of trackers */
 "Dummy Domains" = "Dummy Domains";
+
+// MARK: - Onboarding
+"Onboarding.Continue" = " 続ける ";
+"Onboarding.Step1.Title" = "安全で匿名のブラウジング";
+"Onboarding.Step1.Subtitle" = "暗号化されたブラウジングでオンラインのプライバシーを保護。IPが隠され、データが守られます";
+"Onboarding.Step1.Item1" = "ハッカーやトラッカーから大切な情報を守ります。";
+"Onboarding.Step1.Item2" = "世界中のウェブサイトへ自由にアクセス。";
+"Onboarding.Step1.Item3" = "公共Wi-Fiでも安全な接続を確保。";
+"Onboarding.Step2.Title" = "カスタムコントロール & ブロックリスト";
+"Onboarding.Step2.Subtitle" = "自分だけの保護設定を構築。不要なウェブサイトや広告をブロックし、セキュリティ設定をカスタマイズ";
+"Onboarding.Step2.Item1" = "簡単なツールでインターネット体験を自由に管理。";
+"Onboarding.Step2.Item2" = "ウェブサイトやアプリのルールを自由に設定。";
+"Onboarding.Step2.Item3" = "広告やトラッカーをブロックして、より速く快適なブラウジングを実現。";

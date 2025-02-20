@@ -709,3 +709,16 @@
 
 /* The title of a list of trackers */
 "Dummy Domains" = "Dummy Domains";
+
+// MARK: - Onboarding
+"Onboarding.Continue" = " Continuar ";
+"Onboarding.Step1.Title" = "Navegación Segura y Anónima";
+"Onboarding.Step1.Subtitle" = "Mantente privado en línea con navegación cifrada. Tu IP permanece oculta y tus datos están protegidos";
+"Onboarding.Step1.Item1" = "Protege tu información sensible de hackers y rastreadores.";
+"Onboarding.Step1.Item2" = "Disfruta de acceso sin restricciones a sitios web de todo el mundo.";
+"Onboarding.Step1.Item3" = "Asegura conexiones seguras en redes Wi-Fi públicas.";
+"Onboarding.Step2.Title" = "Control Personalizado y Listas de Bloqueo";
+"Onboarding.Step2.Subtitle" = "Configura una protección personalizada. Bloquea sitios web y anuncios no deseados. Personaliza tu configuración de seguridad";
+"Onboarding.Step2.Item1" = "Toma el control de tu experiencia en Internet con herramientas fáciles de usar.";
+"Onboarding.Step2.Item2" = "Crea reglas personalizadas para sitios web y aplicaciones.";
+"Onboarding.Step2.Item3" = "Disfruta de una navegación más rápida y limpia con bloqueo de anuncios y rastreadores.";

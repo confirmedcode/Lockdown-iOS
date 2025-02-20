@@ -784,3 +784,15 @@
 "Paywall.Onetime.BlackFriday" = "Black Friday\nCyber Week Sale";
 "Paywall.Onetime.DecemberSale" = "New Year’s Sale";
 
+// MARK: - Onboarding
+"Onboarding.Continue" = " Continue ";
+"Onboarding.Step1.Title" = "Secure & Anonymous Browsing";
+"Onboarding.Step1.Subtitle" = "Stay private online with encrypted browsing. Your IP stays hidden, and your data is protected";
+"Onboarding.Step1.Item1" = "Protect your sensitive information from hackers and tracker.";
+"Onboarding.Step1.Item2" = "Enjoy unrestricted access to websites worldwide.";
+"Onboarding.Step1.Item3" = "Ensure safe connections on public Wi-Fi networks.";
+"Onboarding.Step2.Title" = "Custom Control & Blocklists";
+"Onboarding.Step2.Subtitle" = "Set up personalized protection. Block unwanted websites & Ads Customize your security settings";
+"Onboarding.Step2.Item1" = "Take control of your internet experience with easy-to-use tools.";
+"Onboarding.Step2.Item2" = "Create custom rules for websites and apps.";
+"Onboarding.Step2.Item3" = "Enjoy faster, cleaner browsing with ad and tracker blocking.";

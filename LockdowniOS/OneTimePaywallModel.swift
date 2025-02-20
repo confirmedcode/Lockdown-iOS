@@ -22,7 +22,7 @@ class OneTimePaywallModel: ObservableObject {
     var continueAction: ((String)->Void)? = nil
     
     @Published var trialEnabled = true
-    @Published var activePlan: ActivePlan = .weekly
+    @Published var activePlan: ActivePlan = .yearly
     
     @Published var yearlyPrice: String
     @Published var offerPrice: String

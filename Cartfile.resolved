@@ -1,4 +1,4 @@
 github "CocoaLumberjack/CocoaLumberjack" "3.8.5"
-github "confirmedcode/NEKit" "b2aa210840efd8a20c2e711d0c68c779e2b0030b"
-github "robbiehanson/CocoaAsyncSocket" "7.6.5"
+github "confirmedcode/CocoaAsyncSocket" "0cf7f247f8a5aef88da91c461612167d7382f47d"
+github "confirmedcode/NEKit" "ed44edffd80af18c0695cf03f0f96d85781d93e3"
 github "zhuhaow/Resolver" "0.2.0"
