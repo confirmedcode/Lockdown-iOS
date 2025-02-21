@@ -65,7 +65,7 @@ extension UserDefaults {
     @UserDefault("hasSeenStartupOneTimeOffer", defaultValue: false, isLogged: true)
     static var hasSeenStartupOneTimeOffer
     
-    @UserDefault("onboardingCompleted", defaultValue: false, isLogged: true)
+    @UserDefault("onboardingCompleted", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
     static var onboardingCompleted
 }
 
