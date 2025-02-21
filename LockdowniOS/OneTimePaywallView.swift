@@ -15,11 +15,10 @@ struct OneTimePaywallView: View {
     var imgName = UIScreen.main.bounds.height > 700 ? "bg_paywall_onetime" : "bg_paywall_onetime_ss"
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Image(imgName)
                 .resizable()
                 .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
             
             LinearGradient(stops:
                             [Gradient.Stop(color: Color.black.opacity(0.0), location: 0.0),
@@ -29,11 +28,7 @@ struct OneTimePaywallView: View {
                             ], startPoint: .top, endPoint: .bottom)
             
             VStack(alignment: .leading, spacing: 8) {
-                closeButton
-                
                 Spacer()
-                    .frame(minHeight: 10)
-                    .layoutPriority(-1)
                 
                 title
                 subtitle
@@ -47,12 +42,18 @@ struct OneTimePaywallView: View {
                 purchaseButton
                 
                 noPaymentFooter
-
-                Spacer()
-                    .frame(maxHeight: 30)
+                    .opacity(model.trialEnabled ? 1 : 0)
+                
+                footerLinks
             }
-            .frame(maxHeight: UIScreen.main.bounds.size.height)
-            .padding(.horizontal, 40)
+            .padding(40)
+            
+            VStack(alignment: .leading) {
+                closeButton
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+            }
+            .allowsHitTesting(model.showProgress ? false : true)
             
             ProgressView()
                 .offset(y: -70)
@@ -61,7 +62,8 @@ struct OneTimePaywallView: View {
                 .opacity(model.showProgress ? 1 : 0)
         }
         .allowsHitTesting(model.showProgress ? false : true)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .frame(maxWidth: UIScreen.main.bounds.size.width, maxHeight: UIScreen.main.bounds.size.height, alignment: .bottom)
+        .ignoresSafeArea()
     }
     
     private var purchaseButton: some View {
@@ -241,8 +243,39 @@ struct OneTimePaywallView: View {
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(.white)
         }
-        .padding(.leading, -20)
-        .padding(.top, 40)
+        .padding(.leading, 40)
+        .padding(.top, 60)
+    }
+    
+    private var footerLinks: some View {
+        HStack(alignment: .center) {
+            Button {
+                model.openTermsOfService()
+            } label: {
+                Text("Terms of Use")
+            }
+            
+            Text("|")
+            
+            Button {
+                model.openPrivaciyPolicy()
+            } label: {
+                Text("Privacy Policy")
+            }
+            
+            Text("|")
+            
+            Button {
+                model.restoreAction?()
+            } label: {
+                Text("Restore")
+            }
+        }
+        .font(.system(size: 12))
+        .foregroundColor(.white.opacity(0.8))
+        .padding(.bottom, -30)
+        .padding(.top, -4)
+        .frame(maxWidth: .infinity)
     }
 }
 
@@ -263,6 +296,7 @@ struct BubbleBg: ViewModifier {
                             .opacity(0.9)
                     )
             )
+            .clipShape(RoundedRectangle(cornerRadius: 52))
     }
 }
 

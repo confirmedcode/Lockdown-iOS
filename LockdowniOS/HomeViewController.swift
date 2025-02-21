@@ -368,6 +368,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         super.viewWillAppear(animated)
         
         tabBarController?.delegate = self
+        UIScrollView.appearance().bounces = true
+        UIScrollView.appearance().isScrollEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -19,6 +19,7 @@ class OneTimePaywallModel: ObservableObject {
     let products: OneTimeProducts
     
     var closeAction: (()->Void)? = nil
+    var restoreAction: (()->Void)? = nil
     var continueAction: ((String)->Void)? = nil
     
     @Published var trialEnabled = true
@@ -53,7 +54,6 @@ class OneTimePaywallModel: ObservableObject {
             return currencyFormatter.string(from: $0.price)
         } ?? "__"
         
-        
         saving = 100 - Int(Double(truncating: wp) / Double(truncating: twp)*100)
     }
     
@@ -67,4 +67,20 @@ class OneTimePaywallModel: ObservableObject {
         }
     }
     
+    func restore() {
+        showProgress = true
+        restoreAction?()
+    }
+    
+    func openTermsOfService() {
+        if let url = URL(string: "https://lockdownprivacy.com/terms") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func openPrivaciyPolicy() {
+        if let url = URL(string: "https://lockdownprivacy.com/privacy") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 }
