@@ -332,10 +332,10 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
             return
         }
         if plan.isAdvanced {
-            selectedTab = .advanced
+            selectedTab = .anonymous
         }
         if plan.isAnonymous {
-            selectedTab = .anonymous
+            selectedTab = .universal
         }
         if plan.isUniversal {
             selectedTab = .universal
@@ -382,6 +382,7 @@ final class VPNPaywallViewController: BaseViewController, Loadable {
         }
         if plan.isAnonymous {
             advancedPlan.isHidden = true
+            anonymousPlan.isHidden = true
         }
         if plan.isUniversal {
             advancedPlan.isHidden = true

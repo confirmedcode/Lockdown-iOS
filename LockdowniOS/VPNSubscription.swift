@@ -535,3 +535,8 @@ extension Subscription.PlanType {
         return availableUpgrades?.contains(newPlan) == true
     }
 }
+
+enum PurchasePlacement {
+    case onboarding
+    case homeScreen
+}

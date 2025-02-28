@@ -722,3 +722,6 @@
 "Onboarding.Step2.Item1" = "簡単なツールでインターネット体験を自由に管理。";
 "Onboarding.Step2.Item2" = "ウェブサイトやアプリのルールを自由に設定。";
 "Onboarding.Step2.Item3" = "広告やトラッカーをブロックして、より速く快適なブラウジングを実現。";
+
+"multiple_subscriptions_title" = "複数のサブスクリプションが有効";
+"multiple_subscriptions_message" = "現在、2つの有効なサブスクリプションがあり、それぞれ別々に請求されます。必要に応じて、アカウント設定で最初のものをキャンセルできます。";

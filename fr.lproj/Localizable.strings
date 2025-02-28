@@ -741,3 +741,6 @@
 "Onboarding.Step2.Item1" = "Prenez le contrôle de votre expérience internet avec des outils simples.";
 "Onboarding.Step2.Item2" = "Créez des règles personnalisées pour les sites web et les applications.";
 "Onboarding.Step2.Item3" = "Profitez d’une navigation plus rapide et plus propre grâce au blocage des publicités et des traqueurs.";
+
+"multiple_subscriptions_title" = "Abonnements Multiples Actifs";
+"multiple_subscriptions_message" = "Vous avez maintenant deux abonnements actifs, chacun facturé séparément. Vous pouvez annuler le premier dans les paramètres de votre compte si vous le souhaitez.";

@@ -796,3 +796,6 @@
 "Onboarding.Step2.Item1" = "Take control of your internet experience with easy-to-use tools.";
 "Onboarding.Step2.Item2" = "Create custom rules for websites and apps.";
 "Onboarding.Step2.Item3" = "Enjoy faster, cleaner browsing with ad and tracker blocking.";
+
+"multiple_subscriptions_title" = "Multiple Subscriptions Active";
+"multiple_subscriptions_message" = "You now have two active subscriptions, each charged separately. You can cancel your initial one in account settings if you'd like.";

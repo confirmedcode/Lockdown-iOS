@@ -722,3 +722,6 @@
 "Onboarding.Step2.Item1" = "Toma el control de tu experiencia en Internet con herramientas fáciles de usar.";
 "Onboarding.Step2.Item2" = "Crea reglas personalizadas para sitios web y aplicaciones.";
 "Onboarding.Step2.Item3" = "Disfruta de una navegación más rápida y limpia con bloqueo de anuncios y rastreadores.";
+
+"multiple_subscriptions_title" = "Suscripciones Múltiples Activas";
+"multiple_subscriptions_message" = "Ahora tienes dos suscripciones activas, cada una cobrada por separado. Puedes cancelar la inicial en la configuración de tu cuenta si lo deseas.";

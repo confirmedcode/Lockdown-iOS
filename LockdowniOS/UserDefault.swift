@@ -67,6 +67,12 @@ extension UserDefaults {
     
     @UserDefault("onboardingCompleted", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
     static var onboardingCompleted
+    
+    @UserDefault("hasPurchasedFromOnboarding", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
+    static var hasPurchasedFromOnboarding
+    
+    @UserDefault("didShowMultipleSubscriptionAlert", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
+    static var didShowMultipleSubscriptionAlert
 }
 
 // MARK: - Content Blocker

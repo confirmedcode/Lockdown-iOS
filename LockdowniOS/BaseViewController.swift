@@ -128,7 +128,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
 //        self.present(popup, animated: true, completion: nil)
     }
     
-    func handlePurchaseSuccessful(completion: (()->Void)? = nil) {
+    func handlePurchaseSuccessful(placement: PurchasePlacement = .homeScreen, completion: (()->Void)? = nil) {
         let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         let vc = SplashScreenViewController()
         let navigation = UINavigationController(rootViewController: vc)
@@ -153,6 +153,14 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                 NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
                 
                 BaseUserService.shared.user.updateSubscription(to: subscriptions.first)
+                
+                if subscriptions.first != nil {
+                    if placement == .onboarding {
+                        UserDefaults.hasPurchasedFromOnboarding = true
+                    } else if UserDefaults.hasPurchasedFromOnboarding {
+                        NotificationCenter.default.post(name: .showMultipleSubscriptionsAlert, object: nil)
+                    }
+                }
             }
             .ensure {
                 completion?()
@@ -178,6 +186,14 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                 NotificationCenter.default.post(name: AccountUI.accountStateDidChange, object: self)
                 
                 BaseUserService.shared.user.updateSubscription(to: subscriptions.first)
+                
+                if subscriptions.first != nil {
+                    if placement == .onboarding {
+                        UserDefaults.hasPurchasedFromOnboarding = true
+                    } else if UserDefaults.hasPurchasedFromOnboarding {
+                        NotificationCenter.default.post(name: .showMultipleSubscriptionsAlert, object: nil)
+                    }
+                }
             }
             .catch { error in
                 DDLogError("purchase complete - no email: Error: \(error)")
@@ -191,6 +207,14 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                 }
             }
         }
+    }
+    
+    @objc func showMultipleSubscriptionsAlert() {
+        self.showPopupDialog(title: NSLocalizedString("multiple_subscriptions_title", comment: ""),
+                             message: NSLocalizedString("multiple_subscriptions_message", comment: ""),
+                             buttons: [.defaultAccept(completion: {
+            UserDefaults.didShowMultipleSubscriptionAlert = true
+        })])
     }
     
     func handlePurchaseFailed(error: Error) {
@@ -487,4 +511,8 @@ Please allow them in Settings App -> Screen Time -> Restrictions -> App Store ->
 
 extension UIStoryboard {
     static let main = UIStoryboard(name: "Main", bundle: nil)
+}
+
+extension Notification.Name {
+    static let showMultipleSubscriptionsAlert = Notification.Name("showMultipleSubscriptionsAlert")
 }

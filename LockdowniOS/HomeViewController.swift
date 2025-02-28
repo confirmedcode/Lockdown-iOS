@@ -264,6 +264,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showMultipleSubscriptionsAlert), name: .showMultipleSubscriptionsAlert, object: nil)
     }
     
     private func layoutUI() {
@@ -351,7 +352,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
     @objc func upgrade() {
 //        showSpecialOffer()
         let vc = VPNPaywallViewController()
-        vc.purchaseSuccessful = {[weak self] in self?.handlePurchaseSuccessful() }
+        vc.purchaseSuccessful = { [weak self] in self?.handlePurchaseSuccessful() }
         vc.purchaseFailed = { [weak self] err in self?.handlePurchaseFailed(error: err)}
         present(vc, animated: true)
     }
@@ -425,6 +426,10 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
                 }
              ])
              self.present(popup, animated: true, completion: nil)
+        }
+        
+        if UserDefaults.hasPurchasedFromOnboarding && !UserDefaults.didShowMultipleSubscriptionAlert {
+            self.showMultipleSubscriptionsAlert()
         }
     }
     

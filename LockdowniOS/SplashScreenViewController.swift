@@ -76,7 +76,7 @@ final class SplashScreenViewController: BaseViewController {
                     VPNSubscription.selectedProductId = pid
                     VPNSubscription.purchase {
                         UserDefaults.onboardingCompleted = true
-                        self?.handlePurchaseSuccessful()
+                        self?.handlePurchaseSuccessful(placement: .onboarding)
                     } errored: { err in
                         paywallModel.showProgress = false
                         self?.handlePurchaseFailed(error: err)
@@ -86,7 +86,7 @@ final class SplashScreenViewController: BaseViewController {
                     self?.restorePurchase(completion: {
                         UserDefaults.onboardingCompleted = true
                         paywallModel.showProgress = false
-                        self?.handlePurchaseSuccessful()
+                        self?.handlePurchaseSuccessful(placement: .onboarding)
                     })
                 }
                 let onboardingController = UIHostingController(rootView: OnboardingView(paywallModel: paywallModel))
