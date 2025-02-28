@@ -86,7 +86,7 @@ final class SplashScreenViewController: BaseViewController {
                     self?.restorePurchase(completion: {
                         UserDefaults.onboardingCompleted = true
                         paywallModel.showProgress = false
-                        self?.handlePurchaseSuccessful(placement: .onboarding)
+                        self?.handlePurchaseSuccessful()
                     })
                 }
                 let onboardingController = UIHostingController(rootView: OnboardingView(paywallModel: paywallModel))

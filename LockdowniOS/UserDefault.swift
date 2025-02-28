@@ -71,6 +71,9 @@ extension UserDefaults {
     @UserDefault("hasPurchasedFromOnboarding", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
     static var hasPurchasedFromOnboarding
     
+    @UserDefault("shouldShowMultipleSubscriptionAlert", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
+    static var shouldShowMultipleSubscriptionAlert
+    
     @UserDefault("didShowMultipleSubscriptionAlert", defaultValue: false, isLogged: true, userDefaults: UserDefaults.standard)
     static var didShowMultipleSubscriptionAlert
 }

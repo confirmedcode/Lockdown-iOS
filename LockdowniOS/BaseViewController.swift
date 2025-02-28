@@ -158,6 +158,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                     if placement == .onboarding {
                         UserDefaults.hasPurchasedFromOnboarding = true
                     } else if UserDefaults.hasPurchasedFromOnboarding {
+                        UserDefaults.shouldShowMultipleSubscriptionAlert = true
                         NotificationCenter.default.post(name: .showMultipleSubscriptionsAlert, object: nil)
                     }
                 }
@@ -191,6 +192,7 @@ open class BaseViewController: UIViewController, MFMailComposeViewControllerDele
                     if placement == .onboarding {
                         UserDefaults.hasPurchasedFromOnboarding = true
                     } else if UserDefaults.hasPurchasedFromOnboarding {
+                        UserDefaults.shouldShowMultipleSubscriptionAlert = true
                         NotificationCenter.default.post(name: .showMultipleSubscriptionsAlert, object: nil)
                     }
                 }

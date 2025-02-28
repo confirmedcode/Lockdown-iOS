@@ -428,7 +428,7 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
              self.present(popup, animated: true, completion: nil)
         }
         
-        if UserDefaults.hasPurchasedFromOnboarding && !UserDefaults.didShowMultipleSubscriptionAlert {
+        if UserDefaults.hasPurchasedFromOnboarding && UserDefaults.shouldShowMultipleSubscriptionAlert && !UserDefaults.didShowMultipleSubscriptionAlert {
             self.showMultipleSubscriptionsAlert()
         }
     }
