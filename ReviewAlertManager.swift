@@ -37,9 +37,9 @@ class ReviewAlertManager {
         }
         
         // Maximum 3 alerts per year
-        if alertCount >= 3 {
-            return false
-        }
+//        if alertCount >= 3 {
+//            return false
+//        }
         
         // First alert (onboarding)
         if alertCount == 0 {
@@ -73,6 +73,7 @@ class ReviewAlertManager {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             guard let self = self else { return }
+            guard shouldShowReviewAlert() else { return }
             guard let topController = UIApplication.getTopMostViewController(), !topController.description.localizedCaseInsensitiveContains("paywall") else { return }
             
             var alertCount = userDefaults.integer(forKey: Keys.alertCount)

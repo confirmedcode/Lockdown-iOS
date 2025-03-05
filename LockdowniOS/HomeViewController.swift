@@ -431,6 +431,8 @@ class HomeViewController: BaseViewController, AwesomeSpotlightViewDelegate, Load
         if UserDefaults.hasPurchasedFromOnboarding && UserDefaults.shouldShowMultipleSubscriptionAlert && !UserDefaults.didShowMultipleSubscriptionAlert {
             self.showMultipleSubscriptionsAlert()
         }
+        
+        ReviewAlertManager.checkAndShowAlert()
     }
     
     @objc
