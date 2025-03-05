@@ -24,6 +24,7 @@ struct OnboardingView: View {
         guard let step = OnboardingStep(rawValue: selectedTab) else { return }
         if step == .first {
             selectedTab = OnboardingStep.second.rawValue
+            ReviewAlertManager.showOnboardingAlert()
         } else if step == .second {
             selectedTab = OnboardingStep.paywall.rawValue
         }

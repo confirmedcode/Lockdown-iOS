@@ -184,6 +184,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateMetrics(.resetIfNeeded, rescheduleNotifications: .always)
         
         FirewallRepair.run(context: .homeScreenDidLoad)
+        
+        if UserDefaults.onboardingCompleted {
+            ReviewAlertManager.checkAndShowAlert()
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
