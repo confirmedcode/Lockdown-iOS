@@ -160,48 +160,52 @@ enum OnboardingStep: Int {
     case paywall = 2
     
     var backgroundImageName: String {
+        // step1 & step2 are reversed by design
         switch self {
         case .first:
-            return "onboardingStep1"
-        case .second:
             return "onboardingStep2"
+        case .second:
+            return "onboardingStep1"
         case .paywall:
             return "onboardingPaywall"
         }
     }
     
     var title: String {
+        // step1 & step2 are reversed by design
         switch self {
         case .first:
-            return NSLocalizedString("Onboarding.Step1.Title", comment: "")
-        case .second:
             return NSLocalizedString("Onboarding.Step2.Title", comment: "")
+        case .second:
+            return NSLocalizedString("Onboarding.Step1.Title", comment: "")
         case .paywall:
             return ""
         }
     }
     
     var subtitle: String {
+        // step1 & step2 are reversed by design
         switch self {
         case .first:
-            return NSLocalizedString("Onboarding.Step1.Subtitle", comment: "")
-        case .second:
             return NSLocalizedString("Onboarding.Step2.Subtitle", comment: "")
+        case .second:
+            return NSLocalizedString("Onboarding.Step1.Subtitle", comment: "")
         case .paywall:
             return ""
         }
     }
     
     var items: [String] {
+        // step1 & step2 are reversed by design
         switch self {
         case .first:
-            return [NSLocalizedString("Onboarding.Step1.Item1", comment: ""),
-                    NSLocalizedString("Onboarding.Step1.Item2", comment: ""),
-                    NSLocalizedString("Onboarding.Step1.Item3", comment: "")]
-        case .second:
             return [NSLocalizedString("Onboarding.Step2.Item1", comment: ""),
                     NSLocalizedString("Onboarding.Step2.Item2", comment: ""),
                     NSLocalizedString("Onboarding.Step2.Item3", comment: "")]
+        case .second:
+            return [NSLocalizedString("Onboarding.Step1.Item1", comment: ""),
+                    NSLocalizedString("Onboarding.Step1.Item2", comment: ""),
+                    NSLocalizedString("Onboarding.Step1.Item3", comment: "")]
         case .paywall:
             return []
         }
