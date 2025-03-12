@@ -12,58 +12,68 @@ struct OneTimePaywallView: View {
     @StateObject var model: OneTimePaywallModel
     @State private var arrowOffset: CGFloat = -3.125
     
-    var imgName = UIScreen.main.bounds.height > 700 ? "bg_paywall_onetime" : "bg_paywall_onetime_ss"
+    @State private var screenSize = UIScreen.main.bounds.size
+    
+    private var isRunningOnIpad: Bool {
+            return UIDevice.current.userInterfaceIdiom == .pad
+        }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Image(imgName)
-                .resizable()
-                .scaledToFill()
-            
-            LinearGradient(stops:
-                            [Gradient.Stop(color: Color.black.opacity(0.0), location: 0.0),
-                             Gradient.Stop(color: Color.black.opacity(0.0), location: 0.2),
-                             Gradient.Stop(color: Color.black.opacity(0.6), location: 0.5),
-                             Gradient.Stop(color: Color.black.opacity(0.6), location: 1.0),
-                            ], startPoint: .top, endPoint: .bottom)
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Spacer()
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                Image(isRunningOnIpad ? "bg_paywall_onetime_ss" : "bg_paywall_onetime")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: screenSize.width, height: screenSize.height)
                 
-                title
-                subtitle
-                detailItems
+                LinearGradient(stops:
+                                [Gradient.Stop(color: Color.black.opacity(0.0), location: 0.0),
+                                 Gradient.Stop(color: Color.black.opacity(0.0), location: 0.2),
+                                 Gradient.Stop(color: Color.black.opacity(0.6), location: 0.5),
+                                 Gradient.Stop(color: Color.black.opacity(0.6), location: 1.0),
+                                ], startPoint: .top, endPoint: .bottom)
                 
-                trialToggle
+                VStack(alignment: .leading, spacing: 8) {
+                    title
+                    subtitle
+                    detailItems
+                    
+                    trialToggle
+                    
+                    yearlyProduct
+                    weeklyProduct
+                    
+                    purchaseButton
+                    
+                    noPaymentFooter
+                        .opacity(model.trialEnabled ? 1 : 0)
+                    
+                    footerLinks
+                }
+                .padding(40)
                 
-                yearlyProduct
-                weeklyProduct
+                VStack(alignment: .leading) {
+                    closeButton
+                        .padding(.top, geometry.safeAreaInsets.top + (isRunningOnIpad ? 30 : 0))
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .allowsHitTesting(model.showProgress ? false : true)
                 
-                purchaseButton
-                
-                noPaymentFooter
-                    .opacity(model.trialEnabled ? 1 : 0)
-                
-                footerLinks
-            }
-            .padding(40)
-            
-            VStack(alignment: .leading) {
-                closeButton
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Spacer()
+                ProgressView()
+                    .offset(y: -70)
+                    .scaleEffect(3)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .opacity(model.showProgress ? 1 : 0)
             }
             .allowsHitTesting(model.showProgress ? false : true)
             
-            ProgressView()
-                .offset(y: -70)
-                .scaleEffect(3)
-                .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                .opacity(model.showProgress ? 1 : 0)
+            .frame(width: screenSize.width, height: screenSize.height)
+            .ignoresSafeArea()
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                screenSize = UIScreen.main.bounds.size
+            }
         }
-        .allowsHitTesting(model.showProgress ? false : true)
-        .frame(maxWidth: UIScreen.main.bounds.size.width, maxHeight: UIScreen.main.bounds.size.height, alignment: .bottom)
-        .ignoresSafeArea()
     }
     
     private var purchaseButton: some View {
@@ -240,11 +250,24 @@ struct OneTimePaywallView: View {
             model.closeAction?()
         } label: {
             Image(systemName: "xmark")
-                .font(.system(size: 14, weight: .bold))
+                .font(.system(size: isRunningOnIpad ? 17 : 14, weight: .bold))
                 .foregroundColor(.white)
         }
-        .padding(.leading, 40)
-        .padding(.top, 60)
+        .padding(isRunningOnIpad ? 16 : 10)
+        .background(
+            ZStack {
+                if #available(iOS 15.0, *) {
+                    Circle()
+                        .fill(.ultraThinMaterial)
+                } else {
+                    Circle()
+                        .fill(Color.gray.opacity(0.2))
+                        .overlay(Color.white.opacity(0.3))
+                }
+            }
+        )
+        .clipShape(Circle())
+        .padding(.leading, isRunningOnIpad ? 50 : 20)
     }
     
     private var footerLinks: some View {
